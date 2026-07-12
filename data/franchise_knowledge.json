@@ -1,0 +1,416 @@
+{
+  "Spurs": {
+    "full_name": "San Antonio Spurs",
+    "summary": "20+ years of sustained contention built on coaching continuity, a consistent player-evaluation philosophy, and internal development rather than star free agency.",
+    "coaches": [
+      {"name": "Gregg Popovich", "tenure": "1996-2024 (28 seasons)", "note": "Longest active tenure of any coach in major US sports for most of that span; never fired, never chased a rebuild by tearing down the roster."},
+      {"name": "Larry Brown", "tenure": "1988-1992", "note": "Predecessor era before the Popovich/Buford front office took shape."}
+    ],
+    "front_office_continuity": "R.C. Buford served as GM from 1994-2021, working alongside Popovich for the entire dynasty era. The coach-and-GM pairing rarely changed, which let scouting philosophy and culture compound over decades instead of resetting every few years.",
+    "draft_history": [
+      {"year": 1987, "pick": "#1 overall", "player": "David Robinson", "outcome": "Hall of Famer, foundation of the early-90s Spurs."},
+      {"year": 1997, "pick": "#1 overall", "player": "Tim Duncan", "outcome": "5x champion, cornerstone of the dynasty; landed via lottery odds after a Robinson injury season."},
+      {"year": 1999, "pick": "#57 overall (last pick in draft)", "player": "Manu Ginobili", "outcome": "Hall of Famer found via international scouting that most teams ignored."},
+      {"year": 2001, "pick": "#28 overall", "player": "Tony Parker", "outcome": "Multi-time All-Star, core of the Duncan-Parker-Ginobili 'Big Three' for ~13 years together."},
+      {"year": 2011, "pick": "#15 overall (via draft-night trade)", "player": "Kawhi Leonard", "outcome": "Finals MVP in 2014, later traded but exemplifies the team's pattern of finding value outside the lottery."}
+    ],
+    "continuity_pattern": "The Duncan-Parker-Ginobili core stayed together for roughly 13 seasons. The franchise prioritized character and fit in scouting (domestic and international) over pure measurable upside, and avoided blowing up the roster after disappointing seasons.",
+    "championships": [1999, 2003, 2005, 2007, 2014]
+  },
+  "Celtics": {
+    "full_name": "Boston Celtics",
+    "summary": "Stable front-office leadership turned a 2013 teardown into a draft-pick war chest, then supplemented homegrown stars with disciplined trades instead of chasing every star on the market.",
+    "coaches": [
+      {"name": "Brad Stevens", "tenure": "2013-2021 (head coach), 2021-present (President of Basketball Operations)", "note": "Moved from bench to front office without the franchise losing his evaluation philosophy."},
+      {"name": "Joe Mazzulla", "tenure": "2022-present", "note": "Promoted from within the organization rather than an outside hire."}
+    ],
+    "front_office_continuity": "Danny Ainge ran basketball operations from 2003-2021, then handed off to Brad Stevens, who had already been the head coach for 8 years. The transition kept institutional knowledge intact instead of resetting strategy.",
+    "draft_history": [
+      {"year": 2013, "pick": "Trade return", "player": "Future first-round picks from Brooklyn", "outcome": "Sent aging Kevin Garnett and Paul Pierce to the Nets for a package of unprotected future first-round picks, anticipating Brooklyn's roster would decline."},
+      {"year": 2016, "pick": "#3 overall (via the Brooklyn trade picks)", "player": "Jaylen Brown", "outcome": "Became a core All-Star and 2024 Finals MVP."},
+      {"year": 2017, "pick": "#3 overall (via the Brooklyn trade picks)", "player": "Jayson Tatum", "outcome": "Became a perennial All-NBA player and franchise centerpiece."}
+    ],
+    "continuity_pattern": "Rather than trying to win immediately with an aging core, Boston traded that core for draft capital at the right time, then was patient enough to let Brown and Tatum develop together for nearly a decade before winning a title in 2024.",
+    "championships": [2008, 2024]
+  },
+  "Nets": {
+    "full_name": "Brooklyn Nets",
+    "summary": "Repeatedly traded away future draft capital for short-term star power, then suffered from coaching instability and chemistry problems that undercut the talent it acquired.",
+    "coaches": [
+      {"name": "Multiple (Kenny Atkinson, Jacque Vaughn interim, Kenny Atkinson, Steve Nash, Jacque Vaughn)", "tenure": "2018-2024", "note": "Steve Nash was hired in 2020 with zero prior coaching experience at any level; he was fired about two years later as the roster around him kept changing."}
+    ],
+    "front_office_continuity": "Multiple changes in ownership and front-office leadership since relocating to Brooklyn in 2012, without a stable long-term basketball-operations philosophy comparable to San Antonio's or Boston's.",
+    "draft_history": [
+      {"year": 2013, "pick": "Gave up future unprotected first-round picks", "player": "Traded for Kevin Garnett, Paul Pierce, Jason Terry", "outcome": "Mortgaged future drafts for an immediate but short-lived playoff push; the picks given up became Jaylen Brown and Jayson Tatum for Boston."},
+      {"year": 2021, "pick": "Gave up multiple future first-round picks and pick swaps", "player": "Traded for James Harden", "outcome": "Assembled a 'Big 3' of Kevin Durant, Kyrie Irving, and James Harden with almost no remaining draft capital as a safety net."}
+    ],
+    "continuity_pattern": "The roster strategy relied on star trades rather than the draft, leaving little margin when injuries, Kyrie Irving's limited availability, and Harden's trade request hit simultaneously. By 2023 the team had traded away Durant, Harden, and Irving and was rebuilding largely through other teams' picks.",
+    "championships": []
+  },
+  "Kings": {
+    "full_name": "Sacramento Kings",
+    "summary": "Ownership instability and constant front-office/coaching turnover produced the longest active playoff drought in major U.S. pro sports at the time (1999-2023 was the prior playoff trip), making it impossible to sustain any single team-building plan.",
+    "coaches": [
+      {"name": "More than a dozen different head coaches", "tenure": "1999-2023", "note": "Frequent in-season firings meant almost no coach had time to install and refine a consistent system."}
+    ],
+    "front_office_continuity": "The Maloof family's ownership ran into severe financial trouble in the early 2010s, nearly relocating the team to Seattle in 2013 before a local ownership group (led by Vivek Ranadive) bought the team. Basketball-operations leadership turned over repeatedly through this period.",
+    "draft_history": [
+      {"year": "various 2006-2015", "pick": "multiple lottery picks", "player": "Multiple lottery picks spent on players who did not become long-term cornerstones", "outcome": "Repeated high picks did not translate into sustained success, partly due to coaching/scheme churn limiting development."},
+      {"year": 2017, "pick": "#5 overall", "player": "De'Aaron Fox", "outcome": "Became the franchise cornerstone who helped finally end the playoff drought in 2023."}
+    ],
+    "continuity_pattern": "Unlike San Antonio or Boston, Sacramento rarely kept a coach, GM, and core roster together long enough for any single development philosophy to compound; the drought ended only once ownership and front-office leadership stabilized in the early 2020s.",
+    "championships": [1951]
+  },
+  "Hawks": {
+    "full_name": "Atlanta Hawks",
+    "summary": "Solid mid-2010s core that overachieved on continuity, then a retool around a young star (Trae Young) that has struggled to build a stable supporting cast or coaching staff.",
+    "coaches": [
+      {"name": "Mike Budenholzer", "tenure": "2013-2018", "note": "Built a disciplined, ball-movement-heavy system that produced a franchise-record 60-win season in 2014-15."},
+      {"name": "Multiple since 2018 (Lloyd Pierce, Nate McMillan, Quin Snyder)", "tenure": "2018-present", "note": "Coaching turnover increased once the Budenholzer era ended."}
+    ],
+    "front_office_continuity": "GM Travis Schlenk built the 2021 Eastern Conference Finals roster around Trae Young, but front-office and coaching changes since have made it hard to sustain a clear identity.",
+    "draft_history": [
+      {"year": 2018, "pick": "#5 overall (draft-night trade)", "player": "Trae Young (via Dallas, traded Luka Doncic)", "outcome": "Became an All-Star scorer/passer, but the trade is debated given Doncic's superstar trajectory."}
+    ],
+    "continuity_pattern": "A well-coached, continuity-driven mid-2010s team gave way to a younger core that has not yet recaptured the same organizational stability.",
+    "championships": [1958]
+  },
+  "Hornets": {
+    "full_name": "Charlotte Hornets",
+    "summary": "Owner Michael Jordan's tenure produced little sustained success; the franchise has cycled through young cores and lottery picks without developing a stable contender.",
+    "coaches": [
+      {"name": "Multiple (Steve Clifford, James Borrego, Steve Clifford again)", "tenure": "2013-present", "note": "Coaching changes have coincided with repeated roster rebuilds rather than a consistent system."}
+    ],
+    "front_office_continuity": "Michael Jordan owned the team from 2010-2023; despite his playing pedigree, the franchise made the playoffs only twice in that span before he sold his stake.",
+    "draft_history": [
+      {"year": 2020, "pick": "#3 overall", "player": "LaMelo Ball", "outcome": "Became a dynamic, exciting lead guard, but injuries and a thin supporting cast limited team success."}
+    ],
+    "continuity_pattern": "Frequent lottery appearances without a corresponding stretch of sustained roster or coaching continuity.",
+    "championships": []
+  },
+  "Bulls": {
+    "full_name": "Chicago Bulls",
+    "summary": "Post-Jordan-era Bulls have had stretches of competitive teams (Derrick Rose MVP run) interrupted by injuries and a front office often criticized for being conservative in roster moves.",
+    "coaches": [
+      {"name": "Tom Thibodeau", "tenure": "2010-2015", "note": "Built a top defense and an MVP-winning Derrick Rose team before being fired after a front-office power struggle."}
+    ],
+    "front_office_continuity": "GM Gar Forman and EVP John Paxson ran basketball operations together for over a decade, but were criticized for letting championship windows close (Rose injuries, later the Jimmy Butler trade) without aggressive retooling.",
+    "draft_history": [
+      {"year": 2008, "pick": "#1 overall", "player": "Derrick Rose", "outcome": "2011 MVP, but a series of major knee injuries shortened his peak and the team's title window."}
+    ],
+    "continuity_pattern": "Talented cores repeatedly undercut by injuries and a front office slow to pivot, leading to a long stretch without conference finals contention.",
+    "championships": [1991, 1992, 1993, 1996, 1997, 1998]
+  },
+  "Cavaliers": {
+    "full_name": "Cleveland Cavaliers",
+    "summary": "Fortunes tied tightly to LeBron James's two tenures; the team collapsed into a bottom-of-the-league rebuild during his Miami/L.A. years and re-emerged as a contender once a young homegrown core matured.",
+    "coaches": [
+      {"name": "Tyronn Lue", "tenure": "2016-2018 (first stint)", "note": "Led the 2016 championship team, the franchise's first title."},
+      {"name": "J.B. Bickerstaff", "tenure": "2020-present", "note": "Developed the Mitchell/Garland/Mobley/Allen young core into a top-seed contender."}
+    ],
+    "front_office_continuity": "Koby Altman has been GM since 2017, overseeing both the post-LeBron rebuild and the subsequent return to contention, giving the front office unusual continuity through a full team-building cycle.",
+    "draft_history": [
+      {"year": 2013, "pick": "#1 overall", "player": "Anthony Bennett", "outcome": "Widely regarded as one of the biggest draft busts in NBA history."},
+      {"year": 2014, "pick": "#1 overall", "player": "Andrew Wiggins", "outcome": "Traded shortly after for Kevin Love to support LeBron's return."},
+      {"year": 2020, "pick": "#5 overall", "player": "Isaac Okoro", "outcome": "Solid role player and 3-and-D piece for the young core."}
+    ],
+    "continuity_pattern": "Extreme variance tied to a single transcendent player's presence or absence, with a stable front office managing both the teardown and rebuild phases.",
+    "championships": [2016]
+  },
+  "Mavericks": {
+    "full_name": "Dallas Mavericks",
+    "summary": "Owner Mark Cuban and longtime executive Donnie Nelson built a 2011 champion around continuity with Dirk Nowitzki, then rebuilt again around a transformative trade for Luka Doncic.",
+    "coaches": [
+      {"name": "Rick Carlisle", "tenure": "2008-2021", "note": "Led the 2011 championship and maintained competitive teams for over a decade."}
+    ],
+    "front_office_continuity": "Mark Cuban owned the team continuously since 2000, providing rare long-term stability at the top even as GMs changed.",
+    "draft_history": [
+      {"year": 2018, "pick": "#3 overall (draft-night trade with Atlanta)", "player": "Luka Doncic", "outcome": "Became a perennial MVP candidate and the centerpiece of the franchise's next contention window."}
+    ],
+    "continuity_pattern": "Dirk Nowitzki's 21-year, one-franchise career gave Dallas a stable centerpiece through the 2011 title, and ownership continuity helped the front office quickly retool around Doncic afterward.",
+    "championships": [2011]
+  },
+  "Nuggets": {
+    "full_name": "Denver Nuggets",
+    "summary": "Patient draft-and-develop approach around Nikola Jokic, found in the second round, culminated in a 2023 championship after years of incremental playoff growth.",
+    "coaches": [
+      {"name": "Michael Malone", "tenure": "2015-present", "note": "Long tenure allowed the system around Jokic to develop gradually rather than being reset by coaching changes."}
+    ],
+    "front_office_continuity": "Tim Connelly served as president of basketball operations from 2013-2022, building the Jokic-Murray core, before departing for Minnesota; the front office's long tenure under him is credited with the team's steady ascent.",
+    "draft_history": [
+      {"year": 2014, "pick": "#41 overall", "player": "Nikola Jokic", "outcome": "Became a multiple-time MVP and 2023 Finals MVP, one of the best value picks in modern NBA history."},
+      {"year": 2018, "pick": "#7 overall", "player": "Michael Porter Jr.", "outcome": "Overcame back injuries to become a key rotation shooter on the title team."}
+    ],
+    "continuity_pattern": "A stable coaching staff and front office let a second-round steal develop into a franchise cornerstone over nearly a decade, rather than rushing or trading him.",
+    "championships": [2023]
+  },
+  "Pistons": {
+    "full_name": "Detroit Pistons",
+    "summary": "Long stretch of lottery seasons and front-office turnover after the mid-2000s contending core aged out, with rebuilding plans repeatedly restarted under different executives.",
+    "coaches": [
+      {"name": "Multiple (Stan Van Gundy, Dwane Casey, Monty Williams)", "tenure": "2014-present", "note": "Frequent coaching and front-office changes have made it hard to sustain a single development plan."}
+    ],
+    "front_office_continuity": "Several different presidents/GMs (Joe Dumars, Stan Van Gundy, Troy Weaver) have run the front office since 2010, each starting a new rebuild rather than continuing the prior plan.",
+    "draft_history": [
+      {"year": 2020, "pick": "#7 overall", "player": "Killian Hayes", "outcome": "Did not develop into the hoped-for franchise guard."},
+      {"year": 2021, "pick": "#1 overall", "player": "Cade Cunningham", "outcome": "Became the team's clearest franchise-cornerstone talent in years."}
+    ],
+    "continuity_pattern": "Repeated front-office resets meant draft classes were evaluated and developed under different philosophies, slowing the compounding effect seen in stable organizations.",
+    "championships": [1989, 1990, 2004]
+  },
+  "Warriors": {
+    "full_name": "Golden State Warriors",
+    "summary": "Built a dynasty by drafting and developing Stephen Curry, Klay Thompson, and Draymond Green together under stable ownership and front-office leadership, then added Kevin Durant in free agency.",
+    "coaches": [
+      {"name": "Steve Kerr", "tenure": "2014-present", "note": "Installed a motion-heavy offensive system perfectly suited to Curry's shooting gravity and has remained through every championship."}
+    ],
+    "front_office_continuity": "Owner Joe Lacob and GM Bob Myers led the organization together from the early 2010s through the entire dynasty era, prioritizing keeping the core together and paying luxury tax rather than breaking it up early.",
+    "draft_history": [
+      {"year": 2009, "pick": "#7 overall", "player": "Stephen Curry", "outcome": "Became one of the greatest shooters and most valuable players in NBA history."},
+      {"year": 2011, "pick": "#11 overall", "player": "Klay Thompson", "outcome": "Formed the 'Splash Brothers' backcourt with Curry."},
+      {"year": 2012, "pick": "#35 overall", "player": "Draymond Green", "outcome": "Became Defensive Player of the Year and the connective tissue of the dynasty's system."}
+    ],
+    "continuity_pattern": "Three core draftees stayed together for over a decade under one head coach and one front-office leadership team, allowing a specific system to compound into sustained title contention.",
+    "championships": [1947, 1956, 1975, 2015, 2017, 2018, 2022]
+  },
+  "Rockets": {
+    "full_name": "Houston Rockets",
+    "summary": "Years of analytics-driven, three-point-heavy roster building around James Harden produced consistent regular-season success but no championship, followed by a teardown and youth rebuild.",
+    "coaches": [
+      {"name": "Mike D'Antoni", "tenure": "2016-2020", "note": "Maximized Harden-era spacing and pace-and-space principles."}
+    ],
+    "front_office_continuity": "GM Daryl Morey ran basketball operations from 2007-2020, a rare long tenure that let the team commit fully to an analytics-driven roster-construction philosophy before departing for Philadelphia.",
+    "draft_history": [
+      {"year": 2009, "pick": "#1 overall (re-drafted via trade rights)", "player": "Hakeem Olajuwon-era picks not applicable; Harden acquired via trade in 2012", "outcome": "Trade for James Harden (2012) built the Morey-era contending core rather than a draft pick."}
+    ],
+    "continuity_pattern": "A single executive's long tenure allowed a consistent team-building philosophy (spacing, foul-drawing, threes) to be pursued for over a decade, ending only when the Harden era concluded without a title.",
+    "championships": [1994, 1995]
+  },
+  "Pacers": {
+    "full_name": "Indiana Pacers",
+    "summary": "Consistently competitive mid-tier franchise that has rarely torn down its roster, instead retooling gradually, culminating in a 2024 conference finals run and 2025 Finals appearance.",
+    "coaches": [
+      {"name": "Rick Carlisle", "tenure": "2021-present (second stint)", "note": "Returned to the franchise he first coached in the early 2000s, providing continuity of philosophy."}
+    ],
+    "front_office_continuity": "President Kevin Pritchard has led basketball operations since 2017, building the Tyrese Haliburton-era roster through trades rather than a full rebuild.",
+    "draft_history": [
+      {"year": 2020, "pick": "Acquired via trade (2022)", "player": "Tyrese Haliburton", "outcome": "Became an All-Star point guard and the offensive engine of the 2024-25 surge."}
+    ],
+    "continuity_pattern": "Steady, incremental roster building rather than bottoming out for lottery picks, rewarded by an unexpected deep playoff run once the right pieces (Haliburton, Siakam) came together.",
+    "championships": []
+  },
+  "Clippers": {
+    "full_name": "Los Angeles Clippers",
+    "summary": "Long history as the league's also-ran franchise before owner Steve Ballmer's spending and the Paul George/Kawhi Leonard era raised the floor, though a championship has remained elusive.",
+    "coaches": [
+      {"name": "Doc Rivers", "tenure": "2013-2020", "note": "Brought instant credibility and playoff appearances after decades of losing."},
+      {"name": "Tyronn Lue", "tenure": "2020-present", "note": "Took over for the Kawhi Leonard/Paul George era."}
+    ],
+    "front_office_continuity": "Steve Ballmer's ownership since 2014 brought financial stability and a new arena project, ending decades of being considered the NBA's least-resourced franchise.",
+    "draft_history": [
+      {"year": 2019, "pick": "Sign-and-trade/free agency", "player": "Kawhi Leonard and Paul George acquired together", "outcome": "Gave up significant draft capital for a co-star pairing that has been frequently limited by injuries."}
+    ],
+    "continuity_pattern": "Ownership stability finally arrived decades after the team's reputation as a perennial loser was set, but championship-level continuity with healthy stars has been hard to sustain.",
+    "championships": []
+  },
+  "Lakers": {
+    "full_name": "Los Angeles Lakers",
+    "summary": "One of the league's flagship franchises, with championship windows tied to acquiring transcendent stars (Kobe Bryant's late career, LeBron James/Anthony Davis) rather than internal draft development.",
+    "coaches": [
+      {"name": "Frank Vogel", "tenure": "2019-2022", "note": "Won the bubble championship in his first season, then was fired after later playoff disappointments."}
+    ],
+    "front_office_continuity": "Front-office leadership has shifted several times (Mitch Kupchak, Magic Johnson briefly, Rob Pelinka since 2017), generally prioritizing star trades and free agency over patient drafting.",
+    "draft_history": [
+      {"year": 2017, "pick": "#2 overall", "player": "Lonzo Ball", "outcome": "Traded a few years later as part of the team's continued star-chasing approach rather than building around young draftees."}
+    ],
+    "continuity_pattern": "Success has tracked star acquisition (LeBron in 2018, AD trade in 2019) more than homegrown continuity, producing a title in the 2020 bubble but inconsistent results around it.",
+    "championships": [1949, 1950, 1952, 1953, 1954, 1972, 1980, 1982, 1985, 1987, 1988, 2000, 2001, 2002, 2009, 2010, 2020]
+  },
+  "Grizzlies": {
+    "full_name": "Memphis Grizzlies",
+    "summary": "Built a 'Grit and Grind' identity in the 2010s on toughness and defense, then retooled around a young core led by Ja Morant, with the team's trajectory closely tied to his availability and conduct issues.",
+    "coaches": [
+      {"name": "Taylor Jenkins", "tenure": "2019-present", "note": "Developed the Morant-Jackson Jr.-Bane young core into a top playoff seed."}
+    ],
+    "front_office_continuity": "GM Zach Kleiman has led basketball operations since 2019, overseeing the post-Grit-and-Grind rebuild around Morant.",
+    "draft_history": [
+      {"year": 2019, "pick": "#2 overall", "player": "Ja Morant", "outcome": "Became an explosive All-Star point guard, though off-court suspensions have repeatedly disrupted team continuity."}
+    ],
+    "continuity_pattern": "A stable coaching staff and front office have kept building around a talented core, but on-court continuity has suffered from injuries and Morant's suspensions.",
+    "championships": []
+  },
+  "Heat": {
+    "full_name": "Miami Heat",
+    "summary": "Pat Riley's front office has sustained a competitive 'Heat Culture' identity across multiple roster eras, frequently overachieving relative to draft positioning through development and culture.",
+    "coaches": [
+      {"name": "Erik Spoelstra", "tenure": "2008-present", "note": "One of the longest-tenured coaches in the league; maintained a consistent defensive and conditioning culture across multiple roster overhauls."}
+    ],
+    "front_office_continuity": "Pat Riley has led basketball operations since 1995, giving Miami the same organizational philosophy across the Shaq, 'Heatles' (LeBron/Wade/Bosh), and Jimmy Butler eras.",
+    "draft_history": [
+      {"year": 2021, "pick": "#3 overall (trade)", "player": "Multiple trades for veteran continuity pieces rather than high picks", "outcome": "Miami has rarely drafted top-5 talent in this period, instead relying on development and trades."},
+      {"year": 2014, "pick": "#54 overall (undrafted, signed 2017)", "player": "Duncan Robinson (signed as undrafted free agent in 2018)", "outcome": "Became a key three-point shooter, exemplifying Miami's strength in player development over draft position."}
+    ],
+    "continuity_pattern": "Decades of stable front-office and coaching leadership have let 'Heat Culture' persist across very different rosters, repeatedly punching above the team's draft positioning.",
+    "championships": [2006, 2012, 2013]
+  },
+  "Bucks": {
+    "full_name": "Milwaukee Bucks",
+    "summary": "Drafted and developed Giannis Antetokounmpo from a little-known prospect into a two-time MVP and 2021 champion, with stable front-office leadership through the entire arc.",
+    "coaches": [
+      {"name": "Mike Budenholzer", "tenure": "2018-2022", "note": "Installed the switch-heavy defense and spacing system that delivered the 2021 championship."}
+    ],
+    "front_office_continuity": "GM Jon Horst has led basketball operations since 2017, and the ownership group (since 2014) has consistently prioritized building around Giannis rather than trading him.",
+    "draft_history": [
+      {"year": 2013, "pick": "#15 overall", "player": "Giannis Antetokounmpo", "outcome": "Became a two-time MVP, Defensive Player of the Year, and 2021 Finals MVP; one of the best value picks in NBA history."}
+    ],
+    "continuity_pattern": "Patient development of a raw, low-profile draft pick into a superstar, paired with front-office commitment to building the roster around him rather than maximizing trade value early.",
+    "championships": [1971, 2021]
+  },
+  "Timberwolves": {
+    "full_name": "Minnesota Timberwolves",
+    "summary": "Long history of front-office instability and early-exit playoff drought finally broke with a stable core built around Karl-Anthony Towns, then Anthony Edwards and Rudy Gobert, culminating in a 2024 conference finals run.",
+    "coaches": [
+      {"name": "Chris Finch", "tenure": "2021-present", "note": "Provided coaching stability through the trade for Rudy Gobert and the team's playoff resurgence."}
+    ],
+    "front_office_continuity": "Tim Connelly joined as president of basketball operations in 2022 after building Denver's title core, bringing a track record of patient roster construction to a historically unstable front office.",
+    "draft_history": [
+      {"year": 2020, "pick": "#1 overall", "player": "Anthony Edwards", "outcome": "Became an explosive All-Star scorer and the team's new cornerstone alongside Towns."}
+    ],
+    "continuity_pattern": "Decades of coaching/front-office churn gave way to stability once Connelly arrived, quickly translating into the franchise's deepest playoff run in two decades.",
+    "championships": []
+  },
+  "Pelicans": {
+    "full_name": "New Orleans Pelicans",
+    "summary": "Repeated high draft picks (Anthony Davis, Zion Williamson) have not yet translated into sustained playoff success, due in part to chronic injuries and front-office turnover.",
+    "coaches": [
+      {"name": "Multiple (Alvin Gentry, Stan Van Gundy, Willie Green)", "tenure": "2015-present", "note": "Frequent coaching changes have accompanied the team's inconsistent results."}
+    ],
+    "front_office_continuity": "David Griffin took over basketball operations in 2019, overseeing the return for Anthony Davis (which became the foundation of the trade) and the Zion Williamson era.",
+    "draft_history": [
+      {"year": 2012, "pick": "#1 overall", "player": "Anthony Davis", "outcome": "Became a superstar big man, later traded to the Lakers in 2019 for a package that became the team's next core."},
+      {"year": 2019, "pick": "#1 overall", "player": "Zion Williamson", "outcome": "Flashed superstar potential but has been limited by chronic injuries."}
+    ],
+    "continuity_pattern": "Elite draft talent has repeatedly arrived, but injuries to cornerstone players and coaching turnover have prevented the roster continuity needed to capitalize on it.",
+    "championships": []
+  },
+  "Knicks": {
+    "full_name": "New York Knicks",
+    "summary": "Decades of front-office dysfunction under owner James Dolan produced a long playoff drought, before a more stable Leon Rose-led front office and Tom Thibodeau's coaching restored sustained competitiveness.",
+    "coaches": [
+      {"name": "Tom Thibodeau", "tenure": "2020-present", "note": "Brought defensive identity and stability after years of frequent coaching changes."}
+    ],
+    "front_office_continuity": "Leon Rose became president of basketball operations in 2020, bringing the franchise's longest stretch of front-office stability in over a decade.",
+    "draft_history": [
+      {"year": 2015, "pick": "#4 overall", "player": "Kristaps Porzingis", "outcome": "Showed star potential but was eventually traded amid front-office turmoil before the Rose era began."}
+    ],
+    "continuity_pattern": "A long stretch of owner-driven front-office instability finally gave way to a stable management group, quickly followed by a return to consistent playoff contention.",
+    "championships": [1970, 1973]
+  },
+  "Thunder": {
+    "full_name": "Oklahoma City Thunder",
+    "summary": "Rebuilt from the Kevin Durant/Russell Westbrook trade exodus into a deep, draft-pick-rich young core led by Shai Gilgeous-Alexander, reflecting one of the league's most patient and analytically driven front offices.",
+    "coaches": [
+      {"name": "Mark Daigneault", "tenure": "2020-present", "note": "Hired to oversee a full rebuild and developed it into a top regular-season team within a few seasons."}
+    ],
+    "front_office_continuity": "GM Sam Presti has led basketball operations since 2007, overseeing both the Durant-Westbrook-Harden core and the subsequent rebuild, a rare two-decade tenure in the modern NBA.",
+    "draft_history": [
+      {"year": 2007, "pick": "#2 overall", "player": "Kevin Durant", "outcome": "Became an MVP and one of the greatest scorers ever, though he left in free agency in 2016."},
+      {"year": 2017, "pick": "Trade acquisition (2019, via Clippers)", "player": "Shai Gilgeous-Alexander", "outcome": "Became an MVP-caliber guard and centerpiece of the rebuilt core."}
+    ],
+    "continuity_pattern": "Sam Presti's two-decade tenure allowed the franchise to convert a star exodus into one of the deepest young rosters in the league through patient draft accumulation.",
+    "championships": [1979]
+  },
+  "Magic": {
+    "full_name": "Orlando Magic",
+    "summary": "After a long rebuild following the Dwight Howard trade era, the Magic accumulated a deep, defense-oriented young core through consecutive lottery picks under a stable front office.",
+    "coaches": [
+      {"name": "Jamahl Mosley", "tenure": "2021-present", "note": "Developed the young Banchero/Wagner/Suggs core into a playoff team."}
+    ],
+    "front_office_continuity": "GM/President Jeff Weltman has led basketball operations since 2017, overseeing a methodical rebuild rather than chasing quick fixes.",
+    "draft_history": [
+      {"year": 2022, "pick": "#1 overall", "player": "Paolo Banchero", "outcome": "Won Rookie of the Year and became the team's offensive centerpiece."}
+    ],
+    "continuity_pattern": "A patient, defense-first rebuild under one front office turned consecutive lottery picks into a cohesive, ahead-of-schedule playoff roster.",
+    "championships": []
+  },
+  "76ers": {
+    "full_name": "Philadelphia 76ers",
+    "summary": "The deliberate 'Process' tank-and-rebuild strategy produced star talent (Joel Embiid, Ben Simmons) but the team has repeatedly fallen short in the playoffs amid coaching turnover and roster fit issues.",
+    "coaches": [
+      {"name": "Brett Brown", "tenure": "2013-2020", "note": "Endured the losingest years of 'The Process' before being let go once the team was expected to contend."},
+      {"name": "Doc Rivers, then Nick Nurse", "tenure": "2020-present", "note": "Each brought championship pedigree but the team has not advanced past the second round under either."}
+    ],
+    "front_office_continuity": "GM Sam Hinkie engineered the 2013-2016 tank strategy before resigning under ownership pressure; subsequent executives (Bryan Colangelo, Elton Brand, Daryl Morey) have managed the transition from rebuild to contention with mixed continuity.",
+    "draft_history": [
+      {"year": 2014, "pick": "#3 overall", "player": "Joel Embiid", "outcome": "Became an MVP center, though injuries delayed his debut by two seasons."},
+      {"year": 2016, "pick": "#1 overall", "player": "Ben Simmons", "outcome": "An All-Star early on, but a playoff shooting collapse and trade request disrupted team continuity."}
+    ],
+    "continuity_pattern": "A historically extreme tank strategy generated star talent, but front-office and coaching turnover during the contention phase has repeatedly interrupted the team's playoff continuity.",
+    "championships": [1955, 1967, 1983]
+  },
+  "Suns": {
+    "full_name": "Phoenix Suns",
+    "summary": "Bottomed out for nearly a decade before a stable front office and coach turned a young core plus Chris Paul trade into a 2021 Finals run, followed by aggressive star trades (Durant, Beal) that cost significant draft capital.",
+    "coaches": [
+      {"name": "Monty Williams", "tenure": "2019-2023", "note": "Took over a historically bad team and developed it into a Finals contender within two seasons."}
+    ],
+    "front_office_continuity": "GM James Jones has led basketball operations since 2019, overseeing the rapid turnaround and subsequent series of star trades.",
+    "draft_history": [
+      {"year": 2018, "pick": "#1 overall", "player": "Deandre Ayton", "outcome": "Became a key starting center for the 2021 Finals team before being traded away in 2023."}
+    ],
+    "continuity_pattern": "A near-decade rebuild gave way to rapid, stable turnaround, followed by an aggressive trade-for-stars approach that mortgaged future draft picks similar to Brooklyn's strategy.",
+    "championships": []
+  },
+  "TrailBlazers": {
+    "full_name": "Portland Trail Blazers",
+    "summary": "Built consistent playoff teams around homegrown star Damian Lillard for over a decade before a 2023 rebuild following his trade request.",
+    "coaches": [
+      {"name": "Terry Stotts", "tenure": "2012-2021", "note": "Coached the Lillard-era teams to nine consecutive playoff appearances."}
+    ],
+    "front_office_continuity": "GM Neil Olshey ran basketball operations from 2012-2021, providing continuity through the entire Lillard era before being dismissed for workplace conduct violations.",
+    "draft_history": [
+      {"year": 2012, "pick": "#6 overall", "player": "Damian Lillard", "outcome": "Became a perennial All-Star and one of the greatest clutch shooters in NBA history; requested a trade in 2023 after the team failed to build a contender around him."}
+    ],
+    "continuity_pattern": "A single homegrown superstar provided over a decade of competitive continuity, but the front office was unable to surround him with a championship-level roster, leading to a rebuild once he requested out.",
+    "championships": [1977]
+  },
+  "Raptors": {
+    "full_name": "Toronto Raptors",
+    "summary": "Patient front-office building under Masai Ujiri turned steady regular-season success into the franchise's only championship in 2019, aided by a bold mid-season trade for Kawhi Leonard.",
+    "coaches": [
+      {"name": "Dwane Casey, then Nick Nurse", "tenure": "2011-2018 (Casey), 2018-2023 (Nurse)", "note": "Casey built the regular-season foundation; Nurse's tactical adjustments helped close out the 2019 title."}
+    ],
+    "front_office_continuity": "Masai Ujiri led basketball operations from 2013-2024, the rare front-office tenure long enough to build sustained regular-season success and then make the franchise-altering Kawhi Leonard trade.",
+    "draft_history": [
+      {"year": 2006, "pick": "Trade acquisition (2009 sign-and-trade for Hedo Turkoglu, unrelated)", "player": "Kyle Lowry acquired via trade in 2012", "outcome": "Became the longest-tenured All-Star and emotional leader of the 2019 title team."}
+    ],
+    "continuity_pattern": "Long front-office tenure allowed steady regular-season improvement to culminate in a willingness to make an aggressive, high-risk trade (Kawhi Leonard) at the right moment.",
+    "championships": [2019]
+  },
+  "Jazz": {
+    "full_name": "Utah Jazz",
+    "summary": "One of the most stable franchises in the league for decades (Stockton-Malone era, then Gobert-Mitchell era) before a deliberate 2022-23 rebuild traded away both All-Stars for draft capital.",
+    "coaches": [
+      {"name": "Quin Snyder", "tenure": "2014-2022", "note": "Built one of the league's most efficient offenses and consistent playoff teams around Gobert and Mitchell."}
+    ],
+    "front_office_continuity": "The Miller family's ownership and a small group of long-tenured executives gave Utah unusual stability for decades, including the decision to fully rebuild rather than run the Gobert-Mitchell core into decline.",
+    "draft_history": [
+      {"year": 2013, "pick": "#27 overall (draft-night trade)", "player": "Rudy Gobert", "outcome": "Became a three-time Defensive Player of the Year before being traded to Minnesota in 2022 for a large draft-pick haul."}
+    ],
+    "continuity_pattern": "Decades of stable, well-run continuity gave the front office the credibility and patience to proactively rebuild via trade rather than waiting for the core to decline on its own.",
+    "championships": []
+  },
+  "Wizards": {
+    "full_name": "Washington Wizards",
+    "summary": "Long stretches of middling, inconsistent rosters under owner Ted Leonsis, rarely bottoming out fully or building a sustained contender, before a full rebuild beginning in 2023.",
+    "coaches": [
+      {"name": "Multiple (Randy Wittman, Scott Brooks, Wes Unseld Jr.)", "tenure": "2014-present", "note": "Frequent coaching changes accompanied a 'treading water' era of low-seed playoff teams."}
+    ],
+    "front_office_continuity": "Ernie Grunfeld served as GM from 2003-2019, a long tenure criticized for repeatedly re-signing the same core to short-term playoff appearances rather than committing to a full rebuild.",
+    "draft_history": [
+      {"year": 2010, "pick": "#1 overall", "player": "John Wall", "outcome": "Became an All-Star point guard, but chronic injuries and a lack of supporting talent limited the team's ceiling."}
+    ],
+    "continuity_pattern": "A front office that avoided both full rebuilding and aggressive contending for over a decade produced a long stretch of low-stakes mediocrity, prompting a full rebuild starting in 2023.",
+    "championships": [1978]
+  }
+}

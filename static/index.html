@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An NBA franchise-intelligence chatbot grounded in real team history and data." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>NBA Franchise Analyst</title>
+</head>
+<body>
+    <div class="container">
+
+        <section id="screen1" class="screen">
+            <header>
+                <h1>NBA Franchise Analyst</h1>
+                <p>Feel free to ask anything about any team.</p>
+            </header>
+
+            <div class="input-container">
+                <input id="chatbotInput" class="chatbotInput" placeholder='Ex: "Where did the Nets go wrong?"' autocomplete="off" />
+                <button id="submitButton" class="submitButton">
+                    <span>Send</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="screen2" class="screen hidden">
+            <header>
+                <h1>NBA Franchise Analyst</h1>
+            </header>
+
+            <div class="chat-container">
+                <div id="chatbotOutput" class="chatbotOutput"></div>
+            </div>
+
+            <div id="winChartSection" class="chart-container hidden">
+                <h2 id="winChartTitle">Win Chart</h2>
+                <canvas id="winChart" height="120"></canvas>
+            </div>
+
+            <div id="leadersSection" class="leaders-container hidden">
+                <h2>Leaders</h2>
+                <div class="leaders-grid">
+                    <div class="leader-box">
+                        <h3>Points per game</h3>
+                        <ol id="leadersPpg"></ol>
+                    </div>
+                    <div class="leader-box">
+                        <h3>Assists per game</h3>
+                        <ol id="leadersApg"></ol>
+                    </div>
+                    <div class="leader-box">
+                        <h3>Rebounds per game</h3>
+                        <ol id="leadersRpg"></ol>
+                    </div>
+                    <div class="leader-box">
+                        <h3>Steals per game</h3>
+                        <ol id="leadersSpg"></ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <input id="chatbotInput2" class="chatbotInput" placeholder="Ask another question..." autocomplete="off" />
+                <button id="submitButton2" class="submitButton">
+                    <span>Send</span>
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with care</p>
+        </footer>
+    </div>
+
+    <script src='./chart.js'></script>
+    <script src='./app.js'></script>
+</body>
+</html>

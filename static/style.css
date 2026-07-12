@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.6s ease both;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+
+.chat-container {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.chatbotOutput {
+    background: #f8f9fb;
+    border-radius: 16px;
+    padding: 22px 26px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #2d2d3a;
+    border-left: 4px solid #667eea;
+    min-height: 120px;
+    white-space: pre-wrap;
+}
+
+.input-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.chatbotInput {
+    flex-grow: 1;
+    padding: 14px 22px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #2d2d3a;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.chatbotInput::placeholder {
+    color: #adb5bd;
+}
+
+.chatbotInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+}
+
+.submitButton {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(102, 126, 234, 0.55)
+}
+
+.submitButton:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.45);
+}
+
+.chart-container, .leaders-container {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.chart-container h2, .leaders-container h2 {
+    color: #2d2d3a;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.leader-box {
+    background: #f8f9fb;
+    border-radius: 14px;
+    padding: 16px 20px;
+    border-left: 4px solid #764ba2;
+}
+
+.leader-box h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2d2d3a;
+    margin-bottom: 8px;
+}
+
+.leader-box ol {
+    list-style-position: inside;
+    color: #2d2d3a;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 20px 15px; }
+    h1 { font-size: 2rem; }
+    .chat-container { padding: 20px; }
+    .chatbotOutput { padding: 18px 20px; font-size: 1rem; }
+    .input-container { flex-direction: column; gap: 10px; }
+    .submitButton { width: 100%; }
+    .chatbotInput { width: 100%; }
+    .leaders-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,7 @@
+flask
+flask-cors
+pandas
+nba_api
+langchain-groq
+python-dotenv
+gunicorn
