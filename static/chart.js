@@ -25,13 +25,30 @@ function renderWinChart(team, records) {
                 data: wins,
                 borderColor: '#667eea',
                 backgroundColor: '#667eea',
+                borderWidth: 3,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                pointBackgroundColor: '#667eea',
                 fill: false,
                 tension: 0.2,
             }],
         },
         options: {
             responsive: true,
-            scales: { y: { beginAtZero: true, title: { display: true, text: 'Wins' } } },
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Wins', font: { size: 14 } },
+                    ticks: { font: { size: 13 } },
+                },
+                x: {
+                    ticks: { font: { size: 12 }, maxRotation: 60, minRotation: 45 },
+                },
+            },
         },
     });
 }
