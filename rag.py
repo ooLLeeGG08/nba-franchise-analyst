@@ -51,6 +51,19 @@ def mentioned_teams(query):
     return [team for team, aliases in _TEAM_ALIASES.items() if any(a in lowered for a in aliases)]
 
 
+def resolve_team(message, history):
+    teams = mentioned_teams(message)
+    if teams:
+        return teams[0]
+    for turn in reversed(history):
+        if turn.get("role") != "user":
+            continue
+        prior_teams = mentioned_teams(turn.get("content", ""))
+        if prior_teams:
+            return prior_teams[0]
+    return None
+
+
 def get_team_records(team):
     return RECORDS.get(team)
 
@@ -77,8 +90,7 @@ def _team_document(team):
 
 
 
-def retrieve_context(query, k=3):
-    teams = [t for t in mentioned_teams(query) if t in KNOWLEDGE][:k]
-    if not teams:
+def retrieve_context(team):
+    if team not in KNOWLEDGE:
         return ""
-    return "\n\n".join(_team_document(team) for team in teams)
+    return _team_document(team)
