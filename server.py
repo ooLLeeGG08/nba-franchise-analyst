@@ -8,7 +8,7 @@ from flask_cors import CORS
 load_dotenv()
 
 from llm import answer_question
-from rag import get_team_leaders, get_team_records, mentioned_teams
+from rag import get_team_leaders, get_team_records, resolve_team
 
 app = Flask(__name__)
 CORS(app)
@@ -32,10 +32,10 @@ def chat():
             return jsonify({'error': 'No message provided'}), 400
 
         message = data['message']
-        bot_response = answer_question(message)
+        history = data.get('history') or []
+        bot_response = answer_question(message, history)
 
-        teams = mentioned_teams(message)
-        team = teams[0] if teams else None
+        team = resolve_team(message, history)
 
         return jsonify({
             'response': bot_response,
