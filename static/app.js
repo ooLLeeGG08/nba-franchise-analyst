@@ -40,6 +40,14 @@ function askChatBot(userInput) {
 
     const requestHistory = history;
 
+    const inputEls = [
+        document.getElementById('chatbotInput'),
+        document.getElementById('chatbotInput2'),
+        document.getElementById('submitButton'),
+        document.getElementById('submitButton2')
+    ];
+    inputEls.forEach((el) => { if (el) el.disabled = true; });
+
     const myRequest = new Request('/api/chat', {
         method: 'POST',
         headers: {
@@ -74,5 +82,8 @@ function askChatBot(userInput) {
             console.error('Error:', err);
             thinkingBubble.className = 'chat-message error';
             thinkingBubble.innerText = 'Sorry, I\'m having trouble connecting. Please try again.';
+        })
+        .finally(() => {
+            inputEls.forEach((el) => { if (el) el.disabled = false; });
         });
 }
