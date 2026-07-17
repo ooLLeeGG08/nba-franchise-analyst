@@ -1,9 +1,10 @@
 import os
 
 from langchain_groq import ChatGroq
-from rag import retrieve_context
+from rag import resolve_team, retrieve_context
 
 _GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
+_MAX_HISTORY = 10
 
 _client = None
 
@@ -24,11 +25,20 @@ def _get_client():
     return _client
 
 
-def answer_question(query):
-    context = retrieve_context(query)
+def build_messages(message, history, context):
+    capped_history = history[-_MAX_HISTORY:] if history else []
+    messages = [("system", SYSTEM_PROMPT)]
+    for turn in capped_history:
+        role = "assistant" if turn.get("role") == "assistant" else "user"
+        messages.append((role, turn.get("content", "")))
+    messages.append(("user", f"Context:\n{context}\n\nQuestion: {message}"))
+    return messages
+
+
+def answer_question(message, history=None):
+    history = history or []
+    team = resolve_team(message, history)
+    context = retrieve_context(team)
     client = _get_client()
-    response = client.invoke([
-        ("system", SYSTEM_PROMPT),
-        ("user", f"Context:\n{context}\n\nQuestion: {query}"),
-    ])
+    response = client.invoke(build_messages(message, history, context))
     return response.content
