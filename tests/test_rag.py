@@ -1,4 +1,28 @@
-from rag import resolve_team
+from rag import resolve_team, mentioned_teams
+
+
+def test_mentioned_teams_does_not_match_nets_inside_hornets():
+    """Regression test: 'Hornets' should NOT match Nets (which contains 'nets' substring)."""
+    teams = mentioned_teams("And the Hornets?")
+    assert teams == ["Hornets"], f"Expected ['Hornets'], got {teams}"
+    assert "Nets" not in teams, "Should not match 'Nets' when asking about 'Hornets'"
+
+
+def test_mentioned_teams_matches_nets_correctly():
+    """Verify that legitimate 'Nets' mentions still work."""
+    teams = mentioned_teams("Tell me about the Nets")
+    assert "Nets" in teams
+    assert "Hornets" not in teams
+
+
+def test_mentioned_teams_matches_multi_word_aliases():
+    """Verify multi-word aliases still work correctly."""
+    teams = mentioned_teams("What about the Los Angeles Clippers?")
+    assert "Clippers" in teams
+    teams = mentioned_teams("Tell me about San Antonio")
+    assert "Spurs" in teams
+    teams = mentioned_teams("The Golden State Warriors are great")
+    assert "Warriors" in teams
 
 
 def test_resolve_team_from_current_message():

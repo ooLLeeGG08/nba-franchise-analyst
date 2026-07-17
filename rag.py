@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 _DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -48,7 +49,10 @@ _TEAM_ALIASES = {
 
 def mentioned_teams(query):
     lowered = query.lower()
-    return [team for team, aliases in _TEAM_ALIASES.items() if any(a in lowered for a in aliases)]
+    return [
+        team for team, aliases in _TEAM_ALIASES.items()
+        if any(re.search(rf"\b{re.escape(a)}\b", lowered) for a in aliases)
+    ]
 
 
 def resolve_team(message, history):
