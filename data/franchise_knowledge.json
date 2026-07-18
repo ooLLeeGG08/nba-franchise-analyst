@@ -15,7 +15,13 @@
       {"year": 2011, "pick": "#15 overall (via draft-night trade)", "player": "Kawhi Leonard", "outcome": "Finals MVP in 2014, later traded but exemplifies the team's pattern of finding value outside the lottery."}
     ],
     "continuity_pattern": "The Duncan-Parker-Ginobili core stayed together for roughly 13 seasons. The franchise prioritized character and fit in scouting (domestic and international) over pure measurable upside, and avoided blowing up the roster after disappointing seasons.",
-    "championships": [1999, 2003, 2005, 2007, 2014]
+    "championships": [1999, 2003, 2005, 2007, 2014],
+    "trade_history": [
+      {"season": "2018-19", "trade": "Traded Kawhi Leonard and Danny Green to Toronto for DeMar DeRozan, Jakob Poeltl, and a protected first-round pick", "outcome": "Reset the roster after Leonard's trade request rather than rebuilding from scratch, keeping the Spurs competitive instead of tanking."},
+      {"season": "2022-23", "trade": "Traded All-Star guard Dejounte Murray to Atlanta for Danilo Gallinari and three future first-round picks (2023, 2025, 2027) plus a 2026 pick swap", "outcome": "Accelerated a full rebuild that culminated in the Spurs landing the No. 1 pick and drafting Victor Wembanyama in the 2023 draft."},
+      {"season": "2022-23", "trade": "Traded center Jakob Poeltl back to Toronto for Khem Birch, a protected 2024 first-round pick, and two future second-round picks", "outcome": "Cashed out a veteran who didn't fit the rebuild timeline, adding more draft capital ahead of the Wembanyama lottery."},
+      {"season": "2024-25", "trade": "Acquired De'Aaron Fox and Jordan McLaughlin from Sacramento in a three-team trade with Chicago, sending out Zach Collins, Tre Jones, Sidy Cissoko, and multiple future first- and second-round picks", "outcome": "Paired an established All-Star point guard with Victor Wembanyama; Fox signed a four-year, $229 million extension with the Spurs shortly after the trade."}
+    ]
   },
   "Celtics": {
     "full_name": "Boston Celtics",
@@ -31,7 +37,15 @@
       {"year": 2017, "pick": "#3 overall (via the Brooklyn trade picks)", "player": "Jayson Tatum", "outcome": "Became a perennial All-NBA player and franchise centerpiece."}
     ],
     "continuity_pattern": "Rather than trying to win immediately with an aging core, Boston traded that core for draft capital at the right time, then was patient enough to let Brown and Tatum develop together for nearly a decade before winning a title in 2024.",
-    "championships": [2008, 2024]
+    "championships": [2008, 2024],
+    "trade_history": [
+      {"season": "2017-18", "trade": "Traded Isaiah Thomas, Jae Crowder, Ante Zizic, and a Brooklyn first-round pick to Cleveland for Kyrie Irving", "outcome": "Replaced an injured All-Star (Thomas, recovering from a hip injury) with a healthier perennial All-Star point guard to pair with the rebuilding young core."},
+      {"season": "2021-22", "trade": "Traded Kemba Walker, the No. 16 pick in 2021, and a future second-rounder to Oklahoma City for Al Horford and Moses Brown", "outcome": "Ended a disappointing two-year Walker experiment and brought back a locker-room-respected veteran as Brad Stevens' first move as president of basketball operations."},
+      {"season": "2023-24", "trade": "Traded Marcus Smart in a three-team deal with Memphis and Washington, receiving Kristaps Porzingis and two future first-round picks from Memphis", "outcome": "Added a stretch-big scoring threat who started alongside Tatum and Brown on the 2024 championship team."},
+      {"season": "2023-24", "trade": "Acquired Jrue Holiday from Portland for Robert Williams III, Malcolm Brogdon, and two future first-round picks", "outcome": "Added a two-way, championship-tested guard who helped anchor Boston's defense en route to the 2024 NBA title."},
+      {"season": "2025-26", "trade": "Traded Kristaps Porzingis to Atlanta in a three-team deal with Brooklyn, receiving Georges Niang and a second-round pick", "outcome": "Shed salary to get below the second luxury-tax apron after Jayson Tatum's Achilles injury, prioritizing financial flexibility over immediate contention."},
+      {"season": "2025-26", "trade": "Traded Jrue Holiday to Portland for Anfernee Simons and two second-round picks", "outcome": "Completed the post-title roster teardown driven by luxury-tax costs and Tatum's extended recovery timeline."}
+    ]
   },
   "Nets": {
     "full_name": "Brooklyn Nets",
@@ -45,7 +59,13 @@
       {"year": 2021, "pick": "Gave up multiple future first-round picks and pick swaps", "player": "Traded for James Harden", "outcome": "Assembled a 'Big 3' of Kevin Durant, Kyrie Irving, and James Harden with almost no remaining draft capital as a safety net."}
     ],
     "continuity_pattern": "The roster strategy relied on star trades rather than the draft, leaving little margin when injuries, Kyrie Irving's limited availability, and Harden's trade request hit simultaneously. By 2023 the team had traded away Durant, Harden, and Irving and was rebuilding largely through other teams' picks.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {"season": "2019-20", "trade": "Sign-and-traded D'Angelo Russell, Treveon Graham, and Shabazz Napier to Golden State to complete Kevin Durant's sign-and-trade to Brooklyn, also receiving a protected 2020 first-round pick", "outcome": "Landed a top-tier free-agent scorer via sign-and-trade (alongside separately signing Kyrie Irving), kicking off a short-lived superteam era."},
+      {"season": "2022-23", "trade": "Traded Kyrie Irving to Dallas for Spencer Dinwiddie, Dorian Finney-Smith, and multiple future picks", "outcome": "Began the breakup of Brooklyn's star trio after Irving requested a trade, netting future draft capital instead of retaining an unhappy All-Star."},
+      {"season": "2022-23", "trade": "Traded Kevin Durant to Phoenix for Mikal Bridges, Cam Johnson, Jae Crowder, and four unprotected future first-round picks", "outcome": "Completed the dismantling of the Durant-Irving-Harden 'Big 3' and reloaded the roster and draft-pick cupboard around younger players."},
+      {"season": "2024-25", "trade": "Traded Mikal Bridges to the Knicks for Bojan Bogdanovic and a large haul of unprotected future first-round picks", "outcome": "Continued a long-term, pick-heavy rebuild, leaving Brooklyn with an unusually large stockpile of future first-round selections."}
+    ]
   },
   "Kings": {
     "full_name": "Sacramento Kings",
@@ -59,7 +79,12 @@
       {"year": 2017, "pick": "#5 overall", "player": "De'Aaron Fox", "outcome": "Became the franchise cornerstone who helped finally end the playoff drought in 2023."}
     ],
     "continuity_pattern": "Unlike San Antonio or Boston, Sacramento rarely kept a coach, GM, and core roster together long enough for any single development philosophy to compound; the drought ended only once ownership and front-office leadership stabilized in the early 2020s.",
-    "championships": [1951]
+    "championships": [1951],
+    "trade_history": [
+      {"season": "2021-22", "trade": "Traded Tyrese Haliburton, Buddy Hield, and Tristan Thompson to Indiana for Domantas Sabonis, Justin Holiday, and Jeremy Lamb", "outcome": "Brought in an All-Star frontcourt scorer/passer in Sabonis, though Haliburton went on to become an All-NBA point guard in Indiana."},
+      {"season": "2022-23", "trade": "Acquired Kevin Huerter from Atlanta for Justin Holiday, Maurice Harkless, and a protected 2024 first-round pick", "outcome": "Added reliable three-point shooting alongside De'Aaron Fox and Domantas Sabonis, helping end the franchise's 16-year playoff drought in 2022-23."},
+      {"season": "2024-25", "trade": "Traded De'Aaron Fox to San Antonio in a three-team deal with Chicago, receiving Zach LaVine, Sidy Cissoko, and multiple future first- and second-round picks", "outcome": "Moved on from the franchise's longtime cornerstone amid roster dysfunction, pivoting to a win-now pairing of LaVine and Sabonis while stockpiling picks."}
+    ]
   },
   "Hawks": {
     "full_name": "Atlanta Hawks",
@@ -73,7 +98,14 @@
       {"year": 2018, "pick": "#5 overall (draft-night trade)", "player": "Trae Young (via Dallas, traded Luka Doncic)", "outcome": "Became an All-Star scorer/passer, but the trade is debated given Doncic's superstar trajectory."}
     ],
     "continuity_pattern": "A well-coached, continuity-driven mid-2010s team gave way to a younger core that has not yet recaptured the same organizational stability.",
-    "championships": [1958]
+    "championships": [1958],
+    "trade_history": [
+      {"season": "2022-23", "trade": "Traded Danilo Gallinari and three future first-round picks (2023, 2025, 2027) plus a 2026 pick swap to San Antonio for All-Star guard Dejounte Murray", "outcome": "Paired Murray with Trae Young to form a high-volume scoring backcourt, but the pairing never produced a playoff series win."},
+      {"season": "2022-23", "trade": "Traded Kevin Huerter to Sacramento for Justin Holiday, Maurice Harkless, and a protected 2024 first-round pick", "outcome": "Freed money after the Murray trade but gave up a rotation shooter who became a key piece of Sacramento's playoff return."},
+      {"season": "2024-25", "trade": "Traded Dejounte Murray to New Orleans for Dyson Daniels, Larry Nance Jr., Cody Zeller, and two future first-round picks", "outcome": "Reversed course on the Murray-Young backcourt after it produced no playoff series wins, pivoting to a younger, defense-first core."},
+      {"season": "2025-26", "trade": "Acquired Kristaps Porzingis from Boston in a three-team deal with Brooklyn, sending out a second-round pick", "outcome": "Added frontcourt scoring and shooting to a young core built around Jalen Johnson, Dyson Daniels, and Zaccharie Risacher."},
+      {"season": "2025-26", "trade": "Traded franchise guard Trae Young to Washington for CJ McCollum and Corey Kispert", "outcome": "Moved on from Atlanta's career assists and 3-point leader ahead of his player option, formally ending the Young era in favor of the younger core."}
+    ]
   },
   "Hornets": {
     "full_name": "Charlotte Hornets",
@@ -86,7 +118,12 @@
       {"year": 2020, "pick": "#3 overall", "player": "LaMelo Ball", "outcome": "Became a dynamic, exciting lead guard, but injuries and a thin supporting cast limited team success."}
     ],
     "continuity_pattern": "Frequent lottery appearances without a corresponding stretch of sustained roster or coaching continuity.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {"season": "2023-24", "trade": "Traded Terry Rozier to Miami for Kyle Lowry and a protected 2027 first-round pick", "outcome": "Began a trade-deadline rebuild, moving a leading scorer for an expiring contract and future draft capital."},
+      {"season": "2023-24", "trade": "Traded P.J. Washington to Dallas for Grant Williams, Seth Curry, and a protected 2027 first-round pick", "outcome": "Continued the same trade-deadline teardown, stocking future draft picks over immediate roster talent."},
+      {"season": "2023-24", "trade": "Traded Gordon Hayward to Oklahoma City for Tre Mann, Vasilije Micic, Davis Bertans, and future second-round picks", "outcome": "Completed a trio of trade-deadline-day deals (with Rozier and Washington) that fully committed Charlotte to a rebuild around younger players."}
+    ]
   },
   "Bulls": {
     "full_name": "Chicago Bulls",
