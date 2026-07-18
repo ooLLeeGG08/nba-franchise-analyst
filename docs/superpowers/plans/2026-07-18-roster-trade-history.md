@@ -56,7 +56,7 @@ _TRACKED_TEAMS = {
     "Warriors": "Golden State Warriors",
     "Rockets": "Houston Rockets",
     "Pacers": "Indiana Pacers",
-    "Clippers": "LA Clippers",
+    "Clippers": "Los Angeles Clippers",
     "Lakers": "Los Angeles Lakers",
     "Grizzlies": "Memphis Grizzlies",
     "Heat": "Miami Heat",
