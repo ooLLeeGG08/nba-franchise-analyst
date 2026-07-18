@@ -107,7 +107,8 @@ def test_retrieve_context_omits_roster_line_when_season_has_no_data():
     assert "Roster (" not in doc
 
 
-def test_retrieve_context_omits_trade_history_line_when_absent():
+def test_retrieve_context_omits_trade_history_line_when_absent(monkeypatch):
+    monkeypatch.delitem(rag.KNOWLEDGE["Spurs"], "trade_history", raising=False)
     doc = retrieve_context("Spurs", "2015-16")
     assert "Trade history:" not in doc
 
