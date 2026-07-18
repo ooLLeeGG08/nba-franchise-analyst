@@ -1,32 +1,42 @@
-# Team Roster History (2015-16 through 2025-26)
+# Team Roster & Trade History (2015-16 through 2025-26)
 
 ## Problem
 
-The chatbot has no data on which players were on a team's roster in a given season. Asked
-"do you have the history of teams' rosters from every year?", it correctly says no — the
-only per-player data in the app is `player_leaders.json` (top 5 per stat category per
-franchise across the whole period), not season-by-season rosters. Users want to ask
-roster-specific questions (e.g. "who was on the Nets in 2015-16?", "was Kevin Durant ever
-on the Nets roster?") and get real answers grounded in actual data.
+The chatbot has no data on which players were on a team's roster in a given season, and no
+data on the notable trades that shaped a roster over time. Asked "do you have the history of
+teams' rosters from every year?", it correctly says no — the only per-player data in the app
+is `player_leaders.json` (top 5 per stat category per franchise across the whole period), not
+season-by-season rosters, and there's no structured trade data at all (only scattered
+mentions inside existing prose fields like `continuity_pattern`). Users want to ask
+roster-specific questions (e.g. "who was on the Nets in 2015-16?") and trade-specific
+questions (e.g. "what trades reshaped the Nets' roster?") and get real answers grounded in
+actual data.
 
 ## Goals
 
 - Real, accurate roster data for all 30 teams across all 11 seasons (2015-16 through
   2025-26) — every player who appeared for the team that season, not a curated subset.
+- Real, verified notable-trade history for all 30 teams across the same window — the trades
+  that meaningfully changed a roster, not an exhaustive transaction log.
 - The chatbot answers roster questions grounded in this data, for a specific season when
   one is mentioned (explicitly or via conversation history), defaulting to the most recent
   season otherwise.
+- The chatbot answers trade questions grounded in real trade facts, for the team in scope.
 - Keep per-request LLM context focused — one season's roster per team, not all 11 years
-  dumped into every request.
+  dumped into every request. Trade history stays in full (it's small, like `draft_history`).
 
 ## Non-goals
 
 - Mid-season transaction tracking (a player traded mid-season appears however
   `CommonTeamRoster` reports it — no attempt to reconcile multiple stints in one season).
-- A dedicated roster UI panel (chart/leaders panels are unaffected; this is a chat-context
-  addition only).
-- Historical roster data before 2015-16 or new "notable players" curation — full roster,
-  pulled live, matching the existing `fetch_nba_data.py` pattern for season records.
+- A dedicated roster or trade-history UI panel (chart/leaders panels are unaffected; this is
+  a chat-context addition only).
+- Historical roster/trade data before 2015-16 or new "notable players" curation — full
+  roster, pulled live, matching the existing `fetch_nba_data.py` pattern for season records.
+- An exhaustive trade transaction log (minor/depth-piece trades, salary-dump trades) — only
+  trades notable enough to have shaped the roster or franchise trajectory.
+- Free agency signings, draft-day trades already captured in `draft_history`, or waiver
+  moves — `trade_history` is specifically player/pick-for-player/pick trades between teams.
 
 ## Data source & fetch script
 
@@ -105,10 +115,60 @@ line is omitted entirely rather than printed empty.
 Signature grows from `retrieve_context(team)` to `retrieve_context(team, season)`, threading
 the resolved season into `_team_document`.
 
+## Trade history: data source & storage
+
+Unlike rosters, there's no clean API for trade transactions — `nba_api` wraps stats.nba.com's
+stats endpoints (box scores, standings, rosters), not transaction history. Trade history is
+hand-researched and verified the same way `franchise_knowledge.json`'s existing
+`draft_history` and `continuity_pattern` fields already are (this file has no fetch script —
+it's curated content, cross-checked against real sources, not generated).
+
+Each of the 30 teams in `data/franchise_knowledge.json` gains a new `trade_history` array,
+alongside the existing `draft_history`, scoped to trades that happened within the tracked
+window (2015-16 through 2025-26 seasons) and notable enough to have mattered (star players,
+meaningful draft-pick swaps, trades that reshaped a roster's trajectory) — not every minor
+transaction. Same shape/spirit as `draft_history`:
+
+```json
+"trade_history": [
+  {
+    "season": "2019-20",
+    "trade": "Traded Caris LeVert, Jarrett Allen, and a 2020 first-round pick to Cleveland for Kevin Durant... (illustrative — real entries verified per-team during implementation)",
+    "outcome": "Short description of why this trade mattered to the franchise's trajectory."
+  }
+]
+```
+
+Given this spans all 30 teams, the research happens in batches during implementation (e.g.
+delegated to a handful of research-focused subagents, each covering several teams), with each
+fact checked via web search before being written into `franchise_knowledge.json` — the same
+verification discipline already used to correct `season_records.json` earlier in this
+project. No trade is added on the basis of memory alone.
+
+## `rag.py` changes (trade history)
+
+### `_team_document(team, season)`
+
+Gains a trade-history line, using the team's full `trade_history` list (not season-scoped,
+since the list is small — comparable in size to `draft_history`, not to the per-season
+roster):
+
+```
+Trade history: 2019-20 Traded ... -> outcome; 2021-22 Traded ... -> outcome
+```
+
+If a team's `trade_history` is empty (no notable trades in the window), the line is omitted
+entirely, same treatment as the roster line when data is missing.
+
+No new accessor function is needed — `trade_history` is read directly off `KNOWLEDGE[team]`
+inside `_team_document`, the same way `draft_history` already is.
+
 ## `llm.py` changes
 
 `answer_question` resolves both `team = resolve_team(message, history)` and
 `season = resolve_season(message, history)`, passing both into `retrieve_context(team, season)`.
+(No separate resolution step needed for trades — they ride along with `team` inside
+`_team_document`.)
 
 ## `server.py`
 
@@ -121,11 +181,17 @@ changes what context the LLM sees, not the API response shape.
   history fallback, default-to-latest-season, and an out-of-range year producing no match —
   all pure/no network, following the existing `test_rag.py` style.
 - `_team_document`/`retrieve_context`: season-aware formatting includes the right season's
-  roster line, and omits the line cleanly when no roster data exists for that team/season.
+  roster line and omits it cleanly when no roster data exists for that team/season; trade
+  history line includes all of a team's `trade_history` entries and omits the line cleanly
+  when the list is empty.
 - `fetch_team_rosters.py` itself is not unit-tested (I/O script hitting a live third-party
   API, same as `fetch_nba_data.py`) — verified instead by one manual run plus a spot-check
   of the generated data against a public source before committing it.
+- Trade history data isn't unit-tested for factual accuracy (that's a research/verification
+  step, not something a test can assert) — each entry is checked against a real source during
+  research, same discipline as the `season_records.json` correction earlier in this project.
 - Manual end-to-end: ask about a specific team+season roster, confirm the answer is grounded
   in the real data; ask a follow-up without repeating the season, confirm it still resolves
   from history; ask with no season mentioned at all, confirm it defaults to the most recent
-  season's roster.
+  season's roster; ask about a team's notable trades, confirm the answer reflects real,
+  verified trades rather than invented ones.
