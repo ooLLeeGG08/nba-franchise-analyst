@@ -1,7 +1,7 @@
 import os
 
 from langchain_groq import ChatGroq
-from rag import resolve_team, retrieve_context
+from rag import resolve_team, resolve_season, retrieve_context
 
 _GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 _MAX_HISTORY = 10
@@ -38,7 +38,8 @@ def build_messages(message, history, context):
 def answer_question(message, history=None):
     history = history or []
     team = resolve_team(message, history)
-    context = retrieve_context(team)
+    season = resolve_season(message, history)
+    context = retrieve_context(team, season)
     client = _get_client()
     response = client.invoke(build_messages(message, history, context))
     return response.content
