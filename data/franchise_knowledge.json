@@ -136,7 +136,29 @@
       {"year": 2008, "pick": "#1 overall", "player": "Derrick Rose", "outcome": "2011 MVP, but a series of major knee injuries shortened his peak and the team's title window."}
     ],
     "continuity_pattern": "Talented cores repeatedly undercut by injuries and a front office slow to pivot, leading to a long stretch without conference finals contention.",
-    "championships": [1991, 1992, 1993, 1996, 1997, 1998]
+    "championships": [1991, 1992, 1993, 1996, 1997, 1998],
+    "trade_history": [
+      {
+        "season": "2016-17",
+        "trade": "Traded Derrick Rose and Justin Holiday to the Knicks (plus a 2017 second-round pick) for Robin Lopez, Jose Calderon, and Jerian Grant",
+        "outcome": "Ended Rose's tenure in Chicago and closed the book on the post-2011-MVP core, beginning a broader roster transition."
+      },
+      {
+        "season": "2017-18",
+        "trade": "Traded Jimmy Butler and the No. 16 pick (Justin Patton) to Minnesota for Zach LaVine, Kris Dunn, and the No. 7 pick (Lauri Markkanen)",
+        "outcome": "Moved on from the team's best player to launch a rebuild around a young nucleus of LaVine, Dunn, and Markkanen."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded Wendell Carter Jr., Otto Porter Jr., and two future first-round picks (2021 and 2023) to Orlando for Nikola Vucevic and Al-Farouq Aminu",
+        "outcome": "Signaled a win-now pivot around LaVine and DeMar DeRozan; the 2021 first-rounder sent to Orlando became Franz Wagner."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Zach LaVine to Sacramento in a three-team deal with San Antonio, receiving Zach Collins, Tre Jones, Kevin Huerter, and Chicago's own 2025 first-round pick (previously owed to San Antonio) in return",
+        "outcome": "Closed out the LaVine era and reclaimed the team's own future first-round pick as part of a broader roster reset."
+      }
+    ]
   },
   "Cavaliers": {
     "full_name": "Cleveland Cavaliers",
@@ -152,7 +174,29 @@
       {"year": 2020, "pick": "#5 overall", "player": "Isaac Okoro", "outcome": "Solid role player and 3-and-D piece for the young core."}
     ],
     "continuity_pattern": "Extreme variance tied to a single transcendent player's presence or absence, with a stable front office managing both the teardown and rebuild phases.",
-    "championships": [2016]
+    "championships": [2016],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Traded Kyrie Irving to Boston for Isaiah Thomas, Jae Crowder, Ante Zizic, a 2018 first-round pick (via Brooklyn), and a 2020 second-round pick (via Miami)",
+        "outcome": "Replaced a disgruntled All-Star point guard after his trade request, netting immediate rotation pieces and a future first-rounder while LeBron James's roster still reached the 2018 NBA Finals."
+      },
+      {
+        "season": "2017-18",
+        "trade": "Traded Isaiah Thomas, Channing Frye, and a 2018 first-round pick to the Lakers for Jordan Clarkson and Larry Nance Jr.",
+        "outcome": "Part of a franchise trade-deadline overhaul that upgraded depth and defense around LeBron James ahead of the 2018 Finals run."
+      },
+      {
+        "season": "2017-18",
+        "trade": "Traded Jae Crowder, Derrick Rose, Iman Shumpert, and a 2020 second-round pick (via Miami) in a three-team trade with Utah and Sacramento for George Hill and Rodney Hood",
+        "outcome": "Completed the same deadline-day roster remake, adding shooting and a steadier ball-handler in Hill."
+      },
+      {
+        "season": "2022-23",
+        "trade": "Traded Collin Sexton, Lauri Markkanen, Ochai Agbaji, and unprotected first-round picks in 2025, 2027, and 2029 (plus two pick swaps) to Utah for Donovan Mitchell",
+        "outcome": "Turned the Cavaliers into an immediate contender by pairing an All-Star guard with Evan Mobley and Jarrett Allen, though Markkanen immediately became an All-Star for Utah."
+      }
+    ]
   },
   "Mavericks": {
     "full_name": "Dallas Mavericks",
@@ -165,7 +209,24 @@
       {"year": 2018, "pick": "#3 overall (draft-night trade with Atlanta)", "player": "Luka Doncic", "outcome": "Became a perennial MVP candidate and the centerpiece of the franchise's next contention window."}
     ],
     "continuity_pattern": "Dirk Nowitzki's 21-year, one-franchise career gave Dallas a stable centerpiece through the 2011 title, and ownership continuity helped the front office quickly retool around Doncic afterward.",
-    "championships": [2011]
+    "championships": [2011],
+    "trade_history": [
+      {
+        "season": "2018-19",
+        "trade": "Acquired Kristaps Porzingis, Trey Burke, Courtney Lee, and Tim Hardaway Jr. from the Knicks for Wesley Matthews, Dennis Smith Jr., DeAndre Jordan, and two future first-round picks",
+        "outcome": "Paired an oft-injured stretch big man with rising star Luka Doncic; injuries and fit issues eventually led Dallas to trade Porzingis to Washington in 2022."
+      },
+      {
+        "season": "2022-23",
+        "trade": "Acquired Kyrie Irving and Markieff Morris from Brooklyn for Spencer Dinwiddie, Dorian Finney-Smith, an unprotected 2029 first-round pick, a 2027 second-round pick, and a 2029 second-round pick",
+        "outcome": "Paired Irving with Doncic to form a new backcourt duo that reached the 2024 NBA Finals the following season."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Luka Doncic, Maxi Kleber, and Markieff Morris to the Lakers for Anthony Davis, Max Christie, and a 2029 first-round pick, as part of a larger deal also involving Utah",
+        "outcome": "One of the most shocking trades in NBA history; GM Nico Harrison said the team prioritized defense, moving on from a 25-year-old franchise cornerstone for an older star with an extensive injury history."
+      }
+    ]
   },
   "Nuggets": {
     "full_name": "Denver Nuggets",
@@ -179,7 +240,24 @@
       {"year": 2018, "pick": "#7 overall", "player": "Michael Porter Jr.", "outcome": "Overcame back injuries to become a key rotation shooter on the title team."}
     ],
     "continuity_pattern": "A stable coaching staff and front office let a second-round steal develop into a franchise cornerstone over nearly a decade, rather than rushing or trading him.",
-    "championships": [2023]
+    "championships": [2023],
+    "trade_history": [
+      {
+        "season": "2016-17",
+        "trade": "Traded Jusuf Nurkic and a 2017 first-round pick to Portland for Mason Plumlee and a 2018 second-round pick",
+        "outcome": "Cleared the frontcourt logjam and cemented Nikola Jokic as Denver's starting center going forward."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded Gary Harris, RJ Hampton, and a protected 2025 first-round pick to Orlando for Aaron Gordon and Gary Clark",
+        "outcome": "Added a versatile forward who became a starter and defensive anchor on the Nuggets' 2023 championship team."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Traded Michael Porter Jr. and an unprotected 2032 first-round pick to Brooklyn for Cameron Johnson",
+        "outcome": "Upgraded two-way fit and floor spacing around Jokic while shedding salary, at the cost of a valuable long-term first-round pick."
+      }
+    ]
   },
   "Pistons": {
     "full_name": "Detroit Pistons",
@@ -193,7 +271,19 @@
       {"year": 2021, "pick": "#1 overall", "player": "Cade Cunningham", "outcome": "Became the team's clearest franchise-cornerstone talent in years."}
     ],
     "continuity_pattern": "Repeated front-office resets meant draft classes were evaluated and developed under different philosophies, slowing the compounding effect seen in stable organizations.",
-    "championships": [1989, 1990, 2004]
+    "championships": [1989, 1990, 2004],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Acquired Blake Griffin from the Clippers for Tobias Harris, Avery Bradley, Boban Marjanovic, a protected 2018 first-round pick, and a 2019 second-round pick",
+        "outcome": "A surprise blockbuster that brought in an All-NBA forward just months after he signed a max extension, but injuries limited Griffin's impact and the team never became a consistent contender."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Andre Drummond to Cleveland for Brandon Knight, John Henson, and a 2023 second-round pick",
+        "outcome": "Ended Drummond's eight-year run as the centerpiece of the franchise and began a rebuild that eventually led to drafting Cade Cunningham."
+      }
+    ]
   },
   "Warriors": {
     "full_name": "Golden State Warriors",
@@ -208,7 +298,24 @@
       {"year": 2012, "pick": "#35 overall", "player": "Draymond Green", "outcome": "Became Defensive Player of the Year and the connective tissue of the dynasty's system."}
     ],
     "continuity_pattern": "Three core draftees stayed together for over a decade under one head coach and one front-office leadership team, allowing a specific system to compound into sustained title contention.",
-    "championships": [1947, 1956, 1975, 2015, 2017, 2018, 2022]
+    "championships": [1947, 1956, 1975, 2015, 2017, 2018, 2022],
+    "trade_history": [
+      {
+        "season": "2019-20",
+        "trade": "Traded D'Angelo Russell, Jacob Evans III, and Omari Spellman to Minnesota for Andrew Wiggins, a top-3-protected 2021 first-round pick, and a 2021 second-round pick",
+        "outcome": "Added a two-way wing to play alongside Curry, Thompson, and Green as the roster reset after a lottery-bound 2019-20 season, and brought back extra draft capital."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Traded Jordan Poole, Patrick Baldwin Jr., Ryan Rollins, a 2027 second-round pick, and a top-20-protected 2030 first-round pick to Washington for Chris Paul",
+        "outcome": "Moved on from a promising young scorer after tension with Draymond Green during the 2022-23 season, adding a veteran table-setter alongside Curry, Thompson, and Green."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Andrew Wiggins, Dennis Schroder, Kyle Anderson, Lindy Waters III, and a top-10-protected 2025 first-round pick to Miami in a five-team deal for Jimmy Butler",
+        "outcome": "Reinvigorated the roster around Stephen Curry at the trade deadline; the Warriors went 24-7 with Butler in the lineup down the stretch of the 2024-25 season."
+      }
+    ]
   },
   "Rockets": {
     "full_name": "Houston Rockets",
