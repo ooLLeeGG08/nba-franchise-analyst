@@ -769,7 +769,16 @@
       {"year": 2016, "pick": "#1 overall", "player": "Ben Simmons", "outcome": "An All-Star early on, but a playoff shooting collapse and trade request disrupted team continuity."}
     ],
     "continuity_pattern": "A historically extreme tank strategy generated star talent, but front-office and coaching turnover during the contention phase has repeatedly interrupted the team's playoff continuity.",
-    "championships": [1955, 1967, 1983]
+    "championships": [1955, 1967, 1983],
+    "trade_history": [
+      {"season": "2017-18", "trade": "Traded a 2017 first-round pick (which became No. 3, used by Boston on Jayson Tatum) and a 2019 first-round pick via Sacramento to the Boston Celtics for the No. 1 overall pick in the 2017 draft, used to select Markelle Fultz", "outcome": "One of the most lopsided trades in franchise history -- Fultz never developed into a rotation player in Philadelphia, while the assets sent to Boston (headlined by the pick that became Jayson Tatum) fueled the Celtics' next decade of contention."},
+      {"season": "2018-19", "trade": "Traded Robert Covington, Dario Saric, Jerryd Bayless, and a 2022 second-round pick to Minnesota for Jimmy Butler and Justin Patton", "outcome": "Brought a third All-Star to pair with Joel Embiid and Ben Simmons, launching Philadelphia's 'Big 3' era and its deepest playoff run of the rebuild to that point."},
+      {"season": "2018-19", "trade": "Traded Landry Shamet, Mike Muscala, Wilson Chandler, a 2020 first-round pick, an unprotected 2021 first-round pick (via Miami), and two second-round picks to the LA Clippers for Tobias Harris, Boban Marjanovic, and Mike Scott", "outcome": "Signaled an all-in push around Embiid, Simmons, and Butler for a title run, though the draft capital given up later limited the team's flexibility."},
+      {"season": "2019-20", "trade": "Sign-and-traded Jimmy Butler to the Miami Heat for Josh Richardson, part of a four-team deal also involving the LA Clippers and Portland Trail Blazers", "outcome": "Ended the one-season Butler era in Philadelphia and brought back a younger wing after Butler departed via sign-and-trade rather than pure free agency."},
+      {"season": "2020-21", "trade": "Traded Al Horford, a lightly protected 2025 first-round pick, and the draft rights to Vasilije Micic to Oklahoma City for Danny Green and Terrance Ferguson", "outcome": "Ended the failed Embiid-Horford frontcourt pairing after one season and added a proven 3-and-D veteran for the next playoff push."},
+      {"season": "2021-22", "trade": "Traded Ben Simmons, Seth Curry, Andre Drummond, an unprotected 2022 first-round pick, and a protected 2027 first-round pick to Brooklyn for James Harden and Paul Millsap", "outcome": "Resolved the Simmons holdout and trade-request saga, reuniting James Harden with team president Daryl Morey and fueling the next two seasons of Philadelphia's contention window."},
+      {"season": "2023-24", "trade": "Traded James Harden, P.J. Tucker, and Filip Petrusev to the LA Clippers in a three-team deal with Oklahoma City for Marcus Morris, Robert Covington, Nic Batum, KJ Martin, a 2028 unprotected first-round pick, an additional first-round pick, a 2029 pick swap, and multiple second-round picks", "outcome": "Ended the Harden era after a contentious trade request and public dispute with Morey, restocking future draft capital for the post-Harden rebuild."}
+    ]
   },
   "Suns": {
     "full_name": "Phoenix Suns",
@@ -782,7 +791,17 @@
       {"year": 2018, "pick": "#1 overall", "player": "Deandre Ayton", "outcome": "Became a key starting center for the 2021 Finals team before being traded away in 2023."}
     ],
     "continuity_pattern": "A near-decade rebuild gave way to rapid, stable turnaround, followed by an aggressive trade-for-stars approach that mortgaged future draft picks similar to Brooklyn's strategy.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {"season": "2015-16", "trade": "Traded Markieff Morris to the Washington Wizards for Kris Humphries, DeJuan Blair, and a top-9-protected 2016 first-round pick", "outcome": "Ended the 'Morris twins' era in Phoenix amid Markieff's public clashes with coach Jeff Hornacek, accelerating the Suns' rebuild after the Dragic and Isaiah Thomas exits."},
+      {"season": "2017-18", "trade": "Traded Eric Bledsoe to the Milwaukee Bucks for Greg Monroe, a protected 2018 first-round pick, and a 2019 second-round pick", "outcome": "Resolved a public standoff after Bledsoe publicly requested a trade, marking the Suns' full commitment to a rebuild around younger assets."},
+      {"season": "2018-19", "trade": "Traded Zhaire Smith and a future first-round pick (via Miami) to the Philadelphia 76ers for Mikal Bridges, acquired via a draft-night trade after Philadelphia selected him 10th overall", "outcome": "One of the most lopsided draft-night trades in recent history -- Bridges developed into a defensive stalwart and starter who later became the centerpiece return in the 2023 Kevin Durant trade."},
+      {"season": "2020-21", "trade": "Traded Kelly Oubre Jr., Ricky Rubio, Ty Jerome, Jalen Lecque, and a 2022 first-round pick to Oklahoma City for Chris Paul and Abdel Nader", "outcome": "The move that turned Phoenix into a contender, pairing Paul with Devin Booker and directly fueling the 2021 NBA Finals run."},
+      {"season": "2022-23", "trade": "Traded Mikal Bridges, Cam Johnson, Jae Crowder, and multiple future first-round picks (2023, 2025, 2027, 2029, plus a 2028 pick swap) in a four-team deal to acquire Kevin Durant and T.J. Warren from the Brooklyn Nets", "outcome": "A blockbuster overhaul completed shortly after Mat Ishbia became majority owner, mortgaging the Suns' draft future to pair Durant with Booker and Paul for an immediate title push."},
+      {"season": "2023-24", "trade": "Traded Chris Paul, Landry Shamet, four future first-round pick swaps, and six second-round picks to the Washington Wizards for Bradley Beal", "outcome": "Completed the Suns' 'Big 3' build of Durant, Booker, and Beal, though it left the roster thin and cap-strapped in later seasons."},
+      {"season": "2023-24", "trade": "Traded Deandre Ayton and Toumani Camara to Portland, and received Jusuf Nurkic, Nassir Little, and Keon Johnson from Portland along with Grayson Allen from Milwaukee, in a three-team deal that sent Damian Lillard from Portland to Milwaukee", "outcome": "Ended Ayton's tenure as the No. 1 overall pick amid a strained relationship with the front office, restocking wing and frontcourt depth around the new Big 3."},
+      {"season": "2025-26", "trade": "Traded Kevin Durant to the Houston Rockets in a seven-team deal for Jalen Green, Dillon Brooks, the Suns' own 2025 first-round pick, and multiple second-round picks", "outcome": "Closed out the Big 3 era after a playoff-missing 2024-25 season and the firing of coach Mike Budenholzer; widely viewed as a light return given Durant's stature."}
+    ]
   },
   "TrailBlazers": {
     "full_name": "Portland Trail Blazers",
@@ -795,7 +814,17 @@
       {"year": 2012, "pick": "#6 overall", "player": "Damian Lillard", "outcome": "Became a perennial All-Star and one of the greatest clutch shooters in NBA history; requested a trade in 2023 after the team failed to build a contender around him."}
     ],
     "continuity_pattern": "A single homegrown superstar provided over a decade of competitive continuity, but the front office was unable to surround him with a championship-level roster, leading to a rebuild once he requested out.",
-    "championships": [1977]
+    "championships": [1977],
+    "trade_history": [
+      {"season": "2015-16", "trade": "Traded Nicolas Batum to the Charlotte Hornets for Gerald Henderson and Noah Vonleh", "outcome": "Cleared cap space and non-core assets right as LaMarcus Aldridge left in free agency, marking the start of the post-Aldridge/Batum rebuild that Damian Lillard and CJ McCollum would lead."},
+      {"season": "2016-17", "trade": "Traded Mason Plumlee and a 2018 second-round pick to the Denver Nuggets for Jusuf Nurkic and a 2017 first-round pick", "outcome": "Nurkic became Portland's starting center for the next six-plus seasons, a foundational piece of the Lillard-era playoff teams until he was moved in the 2023 Lillard trade."},
+      {"season": "2021-22", "trade": "Traded CJ McCollum, Larry Nance Jr., and Tony Snell to the New Orleans Pelicans for Josh Hart, Tomas Satoransky, Nickeil Alexander-Walker, Didi Louzada, a protected first-round pick, and two second-round picks", "outcome": "Ended the McCollum-Lillard backcourt era and officially began Portland's rebuild around Lillard and a young supporting cast."},
+      {"season": "2022-23", "trade": "Traded a top-four-protected 2025 first-round pick (via Milwaukee) and two future second-round picks to the Detroit Pistons for Jerami Grant and the draft rights to Ismael Kamagate", "outcome": "Gave Lillard a new All-Star-caliber forward running mate for one more playoff push before the eventual 2023 rebuild; Grant remained a core rotation piece for years."},
+      {"season": "2023-24", "trade": "Traded Damian Lillard to the Milwaukee Bucks, and Jusuf Nurkic, Nassir Little, and Keon Johnson to the Phoenix Suns, in a three-team deal that brought back Jrue Holiday, an unprotected 2029 first-round pick, and unprotected pick swaps in 2028 and 2030 from Milwaukee, plus Deandre Ayton and Toumani Camara from Phoenix", "outcome": "The franchise-defining trade of the era -- Lillard's departure after his 2023 trade request ended his 11-year run in Portland and launched a full rebuild with a large returned asset haul."},
+      {"season": "2023-24", "trade": "Traded Jrue Holiday to the Boston Celtics for Robert Williams III, Malcolm Brogdon, a 2024 first-round pick (via Golden State), and a 2029 unprotected first-round pick", "outcome": "Immediately re-routed the Lillard trade's centerpiece return into additional first-round picks and rotation players, maximizing draft capital within days of the original blockbuster."},
+      {"season": "2024-25", "trade": "Traded Malcolm Brogdon, the No. 14 pick in the 2024 draft, a 2029 first-round pick, and two future second-round picks to the Washington Wizards for Deni Avdija", "outcome": "Landed a breakout young forward who became a foundational piece of Portland's rebuild core alongside Scoot Henderson and Shaedon Sharpe."},
+      {"season": "2025-26", "trade": "Traded Anfernee Simons and two second-round picks to the Boston Celtics for Jrue Holiday", "outcome": "Moved on from Simons as the team's longtime backcourt scorer, betting on Holiday's two-way play as Portland continued retooling its roster identity."}
+    ]
   },
   "Raptors": {
     "full_name": "Toronto Raptors",
@@ -808,7 +837,17 @@
       {"year": 2006, "pick": "Trade acquisition (2009 sign-and-trade for Hedo Turkoglu, unrelated)", "player": "Kyle Lowry acquired via trade in 2012", "outcome": "Became the longest-tenured All-Star and emotional leader of the 2019 title team."}
     ],
     "continuity_pattern": "Long front-office tenure allowed steady regular-season improvement to culminate in a willingness to make an aggressive, high-risk trade (Kawhi Leonard) at the right moment.",
-    "championships": [2019]
+    "championships": [2019],
+    "trade_history": [
+      {"season": "2016-17", "trade": "Traded Terrence Ross and a protected 2017 first-round pick (via the LA Clippers) to Orlando for Serge Ibaka", "outcome": "Bolstered Toronto's frontcourt for a deep playoff push, part of the Raptors' first trip to the Eastern Conference Finals."},
+      {"season": "2018-19", "trade": "Traded DeMar DeRozan, Jakob Poeltl, and a protected first-round pick to San Antonio for Kawhi Leonard and Danny Green", "outcome": "The move that directly delivered Toronto's first NBA championship in 2019, with Leonard winning Finals MVP."},
+      {"season": "2018-19", "trade": "Traded Jonas Valanciunas, Delon Wright, C.J. Miles, and a 2024 second-round pick to Memphis for Marc Gasol", "outcome": "Gasol's playmaking, rim protection, and veteran leadership were a key piece of the Raptors' 2019 title run."},
+      {"season": "2020-21", "trade": "Traded Norman Powell to Portland for Gary Trent Jr. and Rodney Hood", "outcome": "Retooled the wing rotation after the title window closed; in hindsight a net-negative since Powell developed into an All-Star-caliber scorer elsewhere."},
+      {"season": "2021-22", "trade": "Sign-and-traded Kyle Lowry to Miami for Goran Dragic and Precious Achiuwa", "outcome": "Closed the door on the 2019 title-era core and marked the start of a retool around younger players."},
+      {"season": "2023-24", "trade": "Traded OG Anunoby, Precious Achiuwa, and Malachi Flynn to New York for RJ Barrett, Immanuel Quickley, and a 2024 second-round pick", "outcome": "Signaled the formal start of the post-Siakam-era rebuild around Barrett and Quickley as young building blocks."},
+      {"season": "2023-24", "trade": "Traded Pascal Siakam to Indiana in a three-team deal with New Orleans for Bruce Brown, Jordan Nwora, Kira Lewis Jr., and three future first-round picks", "outcome": "Completed the teardown of the 2019 championship core, netting Toronto significant draft capital for a full rebuild."},
+      {"season": "2024-25", "trade": "Traded Bruce Brown, Kelly Olynyk, a 2026 first-round pick (via Indiana), and a 2031 second-round pick to New Orleans for Brandon Ingram", "outcome": "An all-in swing for a scoring wing to pair with Scottie Barnes and RJ Barrett, though the pick cost was widely criticized as steep for an oft-injured player."}
+    ]
   },
   "Jazz": {
     "full_name": "Utah Jazz",
@@ -821,7 +860,16 @@
       {"year": 2013, "pick": "#27 overall (draft-night trade)", "player": "Rudy Gobert", "outcome": "Became a three-time Defensive Player of the Year before being traded to Minnesota in 2022 for a large draft-pick haul."}
     ],
     "continuity_pattern": "Decades of stable, well-run continuity gave the front office the credibility and patience to proactively rebuild via trade rather than waiting for the core to decline on its own.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {"season": "2016-17", "trade": "Traded the draft rights to the No. 12 pick in the 2016 draft (Taurean Prince) in a three-team draft-night deal with Atlanta and Indiana for George Hill", "outcome": "Gave Utah a steady starting point guard who helped anchor a 51-win, second-round-playoff team, the franchise's best result since 2010."},
+      {"season": "2019-20", "trade": "Traded Grayson Allen, Jae Crowder, Kyle Korver, the No. 23 pick in 2019, and a protected future first-round pick to Memphis for Mike Conley", "outcome": "Signaled Utah's shift to a win-now core built around Conley, Donovan Mitchell, and Rudy Gobert, fueling multiple 50-plus-win seasons and a No. 1 seed in 2020-21."},
+      {"season": "2022-23", "trade": "Traded Rudy Gobert to Minnesota for Malik Beasley, Patrick Beverley, Jarred Vanderbilt, Leandro Bolmaro, the draft rights to Walker Kessler, unprotected 2023/2025/2027 first-round picks, a top-5-protected 2029 first-round pick, and a 2026 first-round pick swap", "outcome": "The trade that launched Utah's full rebuild, netting the largest draft-capital haul in franchise history."},
+      {"season": "2022-23", "trade": "Traded Donovan Mitchell to Cleveland for Lauri Markkanen, Ochai Agbaji, Collin Sexton, three unprotected first-round picks (2025, 2027, 2029), and two pick swaps (2026, 2028)", "outcome": "The defining trade of the rebuild -- Markkanen blossomed into an All-Star cornerstone, and the picks became Utah's primary trade currency for years afterward."},
+      {"season": "2022-23", "trade": "Traded Mike Conley, Nickeil Alexander-Walker, Jarred Vanderbilt, and Malik Beasley in a three-team deal with Minnesota and the LA Lakers for Russell Westbrook, Juan Toscano-Anderson, Damian Jones, a protected 2027 first-round pick, and second-round picks", "outcome": "Removed the last veteran starter from the pre-2022 core, completing Utah's transition into a full rebuild; Westbrook was bought out almost immediately."},
+      {"season": "2024-25", "trade": "Traded the least favorable of three future first-round picks (from Cleveland, Minnesota, and Utah) to Phoenix for the Suns' unprotected 2031 first-round pick", "outcome": "A deliberate bet consolidating three mid-value future firsts into one high-upside unprotected pick; that 2031 pick was later used as the headline asset in the Jaren Jackson Jr. trade."},
+      {"season": "2025-26", "trade": "Traded Walter Clayton Jr., Kyle Anderson, Taylor Hendricks, Georges Niang, and three first-round picks (including the Suns' unprotected 2031 first) to Memphis for Jaren Jackson Jr., John Konchar, Jock Landale, and Vince Williams Jr.", "outcome": "A pivot from rebuild to contention, pairing two-time All-Defensive big man Jaren Jackson Jr. with Markkanen, Keyonte George, and Ace Bailey after several years of asset accumulation."}
+    ]
   },
   "Wizards": {
     "full_name": "Washington Wizards",
@@ -834,6 +882,16 @@
       {"year": 2010, "pick": "#1 overall", "player": "John Wall", "outcome": "Became an All-Star point guard, but chronic injuries and a lack of supporting talent limited the team's ceiling."}
     ],
     "continuity_pattern": "A front office that avoided both full rebuilding and aggressive contending for over a decade produced a long stretch of low-stakes mediocrity, prompting a full rebuild starting in 2023.",
-    "championships": [1978]
+    "championships": [1978],
+    "trade_history": [
+      {"season": "2015-16", "trade": "Traded Kris Humphries, DeJuan Blair, and a top-9-protected 2016 first-round pick to Phoenix for Markieff Morris", "outcome": "Gave the Wizards a starting-caliber power forward for the John Wall/Bradley Beal-era core."},
+      {"season": "2020-21", "trade": "Traded John Wall and a lottery-protected 2023 first-round pick to Houston for Russell Westbrook", "outcome": "Ended the John Wall era in Washington and paired Westbrook with Bradley Beal in a swap of former MVP-caliber guards."},
+      {"season": "2021-22", "trade": "Traded Russell Westbrook to the LA Lakers for Kentavious Caldwell-Pope, Kyle Kuzma, Montrezl Harrell, the 22nd pick in the 2021 draft, and two future second-round picks", "outcome": "Reshaped the roster around Beal with younger, cheaper pieces; Kuzma became a key Wizards contributor for years."},
+      {"season": "2021-22", "trade": "Traded Spencer Dinwiddie and Davis Bertans to Dallas for Kristaps Porzingis and a second-round pick", "outcome": "Added a high-upside star big man at the 2022 trade deadline as part of an attempt to build a playoff roster around Beal."},
+      {"season": "2023-24", "trade": "Traded Bradley Beal to Phoenix for Chris Paul, Landry Shamet, four future first-round pick swaps, and six future second-round picks", "outcome": "Ended the Beal era and officially launched a full rebuild -- the single biggest trade of the Wizards' post-2015 era."},
+      {"season": "2023-24", "trade": "Traded Kristaps Porzingis in a three-team deal with Boston and Memphis for Tyus Jones, Danilo Gallinari, Mike Muscala, and the draft rights to Julian Phillips", "outcome": "Completed the exit of the Wall/Beal/Porzingis core within days of the Beal trade, fully committing to a rebuild."},
+      {"season": "2024-25", "trade": "Traded Deni Avdija to Portland for Malcolm Brogdon, the No. 14 pick in the 2024 draft, a 2029 first-round pick, and two future second-round picks", "outcome": "Sold a former lottery pick who broke out immediately with Portland, but netted significant draft capital as the rebuild's asset-accumulation phase continued."},
+      {"season": "2024-25", "trade": "Traded Kyle Kuzma and Patrick Baldwin Jr. to Milwaukee for Khris Middleton and a 2028 first-round pick swap", "outcome": "Brought a former All-Star and NBA champion to Washington while helping Milwaukee clear cap space; Middleton's Wizards tenure was limited by injuries."}
+    ]
   }
 }
