@@ -328,7 +328,29 @@
       {"year": 2009, "pick": "#1 overall (re-drafted via trade rights)", "player": "Hakeem Olajuwon-era picks not applicable; Harden acquired via trade in 2012", "outcome": "Trade for James Harden (2012) built the Morey-era contending core rather than a draft pick."}
     ],
     "continuity_pattern": "A single executive's long tenure allowed a consistent team-building philosophy (spacing, foul-drawing, threes) to be pursued for over a decade, ending only when the Harden era concluded without a title.",
-    "championships": [1994, 1995]
+    "championships": [1994, 1995],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Acquired Chris Paul from the LA Clippers for Patrick Beverley, Lou Williams, Sam Dekker, DeAndre Liggins, Darrun Hilliard, Montrezl Harrell, Kyle Wiltjer, a top-three-protected 2018 first-round pick, and cash",
+        "outcome": "Paired Paul with James Harden to form a 65-win team that pushed the 73-win-era Warriors to seven games in the 2018 Western Conference finals."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded Russell Westbrook to the Washington Wizards for John Wall and a lottery-protected 2023 first-round pick",
+        "outcome": "Ended the one-season Harden-Westbrook pairing; Wall barely played for Houston as the franchise pivoted into a full rebuild."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded James Harden to Brooklyn in a four-team deal (with Cleveland and Indiana), receiving Victor Oladipo, Dante Exum, Rodions Kurucs, Brooklyn's unprotected 2022, 2024, and 2026 first-round picks, unprotected pick swaps with Brooklyn in 2021, 2023, 2025, and 2027, Milwaukee's 2022 first-round pick (via Cleveland), and a future Indiana second-round pick",
+        "outcome": "Set off Houston's full rebuild around draft capital, laying the groundwork for the Jalen Green/Alperen Sengun/Amen Thompson young core that returned to playoff contention by 2024-25."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Acquired Kevin Durant from the Phoenix Suns in a seven-team trade, sending out Jalen Green, Dillon Brooks, the No. 10 pick in the 2025 draft, and five second-round picks",
+        "outcome": "Immediately elevated Houston's championship timeline, pairing Durant with Sengun, Thompson, and Fred VanVleet."
+      }
+    ]
   },
   "Pacers": {
     "full_name": "Indiana Pacers",
@@ -341,7 +363,29 @@
       {"year": 2020, "pick": "Acquired via trade (2022)", "player": "Tyrese Haliburton", "outcome": "Became an All-Star point guard and the offensive engine of the 2024-25 surge."}
     ],
     "continuity_pattern": "Steady, incremental roster building rather than bottoming out for lottery picks, rewarded by an unexpected deep playoff run once the right pieces (Haliburton, Siakam) came together.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Traded Paul George to the Oklahoma City Thunder for Victor Oladipo and Domantas Sabonis",
+        "outcome": "Oladipo became an All-Star and All-NBA performer in 2017-18, and Sabonis developed into a franchise cornerstone before being flipped for Tyrese Haliburton in 2022."
+      },
+      {
+        "season": "2021-22",
+        "trade": "Traded Domantas Sabonis, Justin Holiday, Jeremy Lamb, and a 2023 second-round pick to the Sacramento Kings for Tyrese Haliburton, Buddy Hield, and Tristan Thompson",
+        "outcome": "Haliburton became an All-Star and the offensive engine that led the Pacers to the 2024 Eastern Conference finals and 2025 NBA Finals."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Acquired Pascal Siakam from Toronto (with New Orleans also involved), sending out Bruce Brown, Jordan Nwora, and three first-round picks (two 2024 firsts and a top-four-protected 2026 first)",
+        "outcome": "Siakam paired with Haliburton to power a run to the 2024 Eastern Conference finals and the 2025 NBA Finals."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Acquired Ivica Zubac and Kobe Brown from the LA Clippers for Bennedict Mathurin, Isaiah Jackson, a protected (1-4, 10-30) 2026 first-round pick, an unprotected 2029 first-round pick, and a 2028 second-round pick",
+        "outcome": "Gave Indiana a new starting center to build around while Tyrese Haliburton recovered from a torn Achilles suffered in the 2025 Finals."
+      }
+    ]
   },
   "Clippers": {
     "full_name": "Los Angeles Clippers",
@@ -355,7 +399,39 @@
       {"year": 2019, "pick": "Sign-and-trade/free agency", "player": "Kawhi Leonard and Paul George acquired together", "outcome": "Gave up significant draft capital for a co-star pairing that has been frequently limited by injuries."}
     ],
     "continuity_pattern": "Ownership stability finally arrived decades after the team's reputation as a perennial loser was set, but championship-level continuity with healthy stars has been hard to sustain.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Traded Chris Paul to the Houston Rockets for Patrick Beverley, Lou Williams, Sam Dekker, DeAndre Liggins, Darrun Hilliard, Montrezl Harrell, Kyle Wiltjer, a top-three-protected 2018 first-round pick, and cash",
+        "outcome": "Ended the 'Lob City' era point guard's tenure and began a roster reset around future assets."
+      },
+      {
+        "season": "2017-18",
+        "trade": "Traded Blake Griffin to the Detroit Pistons for Tobias Harris, Avery Bradley, Boban Marjanovic, Brice Johnson, Willie Reed, a protected 2018 first-round pick, and a 2019 second-round pick",
+        "outcome": "Ended the 'Lob City' core just months after Griffin signed a five-year extension, formally launching a rebuild."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Acquired Paul George from Oklahoma City, sending out Shai Gilgeous-Alexander, Danilo Gallinari, and five first-round picks plus two pick swaps (including unprotected Clippers firsts in 2022, 2024, and 2026, and Miami firsts in 2021 and 2023)",
+        "outcome": "Paired George with newly signed free agent Kawhi Leonard to form a title-contending co-star duo, though the trade became one of the most lopsided in NBA history as Gilgeous-Alexander developed into an MVP-caliber Thunder cornerstone."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Acquired James Harden and PJ Tucker from Philadelphia for Marcus Morris, Nicolas Batum, Robert Covington, KJ Martin, a 2028 unprotected first-round pick, an Oklahoma City first-round pick, two second-round picks, and a 2029 pick swap",
+        "outcome": "Reunited Harden with the Clippers organization to bolster a Leonard-George-Harden veteran core, though injuries limited the trio's time together."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Traded James Harden to the Cleveland Cavaliers for Darius Garland and a second-round pick",
+        "outcome": "Pivoted away from the aging Harden toward a younger two-time All-Star guard as the Clippers began retooling."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Traded Ivica Zubac to the Indiana Pacers for Bennedict Mathurin, Isaiah Jackson, a protected (1-4, 10-30) 2026 first-round pick, an unprotected 2029 first-round pick, and a 2028 second-round pick",
+        "outcome": "Followed the Harden trade by moving the starting center for younger talent and draft capital, accelerating the Clippers' shift toward a youth movement."
+      }
+    ]
   },
   "Lakers": {
     "full_name": "Los Angeles Lakers",
@@ -368,7 +444,29 @@
       {"year": 2017, "pick": "#2 overall", "player": "Lonzo Ball", "outcome": "Traded a few years later as part of the team's continued star-chasing approach rather than building around young draftees."}
     ],
     "continuity_pattern": "Success has tracked star acquisition (LeBron in 2018, AD trade in 2019) more than homegrown continuity, producing a title in the 2020 bubble but inconsistent results around it.",
-    "championships": [1949, 1950, 1952, 1953, 1954, 1972, 1980, 1982, 1985, 1987, 1988, 2000, 2001, 2002, 2009, 2010, 2020]
+    "championships": [1949, 1950, 1952, 1953, 1954, 1972, 1980, 1982, 1985, 1987, 1988, 2000, 2001, 2002, 2009, 2010, 2020],
+    "trade_history": [
+      {
+        "season": "2019-20",
+        "trade": "Acquired Anthony Davis from New Orleans for Lonzo Ball, Brandon Ingram, Josh Hart, the No. 4 pick in the 2019 draft, a top-eight-protected 2021 first-round pick, a 2023 first-round pick swap, and an unprotected 2024 first-round pick",
+        "outcome": "Paired Davis with LeBron James to win the 2020 NBA championship in the Orlando bubble."
+      },
+      {
+        "season": "2021-22",
+        "trade": "Acquired Russell Westbrook and two future second-round picks (2024 and 2028) from Washington for Kentavious Caldwell-Pope, Montrezl Harrell, Kyle Kuzma, and the draft rights to Isaiah Jackson",
+        "outcome": "Attempted a third star pairing alongside LeBron James and Anthony Davis, but the trio's poor fit contributed to a play-in miss in 2021-22."
+      },
+      {
+        "season": "2022-23",
+        "trade": "Traded Russell Westbrook to Utah (with Minnesota also involved) for D'Angelo Russell, Malik Beasley, and Jarred Vanderbilt, while sending a top-four-protected 2027 first-round pick to Utah",
+        "outcome": "Reset the backcourt after the Westbrook experiment failed, with the retooled roster reaching the 2023 Western Conference finals."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Acquired Luka Doncic (with Maxi Kleber and Markieff Morris) from Dallas in a three-team trade with Utah, sending out Anthony Davis, Max Christie, and a 2029 first-round pick",
+        "outcome": "One of the most stunning trades in NBA history, swapping the franchise's next-generation superstar plan from Davis to a 25-year-old Doncic without any prior trade rumors."
+      }
+    ]
   },
   "Grizzlies": {
     "full_name": "Memphis Grizzlies",
@@ -381,7 +479,29 @@
       {"year": 2019, "pick": "#2 overall", "player": "Ja Morant", "outcome": "Became an explosive All-Star point guard, though off-court suspensions have repeatedly disrupted team continuity."}
     ],
     "continuity_pattern": "A stable coaching staff and front office have kept building around a talented core, but on-court continuity has suffered from injuries and Morant's suspensions.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2018-19",
+        "trade": "Traded Marc Gasol to the Toronto Raptors for Jonas Valanciunas, Delon Wright, C.J. Miles, and a 2024 second-round pick",
+        "outcome": "Cashed out the longtime franchise center at the trade deadline; Gasol went on to win the 2019 championship with Toronto while Memphis began its rebuild."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Mike Conley to the Utah Jazz for Grayson Allen, Kyle Korver, Jae Crowder, the No. 23 pick in the 2019 draft, and a protected future first-round pick",
+        "outcome": "Completed the end of the 'Grit and Grind' era just before Memphis drafted Ja Morant, clearing the way for a young core rebuild."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Acquired Marcus Smart from Boston in a three-team trade with Washington, sending out Tyus Jones, Danilo Gallinari, Mike Muscala, and the No. 35 pick in the 2023 draft",
+        "outcome": "Added a Defensive Player of the Year-caliber guard to cover for Ja Morant's suspension to start the 2023-24 season."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Traded Desmond Bane to the Orlando Magic for Kentavious Caldwell-Pope, Cole Anthony, the No. 16 pick in the 2025 draft, a 2026 first-round pick (most favorable of Suns/Magic/Wizards), 2028 and 2030 first-round picks, and a lightly protected 2029 first-round pick swap",
+        "outcome": "Moved on from a core piece of the Morant-era roster in exchange for a large package of draft capital, signaling a pivot toward a longer rebuild."
+      }
+    ]
   },
   "Heat": {
     "full_name": "Miami Heat",
@@ -395,7 +515,29 @@
       {"year": 2014, "pick": "#54 overall (undrafted, signed 2017)", "player": "Duncan Robinson (signed as undrafted free agent in 2018)", "outcome": "Became a key three-point shooter, exemplifying Miami's strength in player development over draft position."}
     ],
     "continuity_pattern": "Decades of stable front-office and coaching leadership have let 'Heat Culture' persist across very different rosters, repeatedly punching above the team's draft positioning.",
-    "championships": [2006, 2012, 2013]
+    "championships": [2006, 2012, 2013],
+    "trade_history": [
+      {
+        "season": "2019-20",
+        "trade": "Signed Jimmy Butler via sign-and-trade in a four-team deal with Philadelphia, LA Clippers, and Portland, sending out Josh Richardson (to Philadelphia) and Hassan Whiteside (to Portland) while receiving Butler and Meyers Leonard",
+        "outcome": "Began the Jimmy Butler era, which led Miami to the 2020 NBA Finals in the Orlando bubble and later the 2023 Finals."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Acquired Terry Rozier from Charlotte for Kyle Lowry and a 2027 first-round pick",
+        "outcome": "Added scoring punch to the backcourt while moving on an aging, declining Lowry, saving significant luxury-tax money in the process."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Jimmy Butler to Golden State in a five-team deal (with Detroit, Toronto, and Utah also involved), receiving Andrew Wiggins, Kyle Anderson, a top-10-protected 2025 first-round pick, and Davion Mitchell (from Toronto)",
+        "outcome": "Ended the Jimmy Butler era in Miami after a public falling-out, resetting the roster around younger complementary pieces."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Acquired Norman Powell from the LA Clippers in a three-team trade with Utah, sending Kevin Love and Kyle Anderson to the Jazz (Clippers sent a 2027 second-round pick to Utah and received John Collins from Utah)",
+        "outcome": "Added a career-best scorer coming off a 21.8 points-per-game season to fill the scoring void left by Jimmy Butler's departure."
+      }
+    ]
   },
   "Bucks": {
     "full_name": "Milwaukee Bucks",
