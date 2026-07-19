@@ -550,7 +550,24 @@
       {"year": 2013, "pick": "#15 overall", "player": "Giannis Antetokounmpo", "outcome": "Became a two-time MVP, Defensive Player of the Year, and 2021 Finals MVP; one of the best value picks in NBA history."}
     ],
     "continuity_pattern": "Patient development of a raw, low-profile draft pick into a superstar, paired with front-office commitment to building the roster around him rather than maximizing trade value early.",
-    "championships": [1971, 2021]
+    "championships": [1971, 2021],
+    "trade_history": [
+      {
+        "season": "2020-21",
+        "trade": "Traded Eric Bledsoe, George Hill, and three future first-round picks (plus two pick swaps) to New Orleans in a four-team deal to acquire Jrue Holiday",
+        "outcome": "Added an elite two-way point guard who hit the series-clinching shot in the 2021 NBA Finals, helping deliver Milwaukee's first championship in 50 years."
+      },
+      {
+        "season": "2023-24",
+        "trade": "In a three-team trade with Phoenix and Portland, sent Jrue Holiday, Grayson Allen, an unprotected 2029 first-round pick, and unprotected pick swaps in 2028 and 2030 to Portland (which also received Deandre Ayton from Phoenix) to acquire Damian Lillard",
+        "outcome": "Paired Lillard with Giannis Antetokounmpo in a win-now push, though the pairing had limited playoff success before Lillard suffered a season-ending Achilles injury in the 2025 playoffs."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Khris Middleton to Washington in a four-team deal for Kyle Kuzma and Patrick Baldwin Jr., also sending a 2028 first-round swap to Washington",
+        "outcome": "Moved on from the last core piece of the 2021 championship roster, shedding salary to stay below the second tax apron while retooling around Antetokounmpo."
+      }
+    ]
   },
   "Timberwolves": {
     "full_name": "Minnesota Timberwolves",
@@ -563,7 +580,34 @@
       {"year": 2020, "pick": "#1 overall", "player": "Anthony Edwards", "outcome": "Became an explosive All-Star scorer and the team's new cornerstone alongside Towns."}
     ],
     "continuity_pattern": "Decades of coaching/front-office churn gave way to stability once Connelly arrived, quickly translating into the franchise's deepest playoff run in two decades.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Acquired Jimmy Butler and the No. 16 pick from Chicago for Kris Dunn, Zach LaVine, and the No. 7 pick in a draft-night trade",
+        "outcome": "Gave the Wolves a third All-Star to pair with Towns and Andrew Wiggins, reuniting Butler with former Bulls coach Tom Thibodeau and ending a 13-year playoff drought in 2017-18."
+      },
+      {
+        "season": "2018-19",
+        "trade": "Traded Jimmy Butler and Justin Patton to Philadelphia for Robert Covington, Dario Saric, Jerryd Bayless, and a 2022 second-round pick after Butler forced his way out",
+        "outcome": "Ended the short-lived Butler era and reset the roster around Towns and Wiggins, though the team continued to struggle for consistency."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Andrew Wiggins, a 2021 first-round pick (top-3 protected), and a 2021 second-round pick to Golden State for D'Angelo Russell",
+        "outcome": "Paired Russell with Karl-Anthony Towns as a young guard-center core, though the pairing never fully developed before Russell was later moved in the Gobert deal fallout."
+      },
+      {
+        "season": "2022-23",
+        "trade": "Traded Malik Beasley, Patrick Beverley, Jarred Vanderbilt, Walker Kessler, and four future first-round picks plus a pick swap to Utah for Rudy Gobert",
+        "outcome": "A massive investment in size and defense alongside Towns and Edwards; the pairing struggled to mesh initially but the Wolves reached the 2024 Western Conference finals."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Karl-Anthony Towns to New York in a three-team deal (with Charlotte) for Julius Randle, Donte DiVincenzo, a first-round pick, and other pieces",
+        "outcome": "Moved on from the team's longtime cornerstone to open up more space and playmaking for Edwards and Gobert, netting draft capital and rotation pieces in return."
+      }
+    ]
   },
   "Pelicans": {
     "full_name": "New Orleans Pelicans",
@@ -577,7 +621,29 @@
       {"year": 2019, "pick": "#1 overall", "player": "Zion Williamson", "outcome": "Flashed superstar potential but has been limited by chronic injuries."}
     ],
     "continuity_pattern": "Elite draft talent has repeatedly arrived, but injuries to cornerstone players and coaching turnover have prevented the roster continuity needed to capitalize on it.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2016-17",
+        "trade": "Acquired DeMarcus Cousins and Omri Casspi from Sacramento for Buddy Hield, Tyreke Evans, Langston Galloway, and 2017 first- and second-round picks",
+        "outcome": "Paired Cousins with Anthony Davis in an All-Star frontcourt, though the pairing never made a deep playoff run before Cousins departed in free agency in 2018 after an Achilles injury."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Anthony Davis to the Lakers for Lonzo Ball, Brandon Ingram, Josh Hart, the No. 4 pick in the 2019 draft, and additional future first-round pick compensation",
+        "outcome": "Reset the roster around a new young core after Davis's trade request, with Ingram developing into an All-Star and the returned assets forming the foundation of the Zion Williamson-era Pelicans."
+      },
+      {
+        "season": "2021-22",
+        "trade": "Traded Josh Hart, Nickeil Alexander-Walker, Tomas Satoransky, Didi Louzada, Larry Nance Jr., Tony Snell, a protected first-round pick, and two second-round picks to Portland for CJ McCollum",
+        "outcome": "Added a proven scoring guard to pair with Brandon Ingram and Zion Williamson, helping fuel a playoff push and eventual first-round appearance."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Dyson Daniels, Larry Nance Jr., E.J. Liddell, Cody Zeller, and first-round picks in 2025 and 2027 to Atlanta for Dejounte Murray",
+        "outcome": "Added an All-Star-caliber guard to the backcourt alongside CJ McCollum, though the move came amid a roster beset by injuries during the 2024-25 season."
+      }
+    ]
   },
   "Knicks": {
     "full_name": "New York Knicks",
@@ -590,7 +656,34 @@
       {"year": 2015, "pick": "#4 overall", "player": "Kristaps Porzingis", "outcome": "Showed star potential but was eventually traded amid front-office turmoil before the Rose era began."}
     ],
     "continuity_pattern": "A long stretch of owner-driven front-office instability finally gave way to a stable management group, quickly followed by a return to consistent playoff contention.",
-    "championships": [1970, 1973]
+    "championships": [1970, 1973],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Traded Carmelo Anthony to Oklahoma City for Enes Kanter, Doug McDermott, and a 2018 second-round pick",
+        "outcome": "Ended the Anthony era and began a rebuild, though the return was modest and the team continued to miss the playoffs for several more seasons."
+      },
+      {
+        "season": "2018-19",
+        "trade": "Traded Kristaps Porzingis, Courtney Lee, Tim Hardaway Jr., and Trey Burke to Dallas for Dennis Smith Jr., DeAndre Jordan, Wesley Matthews, and two future first-round picks",
+        "outcome": "Moved on from a disgruntled young star to clear cap space for a pursuit of 2019 free agents, which ultimately fell short of landing a marquee signing."
+      },
+      {
+        "season": "2023-24",
+        "trade": "Traded RJ Barrett, Immanuel Quickley, a 2024 second-round pick, plus received Precious Achiuwa and Malachi Flynn from Toronto for OG Anunoby",
+        "outcome": "Added a lockdown wing defender who helped anchor a top-five defense and a run to the 2024 Eastern Conference semifinals."
+      },
+      {
+        "season": "2024-25",
+        "trade": "In a three-team trade with Minnesota and Charlotte, traded Julius Randle, Donte DiVincenzo, Keita Bates-Diop, Charlie Brown, DaQuan Jeffries, Duane Washington Jr., and draft picks to acquire Karl-Anthony Towns",
+        "outcome": "Added an elite-shooting All-Star big man to pair with Jalen Brunson, fueling a run to the 2025 Eastern Conference finals."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Bojan Bogdanovic and five future first-round picks (2025, 2027, 2029, 2031, and a Milwaukee-conveyed 2025 first) to Brooklyn for Mikal Bridges",
+        "outcome": "Added a two-way wing to the Brunson-led core at the cost of a historic draft-pick outlay, the largest package ever surrendered for a non-All-Star."
+      }
+    ]
   },
   "Thunder": {
     "full_name": "Oklahoma City Thunder",
@@ -604,7 +697,34 @@
       {"year": 2017, "pick": "Trade acquisition (2019, via Clippers)", "player": "Shai Gilgeous-Alexander", "outcome": "Became an MVP-caliber guard and centerpiece of the rebuilt core."}
     ],
     "continuity_pattern": "Sam Presti's two-decade tenure allowed the franchise to convert a star exodus into one of the deepest young rosters in the league through patient draft accumulation.",
-    "championships": [1979]
+    "championships": [1979],
+    "trade_history": [
+      {
+        "season": "2017-18",
+        "trade": "Acquired Carmelo Anthony from the Knicks for Enes Kanter, Doug McDermott, and a 2018 second-round pick",
+        "outcome": "Briefly united Anthony with Russell Westbrook and Paul George, though the pairing produced only one playoff series win before Anthony departed the next offseason."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Paul George to the LA Clippers for Shai Gilgeous-Alexander, Danilo Gallinari, and five future first-round picks plus two pick swaps",
+        "outcome": "The signature move of the Thunder's rebuild, converting a departing star into the draft capital and centerpiece guard (SGA) that became the foundation of the 2025 championship core."
+      },
+      {
+        "season": "2019-20",
+        "trade": "Traded Russell Westbrook to Houston for Chris Paul, first-round picks in 2024 and 2026, and pick-swap rights in 2021 and 2025",
+        "outcome": "Completed the dismantling of the Durant-Westbrook-George core, further stocking Oklahoma City's draft-asset war chest for the rebuild."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded Chris Paul and Abdel Nader to Phoenix for Kelly Oubre Jr., Ricky Rubio, Ty Jerome, Jalen Lecque, and a 2022 first-round pick",
+        "outcome": "Continued the full rebuild by cashing out the veteran point guard acquired in the Westbrook deal for younger players and additional draft capital."
+      },
+      {
+        "season": "2024-25",
+        "trade": "Traded Josh Giddey to Chicago for Alex Caruso",
+        "outcome": "Added a veteran two-way defender to a young, deep roster, part of the depth that underpinned the Thunder's 2025 NBA championship run."
+      }
+    ]
   },
   "Magic": {
     "full_name": "Orlando Magic",
@@ -617,7 +737,24 @@
       {"year": 2022, "pick": "#1 overall", "player": "Paolo Banchero", "outcome": "Won Rookie of the Year and became the team's offensive centerpiece."}
     ],
     "continuity_pattern": "A patient, defense-first rebuild under one front office turned consecutive lottery picks into a cohesive, ahead-of-schedule playoff roster.",
-    "championships": []
+    "championships": [],
+    "trade_history": [
+      {
+        "season": "2020-21",
+        "trade": "Traded Nikola Vucevic and Al-Farouq Aminu to Chicago for Wendell Carter Jr., Otto Porter Jr., and first-round picks in 2021 and 2023",
+        "outcome": "Marked the start of a full rebuild away from the Vucevic-led playoff-treadmill era, with Carter Jr. becoming a rotation piece in the young core."
+      },
+      {
+        "season": "2020-21",
+        "trade": "Traded Aaron Gordon and Gary Clark to Denver for Gary Harris, R.J. Hampton, and a future first-round pick",
+        "outcome": "Continued the trade-deadline teardown that redirected the roster toward a youth-and-picks rebuild around Jonathan Isaac and the team's own lottery selections."
+      },
+      {
+        "season": "2025-26",
+        "trade": "Traded Kentavious Caldwell-Pope, Cole Anthony, and four future first-round picks (2025, 2026, 2028, 2030) plus a 2029 pick-swap option to Memphis for Desmond Bane",
+        "outcome": "An aggressive win-now bet, adding a proven three-point shooter alongside Paolo Banchero and Franz Wagner to elevate the team's title window."
+      }
+    ]
   },
   "76ers": {
     "full_name": "Philadelphia 76ers",
