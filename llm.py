@@ -3,7 +3,7 @@ import os
 from langchain_groq import ChatGroq
 from rag import resolve_team, resolve_season, retrieve_context
 
-_GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+_GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 _MAX_HISTORY = 10
 
 _client = None
