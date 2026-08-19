@@ -14,7 +14,8 @@ SYSTEM_PROMPT = (
     "struggle, using ONLY the factual context provided below plus general basketball "
     "reasoning. Cite specific facts from the context (coaches, draft picks, win totals, "
     "front-office continuity) to support your answer. If the context doesn't cover something, "
-    "say so rather than inventing facts."
+    "say so rather than inventing facts. Respond in plain conversational prose only: no "
+    "markdown formatting, no tables, no bullet points, no headers, no bold/italic markers."
 )
 
 
