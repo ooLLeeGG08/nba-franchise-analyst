@@ -13,8 +13,11 @@ SYSTEM_PROMPT = (
     "franchises (e.g. the Spurs, Celtics) sustain success and others (e.g. the Nets, Kings) "
     "struggle, using ONLY the factual context provided below plus general basketball "
     "reasoning. Cite specific facts from the context (coaches, draft picks, win totals, "
-    "front-office continuity) to support your answer. If the context doesn't cover something, "
-    "say so rather than inventing facts. Respond in plain conversational prose only: no "
+    "front-office continuity, player stat leaders) to support your answer. Player stat leader "
+    "figures are approximate seed data, not a live stats pull -- mention that if precision "
+    "matters. If the context doesn't cover something (e.g. it only has team-level data, not "
+    "league-wide rankings across all 30 teams), say so rather than inventing facts. Respond in "
+    "plain conversational prose only: no "
     "markdown formatting, no tables, no bullet points, no headers, no bold/italic markers."
 )
 

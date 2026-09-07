@@ -159,6 +159,18 @@ def _team_document(team, season):
             )
         )
 
+    leaders = get_team_leaders(team)
+    if leaders:
+        category_names = {"ppg": "Points/game", "apg": "Assists/game", "rpg": "Rebounds/game", "spg": "Steals/game"}
+        for category, name in category_names.items():
+            entries = leaders.get(category)
+            if entries:
+                lines.append(
+                    f"{name} leaders (2015-16 to 2025-26): " + ", ".join(
+                        f"{p['player']} ({p['value']})" for p in entries
+                    )
+                )
+
     return "\n".join(lines)
 
 
