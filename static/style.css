@@ -740,6 +740,192 @@ button {
     font-weight: 600;
 }
 
+/* ---------- Comparison view ---------- */
+
+.comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.comparison-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.comparison-header-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--team-primary);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+}
+
+.comparison-header-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.comparison-header-record {
+    font-size: 12.5px;
+    color: var(--team-secondary);
+    margin-top: 2px;
+}
+
+.comparison-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 6px 16px;
+}
+
+.comparison-col-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.comparison-col-header-cell {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.comparison-col-header-cell.a {
+    color: var(--team-a-color);
+}
+
+.comparison-col-header-cell.b {
+    color: var(--team-b-color);
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+}
+
+.comparison-row:last-child {
+    border-bottom: none;
+}
+
+.comparison-cell {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: center;
+}
+
+.comparison-cell.better {
+    color: var(--text);
+}
+
+.comparison-cell-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    text-align: center;
+    min-width: 90px;
+}
+
+/* ---------- League leaders table ---------- */
+
+.leaders-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    margin-top: 8px;
+}
+
+.leaders-tab-bar {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.leaders-tab {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.leaders-tab:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+.leaders-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+.leaders-table-window {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 6px;
+}
+
+.leaders-table-row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 7px 8px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+    color: var(--text);
+}
+
+.leaders-table-row:hover {
+    background: var(--surface-hover);
+}
+
+.leaders-table-row:disabled {
+    cursor: default;
+}
+
+.leaders-table-rank {
+    color: var(--text-faint);
+    font-weight: 600;
+}
+
+.leaders-table-team {
+    color: var(--text-faint);
+    font-size: 11.5px;
+}
+
+.leaders-table-value {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 /* ---------- Composer ---------- */
 
 .composer {
@@ -892,5 +1078,28 @@ button {
     .timeline-row-label {
         width: auto;
         text-align: left;
+    }
+
+    .comparison-headers,
+    .comparison-row,
+    .comparison-col-header {
+        gap: 6px;
+    }
+
+    .comparison-header-name {
+        font-size: 12.5px;
+    }
+
+    .comparison-cell-label {
+        min-width: 64px;
+        font-size: 10px;
+    }
+
+    .leaders-table-row {
+        grid-template-columns: 20px 1fr auto;
+    }
+
+    .leaders-table-team {
+        display: none;
     }
 }

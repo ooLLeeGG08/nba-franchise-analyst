@@ -1,22 +1,24 @@
 // Renders the message transcript. User messages are compact/subtle; assistant
-// messages are plain prose (the backend deliberately returns no markdown) with
-// the full team analytics dashboard mounted underneath when a team was
-// resolved, fetched live from /api/team/<team> (never persisted into
-// localStorage -- only the lightweight team key is stored per message).
+// messages are plain prose (the backend deliberately returns no markdown)
+// with a data-driven visual companion mounted underneath, fetched live (never
+// persisted into localStorage -- only lightweight team keys are stored per
+// message): a comparison view for two teams, a single team's dashboard, or
+// -- when no team was resolved at all -- the league-wide leaders table, so
+// every assistant reply gets some visual answer, not just team questions.
 const ChatThread = (() => {
-    function render(container, thread) {
+    function render(container, thread, handlers = {}) {
         container.innerHTML = '';
         const transcript = document.createElement('div');
         transcript.className = 'transcript';
         thread.messages.forEach((message) => {
-            transcript.appendChild(buildMessageElement(message));
+            transcript.appendChild(buildMessageElement(message, handlers));
         });
         container.appendChild(transcript);
         scrollToBottom(container);
         return transcript;
     }
 
-    function buildMessageElement(message) {
+    function buildMessageElement(message, handlers = {}) {
         if (message.role === 'user') {
             const row = document.createElement('div');
             row.className = 'message-row user';
@@ -35,8 +37,15 @@ const ChatThread = (() => {
         body.textContent = message.content;
         row.appendChild(body);
 
-        if (message.team) {
-            row.appendChild(buildDashboardMount(message.team));
+        if (!message.isError) {
+            const teams = message.teams || (message.team ? [message.team] : []);
+            if (teams.length >= 2) {
+                row.appendChild(buildComparisonMount(teams[0], teams[1]));
+            } else if (message.team) {
+                row.appendChild(buildDashboardMount(message.team));
+            } else {
+                row.appendChild(buildLeadersMount(handlers));
+            }
         }
 
         return row;
@@ -57,7 +66,37 @@ const ChatThread = (() => {
         return mount;
     }
 
-    function appendThinkingBubble(container) {
+    function buildComparisonMount(teamA, teamB) {
+        const mount = document.createElement('div');
+        mount.className = 'dashboard-mount';
+        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(teamA)} vs ${escapeHtml(teamB)}...</div>`;
+
+        Api.fetchTeamComparison(teamA, teamB)
+            .then((bundle) => ComparisonView.render(mount, bundle))
+            .catch((e) => {
+                console.error(e);
+                mount.innerHTML = `<div class="dashboard-loading">Couldn't load that comparison.</div>`;
+            });
+
+        return mount;
+    }
+
+    function buildLeadersMount(handlers) {
+        const mount = document.createElement('div');
+        mount.className = 'dashboard-mount';
+        mount.innerHTML = `<div class="dashboard-loading">Loading league leaders...</div>`;
+
+        Api.fetchLeaders()
+            .then((data) => LeadersTable.render(mount, data, handlers))
+            .catch((e) => {
+                console.error(e);
+                mount.innerHTML = `<div class="dashboard-loading">Couldn't load league leaders.</div>`;
+            });
+
+        return mount;
+    }
+
+    function appendThinkingBubble(container, handlers = {}) {
         const transcript = container.querySelector('.transcript');
         const row = document.createElement('div');
         row.className = 'message-row assistant';
@@ -70,7 +109,7 @@ const ChatThread = (() => {
 
         return {
             resolveAsAssistantMessage(message) {
-                row.replaceWith(buildMessageElement(message));
+                row.replaceWith(buildMessageElement(message, handlers));
                 scrollToBottom(container);
             },
             resolveAsError(text) {

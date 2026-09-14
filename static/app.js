@@ -59,12 +59,16 @@
         });
     }
 
+    function chatHandlers() {
+        return { onNavigateToTeam: (team) => handleSend(`Analyze the ${team}`) };
+    }
+
     function renderMainPane() {
         const thread = getActiveThread();
         if (!thread || thread.messages.length === 0) {
             EmptyState.render(mainContentEl, { onSuggestionClick: handleSend });
         } else {
-            ChatThread.render(mainContentEl, thread);
+            ChatThread.render(mainContentEl, thread, chatHandlers());
         }
     }
 
@@ -96,9 +100,9 @@
         // user's message as UI-only until the reply succeeds -- matches the
         // backend's stateless design: a failed exchange isn't persisted into
         // the history sent on future requests.
-        ChatThread.render(mainContentEl, thread);
+        ChatThread.render(mainContentEl, thread, chatHandlers());
         ChatThread.appendUserMessage(mainContentEl, userInput);
-        const thinking = ChatThread.appendThinkingBubble(mainContentEl);
+        const thinking = ChatThread.appendThinkingBubble(mainContentEl, chatHandlers());
 
         const requestHistory = thread.messages.map((m) => ({ role: m.role, content: m.content }));
 
