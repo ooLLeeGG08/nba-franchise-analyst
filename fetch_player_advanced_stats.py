@@ -72,6 +72,8 @@ def fetch_season_player_advanced_stats(season):
         team_id = int(row["TEAM_ID"])
         by_team_id.setdefault(team_id, []).append({
             "player": row["PLAYER_NAME"],
+            "gp": int(row["GP"]),
+            "min": round(row["MIN"], 1),
             "ts_pct": round(row["TS_PCT"], 3),
             "usg_pct": round(row["USG_PCT"], 3),
             "pie": round(row["PIE"], 3),

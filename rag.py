@@ -16,6 +16,18 @@ with open(os.path.join(_DATA_DIR, "player_leaders.json")) as f:
 with open(os.path.join(_DATA_DIR, "team_rosters.json")) as f:
     ROSTERS = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
 
+with open(os.path.join(_DATA_DIR, "team_advanced_stats.json")) as f:
+    TEAM_ADVANCED = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+
+with open(os.path.join(_DATA_DIR, "player_advanced_stats.json")) as f:
+    PLAYER_ADVANCED = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+
+with open(os.path.join(_DATA_DIR, "recent_games.json")) as f:
+    RECENT_GAMES = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+
+with open(os.path.join(_DATA_DIR, "team_branding.json")) as f:
+    BRANDING = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
+
 _TEAM_ALIASES = {
     "Spurs": ["spurs", "san antonio"],
     "Celtics": ["celtics", "boston"],
@@ -127,6 +139,71 @@ def get_team_leaders(team):
 
 def get_team_roster(team, season):
     return ROSTERS.get(team, {}).get(season)
+
+
+def latest_season():
+    seasons = _all_seasons()
+    return seasons[-1] if seasons else None
+
+
+def get_team_knowledge(team):
+    return KNOWLEDGE.get(team)
+
+
+def get_team_advanced_stats(team):
+    return TEAM_ADVANCED.get(team)
+
+
+def get_player_advanced_stats(team, season):
+    return PLAYER_ADVANCED.get(team, {}).get(season)
+
+
+def get_team_recent_games(team):
+    return RECENT_GAMES.get(team)
+
+
+def get_team_branding(team):
+    return BRANDING.get(team)
+
+
+def get_all_teams():
+    return [
+        {
+            "key": team,
+            "full_name": info["full_name"],
+            "abbreviation": info["abbreviation"],
+            "colors": {"primary": info["primary"], "secondary": info["secondary"]},
+        }
+        for team, info in BRANDING.items()
+    ]
+
+
+_LEAGUE_LEADER_CATEGORIES = {"ppg", "apg", "rpg", "spg"}
+
+
+def get_league_leaders(category, limit=15):
+    if category == "pie":
+        season = latest_season()
+        # Qualifier excludes small-sample noise (e.g. a 1-game callup with an efficient
+        # garbage-time stretch) that would otherwise dominate an unweighted PIE ranking.
+        min_games, min_minutes_per_game = 20, 15
+        entries = [
+            {"player": p["player"], "team": team, "value": p["pie"]}
+            for team, seasons in PLAYER_ADVANCED.items()
+            for p in seasons.get(season, [])
+            if p["gp"] >= min_games and p["min"] >= min_minutes_per_game
+        ]
+    elif category in _LEAGUE_LEADER_CATEGORIES:
+        entries = [
+            {"player": p["player"], "team": team, "value": p["value"]}
+            for team, categories in LEADERS.items()
+            for p in categories.get(category, [])
+        ]
+    else:
+        return []
+
+    entries.sort(key=lambda e: e["value"], reverse=True)
+    return entries[:limit]
 
 
 def _team_document(team, season):

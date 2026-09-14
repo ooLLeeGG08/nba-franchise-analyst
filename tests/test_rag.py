@@ -1,5 +1,19 @@
 import rag
-from rag import resolve_team, mentioned_teams, resolve_season, get_team_roster, retrieve_context
+from rag import (
+    resolve_team,
+    mentioned_teams,
+    resolve_season,
+    get_team_roster,
+    retrieve_context,
+    latest_season,
+    get_team_knowledge,
+    get_team_advanced_stats,
+    get_player_advanced_stats,
+    get_team_recent_games,
+    get_team_branding,
+    get_all_teams,
+    get_league_leaders,
+)
 
 
 def test_mentioned_teams_does_not_match_nets_inside_hornets():
@@ -131,3 +145,80 @@ def test_retrieve_context_includes_trade_history_line_when_present(monkeypatch):
 
 def test_retrieve_context_returns_empty_string_for_unknown_team():
     assert retrieve_context("NotATeam", "2015-16") == ""
+
+
+def test_latest_season_returns_newest_season_key():
+    assert latest_season() == "2025-26"
+
+
+def test_get_team_knowledge_returns_dict_for_known_team():
+    info = get_team_knowledge("Spurs")
+    assert info is not None
+    assert info["full_name"] == "San Antonio Spurs"
+
+
+def test_get_team_knowledge_returns_none_for_unknown_team():
+    assert get_team_knowledge("NotATeam") is None
+
+
+def test_get_team_advanced_stats_covers_all_seasons():
+    stats = get_team_advanced_stats("Spurs")
+    assert stats is not None
+    assert "2025-26" in stats
+    assert "off_rating" in stats["2025-26"]
+    assert "def_rating_rank" in stats["2025-26"]
+
+
+def test_get_player_advanced_stats_returns_list_for_known_team_season():
+    players = get_player_advanced_stats("Spurs", "2025-26")
+    assert players is not None
+    assert any(p["player"] == "Victor Wembanyama" for p in players)
+
+
+def test_get_player_advanced_stats_returns_none_for_unknown_season():
+    assert get_player_advanced_stats("Spurs", "1998-99") is None
+
+
+def test_get_team_recent_games_returns_current_season_games():
+    games = get_team_recent_games("Spurs")
+    assert games is not None
+    assert len(games) > 0
+    assert {"date", "opponent", "result", "pts_for", "pts_against"} <= games[0].keys()
+
+
+def test_get_team_branding_returns_colors_and_abbreviation():
+    branding = get_team_branding("Lakers")
+    assert branding["abbreviation"] == "LAL"
+    assert branding["primary"].startswith("#")
+
+
+def test_get_all_teams_returns_all_30_teams_with_expected_shape():
+    teams = get_all_teams()
+    assert len(teams) == 30
+    spurs = next(t for t in teams if t["key"] == "Spurs")
+    assert spurs["full_name"] == "San Antonio Spurs"
+    assert spurs["colors"]["primary"] == "#C4CED4"
+
+
+def test_get_league_leaders_ppg_is_sorted_descending():
+    leaders = get_league_leaders("ppg")
+    values = [entry["value"] for entry in leaders]
+    assert values == sorted(values, reverse=True)
+    assert all("team" in entry for entry in leaders)
+
+
+def test_get_league_leaders_unknown_category_returns_empty_list():
+    assert get_league_leaders("blocks") == []
+
+
+def test_get_league_leaders_pie_excludes_low_sample_players(monkeypatch):
+    monkeypatch.setitem(rag.PLAYER_ADVANCED, "Spurs", {
+        "2025-26": [
+            {"player": "Small Sample Guy", "gp": 1, "min": 6.8, "pie": 0.9},
+            {"player": "Real Starter", "gp": 65, "min": 30.0, "pie": 0.5},
+        ]
+    })
+    leaders = get_league_leaders("pie")
+    names = [entry["player"] for entry in leaders]
+    assert "Real Starter" in names
+    assert "Small Sample Guy" not in names
