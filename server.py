@@ -18,6 +18,7 @@ from rag import (
     get_team_records,
     get_team_recent_games,
     get_team_roster,
+    get_team_season_snapshot,
     latest_season,
     mentioned_teams,
     resolve_team,
@@ -44,6 +45,7 @@ def _team_dashboard_bundle(team_key):
         "advancedStats": get_team_advanced_stats(team_key),
         "leaders": get_team_leaders(team_key),
         "recentGames": get_team_recent_games(team_key),
+        "seasonSnapshot": get_team_season_snapshot(team_key),
         "roster": get_team_roster(team_key, season),
     }
 

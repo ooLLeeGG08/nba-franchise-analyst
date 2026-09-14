@@ -162,6 +162,40 @@ def get_team_recent_games(team):
     return RECENT_GAMES.get(team)
 
 
+def get_team_season_snapshot(team):
+    games = RECENT_GAMES.get(team)
+    if not games:
+        return None
+
+    wins = sum(1 for g in games if g["result"] == "W")
+    losses = len(games) - wins
+    games_played = len(games)
+
+    def total(field):
+        return sum(g[field] for g in games)
+
+    fgm, fga = total("fgm"), total("fga")
+    fg3m, fg3a = total("fg3m"), total("fg3a")
+    ftm, fta = total("ftm"), total("fta")
+    pts_for, pts_against = total("pts_for"), total("pts_against")
+
+    return {
+        "games_played": games_played,
+        "wins": wins,
+        "losses": losses,
+        "win_pct": round(wins / games_played, 3),
+        "ppg": round(pts_for / games_played, 1),
+        "opp_ppg": round(pts_against / games_played, 1),
+        "point_diff": round((pts_for - pts_against) / games_played, 1),
+        "fg_pct": round(fgm / fga, 3) if fga else None,
+        "fg3_pct": round(fg3m / fg3a, 3) if fg3a else None,
+        "ft_pct": round(ftm / fta, 3) if fta else None,
+        "reb": round(total("reb") / games_played, 1),
+        "ast": round(total("ast") / games_played, 1),
+        "tov": round(total("tov") / games_played, 1),
+    }
+
+
 def get_team_branding(team):
     return BRANDING.get(team)
 

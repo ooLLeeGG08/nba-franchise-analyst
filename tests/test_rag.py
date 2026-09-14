@@ -10,6 +10,7 @@ from rag import (
     get_team_advanced_stats,
     get_player_advanced_stats,
     get_team_recent_games,
+    get_team_season_snapshot,
     get_team_branding,
     get_all_teams,
     get_league_leaders,
@@ -184,6 +185,27 @@ def test_get_team_recent_games_returns_current_season_games():
     assert games is not None
     assert len(games) > 0
     assert {"date", "opponent", "result", "pts_for", "pts_against"} <= games[0].keys()
+
+
+def test_get_team_season_snapshot_computes_accurate_percentages(monkeypatch):
+    monkeypatch.setitem(rag.RECENT_GAMES, "Spurs", [
+        {"result": "W", "pts_for": 110, "pts_against": 100, "fgm": 40, "fga": 80, "fg3m": 10, "fg3a": 20, "ftm": 20, "fta": 25, "reb": 45, "ast": 25, "tov": 12},
+        {"result": "L", "pts_for": 90, "pts_against": 100, "fgm": 30, "fga": 80, "fg3m": 5, "fg3a": 20, "ftm": 25, "fta": 25, "reb": 35, "ast": 15, "tov": 18},
+    ])
+    snapshot = get_team_season_snapshot("Spurs")
+    assert snapshot["wins"] == 1
+    assert snapshot["losses"] == 1
+    assert snapshot["win_pct"] == 0.5
+    assert snapshot["ppg"] == 100.0
+    assert snapshot["opp_ppg"] == 100.0
+    assert snapshot["point_diff"] == 0.0
+    # FG% must be sum(makes)/sum(attempts), not an average of per-game percentages
+    assert snapshot["fg_pct"] == round(70 / 160, 3)
+    assert snapshot["ft_pct"] == round(45 / 50, 3)
+
+
+def test_get_team_season_snapshot_returns_none_for_unknown_team():
+    assert get_team_season_snapshot("NotATeam") is None
 
 
 def test_get_team_branding_returns_colors_and_abbreviation():

@@ -78,6 +78,15 @@ def fetch_season_games():
             "result": row["WL"],
             "pts_for": int(pts_for),
             "pts_against": int(round(pts_against)),
+            "fgm": int(row["FGM"]),
+            "fga": int(row["FGA"]),
+            "fg3m": int(row["FG3M"]),
+            "fg3a": int(row["FG3A"]),
+            "ftm": int(row["FTM"]),
+            "fta": int(row["FTA"]),
+            "reb": int(row["REB"]),
+            "ast": int(row["AST"]),
+            "tov": int(row["TOV"]),
         })
     return by_team_id
 
