@@ -115,6 +115,41 @@ def test_team_comparison_endpoint_returns_404_for_unknown_team():
     assert response.status_code == 404
 
 
+def test_chat_endpoint_returns_resolved_player():
+    client = server.app.test_client()
+
+    with patch("server.answer_question", return_value="mocked answer"):
+        response = client.post("/api/chat", json={"message": "How is LeBron doing?"})
+
+    assert response.get_json()["player"] == "LeBron James"
+
+
+def test_chat_endpoint_returns_none_player_when_none_mentioned():
+    client = server.app.test_client()
+
+    with patch("server.answer_question", return_value="mocked answer"):
+        response = client.post("/api/chat", json={"message": "Tell me about the Celtics"})
+
+    assert response.get_json()["player"] is None
+
+
+def test_player_view_endpoint_returns_bundle_for_known_player():
+    client = server.app.test_client()
+    response = client.get("/api/player/LeBron James")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["name"] == "LeBron James"
+    assert data["team"] == "Lakers"
+
+
+def test_player_view_endpoint_returns_404_for_unknown_player():
+    client = server.app.test_client()
+    response = client.get("/api/player/Not A Real Player")
+
+    assert response.status_code == 404
+
+
 def test_leaders_endpoint_returns_all_categories():
     client = server.app.test_client()
     response = client.get("/api/leaders")

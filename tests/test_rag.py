@@ -14,6 +14,8 @@ from rag import (
     get_team_branding,
     get_all_teams,
     get_league_leaders,
+    resolve_player,
+    get_player_view,
 )
 
 
@@ -185,6 +187,49 @@ def test_get_team_recent_games_returns_current_season_games():
     assert games is not None
     assert len(games) > 0
     assert {"date", "opponent", "result", "pts_for", "pts_against"} <= games[0].keys()
+
+
+def test_resolve_player_matches_full_name():
+    assert resolve_player("How is Victor Wembanyama doing") == "Victor Wembanyama"
+
+
+def test_resolve_player_matches_unique_first_name():
+    assert resolve_player("Analyze LeBron") == "LeBron James"
+
+
+def test_resolve_player_returns_none_for_ambiguous_common_surname():
+    # Multiple tracked players share the surname "Green" -- must not guess.
+    assert resolve_player("Tell me about Green") is None
+
+
+def test_resolve_player_returns_none_when_no_player_mentioned():
+    assert resolve_player("Why do the Spurs win so much?") is None
+
+
+def test_resolve_player_falls_back_to_history():
+    history = [
+        {"role": "user", "content": "Tell me about LeBron James"},
+        {"role": "assistant", "content": "He's a Laker."},
+    ]
+    assert resolve_player("What's his position?", history) == "LeBron James"
+
+
+def test_get_player_view_returns_team_position_and_history():
+    view = get_player_view("LeBron James")
+    assert view is not None
+    assert view["team"] == "Lakers"
+    assert view["position"] == "F"
+    assert len(view["history"]) > 0
+    assert view["history"][-1]["player"] == "LeBron James"
+
+
+def test_get_player_view_returns_leader_stats_when_present():
+    view = get_player_view("LeBron James")
+    assert "ppg" in view["leaderStats"]
+
+
+def test_get_player_view_returns_none_for_unknown_player():
+    assert get_player_view("Not A Real Player") is None
 
 
 def test_get_team_season_snapshot_computes_accurate_percentages(monkeypatch):

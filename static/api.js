@@ -33,5 +33,11 @@ const Api = (() => {
         return response.json();
     }
 
-    return { sendChatMessage, fetchTeams, fetchTeamDashboard, fetchTeamComparison, fetchLeaders };
+    async function fetchPlayerView(name) {
+        const response = await fetch(`/api/player/${encodeURIComponent(name)}`);
+        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+        return response.json();
+    }
+
+    return { sendChatMessage, fetchTeams, fetchTeamDashboard, fetchTeamComparison, fetchLeaders, fetchPlayerView };
 })();

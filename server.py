@@ -11,6 +11,7 @@ from llm import answer_question
 from rag import (
     get_all_teams,
     get_league_leaders,
+    get_player_view,
     get_team_advanced_stats,
     get_team_branding,
     get_team_knowledge,
@@ -21,6 +22,7 @@ from rag import (
     get_team_season_snapshot,
     latest_season,
     mentioned_teams,
+    resolve_player,
     resolve_team,
 )
 
@@ -73,12 +75,14 @@ def chat():
 
         team = resolve_team(message, history)
         teams = mentioned_teams(message) or ([team] if team else [])
+        player = resolve_player(message, history)
 
         return jsonify({
             'response': bot_response,
             'status': 'success',
             'team': team,
             'teams': teams,
+            'player': player,
             'chart': get_team_records(team) if team else None,
             'leaders': get_team_leaders(team) if team else None,
         })
@@ -122,6 +126,14 @@ def team_comparison(team, other):
 def leaders():
     categories = ['ppg', 'apg', 'rpg', 'spg', 'pie']
     return jsonify({category: get_league_leaders(category) for category in categories})
+
+
+@app.route('/api/player/<name>')
+def player_view(name):
+    view = get_player_view(name)
+    if not view:
+        return jsonify({'error': f'Unknown player: {name}'}), 404
+    return jsonify(view)
 
 
 if __name__ == '__main__':

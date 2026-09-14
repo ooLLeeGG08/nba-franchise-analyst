@@ -115,6 +115,7 @@
                 content: data.response,
                 team: data.team || null,
                 teams: data.teams || [],
+                player: data.player || null,
             };
             thread.messages.push({ role: 'user', content: userInput }, assistantMessage);
             thread.updatedAt = new Date().toISOString();

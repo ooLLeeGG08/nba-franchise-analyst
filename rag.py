@@ -289,3 +289,88 @@ def retrieve_context(team, season):
     if team not in KNOWLEDGE:
         return ""
     return _team_document(team, season)
+
+
+# ---------------------------------------------------------------------------
+# Player resolution. There is no standalone player dataset -- only per-team
+# rosters/leaders/advanced-stats. This builds a name index from
+# player_advanced_stats.json (which carries every rostered player, not just
+# top-5 leaders) so a player mentioned by name can be resolved to their team.
+# A player traded between tracked teams keeps their full multi-team history;
+# "current" team is wherever their most recent season entry places them.
+
+def _build_player_index():
+    history_by_key = {}
+    for team, seasons in PLAYER_ADVANCED.items():
+        for season, players in seasons.items():
+            for p in players:
+                key = p["player"].lower()
+                history_by_key.setdefault(key, []).append({"season": season, "team": team, **p})
+
+    canonical = {}
+    for key, entries in history_by_key.items():
+        entries.sort(key=lambda e: e["season"])
+        canonical[key] = {"name": entries[-1]["player"], "team": entries[-1]["team"], "history": entries}
+
+    token_to_keys = {}
+    for key in canonical:
+        for token in key.split():
+            token_to_keys.setdefault(token, set()).add(key)
+
+    # Only expose a bare first/last name alias when it uniquely identifies one
+    # player league-wide (e.g. "lebron" -> LeBron James is safe; "james" is
+    # not, since it's also James Harden's first name).
+    token_index = {token: canonical[next(iter(keys))] for token, keys in token_to_keys.items() if len(keys) == 1}
+
+    return canonical, token_index
+
+
+_PLAYER_FULL_NAME_INDEX, _PLAYER_TOKEN_INDEX = _build_player_index()
+
+
+def resolve_player(message, history=None):
+    lowered = message.lower()
+    for key in sorted(_PLAYER_FULL_NAME_INDEX, key=len, reverse=True):
+        if re.search(rf"\b{re.escape(key)}\b", lowered):
+            return _PLAYER_FULL_NAME_INDEX[key]["name"]
+    for token in sorted(_PLAYER_TOKEN_INDEX, key=len, reverse=True):
+        if re.search(rf"\b{re.escape(token)}\b", lowered):
+            return _PLAYER_TOKEN_INDEX[token]["name"]
+
+    for turn in reversed(history or []):
+        if turn.get("role") != "user":
+            continue
+        found = resolve_player(turn.get("content", ""))
+        if found:
+            return found
+    return None
+
+
+def get_player_view(name):
+    entry = _PLAYER_FULL_NAME_INDEX.get(name.lower())
+    if not entry:
+        return None
+
+    canonical_name, team, player_history = entry["name"], entry["team"], entry["history"]
+
+    position = None
+    for season in sorted(ROSTERS.get(team, {}).keys(), reverse=True):
+        match = next((p for p in ROSTERS[team][season] if p["player"] == canonical_name), None)
+        if match:
+            position = match["position"]
+            break
+
+    leader_stats = {
+        category: next((e["value"] for e in entries if e["player"] == canonical_name), None)
+        for category, entries in get_team_leaders(team).items()
+    } if get_team_leaders(team) else {}
+    leader_stats = {k: v for k, v in leader_stats.items() if v is not None}
+
+    return {
+        "name": canonical_name,
+        "team": team,
+        "position": position,
+        "branding": get_team_branding(team),
+        "history": player_history,
+        "leaderStats": leader_stats,
+    }
