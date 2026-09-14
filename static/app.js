@@ -140,11 +140,13 @@
     function openMobileSidebar() {
         sidebarEl2.classList.add('mobile-open');
         sidebarBackdrop.classList.add('visible');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeMobileSidebar() {
         sidebarEl2.classList.remove('mobile-open');
         sidebarBackdrop.classList.remove('visible');
+        document.body.style.overflow = '';
     }
 
     mobileMenuButton.addEventListener('click', openMobileSidebar);
