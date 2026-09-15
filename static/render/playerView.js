@@ -98,7 +98,7 @@ const PlayerView = (() => {
             Charts.createLineChart(canvas, {
                 labels: view.history.map((h) => h.season),
                 values: view.history.map((h) => h.pie),
-                color: TeamColors.readableOnDark(view.branding.primary),
+                color: TeamColors.readableFillForBranding(view.branding),
                 yLabel: 'PIE',
             });
         });

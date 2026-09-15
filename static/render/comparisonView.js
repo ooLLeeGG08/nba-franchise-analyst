@@ -92,12 +92,12 @@ const ComparisonView = (() => {
                 labels: ['PPG', 'Opp. PPG', 'Point Diff'],
                 seriesA: {
                     label: teamA.branding.abbreviation,
-                    color: TeamColors.readableOnDark(teamA.branding.primary),
+                    color: TeamColors.readableFillForBranding(teamA.branding),
                     values: [teamA.seasonSnapshot.ppg, teamA.seasonSnapshot.opp_ppg, teamA.seasonSnapshot.point_diff],
                 },
                 seriesB: {
                     label: teamB.branding.abbreviation,
-                    color: TeamColors.readableOnDark(teamB.branding.primary),
+                    color: TeamColors.readableFillForBranding(teamB.branding),
                     values: [teamB.seasonSnapshot.ppg, teamB.seasonSnapshot.opp_ppg, teamB.seasonSnapshot.point_diff],
                 },
             });

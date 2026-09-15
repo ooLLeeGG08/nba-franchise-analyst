@@ -100,12 +100,12 @@ const PlayerComparisonView = (() => {
                 labels: ['PIE (x100)', 'OFF RTG', 'DEF RTG'],
                 seriesA: {
                     label: playerA.name,
-                    color: TeamColors.readableOnDark(playerA.branding.primary),
+                    color: TeamColors.readableFillForBranding(playerA.branding),
                     values: [latestA.pie * 100, latestA.off_rating, latestA.def_rating],
                 },
                 seriesB: {
                     label: playerB.name,
-                    color: TeamColors.readableOnDark(playerB.branding.primary),
+                    color: TeamColors.readableFillForBranding(playerB.branding),
                     values: [latestB.pie * 100, latestB.off_rating, latestB.def_rating],
                 },
             });

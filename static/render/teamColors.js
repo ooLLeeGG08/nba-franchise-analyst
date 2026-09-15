@@ -15,9 +15,22 @@ const TeamColors = (() => {
         return luminance(hex) < 0.25 ? fallback : hex;
     }
 
+    // For filled shapes (chart bars/lines) rather than thin text/borders --
+    // a saturated color reads fine as a filled area even when its luminance
+    // is too low to work as text. Tries the team's primary first, falling
+    // back to its secondary when the primary is too close to the
+    // dashboard's own dark background to read as a distinct fill (e.g. the
+    // Nuggets'/Grizzlies'/Suns' navy or indigo primaries) -- the gray
+    // fallback is a last resort, not the common case.
+    function readableFillForBranding(branding, fallback = '#c9ccd1') {
+        if (luminance(branding.primary) >= 0.02) return branding.primary;
+        if (luminance(branding.secondary) >= 0.02) return branding.secondary;
+        return fallback;
+    }
+
     function contrastText(hex) {
         return luminance(hex) < 0.5 ? '#f2f3f5' : '#0a0c0f';
     }
 
-    return { luminance, readableOnDark, contrastText };
+    return { luminance, readableOnDark, readableFillForBranding, contrastText };
 })();
