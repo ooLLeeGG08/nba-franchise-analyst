@@ -9,6 +9,7 @@ load_dotenv()
 
 from llm import answer_question
 from rag import (
+    available_seasons,
     get_all_teams,
     get_league_leaders,
     get_player_view,
@@ -37,18 +38,19 @@ def _resolve_team_key(raw):
     return _TEAM_KEY_LOOKUP.get(raw.lower())
 
 
-def _team_dashboard_bundle(team_key):
-    season = latest_season()
+def _team_dashboard_bundle(team_key, season=None):
+    season = season if season in available_seasons() else latest_season()
     return {
         "team": team_key,
         "season": season,
+        "availableSeasons": available_seasons(),
         "branding": get_team_branding(team_key),
         "knowledge": get_team_knowledge(team_key),
         "records": get_team_records(team_key),
         "advancedStats": get_team_advanced_stats(team_key),
         "leaders": get_team_leaders(team_key),
-        "recentGames": get_team_recent_games(team_key),
-        "seasonSnapshot": get_team_season_snapshot(team_key),
+        "recentGames": get_team_recent_games(team_key, season),
+        "seasonSnapshot": get_team_season_snapshot(team_key, season),
         "roster": get_team_roster(team_key, season),
     }
 
@@ -109,7 +111,7 @@ def team_dashboard(team):
     team_key = _resolve_team_key(team)
     if not team_key:
         return jsonify({'error': f'Unknown team: {team}'}), 404
-    return jsonify(_team_dashboard_bundle(team_key))
+    return jsonify(_team_dashboard_bundle(team_key, request.args.get('season')))
 
 
 @app.route('/api/team/<team>/vs/<other>')

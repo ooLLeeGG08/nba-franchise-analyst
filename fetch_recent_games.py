@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 from nba_api.stats.endpoints import leaguegamefinder
 from nba_api.stats.static import teams
@@ -40,7 +41,12 @@ _TRACKED_TEAMS = {
     "Wizards": "Washington Wizards",
 }
 
-_SEASON = "2025-26"
+_SEASONS = [
+    "2015-16", "2016-17", "2017-18", "2018-19", "2019-20",
+    "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26",
+]
+
+_REQUEST_DELAY_SECONDS = 0.6
 
 
 def _team_id_by_short_name():
@@ -58,9 +64,9 @@ def _opponent_from_matchup(matchup):
     return matchup.split(separator)[1]
 
 
-def fetch_season_games():
+def fetch_season_games(season):
     df = leaguegamefinder.LeagueGameFinder(
-        season_nullable=_SEASON,
+        season_nullable=season,
         season_type_nullable="Regular Season",
         league_id_nullable="00",
         timeout=30,
@@ -94,13 +100,20 @@ def fetch_season_games():
 def main():
     team_ids = _team_id_by_short_name()
     games = {
-        "_note": f"Live data pulled via nba_api (LeagueGameFinder), {_SEASON} Regular Season only. Re-run fetch_recent_games.py to refresh.",
+        "_note": "Live data pulled via nba_api (LeagueGameFinder), 2015-16 through 2025-26, Regular Season. Re-run fetch_recent_games.py to refresh.",
     }
+    for short_name in _TRACKED_TEAMS:
+        games[short_name] = {}
 
-    print(f"Fetching {_SEASON} league game log...")
-    by_team_id = fetch_season_games()
-    for team_id, short_name in team_ids.items():
-        games[short_name] = by_team_id.get(team_id, [])
+    for season in _SEASONS:
+        print(f"Fetching {season} league game log...")
+        try:
+            by_team_id = fetch_season_games(season)
+            for team_id, short_name in team_ids.items():
+                games[short_name][season] = by_team_id.get(team_id, [])
+        except Exception as e:
+            print(f"  FAILED {season}: {e}")
+        time.sleep(_REQUEST_DELAY_SECONDS)
 
     with open(_OUTPUT_PATH, "w") as f:
         json.dump(games, f, indent=2)

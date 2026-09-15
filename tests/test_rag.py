@@ -6,6 +6,7 @@ from rag import (
     get_team_roster,
     retrieve_context,
     latest_season,
+    available_seasons,
     get_team_knowledge,
     get_team_advanced_stats,
     get_player_advanced_stats,
@@ -184,11 +185,36 @@ def test_get_player_advanced_stats_returns_none_for_unknown_season():
     assert get_player_advanced_stats("Spurs", "1998-99") is None
 
 
-def test_get_team_recent_games_returns_current_season_games():
+def test_get_team_recent_games_defaults_to_latest_season():
     games = get_team_recent_games("Spurs")
     assert games is not None
     assert len(games) > 0
     assert {"date", "opponent", "result", "pts_for", "pts_against"} <= games[0].keys()
+
+
+def test_get_team_recent_games_returns_requested_season():
+    games_2015 = get_team_recent_games("Spurs", "2015-16")
+    games_latest = get_team_recent_games("Spurs")
+    assert games_2015 is not None
+    assert games_2015 != games_latest
+
+
+def test_get_team_recent_games_returns_none_for_unknown_season():
+    assert get_team_recent_games("Spurs", "1998-99") is None
+
+
+def test_get_team_season_snapshot_returns_requested_season():
+    snapshot_2015 = get_team_season_snapshot("Spurs", "2015-16")
+    snapshot_latest = get_team_season_snapshot("Spurs")
+    assert snapshot_2015 is not None
+    assert snapshot_2015 != snapshot_latest
+
+
+def test_available_seasons_returns_all_eleven_seasons():
+    assert available_seasons() == [
+        "2015-16", "2016-17", "2017-18", "2018-19", "2019-20",
+        "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26",
+    ]
 
 
 def test_resolve_player_matches_full_name():
@@ -282,10 +308,10 @@ def test_build_context_includes_both_players_in_comparison():
 
 
 def test_get_team_season_snapshot_computes_accurate_percentages(monkeypatch):
-    monkeypatch.setitem(rag.RECENT_GAMES, "Spurs", [
+    monkeypatch.setitem(rag.RECENT_GAMES, "Spurs", {rag.latest_season(): [
         {"result": "W", "pts_for": 110, "pts_against": 100, "fgm": 40, "fga": 80, "fg3m": 10, "fg3a": 20, "ftm": 20, "fta": 25, "reb": 45, "ast": 25, "tov": 12},
         {"result": "L", "pts_for": 90, "pts_against": 100, "fgm": 30, "fga": 80, "fg3m": 5, "fg3a": 20, "ftm": 25, "fta": 25, "reb": 35, "ast": 15, "tov": 18},
-    ])
+    ]})
     snapshot = get_team_season_snapshot("Spurs")
     assert snapshot["wins"] == 1
     assert snapshot["losses"] == 1

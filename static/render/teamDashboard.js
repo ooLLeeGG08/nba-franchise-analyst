@@ -13,6 +13,7 @@ const TeamDashboard = (() => {
         root.style.setProperty('--team-secondary', TeamColors.readableOnDark(bundle.branding.secondary));
 
         root.appendChild(buildHero(bundle));
+        root.appendChild(buildSeasonSwitcher(container, bundle));
         root.appendChild(buildKpiGrid(bundle));
         if (bundle.seasonSnapshot) root.appendChild(buildSeasonSnapshot(bundle.seasonSnapshot));
         if (bundle.recentGames && bundle.recentGames.length) {
@@ -44,6 +45,40 @@ const TeamDashboard = (() => {
             </div>
         `;
         return hero;
+    }
+
+    function buildSeasonSwitcher(container, bundle) {
+        const wrap = document.createElement('div');
+        wrap.className = 'season-switcher';
+
+        const label = document.createElement('span');
+        label.className = 'season-switcher-label';
+        label.textContent = 'Season';
+        wrap.appendChild(label);
+
+        const select = document.createElement('select');
+        select.className = 'season-switcher-select';
+        (bundle.availableSeasons || [bundle.season]).slice().reverse().forEach((season) => {
+            const option = document.createElement('option');
+            option.value = season;
+            option.textContent = season;
+            if (season === bundle.season) option.selected = true;
+            select.appendChild(option);
+        });
+
+        select.addEventListener('change', () => {
+            const chosen = select.value;
+            wrap.classList.add('loading');
+            Api.fetchTeamDashboard(bundle.team, chosen)
+                .then((newBundle) => render(container, newBundle))
+                .catch((e) => {
+                    console.error(e);
+                    wrap.classList.remove('loading');
+                });
+        });
+
+        wrap.appendChild(select);
+        return wrap;
     }
 
     function buildKpiGrid(bundle) {

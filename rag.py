@@ -150,6 +150,10 @@ def latest_season():
     return seasons[-1] if seasons else None
 
 
+def available_seasons():
+    return _all_seasons()
+
+
 def get_team_knowledge(team):
     return KNOWLEDGE.get(team)
 
@@ -162,12 +166,13 @@ def get_player_advanced_stats(team, season):
     return PLAYER_ADVANCED.get(team, {}).get(season)
 
 
-def get_team_recent_games(team):
-    return RECENT_GAMES.get(team)
+def get_team_recent_games(team, season=None):
+    season = season or latest_season()
+    return RECENT_GAMES.get(team, {}).get(season)
 
 
-def get_team_season_snapshot(team):
-    games = RECENT_GAMES.get(team)
+def get_team_season_snapshot(team, season=None):
+    games = get_team_recent_games(team, season)
     if not games:
         return None
 

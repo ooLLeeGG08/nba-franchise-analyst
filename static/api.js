@@ -15,8 +15,9 @@ const Api = (() => {
         return response.json();
     }
 
-    async function fetchTeamDashboard(team) {
-        const response = await fetch(`/api/team/${encodeURIComponent(team)}`);
+    async function fetchTeamDashboard(team, season) {
+        const query = season ? `?season=${encodeURIComponent(season)}` : '';
+        const response = await fetch(`/api/team/${encodeURIComponent(team)}${query}`);
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         return response.json();
     }

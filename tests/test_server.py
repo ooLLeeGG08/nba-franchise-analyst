@@ -82,6 +82,24 @@ def test_team_dashboard_endpoint_returns_full_bundle():
         assert key in data
 
 
+def test_team_dashboard_endpoint_respects_season_query_param():
+    client = server.app.test_client()
+    response = client.get("/api/team/Spurs?season=2015-16")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["season"] == "2015-16"
+    assert len(data["availableSeasons"]) == 11
+
+
+def test_team_dashboard_endpoint_falls_back_to_latest_for_invalid_season():
+    client = server.app.test_client()
+    response = client.get("/api/team/Spurs?season=not-a-season")
+
+    assert response.status_code == 200
+    assert response.get_json()["season"] == "2025-26"
+
+
 def test_team_dashboard_endpoint_is_case_insensitive():
     client = server.app.test_client()
     response = client.get("/api/team/spurs")
