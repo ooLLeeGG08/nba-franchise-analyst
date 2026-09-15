@@ -21,6 +21,7 @@ from rag import (
     get_team_roster,
     get_team_season_snapshot,
     latest_season,
+    mentioned_players,
     mentioned_teams,
     resolve_player,
     resolve_team,
@@ -76,6 +77,7 @@ def chat():
         team = resolve_team(message, history)
         teams = mentioned_teams(message) or ([team] if team else [])
         player = resolve_player(message, history)
+        players = mentioned_players(message) or ([player] if player else [])
 
         return jsonify({
             'response': bot_response,
@@ -83,6 +85,7 @@ def chat():
             'team': team,
             'teams': teams,
             'player': player,
+            'players': players,
             'chart': get_team_records(team) if team else None,
             'leaders': get_team_leaders(team) if team else None,
         })
@@ -134,6 +137,15 @@ def player_view(name):
     if not view:
         return jsonify({'error': f'Unknown player: {name}'}), 404
     return jsonify(view)
+
+
+@app.route('/api/player/<name>/vs/<other>')
+def player_comparison(name, other):
+    view_a, view_b = get_player_view(name), get_player_view(other)
+    if not view_a or not view_b:
+        unknown = name if not view_a else other
+        return jsonify({'error': f'Unknown player: {unknown}'}), 404
+    return jsonify({'playerA': view_a, 'playerB': view_b})
 
 
 if __name__ == '__main__':

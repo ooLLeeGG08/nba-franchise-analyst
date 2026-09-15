@@ -9,8 +9,8 @@ const ComparisonView = (() => {
         container.innerHTML = '';
         const root = document.createElement('div');
         root.className = 'comparison';
-        root.style.setProperty('--team-a-color', teamA.branding.primary);
-        root.style.setProperty('--team-b-color', teamB.branding.primary);
+        root.style.setProperty('--team-a-color', TeamColors.readableOnDark(teamA.branding.primary));
+        root.style.setProperty('--team-b-color', TeamColors.readableOnDark(teamB.branding.primary));
 
         root.appendChild(buildHeaders(teamA, teamB));
         root.appendChild(buildKpiTable(teamA, teamB));
@@ -26,8 +26,8 @@ const ComparisonView = (() => {
             const s = bundle.seasonSnapshot;
             const card = document.createElement('div');
             card.className = 'comparison-header-card';
-            card.style.setProperty('--team-primary', bundle.branding.primary);
-            card.style.setProperty('--team-secondary', bundle.branding.secondary);
+            card.style.setProperty('--team-primary', TeamColors.readableOnDark(bundle.branding.primary));
+            card.style.setProperty('--team-secondary', TeamColors.readableOnDark(bundle.branding.secondary));
             card.innerHTML = `
                 <div class="comparison-header-name">${escapeHtml(bundle.knowledge.full_name)}</div>
                 <div class="comparison-header-record">${s ? `${s.wins}–${s.losses} &middot; ${(s.win_pct * 100).toFixed(1)}%` : '—'}</div>
@@ -92,12 +92,12 @@ const ComparisonView = (() => {
                 labels: ['PPG', 'Opp. PPG', 'Point Diff'],
                 seriesA: {
                     label: teamA.branding.abbreviation,
-                    color: teamA.branding.primary,
+                    color: TeamColors.readableOnDark(teamA.branding.primary),
                     values: [teamA.seasonSnapshot.ppg, teamA.seasonSnapshot.opp_ppg, teamA.seasonSnapshot.point_diff],
                 },
                 seriesB: {
                     label: teamB.branding.abbreviation,
-                    color: teamB.branding.primary,
+                    color: TeamColors.readableOnDark(teamB.branding.primary),
                     values: [teamB.seasonSnapshot.ppg, teamB.seasonSnapshot.opp_ppg, teamB.seasonSnapshot.point_diff],
                 },
             });

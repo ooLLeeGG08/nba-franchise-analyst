@@ -8,8 +8,9 @@ const TeamDashboard = (() => {
         container.innerHTML = '';
         const root = document.createElement('div');
         root.className = 'dashboard';
-        root.style.setProperty('--team-primary', bundle.branding.primary);
-        root.style.setProperty('--team-secondary', bundle.branding.secondary);
+        root.style.setProperty('--team-primary-raw', bundle.branding.primary);
+        root.style.setProperty('--team-primary', TeamColors.readableOnDark(bundle.branding.primary));
+        root.style.setProperty('--team-secondary', TeamColors.readableOnDark(bundle.branding.secondary));
 
         root.appendChild(buildHero(bundle));
         root.appendChild(buildKpiGrid(bundle));

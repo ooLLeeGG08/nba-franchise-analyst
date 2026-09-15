@@ -39,8 +39,11 @@ const ChatThread = (() => {
 
         if (!message.isError) {
             const teams = message.teams || (message.team ? [message.team] : []);
+            const players = message.players || (message.player ? [message.player] : []);
             if (teams.length >= 2) {
                 row.appendChild(buildComparisonMount(teams[0], teams[1]));
+            } else if (players.length >= 2) {
+                row.appendChild(buildPlayerComparisonMount(players[0], players[1]));
             } else if (message.player) {
                 row.appendChild(buildPlayerMount(message.player, handlers));
             } else if (message.team) {
@@ -75,6 +78,21 @@ const ChatThread = (() => {
 
         Api.fetchTeamComparison(teamA, teamB)
             .then((bundle) => ComparisonView.render(mount, bundle))
+            .catch((e) => {
+                console.error(e);
+                mount.innerHTML = `<div class="dashboard-loading">Couldn't load that comparison.</div>`;
+            });
+
+        return mount;
+    }
+
+    function buildPlayerComparisonMount(playerA, playerB) {
+        const mount = document.createElement('div');
+        mount.className = 'dashboard-mount';
+        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(playerA)} vs ${escapeHtml(playerB)}...</div>`;
+
+        Api.fetchPlayerComparison(playerA, playerB)
+            .then((bundle) => PlayerComparisonView.render(mount, bundle))
             .catch((e) => {
                 console.error(e);
                 mount.innerHTML = `<div class="dashboard-loading">Couldn't load that comparison.</div>`;

@@ -15,7 +15,9 @@ from rag import (
     get_all_teams,
     get_league_leaders,
     resolve_player,
+    mentioned_players,
     get_player_view,
+    build_context,
 )
 
 
@@ -223,13 +225,60 @@ def test_get_player_view_returns_team_position_and_history():
     assert view["history"][-1]["player"] == "LeBron James"
 
 
-def test_get_player_view_returns_leader_stats_when_present():
+def test_get_player_view_returns_real_season_stats_for_any_rostered_player():
+    # Regression: previously only players in their team's all-time top-5 (a
+    # curated, name-mismatched dataset) got PPG/APG/RPG/SPG -- Jokic fell
+    # through because the seed data spelled his name without the accent.
+    view = get_player_view("Nikola Jokic")
+    assert view["seasonStats"]["ppg"] > 20
+    assert view["seasonStats"]["apg"] > 5
+    assert view["seasonStats"]["rpg"] > 5
+
+
+def test_get_player_view_returns_season_stats_for_lebron():
     view = get_player_view("LeBron James")
-    assert "ppg" in view["leaderStats"]
+    assert "ppg" in view["seasonStats"]
 
 
 def test_get_player_view_returns_none_for_unknown_player():
     assert get_player_view("Not A Real Player") is None
+
+
+def test_mentioned_players_finds_multiple_players():
+    players = mentioned_players("Compare LeBron James and Nikola Jokic")
+    assert set(players) == {"LeBron James", "Nikola Jokić"}
+
+
+def test_mentioned_players_matches_names_without_diacritics():
+    assert mentioned_players("How good is Luka Doncic") == ["Luka Dončić"]
+
+
+def test_get_player_view_matches_names_without_diacritics():
+    assert get_player_view("Nikola Jokic") is not None
+
+
+def test_build_context_includes_league_efficiency_leaders_even_with_no_team():
+    context = build_context("Who is the most efficient scorer in the NBA right now?", [])
+    assert "League-wide PIE" in context
+
+
+def test_build_context_includes_team_advanced_stats_when_team_resolved():
+    context = build_context("How efficient are the Spurs offensively?", [])
+    assert "Advanced team stats" in context
+    assert "Off rating" in context
+
+
+def test_build_context_includes_single_player_stats():
+    context = build_context("How is LeBron doing this season?", [])
+    assert "LeBron James" in context
+    assert "PIE" in context
+
+
+def test_build_context_includes_both_players_in_comparison():
+    context = build_context("Compare LeBron James and Nikola Jokic", [])
+    assert "Player comparison:" in context
+    assert "LeBron James" in context
+    assert "Nikola Jokić" in context
 
 
 def test_get_team_season_snapshot_computes_accurate_percentages(monkeypatch):

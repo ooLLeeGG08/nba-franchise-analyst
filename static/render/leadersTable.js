@@ -3,11 +3,11 @@
 // -- so every assistant reply gets a data companion, not just team questions.
 const LeadersTable = (() => {
     const TABS = [
-        { key: 'ppg', label: 'Scoring', window: '2015-16 to 2025-26' },
-        { key: 'apg', label: 'Assists', window: '2015-16 to 2025-26' },
-        { key: 'rpg', label: 'Rebounds', window: '2015-16 to 2025-26' },
-        { key: 'spg', label: 'Steals', window: '2015-16 to 2025-26' },
-        { key: 'pie', label: 'Efficiency (PIE)', window: '2025-26' },
+        { key: 'ppg', label: 'Scoring', window: '2025-26, min. 20 GP / 15 MPG' },
+        { key: 'apg', label: 'Assists', window: '2025-26, min. 20 GP / 15 MPG' },
+        { key: 'rpg', label: 'Rebounds', window: '2025-26, min. 20 GP / 15 MPG' },
+        { key: 'spg', label: 'Steals', window: '2025-26, min. 20 GP / 15 MPG' },
+        { key: 'pie', label: 'Efficiency (PIE)', window: '2025-26, min. 20 GP / 15 MPG' },
     ];
 
     function render(container, data, { onNavigateToTeam } = {}) {

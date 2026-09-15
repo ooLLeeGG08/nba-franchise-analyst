@@ -150,6 +150,32 @@ def test_player_view_endpoint_returns_404_for_unknown_player():
     assert response.status_code == 404
 
 
+def test_chat_endpoint_returns_both_players_for_comparison_message():
+    client = server.app.test_client()
+
+    with patch("server.answer_question", return_value="mocked answer"):
+        response = client.post("/api/chat", json={"message": "Compare LeBron James and Nikola Jokic"})
+
+    assert set(response.get_json()["players"]) == {"LeBron James", "Nikola Jokić"}
+
+
+def test_player_comparison_endpoint_returns_both_bundles():
+    client = server.app.test_client()
+    response = client.get("/api/player/LeBron James/vs/Nikola Jokic")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["playerA"]["name"] == "LeBron James"
+    assert data["playerB"]["name"] == "Nikola Jokić"
+
+
+def test_player_comparison_endpoint_returns_404_for_unknown_player():
+    client = server.app.test_client()
+    response = client.get("/api/player/LeBron James/vs/Not A Real Player")
+
+    assert response.status_code == 404
+
+
 def test_leaders_endpoint_returns_all_categories():
     client = server.app.test_client()
     response = client.get("/api/leaders")

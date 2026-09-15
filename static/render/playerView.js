@@ -14,8 +14,10 @@ const PlayerView = (() => {
 
         const root = document.createElement('div');
         root.className = 'player-view';
-        root.style.setProperty('--team-primary', branding.primary);
-        root.style.setProperty('--team-secondary', branding.secondary);
+        root.style.setProperty('--team-primary-raw', branding.primary);
+        root.style.setProperty('--team-badge-text', TeamColors.contrastText(branding.primary));
+        root.style.setProperty('--team-primary', TeamColors.readableOnDark(branding.primary));
+        root.style.setProperty('--team-secondary', TeamColors.readableOnDark(branding.secondary));
 
         root.appendChild(buildHeader(view, latest));
         root.appendChild(buildPrimaryGrid(view, latest));
@@ -53,8 +55,8 @@ const PlayerView = (() => {
         const grid = document.createElement('div');
         grid.className = 'player-kpi-grid';
         const tiles = Object.entries(LEADER_LABELS)
-            .filter(([key]) => view.leaderStats[key] != null)
-            .map(([key, label]) => ({ label, value: view.leaderStats[key] }));
+            .filter(([key]) => view.seasonStats[key] != null)
+            .map(([key, label]) => ({ label, value: view.seasonStats[key] }));
         tiles.push({ label: 'PIE', value: latest.pie.toFixed(3) });
 
         tiles.forEach(({ label, value }) => {
@@ -96,7 +98,7 @@ const PlayerView = (() => {
             Charts.createLineChart(canvas, {
                 labels: view.history.map((h) => h.season),
                 values: view.history.map((h) => h.pie),
-                color: view.branding.primary,
+                color: TeamColors.readableOnDark(view.branding.primary),
                 yLabel: 'PIE',
             });
         });
