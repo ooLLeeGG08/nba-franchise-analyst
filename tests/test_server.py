@@ -202,3 +202,13 @@ def test_leaders_endpoint_returns_all_categories():
     data = response.get_json()
     assert set(data.keys()) == {"ppg", "apg", "rpg", "spg", "pie"}
     assert len(data["ppg"]) > 0
+
+
+def test_chat_endpoint_flags_comparison_only_for_comparison_questions():
+    client = server.app.test_client()
+    with patch("server.answer_question", return_value="ok"):
+        hypothetical = client.post("/api/chat", json={
+            "message": "Would the Mavericks contend if AD and Kyrie stayed healthy?"}).get_json()
+        versus = client.post("/api/chat", json={"message": "LeBron James vs Nikola Jokic"}).get_json()
+    assert hypothetical["comparison"] is False
+    assert versus["comparison"] is True

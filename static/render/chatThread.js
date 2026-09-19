@@ -40,11 +40,14 @@ const ChatThread = (() => {
         if (!message.isError) {
             const teams = message.teams || (message.team ? [message.team] : []);
             const players = message.players || (message.player ? [message.player] : []);
-            if (teams.length >= 2) {
+            // Messages saved before the server sent `comparison` keep the old
+            // behavior (compare whenever two are mentioned).
+            const wantsComparison = message.comparison === undefined ? true : message.comparison;
+            if (wantsComparison && teams.length >= 2) {
                 row.appendChild(buildComparisonMount(teams[0], teams[1]));
-            } else if (players.length >= 2) {
+            } else if (wantsComparison && players.length >= 2) {
                 row.appendChild(buildPlayerComparisonMount(players[0], players[1]));
-            } else if (message.player) {
+            } else if (players.length === 1 && message.player) {
                 row.appendChild(buildPlayerMount(message.player, handlers));
             } else if (message.team) {
                 row.appendChild(buildDashboardMount(message.team));

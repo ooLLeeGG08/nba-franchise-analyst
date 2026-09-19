@@ -364,3 +364,51 @@ def test_get_league_leaders_pie_excludes_low_sample_players(monkeypatch):
     names = [entry["player"] for entry in leaders]
     assert "Real Starter" in names
     assert "Small Sample Guy" not in names
+
+
+HYPOTHETICAL = "Would Maverick be a title contender after Luka-trade if AD and Kyrie didn't get injured?"
+
+
+def test_mentioned_players_ignores_short_name_fragments_in_ordinary_words():
+    """Regression: 'a' (Luc Mbah a Moute) matched the article in 'be a title contender'."""
+    assert "Luc Mbah a Moute" not in mentioned_players(HYPOTHETICAL)
+    assert mentioned_players("what a great house in the long run") == []
+
+
+def test_mentioned_players_resolves_nicknames_and_ambiguous_first_names():
+    assert mentioned_players(HYPOTHETICAL) == ["Luka Dončić", "Anthony Davis", "Kyrie Irving"]
+
+
+def test_case_sensitive_initialisms_do_not_match_lowercase_words():
+    assert mentioned_players("place an ad for the game") == []
+    assert mentioned_players("AD or KD?") == ["Anthony Davis", "Kevin Durant"]
+
+
+def test_full_name_is_not_also_matched_as_a_different_players_alias():
+    assert mentioned_players("How is Luka Garza doing?") == ["Luka Garza"]
+
+
+def test_common_word_surnames_need_capitalization():
+    assert "Derrick Rose" in mentioned_players("Is Rose healthy?")
+    assert mentioned_players("the rose bloomed") == []
+
+
+def test_is_comparison_query():
+    assert rag.is_comparison_query("LeBron vs Jokic")
+    assert rag.is_comparison_query("Who is better, Tatum or Brown?")
+    assert rag.is_comparison_query("Compare the Celtics and Nets")
+    assert not rag.is_comparison_query(HYPOTHETICAL)
+    assert not rag.is_comparison_query("Tell me about the Spurs")
+
+
+def test_build_context_includes_every_mentioned_player_with_recent_seasons():
+    context = build_context(HYPOTHETICAL, [])
+    assert "Anthony Davis" in context and "Kyrie Irving" in context and "Luka Dončić" in context
+    assert "2024-25 with Mavericks" in context  # AD's prior season, not just his latest
+    assert "Player comparison:" not in context
+
+
+def test_player_context_includes_per_game_stats_and_singular_team_name():
+    context = build_context(HYPOTHETICAL, [])
+    assert "PPG" in context and "APG" in context
+    assert mentioned_teams(HYPOTHETICAL) == ["Mavericks"]

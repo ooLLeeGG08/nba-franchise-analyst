@@ -117,6 +117,7 @@
                 teams: data.teams || [],
                 player: data.player || null,
                 players: data.players || [],
+                comparison: Boolean(data.comparison),
             };
             thread.messages.push({ role: 'user', content: userInput }, assistantMessage);
             thread.updatedAt = new Date().toISOString();

@@ -21,6 +21,7 @@ from rag import (
     get_team_recent_games,
     get_team_roster,
     get_team_season_snapshot,
+    is_comparison_query,
     latest_season,
     mentioned_players,
     mentioned_teams,
@@ -88,6 +89,7 @@ def chat():
             'teams': teams,
             'player': player,
             'players': players,
+            'comparison': is_comparison_query(message),
             'chart': get_team_records(team) if team else None,
             'leaders': get_team_leaders(team) if team else None,
         })

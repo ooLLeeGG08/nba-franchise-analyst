@@ -41,7 +41,7 @@ _TEAM_ALIASES = {
     "Hornets": ["hornets", "charlotte"],
     "Bulls": ["bulls", "chicago"],
     "Cavaliers": ["cavaliers", "cavs", "cleveland"],
-    "Mavericks": ["mavericks", "mavs", "dallas"],
+    "Mavericks": ["mavericks", "maverick", "mavs", "dallas"],
     "Nuggets": ["nuggets", "denver"],
     "Pistons": ["pistons", "detroit"],
     "Warriors": ["warriors", "golden state"],
@@ -374,32 +374,119 @@ def _build_player_index():
 
     # Only expose a bare first/last name alias when it uniquely identifies one
     # player league-wide (e.g. "lebron" -> LeBron James is safe; "james" is
-    # not, since it's also James Harden's first name).
-    token_index = {token: canonical[next(iter(keys))] for token, keys in token_to_keys.items() if len(keys) == 1}
+    # not, since it's also James Harden's first name). Tokens under 4 chars are
+    # skipped: unique ones like "a" (Luc Mbah a Moute) or "law" match ordinary
+    # words in a sentence.
+    token_index = {
+        token: canonical[next(iter(keys))]
+        for token, keys in token_to_keys.items()
+        if len(keys) == 1 and len(token) >= _MIN_TOKEN_ALIAS_LENGTH
+    }
 
     return canonical, token_index
+
+
+_MIN_TOKEN_ALIAS_LENGTH = 4
+
+# Bare-name tokens that are also everyday English words; only treated as a
+# player reference when capitalized in the message ("Rose", not "rose").
+_COMMON_WORD_TOKENS = {
+    "bane", "battle", "bell", "bird", "blue", "bone", "brand", "brook", "castle", "chance",
+    "chase", "council", "coward", "creek", "darling", "days", "dean", "deck", "diamond",
+    "drake", "duke", "early", "fall", "freedom", "hart", "hood", "house", "hunt", "hurt",
+    "leaf", "lemon", "little", "lively", "long", "maker", "mane", "marble", "monk", "moody",
+    "moon", "peace", "post", "precious", "price", "prosper", "rose", "rush", "semi",
+    "sessions", "shake", "small", "sword", "temple", "topic", "wall", "ware", "wear",
+    "west", "wolf", "wood", "world", "york",
+}
+
+# Nicknames/abbreviations -> canonical player name. Case-sensitive entries are
+# initialisms that would collide with ordinary words if matched case-insensitively
+# ("AD" vs "ad").
+_NICKNAME_ALIASES_CASE_SENSITIVE = {
+    "AD": "Anthony Davis",
+    "KD": "Kevin Durant",
+    "LBJ": "LeBron James",
+    "KAT": "Karl-Anthony Towns",
+    "SGA": "Shai Gilgeous-Alexander",
+    "CP3": "Chris Paul",
+    "PG13": "Paul George",
+}
+_NICKNAME_ALIASES = {
+    # "luka" is ambiguous league-wide (Doncic, Garza), so pin it to the star.
+    "luka": "Luka Dončić",
+    "steph": "Stephen Curry",
+    "wemby": "Victor Wembanyama",
+    "bron": "LeBron James",
+    "melo": "Carmelo Anthony",
+    "greek freak": "Giannis Antetokounmpo",
+}
 
 
 _PLAYER_FULL_NAME_INDEX, _PLAYER_TOKEN_INDEX = _build_player_index()
 
 
+def _canonical_name(name):
+    entry = _PLAYER_FULL_NAME_INDEX.get(_strip_accents(name.lower()))
+    return entry["name"] if entry else None
+
+
 def mentioned_players(message):
+    """Players named in the message, in the order they appear."""
     lowered = _strip_accents(message.lower())
-    found = []
+    plain = _strip_accents(message)
+    matches = []  # (position, name)
     seen_names = set()
+
+    def claim(pos, name):
+        if name and name not in seen_names:
+            matches.append((pos, name))
+            seen_names.add(name)
+
+    # Full names first, blanking out each hit so its parts ("Luka" in "Luka
+    # Garza") can't be re-matched below as a different player's alias.
     for key in sorted(_PLAYER_FULL_NAME_INDEX, key=len, reverse=True):
-        if re.search(rf"\b{re.escape(key)}\b", lowered):
-            name = _PLAYER_FULL_NAME_INDEX[key]["name"]
-            if name not in seen_names:
-                found.append(name)
-                seen_names.add(name)
-    for token in sorted(_PLAYER_TOKEN_INDEX, key=len, reverse=True):
-        if re.search(rf"\b{re.escape(token)}\b", lowered):
-            name = _PLAYER_TOKEN_INDEX[token]["name"]
-            if name not in seen_names:
-                found.append(name)
-                seen_names.add(name)
-    return found
+        for m in re.finditer(rf"\b{re.escape(key)}\b", lowered):
+            claim(m.start(), _PLAYER_FULL_NAME_INDEX[key]["name"])
+            lowered = lowered[:m.start()] + " " * len(key) + lowered[m.end():]
+            plain = plain[:m.start()] + " " * len(key) + plain[m.end():]
+
+    for alias, full_name in _NICKNAME_ALIASES_CASE_SENSITIVE.items():
+        m = re.search(rf"\b{re.escape(alias)}\b", plain)
+        if m:
+            claim(m.start(), _canonical_name(full_name))
+
+    for alias, full_name in _NICKNAME_ALIASES.items():
+        m = re.search(rf"\b{re.escape(alias)}\b", lowered)
+        if m:
+            claim(m.start(), _canonical_name(full_name))
+
+    for token, entry in _PLAYER_TOKEN_INDEX.items():
+        m = re.search(rf"\b{re.escape(token)}\b", lowered)
+        if not m:
+            continue
+        if token in _COMMON_WORD_TOKENS and not plain[m.start()].isupper():
+            continue
+        claim(m.start(), entry["name"])
+
+    return [name for _, name in sorted(matches)]
+
+
+_COMPARISON_RE = re.compile(
+    r"\b(?:vs\.?|versus|compare[sd]?|comparison|compared|better than|worse than|"
+    r"head[- ]to[- ]head|stack(?:s)? up|matchup|difference between|"
+    r"who(?:'s| is| was| would be)? (?:the )?(?:better|best)|rather have)\b"
+    r"|\bthan\b|\bor\b"
+)
+
+
+def is_comparison_query(message):
+    """True when the user is asking to weigh two things against each other.
+
+    Merely mentioning two players/teams isn't enough: "would the Mavs contend
+    if AD and Kyrie stayed healthy?" names several players but compares none.
+    """
+    return bool(_COMPARISON_RE.search(message.lower()))
 
 
 def resolve_player(message, history=None):
@@ -453,33 +540,43 @@ def get_player_view(name):
     }
 
 
-_LEADER_STAT_LABELS = (("ppg", "PPG"), ("apg", "APG"), ("rpg", "RPG"), ("spg", "SPG"))
+_PER_GAME_FIELDS = (("pts", "PPG"), ("ast", "APG"), ("reb", "RPG"), ("stl", "SPG"))
+
+
+def _player_season_bits(entry):
+    bits = [f"{label} {entry[field]}" for field, label in _PER_GAME_FIELDS if entry.get(field) is not None]
+    bits += [
+        f"TS% {entry['ts_pct'] * 100:.1f}",
+        f"USG% {entry['usg_pct'] * 100:.1f}",
+        f"PIE {entry['pie']:.3f}",
+        f"OFF RTG {entry['off_rating']}",
+        f"DEF RTG {entry['def_rating']}",
+        f"GP {entry['gp']}",
+    ]
+    return ", ".join(bits)
 
 
 def _player_document(name):
     view = get_player_view(name)
     if not view:
         return ""
-    latest = view["history"][-1]
-    stat_bits = [f"{label} {view['seasonStats'][cat]}" for cat, label in _LEADER_STAT_LABELS if cat in view["seasonStats"]]
-    stat_bits += [
-        f"TS% {latest['ts_pct'] * 100:.1f}",
-        f"USG% {latest['usg_pct'] * 100:.1f}",
-        f"PIE {latest['pie']:.3f}",
-        f"OFF RTG {latest['off_rating']}",
-        f"DEF RTG {latest['def_rating']}",
-    ]
-    return (
-        f"{view['name']} ({view['team']}, {view['position'] or 'position unknown'}) -- "
-        f"{latest['season']} stats: " + ", ".join(stat_bits)
-    )
+    # Latest two tracked seasons: a player's most recent line can be a
+    # different team or an injury-shortened year (e.g. AD: DAL 2024-25 vs
+    # WAS 2025-26), which matters for "what if" questions.
+    recent = view["history"][-2:][::-1]
+    seasons = "; ".join(f"{e['season']} with {e['team']}: {_player_season_bits(e)}" for e in recent)
+    return f"{view['name']} ({view['position'] or 'position unknown'}) -- {seasons}"
 
 
-def _player_comparison_document(name_a, name_b):
-    docs = [d for d in (_player_document(name_a), _player_document(name_b)) if d]
+_MAX_PLAYERS_IN_CONTEXT = 4
+
+
+def _players_document(names, comparison):
+    docs = [d for d in (_player_document(n) for n in names[:_MAX_PLAYERS_IN_CONTEXT]) if d]
     if not docs:
         return ""
-    return "Player comparison:\n" + "\n".join(docs)
+    header = "Player comparison:" if comparison and len(docs) >= 2 else "Player stats:"
+    return header + "\n" + "\n".join(docs)
 
 
 def _league_efficiency_document():
@@ -501,12 +598,12 @@ def build_context(message, history):
         parts.append(team_doc)
 
     current_players = mentioned_players(message)
-    if len(current_players) >= 2:
-        parts.append(_player_comparison_document(current_players[0], current_players[1]))
+    if current_players:
+        parts.append(_players_document(current_players, is_comparison_query(message)))
     else:
-        single_player = current_players[0] if current_players else resolve_player(message, history)
-        if single_player:
-            parts.append(_player_document(single_player))
+        fallback_player = resolve_player(message, history)
+        if fallback_player:
+            parts.append(_players_document([fallback_player], False))
 
     parts.append(_league_efficiency_document())
 
