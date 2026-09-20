@@ -87,7 +87,8 @@ def test_resolve_season_from_current_message_verbose_format():
 
 
 def test_resolve_season_from_current_message_bare_year():
-    assert resolve_season("Tell me about the Nets in 2018", []) == "2018-19"
+    # A bare year names the season that ends in it.
+    assert resolve_season("Tell me about the Nets in 2018", []) == "2017-18"
 
 
 def test_resolve_season_falls_back_to_history():
@@ -412,3 +413,54 @@ def test_player_context_includes_per_game_stats_and_singular_team_name():
     context = build_context(HYPOTHETICAL, [])
     assert "PPG" in context and "APG" in context
     assert mentioned_teams(HYPOTHETICAL) == ["Mavericks"]
+
+
+KD_QUESTION = "would cavaliers go back to back in 2017 if KD didn't join the warriors?"
+
+
+def test_bare_year_means_season_ending_that_year():
+    assert resolve_season("the 2017 Finals", []) == "2016-17"
+    assert resolve_season("Nets in 2026", []) == "2025-26"
+
+
+def test_explicit_season_is_none_when_no_season_mentioned():
+    assert rag.explicit_season("Tell me about the Nets", []) is None
+    assert rag.explicit_season("in 2017?", []) == "2016-17"
+
+
+def test_explicit_season_falls_back_to_history():
+    history = [{"role": "user", "content": "How were the Cavs in 2017?"}]
+    assert rag.explicit_season("And KD?", history) == "2016-17"
+
+
+def test_get_player_view_uses_requested_season_but_keeps_full_history():
+    view = get_player_view("Kevin Durant", "2016-17")
+    assert view["current"]["season"] == "2016-17"
+    assert view["team"] == "Warriors"
+    assert view["branding"]["abbreviation"] == "GSW"
+    assert view["seasonStats"]["ppg"] == view["current"]["pts"]
+    assert len(view["history"]) > 5
+
+
+def test_get_player_view_defaults_to_latest_season():
+    view = get_player_view("Kevin Durant")
+    assert view["current"]["season"] == "2025-26"
+    assert view["team"] == "Rockets"
+
+
+def test_get_player_view_falls_back_to_latest_when_player_has_no_data_that_season():
+    view = get_player_view("Kevin Durant", "2019-20")  # sat out injured
+    assert view["current"]["season"] == "2025-26"
+
+
+def test_player_context_uses_the_requested_season_not_the_latest():
+    context = build_context(KD_QUESTION, [])
+    kd_line = next(l for l in context.splitlines() if l.startswith("Kevin Durant"))
+    assert "2016-17 with Warriors" in kd_line
+    assert "2025-26" not in kd_line
+    assert "TS%" in kd_line and "PIE" in kd_line
+
+
+def test_player_context_notes_when_requested_season_has_no_data():
+    context = build_context("How was KD in 2020?", [])  # 2019-20: no games played
+    assert "No 2019-20 data tracked" in context

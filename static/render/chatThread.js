@@ -44,13 +44,13 @@ const ChatThread = (() => {
             // behavior (compare whenever two are mentioned).
             const wantsComparison = message.comparison === undefined ? true : message.comparison;
             if (wantsComparison && teams.length >= 2) {
-                row.appendChild(buildComparisonMount(teams[0], teams[1]));
+                row.appendChild(buildComparisonMount(teams[0], teams[1], message.season));
             } else if (wantsComparison && players.length >= 2) {
-                row.appendChild(buildPlayerComparisonMount(players[0], players[1]));
+                row.appendChild(buildPlayerComparisonMount(players[0], players[1], message.season));
             } else if (players.length === 1 && message.player) {
-                row.appendChild(buildPlayerMount(message.player, handlers));
+                row.appendChild(buildPlayerMount(message.player, handlers, message.season));
             } else if (message.team) {
-                row.appendChild(buildDashboardMount(message.team));
+                row.appendChild(buildDashboardMount(message.team, message.season));
             } else {
                 row.appendChild(buildLeadersMount(handlers));
             }
@@ -59,12 +59,12 @@ const ChatThread = (() => {
         return row;
     }
 
-    function buildDashboardMount(team) {
+    function buildDashboardMount(team, season) {
         const mount = document.createElement('div');
         mount.className = 'dashboard-mount';
         mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(team)} analytics...</div>`;
 
-        Api.fetchTeamDashboard(team)
+        Api.fetchTeamDashboard(team, season)
             .then((bundle) => TeamDashboard.render(mount, bundle))
             .catch((e) => {
                 console.error(e);
@@ -74,12 +74,12 @@ const ChatThread = (() => {
         return mount;
     }
 
-    function buildComparisonMount(teamA, teamB) {
+    function buildComparisonMount(teamA, teamB, season) {
         const mount = document.createElement('div');
         mount.className = 'dashboard-mount';
         mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(teamA)} vs ${escapeHtml(teamB)}...</div>`;
 
-        Api.fetchTeamComparison(teamA, teamB)
+        Api.fetchTeamComparison(teamA, teamB, season)
             .then((bundle) => ComparisonView.render(mount, bundle))
             .catch((e) => {
                 console.error(e);
@@ -89,12 +89,12 @@ const ChatThread = (() => {
         return mount;
     }
 
-    function buildPlayerComparisonMount(playerA, playerB) {
+    function buildPlayerComparisonMount(playerA, playerB, season) {
         const mount = document.createElement('div');
         mount.className = 'dashboard-mount';
         mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(playerA)} vs ${escapeHtml(playerB)}...</div>`;
 
-        Api.fetchPlayerComparison(playerA, playerB)
+        Api.fetchPlayerComparison(playerA, playerB, season)
             .then((bundle) => PlayerComparisonView.render(mount, bundle))
             .catch((e) => {
                 console.error(e);
@@ -104,12 +104,12 @@ const ChatThread = (() => {
         return mount;
     }
 
-    function buildPlayerMount(player, handlers) {
+    function buildPlayerMount(player, handlers, season) {
         const mount = document.createElement('div');
         mount.className = 'dashboard-mount';
         mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(player)}...</div>`;
 
-        Api.fetchPlayerView(player)
+        Api.fetchPlayerView(player, season)
             .then((view) => PlayerView.render(mount, view, handlers))
             .catch((e) => {
                 console.error(e);

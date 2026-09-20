@@ -10,6 +10,7 @@ load_dotenv()
 from llm import answer_question
 from rag import (
     available_seasons,
+    explicit_season,
     get_all_teams,
     get_league_leaders,
     get_player_view,
@@ -37,6 +38,11 @@ _TEAM_KEY_LOOKUP = {t["key"].lower(): t["key"] for t in get_all_teams()}
 
 def _resolve_team_key(raw):
     return _TEAM_KEY_LOOKUP.get(raw.lower())
+
+
+def _requested_season():
+    season = request.args.get('season')
+    return season if season in available_seasons() else None
 
 
 def _team_dashboard_bundle(team_key, season=None):
@@ -90,6 +96,7 @@ def chat():
             'player': player,
             'players': players,
             'comparison': is_comparison_query(message),
+            'season': explicit_season(message, history),
             'chart': get_team_records(team) if team else None,
             'leaders': get_team_leaders(team) if team else None,
         })
@@ -123,9 +130,10 @@ def team_comparison(team, other):
     if not team_key or not other_key:
         unknown = team if not team_key else other
         return jsonify({'error': f'Unknown team: {unknown}'}), 404
+    season = _requested_season()
     return jsonify({
-        'teamA': _team_dashboard_bundle(team_key),
-        'teamB': _team_dashboard_bundle(other_key),
+        'teamA': _team_dashboard_bundle(team_key, season),
+        'teamB': _team_dashboard_bundle(other_key, season),
     })
 
 
@@ -137,7 +145,7 @@ def leaders():
 
 @app.route('/api/player/<name>')
 def player_view(name):
-    view = get_player_view(name)
+    view = get_player_view(name, _requested_season())
     if not view:
         return jsonify({'error': f'Unknown player: {name}'}), 404
     return jsonify(view)
@@ -145,7 +153,8 @@ def player_view(name):
 
 @app.route('/api/player/<name>/vs/<other>')
 def player_comparison(name, other):
-    view_a, view_b = get_player_view(name), get_player_view(other)
+    season = _requested_season()
+    view_a, view_b = get_player_view(name, season), get_player_view(other, season)
     if not view_a or not view_b:
         unknown = name if not view_a else other
         return jsonify({'error': f'Unknown player: {unknown}'}), 404

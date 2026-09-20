@@ -212,3 +212,44 @@ def test_chat_endpoint_flags_comparison_only_for_comparison_questions():
         versus = client.post("/api/chat", json={"message": "LeBron James vs Nikola Jokic"}).get_json()
     assert hypothetical["comparison"] is False
     assert versus["comparison"] is True
+
+
+def test_chat_endpoint_returns_the_season_asked_about():
+    client = server.app.test_client()
+    with patch("server.answer_question", return_value="ok"):
+        data = client.post("/api/chat", json={"message": "would the Cavs repeat in 2017 if KD stayed?"}).get_json()
+        none = client.post("/api/chat", json={"message": "Tell me about the Spurs"}).get_json()
+    assert data["season"] == "2016-17"
+    assert none["season"] is None
+
+
+def test_player_view_endpoint_respects_season_param():
+    client = server.app.test_client()
+    data = client.get("/api/player/Kevin Durant?season=2016-17").get_json()
+    assert data["team"] == "Warriors" and data["current"]["season"] == "2016-17"
+    fallback = client.get("/api/player/Kevin Durant?season=bogus").get_json()
+    assert fallback["current"]["season"] == "2025-26"
+
+
+def test_player_comparison_endpoint_respects_season_param():
+    client = server.app.test_client()
+    data = client.get("/api/player/LeBron James/vs/Kevin Durant?season=2016-17").get_json()
+    assert data["playerA"]["current"]["season"] == "2016-17"
+    assert data["playerB"]["team"] == "Warriors"
+
+
+def test_team_comparison_endpoint_respects_season_param():
+    client = server.app.test_client()
+    data = client.get("/api/team/Cavaliers/vs/Warriors?season=2016-17").get_json()
+    assert data["teamA"]["season"] == data["teamB"]["season"] == "2016-17"
+    assert data["teamA"]["seasonSnapshot"]["wins"] > 0
+    latest = client.get("/api/team/Cavaliers/vs/Warriors?season=bogus").get_json()
+    assert latest["teamA"]["season"] == "2025-26"
+
+
+def test_chat_season_carries_to_team_comparison_message():
+    client = server.app.test_client()
+    with patch("server.answer_question", return_value="ok"):
+        data = client.post("/api/chat", json={"message": "Compare the Cavaliers and Warriors in 2017"}).get_json()
+    assert data["comparison"] is True and data["season"] == "2016-17"
+    assert set(data["teams"]) == {"Cavaliers", "Warriors"}

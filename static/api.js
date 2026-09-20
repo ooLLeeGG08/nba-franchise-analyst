@@ -22,8 +22,9 @@ const Api = (() => {
         return response.json();
     }
 
-    async function fetchTeamComparison(teamA, teamB) {
-        const response = await fetch(`/api/team/${encodeURIComponent(teamA)}/vs/${encodeURIComponent(teamB)}`);
+    async function fetchTeamComparison(teamA, teamB, season) {
+        const query = season ? `?season=${encodeURIComponent(season)}` : '';
+        const response = await fetch(`/api/team/${encodeURIComponent(teamA)}/vs/${encodeURIComponent(teamB)}${query}`);
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         return response.json();
     }
@@ -34,14 +35,16 @@ const Api = (() => {
         return response.json();
     }
 
-    async function fetchPlayerView(name) {
-        const response = await fetch(`/api/player/${encodeURIComponent(name)}`);
+    async function fetchPlayerView(name, season) {
+        const query = season ? `?season=${encodeURIComponent(season)}` : '';
+        const response = await fetch(`/api/player/${encodeURIComponent(name)}${query}`);
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         return response.json();
     }
 
-    async function fetchPlayerComparison(nameA, nameB) {
-        const response = await fetch(`/api/player/${encodeURIComponent(nameA)}/vs/${encodeURIComponent(nameB)}`);
+    async function fetchPlayerComparison(nameA, nameB, season) {
+        const query = season ? `?season=${encodeURIComponent(season)}` : '';
+        const response = await fetch(`/api/player/${encodeURIComponent(nameA)}/vs/${encodeURIComponent(nameB)}${query}`);
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         return response.json();
     }

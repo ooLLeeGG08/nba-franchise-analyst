@@ -109,28 +109,34 @@ def _detect_season(text):
         if candidate in all_seasons:
             return candidate
 
+    # A bare year names the season that ENDS in it: "the 2017 Finals" or
+    # "back to back in 2017" is the 2016-17 season.
     match = _BARE_YEAR_RE.search(text)
     if match:
         year = int(match.group(1))
-        candidate = f"{year}-{str(year + 1)[2:]}"
+        candidate = f"{year - 1}-{str(year)[2:]}"
         if candidate in all_seasons:
             return candidate
 
     return None
 
 
-def resolve_season(message, history):
+def explicit_season(message, history=None):
+    """The season the user asked about (this message, else the latest earlier one), or None."""
     season = _detect_season(message)
     if season:
         return season
-    for turn in reversed(history):
+    for turn in reversed(history or []):
         if turn.get("role") != "user":
             continue
         season = _detect_season(turn.get("content", ""))
         if season:
             return season
-    all_seasons = _all_seasons()
-    return all_seasons[-1] if all_seasons else None
+    return None
+
+
+def resolve_season(message, history):
+    return explicit_season(message, history) or latest_season()
 
 
 def get_team_records(team):
@@ -503,30 +509,42 @@ def resolve_player(message, history=None):
     return None
 
 
-def get_player_view(name):
+def _entry_for_season(history, season):
+    """The player's row for a season; most games played if traded mid-season."""
+    rows = [e for e in history if e["season"] == season]
+    return max(rows, key=lambda e: e["gp"]) if rows else None
+
+
+def get_player_view(name, season=None):
     entry = _PLAYER_FULL_NAME_INDEX.get(_strip_accents(name.lower()))
     if not entry:
         return None
 
-    canonical_name, team, player_history = entry["name"], entry["team"], entry["history"]
+    canonical_name, player_history = entry["name"], entry["history"]
+
+    # `current` is the season being shown: the requested one when the player
+    # has data for it, otherwise their most recent. `history` stays complete
+    # so the trend chart still spans every season.
+    current = _entry_for_season(player_history, season) if season else None
+    current = current or player_history[-1]
+    team = current["team"]
 
     position = None
-    for season in sorted(ROSTERS.get(team, {}).keys(), reverse=True):
-        match = next((p for p in ROSTERS[team][season] if p["player"] == canonical_name), None)
+    for roster_season in [current["season"]] + sorted(ROSTERS.get(team, {}).keys(), reverse=True):
+        match = next((p for p in ROSTERS.get(team, {}).get(roster_season, []) if p["player"] == canonical_name), None)
         if match:
             position = match["position"]
             break
 
-    latest = player_history[-1]
-    # Real per-game averages for the player's most recent tracked season --
-    # not whether they happen to be a top-5 all-time leader for their team
-    # (that seed dataset also has an unrelated name/diacritics mismatch with
-    # nba_api's canonical names, e.g. "Nikola Jokic" vs "Nikola Jokić").
+    # Real per-game averages for the shown season -- not whether they happen
+    # to be a top-5 all-time leader for their team (that seed dataset also has
+    # an unrelated name/diacritics mismatch with nba_api's canonical names,
+    # e.g. "Nikola Jokic" vs "Nikola Jokić").
     season_stats = {
-        "ppg": latest.get("pts"),
-        "apg": latest.get("ast"),
-        "rpg": latest.get("reb"),
-        "spg": latest.get("stl"),
+        "ppg": current.get("pts"),
+        "apg": current.get("ast"),
+        "rpg": current.get("reb"),
+        "spg": current.get("stl"),
     }
     season_stats = {k: v for k, v in season_stats.items() if v is not None}
 
@@ -536,6 +554,7 @@ def get_player_view(name):
         "position": position,
         "branding": get_team_branding(team),
         "history": player_history,
+        "current": current,
         "seasonStats": season_stats,
     }
 
@@ -556,23 +575,32 @@ def _player_season_bits(entry):
     return ", ".join(bits)
 
 
-def _player_document(name):
-    view = get_player_view(name)
+def _player_document(name, season=None):
+    view = get_player_view(name, season)
     if not view:
         return ""
+    position = view["position"] or "position unknown"
+
+    if season and view["current"]["season"] == season:
+        # Asked about a specific season (e.g. "in 2017"): give exactly that
+        # season's line, not the player's current one.
+        entry = view["current"]
+        return f"{view['name']} ({position}) -- {season} with {entry['team']}: {_player_season_bits(entry)}"
+
     # Latest two tracked seasons: a player's most recent line can be a
     # different team or an injury-shortened year (e.g. AD: DAL 2024-25 vs
     # WAS 2025-26), which matters for "what if" questions.
     recent = view["history"][-2:][::-1]
     seasons = "; ".join(f"{e['season']} with {e['team']}: {_player_season_bits(e)}" for e in recent)
-    return f"{view['name']} ({view['position'] or 'position unknown'}) -- {seasons}"
+    note = f"No {season} data tracked for this player (data covers {available_seasons()[0]} to {latest_season()}). " if season else ""
+    return f"{view['name']} ({position}) -- {note}{seasons}"
 
 
 _MAX_PLAYERS_IN_CONTEXT = 4
 
 
-def _players_document(names, comparison):
-    docs = [d for d in (_player_document(n) for n in names[:_MAX_PLAYERS_IN_CONTEXT]) if d]
+def _players_document(names, comparison, season=None):
+    docs = [d for d in (_player_document(n, season) for n in names[:_MAX_PLAYERS_IN_CONTEXT]) if d]
     if not docs:
         return ""
     header = "Player comparison:" if comparison and len(docs) >= 2 else "Player stats:"
@@ -591,6 +619,7 @@ def _league_efficiency_document():
 def build_context(message, history):
     team = resolve_team(message, history)
     season = resolve_season(message, history)
+    asked_season = explicit_season(message, history)
     parts = []
 
     team_doc = retrieve_context(team, season) if team else ""
@@ -599,11 +628,11 @@ def build_context(message, history):
 
     current_players = mentioned_players(message)
     if current_players:
-        parts.append(_players_document(current_players, is_comparison_query(message)))
+        parts.append(_players_document(current_players, is_comparison_query(message), asked_season))
     else:
         fallback_player = resolve_player(message, history)
         if fallback_player:
-            parts.append(_players_document([fallback_player], False))
+            parts.append(_players_document([fallback_player], False, asked_season))
 
     parts.append(_league_efficiency_document())
 

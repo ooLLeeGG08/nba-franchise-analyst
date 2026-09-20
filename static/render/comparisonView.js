@@ -12,11 +12,47 @@ const ComparisonView = (() => {
         root.style.setProperty('--team-a-color', TeamColors.readableOnDark(teamA.branding.primary));
         root.style.setProperty('--team-b-color', TeamColors.readableOnDark(teamB.branding.primary));
 
+        root.appendChild(buildSeasonSwitcher(container, teamA, teamB));
         root.appendChild(buildHeaders(teamA, teamB));
         root.appendChild(buildKpiTable(teamA, teamB));
         root.appendChild(buildChart(teamA, teamB));
 
         container.appendChild(root);
+    }
+
+    // Same control as the single-team dashboard: re-fetches both teams for the
+    // chosen season and re-renders the whole card.
+    function buildSeasonSwitcher(container, teamA, teamB) {
+        const wrap = document.createElement('div');
+        wrap.className = 'season-switcher';
+
+        const label = document.createElement('span');
+        label.className = 'season-switcher-label';
+        label.textContent = 'Season';
+        wrap.appendChild(label);
+
+        const select = document.createElement('select');
+        select.className = 'season-switcher-select';
+        (teamA.availableSeasons || [teamA.season]).slice().reverse().forEach((season) => {
+            const option = document.createElement('option');
+            option.value = season;
+            option.textContent = season;
+            if (season === teamA.season) option.selected = true;
+            select.appendChild(option);
+        });
+
+        select.addEventListener('change', () => {
+            wrap.classList.add('loading');
+            Api.fetchTeamComparison(teamA.team, teamB.team, select.value)
+                .then((bundle) => render(container, bundle))
+                .catch((e) => {
+                    console.error(e);
+                    wrap.classList.remove('loading');
+                });
+        });
+
+        wrap.appendChild(select);
+        return wrap;
     }
 
     function buildHeaders(teamA, teamB) {

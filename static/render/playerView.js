@@ -10,7 +10,7 @@ const PlayerView = (() => {
     function render(container, view, { onNavigateToTeam } = {}) {
         container.innerHTML = '';
         const branding = view.branding;
-        const latest = view.history[view.history.length - 1];
+        const latest = view.current;
 
         const root = document.createElement('div');
         root.className = 'player-view';

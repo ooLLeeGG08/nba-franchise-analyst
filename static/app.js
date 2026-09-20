@@ -118,6 +118,7 @@
                 player: data.player || null,
                 players: data.players || [],
                 comparison: Boolean(data.comparison),
+                season: data.season || null,
             };
             thread.messages.push({ role: 'user', content: userInput }, assistantMessage);
             thread.updatedAt = new Date().toISOString();

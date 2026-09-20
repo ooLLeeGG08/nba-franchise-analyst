@@ -22,7 +22,7 @@ const PlayerComparisonView = (() => {
         const wrap = document.createElement('div');
         wrap.className = 'comparison-headers';
         [playerA, playerB].forEach((view) => {
-            const latest = view.history[view.history.length - 1];
+            const latest = view.current;
             const card = document.createElement('div');
             card.className = 'comparison-header-card';
             card.style.setProperty('--team-primary', TeamColors.readableOnDark(view.branding.primary));
@@ -46,8 +46,8 @@ const PlayerComparisonView = (() => {
     function buildKpiTable(playerA, playerB) {
         const section = document.createElement('div');
         section.className = 'comparison-table';
-        const latestA = playerA.history[playerA.history.length - 1];
-        const latestB = playerB.history[playerB.history.length - 1];
+        const latestA = playerA.current;
+        const latestB = playerB.current;
 
         const colHeader = document.createElement('div');
         colHeader.className = 'comparison-col-header';
@@ -94,8 +94,8 @@ const PlayerComparisonView = (() => {
         requestAnimationFrame(() => {
             const canvas = document.getElementById(chartId);
             if (!canvas) return;
-            const latestA = playerA.history[playerA.history.length - 1];
-            const latestB = playerB.history[playerB.history.length - 1];
+            const latestA = playerA.current;
+            const latestB = playerB.current;
             Charts.createComparisonBarChart(canvas, {
                 labels: ['PIE (x100)', 'OFF RTG', 'DEF RTG'],
                 seriesA: {
