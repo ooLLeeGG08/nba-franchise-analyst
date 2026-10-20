@@ -253,3 +253,12 @@ def test_chat_season_carries_to_team_comparison_message():
         data = client.post("/api/chat", json={"message": "Compare the Cavaliers and Warriors in 2017"}).get_json()
     assert data["comparison"] is True and data["season"] == "2016-17"
     assert set(data["teams"]) == {"Cavaliers", "Warriors"}
+
+
+def test_chat_endpoint_flags_trade_questions():
+    client = server.app.test_client()
+    with patch("server.answer_question", return_value="ok"):
+        trade = client.post("/api/chat", json={"message": "Should the Lakers trade for AD?"}).get_json()
+        normal = client.post("/api/chat", json={"message": "Analyze the Lakers"}).get_json()
+    assert trade["trade"] is True
+    assert normal["trade"] is False

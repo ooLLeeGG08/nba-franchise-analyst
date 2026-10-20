@@ -1,0 +1,13 @@
+{
+  "_note": "Seeded from a HoopsHype payroll page on 2026-10-20; cross-check against the NBA's official cap memo before relying on it.",
+  "seasons": {
+    "2026-27": {
+      "salary_cap": 164961000,
+      "luxury_tax_line": 200428000,
+      "first_apron": 209015000,
+      "second_apron": 221686000,
+      "minimum_team_salary": 148465000,
+      "currency": "USD"
+    }
+  }
+}

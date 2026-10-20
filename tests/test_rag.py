@@ -301,6 +301,19 @@ def test_build_context_includes_single_player_stats():
     assert "PIE" in context
 
 
+def test_build_context_includes_both_teams_when_two_are_named():
+    context = build_context("Compare the Celtics and Nets", [])
+    assert "Boston Celtics" in context and "Brooklyn Nets" in context
+
+
+def test_build_context_caps_team_count_and_falls_back_to_history():
+    history = [{"role": "user", "content": "Tell me about the Spurs"}]
+    assert rag._context_teams("What about their draft picks?", history) == ["Spurs"]
+    # mentioned_teams() order follows _TEAM_ALIASES, not message order -- the
+    # cap is what matters here, not which two of the three are kept.
+    assert len(rag._context_teams("Lakers, Celtics, Warriors?", [])) == 2
+
+
 def test_build_context_includes_both_players_in_comparison():
     context = build_context("Compare LeBron James and Nikola Jokic", [])
     assert "Player comparison:" in context
@@ -464,3 +477,46 @@ def test_player_context_uses_the_requested_season_not_the_latest():
 def test_player_context_notes_when_requested_season_has_no_data():
     context = build_context("How was KD in 2020?", [])  # 2019-20: no games played
     assert "No 2019-20 data tracked" in context
+
+
+def test_is_trade_query_matches_trade_and_swap_phrasing():
+    assert rag.is_trade_query("Should the Lakers trade for Anthony Davis?")
+    assert rag.is_trade_query("What would a Luka-AD trade look like?")
+    assert rag.is_trade_query("Would you swap Luka for AD straight up?")
+    assert rag.is_trade_query("Evaluate this trade: Celtics get X, Nets get Y")
+
+
+def test_is_trade_query_false_for_unrelated_questions():
+    assert not rag.is_trade_query("Analyze the Lakers")
+    assert not rag.is_trade_query("Compare LeBron and Jokic")
+    assert not rag.is_trade_query("Why do the Spurs sustain success?")
+
+
+def test_player_document_includes_salary_for_a_covered_player():
+    doc = rag._player_document("Jalen Brunson")
+    assert "Salary (PARTIAL, UNVERIFIED" in doc
+    assert "$37,739,521" in doc
+
+
+def test_player_document_omits_salary_line_for_an_uncovered_player():
+    # This 94-player partial extract has stars, not bench depth.
+    doc = rag._player_document("Victor Wembanyama")
+    assert "Salary" not in doc
+
+
+def test_build_context_adds_league_caps_and_data_caveat_only_for_trade_questions():
+    trade_ctx = build_context("Should the Knicks trade Jalen Brunson?", [])
+    assert "League cap figures" in trade_ctx
+    assert "Salary data caveat" in trade_ctx
+
+    non_trade_ctx = build_context("How is Jalen Brunson doing?", [])
+    assert "Salary (PARTIAL" in non_trade_ctx  # salary line still shown...
+    assert "League cap figures" not in non_trade_ctx  # ...but no trade-only additions
+    assert "Salary data caveat" not in non_trade_ctx
+
+
+def test_build_context_skips_caveat_line_when_no_salary_was_actually_used():
+    # A trade question about players this partial extract never reached
+    # shouldn't claim a caveat about data it didn't use.
+    ctx = build_context("Should the Lakers trade for a random bench player?", [])
+    assert "Salary data caveat" not in ctx

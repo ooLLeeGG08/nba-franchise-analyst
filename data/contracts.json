@@ -1,0 +1,1244 @@
+{
+  "_note": "PARTIAL and UNVERIFIED. Extracted by ChatGPT from HoopsHype's public team salary pages on 2026-10-20; stopped before covering every team/player. 28 of 30 teams have at least one real salary figure; Portland has none. Only ~95 of the league's ~450 players are covered (mostly each team's top earners, not full rosters). No years-remaining, guarantee, no-trade-clause, or trade-kicker data -- HoopsHype doesn't reliably expose those. Do not treat this as a complete or cap-office-verified source; always re-check before using it for anything that matters.",
+  "contracts": [
+    {
+      "player_name": "Karl-Anthony Towns",
+      "team": "Knicks",
+      "season": "2026-27",
+      "salary": 57078728,
+      "option_type": null
+    },
+    {
+      "player_name": "Karl-Anthony Towns",
+      "team": "Knicks",
+      "season": "2027-28",
+      "salary": 61015192,
+      "option_type": "player"
+    },
+    {
+      "player_name": "OG Anunoby",
+      "team": "Knicks",
+      "season": "2026-27",
+      "salary": 42500000,
+      "option_type": null
+    },
+    {
+      "player_name": "OG Anunoby",
+      "team": "Knicks",
+      "season": "2027-28",
+      "salary": 45431034,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Brunson",
+      "team": "Knicks",
+      "season": "2026-27",
+      "salary": 37739521,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Brunson",
+      "team": "Knicks",
+      "season": "2027-28",
+      "salary": 40535041,
+      "option_type": null
+    },
+    {
+      "player_name": "Mikal Bridges",
+      "team": "Knicks",
+      "season": "2026-27",
+      "salary": 33482145,
+      "option_type": null
+    },
+    {
+      "player_name": "Mikal Bridges",
+      "team": "Knicks",
+      "season": "2027-28",
+      "salary": 36160714,
+      "option_type": null
+    },
+    {
+      "player_name": "Josh Hart",
+      "team": "Knicks",
+      "season": "2026-27",
+      "salary": 20923760,
+      "option_type": null
+    },
+    {
+      "player_name": "Josh Hart",
+      "team": "Knicks",
+      "season": "2027-28",
+      "salary": 22375280,
+      "option_type": "team"
+    },
+    {
+      "player_name": "Stephen Curry",
+      "team": "Warriors",
+      "season": "2026-27",
+      "salary": 62587158,
+      "option_type": null
+    },
+    {
+      "player_name": "Stephen Curry",
+      "team": "Warriors",
+      "season": "2027-28",
+      "salary": 55700000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jimmy Butler",
+      "team": "Warriors",
+      "season": "2026-27",
+      "salary": 56832773,
+      "option_type": null
+    },
+    {
+      "player_name": "Draymond Green",
+      "team": "Warriors",
+      "season": "2026-27",
+      "salary": 27678571,
+      "option_type": null
+    },
+    {
+      "player_name": "Kristaps Porzingis",
+      "team": "Warriors",
+      "season": "2026-27",
+      "salary": 20000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Kristaps Porzingis",
+      "team": "Warriors",
+      "season": "2027-28",
+      "salary": 20000000,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Moses Moody",
+      "team": "Warriors",
+      "season": "2026-27",
+      "salary": 12500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Moses Moody",
+      "team": "Warriors",
+      "season": "2027-28",
+      "salary": 13425925,
+      "option_type": null
+    },
+    {
+      "player_name": "Nikola Jokic",
+      "team": "Nuggets",
+      "season": "2026-27",
+      "salary": 59033114,
+      "option_type": null
+    },
+    {
+      "player_name": "Nikola Jokic",
+      "team": "Nuggets",
+      "season": "2027-28",
+      "salary": 62841702,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Jamal Murray",
+      "team": "Nuggets",
+      "season": "2026-27",
+      "salary": 50105628,
+      "option_type": null
+    },
+    {
+      "player_name": "Jamal Murray",
+      "team": "Nuggets",
+      "season": "2027-28",
+      "salary": 53817156,
+      "option_type": null
+    },
+    {
+      "player_name": "Aaron Gordon",
+      "team": "Nuggets",
+      "season": "2026-27",
+      "salary": 31978037,
+      "option_type": null
+    },
+    {
+      "player_name": "Aaron Gordon",
+      "team": "Nuggets",
+      "season": "2027-28",
+      "salary": 34536280,
+      "option_type": null
+    },
+    {
+      "player_name": "Cameron Johnson",
+      "team": "Nuggets",
+      "season": "2026-27",
+      "salary": 23062500,
+      "option_type": null
+    },
+    {
+      "player_name": "Christian Braun",
+      "team": "Nuggets",
+      "season": "2026-27",
+      "salary": 21551726,
+      "option_type": null
+    },
+    {
+      "player_name": "Christian Braun",
+      "team": "Nuggets",
+      "season": "2027-28",
+      "salary": 23275863,
+      "option_type": null
+    },
+    {
+      "player_name": "Franz Wagner",
+      "team": "Magic",
+      "season": "2026-27",
+      "salary": 41754636,
+      "option_type": null
+    },
+    {
+      "player_name": "Franz Wagner",
+      "team": "Magic",
+      "season": "2027-28",
+      "salary": 44847572,
+      "option_type": null
+    },
+    {
+      "player_name": "Paolo Banchero",
+      "team": "Magic",
+      "season": "2026-27",
+      "salary": 41240250,
+      "option_type": null
+    },
+    {
+      "player_name": "Paolo Banchero",
+      "team": "Magic",
+      "season": "2027-28",
+      "salary": 44539470,
+      "option_type": null
+    },
+    {
+      "player_name": "Desmond Bane",
+      "team": "Magic",
+      "season": "2026-27",
+      "salary": 39446090,
+      "option_type": null
+    },
+    {
+      "player_name": "Desmond Bane",
+      "team": "Magic",
+      "season": "2027-28",
+      "salary": 42166510,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Suggs",
+      "team": "Magic",
+      "season": "2026-27",
+      "salary": 32400000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Suggs",
+      "team": "Magic",
+      "season": "2027-28",
+      "salary": 29600000,
+      "option_type": null
+    },
+    {
+      "player_name": "Anthony Edwards",
+      "team": "Timberwolves",
+      "season": "2026-27",
+      "salary": 48924624,
+      "option_type": null
+    },
+    {
+      "player_name": "Anthony Edwards",
+      "team": "Timberwolves",
+      "season": "2027-28",
+      "salary": 52298736,
+      "option_type": null
+    },
+    {
+      "player_name": "LaMelo Ball",
+      "team": "Timberwolves",
+      "season": "2026-27",
+      "salary": 40770520,
+      "option_type": null
+    },
+    {
+      "player_name": "LaMelo Ball",
+      "team": "Timberwolves",
+      "season": "2027-28",
+      "salary": 43582280,
+      "option_type": null
+    },
+    {
+      "player_name": "Rudy Gobert",
+      "team": "Timberwolves",
+      "season": "2026-27",
+      "salary": 36500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Rudy Gobert",
+      "team": "Timberwolves",
+      "season": "2027-28",
+      "salary": 38000000,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Jaden McDaniels",
+      "team": "Timberwolves",
+      "season": "2026-27",
+      "salary": 25750001,
+      "option_type": null
+    },
+    {
+      "player_name": "Jaden McDaniels",
+      "team": "Timberwolves",
+      "season": "2027-28",
+      "salary": 28006898,
+      "option_type": null
+    },
+    {
+      "player_name": "Chet Holmgren",
+      "team": "Thunder",
+      "season": "2026-27",
+      "salary": 41240250,
+      "option_type": null
+    },
+    {
+      "player_name": "Chet Holmgren",
+      "team": "Thunder",
+      "season": "2027-28",
+      "salary": 44539470,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Williams",
+      "team": "Thunder",
+      "season": "2026-27",
+      "salary": 41240250,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Williams",
+      "team": "Thunder",
+      "season": "2027-28",
+      "salary": 44539470,
+      "option_type": null
+    },
+    {
+      "player_name": "Shai Gilgeous-Alexander",
+      "team": "Thunder",
+      "season": "2026-27",
+      "salary": 40806150,
+      "option_type": null
+    },
+    {
+      "player_name": "Shai Gilgeous-Alexander",
+      "team": "Thunder",
+      "season": "2027-28",
+      "salary": 61600000,
+      "option_type": null
+    },
+    {
+      "player_name": "Isaiah Hartenstein",
+      "team": "Thunder",
+      "season": "2026-27",
+      "salary": 23148148,
+      "option_type": null
+    },
+    {
+      "player_name": "Isaiah Hartenstein",
+      "team": "Thunder",
+      "season": "2027-28",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Devin Booker",
+      "team": "Suns",
+      "season": "2026-27",
+      "salary": 57078728,
+      "option_type": null
+    },
+    {
+      "player_name": "Devin Booker",
+      "team": "Suns",
+      "season": "2027-28",
+      "salary": 61015192,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Green",
+      "team": "Suns",
+      "season": "2026-27",
+      "salary": 36251166,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Green",
+      "team": "Suns",
+      "season": "2027-28",
+      "salary": 36000000,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Miles Bridges",
+      "team": "Suns",
+      "season": "2026-27",
+      "salary": 22826087,
+      "option_type": null
+    },
+    {
+      "player_name": "Dillon Brooks",
+      "team": "Suns",
+      "season": "2026-27",
+      "salary": 20992727,
+      "option_type": null
+    },
+    {
+      "player_name": "Dillon Brooks",
+      "team": "Suns",
+      "season": "2027-28",
+      "salary": 22530864,
+      "option_type": null
+    },
+    {
+      "player_name": "Donovan Mitchell",
+      "team": "Cavaliers",
+      "season": "2026-27",
+      "salary": 50105628,
+      "option_type": null
+    },
+    {
+      "player_name": "Donovan Mitchell",
+      "team": "Cavaliers",
+      "season": "2027-28",
+      "salary": 63509985,
+      "option_type": null
+    },
+    {
+      "player_name": "Evan Mobley",
+      "team": "Cavaliers",
+      "season": "2026-27",
+      "salary": 50105628,
+      "option_type": null
+    },
+    {
+      "player_name": "Evan Mobley",
+      "team": "Cavaliers",
+      "season": "2027-28",
+      "salary": 53817156,
+      "option_type": null
+    },
+    {
+      "player_name": "James Harden",
+      "team": "Cavaliers",
+      "season": "2026-27",
+      "salary": 30647619,
+      "option_type": null
+    },
+    {
+      "player_name": "James Harden",
+      "team": "Cavaliers",
+      "season": "2027-28",
+      "salary": 32180000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jarrett Allen",
+      "team": "Cavaliers",
+      "season": "2026-27",
+      "salary": 28000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jarrett Allen",
+      "team": "Cavaliers",
+      "season": "2027-28",
+      "salary": 30240000,
+      "option_type": null
+    },
+    {
+      "player_name": "Pascal Siakam",
+      "team": "Pacers",
+      "season": "2026-27",
+      "salary": 48924624,
+      "option_type": null
+    },
+    {
+      "player_name": "Pascal Siakam",
+      "team": "Pacers",
+      "season": "2027-28",
+      "salary": 52298736,
+      "option_type": null
+    },
+    {
+      "player_name": "Tyrese Haliburton",
+      "team": "Pacers",
+      "season": "2026-27",
+      "salary": 48924624,
+      "option_type": null
+    },
+    {
+      "player_name": "Tyrese Haliburton",
+      "team": "Pacers",
+      "season": "2027-28",
+      "salary": 52298736,
+      "option_type": null
+    },
+    {
+      "player_name": "Ivica Zubac",
+      "team": "Pacers",
+      "season": "2026-27",
+      "salary": 19550160,
+      "option_type": null
+    },
+    {
+      "player_name": "Ivica Zubac",
+      "team": "Pacers",
+      "season": "2027-28",
+      "salary": 20998320,
+      "option_type": null
+    },
+    {
+      "player_name": "Andrew Nembhard",
+      "team": "Pacers",
+      "season": "2026-27",
+      "salary": 19550160,
+      "option_type": null
+    },
+    {
+      "player_name": "Andrew Nembhard",
+      "team": "Pacers",
+      "season": "2027-28",
+      "salary": 20998320,
+      "option_type": null
+    },
+    {
+      "player_name": "Giannis Antetokounmpo",
+      "team": "Heat",
+      "season": "2026-27",
+      "salary": 58456566,
+      "option_type": null
+    },
+    {
+      "player_name": "Giannis Antetokounmpo",
+      "team": "Heat",
+      "season": "2027-28",
+      "salary": 62786682,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Bam Adebayo",
+      "team": "Heat",
+      "season": "2026-27",
+      "salary": 49488300,
+      "option_type": null
+    },
+    {
+      "player_name": "Bam Adebayo",
+      "team": "Heat",
+      "season": "2027-28",
+      "salary": 53447364,
+      "option_type": null
+    },
+    {
+      "player_name": "Andrew Wiggins",
+      "team": "Heat",
+      "season": "2026-27",
+      "salary": 30169644,
+      "option_type": null
+    },
+    {
+      "player_name": "Andrew Wiggins",
+      "team": "Heat",
+      "season": "2027-28",
+      "salary": 16510000,
+      "option_type": null
+    },
+    {
+      "player_name": "Nikola Jovic",
+      "team": "Heat",
+      "season": "2026-27",
+      "salary": 16200000,
+      "option_type": null
+    },
+    {
+      "player_name": "Nikola Jovic",
+      "team": "Heat",
+      "season": "2027-28",
+      "salary": 14904000,
+      "option_type": null
+    },
+    {
+      "player_name": "Kevin Durant",
+      "team": "Rockets",
+      "season": "2026-27",
+      "salary": 43902439,
+      "option_type": null
+    },
+    {
+      "player_name": "Kevin Durant",
+      "team": "Rockets",
+      "season": "2027-28",
+      "salary": 46097561,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Alperen Sengun",
+      "team": "Rockets",
+      "season": "2026-27",
+      "salary": 35642202,
+      "option_type": null
+    },
+    {
+      "player_name": "Alperen Sengun",
+      "team": "Rockets",
+      "season": "2027-28",
+      "salary": 37339450,
+      "option_type": null
+    },
+    {
+      "player_name": "Fred VanVleet",
+      "team": "Rockets",
+      "season": "2026-27",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jabari Smith Jr.",
+      "team": "Rockets",
+      "season": "2026-27",
+      "salary": 23643411,
+      "option_type": null
+    },
+    {
+      "player_name": "Jabari Smith Jr.",
+      "team": "Rockets",
+      "season": "2027-28",
+      "salary": 21751940,
+      "option_type": null
+    },
+    {
+      "player_name": "Jaylen Brown",
+      "team": "76ers",
+      "season": "2026-27",
+      "salary": 57736350,
+      "option_type": null
+    },
+    {
+      "player_name": "Jaylen Brown",
+      "team": "76ers",
+      "season": "2027-28",
+      "salary": 61672814,
+      "option_type": null
+    },
+    {
+      "player_name": "Joel Embiid",
+      "team": "76ers",
+      "season": "2026-27",
+      "salary": 57736350,
+      "option_type": null
+    },
+    {
+      "player_name": "Joel Embiid",
+      "team": "76ers",
+      "season": "2027-28",
+      "salary": 62355258,
+      "option_type": null
+    },
+    {
+      "player_name": "Tyrese Maxey",
+      "team": "76ers",
+      "season": "2026-27",
+      "salary": 40770520,
+      "option_type": null
+    },
+    {
+      "player_name": "Tyrese Maxey",
+      "team": "76ers",
+      "season": "2027-28",
+      "salary": 43582280,
+      "option_type": null
+    },
+    {
+      "player_name": "Luka Doncic",
+      "team": "Lakers",
+      "season": "2026-27",
+      "salary": 51033600,
+      "option_type": null
+    },
+    {
+      "player_name": "Luka Doncic",
+      "team": "Lakers",
+      "season": "2027-28",
+      "salary": 55116288,
+      "option_type": null
+    },
+    {
+      "player_name": "Austin Reaves",
+      "team": "Lakers",
+      "season": "2026-27",
+      "salary": 41240250,
+      "option_type": null
+    },
+    {
+      "player_name": "Austin Reaves",
+      "team": "Lakers",
+      "season": "2027-28",
+      "salary": 42954030,
+      "option_type": null
+    },
+    {
+      "player_name": "Walker Kessler",
+      "team": "Lakers",
+      "season": "2026-27",
+      "salary": 30108821,
+      "option_type": null
+    },
+    {
+      "player_name": "Walker Kessler",
+      "team": "Lakers",
+      "season": "2027-28",
+      "salary": 31614262,
+      "option_type": null
+    },
+    {
+      "player_name": "Jayson Tatum",
+      "team": "Celtics",
+      "season": "2026-27",
+      "salary": 58456566,
+      "option_type": null
+    },
+    {
+      "player_name": "Jayson Tatum",
+      "team": "Celtics",
+      "season": "2027-28",
+      "salary": 62786682,
+      "option_type": null
+    },
+    {
+      "player_name": "Paul George",
+      "team": "Celtics",
+      "season": "2026-27",
+      "salary": 54126380,
+      "option_type": null
+    },
+    {
+      "player_name": "Paul George",
+      "team": "Celtics",
+      "season": "2027-28",
+      "salary": 56586670,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Derrick White",
+      "team": "Celtics",
+      "season": "2026-27",
+      "salary": 30348000,
+      "option_type": null
+    },
+    {
+      "player_name": "Derrick White",
+      "team": "Celtics",
+      "season": "2027-28",
+      "salary": 32596000,
+      "option_type": null
+    },
+    {
+      "player_name": "Kawhi Leonard",
+      "team": "Raptors",
+      "season": "2026-27",
+      "salary": 50300000,
+      "option_type": null
+    },
+    {
+      "player_name": "Kawhi Leonard",
+      "team": "Raptors",
+      "season": "2027-28",
+      "salary": 56100000,
+      "option_type": null
+    },
+    {
+      "player_name": "Scottie Barnes",
+      "team": "Raptors",
+      "season": "2026-27",
+      "salary": 41754636,
+      "option_type": null
+    },
+    {
+      "player_name": "Scottie Barnes",
+      "team": "Raptors",
+      "season": "2027-28",
+      "salary": 44847572,
+      "option_type": null
+    },
+    {
+      "player_name": "Immanuel Quickley",
+      "team": "Raptors",
+      "season": "2026-27",
+      "salary": 32500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Immanuel Quickley",
+      "team": "Raptors",
+      "season": "2027-28",
+      "salary": 32500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Zion Williamson",
+      "team": "Pelicans",
+      "season": "2026-27",
+      "salary": 42166510,
+      "option_type": null
+    },
+    {
+      "player_name": "Zion Williamson",
+      "team": "Pelicans",
+      "season": "2027-28",
+      "salary": 44886930,
+      "option_type": null
+    },
+    {
+      "player_name": "Jordan Poole",
+      "team": "Pelicans",
+      "season": "2026-27",
+      "salary": 34044642,
+      "option_type": null
+    },
+    {
+      "player_name": "Dejounte Murray",
+      "team": "Pelicans",
+      "season": "2026-27",
+      "salary": 32785071,
+      "option_type": null
+    },
+    {
+      "player_name": "Dejounte Murray",
+      "team": "Pelicans",
+      "season": "2027-28",
+      "salary": 30751504,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Trey Murphy III",
+      "team": "Pelicans",
+      "season": "2026-27",
+      "salary": 27000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Trey Murphy III",
+      "team": "Pelicans",
+      "season": "2027-28",
+      "salary": 29000000,
+      "option_type": null
+    },
+    {
+      "player_name": "De'Aaron Fox",
+      "team": "Spurs",
+      "season": "2026-27",
+      "salary": 49488300,
+      "option_type": null
+    },
+    {
+      "player_name": "De'Aaron Fox",
+      "team": "Spurs",
+      "season": "2027-28",
+      "salary": 53447364,
+      "option_type": null
+    },
+    {
+      "player_name": "Devin Vassell",
+      "team": "Spurs",
+      "season": "2026-27",
+      "salary": 27500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Devin Vassell",
+      "team": "Spurs",
+      "season": "2027-28",
+      "salary": 25108696,
+      "option_type": null
+    },
+    {
+      "player_name": "Keldon Johnson",
+      "team": "Spurs",
+      "season": "2026-27",
+      "salary": 18000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Zach LaVine",
+      "team": "Kings",
+      "season": "2026-27",
+      "salary": 48967380,
+      "option_type": null
+    },
+    {
+      "player_name": "Domantas Sabonis",
+      "team": "Kings",
+      "season": "2026-27",
+      "salary": 45472000,
+      "option_type": null
+    },
+    {
+      "player_name": "Domantas Sabonis",
+      "team": "Kings",
+      "season": "2027-28",
+      "salary": 48608000,
+      "option_type": null
+    },
+    {
+      "player_name": "De'Andre Hunter",
+      "team": "Kings",
+      "season": "2026-27",
+      "salary": 24910714,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Johnson",
+      "team": "Hawks",
+      "season": "2026-27",
+      "salary": 30000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jalen Johnson",
+      "team": "Hawks",
+      "season": "2027-28",
+      "salary": 30000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Dyson Daniels",
+      "team": "Hawks",
+      "season": "2026-27",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Dyson Daniels",
+      "team": "Hawks",
+      "season": "2027-28",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "CJ McCollum",
+      "team": "Hawks",
+      "season": "2026-27",
+      "salary": 21000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Cade Cunningham",
+      "team": "Pistons",
+      "season": "2026-27",
+      "salary": 50105628,
+      "option_type": null
+    },
+    {
+      "player_name": "Cade Cunningham",
+      "team": "Pistons",
+      "season": "2027-28",
+      "salary": 53817156,
+      "option_type": null
+    },
+    {
+      "player_name": "Kyrie Irving",
+      "team": "Mavericks",
+      "season": "2026-27",
+      "salary": 39491282,
+      "option_type": null
+    },
+    {
+      "player_name": "Kyrie Irving",
+      "team": "Mavericks",
+      "season": "2027-28",
+      "salary": 42416562,
+      "option_type": "player"
+    },
+    {
+      "player_name": "PJ Washington",
+      "team": "Mavericks",
+      "season": "2026-27",
+      "salary": 19813044,
+      "option_type": null
+    },
+    {
+      "player_name": "PJ Washington",
+      "team": "Mavericks",
+      "season": "2027-28",
+      "salary": 21398088,
+      "option_type": null
+    },
+    {
+      "player_name": "Daniel Gafford",
+      "team": "Mavericks",
+      "season": "2026-27",
+      "salary": 17263584,
+      "option_type": null
+    },
+    {
+      "player_name": "Daniel Gafford",
+      "team": "Mavericks",
+      "season": "2027-28",
+      "salary": 18126763,
+      "option_type": null
+    },
+    {
+      "player_name": "Anthony Davis",
+      "team": "Wizards",
+      "season": "2026-27",
+      "salary": 58456566,
+      "option_type": null
+    },
+    {
+      "player_name": "Anthony Davis",
+      "team": "Wizards",
+      "season": "2027-28",
+      "salary": 62786682,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Trae Young",
+      "team": "Wizards",
+      "season": "2026-27",
+      "salary": 49488300,
+      "option_type": null
+    },
+    {
+      "player_name": "Trae Young",
+      "team": "Wizards",
+      "season": "2027-28",
+      "salary": 50478066,
+      "option_type": null
+    },
+    {
+      "player_name": "Tyler Herro",
+      "team": "Bucks",
+      "season": "2026-27",
+      "salary": 33000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Myles Turner",
+      "team": "Bucks",
+      "season": "2026-27",
+      "salary": 26584164,
+      "option_type": null
+    },
+    {
+      "player_name": "Myles Turner",
+      "team": "Bucks",
+      "season": "2027-28",
+      "salary": 27850077,
+      "option_type": null
+    },
+    {
+      "player_name": "Damian Lillard",
+      "team": "Bucks",
+      "season": "2026-27",
+      "salary": 22516603,
+      "option_type": null
+    },
+    {
+      "player_name": "Damian Lillard",
+      "team": "Bucks",
+      "season": "2027-28",
+      "salary": 22516603,
+      "option_type": null
+    },
+    {
+      "player_name": "Darius Garland",
+      "team": "Clippers",
+      "season": "2026-27",
+      "salary": 42166510,
+      "option_type": null
+    },
+    {
+      "player_name": "Darius Garland",
+      "team": "Clippers",
+      "season": "2027-28",
+      "salary": 44886930,
+      "option_type": null
+    },
+    {
+      "player_name": "Brandon Ingram",
+      "team": "Clippers",
+      "season": "2026-27",
+      "salary": 40000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Brandon Ingram",
+      "team": "Clippers",
+      "season": "2027-28",
+      "salary": 41904762,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Jaren Jackson Jr.",
+      "team": "Jazz",
+      "season": "2026-27",
+      "salary": 49000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Jaren Jackson Jr.",
+      "team": "Jazz",
+      "season": "2027-28",
+      "salary": 50500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Lauri Markkanen",
+      "team": "Jazz",
+      "season": "2026-27",
+      "salary": 46113154,
+      "option_type": null
+    },
+    {
+      "player_name": "Lauri Markkanen",
+      "team": "Jazz",
+      "season": "2027-28",
+      "salary": 49824681,
+      "option_type": null
+    },
+    {
+      "player_name": "Quinten Post",
+      "team": "Grizzlies",
+      "season": "2026-27",
+      "salary": 9000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Quinten Post",
+      "team": "Grizzlies",
+      "season": "2027-28",
+      "salary": 8550000,
+      "option_type": null
+    },
+    {
+      "player_name": "Taylor Hendricks",
+      "team": "Grizzlies",
+      "season": "2026-27",
+      "salary": 7805900,
+      "option_type": null
+    },
+    {
+      "player_name": "Taylor Hendricks",
+      "team": "Grizzlies",
+      "season": "2027-28",
+      "salary": 11357175,
+      "option_type": null
+    },
+    {
+      "player_name": "Coby White",
+      "team": "Hornets",
+      "season": "2026-27",
+      "salary": 26811593,
+      "option_type": null
+    },
+    {
+      "player_name": "Coby White",
+      "team": "Hornets",
+      "season": "2027-28",
+      "salary": 24666667,
+      "option_type": null
+    },
+    {
+      "player_name": "Naz Reid",
+      "team": "Hornets",
+      "season": "2026-27",
+      "salary": 23275862,
+      "option_type": null
+    },
+    {
+      "player_name": "Naz Reid",
+      "team": "Hornets",
+      "season": "2027-28",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Michael Porter Jr.",
+      "team": "Nets",
+      "season": "2026-27",
+      "salary": 40806150,
+      "option_type": null
+    },
+    {
+      "player_name": "Julius Randle",
+      "team": "Nets",
+      "season": "2026-27",
+      "salary": 33333334,
+      "option_type": null
+    },
+    {
+      "player_name": "Julius Randle",
+      "team": "Nets",
+      "season": "2027-28",
+      "salary": 35802468,
+      "option_type": "player"
+    },
+    {
+      "player_name": "Terance Mann",
+      "team": "Nets",
+      "season": "2026-27",
+      "salary": 15500000,
+      "option_type": null
+    },
+    {
+      "player_name": "Terance Mann",
+      "team": "Nets",
+      "season": "2027-28",
+      "salary": 16000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Josh Giddey",
+      "team": "Bulls",
+      "season": "2026-27",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Josh Giddey",
+      "team": "Bulls",
+      "season": "2027-28",
+      "salary": 25000000,
+      "option_type": null
+    },
+    {
+      "player_name": "Nicolas Claxton",
+      "team": "Bulls",
+      "season": "2026-27",
+      "salary": 23320738,
+      "option_type": null
+    },
+    {
+      "player_name": "Nicolas Claxton",
+      "team": "Bulls",
+      "season": "2027-28",
+      "salary": 21099720,
+      "option_type": null
+    },
+    {
+      "player_name": "Deni Avdija",
+      "team": "TrailBlazers",
+      "season": "2026-27",
+      "salary": null,
+      "option_type": null
+    }
+  ]
+}

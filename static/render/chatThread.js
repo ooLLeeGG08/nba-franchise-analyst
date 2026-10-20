@@ -32,6 +32,10 @@ const ChatThread = (() => {
         const row = document.createElement('div');
         row.className = 'message-row assistant';
 
+        if (!message.isError && message.trade) {
+            row.appendChild(buildTradeBadge());
+        }
+
         const body = document.createElement('div');
         body.className = 'message assistant-message' + (message.isError ? ' error' : '');
         body.textContent = message.content;
@@ -59,79 +63,97 @@ const ChatThread = (() => {
         return row;
     }
 
-    function buildDashboardMount(team, season) {
+    // Trade questions get a structured breakdown (see llm.py's
+    // TRADE_PROMPT_ADDENDUM) instead of the usual 3-5 sentence answer -- this
+    // badge sets that expectation up front and makes explicit what the brief
+    // calls for: distinguishing a preliminary basketball-fit judgment from a
+    // verified statistic. It is never financial/cap advice; this app has no
+    // contract or salary data to back that up.
+    function buildTradeBadge() {
+        const badge = document.createElement('div');
+        badge.className = 'trade-badge';
+        badge.textContent = 'Preliminary basketball-fit analysis — not a cap or contract check';
+        return badge;
+    }
+
+    // Shared loading/error chrome for the five dashboard mounts below. `task`
+    // is re-invoked on Retry (with the same mount node), so a flaky fetch
+    // (cold-start Render dyno, a dropped connection) doesn't require
+    // re-asking the question.
+    function mountWithRetry(loadingText, errorText, task) {
         const mount = document.createElement('div');
         mount.className = 'dashboard-mount';
-        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(team)} analytics...</div>`;
 
-        Api.fetchTeamDashboard(team, season)
-            .then((bundle) => TeamDashboard.render(mount, bundle))
-            .catch((e) => {
+        function load() {
+            mount.innerHTML = `<div class="dashboard-loading">${escapeHtml(loadingText)}</div>`;
+            task(mount).catch((e) => {
                 console.error(e);
-                mount.innerHTML = `<div class="dashboard-loading">Couldn't load ${escapeHtml(team)} analytics.</div>`;
+                renderLoadError(mount, errorText, load);
             });
+        }
 
+        load();
         return mount;
+    }
+
+    function renderLoadError(mount, text, onRetry) {
+        mount.innerHTML = '';
+        const wrap = document.createElement('div');
+        wrap.className = 'dashboard-loading dashboard-error';
+        const label = document.createElement('span');
+        label.textContent = text;
+        wrap.appendChild(label);
+        wrap.appendChild(buildRetryButton(onRetry));
+        mount.appendChild(wrap);
+    }
+
+    function buildRetryButton(onRetry) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'retry-button';
+        button.textContent = 'Retry';
+        button.addEventListener('click', onRetry);
+        return button;
+    }
+
+    function buildDashboardMount(team, season) {
+        return mountWithRetry(
+            `Loading ${team} analytics...`,
+            `Couldn't load ${team} analytics.`,
+            (mount) => Api.fetchTeamDashboard(team, season).then((bundle) => TeamDashboard.render(mount, bundle)),
+        );
     }
 
     function buildComparisonMount(teamA, teamB, season) {
-        const mount = document.createElement('div');
-        mount.className = 'dashboard-mount';
-        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(teamA)} vs ${escapeHtml(teamB)}...</div>`;
-
-        Api.fetchTeamComparison(teamA, teamB, season)
-            .then((bundle) => ComparisonView.render(mount, bundle))
-            .catch((e) => {
-                console.error(e);
-                mount.innerHTML = `<div class="dashboard-loading">Couldn't load that comparison.</div>`;
-            });
-
-        return mount;
+        return mountWithRetry(
+            `Loading ${teamA} vs ${teamB}...`,
+            "Couldn't load that comparison.",
+            (mount) => Api.fetchTeamComparison(teamA, teamB, season).then((bundle) => ComparisonView.render(mount, bundle)),
+        );
     }
 
     function buildPlayerComparisonMount(playerA, playerB, season) {
-        const mount = document.createElement('div');
-        mount.className = 'dashboard-mount';
-        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(playerA)} vs ${escapeHtml(playerB)}...</div>`;
-
-        Api.fetchPlayerComparison(playerA, playerB, season)
-            .then((bundle) => PlayerComparisonView.render(mount, bundle))
-            .catch((e) => {
-                console.error(e);
-                mount.innerHTML = `<div class="dashboard-loading">Couldn't load that comparison.</div>`;
-            });
-
-        return mount;
+        return mountWithRetry(
+            `Loading ${playerA} vs ${playerB}...`,
+            "Couldn't load that comparison.",
+            (mount) => Api.fetchPlayerComparison(playerA, playerB, season).then((bundle) => PlayerComparisonView.render(mount, bundle)),
+        );
     }
 
     function buildPlayerMount(player, handlers, season) {
-        const mount = document.createElement('div');
-        mount.className = 'dashboard-mount';
-        mount.innerHTML = `<div class="dashboard-loading">Loading ${escapeHtml(player)}...</div>`;
-
-        Api.fetchPlayerView(player, season)
-            .then((view) => PlayerView.render(mount, view, handlers))
-            .catch((e) => {
-                console.error(e);
-                mount.innerHTML = `<div class="dashboard-loading">Couldn't load ${escapeHtml(player)}.</div>`;
-            });
-
-        return mount;
+        return mountWithRetry(
+            `Loading ${player}...`,
+            `Couldn't load ${player}.`,
+            (mount) => Api.fetchPlayerView(player, season).then((view) => PlayerView.render(mount, view, handlers)),
+        );
     }
 
     function buildLeadersMount(handlers) {
-        const mount = document.createElement('div');
-        mount.className = 'dashboard-mount';
-        mount.innerHTML = `<div class="dashboard-loading">Loading league leaders...</div>`;
-
-        Api.fetchLeaders()
-            .then((data) => LeadersTable.render(mount, data, handlers))
-            .catch((e) => {
-                console.error(e);
-                mount.innerHTML = `<div class="dashboard-loading">Couldn't load league leaders.</div>`;
-            });
-
-        return mount;
+        return mountWithRetry(
+            'Loading league leaders...',
+            "Couldn't load league leaders.",
+            (mount) => Api.fetchLeaders().then((data) => LeadersTable.render(mount, data, handlers)),
+        );
     }
 
     function appendThinkingBubble(container, handlers = {}) {
@@ -150,10 +172,11 @@ const ChatThread = (() => {
                 row.replaceWith(buildMessageElement(message, handlers));
                 scrollToBottom(container);
             },
-            resolveAsError(text) {
+            resolveAsError(text, onRetry) {
                 bubble.textContent = text;
                 bubble.classList.remove('thinking');
                 bubble.classList.add('error');
+                if (onRetry) row.appendChild(buildRetryButton(onRetry));
                 scrollToBottom(container);
             },
         };

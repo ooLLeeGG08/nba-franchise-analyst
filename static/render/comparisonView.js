@@ -1,7 +1,7 @@
 // Side-by-side comparison of two teams, driven by the /api/team/<a>/vs/<b>
-// bundle. Note: the AI's prose answer above this is only grounded in ONE
-// team's context (a backend limitation, not fixed by this view) -- this
-// dashboard is the actual side-by-side comparison.
+// bundle. The AI's prose answer above this is grounded in both teams'
+// context (rag.py's build_context), so this dashboard is a visual companion
+// to that answer, not a workaround for a missing half of it.
 const ComparisonView = (() => {
     let chartCounter = 0;
 

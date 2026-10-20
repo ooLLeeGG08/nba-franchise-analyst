@@ -118,6 +118,7 @@
                 player: data.player || null,
                 players: data.players || [],
                 comparison: Boolean(data.comparison),
+                trade: Boolean(data.trade),
                 season: data.season || null,
             };
             thread.messages.push({ role: 'user', content: userInput }, assistantMessage);
@@ -130,7 +131,10 @@
             renderSidebarPane();
         } catch (e) {
             console.error(e);
-            thinking.resolveAsError("Sorry, I'm having trouble connecting. Please try again.");
+            // Nothing was persisted to thread.messages above, so retrying is
+            // just re-running handleSend -- the next render() call wipes this
+            // failed user+error bubble pair from the transcript cleanly.
+            thinking.resolveAsError("Sorry, I'm having trouble connecting.", () => handleSend(userInput));
         } finally {
             sending = false;
             if (composer) {

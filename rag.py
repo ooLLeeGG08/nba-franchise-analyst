@@ -3,6 +3,8 @@ import os
 import re
 import unicodedata
 
+from contracts import CONTRACT_DATA_NOTE, get_league_cap_info, get_player_contract, latest_cap_season
+
 _DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 with open(os.path.join(_DATA_DIR, "franchise_knowledge.json")) as f:
@@ -495,6 +497,20 @@ def is_comparison_query(message):
     return bool(_COMPARISON_RE.search(message.lower()))
 
 
+_TRADE_RE = re.compile(r"\btrad(?:e[sd]?|ing)\b|\bswap(?:s|ped|ping)?\b")
+
+
+def is_trade_query(message):
+    """True when the user is proposing or asking about a trade.
+
+    Drives which system prompt llm.py uses (see TRADE_PROMPT_ADDENDUM) and the
+    "preliminary basketball-fit assessment" label the frontend shows -- this
+    app has no contract/salary/cap/draft-pick data, so a trade answer is
+    never allowed to claim financial or CBA feasibility.
+    """
+    return bool(_TRADE_RE.search(message.lower()))
+
+
 def resolve_player(message, history=None):
     found = mentioned_players(message)
     if found:
@@ -575,17 +591,32 @@ def _player_season_bits(entry):
     return ", ".join(bits)
 
 
+def _contract_line(canonical_name):
+    """Known salary rows for this player from the partial HoopsHype extract
+    (data/contracts.json), or "" if this incomplete dataset never reached
+    them -- a miss here must never be read as "no contract", just "unknown"."""
+    rows = get_player_contract(canonical_name)
+    if not rows:
+        return ""
+    salaries = "; ".join(
+        f"{r['season']} ${r['salary']:,}" + (f" ({r['option_type']} option)" if r.get("option_type") else "")
+        for r in rows
+    )
+    return f" | Salary (PARTIAL, UNVERIFIED extract -- see note below): {salaries}"
+
+
 def _player_document(name, season=None):
     view = get_player_view(name, season)
     if not view:
         return ""
     position = view["position"] or "position unknown"
+    contract = _contract_line(view["name"])
 
     if season and view["current"]["season"] == season:
         # Asked about a specific season (e.g. "in 2017"): give exactly that
         # season's line, not the player's current one.
         entry = view["current"]
-        return f"{view['name']} ({position}) -- {season} with {entry['team']}: {_player_season_bits(entry)}"
+        return f"{view['name']} ({position}) -- {season} with {entry['team']}: {_player_season_bits(entry)}{contract}"
 
     # Latest two tracked seasons: a player's most recent line can be a
     # different team or an injury-shortened year (e.g. AD: DAL 2024-25 vs
@@ -593,7 +624,7 @@ def _player_document(name, season=None):
     recent = view["history"][-2:][::-1]
     seasons = "; ".join(f"{e['season']} with {e['team']}: {_player_season_bits(e)}" for e in recent)
     note = f"No {season} data tracked for this player (data covers {available_seasons()[0]} to {latest_season()}). " if season else ""
-    return f"{view['name']} ({position}) -- {note}{seasons}"
+    return f"{view['name']} ({position}) -- {note}{seasons}{contract}"
 
 
 _MAX_PLAYERS_IN_CONTEXT = 4
@@ -607,6 +638,19 @@ def _players_document(names, comparison, season=None):
     return header + "\n" + "\n".join(docs)
 
 
+def _league_cap_document():
+    season = latest_cap_season()
+    info = get_league_cap_info(season)
+    if not info:
+        return ""
+    return (
+        f"League cap figures, {season} (seeded from a HoopsHype page, cross-check against the "
+        f"NBA's official release): salary cap ${info['salary_cap']:,}, luxury tax line "
+        f"${info['luxury_tax_line']:,}, first apron ${info['first_apron']:,}, second apron "
+        f"${info['second_apron']:,}."
+    )
+
+
 def _league_efficiency_document():
     leaders = get_league_leaders("pie")
     if not leaders:
@@ -616,23 +660,58 @@ def _league_efficiency_document():
     return f"League-wide PIE (efficiency) leaders, {season}, qualified players only (min. 20 GP, 15 MPG): {ranked}"
 
 
+_MAX_TEAMS_IN_CONTEXT = 2
+
+
+def _context_teams(message, history):
+    """Teams to ground the LLM in: every team named in THIS message (capped),
+    falling back to the most recent prior message so a follow-up ("what about
+    their cap situation?") still has a team to anchor to. A trade or
+    comparison question names two teams and needs both -- a one-team context
+    previously meant the model could only reason about one side of a trade or
+    a two-team comparison (the frontend's comparisonView.js flagged this as a
+    known backend limitation; this is the fix)."""
+    teams = mentioned_teams(message)
+    if teams:
+        return teams[:_MAX_TEAMS_IN_CONTEXT]
+    for turn in reversed(history):
+        if turn.get("role") != "user":
+            continue
+        prior_teams = mentioned_teams(turn.get("content", ""))
+        if prior_teams:
+            return prior_teams[:_MAX_TEAMS_IN_CONTEXT]
+    return []
+
+
 def build_context(message, history):
-    team = resolve_team(message, history)
+    teams = _context_teams(message, history)
     season = resolve_season(message, history)
     asked_season = explicit_season(message, history)
     parts = []
 
-    team_doc = retrieve_context(team, season) if team else ""
-    if team_doc:
-        parts.append(team_doc)
+    for team in teams:
+        team_doc = retrieve_context(team, season)
+        if team_doc:
+            parts.append(team_doc)
 
     current_players = mentioned_players(message)
+    players_doc = ""
     if current_players:
-        parts.append(_players_document(current_players, is_comparison_query(message), asked_season))
+        players_doc = _players_document(current_players, is_comparison_query(message), asked_season)
     else:
         fallback_player = resolve_player(message, history)
         if fallback_player:
-            parts.append(_players_document([fallback_player], False, asked_season))
+            players_doc = _players_document([fallback_player], False, asked_season)
+    if players_doc:
+        parts.append(players_doc)
+
+    trade_mode = is_trade_query(message)
+    if trade_mode:
+        parts.append(_league_cap_document())
+    if trade_mode and "Salary (PARTIAL" in players_doc:
+        # Only surface this once per answer, and only when a salary figure
+        # was actually used -- not on every trade question regardless.
+        parts.append(f"Salary data caveat: {CONTRACT_DATA_NOTE}")
 
     parts.append(_league_efficiency_document())
 
