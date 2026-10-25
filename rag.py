@@ -237,9 +237,7 @@ _BASE_STAT_FIELDS = {"ppg": "pts", "apg": "ast", "rpg": "reb", "spg": "stl"}
 _LEADER_MIN_GAMES, _LEADER_MIN_MINUTES_PER_GAME = 20, 15
 
 
-def get_league_leaders(category, limit=15):
-    season = latest_season()
-
+def _qualified_entries(category, season, limit):
     if category == "pie":
         entries = [
             {"player": p["player"], "team": team, "value": p["pie"]}
@@ -260,6 +258,29 @@ def get_league_leaders(category, limit=15):
 
     entries.sort(key=lambda e: e["value"], reverse=True)
     return entries[:limit]
+
+
+def leaders_season():
+    """The season league leaders are actually drawn from: the latest season,
+    unless it's too new for anyone to have reached the 20 GP / 15 MPG
+    qualifier yet, in which case the most recent season that does have
+    qualified players -- so the leaderboard isn't empty for the first
+    several weeks of every new season. GP/MIN are the same underlying facts
+    whichever category you check, so probing with "pie" is enough to decide
+    for every category."""
+    season = latest_season()
+    if _qualified_entries("pie", season, limit=1):
+        return season
+    for prior in reversed(available_seasons()[:-1]):
+        if _qualified_entries("pie", prior, limit=1):
+            return prior
+    return season
+
+
+def get_league_leaders(category, limit=15):
+    if category != "pie" and category not in _BASE_STAT_FIELDS:
+        return []
+    return _qualified_entries(category, leaders_season(), limit)
 
 
 def _team_document(team, season):
@@ -655,9 +676,14 @@ def _league_efficiency_document():
     leaders = get_league_leaders("pie")
     if not leaders:
         return ""
-    season = latest_season()
+    season = leaders_season()
+    fallback_note = (
+        f" -- {latest_season()} is too early in the season for anyone to qualify yet, so this "
+        f"is still {season}'s leaderboard"
+        if season != latest_season() else ""
+    )
     ranked = ", ".join(f"{i + 1}. {e['player']} ({e['team']}) {e['value']}" for i, e in enumerate(leaders))
-    return f"League-wide PIE (efficiency) leaders, {season}, qualified players only (min. 20 GP, 15 MPG): {ranked}"
+    return f"League-wide PIE (efficiency) leaders, {season}{fallback_note}, qualified players only (min. 20 GP, 15 MPG): {ranked}"
 
 
 _MAX_TEAMS_IN_CONTEXT = 2

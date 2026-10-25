@@ -45,10 +45,21 @@ const LeadersTable = (() => {
             const window = `${data.season || 'current season'}, min. 20 GP / 15 MPG`;
             body.innerHTML = `<div class="leaders-table-window">${escapeHtml(window)}</div>`;
 
+            // The backend falls back to the last season with enough games
+            // played rather than show an empty board for the first few weeks
+            // of a new season -- surface that so "2025-26" doesn't read as
+            // the current season by mistake.
+            if (data.latestSeason && data.season && data.season !== data.latestSeason) {
+                const note = document.createElement('div');
+                note.className = 'leaders-table-fallback-note';
+                note.textContent = `${data.latestSeason} just started — showing ${data.season}'s leaders until enough games are played.`;
+                body.appendChild(note);
+            }
+
             if (entries.length === 0) {
                 const empty = document.createElement('div');
                 empty.className = 'leaders-table-empty';
-                empty.textContent = "Not enough games played yet this season for anyone to qualify.";
+                empty.textContent = "Not enough games played yet for anyone to qualify.";
                 body.appendChild(empty);
                 return;
             }

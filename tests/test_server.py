@@ -201,15 +201,12 @@ def test_leaders_endpoint_returns_all_categories():
 
     assert response.status_code == 200
     data = response.get_json()
-    assert set(data.keys()) == {"season", "ppg", "apg", "rpg", "spg", "pie"}
-    assert data["season"] == rag.latest_season()
-    # Early in a season, nobody has the 20 GP the qualifier requires yet --
-    # an empty list is the qualifier correctly rejecting a one-game sample,
-    # not a broken endpoint.
-    if rag.get_league_leaders("ppg"):
-        assert len(data["ppg"]) > 0
-    else:
-        assert data["ppg"] == []
+    assert set(data.keys()) == {"season", "latestSeason", "ppg", "apg", "rpg", "spg", "pie"}
+    assert data["latestSeason"] == rag.latest_season()
+    assert data["season"] == rag.leaders_season()
+    # The endpoint falls back to the last season with enough games played
+    # rather than return empty lists for the first few weeks of a season.
+    assert len(data["ppg"]) > 0
 
 
 def test_chat_endpoint_flags_comparison_only_for_comparison_questions():

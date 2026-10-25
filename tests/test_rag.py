@@ -290,13 +290,12 @@ def test_get_player_view_matches_names_without_diacritics():
 
 def test_build_context_includes_league_efficiency_leaders_even_with_no_team():
     context = build_context("Who is the most efficient scorer in the NBA right now?", [])
-    # Early in a season, nobody has played the 20 GP the qualifier requires --
-    # that's _league_efficiency_document() correctly returning nothing rather
-    # than ranking players on a one-game sample, not a bug.
-    if rag.get_league_leaders("pie"):
-        assert "League-wide PIE" in context
-    else:
-        assert "League-wide PIE" not in context
+    assert "League-wide PIE" in context
+    # It's the first week of the 2026-27 season -- nobody has the 20 GP the
+    # qualifier requires yet, so this should visibly be the prior season's
+    # board, not a silent/unlabeled one.
+    if rag.leaders_season() != rag.latest_season():
+        assert "too early in the season" in context
 
 
 def test_build_context_includes_team_advanced_stats_when_team_resolved():
@@ -388,6 +387,23 @@ def test_get_league_leaders_pie_excludes_low_sample_players(monkeypatch):
     names = [entry["player"] for entry in leaders]
     assert "Real Starter" in names
     assert "Small Sample Guy" not in names
+
+
+def test_leaders_season_falls_back_when_latest_season_has_no_qualified_players(monkeypatch):
+    # Wipe every team's latest-season data down to a single unqualified
+    # callup, simulating the first week of a new season league-wide.
+    monkeypatch.setattr(rag, "PLAYER_ADVANCED", {
+        team: {**seasons, latest_season(): [{"player": "Rookie", "gp": 1, "min": 10.0, "pie": 0.9}]}
+        for team, seasons in rag.PLAYER_ADVANCED.items()
+    })
+    assert rag.leaders_season() == available_seasons()[-2]
+
+
+def test_leaders_season_uses_latest_when_it_has_qualified_players(monkeypatch):
+    monkeypatch.setitem(rag.PLAYER_ADVANCED, "Spurs", {
+        latest_season(): [{"player": "Real Starter", "gp": 65, "min": 30.0, "pie": 0.5}],
+    })
+    assert rag.leaders_season() == latest_season()
 
 
 HYPOTHETICAL = "Would Maverick be a title contender after Luka-trade if AD and Kyrie didn't get injured?"

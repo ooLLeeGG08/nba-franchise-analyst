@@ -13,6 +13,7 @@ from rag import (
     explicit_season,
     get_all_teams,
     get_league_leaders,
+    leaders_season,
     get_player_view,
     get_team_advanced_stats,
     get_team_branding,
@@ -143,7 +144,8 @@ def team_comparison(team, other):
 def leaders():
     categories = ['ppg', 'apg', 'rpg', 'spg', 'pie']
     return jsonify({
-        'season': latest_season(),
+        'season': leaders_season(),
+        'latestSeason': latest_season(),
         **{category: get_league_leaders(category) for category in categories},
     })
 

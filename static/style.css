@@ -998,6 +998,12 @@ button {
     padding: 16px 0;
 }
 
+.leaders-table-fallback-note {
+    color: var(--accent);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
 .leaders-tab {
     transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
