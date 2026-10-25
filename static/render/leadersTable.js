@@ -2,12 +2,14 @@
 // the default "visual answer" when a chat message resolves no specific team
 // -- so every assistant reply gets a data companion, not just team questions.
 const LeadersTable = (() => {
+    // No hardcoded season here -- the backend tells us which one it used
+    // (data.season), so this stays correct across every season refresh.
     const TABS = [
-        { key: 'ppg', label: 'Scoring', window: '2025-26, min. 20 GP / 15 MPG' },
-        { key: 'apg', label: 'Assists', window: '2025-26, min. 20 GP / 15 MPG' },
-        { key: 'rpg', label: 'Rebounds', window: '2025-26, min. 20 GP / 15 MPG' },
-        { key: 'spg', label: 'Steals', window: '2025-26, min. 20 GP / 15 MPG' },
-        { key: 'pie', label: 'Efficiency (PIE)', window: '2025-26, min. 20 GP / 15 MPG' },
+        { key: 'ppg', label: 'Scoring' },
+        { key: 'apg', label: 'Assists' },
+        { key: 'rpg', label: 'Rebounds' },
+        { key: 'spg', label: 'Steals' },
+        { key: 'pie', label: 'Efficiency (PIE)' },
     ];
 
     function render(container, data, { onNavigateToTeam } = {}) {
@@ -39,9 +41,18 @@ const LeadersTable = (() => {
         }
 
         function renderBody() {
-            const tab = TABS.find((t) => t.key === activeKey);
             const entries = data[activeKey] || [];
-            body.innerHTML = `<div class="leaders-table-window">${escapeHtml(tab.window)}</div>`;
+            const window = `${data.season || 'current season'}, min. 20 GP / 15 MPG`;
+            body.innerHTML = `<div class="leaders-table-window">${escapeHtml(window)}</div>`;
+
+            if (entries.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'leaders-table-empty';
+                empty.textContent = "Not enough games played yet this season for anyone to qualify.";
+                body.appendChild(empty);
+                return;
+            }
+
             const list = document.createElement('div');
             list.className = 'leaders-table-list';
             entries.forEach((entry, i) => {

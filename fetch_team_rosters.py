@@ -43,7 +43,7 @@ _TRACKED_TEAMS = {
 
 _SEASONS = [
     "2015-16", "2016-17", "2017-18", "2018-19", "2019-20",
-    "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26",
+    "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26", "2026-27",
 ]
 
 _REQUEST_DELAY_SECONDS = 0.6
@@ -66,7 +66,7 @@ def fetch_team_season_roster(team_id, season):
 
 def main():
     rosters = {
-        "_note": "Live data pulled via nba_api (CommonTeamRoster), 2015-16 through 2025-26. Re-run fetch_team_rosters.py to refresh.",
+        "_note": "Live data pulled via nba_api (CommonTeamRoster), 2015-16 through 2026-27. Re-run fetch_team_rosters.py to refresh.",
     }
     for short_name, full_name in _TRACKED_TEAMS.items():
         team_id = _team_id(full_name)

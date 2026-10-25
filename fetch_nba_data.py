@@ -24,7 +24,7 @@ _TRACKED_TEAMS = {
     "Warriors": "Golden State Warriors",
     "Rockets": "Houston Rockets",
     "Pacers": "Indiana Pacers",
-    "Clippers": "LA Clippers",
+    "Clippers": "Los Angeles Clippers",
     "Lakers": "Los Angeles Lakers",
     "Grizzlies": "Memphis Grizzlies",
     "Heat": "Miami Heat",
@@ -43,7 +43,7 @@ _TRACKED_TEAMS = {
 }
 
 _FIRST_SEASON = "2015-16"
-_LAST_SEASON = "2025-26"
+_LAST_SEASON = "2026-27"
 
 
 def _team_id(full_name):
@@ -62,7 +62,7 @@ def fetch_team_records(full_name):
 
 def main():
     records = {
-        "_note": "Live data pulled via nba_api (stats.nba.com) for all 30 teams, 2015-16 through 2025-26. Re-run fetch_nba_data.py to refresh.",
+        "_note": "Live data pulled via nba_api (stats.nba.com) for all 30 teams, 2015-16 through 2026-27. Re-run fetch_nba_data.py to refresh.",
     }
     for short_name, full_name in _TRACKED_TEAMS.items():
         print(f"Fetching {full_name}...")

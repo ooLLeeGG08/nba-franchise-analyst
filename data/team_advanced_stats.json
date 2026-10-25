@@ -1,5 +1,5 @@
 {
-  "_note": "Live data pulled via nba_api (LeagueDashTeamStats, Advanced), 2015-16 through 2025-26, Regular Season. Re-run fetch_team_advanced_stats.py to refresh.",
+  "_note": "Live data pulled via nba_api (LeagueDashTeamStats, Advanced), 2015-16 through 2026-27, Regular Season. Re-run fetch_team_advanced_stats.py to refresh.",
   "Spurs": {
     "2015-16": {
       "off_rating": 109.3,
@@ -121,6 +121,17 @@
       "pace": 100.7,
       "ts_pct": 0.595,
       "efg_pct": 0.559
+    },
+    "2026-27": {
+      "off_rating": 102.0,
+      "off_rating_rank": 21,
+      "def_rating": 113.7,
+      "def_rating_rank": 17,
+      "net_rating": -11.8,
+      "net_rating_rank": 22,
+      "pace": 102.0,
+      "ts_pct": 0.5,
+      "efg_pct": 0.441
     }
   },
   "Celtics": {
@@ -244,6 +255,17 @@
       "pace": 95.6,
       "ts_pct": 0.583,
       "efg_pct": 0.553
+    },
+    "2026-27": {
+      "off_rating": 113.0,
+      "off_rating_rank": 14,
+      "def_rating": 119.8,
+      "def_rating_rank": 24,
+      "net_rating": -6.8,
+      "net_rating_rank": 20,
+      "pace": 100.5,
+      "ts_pct": 0.581,
+      "efg_pct": 0.551
     }
   },
   "Nets": {
@@ -367,6 +389,17 @@
       "pace": 97.6,
       "ts_pct": 0.559,
       "efg_pct": 0.52
+    },
+    "2026-27": {
+      "off_rating": 102.0,
+      "off_rating_rank": 21,
+      "def_rating": 107.8,
+      "def_rating_rank": 13,
+      "net_rating": -5.9,
+      "net_rating_rank": 17,
+      "pace": 101.5,
+      "ts_pct": 0.566,
+      "efg_pct": 0.525
     }
   },
   "Kings": {
@@ -490,6 +523,17 @@
       "pace": 100.1,
       "ts_pct": 0.56,
       "efg_pct": 0.525
+    },
+    "2026-27": {
+      "off_rating": 91.4,
+      "off_rating_rank": 27,
+      "def_rating": 116.3,
+      "def_rating_rank": 20,
+      "net_rating": -24.9,
+      "net_rating_rank": 28,
+      "pace": 104.5,
+      "ts_pct": 0.493,
+      "efg_pct": 0.471
     }
   },
   "Hawks": {
@@ -613,6 +657,17 @@
       "pace": 102.5,
       "ts_pct": 0.584,
       "efg_pct": 0.554
+    },
+    "2026-27": {
+      "off_rating": 118.9,
+      "off_rating_rank": 8,
+      "def_rating": 114.7,
+      "def_rating_rank": 19,
+      "net_rating": 4.2,
+      "net_rating_rank": 13,
+      "pace": 110.0,
+      "ts_pct": 0.624,
+      "efg_pct": 0.567
     }
   },
   "Hornets": {
@@ -736,6 +791,17 @@
       "pace": 97.6,
       "ts_pct": 0.589,
       "efg_pct": 0.552
+    },
+    "2026-27": {
+      "off_rating": 107.8,
+      "off_rating_rank": 18,
+      "def_rating": 102.0,
+      "def_rating_rank": 8,
+      "net_rating": 5.9,
+      "net_rating_rank": 12,
+      "pace": 101.5,
+      "ts_pct": 0.552,
+      "efg_pct": 0.522
     }
   },
   "Bulls": {
@@ -859,6 +925,17 @@
       "pace": 103.2,
       "ts_pct": 0.58,
       "efg_pct": 0.547
+    },
+    "2026-27": {
+      "off_rating": 82.7,
+      "off_rating_rank": 30,
+      "def_rating": 128.4,
+      "def_rating_rank": 29,
+      "net_rating": -45.7,
+      "net_rating_rank": 30,
+      "pace": 111.6,
+      "ts_pct": 0.43,
+      "efg_pct": 0.346
     }
   },
   "Cavaliers": {
@@ -982,6 +1059,17 @@
       "pace": 100.7,
       "ts_pct": 0.595,
       "efg_pct": 0.561
+    },
+    "2026-27": {
+      "off_rating": 97.2,
+      "off_rating_rank": 26,
+      "def_rating": 103.6,
+      "def_rating_rank": 11,
+      "net_rating": -6.4,
+      "net_rating_rank": 19,
+      "pace": 109.5,
+      "ts_pct": 0.534,
+      "efg_pct": 0.489
     }
   },
   "Mavericks": {
@@ -1105,6 +1193,17 @@
       "pace": 102.6,
       "ts_pct": 0.564,
       "efg_pct": 0.527
+    },
+    "2026-27": {
+      "off_rating": 111.1,
+      "off_rating_rank": 16,
+      "def_rating": 130.6,
+      "def_rating_rank": 30,
+      "net_rating": -19.5,
+      "net_rating_rank": 25,
+      "pace": 98.5,
+      "ts_pct": 0.608,
+      "efg_pct": 0.589
     }
   },
   "Nuggets": {
@@ -1228,6 +1327,17 @@
       "pace": 99.5,
       "ts_pct": 0.616,
       "efg_pct": 0.577
+    },
+    "2026-27": {
+      "off_rating": 89.4,
+      "off_rating_rank": 28,
+      "def_rating": 102.1,
+      "def_rating_rank": 9,
+      "net_rating": -12.8,
+      "net_rating_rank": 23,
+      "pace": 94.0,
+      "ts_pct": 0.458,
+      "efg_pct": 0.427
     }
   },
   "Pistons": {
@@ -1351,6 +1461,17 @@
       "pace": 99.9,
       "ts_pct": 0.583,
       "efg_pct": 0.546
+    },
+    "2026-27": {
+      "off_rating": 119.8,
+      "off_rating_rank": 7,
+      "def_rating": 113.0,
+      "def_rating_rank": 16,
+      "net_rating": 6.8,
+      "net_rating_rank": 10,
+      "pace": 100.5,
+      "ts_pct": 0.605,
+      "efg_pct": 0.541
     }
   },
   "Warriors": {
@@ -1474,6 +1595,17 @@
       "pace": 100.0,
       "ts_pct": 0.584,
       "efg_pct": 0.549
+    },
+    "2026-27": {
+      "off_rating": 102.9,
+      "off_rating_rank": 20,
+      "def_rating": 124.5,
+      "def_rating_rank": 26,
+      "net_rating": -21.6,
+      "net_rating_rank": 26,
+      "pace": 102.0,
+      "ts_pct": 0.505,
+      "efg_pct": 0.457
     }
   },
   "Rockets": {
@@ -1597,6 +1729,17 @@
       "pace": 97.0,
       "ts_pct": 0.576,
       "efg_pct": 0.542
+    },
+    "2026-27": {
+      "off_rating": 130.6,
+      "off_rating_rank": 1,
+      "def_rating": 111.1,
+      "def_rating_rank": 14,
+      "net_rating": 19.5,
+      "net_rating_rank": 6,
+      "pace": 98.5,
+      "ts_pct": 0.646,
+      "efg_pct": 0.625
     }
   },
   "Pacers": {
@@ -1720,6 +1863,17 @@
       "pace": 101.8,
       "ts_pct": 0.568,
       "efg_pct": 0.533
+    },
+    "2026-27": {
+      "off_rating": 117.1,
+      "off_rating_rank": 10,
+      "def_rating": 114.3,
+      "def_rating_rank": 18,
+      "net_rating": 2.9,
+      "net_rating_rank": 14,
+      "pace": 105.0,
+      "ts_pct": 0.598,
+      "efg_pct": 0.572
     }
   },
   "Clippers": {
@@ -1843,6 +1997,17 @@
       "pace": 97.3,
       "ts_pct": 0.602,
       "efg_pct": 0.559
+    },
+    "2026-27": {
+      "off_rating": 116.3,
+      "off_rating_rank": 11,
+      "def_rating": 91.4,
+      "def_rating_rank": 3,
+      "net_rating": 24.9,
+      "net_rating_rank": 3,
+      "pace": 104.5,
+      "ts_pct": 0.633,
+      "efg_pct": 0.61
     }
   },
   "Lakers": {
@@ -1966,6 +2131,17 @@
       "pace": 99.2,
       "ts_pct": 0.609,
       "efg_pct": 0.573
+    },
+    "2026-27": {
+      "off_rating": 124.5,
+      "off_rating_rank": 5,
+      "def_rating": 102.9,
+      "def_rating_rank": 10,
+      "net_rating": 21.6,
+      "net_rating_rank": 5,
+      "pace": 102.0,
+      "ts_pct": 0.684,
+      "efg_pct": 0.636
     }
   },
   "Grizzlies": {
@@ -2089,6 +2265,17 @@
       "pace": 101.7,
       "ts_pct": 0.57,
       "efg_pct": 0.533
+    },
+    "2026-27": {
+      "off_rating": 118.3,
+      "off_rating_rank": 9,
+      "def_rating": 99.0,
+      "def_rating_rank": 6,
+      "net_rating": 19.2,
+      "net_rating_rank": 7,
+      "pace": 104.0,
+      "ts_pct": 0.584,
+      "efg_pct": 0.543
     }
   },
   "Heat": {
@@ -2212,6 +2399,17 @@
       "pace": 104.2,
       "ts_pct": 0.58,
       "efg_pct": 0.542
+    },
+    "2026-27": {
+      "off_rating": 100.0,
+      "off_rating_rank": 23,
+      "def_rating": 124.8,
+      "def_rating_rank": 27,
+      "net_rating": -24.8,
+      "net_rating_rank": 27,
+      "pace": 105.5,
+      "ts_pct": 0.573,
+      "efg_pct": 0.531
     }
   },
   "Bucks": {
@@ -2335,6 +2533,17 @@
       "pace": 98.3,
       "ts_pct": 0.589,
       "efg_pct": 0.565
+    },
+    "2026-27": {
+      "off_rating": 112.6,
+      "off_rating_rank": 15,
+      "def_rating": 123.1,
+      "def_rating_rank": 25,
+      "net_rating": -10.5,
+      "net_rating_rank": 21,
+      "pace": 103.5,
+      "ts_pct": 0.574,
+      "efg_pct": 0.533
     }
   },
   "Timberwolves": {
@@ -2458,6 +2667,17 @@
       "pace": 101.5,
       "ts_pct": 0.592,
       "efg_pct": 0.559
+    },
+    "2026-27": {
+      "off_rating": 124.8,
+      "off_rating_rank": 4,
+      "def_rating": 100.0,
+      "def_rating_rank": 7,
+      "net_rating": 24.8,
+      "net_rating_rank": 4,
+      "pace": 105.5,
+      "ts_pct": 0.591,
+      "efg_pct": 0.577
     }
   },
   "Pelicans": {
@@ -2581,6 +2801,17 @@
       "pace": 101.4,
       "ts_pct": 0.568,
       "efg_pct": 0.527
+    },
+    "2026-27": {
+      "off_rating": 114.3,
+      "off_rating_rank": 13,
+      "def_rating": 117.1,
+      "def_rating_rank": 21,
+      "net_rating": -2.9,
+      "net_rating_rank": 15,
+      "pace": 105.0,
+      "ts_pct": 0.57,
+      "efg_pct": 0.483
     }
   },
   "Knicks": {
@@ -2704,6 +2935,17 @@
       "pace": 97.7,
       "ts_pct": 0.59,
       "efg_pct": 0.557
+    },
+    "2026-27": {
+      "off_rating": 98.0,
+      "off_rating_rank": 25,
+      "def_rating": 103.9,
+      "def_rating_rank": 12,
+      "net_rating": -5.9,
+      "net_rating_rank": 17,
+      "pace": 102.0,
+      "ts_pct": 0.472,
+      "efg_pct": 0.431
     }
   },
   "Thunder": {
@@ -2827,6 +3069,17 @@
       "pace": 100.4,
       "ts_pct": 0.599,
       "efg_pct": 0.561
+    },
+    "2026-27": {
+      "off_rating": 108.2,
+      "off_rating_rank": 17,
+      "def_rating": 95.9,
+      "def_rating_rank": 4,
+      "net_rating": 12.2,
+      "net_rating_rank": 8,
+      "pace": 98.0,
+      "ts_pct": 0.517,
+      "efg_pct": 0.482
     }
   },
   "Magic": {
@@ -2950,6 +3203,17 @@
       "pace": 100.6,
       "ts_pct": 0.576,
       "efg_pct": 0.531
+    },
+    "2026-27": {
+      "off_rating": 114.7,
+      "off_rating_rank": 12,
+      "def_rating": 118.9,
+      "def_rating_rank": 23,
+      "net_rating": -4.2,
+      "net_rating_rank": 16,
+      "pace": 110.0,
+      "ts_pct": 0.612,
+      "efg_pct": 0.559
     }
   },
   "76ers": {
@@ -3073,6 +3337,17 @@
       "pace": 100.4,
       "ts_pct": 0.572,
       "efg_pct": 0.53
+    },
+    "2026-27": {
+      "off_rating": 103.8,
+      "off_rating_rank": 19,
+      "def_rating": 97.6,
+      "def_rating_rank": 5,
+      "net_rating": 6.1,
+      "net_rating_rank": 11,
+      "pace": 105.8,
+      "ts_pct": 0.534,
+      "efg_pct": 0.486
     }
   },
   "Suns": {
@@ -3196,6 +3471,17 @@
       "pace": 98.1,
       "ts_pct": 0.568,
       "efg_pct": 0.537
+    },
+    "2026-27": {
+      "off_rating": 86.5,
+      "off_rating_rank": 29,
+      "def_rating": 126.5,
+      "def_rating_rank": 28,
+      "net_rating": -40.1,
+      "net_rating_rank": 29,
+      "pace": 97.0,
+      "ts_pct": 0.441,
+      "efg_pct": 0.393
     }
   },
   "TrailBlazers": {
@@ -3319,6 +3605,17 @@
       "pace": 101.6,
       "ts_pct": 0.57,
       "efg_pct": 0.534
+    },
+    "2026-27": {
+      "off_rating": 126.5,
+      "off_rating_rank": 3,
+      "def_rating": 86.5,
+      "def_rating_rank": 2,
+      "net_rating": 40.1,
+      "net_rating_rank": 2,
+      "pace": 97.0,
+      "ts_pct": 0.608,
+      "efg_pct": 0.58
     }
   },
   "Raptors": {
@@ -3442,6 +3739,17 @@
       "pace": 99.2,
       "ts_pct": 0.581,
       "efg_pct": 0.546
+    },
+    "2026-27": {
+      "off_rating": 128.4,
+      "off_rating_rank": 2,
+      "def_rating": 82.7,
+      "def_rating_rank": 1,
+      "net_rating": 45.7,
+      "net_rating_rank": 1,
+      "pace": 111.6,
+      "ts_pct": 0.575,
+      "efg_pct": 0.505
     }
   },
   "Jazz": {
@@ -3565,6 +3873,17 @@
       "pace": 103.5,
       "ts_pct": 0.575,
       "efg_pct": 0.536
+    },
+    "2026-27": {
+      "off_rating": 99.0,
+      "off_rating_rank": 24,
+      "def_rating": 118.3,
+      "def_rating_rank": 22,
+      "net_rating": -19.2,
+      "net_rating_rank": 24,
+      "pace": 104.0,
+      "ts_pct": 0.575,
+      "efg_pct": 0.54
     }
   },
   "Wizards": {
@@ -3688,6 +4007,17 @@
       "pace": 102.5,
       "ts_pct": 0.566,
       "efg_pct": 0.535
+    },
+    "2026-27": {
+      "off_rating": 123.1,
+      "off_rating_rank": 6,
+      "def_rating": 112.6,
+      "def_rating_rank": 15,
+      "net_rating": 10.5,
+      "net_rating_rank": 9,
+      "pace": 103.5,
+      "ts_pct": 0.615,
+      "efg_pct": 0.558
     }
   }
 }

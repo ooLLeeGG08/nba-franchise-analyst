@@ -1,5 +1,6 @@
 from unittest.mock import patch
 
+import rag
 import server
 
 
@@ -89,7 +90,7 @@ def test_team_dashboard_endpoint_respects_season_query_param():
     assert response.status_code == 200
     data = response.get_json()
     assert data["season"] == "2015-16"
-    assert len(data["availableSeasons"]) == 11
+    assert len(data["availableSeasons"]) == 12
 
 
 def test_team_dashboard_endpoint_falls_back_to_latest_for_invalid_season():
@@ -97,7 +98,7 @@ def test_team_dashboard_endpoint_falls_back_to_latest_for_invalid_season():
     response = client.get("/api/team/Spurs?season=not-a-season")
 
     assert response.status_code == 200
-    assert response.get_json()["season"] == "2025-26"
+    assert response.get_json()["season"] == "2026-27"
 
 
 def test_team_dashboard_endpoint_is_case_insensitive():
@@ -158,7 +159,7 @@ def test_player_view_endpoint_returns_bundle_for_known_player():
     assert response.status_code == 200
     data = response.get_json()
     assert data["name"] == "LeBron James"
-    assert data["team"] == "Lakers"
+    assert data["team"] == "76ers"  # signed with Philadelphia for 2026-27
 
 
 def test_player_view_endpoint_returns_404_for_unknown_player():
@@ -200,8 +201,15 @@ def test_leaders_endpoint_returns_all_categories():
 
     assert response.status_code == 200
     data = response.get_json()
-    assert set(data.keys()) == {"ppg", "apg", "rpg", "spg", "pie"}
-    assert len(data["ppg"]) > 0
+    assert set(data.keys()) == {"season", "ppg", "apg", "rpg", "spg", "pie"}
+    assert data["season"] == rag.latest_season()
+    # Early in a season, nobody has the 20 GP the qualifier requires yet --
+    # an empty list is the qualifier correctly rejecting a one-game sample,
+    # not a broken endpoint.
+    if rag.get_league_leaders("ppg"):
+        assert len(data["ppg"]) > 0
+    else:
+        assert data["ppg"] == []
 
 
 def test_chat_endpoint_flags_comparison_only_for_comparison_questions():
@@ -228,7 +236,7 @@ def test_player_view_endpoint_respects_season_param():
     data = client.get("/api/player/Kevin Durant?season=2016-17").get_json()
     assert data["team"] == "Warriors" and data["current"]["season"] == "2016-17"
     fallback = client.get("/api/player/Kevin Durant?season=bogus").get_json()
-    assert fallback["current"]["season"] == "2025-26"
+    assert fallback["current"]["season"] == "2026-27"
 
 
 def test_player_comparison_endpoint_respects_season_param():
@@ -244,7 +252,7 @@ def test_team_comparison_endpoint_respects_season_param():
     assert data["teamA"]["season"] == data["teamB"]["season"] == "2016-17"
     assert data["teamA"]["seasonSnapshot"]["wins"] > 0
     latest = client.get("/api/team/Cavaliers/vs/Warriors?season=bogus").get_json()
-    assert latest["teamA"]["season"] == "2025-26"
+    assert latest["teamA"]["season"] == "2026-27"
 
 
 def test_chat_season_carries_to_team_comparison_message():

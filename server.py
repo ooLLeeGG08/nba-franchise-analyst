@@ -142,7 +142,10 @@ def team_comparison(team, other):
 @app.route('/api/leaders')
 def leaders():
     categories = ['ppg', 'apg', 'rpg', 'spg', 'pie']
-    return jsonify({category: get_league_leaders(category) for category in categories})
+    return jsonify({
+        'season': latest_season(),
+        **{category: get_league_leaders(category) for category in categories},
+    })
 
 
 @app.route('/api/player/<name>')

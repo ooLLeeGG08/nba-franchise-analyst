@@ -991,6 +991,13 @@ button {
     animation: fadeIn 0.2s ease;
 }
 
+.leaders-table-empty {
+    color: var(--text-faint);
+    font-size: 13px;
+    font-style: italic;
+    padding: 16px 0;
+}
+
 .leaders-tab {
     transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }

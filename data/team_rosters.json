@@ -1,5 +1,5 @@
 {
-  "_note": "Live data pulled via nba_api (CommonTeamRoster), 2015-16 through 2025-26. Re-run fetch_team_rosters.py to refresh.",
+  "_note": "Live data pulled via nba_api (CommonTeamRoster), 2015-16 through 2026-27. Re-run fetch_team_rosters.py to refresh.",
   "Spurs": {
     "2015-16": [
       {
@@ -766,6 +766,76 @@
         "player": "Harrison Ingram",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jordan McLaughlin",
+        "position": "G"
+      },
+      {
+        "player": "Victor Wembanyama",
+        "position": "F-C"
+      },
+      {
+        "player": "Dylan Harper",
+        "position": "G"
+      },
+      {
+        "player": "Keldon Johnson",
+        "position": "F-G"
+      },
+      {
+        "player": "De'Aaron Fox",
+        "position": "G"
+      },
+      {
+        "player": "Stephon Castle",
+        "position": "G"
+      },
+      {
+        "player": "Luke Kornet",
+        "position": "C-F"
+      },
+      {
+        "player": "Tarris Reed Jr.",
+        "position": "C"
+      },
+      {
+        "player": "Carter Bryant",
+        "position": "F"
+      },
+      {
+        "player": "Maliq Brown",
+        "position": "F"
+      },
+      {
+        "player": "Ja'Kobi Gillespie",
+        "position": "G"
+      },
+      {
+        "player": "Jayden Quaintance",
+        "position": "F"
+      },
+      {
+        "player": "Tobias Harris",
+        "position": "F"
+      },
+      {
+        "player": "Devin Vassell",
+        "position": "G-F"
+      },
+      {
+        "player": "David Jones Garcia",
+        "position": "G"
+      },
+      {
+        "player": "Julian Champagnie",
+        "position": "F"
+      },
+      {
+        "player": "Harrison Barnes",
+        "position": "F"
+      }
     ]
   },
   "Celtics": {
@@ -1513,6 +1583,76 @@
       {
         "player": "Dalano Banton",
         "position": "F"
+      },
+      {
+        "player": "Luka Garza",
+        "position": "C"
+      },
+      {
+        "player": "Baylor Scheierman",
+        "position": "G"
+      },
+      {
+        "player": "Amari Williams",
+        "position": "F-C"
+      },
+      {
+        "player": "Neemias Queta",
+        "position": "C"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Jayson Tatum",
+        "position": "F-G"
+      },
+      {
+        "player": "Mitchell Robinson",
+        "position": "C-F"
+      },
+      {
+        "player": "Ron Harper Jr.",
+        "position": "G-F"
+      },
+      {
+        "player": "Derrick White",
+        "position": "G"
+      },
+      {
+        "player": "Payton Pritchard",
+        "position": "G"
+      },
+      {
+        "player": "Chris Cenac Jr.",
+        "position": "F"
+      },
+      {
+        "player": "Paul George",
+        "position": "F"
+      },
+      {
+        "player": "Dillon Mitchell",
+        "position": "F"
+      },
+      {
+        "player": "Devin Carter",
+        "position": "G"
+      },
+      {
+        "player": "Jordan Walsh",
+        "position": "G"
+      },
+      {
+        "player": "Hugo Gonz\u00e1lez",
+        "position": "G"
+      },
+      {
+        "player": "Sam Hauser",
+        "position": "F"
+      },
+      {
+        "player": "Mike Conley",
+        "position": "G"
       },
       {
         "player": "Luka Garza",
@@ -2306,6 +2446,80 @@
         "player": "Nolan Traore",
         "position": "G"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Josh Minott",
+        "position": "F"
+      },
+      {
+        "player": "Mikel Brown Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Keon Ellis",
+        "position": "G"
+      },
+      {
+        "player": "Danny Wolf",
+        "position": "F"
+      },
+      {
+        "player": "Drake Powell",
+        "position": "G-F"
+      },
+      {
+        "player": "Egor D\u00ebmin",
+        "position": "G"
+      },
+      {
+        "player": "Joshua Jefferson",
+        "position": "F"
+      },
+      {
+        "player": "Nolan Traore",
+        "position": "G"
+      },
+      {
+        "player": "Moritz Wagner",
+        "position": "F-C"
+      },
+      {
+        "player": "Terance Mann",
+        "position": "G-F"
+      },
+      {
+        "player": "Grant Nelson",
+        "position": "F"
+      },
+      {
+        "player": "Michael Porter Jr.",
+        "position": "F"
+      },
+      {
+        "player": "Day'Ron Sharpe",
+        "position": "C"
+      },
+      {
+        "player": "Noah Clowney",
+        "position": "F-C"
+      },
+      {
+        "player": "Julius Randle",
+        "position": "F-C"
+      },
+      {
+        "player": "Chaney Johnson",
+        "position": "G-F"
+      },
+      {
+        "player": "Tyler Bilodeau",
+        "position": "F"
+      },
+      {
+        "player": "Ben Saraf",
+        "position": "G"
+      }
     ]
   },
   "Kings": {
@@ -3057,6 +3271,72 @@
       {
         "player": "Dylan Cardwell",
         "position": "C"
+      },
+      {
+        "player": "Maxime Raynaud",
+        "position": "C"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Malik Monk",
+        "position": "G"
+      },
+      {
+        "player": "Darius Acuff Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Zach LaVine",
+        "position": "G"
+      },
+      {
+        "player": "Precious Achiuwa",
+        "position": "F"
+      },
+      {
+        "player": "Nique Clifford",
+        "position": "G"
+      },
+      {
+        "player": "Domantas Sabonis",
+        "position": "F-C"
+      },
+      {
+        "player": "Keegan Murray",
+        "position": "F"
+      },
+      {
+        "player": "De'Andre Hunter",
+        "position": "F-G"
+      },
+      {
+        "player": "Leaky Black",
+        "position": "F"
+      },
+      {
+        "player": "Jonathan Mogbo",
+        "position": "F"
+      },
+      {
+        "player": "Ben Simmons",
+        "position": "G-F"
+      },
+      {
+        "player": "Daeqwon Plowden",
+        "position": "G-F"
+      },
+      {
+        "player": "Dylan Cardwell",
+        "position": "C"
+      },
+      {
+        "player": "Alex Karaban",
+        "position": "F"
+      },
+      {
+        "player": "Emanuel Sharp",
+        "position": "G"
       },
       {
         "player": "Maxime Raynaud",
@@ -3822,6 +4102,80 @@
         "player": "Jock Landale",
         "position": "C"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Luguentz Dort",
+        "position": "G"
+      },
+      {
+        "player": "RayJ Dennis",
+        "position": "G"
+      },
+      {
+        "player": "Keshon Gilbert",
+        "position": "G"
+      },
+      {
+        "player": "Jalen Johnson",
+        "position": "F"
+      },
+      {
+        "player": "Aaron Wiggins",
+        "position": "G"
+      },
+      {
+        "player": "CJ McCollum",
+        "position": "G"
+      },
+      {
+        "player": "Kingston Flemings",
+        "position": "G"
+      },
+      {
+        "player": "Dyson Daniels",
+        "position": "G"
+      },
+      {
+        "player": "Nickeil Alexander-Walker",
+        "position": "G"
+      },
+      {
+        "player": "Dorian Finney-Smith",
+        "position": "F"
+      },
+      {
+        "player": "Henri Veesaar",
+        "position": "C"
+      },
+      {
+        "player": "Asa Newell",
+        "position": "F"
+      },
+      {
+        "player": "Onyeka Okongwu",
+        "position": "F-C"
+      },
+      {
+        "player": "Mouhamed Gueye",
+        "position": "F"
+      },
+      {
+        "player": "Zuby Ejiofor",
+        "position": "F"
+      },
+      {
+        "player": "Jalen Wilson",
+        "position": "F"
+      },
+      {
+        "player": "Corey Kispert",
+        "position": "F"
+      },
+      {
+        "player": "Jock Landale",
+        "position": "C"
+      }
     ]
   },
   "Hornets": {
@@ -4568,6 +4922,80 @@
       },
       {
         "player": "Xavier Tillman",
+        "position": "F"
+      },
+      {
+        "player": "Tidjane Sala\u00fcn",
+        "position": "F"
+      },
+      {
+        "player": "Liam McNeeley",
+        "position": "F"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Michael Ajayi",
+        "position": "G"
+      },
+      {
+        "player": "Kylan Boswell",
+        "position": "G"
+      },
+      {
+        "player": "Royce O'Neale",
+        "position": "F"
+      },
+      {
+        "player": "Naz Reid",
+        "position": "C-F"
+      },
+      {
+        "player": "Grant Williams",
+        "position": "F"
+      },
+      {
+        "player": "Coby White",
+        "position": "G"
+      },
+      {
+        "player": "Sion James",
+        "position": "G"
+      },
+      {
+        "player": "Christian Anderson",
+        "position": "G"
+      },
+      {
+        "player": "Kon Knueppel",
+        "position": "G-F"
+      },
+      {
+        "player": "Grayson Allen",
+        "position": "G"
+      },
+      {
+        "player": "Ryan Kalkbrenner",
+        "position": "C"
+      },
+      {
+        "player": "Moussa Diabat\u00e9",
+        "position": "F"
+      },
+      {
+        "player": "PJ Hall",
+        "position": "C"
+      },
+      {
+        "player": "Dennis Schr\u00f6der",
+        "position": "G"
+      },
+      {
+        "player": "Hannes Steinbach",
+        "position": "F"
+      },
+      {
+        "player": "Brandon Miller",
         "position": "F"
       },
       {
@@ -5354,6 +5782,76 @@
         "player": "Lachlan Olbrich",
         "position": "C"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Noa Essengue",
+        "position": "F"
+      },
+      {
+        "player": "Josh Giddey",
+        "position": "G"
+      },
+      {
+        "player": "Dailyn Swain",
+        "position": "F"
+      },
+      {
+        "player": "Buddy Hield",
+        "position": "G"
+      },
+      {
+        "player": "Caleb Wilson",
+        "position": "F"
+      },
+      {
+        "player": "Nic Claxton",
+        "position": "C"
+      },
+      {
+        "player": "Leonard Miller",
+        "position": "F"
+      },
+      {
+        "player": "Zach Collins",
+        "position": "F-C"
+      },
+      {
+        "player": "Matas Buzelis",
+        "position": "F"
+      },
+      {
+        "player": "Jordan Hawkins",
+        "position": "G"
+      },
+      {
+        "player": "Tobe Awaka",
+        "position": "F"
+      },
+      {
+        "player": "Jaylin Sellers",
+        "position": "G"
+      },
+      {
+        "player": "Norman Powell",
+        "position": "G"
+      },
+      {
+        "player": "Jalen Smith",
+        "position": "F-C"
+      },
+      {
+        "player": "Tre Jones",
+        "position": "G"
+      },
+      {
+        "player": "Isaac Okoro",
+        "position": "F-G"
+      },
+      {
+        "player": "Patrick Williams",
+        "position": "F"
+      }
     ]
   },
   "Cavaliers": {
@@ -6109,6 +6607,76 @@
       {
         "player": "Donovan Mitchell",
         "position": "G"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "James Harden",
+        "position": "G"
+      },
+      {
+        "player": "Thomas Bryant",
+        "position": "C-F"
+      },
+      {
+        "player": "Evan Mobley",
+        "position": "C"
+      },
+      {
+        "player": "Sam Merrill",
+        "position": "G"
+      },
+      {
+        "player": "Peyton Watson",
+        "position": "G"
+      },
+      {
+        "player": "Craig Porter Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Riley Minix",
+        "position": "F"
+      },
+      {
+        "player": "Meleek Thomas",
+        "position": "G"
+      },
+      {
+        "player": "Khalifa Diop",
+        "position": "C"
+      },
+      {
+        "player": "Jaylon Tyson",
+        "position": "G-F"
+      },
+      {
+        "player": "Tristan Enaruna",
+        "position": "F"
+      },
+      {
+        "player": "Tyrese Proctor",
+        "position": "G"
+      },
+      {
+        "player": "Jarrett Allen",
+        "position": "C"
+      },
+      {
+        "player": "Mario Hezonja",
+        "position": "F-G"
+      },
+      {
+        "player": "Nae'Qwan Tomlin",
+        "position": "F"
+      },
+      {
+        "player": "Donovan Mitchell",
+        "position": "G"
+      },
+      {
+        "player": "Ernest Udeh, Jr.",
+        "position": "C"
       }
     ]
   },
@@ -6882,6 +7450,80 @@
         "player": "Marvin Bagley III",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Max Christie",
+        "position": "G"
+      },
+      {
+        "player": "Dereck Lively II",
+        "position": "C"
+      },
+      {
+        "player": "Naji Marshall",
+        "position": "F"
+      },
+      {
+        "player": "Walter Clayton Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Marcus Sasser",
+        "position": "G"
+      },
+      {
+        "player": "Jett Howard",
+        "position": "G"
+      },
+      {
+        "player": "Zaccharie Risacher",
+        "position": "F"
+      },
+      {
+        "player": "Kyrie Irving",
+        "position": "G"
+      },
+      {
+        "player": "Tarik Biberovi\u0107",
+        "position": "F"
+      },
+      {
+        "player": "Morez Johnson Jr.",
+        "position": "F"
+      },
+      {
+        "player": "Caleb Martin",
+        "position": "F"
+      },
+      {
+        "player": "Daniel Gafford",
+        "position": "F-C"
+      },
+      {
+        "player": "P.J. Washington",
+        "position": "F"
+      },
+      {
+        "player": "Moussa Ciss\u00e9",
+        "position": "C"
+      },
+      {
+        "player": "Cooper Flagg",
+        "position": "F"
+      },
+      {
+        "player": "Tobi Lawal",
+        "position": "F"
+      },
+      {
+        "player": "Santi Aldama",
+        "position": "F-C"
+      },
+      {
+        "player": "Sergio de Larrea",
+        "position": "G"
+      }
     ]
   },
   "Nuggets": {
@@ -7650,6 +8292,76 @@
         "player": "David Roddy",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Christian Braun",
+        "position": "G"
+      },
+      {
+        "player": "Cam Whitmore",
+        "position": "F"
+      },
+      {
+        "player": "Julian Strawther",
+        "position": "G"
+      },
+      {
+        "player": "Marvin Bagley III",
+        "position": "F"
+      },
+      {
+        "player": "Tyus Jones",
+        "position": "G"
+      },
+      {
+        "player": "Trevon Brazile",
+        "position": "F"
+      },
+      {
+        "player": "Ryan Nembhard",
+        "position": "G"
+      },
+      {
+        "player": "DeMar DeRozan",
+        "position": "G-F"
+      },
+      {
+        "player": "Alpha Diallo",
+        "position": "G"
+      },
+      {
+        "player": "Bryce Hopkins",
+        "position": "F"
+      },
+      {
+        "player": "DaRon Holmes II",
+        "position": "F"
+      },
+      {
+        "player": "Nikola Joki\u0107",
+        "position": "C"
+      },
+      {
+        "player": "Spencer Jones",
+        "position": "F"
+      },
+      {
+        "player": "Zeke Nnaji",
+        "position": "F-C"
+      },
+      {
+        "player": "Cameron Johnson",
+        "position": "F"
+      },
+      {
+        "player": "Jamal Murray",
+        "position": "G"
+      },
+      {
+        "player": "Aaron Gordon",
+        "position": "F"
+      }
     ]
   },
   "Pistons": {
@@ -8414,6 +9126,80 @@
         "player": "Duncan Robinson",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jalen Duren",
+        "position": "C"
+      },
+      {
+        "player": "Cade Cunningham",
+        "position": "G"
+      },
+      {
+        "player": "Ronald Holland II",
+        "position": "F"
+      },
+      {
+        "player": "Paul Reed",
+        "position": "F"
+      },
+      {
+        "player": "Chaz Lanier",
+        "position": "G"
+      },
+      {
+        "player": "Ausar Thompson",
+        "position": "G-F"
+      },
+      {
+        "player": "Taurean Prince",
+        "position": "F"
+      },
+      {
+        "player": "Isaac Jones",
+        "position": "F"
+      },
+      {
+        "player": "Isaiah Joe",
+        "position": "G"
+      },
+      {
+        "player": "John Collins",
+        "position": "F-C"
+      },
+      {
+        "player": "Ebuka Okorie",
+        "position": "G"
+      },
+      {
+        "player": "Daniss Jenkins",
+        "position": "G"
+      },
+      {
+        "player": "Kevin Huerter",
+        "position": "G-F"
+      },
+      {
+        "player": "Javonte Green",
+        "position": "G"
+      },
+      {
+        "player": "Ugonna Onyenso",
+        "position": "C"
+      },
+      {
+        "player": "Tolu Smith",
+        "position": "F"
+      },
+      {
+        "player": "Duncan Robinson",
+        "position": "F"
+      },
+      {
+        "player": "Elijah Harkless",
+        "position": "G"
+      }
     ]
   },
   "Warriors": {
@@ -9149,6 +9935,80 @@
       {
         "player": "Pat Spencer",
         "position": "G"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Gary Payton II",
+        "position": "G"
+      },
+      {
+        "player": "Yaxel Lendeborg",
+        "position": "F"
+      },
+      {
+        "player": "Brandin Podziemski",
+        "position": "G"
+      },
+      {
+        "player": "Will Richard",
+        "position": "G"
+      },
+      {
+        "player": "Moses Moody",
+        "position": "G"
+      },
+      {
+        "player": "Kristaps Porzi\u0146\u0123is",
+        "position": "F-C"
+      },
+      {
+        "player": "De'Anthony Melton",
+        "position": "G"
+      },
+      {
+        "player": "Jimmy Butler III",
+        "position": "F"
+      },
+      {
+        "player": "Brandon Williams",
+        "position": "G"
+      },
+      {
+        "player": "Gui Santos",
+        "position": "F"
+      },
+      {
+        "player": "LJ Cryer",
+        "position": "G"
+      },
+      {
+        "player": "Al Horford",
+        "position": "C"
+      },
+      {
+        "player": "Draymond Green",
+        "position": "F-C"
+      },
+      {
+        "player": "Charles Bassey",
+        "position": "F-C"
+      },
+      {
+        "player": "Stephen Curry",
+        "position": "G"
+      },
+      {
+        "player": "Georges Niang",
+        "position": "F"
+      },
+      {
+        "player": "Malevy Leons",
+        "position": "F"
+      },
+      {
+        "player": "Graham Ike",
+        "position": "F-C"
       }
     ]
   },
@@ -9918,6 +10778,76 @@
         "player": "Jeff Green",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Amen Thompson",
+        "position": "G-F"
+      },
+      {
+        "player": "Bruce Thornton",
+        "position": "G"
+      },
+      {
+        "player": "Julian Phillips",
+        "position": "F"
+      },
+      {
+        "player": "Fred VanVleet",
+        "position": "G"
+      },
+      {
+        "player": "Kevin Durant",
+        "position": "F"
+      },
+      {
+        "player": "Jae'Sean Tate",
+        "position": "F"
+      },
+      {
+        "player": "Jabari Smith Jr.",
+        "position": "F"
+      },
+      {
+        "player": "Steven Adams",
+        "position": "C"
+      },
+      {
+        "player": "Reed Sheppard",
+        "position": "G"
+      },
+      {
+        "player": "Tari Eason",
+        "position": "F"
+      },
+      {
+        "player": "Quadir Copeland",
+        "position": "G"
+      },
+      {
+        "player": "Isaiah Crawford",
+        "position": "F"
+      },
+      {
+        "player": "Alperen Sengun",
+        "position": "C"
+      },
+      {
+        "player": "Clint Capela",
+        "position": "C"
+      },
+      {
+        "player": "Bogdan Bogdanovi\u0107",
+        "position": "G"
+      },
+      {
+        "player": "Oscar Tshiebwe",
+        "position": "F-C"
+      },
+      {
+        "player": "Marcus Smart",
+        "position": "G"
+      }
     ]
   },
   "Pacers": {
@@ -10677,6 +11607,76 @@
       {
         "player": "Ethan Thompson",
         "position": "G"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Tyrese Haliburton",
+        "position": "G"
+      },
+      {
+        "player": "Obi Toppin",
+        "position": "F"
+      },
+      {
+        "player": "Andrew Nembhard",
+        "position": "G-F"
+      },
+      {
+        "player": "Braden Smith",
+        "position": "G"
+      },
+      {
+        "player": "Jarace Walker",
+        "position": "F"
+      },
+      {
+        "player": "T.J. McConnell",
+        "position": "G"
+      },
+      {
+        "player": "Kelly Oubre Jr.",
+        "position": "F-G"
+      },
+      {
+        "player": "Johnny Furphy",
+        "position": "G"
+      },
+      {
+        "player": "Jalen Slawson",
+        "position": "F"
+      },
+      {
+        "player": "Larry Nance Jr.",
+        "position": "F-C"
+      },
+      {
+        "player": "Aaron Nesmith",
+        "position": "G-F"
+      },
+      {
+        "player": "Kobe Brown",
+        "position": "F"
+      },
+      {
+        "player": "Ben Sheppard",
+        "position": "G"
+      },
+      {
+        "player": "Quenton Jackson",
+        "position": "G"
+      },
+      {
+        "player": "Jay Huff",
+        "position": "C"
+      },
+      {
+        "player": "Ivica Zubac",
+        "position": "C"
+      },
+      {
+        "player": "Pascal Siakam",
+        "position": "F"
       }
     ]
   },
@@ -11438,6 +12438,80 @@
         "player": "Nicolas Batum",
         "position": "G-F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Keaton Wagler",
+        "position": "G"
+      },
+      {
+        "player": "Bradley Beal",
+        "position": "G"
+      },
+      {
+        "player": "Kobe Sanders",
+        "position": "G"
+      },
+      {
+        "player": "Derrick Jones Jr.",
+        "position": "F"
+      },
+      {
+        "player": "Brandon Ingram",
+        "position": "F"
+      },
+      {
+        "player": "Kris Dunn",
+        "position": "G"
+      },
+      {
+        "player": "Gradey Dick",
+        "position": "G-F"
+      },
+      {
+        "player": "Darius Garland",
+        "position": "G"
+      },
+      {
+        "player": "Brook Lopez",
+        "position": "C"
+      },
+      {
+        "player": "Nick Martinelli",
+        "position": "F"
+      },
+      {
+        "player": "Yanic Konan Niederh\u00e4user",
+        "position": "C"
+      },
+      {
+        "player": "Baba Miller",
+        "position": "F"
+      },
+      {
+        "player": "Jordan Miller",
+        "position": "G"
+      },
+      {
+        "player": "Isaiah Jackson",
+        "position": "F"
+      },
+      {
+        "player": "Cam Christie",
+        "position": "G"
+      },
+      {
+        "player": "Jalen Pickett",
+        "position": "G"
+      },
+      {
+        "player": "Rui Hachimura",
+        "position": "F"
+      },
+      {
+        "player": "Max Strus",
+        "position": "G-F"
+      }
     ]
   },
   "Lakers": {
@@ -12197,6 +13271,80 @@
       {
         "player": "Marcus Smart",
         "position": "G"
+      },
+      {
+        "player": "Luka Don\u010di\u0107",
+        "position": "F-G"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Adou Thiero",
+        "position": "G"
+      },
+      {
+        "player": "Jarred Vanderbilt",
+        "position": "F"
+      },
+      {
+        "player": "Matisse Thybulle",
+        "position": "G-F"
+      },
+      {
+        "player": "Quentin Grimes",
+        "position": "G"
+      },
+      {
+        "player": "Jaden Hardy",
+        "position": "G"
+      },
+      {
+        "player": "Bronny James",
+        "position": "G"
+      },
+      {
+        "player": "Collin Sexton",
+        "position": "G"
+      },
+      {
+        "player": "Ziaire Williams",
+        "position": "F"
+      },
+      {
+        "player": "Jake LaRavia",
+        "position": "F"
+      },
+      {
+        "player": "Walker Kessler",
+        "position": "C"
+      },
+      {
+        "player": "Austin Reaves",
+        "position": "G"
+      },
+      {
+        "player": "Chris Ma\u00f1on",
+        "position": "G"
+      },
+      {
+        "player": "AK Okereke",
+        "position": "F"
+      },
+      {
+        "player": "Cameron Carr",
+        "position": "G"
+      },
+      {
+        "player": "Arthur Kaluma",
+        "position": "F"
+      },
+      {
+        "player": "Sandro Mamukelashvili",
+        "position": "F-C"
+      },
+      {
+        "player": "Kevon Looney",
+        "position": "F"
       },
       {
         "player": "Luka Don\u010di\u0107",
@@ -12986,6 +14134,80 @@
         "player": "Taj Gibson",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jaylen Wells",
+        "position": "F"
+      },
+      {
+        "player": "Scotty Pippen Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Ty Jerome",
+        "position": "G-F"
+      },
+      {
+        "player": "Jerami Grant",
+        "position": "F"
+      },
+      {
+        "player": "Javon Small",
+        "position": "G"
+      },
+      {
+        "player": "Zach Edey",
+        "position": "C"
+      },
+      {
+        "player": "Kris Murray",
+        "position": "F"
+      },
+      {
+        "player": "Olivier-Maxence Prosper",
+        "position": "F"
+      },
+      {
+        "player": "Carson Cooper",
+        "position": "F"
+      },
+      {
+        "player": "Jahmai Mashack",
+        "position": "G"
+      },
+      {
+        "player": "Taylor Hendricks",
+        "position": "F"
+      },
+      {
+        "player": "Cedric Coward",
+        "position": "G"
+      },
+      {
+        "player": "Cam Spencer",
+        "position": "G"
+      },
+      {
+        "player": "Cameron Boozer",
+        "position": "F"
+      },
+      {
+        "player": "Isaiah Stewart",
+        "position": "F-C"
+      },
+      {
+        "player": "Karim L\u00f3pez",
+        "position": "F"
+      },
+      {
+        "player": "Quinten Post",
+        "position": "C"
+      },
+      {
+        "player": "GG Jackson",
+        "position": "F"
+      }
     ]
   },
   "Heat": {
@@ -13741,6 +14963,76 @@
       {
         "player": "Vladislav Goldin",
         "position": "C"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Simone Fontecchio",
+        "position": "F"
+      },
+      {
+        "player": "Davion Mitchell",
+        "position": "G"
+      },
+      {
+        "player": "Ryan Conwell",
+        "position": "G"
+      },
+      {
+        "player": "Nikola Jovi\u0107",
+        "position": "F"
+      },
+      {
+        "player": "Giannis Antetokounmpo",
+        "position": "F"
+      },
+      {
+        "player": "Nick Richards",
+        "position": "C"
+      },
+      {
+        "player": "Pelle Larsson",
+        "position": "G"
+      },
+      {
+        "player": "Tim Hardaway Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Dru Smith",
+        "position": "G"
+      },
+      {
+        "player": "Bam Adebayo",
+        "position": "C-F"
+      },
+      {
+        "player": "Myron Gardner",
+        "position": "F"
+      },
+      {
+        "player": "Keshad Johnson",
+        "position": "F"
+      },
+      {
+        "player": "Klay Thompson",
+        "position": "G-F"
+      },
+      {
+        "player": "Andrew Wiggins",
+        "position": "F"
+      },
+      {
+        "player": "Tre Donaldson",
+        "position": "G"
+      },
+      {
+        "player": "Vladislav Goldin",
+        "position": "C"
+      },
+      {
+        "player": "Bobby Portis Jr.",
+        "position": "F"
       }
     ]
   },
@@ -14502,6 +15794,80 @@
         "player": "Andre Jackson Jr.",
         "position": "G"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jericho Sims",
+        "position": "C"
+      },
+      {
+        "player": "Brayden Burries",
+        "position": "G"
+      },
+      {
+        "player": "Myles Turner",
+        "position": "C-F"
+      },
+      {
+        "player": "Gary Trent Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Kel'el Ware",
+        "position": "C"
+      },
+      {
+        "player": "Tyler Herro",
+        "position": "G"
+      },
+      {
+        "player": "Caris LeVert",
+        "position": "G"
+      },
+      {
+        "player": "Ryan Rollins",
+        "position": "G"
+      },
+      {
+        "player": "Nate Ament",
+        "position": "F"
+      },
+      {
+        "player": "Kyle Kuzma",
+        "position": "F"
+      },
+      {
+        "player": "Kam Jones",
+        "position": "G"
+      },
+      {
+        "player": "AJ Green",
+        "position": "G"
+      },
+      {
+        "player": "Ousmane Dieng",
+        "position": "F"
+      },
+      {
+        "player": "Bogoljub Markovi\u0107",
+        "position": "F"
+      },
+      {
+        "player": "Jaime Jaquez Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Kasparas Jaku\u010dionis",
+        "position": "G"
+      },
+      {
+        "player": "Cormac Ryan",
+        "position": "G"
+      },
+      {
+        "player": "Pete Nance",
+        "position": "F"
+      }
     ]
   },
   "Timberwolves": {
@@ -15245,6 +16611,72 @@
       {
         "player": "Julius Randle",
         "position": "F-C"
+      },
+      {
+        "player": "Rocco Zikarsky",
+        "position": "C"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Donte DiVincenzo",
+        "position": "G"
+      },
+      {
+        "player": "LaMelo Ball",
+        "position": "G"
+      },
+      {
+        "player": "Jaden McDaniels",
+        "position": "F"
+      },
+      {
+        "player": "Terrence Shannon Jr",
+        "position": "G-F"
+      },
+      {
+        "player": "Anthony Edwards",
+        "position": "G"
+      },
+      {
+        "player": "Jaylen Clark",
+        "position": "G"
+      },
+      {
+        "player": "Bones Hyland",
+        "position": "G"
+      },
+      {
+        "player": "Cody Williams",
+        "position": "F"
+      },
+      {
+        "player": "Ayo Dosunmu",
+        "position": "G"
+      },
+      {
+        "player": "Zyon Pullin",
+        "position": "G"
+      },
+      {
+        "player": "Joan Beringer",
+        "position": "F"
+      },
+      {
+        "player": "Jonathan Kuminga",
+        "position": "F"
+      },
+      {
+        "player": "Rudy Gobert",
+        "position": "C"
+      },
+      {
+        "player": "Isaiah Evans",
+        "position": "F"
+      },
+      {
+        "player": "Trey Lyles",
+        "position": "F"
       },
       {
         "player": "Rocco Zikarsky",
@@ -16018,6 +17450,80 @@
         "player": "Kevon Looney",
         "position": "F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jeremiah Fears",
+        "position": "G"
+      },
+      {
+        "player": "Zion Williamson",
+        "position": "F"
+      },
+      {
+        "player": "Herbert Jones",
+        "position": "F"
+      },
+      {
+        "player": "Jordan Poole",
+        "position": "G"
+      },
+      {
+        "player": "Dejounte Murray",
+        "position": "G"
+      },
+      {
+        "player": "DeAndre Jordan",
+        "position": "C"
+      },
+      {
+        "player": "Malik Dia",
+        "position": "F"
+      },
+      {
+        "player": "Trendon Watford",
+        "position": "G-F"
+      },
+      {
+        "player": "Jaron Pierre Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Bryce McGowens",
+        "position": "G"
+      },
+      {
+        "player": "Julian Reese",
+        "position": "F"
+      },
+      {
+        "player": "AJ Johnson",
+        "position": "G"
+      },
+      {
+        "player": "Karlo Matkovi\u0107",
+        "position": "F-C"
+      },
+      {
+        "player": "Yves Missi",
+        "position": "C"
+      },
+      {
+        "player": "Derik Queen",
+        "position": "C"
+      },
+      {
+        "player": "Bennedict Mathurin",
+        "position": "G-F"
+      },
+      {
+        "player": "Trey Murphy III",
+        "position": "F"
+      },
+      {
+        "player": "Saddiq Bey",
+        "position": "F"
+      }
     ]
   },
   "Knicks": {
@@ -16786,6 +18292,76 @@
         "player": "Ariel Hukporti",
         "position": "C"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Andre Drummond",
+        "position": "C"
+      },
+      {
+        "player": "Jordan Clarkson",
+        "position": "G"
+      },
+      {
+        "player": "Miles McBride",
+        "position": "G"
+      },
+      {
+        "player": "Josh Hart",
+        "position": "G"
+      },
+      {
+        "player": "Pac\u00f4me Dadiet",
+        "position": "F"
+      },
+      {
+        "player": "Jose Alvarado",
+        "position": "G"
+      },
+      {
+        "player": "OG Anunoby",
+        "position": "F-G"
+      },
+      {
+        "player": "Kevin McCullar Jr.",
+        "position": "G"
+      },
+      {
+        "player": "James Wiseman",
+        "position": "C"
+      },
+      {
+        "player": "Jalen Brunson",
+        "position": "G"
+      },
+      {
+        "player": "Tyler Kolek",
+        "position": "G"
+      },
+      {
+        "player": "Jaden Akins",
+        "position": "G"
+      },
+      {
+        "player": "Mikal Bridges",
+        "position": "G-F"
+      },
+      {
+        "player": "Karl-Anthony Towns",
+        "position": "C-F"
+      },
+      {
+        "player": "Landry Shamet",
+        "position": "G"
+      },
+      {
+        "player": "Mohamed Diawara",
+        "position": "F"
+      },
+      {
+        "player": "Tyler Nickel",
+        "position": "F"
+      }
     ]
   },
   "Thunder": {
@@ -17520,6 +19096,76 @@
       },
       {
         "player": "Aaron Wiggins",
+        "position": "G"
+      },
+      {
+        "player": "Cason Wallace",
+        "position": "G"
+      },
+      {
+        "player": "Brooks Barnhizer",
+        "position": "G"
+      },
+      {
+        "player": "Ajay Mitchell",
+        "position": "G"
+      },
+      {
+        "player": "Kenrich Williams",
+        "position": "G-F"
+      },
+      {
+        "player": "Nikola Topi\u0107",
+        "position": "G"
+      },
+      {
+        "player": "Isaiah Hartenstein",
+        "position": "C-F"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Shai Gilgeous-Alexander",
+        "position": "G"
+      },
+      {
+        "player": "Jared McCain",
+        "position": "G"
+      },
+      {
+        "player": "Jaylin Williams",
+        "position": "F"
+      },
+      {
+        "player": "Chet Holmgren",
+        "position": "C-F"
+      },
+      {
+        "player": "Jalen Williams",
+        "position": "G-F"
+      },
+      {
+        "player": "Alex Caruso",
+        "position": "G"
+      },
+      {
+        "player": "Thomas Sorber",
+        "position": "C"
+      },
+      {
+        "player": "Otega Oweh",
+        "position": "G"
+      },
+      {
+        "player": "Bennett Stirtz",
+        "position": "G"
+      },
+      {
+        "player": "Aday Mara",
+        "position": "C"
+      },
+      {
+        "player": "Josh Dix",
         "position": "G"
       },
       {
@@ -18290,6 +19936,76 @@
         "player": "Noah Penda",
         "position": "G-F"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Anthony Black",
+        "position": "G"
+      },
+      {
+        "player": "Jonathan Isaac",
+        "position": "F"
+      },
+      {
+        "player": "Jevon Carter",
+        "position": "G"
+      },
+      {
+        "player": "Desmond Bane",
+        "position": "G"
+      },
+      {
+        "player": "Jalen Suggs",
+        "position": "G"
+      },
+      {
+        "player": "Paolo Banchero",
+        "position": "F"
+      },
+      {
+        "player": "Jamal Cain",
+        "position": "F"
+      },
+      {
+        "player": "Nikola Vu\u010devi\u0107",
+        "position": "C"
+      },
+      {
+        "player": "Jase Richardson",
+        "position": "G"
+      },
+      {
+        "player": "Colin Castleton",
+        "position": "C"
+      },
+      {
+        "player": "Franz Wagner",
+        "position": "F"
+      },
+      {
+        "player": "Tristan da Silva",
+        "position": "F"
+      },
+      {
+        "player": "Izaiyah Nelson",
+        "position": "F"
+      },
+      {
+        "player": "Alex Morales",
+        "position": "G"
+      },
+      {
+        "player": "Wendell Carter Jr.",
+        "position": "C-F"
+      },
+      {
+        "player": "Goga Bitadze",
+        "position": "C-F"
+      },
+      {
+        "player": "Noah Penda",
+        "position": "G-F"
+      }
     ]
   },
   "76ers": {
@@ -19046,6 +20762,76 @@
         "player": "VJ Edgecombe",
         "position": "G"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Tyrese Maxey",
+        "position": "G"
+      },
+      {
+        "player": "Labaron Philon Jr.",
+        "position": "G"
+      },
+      {
+        "player": "Kentavious Caldwell-Pope",
+        "position": "G"
+      },
+      {
+        "player": "Caleb Love",
+        "position": "G"
+      },
+      {
+        "player": "Anfernee Simons",
+        "position": "G"
+      },
+      {
+        "player": "Jaylen Brown",
+        "position": "G-F"
+      },
+      {
+        "player": "Justin Edwards",
+        "position": "F"
+      },
+      {
+        "player": "Rayan Rupert",
+        "position": "G-F"
+      },
+      {
+        "player": "Joel Embiid",
+        "position": "C-F"
+      },
+      {
+        "player": "LeBron James",
+        "position": "F"
+      },
+      {
+        "player": "Dominick Barlow",
+        "position": "F"
+      },
+      {
+        "player": "Adem Bona",
+        "position": "F"
+      },
+      {
+        "player": "Jabari Walker",
+        "position": "F"
+      },
+      {
+        "player": "Dean Wade",
+        "position": "F-C"
+      },
+      {
+        "player": "Ariel Hukporti",
+        "position": "C"
+      },
+      {
+        "player": "VJ Edgecombe",
+        "position": "G"
+      },
+      {
+        "player": "Tacko Fall",
+        "position": "C"
+      }
     ]
   },
   "Suns": {
@@ -19788,6 +21574,76 @@
       },
       {
         "player": "Jordan Goodwin",
+        "position": "G"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Ryan Dunn",
+        "position": "F"
+      },
+      {
+        "player": "Dillon Brooks",
+        "position": "G-F"
+      },
+      {
+        "player": "Jalen Green",
+        "position": "G"
+      },
+      {
+        "player": "Luke Kennard",
+        "position": "G"
+      },
+      {
+        "player": "Khaman Maluach",
+        "position": "C"
+      },
+      {
+        "player": "Oso Ighodaro",
+        "position": "F"
+      },
+      {
+        "player": "Collin Gillespie",
+        "position": "G"
+      },
+      {
+        "player": "Devin Booker",
+        "position": "G"
+      },
+      {
+        "player": "Jamaree Bouyea",
+        "position": "G"
+      },
+      {
+        "player": "Drew Timme",
+        "position": "F"
+      },
+      {
+        "player": "Koa Peat",
+        "position": "F"
+      },
+      {
+        "player": "Rasheer Fleming",
+        "position": "F"
+      },
+      {
+        "player": "Miles Bridges",
+        "position": "F"
+      },
+      {
+        "player": "Jordan Goodwin",
+        "position": "G"
+      },
+      {
+        "player": "Mark Williams",
+        "position": "C"
+      },
+      {
+        "player": "Duop Reath",
+        "position": "C"
+      },
+      {
+        "player": "Pat Spencer",
         "position": "G"
       }
     ]
@@ -20542,6 +22398,76 @@
         "player": "Sidy Cissoko",
         "position": "G"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Jayson Kent",
+        "position": "F"
+      },
+      {
+        "player": "Damian Lillard",
+        "position": "G"
+      },
+      {
+        "player": "Scoot Henderson",
+        "position": "G"
+      },
+      {
+        "player": "Ja Morant",
+        "position": "G"
+      },
+      {
+        "player": "Chris Youngblood",
+        "position": "G"
+      },
+      {
+        "player": "Jrue Holiday",
+        "position": "G"
+      },
+      {
+        "player": "Deni Avdija",
+        "position": "F"
+      },
+      {
+        "player": "John Tonje",
+        "position": "G"
+      },
+      {
+        "player": "Micah Potter",
+        "position": "C"
+      },
+      {
+        "player": "Branden Carlson",
+        "position": "C"
+      },
+      {
+        "player": "Yang Hansen",
+        "position": "C"
+      },
+      {
+        "player": "Shaedon Sharpe",
+        "position": "G"
+      },
+      {
+        "player": "Donovan Clingan",
+        "position": "C"
+      },
+      {
+        "player": "V\u00edt Krej\u010d\u00ed",
+        "position": "G"
+      },
+      {
+        "player": "Toumani Camara",
+        "position": "F"
+      },
+      {
+        "player": "Robert Williams III",
+        "position": "C-F"
+      },
+      {
+        "player": "Sidy Cissoko",
+        "position": "G"
+      }
     ]
   },
   "Raptors": {
@@ -21273,6 +23199,72 @@
       {
         "player": "Sandro Mamukelashvili",
         "position": "F-C"
+      },
+      {
+        "player": "Alijah Martin",
+        "position": "G"
+      },
+      {
+        "player": "Jamison Battle",
+        "position": "F"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Nate Bittle",
+        "position": "C"
+      },
+      {
+        "player": "Jamal Shead",
+        "position": "G"
+      },
+      {
+        "player": "Kawhi Leonard",
+        "position": "F"
+      },
+      {
+        "player": "Scottie Barnes",
+        "position": "F-G"
+      },
+      {
+        "player": "Immanuel Quickley",
+        "position": "G"
+      },
+      {
+        "player": "Jaden Bradley",
+        "position": "G"
+      },
+      {
+        "player": "RJ Barrett",
+        "position": "F-G"
+      },
+      {
+        "player": "Kyle Anderson",
+        "position": "F-G"
+      },
+      {
+        "player": "Ja'Kobe Walter",
+        "position": "G"
+      },
+      {
+        "player": "Malachi Smith",
+        "position": "G"
+      },
+      {
+        "player": "Jakob Poeltl",
+        "position": "C"
+      },
+      {
+        "player": "Allen Graves",
+        "position": "F"
+      },
+      {
+        "player": "Collin Murray-Boyles",
+        "position": "F"
+      },
+      {
+        "player": "Trayce Jackson-Davis",
+        "position": "F"
       },
       {
         "player": "Alijah Martin",
@@ -22046,6 +24038,76 @@
         "player": "John Konchar",
         "position": "G"
       }
+    ],
+    "2026-27": [
+      {
+        "player": "Harrison Ingram",
+        "position": "F"
+      },
+      {
+        "player": "Kyle Filipowski",
+        "position": "C"
+      },
+      {
+        "player": "Keyonte George",
+        "position": "G"
+      },
+      {
+        "player": "Josh Green",
+        "position": "G"
+      },
+      {
+        "player": "Isaiah Collier",
+        "position": "G"
+      },
+      {
+        "player": "Svi Mykhailiuk",
+        "position": "G-F"
+      },
+      {
+        "player": "Jaxson Hayes",
+        "position": "C-F"
+      },
+      {
+        "player": "Tony Bradley",
+        "position": "C-F"
+      },
+      {
+        "player": "Trey Alexander",
+        "position": "G"
+      },
+      {
+        "player": "Ace Bailey",
+        "position": "F"
+      },
+      {
+        "player": "Jaren Jackson Jr.",
+        "position": "F-C"
+      },
+      {
+        "player": "Josh Okogie",
+        "position": "G"
+      },
+      {
+        "player": "Darryn Peterson",
+        "position": "G"
+      },
+      {
+        "player": "Lauri Markkanen",
+        "position": "F-C"
+      },
+      {
+        "player": "Brice Sensabaugh",
+        "position": "F"
+      },
+      {
+        "player": "Jusuf Nurki\u0107",
+        "position": "C"
+      },
+      {
+        "player": "Mo Bamba",
+        "position": "C"
+      }
     ]
   },
   "Wizards": {
@@ -22813,6 +24875,80 @@
       {
         "player": "Will Riley",
         "position": "F"
+      }
+    ],
+    "2026-27": [
+      {
+        "player": "Bilal Coulibaly",
+        "position": "G"
+      },
+      {
+        "player": "Tristan Vuk\u010devi\u0107",
+        "position": "F"
+      },
+      {
+        "player": "Tre Mann",
+        "position": "G"
+      },
+      {
+        "player": "Trae Young",
+        "position": "G"
+      },
+      {
+        "player": "AJ Dybantsa",
+        "position": "F"
+      },
+      {
+        "player": "Jamir Watkins",
+        "position": "F"
+      },
+      {
+        "player": "Bub Carrington",
+        "position": "G"
+      },
+      {
+        "player": "Deandre Ayton",
+        "position": "C"
+      },
+      {
+        "player": "Justin Champagnie",
+        "position": "G-F"
+      },
+      {
+        "player": "Tre Johnson",
+        "position": "G"
+      },
+      {
+        "player": "Anthony Gill",
+        "position": "F"
+      },
+      {
+        "player": "Kyshawn George",
+        "position": "F"
+      },
+      {
+        "player": "Alex Sarr",
+        "position": "C"
+      },
+      {
+        "player": "Khris Middleton",
+        "position": "F"
+      },
+      {
+        "player": "Anthony Davis",
+        "position": "F-C"
+      },
+      {
+        "player": "Reece Beekman",
+        "position": "G"
+      },
+      {
+        "player": "Will Riley",
+        "position": "F"
+      },
+      {
+        "player": "Felix Okpara",
+        "position": "C"
       }
     ]
   }

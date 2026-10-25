@@ -43,7 +43,7 @@ _TRACKED_TEAMS = {
 
 _SEASONS = [
     "2015-16", "2016-17", "2017-18", "2018-19", "2019-20",
-    "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26",
+    "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26", "2026-27",
 ]
 
 _REQUEST_DELAY_SECONDS = 0.6
@@ -91,7 +91,7 @@ def fetch_season_base_stats(season):
 def main():
     team_ids = _team_id_by_short_name()
     stats = {
-        "_note": "Live data pulled via nba_api (LeagueDashPlayerStats, Base, PerGame), 2015-16 through 2025-26, Regular Season. Every rostered player, not just team leaders. Re-run fetch_player_base_stats.py to refresh.",
+        "_note": "Live data pulled via nba_api (LeagueDashPlayerStats, Base, PerGame), 2015-16 through 2026-27, Regular Season. Every rostered player, not just team leaders. Re-run fetch_player_base_stats.py to refresh.",
     }
     for short_name in _TRACKED_TEAMS:
         stats[short_name] = {}
