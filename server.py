@@ -10,6 +10,7 @@ load_dotenv()
 from llm import answer_question
 from rag import (
     available_seasons,
+    default_team_season,
     explicit_season,
     get_all_teams,
     get_league_leaders,
@@ -48,10 +49,11 @@ def _requested_season():
 
 
 def _team_dashboard_bundle(team_key, season=None):
-    season = season if season in available_seasons() else latest_season()
+    season = season if season in available_seasons() else default_team_season(team_key)
     return {
         "team": team_key,
         "season": season,
+        "latestSeason": latest_season(),
         "availableSeasons": available_seasons(),
         "branding": get_team_branding(team_key),
         "knowledge": get_team_knowledge(team_key),

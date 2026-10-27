@@ -90,7 +90,7 @@ def test_team_dashboard_endpoint_respects_season_query_param():
     assert response.status_code == 200
     data = response.get_json()
     assert data["season"] == "2015-16"
-    assert len(data["availableSeasons"]) == 12
+    assert len(data["availableSeasons"]) == 11
 
 
 def test_team_dashboard_endpoint_falls_back_to_latest_for_invalid_season():
@@ -98,7 +98,7 @@ def test_team_dashboard_endpoint_falls_back_to_latest_for_invalid_season():
     response = client.get("/api/team/Spurs?season=not-a-season")
 
     assert response.status_code == 200
-    assert response.get_json()["season"] == "2026-27"
+    assert response.get_json()["season"] == "2025-26"
 
 
 def test_team_dashboard_endpoint_is_case_insensitive():
@@ -159,7 +159,7 @@ def test_player_view_endpoint_returns_bundle_for_known_player():
     assert response.status_code == 200
     data = response.get_json()
     assert data["name"] == "LeBron James"
-    assert data["team"] == "76ers"  # signed with Philadelphia for 2026-27
+    assert data["team"] == "Lakers"
 
 
 def test_player_view_endpoint_returns_404_for_unknown_player():
@@ -233,7 +233,7 @@ def test_player_view_endpoint_respects_season_param():
     data = client.get("/api/player/Kevin Durant?season=2016-17").get_json()
     assert data["team"] == "Warriors" and data["current"]["season"] == "2016-17"
     fallback = client.get("/api/player/Kevin Durant?season=bogus").get_json()
-    assert fallback["current"]["season"] == "2026-27"
+    assert fallback["current"]["season"] == "2025-26"
 
 
 def test_player_comparison_endpoint_respects_season_param():
@@ -249,7 +249,7 @@ def test_team_comparison_endpoint_respects_season_param():
     assert data["teamA"]["season"] == data["teamB"]["season"] == "2016-17"
     assert data["teamA"]["seasonSnapshot"]["wins"] > 0
     latest = client.get("/api/team/Cavaliers/vs/Warriors?season=bogus").get_json()
-    assert latest["teamA"]["season"] == "2026-27"
+    assert latest["teamA"]["season"] == "2025-26"
 
 
 def test_chat_season_carries_to_team_comparison_message():

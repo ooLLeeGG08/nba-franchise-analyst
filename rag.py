@@ -179,6 +179,23 @@ def get_team_recent_games(team, season=None):
     return RECENT_GAMES.get(team, {}).get(season)
 
 
+# Below this many games, the dashboard's "5-game rolling average" scoring
+# trend and point-differential charts have nothing meaningful to show.
+_MIN_GAMES_FOR_CURRENT_SEASON_DEFAULT = 5
+
+
+def default_team_season(team):
+    """The season a team's dashboard opens on when none is requested: the
+    latest season, unless this team has played too few games there yet, in
+    which case the most recent season that has enough -- same idea as
+    leaders_season(), applied per team instead of league-wide."""
+    for season in reversed(available_seasons()):
+        games = get_team_recent_games(team, season)
+        if games and len(games) >= _MIN_GAMES_FOR_CURRENT_SEASON_DEFAULT:
+            return season
+    return latest_season()
+
+
 def get_team_season_snapshot(team, season=None):
     games = get_team_recent_games(team, season)
     if not games:

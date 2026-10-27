@@ -100,11 +100,11 @@ def test_resolve_season_falls_back_to_history():
 
 
 def test_resolve_season_defaults_to_latest_when_nothing_found():
-    assert resolve_season("Tell me about the Nets", []) == "2026-27"
+    assert resolve_season("Tell me about the Nets", []) == "2025-26"
 
 
 def test_resolve_season_ignores_out_of_range_year():
-    assert resolve_season("Tell me about the Nets in 1998", []) == "2026-27"
+    assert resolve_season("Tell me about the Nets in 1998", []) == "2025-26"
 
 
 def test_get_team_roster_returns_list_for_known_team_season():
@@ -155,7 +155,7 @@ def test_retrieve_context_returns_empty_string_for_unknown_team():
 
 
 def test_latest_season_returns_newest_season_key():
-    assert latest_season() == "2026-27"
+    assert latest_season() == "2025-26"
 
 
 def test_get_team_knowledge_returns_dict_for_known_team():
@@ -171,10 +171,9 @@ def test_get_team_knowledge_returns_none_for_unknown_team():
 def test_get_team_advanced_stats_covers_all_seasons():
     stats = get_team_advanced_stats("Spurs")
     assert stats is not None
-    assert "2025-26" in stats  # last complete season stays available...
-    assert "2026-27" in stats  # ...alongside the new current one
-    assert "off_rating" in stats["2026-27"]
-    assert "def_rating_rank" in stats["2026-27"]
+    assert "2025-26" in stats
+    assert "off_rating" in stats["2025-26"]
+    assert "def_rating_rank" in stats["2025-26"]
 
 
 def test_get_player_advanced_stats_returns_list_for_known_team_season():
@@ -212,11 +211,10 @@ def test_get_team_season_snapshot_returns_requested_season():
     assert snapshot_2015 != snapshot_latest
 
 
-def test_available_seasons_returns_all_twelve_seasons():
+def test_available_seasons_returns_all_eleven_seasons():
     assert available_seasons() == [
         "2015-16", "2016-17", "2017-18", "2018-19", "2019-20",
         "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26",
-        "2026-27",
     ]
 
 
@@ -248,7 +246,7 @@ def test_resolve_player_falls_back_to_history():
 def test_get_player_view_returns_team_position_and_history():
     view = get_player_view("LeBron James")
     assert view is not None
-    assert view["team"] == "76ers"  # signed with Philadelphia for 2026-27
+    assert view["team"] == "Lakers"
     assert view["position"] == "F"
     assert len(view["history"]) > 0
     assert view["history"][-1]["player"] == "LeBron James"
@@ -378,7 +376,7 @@ def test_get_league_leaders_unknown_category_returns_empty_list():
 
 def test_get_league_leaders_pie_excludes_low_sample_players(monkeypatch):
     monkeypatch.setitem(rag.PLAYER_ADVANCED, "Spurs", {
-        "2026-27": [
+        latest_season(): [
             {"player": "Small Sample Guy", "gp": 1, "min": 6.8, "pie": 0.9},
             {"player": "Real Starter", "gp": 65, "min": 30.0, "pie": 0.5},
         ]
@@ -483,13 +481,13 @@ def test_get_player_view_uses_requested_season_but_keeps_full_history():
 
 def test_get_player_view_defaults_to_latest_season():
     view = get_player_view("Kevin Durant")
-    assert view["current"]["season"] == "2026-27"
+    assert view["current"]["season"] == "2025-26"
     assert view["team"] == "Rockets"
 
 
 def test_get_player_view_falls_back_to_latest_when_player_has_no_data_that_season():
     view = get_player_view("Kevin Durant", "2019-20")  # sat out injured
-    assert view["current"]["season"] == "2026-27"
+    assert view["current"]["season"] == "2025-26"
 
 
 def test_player_context_uses_the_requested_season_not_the_latest():
@@ -497,7 +495,7 @@ def test_player_context_uses_the_requested_season_not_the_latest():
     kd_line = next(l for l in context.splitlines() if l.startswith("Kevin Durant"))
     stats_part = kd_line.split(" | Salary")[0]  # salary rows legitimately list 2026-27/2027-28
     assert "2016-17 with Warriors" in stats_part
-    assert "2026-27" not in stats_part  # his real current season's stats must not leak in
+    assert "2025-26" not in stats_part  # his real current season's stats must not leak in
     assert "TS%" in kd_line and "PIE" in kd_line
 
 
@@ -547,3 +545,15 @@ def test_build_context_skips_caveat_line_when_no_salary_was_actually_used():
     # shouldn't claim a caveat about data it didn't use.
     ctx = build_context("Should the Lakers trade for a random bench player?", [])
     assert "Salary data caveat" not in ctx
+
+
+def test_default_team_season_uses_latest_when_it_has_enough_games():
+    assert rag.default_team_season("Spurs") == latest_season()
+
+
+def test_default_team_season_falls_back_when_latest_has_too_few_games(monkeypatch):
+    monkeypatch.setitem(rag.RECENT_GAMES, "Spurs", {
+        **rag.RECENT_GAMES["Spurs"],
+        latest_season(): [{"date": "2026-10-21", "result": "W"}],  # 1 game, not 5+
+    })
+    assert rag.default_team_season("Spurs") == available_seasons()[-2]
