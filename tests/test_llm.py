@@ -70,3 +70,12 @@ def test_build_messages_appends_trade_addendum_only_in_trade_mode():
 def test_trade_addendum_forbids_cap_feasibility_claims():
     assert "cap-feasible" in TRADE_PROMPT_ADDENDUM or "cap" in TRADE_PROMPT_ADDENDUM.lower()
     assert "never" in TRADE_PROMPT_ADDENDUM.lower()
+
+
+def test_system_prompt_guards_against_flipped_yes_no_on_negated_hypotheticals():
+    # Regression: "would the Cavs have repeated if KD had NOT joined the
+    # Warriors?" got answered "No, the Cavs probably would have won..." --
+    # a leading Yes/No that contradicted its own very next clause.
+    lowered = SYSTEM_PROMPT.lower()
+    assert "negation" in lowered
+    assert "re-check" in lowered or "recheck" in lowered
