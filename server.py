@@ -9,6 +9,7 @@ load_dotenv()
 
 from llm import answer_question
 from rag import (
+    TEAM_FACTS_GENERATED_AT,
     available_seasons,
     default_team_season,
     explicit_season,
@@ -19,10 +20,10 @@ from rag import (
     get_team_advanced_stats,
     get_team_branding,
     get_team_knowledge,
-    get_team_leaders,
     get_team_records,
     get_team_recent_games,
     get_team_roster,
+    get_team_season_leaders,
     get_team_season_snapshot,
     is_comparison_query,
     is_trade_query,
@@ -59,7 +60,7 @@ def _team_dashboard_bundle(team_key, season=None):
         "knowledge": get_team_knowledge(team_key),
         "records": get_team_records(team_key),
         "advancedStats": get_team_advanced_stats(team_key),
-        "leaders": get_team_leaders(team_key),
+        "leaders": get_team_season_leaders(team_key, season),
         "recentGames": get_team_recent_games(team_key, season),
         "seasonSnapshot": get_team_season_snapshot(team_key, season),
         "roster": get_team_roster(team_key, season),
@@ -103,7 +104,7 @@ def chat():
             'trade': is_trade_query(message),
             'season': explicit_season(message, history),
             'chart': get_team_records(team) if team else None,
-            'leaders': get_team_leaders(team) if team else None,
+            'leaders': get_team_season_leaders(team, default_team_season(team)) if team else None,
         })
 
     except Exception as e:
@@ -118,6 +119,18 @@ def chat():
 @app.route('/api/teams')
 def teams_list():
     return jsonify(get_all_teams())
+
+
+@app.route('/api/meta')
+def meta():
+    # Powers the UI's "Data through {season} season - facts as of {date}"
+    # label. factsAsOf is team_facts.json's own fetch timestamp (championships
+    # and current head coaches, live via nba_api -- see fetch_team_facts.py),
+    # not the stats data's freshness, since those can be refreshed separately.
+    return jsonify({
+        'dataThroughSeason': latest_season(),
+        'factsAsOf': TEAM_FACTS_GENERATED_AT,
+    })
 
 
 @app.route('/api/team/<team>')

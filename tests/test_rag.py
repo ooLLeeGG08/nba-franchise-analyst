@@ -557,3 +557,70 @@ def test_default_team_season_falls_back_when_latest_has_too_few_games(monkeypatc
         latest_season(): [{"date": "2026-10-21", "result": "W"}],  # 1 game, not 5+
     })
     assert rag.default_team_season("Spurs") == available_seasons()[-2]
+
+
+def test_team_season_leaders_every_entry_is_on_that_seasons_roster():
+    # Regression: the old player_leaders.json was all-time, not season-
+    # specific, so a current-season page could show a player from a
+    # different era who was never on that season's roster.
+    for team in rag.BRANDING:
+        for season in available_seasons():
+            roster_names = {p["player"] for p in (get_team_roster(team, season) or [])}
+            if not roster_names:
+                continue
+            leaders = rag.get_team_season_leaders(team, season)
+            for category, entries in leaders.items():
+                for entry in entries:
+                    assert entry["player"] in roster_names, (
+                        f"{entry['player']} listed as a {category} leader for {team} {season} "
+                        f"but is not on that season's roster"
+                    )
+
+
+def test_team_season_leaders_excludes_low_sample_players():
+    leaders = rag.get_team_season_leaders("Spurs", "2025-26")
+    for entries in leaders.values():
+        assert all(isinstance(e["value"], (int, float)) for e in entries)
+    # Sorted descending within each category.
+    for entries in leaders.values():
+        values = [e["value"] for e in entries]
+        assert values == sorted(values, reverse=True)
+
+
+def test_team_season_leaders_empty_for_unknown_team_or_season():
+    assert rag.get_team_season_leaders("NotATeam", "2025-26") == {"ppg": [], "apg": [], "rpg": [], "spg": []}
+    assert rag.get_team_season_leaders("Spurs", "1998-99") == {"ppg": [], "apg": [], "rpg": [], "spg": []}
+
+
+def test_get_team_facts_returns_live_sourced_championships_and_coach():
+    thunder = rag.get_team_facts("Thunder")
+    assert "2024-25" in thunder["championships"]  # the title the old static data was missing
+    assert thunder["head_coach"]  # live, not null
+
+    spurs = rag.get_team_facts("Spurs")
+    assert spurs["head_coach"] == "Mitch Johnson"  # not Popovich -- he stepped down in 2024
+    assert spurs["front_office_head"] is None  # no live source exists; must not be guessed
+
+
+def test_team_document_uses_live_facts_not_stale_franchise_knowledge():
+    doc = retrieve_context("Thunder", "2025-26")
+    assert "2024-25" in doc
+    assert "live via nba_api" in doc
+
+    doc = retrieve_context("Spurs", "2025-26")
+    assert "Mitch Johnson" in doc
+    assert "Current head coach" in doc
+
+
+def test_team_document_leaders_are_season_labeled_not_all_time():
+    doc = retrieve_context("Lakers", "2025-26")
+    assert "Points/game leaders (2015-16 to 2025-26)" not in doc
+    assert "Points/game leaders (2025-26):" in doc
+    leaders_lines = [l for l in doc.splitlines() if "leaders (2025-26)" in l]
+    assert leaders_lines
+    # The specific players the user flagged as wrong for a 2025-26 Lakers
+    # page -- they may legitimately appear elsewhere in the document (e.g.
+    # franchise_knowledge.json's historical-narrative summary), just not as
+    # this season's leaders.
+    for stale_name in ("Kobe Bryant", "Lonzo Ball", "JaVale McGee", "DeAndre Jordan"):
+        assert not any(stale_name in line for line in leaders_lines)

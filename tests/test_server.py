@@ -267,3 +267,19 @@ def test_chat_endpoint_flags_trade_questions():
         normal = client.post("/api/chat", json={"message": "Analyze the Lakers"}).get_json()
     assert trade["trade"] is True
     assert normal["trade"] is False
+
+
+def test_meta_endpoint_returns_season_and_facts_date():
+    client = server.app.test_client()
+    data = client.get("/api/meta").get_json()
+    assert data["dataThroughSeason"] == rag.latest_season()
+    assert data["factsAsOf"]  # a real timestamp, not null
+
+
+def test_team_dashboard_leaders_are_season_scoped():
+    client = server.app.test_client()
+    data = client.get("/api/team/Lakers?season=2025-26").get_json()
+    roster_names = {p["player"] for p in data["roster"]}
+    for entries in data["leaders"].values():
+        for entry in entries:
+            assert entry["player"] in roster_names

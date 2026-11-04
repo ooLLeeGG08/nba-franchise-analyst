@@ -175,5 +175,19 @@
         renderSidebarPane();
     });
 
+    function loadDataAsOfLabel() {
+        const label = document.getElementById('dataAsOfLabel');
+        if (!label) return;
+        Api.fetchMeta()
+            .then(({ dataThroughSeason, factsAsOf }) => {
+                const factsDate = factsAsOf
+                    ? new Date(factsAsOf).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                    : 'unknown';
+                label.textContent = `Data through ${dataThroughSeason} season · facts as of ${factsDate}`;
+            })
+            .catch((e) => console.error('Failed to load data-as-of label', e));
+    }
+
+    loadDataAsOfLabel();
     renderAll();
 })();

@@ -15,6 +15,12 @@ const Api = (() => {
         return response.json();
     }
 
+    async function fetchMeta() {
+        const response = await fetch('/api/meta');
+        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+        return response.json();
+    }
+
     async function fetchTeamDashboard(team, season) {
         const query = season ? `?season=${encodeURIComponent(season)}` : '';
         const response = await fetch(`/api/team/${encodeURIComponent(team)}${query}`);
@@ -50,7 +56,7 @@ const Api = (() => {
     }
 
     return {
-        sendChatMessage, fetchTeams, fetchTeamDashboard, fetchTeamComparison,
+        sendChatMessage, fetchTeams, fetchMeta, fetchTeamDashboard, fetchTeamComparison,
         fetchLeaders, fetchPlayerView, fetchPlayerComparison,
     };
 })();

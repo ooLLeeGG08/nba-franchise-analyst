@@ -54,6 +54,11 @@ body {
     font-family: var(--font-sans);
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 button {
@@ -304,6 +309,13 @@ button {
 .main-content {
     flex: 1;
     overflow-y: auto;
+    /* Explicit, not left to default: when only overflow-y is set, browsers
+       silently promote overflow-x from "visible" to "auto" too (CSS Overflow
+       spec), so one element a few px wider than the viewport anywhere in the
+       thread made this whole pane pannable left/right. Nested carousels
+       (.kpi-grid etc.) keep their own overflow-x: auto and still scroll
+       fine -- a child's own scroll container is independent of this. */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }

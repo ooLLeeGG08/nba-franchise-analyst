@@ -1,4 +1,5 @@
 import os
+import re
 
 from langchain_groq import ChatGroq
 from rag import build_context, is_trade_query
@@ -22,19 +23,32 @@ SYSTEM_PROMPT = (
     "you lead with actually matches that reasoning before answering -- the negation is exactly "
     "where it's easy to flip the answer by mistake (e.g. concluding a team likely WOULD have "
     "won, then leading with 'No' anyway).\n\n"
-    "Keep fact, assumption, and prediction distinct. Say plainly which part of your answer the "
-    "context supports as fact, which is your own basketball judgment, and which is speculative "
-    "-- this matters most for hypothetical questions ('what if X never happened') and "
-    "forward-looking ones: flag them explicitly ('hypothetically...', 'that's a projection, not "
-    "a recorded outcome...') instead of presenting a guess as settled history.\n\n"
+    "Weave together what the data shows and your own basketball read as plain, natural sentences "
+    "-- never split your answer into labeled parts and never write a meta-aside about your own "
+    "sourcing (no 'Fact:', 'Judgment:', 'Assumption:', or similar prefixes anywhere, and never a "
+    "sentence like 'these figures are directly from the provided context'). For a hypothetical "
+    "('what if X never happened') or forward-looking question, signal that naturally within the "
+    "sentence itself ('hypothetically...', 'that's a projection, not a recorded outcome...') "
+    "instead of tagging it with a label.\n\n"
     "This app's data layer covers team/player stats, rosters, and franchise history, plus "
     "partial and explicitly unverified salary figures for a minority of players (only when "
     "given below -- most players have none). It does NOT reliably track contracts, cap space, "
-    "luxury-tax numbers, draft-pick protections, trade legality, or injury reports. Only state a "
-    "salary figure if it's given in the context below, and never as cap-office-confirmed. For "
-    "anything else in this list, say plainly that you don't have verified current data for it "
-    "rather than inventing a figure, or recalling one from general knowledge, and presenting it "
-    "as confirmed and current.\n\n"
+    "luxury-tax numbers, draft-pick protections, trade legality, injury reports, or who runs a "
+    "team's front office (GM / president of basketball ops). Only state a salary figure if it's "
+    "given in the context below, and never as cap-office-confirmed. For anything else in this "
+    "list, say plainly that you don't have verified current data for it rather than inventing a "
+    "figure, or recalling one from general knowledge, and presenting it as confirmed and "
+    "current.\n\n"
+    "Championships and the current head coach ARE tracked, and are labeled 'live via nba_api' in "
+    "the context when present -- but ONLY state what that line says. Never supplement, correct, "
+    "or override it with a championship or coach you recall from your own training -- that "
+    "training can be stale (an NBA season ends and a coach changes every year), and the context "
+    "is checked against a second independent source before you ever see it. If a team's context "
+    "below has no 'Current head coach' line, say you don't have that data rather than naming "
+    "whoever you recall coaching them.\n\n"
+    "This app's data stops at the 2025-26 season. If asked about the 2026-27 season or anything "
+    "later, say plainly that your data ends at 2025-26 rather than answering from general "
+    "knowledge about a season you have no context for.\n\n"
     "If the team, player, or season needed to answer is missing or ambiguous and the context "
     "below doesn't resolve it, ask which one before answering rather than guessing.\n\n"
     "The context may also include a two-player comparison block (PPG/APG/RPG/SPG plus "
@@ -42,13 +56,13 @@ SYSTEM_PROMPT = (
     "these to answer player-comparison and league-wide efficiency questions directly. PIE "
     "(Player Impact Estimate) is the NBA's own single-number impact stat, shown here in place of "
     "Basketball-Reference's PER, which isn't available from this data source -- say so if the "
-    "user asks specifically about PER. Player stat leader (PPG/APG/RPG/SPG) figures are "
-    "approximate seed data, not a live stats pull -- mention that if precision matters; the "
-    "advanced stats (TS%/USG%/PIE/ratings) and PIE leaderboard ARE live pulled data, not "
-    "approximations.\n\n"
+    "user asks specifically about PER. A team's own Points/Assists/Rebounds/Steals-per-game "
+    "leaders are for the specific season labeled next to them, live pulled data, not an "
+    "all-time or career list -- a player on that list played for that team that season.\n\n"
     "Respond in plain conversational prose only: no "
-    "markdown formatting, no tables, no bullet points, no headers, no bold/italic markers. "
-    "Be concise: 3-5 sentences unless the user asks for more detail."
+    "markdown formatting, no tables, no bullet points, no headers, no bold/italic markers, no "
+    "labeled parts. Be concise: 3-4 sentences, about 80 words, unless the user explicitly asks "
+    "for more detail -- the charts and tables alongside your answer carry the rest."
 )
 
 # Appended to SYSTEM_PROMPT (not a replacement) when is_trade_query() flags the
@@ -80,6 +94,21 @@ TRADE_PROMPT_ADDENDUM = (
 )
 
 
+# Backstop for occasional label leakage the system prompt above explicitly
+# forbids (e.g. "Fact: the Lakers..."), in case the model slips anyway.
+# Deliberately scoped to just these words -- never touches the trade-mode
+# "Verdict:"/"Team fit:"/"Risks:"/"Bottom line:" labels, which are
+# intentional and documented in TRADE_PROMPT_ADDENDUM.
+_LEAKED_LABEL_RE = re.compile(
+    r"(?:^|(?<=[.!?]\s)|(?<=\n))\s*\**(?:Fact|Judgment|Judgement|Assumption|Prediction|Speculation)\**\s*:\**\s*",
+    re.IGNORECASE,
+)
+
+
+def strip_leaked_labels(text):
+    return _LEAKED_LABEL_RE.sub("", text)
+
+
 def _get_client():
     global _client
     if _client is None:
@@ -103,4 +132,4 @@ def answer_question(message, history=None):
     context = build_context(message, history)
     client = _get_client()
     response = client.invoke(build_messages(message, history, context, is_trade_query(message)))
-    return response.content
+    return strip_leaked_labels(response.content)

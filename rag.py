@@ -34,6 +34,15 @@ with open(os.path.join(_DATA_DIR, "recent_games.json")) as f:
 with open(os.path.join(_DATA_DIR, "team_branding.json")) as f:
     BRANDING = {k: v for k, v in json.load(f).items() if not k.startswith("_")}
 
+with open(os.path.join(_DATA_DIR, "team_facts.json")) as f:
+    _team_facts_raw = json.load(f)
+# Live-sourced (nba_api), not hand-curated -- see fetch_team_facts.py. Kept
+# separate from the two file-level metadata fields so callers never mistake
+# "generated_at"/"as_of_season" for a team entry.
+TEAM_FACTS = {k: v for k, v in _team_facts_raw.items() if k not in ("_note", "generated_at", "as_of_season")}
+TEAM_FACTS_GENERATED_AT = _team_facts_raw.get("generated_at")
+TEAM_FACTS_AS_OF_SEASON = _team_facts_raw.get("as_of_season")
+
 _TEAM_ALIASES = {
     "Spurs": ["spurs", "san antonio"],
     "Celtics": ["celtics", "boston"],
@@ -300,16 +309,69 @@ def get_league_leaders(category, limit=15):
     return _qualified_entries(category, leaders_season(), limit)
 
 
+def get_team_season_leaders(team, season, limit=5):
+    """This team's own top players by per-game average in `season` --
+    computed live from PLAYER_BASE, not the old all-time seed file
+    (player_leaders.json), which had no season dimension at all and could
+    surface a player from a different era on a current-season page (e.g.
+    Kobe Bryant or JaVale McGee on a 2025-26 Lakers page). Same qualifier as
+    league leaders (20 GP, 15 MPG) so a short callup's hot streak can't
+    dominate a team's own leaderboard.
+
+    Also cross-checked against that season's roster snapshot: PLAYER_BASE
+    (every player who logged a game that season) and ROSTERS (a point-in-time
+    snapshot) come from different nba_api endpoints and can disagree for an
+    unusual short stint -- e.g. LaMarcus Aldridge played 26 real games for
+    the 2020-21 Nets before retiring mid-season, but never appears in their
+    roster snapshot. Every leader listed must appear on both."""
+    roster_names = {p["player"] for p in ROSTERS.get(team, {}).get(season, [])}
+    result = {}
+    for category, field in _BASE_STAT_FIELDS.items():
+        entries = [
+            {"player": p["player"], "team": team, "value": p[field]}
+            for p in PLAYER_BASE.get(team, {}).get(season, [])
+            if p["gp"] >= _LEADER_MIN_GAMES and p["min"] >= _LEADER_MIN_MINUTES_PER_GAME
+            and p["player"] in roster_names
+        ]
+        entries.sort(key=lambda e: e["value"], reverse=True)
+        result[category] = entries[:limit]
+    return result
+
+
+def get_team_facts(team):
+    """Live-sourced (nba_api) championships and current head coach -- see
+    fetch_team_facts.py. front_office_head is intentionally always null for
+    now: no live source exists for it, and nothing is guessed."""
+    return TEAM_FACTS.get(team)
+
+
 def _team_document(team, season):
     info = KNOWLEDGE[team]
     records = RECORDS.get(team, {})
+    facts = TEAM_FACTS.get(team) or {}
+    # Championships and the current head coach come from TEAM_FACTS (live via
+    # nba_api, see fetch_team_facts.py) rather than franchise_knowledge.json's
+    # hand-written narrative, which goes stale silently (it once said the
+    # Thunder's only title was 1979 and never recorded Popovich's 2024
+    # successor). franchise_knowledge.json still supplies the historical
+    # coaching-continuity narrative below, which is prose/pattern, not a
+    # single fact that can go out of date the same way.
+    championships = facts.get("championships")
+    championships_line = (
+        f"Championships: {', '.join(championships)}" if championships
+        else "Championships: none on record"
+    )
     lines = [
         f"{info['full_name']} ({team})",
         f"Summary: {info['summary']}",
-        f"Championships: {info['championships'] or 'None in this period'}",
+        f"{championships_line} -- live via nba_api, as of {TEAM_FACTS_AS_OF_SEASON}",
+        f"Current head coach ({TEAM_FACTS_AS_OF_SEASON}, live via nba_api): "
+        f"{facts.get('head_coach') or 'not available'}",
         f"Front office continuity: {info['front_office_continuity']}",
         f"Continuity pattern: {info['continuity_pattern']}",
-        "Coaches: " + "; ".join(f"{c['name']} ({c['tenure']}) - {c['note']}" for c in info["coaches"]),
+        "Coaching history (franchise continuity narrative, may not include the most recent "
+        "change -- see 'Current head coach' above for who is coaching now): "
+        + "; ".join(f"{c['name']} ({c['tenure']}) - {c['note']}" for c in info["coaches"]),
         "Key draft history: " + "; ".join(
             f"{d['year']} {d['pick']}: {d['player']} -> {d['outcome']}" for d in info["draft_history"]
         ),
@@ -353,17 +415,16 @@ def _team_document(team, season):
             )
         )
 
-    leaders = get_team_leaders(team)
-    if leaders:
-        category_names = {"ppg": "Points/game", "apg": "Assists/game", "rpg": "Rebounds/game", "spg": "Steals/game"}
-        for category, name in category_names.items():
-            entries = leaders.get(category)
-            if entries:
-                lines.append(
-                    f"{name} leaders (2015-16 to 2025-26): " + ", ".join(
-                        f"{p['player']} ({p['value']})" for p in entries
-                    )
+    leaders = get_team_season_leaders(team, season)
+    category_names = {"ppg": "Points/game", "apg": "Assists/game", "rpg": "Rebounds/game", "spg": "Steals/game"}
+    for category, name in category_names.items():
+        entries = leaders.get(category)
+        if entries:
+            lines.append(
+                f"{name} leaders ({season}): " + ", ".join(
+                    f"{p['player']} ({p['value']})" for p in entries
                 )
+            )
 
     return "\n".join(lines)
 

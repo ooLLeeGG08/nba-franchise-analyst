@@ -1,0 +1,374 @@
+{
+  "_note": "Championships and current head coach are pulled live via nba_api -- TeamYearByYearStats.NBA_FINALS_APPEARANCE for titles (cross-checked against FranchiseHistory.LEAGUE_TITLES) and CommonTeamRoster's coaches table for the current head coach (2025-26). front_office_head is intentionally null: no live source exists and nothing should be guessed here. Re-run fetch_team_facts.py to refresh.",
+  "generated_at": "2026-11-04T20:23:17.846154+00:00",
+  "as_of_season": "2025-26",
+  "Spurs": {
+    "championships": [
+      "1998-99",
+      "2002-03",
+      "2004-05",
+      "2006-07",
+      "2013-14"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Mitch Johnson",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Celtics": {
+    "championships": [
+      "1956-57",
+      "1958-59",
+      "1959-60",
+      "1960-61",
+      "1961-62",
+      "1962-63",
+      "1963-64",
+      "1964-65",
+      "1965-66",
+      "1967-68",
+      "1968-69",
+      "1973-74",
+      "1975-76",
+      "1980-81",
+      "1983-84",
+      "1985-86",
+      "2007-08",
+      "2023-24"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Joe Mazzulla",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Nets": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Jordi Fernandez",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Kings": {
+    "championships": [
+      "1950-51"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Doug Christie",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Hawks": {
+    "championships": [
+      "1957-58"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Quin Snyder",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Hornets": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Charles Lee",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Bulls": {
+    "championships": [
+      "1990-91",
+      "1991-92",
+      "1992-93",
+      "1995-96",
+      "1996-97",
+      "1997-98"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": null,
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Cavaliers": {
+    "championships": [
+      "2015-16"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Kenny Atkinson",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Mavericks": {
+    "championships": [
+      "2010-11"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": null,
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Nuggets": {
+    "championships": [
+      "2022-23"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "David Adelman",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Pistons": {
+    "championships": [
+      "1988-89",
+      "1989-90",
+      "2003-04"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "J.B. Bickerstaff",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Warriors": {
+    "championships": [
+      "1946-47",
+      "1955-56",
+      "1974-75",
+      "2014-15",
+      "2016-17",
+      "2017-18",
+      "2021-22"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Steve Kerr",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Rockets": {
+    "championships": [
+      "1993-94",
+      "1994-95"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Ime Udoka",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Pacers": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Rick Carlisle",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Clippers": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Tyronn Lue",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Lakers": {
+    "championships": [
+      "1948-49",
+      "1949-50",
+      "1951-52",
+      "1952-53",
+      "1953-54",
+      "1971-72",
+      "1979-80",
+      "1981-82",
+      "1984-85",
+      "1986-87",
+      "1987-88",
+      "1999-00",
+      "2000-01",
+      "2001-02",
+      "2008-09",
+      "2009-10",
+      "2019-20"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "JJ Redick",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Grizzlies": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Tuomas Iisalo",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Heat": {
+    "championships": [
+      "2005-06",
+      "2011-12",
+      "2012-13"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Erik Spoelstra",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Bucks": {
+    "championships": [
+      "1970-71",
+      "2020-21"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Taylor Jenkins",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Timberwolves": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Chris Finch",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Pelicans": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Jamahl Mosley",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Knicks": {
+    "championships": [
+      "1969-70",
+      "1972-73",
+      "2025-26"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Mike Brown",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Thunder": {
+    "championships": [
+      "1978-79",
+      "2024-25"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Mark Daigneault",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Magic": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": null,
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "76ers": {
+    "championships": [
+      "1954-55",
+      "1966-67",
+      "1982-83"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Nick Nurse",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Suns": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Jordan Ott",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "TrailBlazers": {
+    "championships": [
+      "1976-77"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Chauncey Billups",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Raptors": {
+    "championships": [
+      "2018-19"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Darko Rajakovic",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Jazz": {
+    "championships": [],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Will Hardy",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  },
+  "Wizards": {
+    "championships": [
+      "1977-78"
+    ],
+    "championships_source": "nba_api TeamYearByYearStats.NBA_FINALS_APPEARANCE",
+    "head_coach": "Brian Keefe",
+    "head_coach_source": "nba_api CommonTeamRoster (2025-26)",
+    "front_office_head": null,
+    "front_office_head_source": null,
+    "as_of": "2026-11-04T20:23:17.846154+00:00"
+  }
+}
