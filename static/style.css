@@ -365,7 +365,7 @@ button {
 
 .suggestion-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
 }
 
@@ -625,7 +625,7 @@ button {
 
 .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -694,7 +694,7 @@ button {
 
 .snapshot-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -802,7 +802,7 @@ button {
 
 .leaders-grid-full {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px;
 }
 
@@ -1103,7 +1103,7 @@ button {
 
 .player-kpi-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -1260,7 +1260,11 @@ button {
     }
 
     .main-content {
-        padding-top: 44px;
+        /* The fixed hamburger button occupies viewport y:12-48px (top:12px +
+           height:36px); 44px left a 4px band where it could still clip the
+           very top of a heading like "Season Snapshot" ("son Snapshot").
+           56px clears its full footprint plus 8px of breathing room. */
+        padding-top: 56px;
     }
 
     .suggestion-grid {
@@ -1285,7 +1289,11 @@ button {
     }
 
     .leaders-grid-full {
-        grid-template-columns: repeat(2, 1fr);
+        /* minmax(0, 1fr), not bare 1fr: a bare 1fr track's implicit minimum
+           is its content's natural width, so an unbroken uppercase label
+           like "EFFICIENCY (PIE)" forced this 2-column grid wider than the
+           screen -- the actual cause of "Team Leaders cards cut off". */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .timeline-row {
