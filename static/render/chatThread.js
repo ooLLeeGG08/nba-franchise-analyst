@@ -165,27 +165,39 @@ const ChatThread = (() => {
         bubble.textContent = 'Thinking...';
         row.appendChild(bubble);
         transcript.appendChild(row);
-        scrollToBottom(container);
+        // No scroll call here: appendUserMessage already scrolled the user's
+        // own question to the top of the view, and this short bubble renders
+        // right below it, already in view.
 
         return {
             resolveAsAssistantMessage(message) {
                 row.replaceWith(buildMessageElement(message, handlers));
-                scrollToBottom(container);
+                // Deliberately no scrollToBottom() -- the answer prose and its
+                // dashboard mount (which can keep growing well after this, as
+                // its own async fetch resolves) render in below the question
+                // without moving the view, the way a mainstream chat app
+                // keeps your question in place while the answer streams in.
+                // Jumping to the bottom here is exactly what used to bury the
+                // question above the fold once the dashboard loaded.
             },
             resolveAsError(text, onRetry) {
                 bubble.textContent = text;
                 bubble.classList.remove('thinking');
                 bubble.classList.add('error');
                 if (onRetry) row.appendChild(buildRetryButton(onRetry));
-                scrollToBottom(container);
             },
         };
     }
 
     function appendUserMessage(container, content) {
         const transcript = container.querySelector('.transcript');
-        transcript.appendChild(buildMessageElement({ role: 'user', content }));
-        scrollToBottom(container);
+        const row = buildMessageElement({ role: 'user', content });
+        transcript.appendChild(row);
+        // Scroll the question itself to the top of the view (not the
+        // container's bottom) -- the answer below it can be many screens
+        // tall once its dashboard mount loads, and scrolling to the bottom
+        // of that would bury the question you just asked.
+        row.scrollIntoView({ block: 'start' });
     }
 
     function scrollToBottom(container) {
