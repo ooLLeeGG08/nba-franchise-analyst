@@ -13,7 +13,8 @@ const PlayerComparisonView = (() => {
 
         root.appendChild(buildHeaders(playerA, playerB));
         root.appendChild(buildKpiTable(playerA, playerB));
-        root.appendChild(buildChart(playerA, playerB));
+        root.appendChild(buildPieChart(playerA, playerB));
+        root.appendChild(buildRatingsChart(playerA, playerB));
 
         container.appendChild(root);
     }
@@ -43,6 +44,20 @@ const PlayerComparisonView = (() => {
         { key: 'spg', label: 'SPG' },
     ];
 
+    // "LeBron James" -> "James"; "Jaren Jackson Jr." -> "Jackson" (a bare
+    // last-word split would give "Jr."). Team abbreviation was ambiguous when
+    // comparing two players on the same team, and didn't say who was who at
+    // a glance -- the player's own name does.
+    const _NAME_SUFFIXES = new Set(['jr', 'jr.', 'sr', 'sr.', 'ii', 'iii', 'iv', 'v']);
+
+    function lastName(fullName) {
+        const parts = fullName.trim().split(/\s+/);
+        if (parts.length > 1 && _NAME_SUFFIXES.has(parts[parts.length - 1].toLowerCase())) {
+            return parts[parts.length - 2];
+        }
+        return parts[parts.length - 1];
+    }
+
     function buildKpiTable(playerA, playerB) {
         const section = document.createElement('div');
         section.className = 'comparison-table';
@@ -52,9 +67,9 @@ const PlayerComparisonView = (() => {
         const colHeader = document.createElement('div');
         colHeader.className = 'comparison-col-header';
         colHeader.innerHTML = `
-            <div class="comparison-col-header-cell a">${escapeHtml(playerA.branding.abbreviation)}</div>
+            <div class="comparison-col-header-cell a">${escapeHtml(lastName(playerA.name))}</div>
             <div></div>
-            <div class="comparison-col-header-cell b">${escapeHtml(playerB.branding.abbreviation)}</div>
+            <div class="comparison-col-header-cell b">${escapeHtml(lastName(playerB.name))}</div>
         `;
         section.appendChild(colHeader);
 
@@ -85,11 +100,14 @@ const PlayerComparisonView = (() => {
         section.appendChild(row);
     }
 
-    function buildChart(playerA, playerB) {
+    // Split into two panels, each on its own auto-scaled axis, instead of one
+    // chart mixing PIE (~0.05-0.25) with ratings (~95-125) -- sharing an axis
+    // sized for the ratings made the PIE bars nearly invisible.
+    function buildPieChart(playerA, playerB) {
         const section = document.createElement('div');
         section.className = 'chart-card';
-        const chartId = 'player-comparison-chart-' + (chartCounter++);
-        section.innerHTML = `<div class="chart-card-title">PIE / OFF RTG / DEF RTG</div><div class="chart-canvas-wrap tall"><canvas id="${chartId}"></canvas></div>`;
+        const chartId = 'player-comparison-pie-chart-' + (chartCounter++);
+        section.innerHTML = `<div class="chart-card-title">PIE (Player Impact Estimate)</div><div class="chart-canvas-wrap"><canvas id="${chartId}"></canvas></div>`;
 
         requestAnimationFrame(() => {
             const canvas = document.getElementById(chartId);
@@ -97,16 +115,44 @@ const PlayerComparisonView = (() => {
             const latestA = playerA.current;
             const latestB = playerB.current;
             Charts.createComparisonBarChart(canvas, {
-                labels: ['PIE (x100)', 'OFF RTG', 'DEF RTG'],
+                labels: ['PIE'],
                 seriesA: {
-                    label: playerA.name,
+                    label: lastName(playerA.name),
                     color: TeamColors.readableFillForBranding(playerA.branding),
-                    values: [latestA.pie * 100, latestA.off_rating, latestA.def_rating],
+                    values: [latestA.pie],
                 },
                 seriesB: {
-                    label: playerB.name,
+                    label: lastName(playerB.name),
                     color: TeamColors.readableFillForBranding(playerB.branding),
-                    values: [latestB.pie * 100, latestB.off_rating, latestB.def_rating],
+                    values: [latestB.pie],
+                },
+            });
+        });
+        return section;
+    }
+
+    function buildRatingsChart(playerA, playerB) {
+        const section = document.createElement('div');
+        section.className = 'chart-card';
+        const chartId = 'player-comparison-ratings-chart-' + (chartCounter++);
+        section.innerHTML = `<div class="chart-card-title">Offensive / Defensive Rating</div><div class="chart-canvas-wrap"><canvas id="${chartId}"></canvas></div>`;
+
+        requestAnimationFrame(() => {
+            const canvas = document.getElementById(chartId);
+            if (!canvas) return;
+            const latestA = playerA.current;
+            const latestB = playerB.current;
+            Charts.createComparisonBarChart(canvas, {
+                labels: ['OFF RTG', 'DEF RTG'],
+                seriesA: {
+                    label: lastName(playerA.name),
+                    color: TeamColors.readableFillForBranding(playerA.branding),
+                    values: [latestA.off_rating, latestA.def_rating],
+                },
+                seriesB: {
+                    label: lastName(playerB.name),
+                    color: TeamColors.readableFillForBranding(playerB.branding),
+                    values: [latestB.off_rating, latestB.def_rating],
                 },
             });
         });
