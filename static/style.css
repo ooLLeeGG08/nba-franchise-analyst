@@ -379,6 +379,10 @@ button {
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+    /* Same defensive fix as .leaders-col: a grid item's own automatic
+       minimum size is content-based by default, independent of the track's
+       minmax(0, 1fr) fix -- this prevents the same overflow class here too. */
+    min-width: 0;
 }
 
 .suggestion-card:hover {
@@ -635,6 +639,9 @@ button {
     border-left: 3px solid var(--border-strong);
     border-radius: var(--radius-md);
     padding: 12px 14px;
+    /* See .leaders-col -- same defensive fix against content forcing this
+       item wider than its allocated track/flex-basis. */
+    min-width: 0;
 }
 
 .kpi-tile.accent-primary {
@@ -703,6 +710,9 @@ button {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 12px 14px;
+    /* See .leaders-col -- same defensive fix against content forcing this
+       item wider than its allocated track/flex-basis. */
+    min-width: 0;
 }
 
 .plain-tile-label {
@@ -811,6 +821,14 @@ button {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 12px 14px;
+    /* The grid ITEM has its own separate "automatic minimum size" from the
+       TRACK's -- fixing grid-template-columns to minmax(0, 1fr) alone wasn't
+       enough. Without this, .leaders-col still tried to be at least as wide
+       as its longest player name's min-content, overflowing its track and
+       pushing the value column off-screen whenever one column's content
+       (e.g. ASSISTS/STEALS, which happened to include the longest name
+       combos) was wider than the other's. */
+    min-width: 0;
 }
 
 .leaders-col-title {
