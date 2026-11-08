@@ -1,4 +1,5 @@
-from llm import SYSTEM_PROMPT, TRADE_PROMPT_ADDENDUM, build_messages
+import llm
+from llm import SYSTEM_PROMPT, TRADE_PROMPT_ADDENDUM, ANALYTICAL_PROMPT_ADDENDUM, build_messages
 
 
 def test_build_messages_includes_system_prompt_first():
@@ -127,6 +128,71 @@ def test_system_prompt_forbids_labeled_parts_and_meta_commentary():
 
 
 def test_system_prompt_targets_shorter_answers():
+    # Superseded by the tiered system: a simple lookup gets 1-2 sentences from
+    # the base prompt; the ~70-word verdict+bullets budget for comparison/
+    # "why" questions lives in ANALYTICAL_PROMPT_ADDENDUM instead.
     lowered = SYSTEM_PROMPT.lower()
-    assert "3-4 sentences" in lowered
-    assert "80 words" in lowered
+    assert "1-2 sentences" in lowered
+
+
+def test_build_messages_appends_analytical_addendum_only_in_analytical_mode():
+    normal = build_messages("What's LeBron's PPG?", [], "ctx")
+    analytical = build_messages("Why do the Spurs sustain success?", [], "ctx", analytical_mode=True)
+    assert normal[0] == ("system", SYSTEM_PROMPT)
+    assert analytical[0][1] == SYSTEM_PROMPT + ANALYTICAL_PROMPT_ADDENDUM
+    assert "bullet" in analytical[0][1].lower()
+
+
+def test_analytical_addendum_specifies_the_parsed_bullet_contract():
+    lowered = ANALYTICAL_PROMPT_ADDENDUM.lower()
+    assert "- " in ANALYTICAL_PROMPT_ADDENDUM  # the literal bullet marker the frontend parses
+    assert "70 words" in lowered
+    assert "at most 3" in lowered or "at most three" in lowered
+
+
+def test_trade_mode_takes_priority_over_analytical_mode():
+    # Both flags true should never happen from answer_question (it computes
+    # analytical_mode = not trade_mode and is_analytical_query(...)), but
+    # build_messages itself should still resolve the conflict safely.
+    messages = build_messages("Why trade for AD?", [], "ctx", trade_mode=True, analytical_mode=True)
+    assert "Verdict:" in messages[0][1]  # trade addendum
+    assert "exactly this shape" not in messages[0][1]  # not analytical addendum
+
+
+class _FakeResponse:
+    def __init__(self, content):
+        self.content = content
+
+
+def test_answer_question_selects_trade_mode_over_analytical_for_a_why_trade_question(monkeypatch):
+    captured = {}
+
+    class FakeClient:
+        def invoke(self, messages):
+            captured["messages"] = messages
+            return _FakeResponse("ok")
+
+    monkeypatch.setattr(llm, "_get_client", lambda: FakeClient())
+    monkeypatch.setattr(llm, "build_context", lambda message, history: "ctx")
+    # Contains "trade" (is_trade_query) AND "why" (is_analytical_query) --
+    # trade formatting must win, not both or analytical.
+    llm.answer_question("Why should the Lakers trade for AD?", [])
+    system_prompt = captured["messages"][0][1]
+    assert "Verdict:" in system_prompt
+    assert "exactly this shape" not in system_prompt
+
+
+def test_answer_question_selects_analytical_mode_for_a_why_question(monkeypatch):
+    captured = {}
+
+    class FakeClient:
+        def invoke(self, messages):
+            captured["messages"] = messages
+            return _FakeResponse("ok")
+
+    monkeypatch.setattr(llm, "_get_client", lambda: FakeClient())
+    monkeypatch.setattr(llm, "build_context", lambda message, history: "ctx")
+    llm.answer_question("Why do the Spurs sustain success?", [])
+    system_prompt = captured["messages"][0][1]
+    assert "exactly this shape" in system_prompt
+    assert "Verdict:" not in system_prompt

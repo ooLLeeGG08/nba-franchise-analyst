@@ -445,6 +445,28 @@ button {
     animation: pulse 1.2s ease-in-out infinite;
 }
 
+/* Verdict + bullets shape for comparison/"why" answers -- see
+   chatThread.js's renderAssistantBody() and llm.py's
+   ANALYTICAL_PROMPT_ADDENDUM. Real <strong>/<ul><li> elements, not a styled
+   paragraph, per the explicit "real list elements with spacing" requirement. */
+.assistant-verdict {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.assistant-bullets {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.assistant-bullets li {
+    line-height: 1.5;
+}
+
 .trade-badge {
     align-self: flex-start;
     color: var(--accent);

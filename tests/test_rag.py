@@ -624,3 +624,15 @@ def test_team_document_leaders_are_season_labeled_not_all_time():
     # this season's leaders.
     for stale_name in ("Kobe Bryant", "Lonzo Ball", "JaVale McGee", "DeAndre Jordan"):
         assert not any(stale_name in line for line in leaders_lines)
+
+
+def test_is_analytical_query_matches_comparisons_and_why_questions():
+    assert rag.is_analytical_query("Compare the Celtics and Thunder")
+    assert rag.is_analytical_query("Why do the Spurs sustain success?")
+    assert rag.is_analytical_query("Who's a better scorer, Embiid or Jokic?")
+
+
+def test_is_analytical_query_false_for_simple_lookups():
+    assert not rag.is_analytical_query("What's LeBron's PPG this season?")
+    assert not rag.is_analytical_query("Who is the Spurs' head coach?")
+    assert not rag.is_analytical_query("Tell me about the Lakers")

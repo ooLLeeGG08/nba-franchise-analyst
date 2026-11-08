@@ -38,7 +38,11 @@ const ChatThread = (() => {
 
         const body = document.createElement('div');
         body.className = 'message assistant-message' + (message.isError ? ' error' : '');
-        body.textContent = message.content;
+        if (message.isError) {
+            body.textContent = message.content;
+        } else {
+            renderAssistantBody(body, message.content);
+        }
         row.appendChild(body);
 
         if (!message.isError) {
@@ -198,6 +202,43 @@ const ChatThread = (() => {
         // tall once its dashboard mount loads, and scrolling to the bottom
         // of that would bury the question you just asked.
         row.scrollIntoView({ block: 'start' });
+    }
+
+    // Detects the verdict+bullets shape llm.py's ANALYTICAL_PROMPT_ADDENDUM
+    // uses for comparison/"why" questions: a single verdict line followed by
+    // one or more "- " bullet lines and nothing else. This is a narrow parser
+    // for that one specific, deliberate contract -- not general markdown
+    // support (the backend still never sends real markdown). Every other
+    // answer shape (short lookups, trade's Verdict:/Team fit:/... labels,
+    // anything that doesn't match exactly) falls back to plain text, as
+    // before. Every piece of text is set via textContent, never interpolated
+    // into innerHTML, so this can't introduce an HTML-injection risk.
+    function renderAssistantBody(el, text) {
+        const lines = text.split('\n').map((l) => l.trim()).filter((l) => l.length > 0);
+        const isBullet = (l) => l.startsWith('- ');
+        const bulletLines = lines.filter(isBullet);
+        const hasLeadingVerdict = lines.length > 0 && !isBullet(lines[0]);
+        const isWellFormed = hasLeadingVerdict && bulletLines.length > 0 && bulletLines.length === lines.length - 1;
+
+        if (!isWellFormed) {
+            el.textContent = text;
+            return;
+        }
+
+        el.innerHTML = '';
+        const verdict = document.createElement('strong');
+        verdict.className = 'assistant-verdict';
+        verdict.textContent = lines[0];
+        el.appendChild(verdict);
+
+        const list = document.createElement('ul');
+        list.className = 'assistant-bullets';
+        bulletLines.forEach((line) => {
+            const li = document.createElement('li');
+            li.textContent = line.slice(2).trim();
+            list.appendChild(li);
+        });
+        el.appendChild(list);
     }
 
     function scrollToBottom(container) {

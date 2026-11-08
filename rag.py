@@ -596,6 +596,19 @@ def is_comparison_query(message):
     return bool(_COMPARISON_RE.search(message.lower()))
 
 
+_WHY_RE = re.compile(r"\bwhy\b")
+
+
+def is_analytical_query(message):
+    """True for a comparison ("Compare the Celtics and Thunder", "Who's a
+    better scorer, Embiid or Jokic?") or a 'why' question ("Why do the Spurs
+    sustain success?") -- these get the verdict+bullets format instead of
+    plain prose; drives llm.py's ANALYTICAL_PROMPT_ADDENDUM. A straightforward
+    lookup ("What's LeBron's PPG?") does not match either and stays a short
+    plain-prose answer."""
+    return is_comparison_query(message) or bool(_WHY_RE.search(message.lower()))
+
+
 _TRADE_RE = re.compile(r"\btrad(?:e[sd]?|ing)\b|\bswap(?:s|ped|ping)?\b")
 
 

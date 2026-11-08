@@ -2,7 +2,7 @@ import os
 import re
 
 from langchain_groq import ChatGroq
-from rag import build_context, is_trade_query
+from rag import build_context, is_analytical_query, is_trade_query
 
 _GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 _MAX_HISTORY = 10
@@ -60,9 +60,30 @@ SYSTEM_PROMPT = (
     "leaders are for the specific season labeled next to them, live pulled data, not an "
     "all-time or career list -- a player on that list played for that team that season.\n\n"
     "Respond in plain conversational prose only: no "
-    "markdown formatting, no tables, no bullet points, no headers, no bold/italic markers, no "
-    "labeled parts. Be concise: 3-4 sentences, about 80 words, unless the user explicitly asks "
-    "for more detail -- the charts and tables alongside your answer carry the rest."
+    "markdown formatting, no tables, no headers, no bold/italic markers, no labeled parts, no "
+    "bullet points -- unless the comparison/'why' format below applies to this question, in "
+    "which case follow that instead. For a simple, single-stat or single-fact lookup, answer in "
+    "1-2 sentences: just the direct answer, not extra context the question didn't ask for. The "
+    "charts and tables alongside your answer already carry the supporting numbers."
+)
+
+# Appended to SYSTEM_PROMPT (not a replacement) when is_analytical_query()
+# flags the question (a comparison or a "why" question) -- the frontend
+# detects this exact shape (first line, then one or more "- " lines) and
+# renders the first line bold and the rest as a real bulleted list, so the
+# format below isn't just a style preference, it's a parsed contract.
+ANALYTICAL_PROMPT_ADDENDUM = (
+    "\n\nThis is a comparison or 'why' question. Answer in exactly this shape and nothing else:\n"
+    "A single one-sentence verdict first, alone on its own line, with no prefix or label -- it "
+    "will be rendered in bold, so it must stand alone as a complete, direct answer to the "
+    "question by itself.\n"
+    "Then at most 3 bullet lines, each starting with '- ', one idea per bullet, at most one "
+    "number per bullet. Put a number in a bullet only when it's the single most important "
+    "support for that bullet's idea -- most numbers belong in the dashboard cards and charts "
+    "already shown alongside your answer, not repeated in the bullets.\n"
+    "Keep the whole answer (verdict plus bullets) to about 70 words total. Nothing before the "
+    "verdict, nothing after the last bullet, no markdown besides the '- ' bullet markers "
+    "themselves."
 )
 
 # Appended to SYSTEM_PROMPT (not a replacement) when is_trade_query() flags the
@@ -116,8 +137,16 @@ def _get_client():
     return _client
 
 
-def build_messages(message, history, context, trade_mode=False):
-    system_prompt = SYSTEM_PROMPT + TRADE_PROMPT_ADDENDUM if trade_mode else SYSTEM_PROMPT
+def build_messages(message, history, context, trade_mode=False, analytical_mode=False):
+    # Mutually exclusive -- trade takes priority (callers are expected to
+    # pass analytical_mode=False whenever trade_mode is True; see
+    # answer_question below).
+    if trade_mode:
+        system_prompt = SYSTEM_PROMPT + TRADE_PROMPT_ADDENDUM
+    elif analytical_mode:
+        system_prompt = SYSTEM_PROMPT + ANALYTICAL_PROMPT_ADDENDUM
+    else:
+        system_prompt = SYSTEM_PROMPT
     capped_history = history[-_MAX_HISTORY:] if history else []
     messages = [("system", system_prompt)]
     for turn in capped_history:
@@ -131,5 +160,7 @@ def answer_question(message, history=None):
     history = history or []
     context = build_context(message, history)
     client = _get_client()
-    response = client.invoke(build_messages(message, history, context, is_trade_query(message)))
+    trade_mode = is_trade_query(message)
+    analytical_mode = not trade_mode and is_analytical_query(message)
+    response = client.invoke(build_messages(message, history, context, trade_mode, analytical_mode))
     return strip_leaked_labels(response.content)
