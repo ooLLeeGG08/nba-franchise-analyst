@@ -33,11 +33,13 @@ const TeamDashboard = (() => {
         const winPct = seasonSnapshot ? `${(seasonSnapshot.win_pct * 100).toFixed(1)}% win rate` : '';
         const margin = seasonSnapshot ? `${seasonSnapshot.point_diff >= 0 ? '+' : ''}${seasonSnapshot.point_diff} avg margin` : '';
 
+        // No descriptive summary paragraph here by design -- the chat
+        // answer above this card already covers the franchise narrative;
+        // repeating it here just added length without new information.
         hero.innerHTML = `
             <div class="dash-hero-eyebrow">NBA Performance Dashboard</div>
             <h2 class="dash-hero-title">${escapeHtml(knowledge.full_name.toUpperCase())}</h2>
             <div class="dash-hero-season">${escapeHtml(season)} Regular Season</div>
-            <p class="dash-hero-summary">${escapeHtml(knowledge.summary)}</p>
             <div class="dash-hero-pills">
                 <span class="dash-pill">${record}</span>
                 ${winPct ? `<span class="dash-pill accent">${winPct}</span>` : ''}
@@ -117,7 +119,10 @@ const TeamDashboard = (() => {
     function buildSeasonSnapshot(snapshot) {
         const section = document.createElement('div');
         section.className = 'dash-section';
-        section.innerHTML = `<h3 class="dash-section-title">Season Snapshot</h3><p class="dash-section-subtitle">Averages across all ${snapshot.games_played} regular-season games.</p>`;
+        // Inline meta instead of a full explanatory subtitle sentence --
+        // "82 GP" says the same thing as "Averages across all 82
+        // regular-season games." in a fifth of the space.
+        section.innerHTML = `<h3 class="dash-section-title">Season Snapshot <span class="dash-section-meta">${snapshot.games_played} GP</span></h3>`;
 
         const grid = document.createElement('div');
         grid.className = 'snapshot-grid';
@@ -139,114 +144,144 @@ const TeamDashboard = (() => {
         return section;
     }
 
-    function buildTimeline(games) {
+    // A secondary section: collapsed by default so the first screen after a
+    // question is the answer plus one compact visual (hero + KPI grid +
+    // season snapshot), not several screens of charts to scroll through.
+    // `buildBody` runs lazily, the first time the section opens -- not at
+    // render time -- so a Chart.js canvas never gets initialized while its
+    // container is `hidden` (a hidden/zero-size canvas at init time is a
+    // real Chart.js sizing bug, not just an optimization here).
+    function buildCollapsibleSection(title, buildBody) {
         const section = document.createElement('div');
-        section.className = 'dash-section';
-        const wins = games.filter((g) => g.result === 'W').length;
-        const losses = games.length - wins;
-        section.innerHTML = `
-            <h3 class="dash-section-title">Win / Loss Timeline</h3>
-            <p class="dash-section-subtitle">Every game of the season, month by month. Green = win, red = loss.</p>
+        section.className = 'dash-section collapsible';
+
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'dash-section-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = `
+            <h3 class="dash-section-title">${escapeHtml(title)}</h3>
+            <svg class="dash-section-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         `;
 
-        const card = document.createElement('div');
-        card.className = 'timeline-card';
-        card.innerHTML = `
-            <div class="timeline-card-header">
-                <div class="timeline-card-title">Game-by-game results</div>
-                <div class="timeline-card-subtitle">${wins} wins &middot; ${losses} losses</div>
-            </div>
-        `;
+        const body = document.createElement('div');
+        body.className = 'dash-section-body';
+        body.hidden = true;
 
-        const months = groupByMonth(games);
-        months.forEach(({ label, games: monthGames }) => {
-            const row = document.createElement('div');
-            row.className = 'timeline-row';
-            const rowLabel = document.createElement('div');
-            rowLabel.className = 'timeline-row-label';
-            rowLabel.textContent = label;
-            row.appendChild(rowLabel);
-
-            const squares = document.createElement('div');
-            squares.className = 'timeline-squares';
-            monthGames.forEach((g) => {
-                const sq = document.createElement('span');
-                sq.className = 'timeline-square ' + (g.result === 'W' ? 'win' : 'loss');
-                sq.title = `${g.date} vs ${g.opponent}: ${g.result} ${g.pts_for}-${g.pts_against}`;
-                squares.appendChild(sq);
-            });
-            row.appendChild(squares);
-            card.appendChild(row);
+        let populated = false;
+        toggle.addEventListener('click', () => {
+            const willOpen = body.hidden;
+            body.hidden = !willOpen;
+            section.classList.toggle('open', willOpen);
+            toggle.setAttribute('aria-expanded', String(willOpen));
+            if (willOpen && !populated) {
+                buildBody(body);
+                populated = true;
+            }
         });
 
-        const legend = document.createElement('div');
-        legend.className = 'timeline-legend';
-        legend.innerHTML = `
-            <span><span class="timeline-square win"></span> Win &middot; ${wins}</span>
-            <span><span class="timeline-square loss"></span> Loss &middot; ${losses}</span>
-        `;
-        card.appendChild(legend);
-
-        section.appendChild(card);
+        section.appendChild(toggle);
+        section.appendChild(body);
         return section;
+    }
+
+    function buildTimeline(games) {
+        const wins = games.filter((g) => g.result === 'W').length;
+        const losses = games.length - wins;
+        return buildCollapsibleSection('Win / Loss Timeline', (body) => {
+            const card = document.createElement('div');
+            card.className = 'timeline-card';
+            card.innerHTML = `
+                <div class="timeline-card-header">
+                    <div class="timeline-card-title">Game-by-game results</div>
+                    <div class="timeline-card-subtitle">${wins} wins &middot; ${losses} losses</div>
+                </div>
+            `;
+
+            const months = groupByMonth(games);
+            months.forEach(({ label, games: monthGames }) => {
+                const row = document.createElement('div');
+                row.className = 'timeline-row';
+                const rowLabel = document.createElement('div');
+                rowLabel.className = 'timeline-row-label';
+                rowLabel.textContent = label;
+                row.appendChild(rowLabel);
+
+                const squares = document.createElement('div');
+                squares.className = 'timeline-squares';
+                monthGames.forEach((g) => {
+                    const sq = document.createElement('span');
+                    sq.className = 'timeline-square ' + (g.result === 'W' ? 'win' : 'loss');
+                    sq.title = `${g.date} vs ${g.opponent}: ${g.result} ${g.pts_for}-${g.pts_against}`;
+                    squares.appendChild(sq);
+                });
+                row.appendChild(squares);
+                card.appendChild(row);
+            });
+
+            // The legend already says "green = win, red = loss" visually
+            // (via the squares themselves plus this caption) -- no separate
+            // explanatory subtitle needed above the card.
+            const legend = document.createElement('div');
+            legend.className = 'timeline-legend';
+            legend.innerHTML = `
+                <span><span class="timeline-square win"></span> Win &middot; ${wins}</span>
+                <span><span class="timeline-square loss"></span> Loss &middot; ${losses}</span>
+            `;
+            card.appendChild(legend);
+
+            body.appendChild(card);
+        });
     }
 
     function buildScoringTrends(games) {
-        const section = document.createElement('div');
-        section.className = 'dash-section';
-        section.innerHTML = `
-            <h3 class="dash-section-title">Scoring Trends</h3>
-            <p class="dash-section-subtitle">Points scored versus points allowed across the season, with a 5-game rolling average.</p>
-        `;
+        return buildCollapsibleSection('Scoring Trends', (body) => {
+            const card = document.createElement('div');
+            card.className = 'chart-card';
+            const chartId = 'scoring-trend-' + (chartCounter++);
+            // "5-game avg" inline instead of a full sentence explaining the
+            // rolling average -- the chart's own dashed line already shows it.
+            card.innerHTML = `<div class="chart-card-title">Points scored vs. points allowed <span class="chart-card-meta">5-game avg</span></div><div class="chart-canvas-wrap tall"><canvas id="${chartId}"></canvas></div>`;
+            body.appendChild(card);
 
-        const card = document.createElement('div');
-        card.className = 'chart-card';
-        const chartId = 'scoring-trend-' + (chartCounter++);
-        card.innerHTML = `<div class="chart-card-title">Points scored vs. points allowed</div><div class="chart-canvas-wrap tall"><canvas id="${chartId}"></canvas></div>`;
-        section.appendChild(card);
+            const diffCard = document.createElement('div');
+            diffCard.className = 'chart-card';
+            const diffChartId = 'point-diff-' + (chartCounter++);
+            diffCard.innerHTML = `<div class="chart-card-title">Point differential by game</div><div class="chart-canvas-wrap tall"><canvas id="${diffChartId}"></canvas></div>`;
+            body.appendChild(diffCard);
 
-        const diffCard = document.createElement('div');
-        diffCard.className = 'chart-card';
-        const diffChartId = 'point-diff-' + (chartCounter++);
-        diffCard.innerHTML = `<div class="chart-card-title">Point differential by game</div><div class="chart-canvas-wrap tall"><canvas id="${diffChartId}"></canvas></div>`;
-        section.appendChild(diffCard);
+            requestAnimationFrame(() => {
+                const labels = games.map((g) => formatShortDate(g.date));
+                const scored = games.map((g) => g.pts_for);
+                const allowed = games.map((g) => g.pts_against);
+                const diff = games.map((g) => g.pts_for - g.pts_against);
 
-        requestAnimationFrame(() => {
-            const labels = games.map((g) => formatShortDate(g.date));
-            const scored = games.map((g) => g.pts_for);
-            const allowed = games.map((g) => g.pts_against);
-            const diff = games.map((g) => g.pts_for - g.pts_against);
+                const scoringCanvas = document.getElementById(chartId);
+                if (scoringCanvas) Charts.createScoringTrendChart(scoringCanvas, { labels, scored, allowed });
 
-            const scoringCanvas = document.getElementById(chartId);
-            if (scoringCanvas) Charts.createScoringTrendChart(scoringCanvas, { labels, scored, allowed });
-
-            const diffCanvas = document.getElementById(diffChartId);
-            if (diffCanvas) Charts.createDiffBarChart(diffCanvas, { labels, values: diff });
+                const diffCanvas = document.getElementById(diffChartId);
+                if (diffCanvas) Charts.createDiffBarChart(diffCanvas, { labels, values: diff });
+            });
         });
-
-        return section;
     }
 
     function buildLeaders(leaders) {
-        const section = document.createElement('div');
-        section.className = 'dash-section';
-        section.innerHTML = `<h3 class="dash-section-title">Team Leaders</h3>`;
-
-        const grid = document.createElement('div');
-        grid.className = 'leaders-grid-full';
-        const categoryLabels = { ppg: 'Scoring', apg: 'Assists', rpg: 'Rebounds', spg: 'Steals' };
-        Object.entries(categoryLabels).forEach(([key, label]) => {
-            const entries = (leaders[key] || []).slice().sort((a, b) => b.value - a.value);
-            if (!entries.length) return;
-            const col = document.createElement('div');
-            col.className = 'leaders-col';
-            col.innerHTML = `<div class="leaders-col-title">${label}</div>` + entries
-                .map((e, i) => `<div class="leaders-col-row"><span class="leaders-col-rank">${i + 1}</span><span class="leaders-col-name">${escapeHtml(e.player)}</span><span class="leaders-col-value">${e.value}</span></div>`)
-                .join('');
-            grid.appendChild(col);
+        return buildCollapsibleSection('Team Leaders', (body) => {
+            const grid = document.createElement('div');
+            grid.className = 'leaders-grid-full';
+            const categoryLabels = { ppg: 'Scoring', apg: 'Assists', rpg: 'Rebounds', spg: 'Steals' };
+            Object.entries(categoryLabels).forEach(([key, label]) => {
+                const entries = (leaders[key] || []).slice().sort((a, b) => b.value - a.value);
+                if (!entries.length) return;
+                const col = document.createElement('div');
+                col.className = 'leaders-col';
+                col.innerHTML = `<div class="leaders-col-title">${label}</div>` + entries
+                    .map((e, i) => `<div class="leaders-col-row"><span class="leaders-col-rank">${i + 1}</span><span class="leaders-col-name">${escapeHtml(e.player)}</span><span class="leaders-col-value">${e.value}</span></div>`)
+                    .join('');
+                grid.appendChild(col);
+            });
+            body.appendChild(grid);
         });
-        section.appendChild(grid);
-        return section;
     }
 
     function groupByMonth(games) {

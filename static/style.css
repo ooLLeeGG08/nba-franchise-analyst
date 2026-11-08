@@ -585,14 +585,6 @@ button {
     margin-bottom: 12px;
 }
 
-.dash-hero-summary {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 640px;
-    margin: 0 0 16px;
-}
-
 .dash-hero-pills {
     display: flex;
     gap: 8px;
@@ -715,10 +707,52 @@ button {
     margin: 0 0 2px;
 }
 
-.dash-section-subtitle {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    margin: 0 0 12px;
+/* Small inline note replacing a full explanatory subtitle sentence, e.g.
+   "82 GP" instead of "Averages across all 82 regular-season games." */
+.dash-section-meta {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-faint);
+    margin-left: 4px;
+}
+
+/* Collapsible secondary sections (Win/Loss Timeline, Scoring Trends, Team
+   Leaders): collapsed by default so the first screen after a question is
+   the answer plus one compact visual, not several screens of charts. */
+.dash-section-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 0 2px;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+}
+
+.dash-section-toggle .dash-section-title {
+    margin: 0;
+}
+
+.dash-section-chevron {
+    flex-shrink: 0;
+    color: var(--text-faint);
+    transition: transform 0.15s ease;
+}
+
+.dash-section.collapsible.open .dash-section-chevron {
+    transform: rotate(180deg);
+}
+
+.dash-section-body {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .snapshot-grid {
@@ -772,6 +806,13 @@ button {
     font-size: 13.5px;
     font-weight: 600;
     color: var(--text);
+}
+
+.chart-card-meta {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-faint);
+    margin-left: 4px;
 }
 
 .timeline-card-subtitle {
