@@ -1,0 +1,64 @@
+{
+  "_note": "Cap rules for 2026-27 trades under the 2023 CBA. Every number the checker uses comes from this file. Amounts in dollars. See _sources for where each value came from; values marked VERIFY are derived and worth checking against the NBA's official cap memo.",
+  "season": "2026-27",
+  "league_year_start": "2026-07-01",
+
+  "salary_cap": 164961000,
+  "tax_line": 200428000,
+  "first_apron": 209015000,
+  "second_apron": 221686000,
+  "minimum_team_salary": 148465000,
+
+  "salary_matching": {
+    "tiers": [
+      {"max_outgoing": 9096000, "percent": 2.0, "plus": 250000},
+      {"max_outgoing": 35384000, "percent": 1.0, "plus": 9096000},
+      {"max_outgoing": null, "percent": 1.25, "plus": 250000}
+    ],
+    "max_percent_above_first_apron": 1.0,
+    "cap_room_cushion": 100000
+  },
+
+  "trade_exception": {
+    "padding": 250000,
+    "usable_above_second_apron": false,
+    "prior_season_usable_above_first_apron": false
+  },
+
+  "aggregation": {
+    "recently_acquired_days": 60
+  },
+
+  "cash": {
+    "max_per_season": 8495000
+  },
+
+  "roster": {
+    "min_standard": 14,
+    "max_standard": 15
+  },
+
+  "signing_restrictions": {
+    "free_agent_months": 3,
+    "free_agent_earliest": "2026-12-15",
+    "raise_over_20pct_earliest": "2027-01-15"
+  },
+
+  "draft": {
+    "stepien_first_year": 2027,
+    "stepien_years": 7
+  },
+
+  "_sources": {
+    "salary_cap, tax_line, first_apron, second_apron, minimum_team_salary": "User's 2026-27 cap sheet; matches the league's announced 2026-27 figures.",
+    "salary_matching.tiers": "2023 CBA tiers. 2025-26 values per Hoops Rumors ($8,527,000 / $33,108,000, middle tier = outgoing + $8,527,000). 2026-27: lower break = $7.5M x (2026-27 cap / 2023-24 cap $136,021,000), rounded to $1,000 = $9,096,000; upper break = where tiers 2 and 3 meet (4 x $9,096,000 - $1,000,000). Fanspo shows these as $9.1M and $35.2M. VERIFY the upper break.",
+    "salary_matching.max_percent_above_first_apron": "2023 CBA: a team at or above the first apron after a trade may take back at most 100% of outgoing salary.",
+    "salary_matching.cap_room_cushion": "Fanspo trade rules: a team under the cap can absorb salary into its room plus $100K.",
+    "trade_exception": "2023 CBA: a traded player exception absorbs salary up to its amount plus $250K; not usable above the second apron; one created in a prior season is not usable above the first apron (and using it hard-caps the team at the first apron).",
+    "aggregation.recently_acquired_days": "2023 CBA: a player acquired by trade can't be combined with other salaries for two months.",
+    "cash.max_per_season": "5.15% of the salary cap ($164,961,000 x 0.0515, rounded). VERIFY.",
+    "roster": "Per the project spec: each team must end a trade with 14-15 standard contracts.",
+    "signing_restrictions": "Free agents: later of Dec 15 or three months after signing. Re-signed with a raise over 20%: Jan 15. Dates from the user's 2026-27 league calendar.",
+    "draft": "Stepien Rule: a team can't be without a first-round pick in two consecutive future drafts, looking seven drafts ahead (2027-2033)."
+  }
+}
