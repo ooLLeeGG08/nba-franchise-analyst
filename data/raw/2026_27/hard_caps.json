@@ -1,0 +1,81 @@
+{
+ "_note": "Teams hard-capped for 2026-27 from offseason moves. Source: Hoops Rumors 'NBA teams with hard caps for 2026/27', last updated July 10, 2026 (https://www.yardbarker.com/nba/articles/nba_teams_with_hard_caps_for_202627/s1_14822_44048142). Moves after July 10 are not included.",
+ "teams": {
+  "Atlanta Hawks": {
+   "level": "first_apron",
+   "reason": "Acquired Devin Carter with a trade exception created the prior offseason"
+  },
+  "Boston Celtics": {
+   "level": "first_apron",
+   "reason": "Signed Mitchell Robinson with the non-taxpayer mid-level exception"
+  },
+  "Charlotte Hornets": {
+   "level": "first_apron",
+   "reason": "Acquired Dorian Finney-Smith with the non-taxpayer mid-level exception"
+  },
+  "Chicago Bulls": {
+   "level": "first_apron",
+   "reason": "Acquired Kam Jones with a trade exception created the prior season"
+  },
+  "Dallas Mavericks": {
+   "level": "first_apron",
+   "reason": "Acquired Santi Aldama with the expanded traded player exception"
+  },
+  "Detroit Pistons": {
+   "level": "first_apron",
+   "reason": "Acquired Isaiah Joe with the non-taxpayer mid-level exception"
+  },
+  "Indiana Pacers": {
+   "level": "first_apron",
+   "reason": "Signed Kelly Oubre Jr. with the non-taxpayer mid-level exception"
+  },
+  "Los Angeles Clippers": {
+   "level": "first_apron",
+   "reason": "Signed Rui Hachimura with the non-taxpayer mid-level exception"
+  },
+  "Los Angeles Lakers": {
+   "level": "first_apron",
+   "reason": "Acquired Walker Kessler via sign-and-trade"
+  },
+  "Memphis Grizzlies": {
+   "level": "first_apron",
+   "reason": "Acquired Isaiah Stewart, D'Angelo Russell and AJ Johnson with the expanded traded player exception"
+  },
+  "Miami Heat": {
+   "level": "first_apron",
+   "reason": "Acquired Giannis Antetokounmpo with the expanded traded player exception"
+  },
+  "Milwaukee Bucks": {
+   "level": "first_apron",
+   "reason": "Acquired Caris LeVert with the expanded traded player exception"
+  },
+  "Philadelphia 76ers": {
+   "level": "first_apron",
+   "reason": "Signed Dean Wade with the non-taxpayer mid-level exception"
+  },
+  "Portland Trail Blazers": {
+   "level": "first_apron",
+   "reason": "Acquired Ja Morant with the expanded traded player exception"
+  },
+  "Sacramento Kings": {
+   "level": "first_apron",
+   "reason": "Signed Precious Achiuwa with the bi-annual exception"
+  },
+  "San Antonio Spurs": {
+   "level": "first_apron",
+   "reason": "Signed Tobias Harris with the non-taxpayer mid-level exception"
+  },
+  "Utah Jazz": {
+   "level": "first_apron",
+   "reason": "Signed Jaxson Hayes with the non-taxpayer mid-level exception"
+  },
+  "Washington Wizards": {
+   "level": "first_apron",
+   "reason": "Acquired Deandre Ayton with a trade exception created the prior offseason"
+  },
+  "Phoenix Suns": {
+   "level": "second_apron",
+   "reason": "Included cash in a trade"
+  }
+ }
+}

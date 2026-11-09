@@ -1,0 +1,2612 @@
+﻿PLAYER
+TEAM
+2026-27 SALARY
+% OF CAP
+1
+Stephen Curry
+
+Golden State Warriors
+$62,587,158
+37.9%
+2
+Nikola Jokić
+
+Denver Nuggets
+$59,033,114
+35.8%
+3
+Anthony Davis
+
+Washington Wizards
+$58,456,566
+35.4%
+4
+Giannis Antetokounmpo
+
+Miami Heat
+$58,456,566
+35.4%
+5
+Jayson Tatum
+
+Boston Celtics
+$58,456,566
+35.4%
+6
+Joel Embiid
+
+Philadelphia 76ers
+$57,985,752
+35.1%
+7
+Jaylen Brown
+
+Philadelphia 76ers
+$57,736,350
+35.0%
+8
+Devin Booker
+
+Phoenix Suns
+$57,078,728
+34.6%
+9
+Karl-Anthony Towns
+
+New York Knicks
+$57,078,728
+34.6%
+10
+Jimmy Butler
+
+Golden State Warriors
+$56,832,773
+34.4%
+11
+Paul George
+
+Boston Celtics
+$54,126,380
+32.8%
+12
+Kawhi Leonard
+
+Toronto Raptors
+$50,300,000
+30.5%
+13
+Cade Cunningham
+
+Detroit Pistons
+$50,105,628
+30.4%
+14
+Donovan Mitchell
+
+Cleveland Cavaliers
+$50,105,628
+30.4%
+15
+Evan Mobley
+
+Cleveland Cavaliers
+$50,105,628
+30.4%
+16
+Jamal Murray
+
+Denver Nuggets
+$50,105,628
+30.4%
+17
+Bam Adebayo
+
+Miami Heat
+$49,488,300
+30.0%
+18
+De'Aaron Fox
+
+San Antonio Spurs
+$49,488,300
+30.0%
+19
+Luka Doncic
+
+Los Angeles Lakers
+$49,488,300
+30.0%
+20
+Trae Young
+
+Washington Wizards
+$49,488,300
+30.0%
+21
+Jaren Jackson Jr.
+
+Utah Jazz
+$49,000,000
+29.7%
+22
+Zach LaVine
+
+Sacramento Kings
+$48,967,380
+29.7%
+23
+Anthony Edwards
+
+Minnesota Timberwolves
+$48,924,624
+29.7%
+24
+Pascal Siakam
+
+Indiana Pacers
+$48,924,624
+29.7%
+25
+Tyrese Haliburton
+
+Indiana Pacers
+$48,924,624
+29.7%
+26
+Lauri Markkanen
+
+Utah Jazz
+$46,113,154
+28.0%
+27
+Domantas Sabonis
+
+Sacramento Kings
+$45,472,000
+27.6%
+28
+Kevin Durant
+
+Houston Rockets
+$43,902,439
+26.6%
+29
+OG Anunoby
+
+New York Knicks
+$42,500,000
+25.8%
+30
+Darius Garland
+
+Los Angeles Clippers
+$42,166,510
+25.6%
+31
+Ja Morant
+
+Portland Trail Blazers
+$42,166,510
+25.6%
+32
+Zion Williamson
+
+New Orleans Pelicans
+$42,166,510
+25.6%
+33
+Franz Wagner
+
+Orlando Magic
+$41,754,690
+25.3%
+34
+Scottie Barnes
+
+Toronto Raptors
+$41,754,690
+25.3%
+35
+Austin Reaves
+
+Los Angeles Lakers
+$41,240,250
+25.0%
+36
+Chet Holmgren
+
+Oklahoma City Thunder
+$41,240,250
+25.0%
+37
+Jalen Williams
+
+Oklahoma City Thunder
+$41,240,250
+25.0%
+38
+LaMelo Ball
+
+Minnesota Timberwolves
+$41,240,250
+25.0%
+39
+Paolo Banchero
+
+Orlando Magic
+$41,240,250
+25.0%
+40
+Michael Porter Jr.
+
+Brooklyn Nets
+$40,806,150
+24.7%
+41
+Shai Gilgeous-Alexander
+
+Oklahoma City Thunder
+$40,806,150
+24.7%
+42
+Tyrese Maxey
+
+Philadelphia 76ers
+$40,770,520
+24.7%
+43
+Jalen Duren
+
+Detroit Pistons
+$40,160,643
+24.3%
+44
+Brandon Ingram
+
+Los Angeles Clippers
+$40,000,000
+24.3%
+45
+Kyrie Irving
+
+Dallas Mavericks
+$39,491,282
+23.9%
+46
+Desmond Bane
+
+Orlando Magic
+$39,446,090
+23.9%
+47
+Jalen Brunson
+
+New York Knicks
+$37,739,521
+22.9%
+48
+Rudy Gobert
+
+Minnesota Timberwolves
+$36,500,000
+22.1%
+49
+Jalen Green
+
+Phoenix Suns
+$36,251,166
+22.0%
+50
+Alperen Şengün
+
+Houston Rockets
+$35,642,202
+21.6%
+51
+Jrue Holiday
+
+Portland Trail Blazers
+$34,800,000
+21.1%
+52
+Jerami Grant
+
+Memphis Grizzlies
+$34,206,898
+20.7%
+53
+Jordan Poole
+
+New Orleans Pelicans
+$34,044,642
+20.6%
+54
+Mikal Bridges
+
+New York Knicks
+$33,482,145
+20.3%
+55
+Julius Randle
+
+Brooklyn Nets
+$33,333,334
+20.2%
+56
+Tyler Herro
+
+Milwaukee Bucks
+$33,000,000
+20.0%
+57
+Dejounte Murray
+
+New Orleans Pelicans
+$32,785,071
+19.9%
+58
+Immanuel Quickley
+
+Toronto Raptors
+$32,500,000
+19.7%
+59
+Jalen Suggs
+
+Orlando Magic
+$32,400,000
+19.6%
+60
+Aaron Gordon
+
+Denver Nuggets
+$31,978,037
+19.4%
+61
+James Harden
+
+Cleveland Cavaliers
+$30,647,619
+18.6%
+62
+Derrick White
+
+Boston Celtics
+$30,348,000
+18.4%
+63
+Andrew Wiggins
+
+Miami Heat
+$30,169,644
+18.3%
+64
+Walker Kessler
+
+Los Angeles Lakers
+$30,108,821
+18.3%
+65
+Jalen Johnson
+
+Atlanta Hawks
+$30,000,000
+18.2%
+66
+R.J. Barrett
+
+Toronto Raptors
+$29,616,071
+17.9%
+67
+Jarrett Allen
+
+Cleveland Cavaliers
+$28,000,000
+17.0%
+68
+Draymond Green
+
+Golden State Warriors
+$27,678,571
+16.8%
+69
+Devin Vassell
+
+San Antonio Spurs
+$27,500,000
+16.7%
+70
+Trey Murphy III
+
+New Orleans Pelicans
+$27,000,000
+16.4%
+71
+Coby White
+
+Charlotte Hornets
+$26,811,593
+16.3%
+72
+Myles Turner
+
+Milwaukee Bucks
+$26,584,164
+16.1%
+73
+Jaden McDaniels
+
+Minnesota Timberwolves
+$26,200,000
+15.9%
+74
+Dyson Daniels
+
+Atlanta Hawks
+$25,000,000
+15.2%
+75
+Fred VanVleet
+
+Houston Rockets
+$25,000,000
+15.2%
+76
+Josh Giddey
+
+
+Chicago Bulls
+$25,000,000
+15.2%
+77
+De'Andre Hunter
+
+Sacramento Kings
+$24,910,714
+15.1%
+78
+Keegan Murray
+
+Sacramento Kings
+$24,137,936
+14.6%
+79
+Jabari Smith Jr.
+
+Houston Rockets
+$23,643,411
+14.3%
+80
+Nicolas Claxton
+
+Chicago Bulls
+$23,320,738
+14.1%
+81
+Naz Reid
+
+Charlotte Hornets
+$23,275,862
+14.1%
+82
+Isaiah Hartenstein
+
+Oklahoma City Thunder
+$23,148,148
+14.0%
+83
+Cameron Johnson
+
+Denver Nuggets
+$23,062,500
+14.0%
+84
+Miles Bridges
+
+Phoenix Suns
+$22,826,087
+13.8%
+85
+Christian Braun
+
+Denver Nuggets
+$21,551,726
+13.1%
+86
+Norman Powell
+
+Chicago Bulls
+$21,500,000
+13.0%
+87
+C.J. McCollum
+
+Atlanta Hawks
+$21,000,000
+12.7%
+88
+Dillon Brooks
+
+Phoenix Suns
+$20,992,727
+12.7%
+89
+Josh Hart
+
+New York Knicks
+$20,923,760
+12.7%
+90
+Kyle Kuzma
+
+Milwaukee Bucks
+$20,490,152
+12.4%
+91
+Peyton Watson
+
+Cleveland Cavaliers
+$20,465,116
+12.4%
+92
+Ivica Zubac
+
+Indiana Pacers
+$20,342,140
+12.3%
+93
+Malik Monk
+
+Sacramento Kings
+$20,190,035
+12.2%
+94
+Shaedon Sharpe
+
+Portland Trail Blazers
+$20,089,287
+12.2%
+95
+Kristaps Porzingis
+
+Golden State Warriors
+$20,000,000
+12.1%
+96
+P.J. Washington
+
+Dallas Mavericks
+$19,813,044
+12.0%
+97
+Alex Caruso
+
+Oklahoma City Thunder
+$19,550,160
+11.8%
+98
+Andrew Nembhard
+
+Indiana Pacers
+$19,550,160
+11.8%
+99
+Jakob Poeltl
+
+Toronto Raptors
+$19,500,000
+11.8%
+100
+Ayo Dosunmu
+
+Minnesota Timberwolves
+$19,310,345
+11.7%
+101
+Grayson Allen
+
+Charlotte Hornets
+$18,125,000
+11.0%
+102
+Wendell Carter Jr.
+
+Orlando Magic
+$18,102,000
+11.0%
+103
+Toumani Camara
+
+Portland Trail Blazers
+$18,080,358
+11.0%
+104
+Keldon Johnson
+
+San Antonio Spurs
+$18,000,000
+10.9%
+105
+Patrick Williams
+
+Chicago Bulls
+$18,000,000
+10.9%
+106
+Luguentz Dort
+
+Atlanta Hawks
+$17,722,222
+10.7%
+107
+Daniel Gafford
+
+Dallas Mavericks
+$17,263,584
+10.5%
+108
+Santi Aldama
+
+Dallas Mavericks
+$17,007,043
+10.3%
+109
+John Collins
+
+Detroit Pistons
+$17,000,000
+10.3%
+110
+Victor Wembanyama
+
+San Antonio Spurs
+$16,868,246
+10.2%
+111
+Max Strus
+
+Los Angeles Clippers
+$16,660,836
+10.1%
+112
+Nikola Jovic
+
+Miami Heat
+$16,200,000
+9.8%
+113
+Onyeka Okongwu
+
+Atlanta Hawks
+$16,120,000
+9.8%
+114
+Duncan Robinson
+
+Detroit Pistons
+$15,992,957
+9.7%
+115
+Terance Mann
+
+Brooklyn Nets
+$15,500,000
+9.4%
+116
+Julian Champagnie
+
+San Antonio Spurs
+$15,350,000
+9.3%
+117
+Gary Trent Jr.
+
+Milwaukee Bucks
+$15,200,000
+9.2%
+118
+Brandon Miller
+
+Charlotte Hornets
+$15,104,626
+9.2%
+119
+Mitchell Robinson
+
+Boston Celtics
+$15,044,000
+9.1%
+120
+Tobias Harris
+
+San Antonio Spurs
+$15,044,000
+9.1%
+121
+Isaiah Stewart
+
+Memphis Grizzlies
+$15,000,000
+9.1%
+122
+Obi Toppin
+
+Indiana Pacers
+$15,000,000
+9.1%
+123
+Herb Jones
+
+New Orleans Pelicans
+$14,898,786
+9.0%
+124
+Caris LeVert
+
+Milwaukee Bucks
+$14,809,200
+9.0%
+125
+Dennis Schröder
+
+Charlotte Hornets
+$14,809,200
+9.0%
+126
+AJ Dybantsa
+
+Washington Wizards
+$14,748,000
+8.9%
+127
+Josh Green
+
+Utah Jazz
+$14,679,012
+8.9%
+128
+Bobby Portis
+
+Miami Heat
+$14,521,414
+8.8%
+129
+Cooper Flagg
+
+Dallas Mavericks
+$14,517,480
+8.8%
+130
+Nickeil Alexander-Walker
+
+Atlanta Hawks
+$14,403,710
+8.7%
+131
+Grant Williams
+
+Charlotte Hornets
+$14,265,750
+8.6%
+132
+Dorian Finney-Smith
+
+Atlanta Hawks
+$14,196,974
+8.6%
+133
+Jock Landale
+
+Atlanta Hawks
+$14,100,000
+8.6%
+134
+Tari Eason
+
+Houston Rockets
+$14,053,356
+8.5%
+135
+Robert Williams III
+
+Portland Trail Blazers
+$14,000,000
+8.5%
+136
+Rui Hachimura
+
+Los Angeles Clippers
+$14,000,000
+8.5%
+137
+Corey Kispert
+
+Atlanta Hawks
+$13,975,000
+8.5%
+138
+Quentin Grimes
+
+Los Angeles Lakers
+$13,953,489
+8.5%
+139
+Zaccharie Risacher
+
+Dallas Mavericks
+$13,826,040
+8.4%
+140
+Scoot Henderson
+
+Portland Trail Blazers
+$13,585,523
+8.2%
+141
+Damian Lillard
+
+Portland Trail Blazers
+$13,398,800
+8.1%
+142
+Darryn Peterson
+
+Utah Jazz
+$13,195,320
+8.0%
+143
+Deni Avdija
+
+Portland Trail Blazers
+$13,125,000
+8.0%
+144
+Sandro Mamukelashvili
+
+Los Angeles Lakers
+$13,000,000
+7.9%
+145
+Steven Adams
+
+Houston Rockets
+$13,000,000
+7.9%
+146
+Dylan Harper
+
+San Antonio Spurs
+$12,989,040
+7.9%
+147
+Donte DiVincenzo
+
+Minnesota Timberwolves
+$12,535,000
+7.6%
+148
+Moses Moody
+
+Golden State Warriors
+$12,500,000
+7.6%
+149
+Jarred Vanderbilt
+
+Los Angeles Lakers
+$12,428,571
+7.5%
+150
+Davion Mitchell
+
+Miami Heat
+$12,400,000
+7.5%
+151
+Alex Sarr
+
+Washington Wizards
+$12,370,680
+7.5%
+152
+Amen Thompson
+
+
+Houston Rockets
+$12,258,609
+7.4%
+153
+Cameron Boozer
+
+Memphis Grizzlies
+$11,849,760
+7.2%
+154
+Isaac Okoro
+
+Chicago Bulls
+$11,814,814
+7.2%
+155
+Mark Williams
+
+Phoenix Suns
+$11,728,395
+7.1%
+156
+VJ Edgecombe
+
+Philadelphia 76ers
+$11,663,880
+7.1%
+157
+Jusuf Nurkic
+
+Utah Jazz
+$11,458,333
+7.0%
+158
+Isaiah Joe
+
+Detroit Pistons
+$11,323,006
+6.9%
+159
+Ausar Thompson
+
+Detroit Pistons
+$11,117,925
+6.7%
+160
+Reed Sheppard
+
+Houston Rockets
+$11,108,880
+6.7%
+161
+Aaron Nesmith
+
+Indiana Pacers
+$11,000,000
+6.7%
+162
+T.J. McConnell
+
+Indiana Pacers
+$11,000,000
+6.7%
+163
+Royce O'Neale
+
+Charlotte Hornets
+$10,875,000
+6.6%
+164
+Sam Hauser
+
+Boston Celtics
+$10,848,215
+6.6%
+165
+Collin Gillespie
+
+Phoenix Suns
+$10,714,286
+6.5%
+166
+Caleb Wilson
+
+Chicago Bulls
+$10,683,720
+6.5%
+167
+Kon Knueppel
+
+Charlotte Hornets
+$10,516,560
+6.4%
+168
+Derrick Jones Jr.
+
+Los Angeles Clippers
+$10,476,190
+6.3%
+169
+Luke Kornet
+
+San Antonio Spurs
+$10,450,000
+6.3%
+170
+Anthony Black
+
+Orlando Magic
+$10,106,316
+6.1%
+171
+AJ Green
+
+Milwaukee Bucks
+$10,044,644
+6.1%
+172
+Stephon Castle
+
+San Antonio Spurs
+$10,015,920
+6.1%
+173
+Caleb Martin
+
+Dallas Mavericks
+$10,001,494
+6.1%
+174
+Day'Ron Sharpe
+
+Brooklyn Nets
+$10,000,000
+6.1%
+175
+Keaton Wagler
+
+Los Angeles Clippers
+$9,674,760
+5.9%
+176
+Buddy Hield
+
+Chicago Bulls
+$9,658,536
+5.9%
+177
+Ace Bailey
+
+Utah Jazz
+$9,523,080
+5.8%
+178
+Kevin Huerter
+
+Detroit Pistons
+$9,507,042
+5.8%
+179
+Jalen Smith
+
+Chicago Bulls
+$9,428,571
+5.7%
+180
+Naji Marshall
+
+Dallas Mavericks
+$9,428,571
+5.7%
+181
+Collin Sexton
+
+Los Angeles Lakers
+$9,366,000
+5.7%
+182
+Bilal Coulibaly
+
+Washington Wizards
+$9,240,012
+5.6%
+183
+Ty Jerome
+
+Memphis Grizzlies
+$9,220,050
+5.6%
+184
+Brook Lopez
+
+Los Angeles Clippers
+$9,187,500
+5.6%
+185
+Sam Merrill
+
+Cleveland Cavaliers
+$9,160,715
+5.5%
+186
+Ron Holland II
+
+Detroit Pistons
+$9,069,600
+5.5%
+187
+Dean Wade
+
+Philadelphia 76ers
+$9,000,000
+5.5%
+188
+Keon Ellis
+
+Brooklyn Nets
+$9,000,000
+5.5%
+189
+Moritz Wagner
+
+Brooklyn Nets
+$9,000,000
+5.5%
+190
+Quinten Post
+
+Memphis Grizzlies
+$9,000,000
+5.5%
+191
+Aaron Wiggins
+
+Atlanta Hawks
+$8,831,776
+5.3%
+192
+Mikel Brown Jr
+
+Brooklyn Nets
+$8,787,000
+5.3%
+193
+Tre Johnson
+
+Washington Wizards
+$8,649,600
+5.2%
+194
+Zach Collins
+
+Chicago Bulls
+$8,500,000
+5.1%
+195
+Jarace Walker
+
+Indiana Pacers
+$8,478,542
+5.1%
+196
+Max Christie
+
+Dallas Mavericks
+$8,285,714
+5.0%
+197
+Tidjane Salaün
+
+Charlotte Hornets
+$8,237,880
+5.0%
+198
+Deandre Ayton
+
+Washington Wizards
+$8,104,000
+4.9%
+199
+Kelly Oubre Jr.
+
+Indiana Pacers
+$8,050,000
+4.9%
+200
+Darius Acuff Jr
+
+Sacramento Kings
+$8,021,640
+4.9%
+201
+Harrison Barnes
+
+San Antonio Spurs
+$8,000,000
+4.9%
+202
+Tre Jones
+
+Chicago Bulls
+$8,000,000
+4.9%
+203
+Tre Mann
+
+Washington Wizards
+$8,000,000
+4.9%
+204
+Jeremiah Fears
+
+New Orleans Pelicans
+$7,896,240
+4.8%
+205
+Taylor Hendricks
+
+Memphis Grizzlies
+$7,805,900
+4.7%
+206
+Jaylin Williams
+
+Oklahoma City Thunder
+$7,774,648
+4.7%
+207
+Payton Pritchard
+
+Boston Celtics
+$7,767,857
+4.7%
+208
+Goga Bitadze
+
+Orlando Magic
+$7,608,696
+4.6%
+209
+Donovan Clingan
+
+Portland Trail Blazers
+$7,519,920
+4.6%
+210
+Bennedict Mathurin
+
+New Orleans Pelicans
+$7,500,000
+4.5%
+211
+Zeke Nnaji
+
+Denver Nuggets
+$7,466,667
+4.5%
+212
+Cason Wallace
+
+Oklahoma City Thunder
+$7,420,806
+4.5%
+213
+Kingston Flemings
+
+Atlanta Hawks
+$7,348,680
+4.5%
+214
+Dereck Lively II
+
+Dallas Mavericks
+$7,239,131
+4.4%
+215
+Egor Dëmin
+
+Brooklyn Nets
+$7,233,720
+4.4%
+216
+Gradey Dick
+
+Los Angeles Clippers
+$7,131,511
+4.3%
+217
+Clint Capela
+
+Houston Rockets
+$7,035,000
+4.3%
+218
+Isaiah Jackson
+
+Los Angeles Clippers
+$7,000,000
+4.2%
+219
+Al Horford
+
+Golden State Warriors
+$6,822,000
+4.1%
+220
+Morez Johnson Jr
+
+Dallas Mavericks
+$6,754,800
+4.1%
+221
+Collin Murray-Boyles
+
+Toronto Raptors
+$6,649,560
+4.0%
+222
+Keyonte George
+
+Utah Jazz
+$6,563,925
+4.0%
+223
+Saddiq Bey
+
+New Orleans Pelicans
+$6,557,080
+4.0%
+224
+Bradley Beal
+
+Los Angeles Clippers
+$6,424,800
+3.9%
+225
+Brayden Burries
+
+Milwaukee Bucks
+$6,417,360
+3.9%
+226
+Zach Edey
+
+Memphis Grizzlies
+$6,332,760
+3.8%
+227
+Khaman Maluach
+
+Phoenix Suns
+$6,316,680
+3.8%
+228
+Yaxel Lendeborg
+
+Golden State Warriors
+$6,096,240
+3.7%
+229
+Tim Hardaway Jr.
+
+Miami Heat
+$6,065,000
+3.7%
+230
+De'Anthony Melton
+
+
+Golden State Warriors
+$6,064,000
+3.7%
+231
+Jonathan Kuminga
+
+Minnesota Timberwolves
+$6,064,000
+3.7%
+232
+Luke Kennard
+
+Phoenix Suns
+$6,064,000
+3.7%
+233
+Marcus Smart
+
+Houston Rockets
+$6,064,000
+3.7%
+234
+Cody Williams
+
+Minnesota Timberwolves
+$6,015,600
+3.6%
+235
+Cedric Coward
+
+Memphis Grizzlies
+$6,001,080
+3.6%
+236
+Anfernee Simons
+
+Philadelphia 76ers
+$6,000,000
+3.6%
+237
+Jaden Hardy
+
+Los Angeles Lakers
+$6,000,000
+3.6%
+238
+Jake LaRavia
+
+Los Angeles Lakers
+$6,000,000
+3.6%
+239
+Jaxson Hayes
+
+Utah Jazz
+$6,000,000
+3.6%
+240
+Josh Okogie
+
+Utah Jazz
+$6,000,000
+3.6%
+241
+Spencer Jones
+
+Denver Nuggets
+$6,000,000
+3.6%
+242
+Jaime Jaquez Jr.
+
+Milwaukee Bucks
+$5,939,141
+3.6%
+243
+Jordan Goodwin
+
+Phoenix Suns
+$5,864,198
+3.5%
+244
+Aday Mara
+
+Oklahoma City Thunder
+$5,791,680
+3.5%
+245
+Ousmane Dieng
+
+Milwaukee Bucks
+$5,750,000
+3.5%
+246
+Matas Buzelis
+
+Chicago Bulls
+$5,715,360
+3.5%
+247
+Noa Essengue
+
+Chicago Bulls
+$5,701,200
+3.5%
+248
+Kris Dunn
+
+Los Angeles Clippers
+$5,684,800
+3.5%
+249
+Brandin Podziemski
+
+Golden State Warriors
+$5,679,459
+3.4%
+250
+Paul Reed
+
+Detroit Pistons
+$5,602,689
+3.4%
+251
+Klay Thompson
+
+Miami Heat
+$5,600,000
+3.4%
+252
+Khris Middleton
+
+Washington Wizards
+$5,591,122
+3.4%
+253
+Nate Ament
+
+Milwaukee Bucks
+$5,502,000
+3.3%
+254
+Landry Shamet
+
+New York Knicks
+$5,490,967
+3.3%
+255
+Precious Achiuwa
+
+Sacramento Kings
+$5,477,000
+3.3%
+256
+Nikola Topic
+
+Oklahoma City Thunder
+$5,429,760
+3.3%
+257
+Derik Queen
+
+New Orleans Pelicans
+$5,416,080
+3.3%
+258
+Noah Clowney
+
+Brooklyn Nets
+$5,414,034
+3.3%
+259
+Kris Murray
+
+Memphis Grizzlies
+$5,315,004
+3.2%
+260
+Jordan Miller
+
+Los Angeles Clippers
+$5,300,000
+3.2%
+261
+Hannes Steinbach
+
+Charlotte Hornets
+$5,227,200
+3.2%
+262
+Marcus Sasser
+
+Dallas Mavericks
+$5,198,983
+3.1%
+263
+Carter Bryant
+
+San Antonio Spurs
+$5,145,360
+3.1%
+264
+Ben Sheppard
+
+Indiana Pacers
+$5,031,669
+3.0%
+265
+Kenrich Williams
+
+Oklahoma City Thunder
+$5,000,000
+3.0%
+266
+Dailyn Swain
+
+Chicago Bulls
+$4,965,480
+3.0%
+267
+Bub Carrington
+
+Washington Wizards
+$4,900,560
+3.0%
+268
+Thomas Sorber
+
+Oklahoma City Thunder
+$4,887,720
+3.0%
+269
+Brice Sensabaugh
+
+Utah Jazz
+$4,862,237
+2.9%
+270
+Julian Strawther
+
+Denver Nuggets
+$4,826,931
+2.9%
+271
+Bennett Stirtz
+
+Oklahoma City Thunder
+$4,717,320
+2.9%
+272
+Kel’el Ware
+
+Milwaukee Bucks
+$4,654,920
+2.8%
+273
+Yang Hansen
+
+Portland Trail Blazers
+$4,643,520
+2.8%
+274
+Gui Santos
+
+Golden State Warriors
+$4,629,630
+2.8%
+275
+Josh Minott
+
+Brooklyn Nets
+$4,500,000
+2.7%
+276
+Ebuka Okorie
+
+Detroit Pistons
+$4,481,280
+2.7%
+277
+Jose Alvarado
+
+New York Knicks
+$4,439,656
+2.7%
+278
+Jared McCain
+
+Oklahoma City Thunder
+$4,422,600
+2.7%
+279
+Joan Beringer
+
+Minnesota Timberwolves
+$4,411,200
+2.7%
+280
+Christian Anderson Jr
+
+Charlotte Hornets
+$4,257,480
+2.6%
+281
+Allen Graves
+
+Toronto Raptors
+$4,065,720
+2.5%
+282
+Nolan Traoré
+
+Brooklyn Nets
+$4,002,000
+2.4%
+283
+Daniss Jenkins
+
+Detroit Pistons
+$4,000,000
+2.4%
+284
+Ryan Rollins
+
+Milwaukee Bucks
+$4,000,000
+2.4%
+285
+Tristan Da Silva
+
+Orlando Magic
+$3,991,200
+2.4%
+286
+Miles McBride
+
+New York Knicks
+$3,956,523
+2.4%
+287
+Javonte Green
+
+Detroit Pistons
+$3,943,679
+2.4%
+288
+Jayden Quaintance
+
+San Antonio Spurs
+$3,902,760
+2.4%
+289
+DeAndre Jordan
+
+New Orleans Pelicans
+$3,876,529
+2.4%
+290
+LeBron James
+
+Philadelphia 76ers
+$3,876,529
+2.4%
+291
+Sviatoslav Mykhailiuk
+
+Utah Jazz
+$3,850,000
+2.3%
+292
+Kasparas Jakucionis
+
+Milwaukee Bucks
+$3,841,680
+2.3%
+293
+Taurean Prince
+
+Detroit Pistons
+$3,815,861
+2.3%
+294
+Ja'Kobe Walter
+
+Toronto Raptors
+$3,811,800
+2.3%
+295
+Karim Lopez
+
+Memphis Grizzlies
+$3,746,760
+2.3%
+296
+Will Riley
+
+Washington Wizards
+$3,688,320
+2.2%
+297
+Jaylon Tyson
+
+Cleveland Cavaliers
+$3,658,560
+2.2%
+298
+Labaron Philon
+
+Philadelphia 76ers
+$3,597,120
+2.2%
+299
+Drake Powell
+
+Brooklyn Nets
+$3,540,600
+2.1%
+300
+Yves Missi
+
+New Orleans Pelicans
+$3,512,760
+2.1%
+301
+Mo Bamba
+
+Utah Jazz
+$3,506,659
+2.1%
+302
+Zuby Ejiofor
+
+Atlanta Hawks
+$3,453,360
+2.1%
+303
+Dominick Barlow
+
+Philadelphia 76ers
+$3,415,000
+2.1%
+304
+Ariel Hukporti
+
+Philadelphia 76ers
+$3,400,000
+2.1%
+305
+Asa Newell
+
+Atlanta Hawks
+$3,399,480
+2.1%
+306
+DaRon Holmes II
+
+Denver Nuggets
+$3,372,120
+2.0%
+307
+Cameron Carr
+
+Los Angeles Lakers
+$3,315,360
+2.0%
+308
+Nique Clifford
+
+
+Oklahoma City Thunder
+$3,263,400
+2.0%
+309
+A.J. Johnson
+
+New Orleans Pelicans
+$3,237,120
+2.0%
+310
+Sergio De Larrea
+
+Dallas Mavericks
+$3,182,280
+1.9%
+311
+Ron Harper Jr.
+
+Boston Celtics
+$3,150,752
+1.9%
+312
+Jase Richardson
+
+Orlando Magic
+$3,132,360
+1.9%
+313
+Kyshawn George
+
+Washington Wizards
+$3,108,000
+1.9%
+314
+Jaylen Clark
+
+Minnesota Timberwolves
+$3,086,420
+1.9%
+315
+Tarris Reed Jr
+
+San Antonio Spurs
+$3,076,920
+1.9%
+316
+Ben Saraf
+
+Brooklyn Nets
+$3,028,560
+1.8%
+317
+Kyle Filipowski
+
+Utah Jazz
+$3,000,000
+1.8%
+318
+Tarik Biberović
+
+Dallas Mavericks
+$3,000,000
+1.8%
+319
+Tristan Vukcevic
+
+Washington Wizards
+$3,000,000
+1.8%
+320
+Chris Cenac Jr
+
+Boston Celtics
+$2,988,120
+1.8%
+321
+Pacome Dadiet
+
+New York Knicks
+$2,983,680
+1.8%
+322
+Joshua Jefferson
+
+Brooklyn Nets
+$2,969,520
+1.8%
+323
+Alex Karaban
+
+Sacramento Kings
+$2,948,280
+1.8%
+324
+Danny Wolf
+
+Brooklyn Nets
+$2,941,440
+1.8%
+325
+Koa Peat
+
+Phoenix Suns
+$2,926,800
+1.8%
+326
+Hugo González
+
+Boston Celtics
+$2,923,560
+1.8%
+327
+Liam McNeeley
+
+Charlotte Hornets
+$2,902,080
+1.8%
+328
+Yanic Konan Niederhauser
+
+Los Angeles Clippers
+$2,880,960
+1.8%
+329
+Ajay Mitchell
+
+Oklahoma City Thunder
+$2,850,000
+1.7%
+330
+Terrence Shannon Jr.
+
+Minnesota Timberwolves
+$2,801,640
+1.7%
+331
+Jericho Sims
+
+Milwaukee Bucks
+$2,801,346
+1.7%
+332
+Luka Garza
+
+Boston Celtics
+$2,801,346
+1.7%
+333
+Micah Potter
+
+Portland Trail Blazers
+$2,801,346
+1.7%
+334
+Ryan Dunn
+
+Phoenix Suns
+$2,784,240
+1.7%
+335
+Isaiah Collier
+
+Utah Jazz
+$2,763,960
+1.7%
+336
+Baylor Scheierman
+
+Boston Celtics
+$2,744,040
+1.7%
+337
+Jay Huff
+
+Indiana Pacers
+$2,667,944
+1.6%
+338
+Justin Champagnie
+
+Washington Wizards
+$2,667,944
+1.6%
+339
+Neemias Queta
+
+Boston Celtics
+$2,667,944
+1.6%
+340
+Vit Krejci
+
+Portland Trail Blazers
+$2,667,944
+1.6%
+341
+Kobe Sanders
+
+Los Angeles Clippers
+$2,622,139
+1.6%
+342
+Mohamed Diawara
+
+New York Knicks
+$2,622,139
+1.6%
+343
+Bryce McGowens
+
+New Orleans Pelicans
+$2,584,539
+1.6%
+344
+Dru Smith
+
+Miami Heat
+$2,584,539
+1.6%
+345
+Jabari Walker
+
+Philadelphia 76ers
+$2,584,539
+1.6%
+346
+Jamal Cain
+
+Orlando Magic
+$2,584,539
+1.6%
+347
+Jamaree Bouyea
+
+Phoenix Suns
+$2,584,539
+1.6%
+348
+Quenton Jackson
+
+Indiana Pacers
+$2,584,539
+1.6%
+349
+Olivier-Maxence Prosper
+
+Memphis Grizzlies
+$2,497,812
+1.5%
+350
+Sidy Cissoko
+
+Portland Trail Blazers
+$2,497,812
+1.5%
+351
+Moussa Diabate
+
+Charlotte Hornets
+$2,461,462
+1.5%
+352
+Scotty Pippen Jr.
+
+Memphis Grizzlies
+$2,461,462
+1.5%
+353
+Andre Drummond
+
+New York Knicks
+$2,449,421
+1.5%
+354
+Anthony Gill
+
+Washington Wizards
+$2,449,421
+1.5%
+355
+Ben Simmons
+
+Sacramento Kings
+$2,449,421
+1.5%
+356
+Bogdan Bogdanovic
+
+Houston Rockets
+$2,449,421
+1.5%
+357
+Branden Carlson
+
+Portland Trail Blazers
+$2,449,421
+1.5%
+358
+Brandon Williams
+
+Golden State Warriors
+$2,449,421
+1.5%
+359
+Charles Bassey
+
+Golden State Warriors
+$2,449,421
+1.5%
+360
+Daeqwon Plowden
+
+Sacramento Kings
+$2,449,421
+1.5%
+361
+DeMar DeRozan
+
+Denver Nuggets
+$2,449,421
+1.5%
+362
+Gary Payton II
+
+Golden State Warriors
+$2,449,421
+1.5%
+363
+Georges Niang
+
+Golden State Warriors
+$2,449,421
+1.5%
+364
+Isaiah Crawford
+
+Houston Rockets
+$2,449,421
+1.5%
+365
+Jae’Sean Tate
+
+Houston Rockets
+$2,449,421
+1.5%
+366
+James Wiseman
+
+New York Knicks
+$2,449,421
+1.5%
+367
+Jevon Carter
+
+Orlando Magic
+$2,449,421
+1.5%
+368
+Jonathan Isaac
+
+Orlando Magic
+$2,449,421
+1.5%
+369
+Jordan Clarkson
+
+New York Knicks
+$2,449,421
+1.5%
+370
+Jordan McLaughlin
+
+San Antonio Spurs
+$2,449,421
+1.5%
+371
+Kentavious Caldwell-Pope
+
+Philadelphia 76ers
+$2,449,421
+1.5%
+372
+Kevon Looney
+
+Los Angeles Lakers
+$2,449,421
+1.5%
+373
+Kyle Anderson
+
+Toronto Raptors
+$2,449,421
+1.5%
+374
+Larry Nance Jr.
+
+Indiana Pacers
+$2,449,421
+1.5%
+375
+Mario Hezonja
+
+Cleveland Cavaliers
+$2,449,421
+1.5%
+376
+Marvin Bagley
+
+Denver Nuggets
+$2,449,421
+1.5%
+377
+Matisse Thybulle
+
+Los Angeles Lakers
+$2,449,421
+1.5%
+378
+Mike Conley
+
+Boston Celtics
+$2,449,421
+1.5%
+379
+Nah'Shon Hyland
+
+Minnesota Timberwolves
+$2,449,421
+1.5%
+380
+Nick Richards
+
+Miami Heat
+$2,449,421
+1.5%
+381
+Nikola Vucevic
+
+Orlando Magic
+$2,449,421
+1.5%
+382
+Simone Fontecchio
+
+Miami Heat
+$2,449,421
+1.5%
+383
+Thomas Bryant
+
+Cleveland Cavaliers
+$2,449,421
+1.5%
+384
+Tony Bradley
+
+Utah Jazz
+$2,449,421
+1.5%
+385
+Trendon Watford
+
+
+New Orleans Pelicans
+$2,449,421
+1.5%
+386
+Trey Lyles
+
+Minnesota Timberwolves
+$2,449,421
+1.5%
+387
+Tyus Jones
+
+Denver Nuggets
+$2,449,421
+1.5%
+388
+Ziaire Williams
+
+Los Angeles Lakers
+$2,449,421
+1.5%
+389
+Cam Spencer
+
+Memphis Grizzlies
+$2,411,090
+1.5%
+390
+Justin Edwards
+
+Philadelphia 76ers
+$2,411,090
+1.5%
+391
+Nae'Qwan Tomlin
+
+Cleveland Cavaliers
+$2,411,090
+1.5%
+392
+Ryan Kalkbrenner
+
+Charlotte Hornets
+$2,411,090
+1.5%
+393
+Sion James
+
+Charlotte Hornets
+$2,411,090
+1.5%
+394
+Tolu Smith III
+
+Detroit Pistons
+$2,411,090
+1.5%
+395
+Craig Porter Jr.
+
+Cleveland Cavaliers
+$2,406,205
+1.5%
+396
+G.G. Jackson
+
+Memphis Grizzlies
+$2,406,205
+1.5%
+397
+Jordan Walsh
+
+Boston Celtics
+$2,406,205
+1.5%
+398
+Leonard Miller
+
+Chicago Bulls
+$2,406,205
+1.5%
+399
+Mouhamed Gueye
+
+Atlanta Hawks
+$2,406,205
+1.5%
+400
+Trayce Jackson-Davis
+
+Toronto Raptors
+$2,406,205
+1.5%
+401
+Adem Bona
+
+Philadelphia 76ers
+$2,296,271
+1.4%
+402
+Bronny James
+
+Los Angeles Lakers
+$2,296,271
+1.4%
+403
+Jamal Shead
+
+Toronto Raptors
+$2,296,271
+1.4%
+404
+Jamison Battle
+
+Toronto Raptors
+$2,296,271
+1.4%
+405
+Jaylen Wells
+
+Memphis Grizzlies
+$2,296,271
+1.4%
+406
+Johnny Furphy
+
+Indiana Pacers
+$2,296,271
+1.4%
+407
+Karlo Matkovic
+
+New Orleans Pelicans
+$2,296,271
+1.4%
+408
+Oso Ighodaro
+
+Phoenix Suns
+$2,296,271
+1.4%
+409
+Pelle Larson
+
+Miami Heat
+$2,296,271
+1.4%
+410
+Tyler Kolek
+
+New York Knicks
+$2,296,271
+1.4%
+411
+Alijah Martin
+
+Toronto Raptors
+$2,185,116
+1.3%
+412
+Moussa Cisse
+
+Dallas Mavericks
+$2,185,116
+1.3%
+413
+Adou Thiero
+
+Los Angeles Lakers
+$2,150,917
+1.3%
+414
+Chaz Lanier
+
+Detroit Pistons
+$2,150,917
+1.3%
+415
+Dylan Cardwell
+
+Sacramento Kings
+$2,150,917
+1.3%
+416
+Maxime Raynaud
+
+Sacramento Kings
+$2,150,917
+1.3%
+417
+Myron Gardner
+
+Miami Heat
+$2,150,917
+1.3%
+418
+Noah Penda
+
+Orlando Magic
+$2,150,917
+1.3%
+419
+Rasheer Fleming
+
+Phoenix Suns
+$2,150,917
+1.3%
+420
+Tyrese Proctor
+
+Cleveland Cavaliers
+$2,150,917
+1.3%
+421
+Will Richard
+
+Golden State Warriors
+$2,150,917
+1.3%
+422
+Baba Miller
+
+Los Angeles Clippers
+$1,705,630
+1.0%
+423
+Alpha Diallo
+
+Denver Nuggets
+$1,357,763
+0.8%
+424
+Bogolijub Marković
+
+Milwaukee Bucks
+$1,357,763
+0.8%
+425
+Bruce Thornton
+
+Houston Rockets
+$1,357,763
+0.8%
+426
+Emanuel Sharpe
+
+Sacramento Kings
+$1,357,763
+0.8%
+427
+Henri Veesaar
+
+Atlanta Hawks
+$1,357,763
+0.8%
+428
+Isaiah Evans
+
+Minnesota Timberwolves
+$1,357,763
+0.8%
+429
+Jaden Bradley
+
+Toronto Raptors
+$1,357,763
+0.8%
+430
+Khalifa Diop
+
+Cleveland Cavaliers
+$1,357,763
+0.8%
+431
+Meleek Thomas
+
+Cleveland Cavaliers
+$1,357,763
+0.8%
+432
+Ryan Conwell
+
+Miami Heat
+$1,357,763
+0.8%
+433
+Trevon Brazile
+
+Denver Nuggets
+$1,357,763
+0.8%
+434
+Blake Wesley
+
+Los Angeles Clippers
+$140,771

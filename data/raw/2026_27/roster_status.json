@@ -1,0 +1,4241 @@
+{
+ "_note": "nba_api CommonTeamRoster 2026-27, fetched 2026-11-09",
+ "teams": {
+  "Spurs": [
+   {
+    "PLAYER": "Jordan McLaughlin",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from SAC on 02/03/25",
+    "PLAYER_ID": 1629162
+   },
+   {
+    "PLAYER": "Victor Wembanyama",
+    "POSITION": "F-C",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#1 Pick in 2023 Draft",
+    "PLAYER_ID": 1641705
+   },
+   {
+    "PLAYER": "Dylan Harper",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#2 Pick in 2025 Draft",
+    "PLAYER_ID": 1642844
+   },
+   {
+    "PLAYER": "Keldon Johnson",
+    "POSITION": "F-G",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "#29 Pick in 2019 Draft",
+    "PLAYER_ID": 1629640
+   },
+   {
+    "PLAYER": "De'Aaron Fox",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from SAC on 02/03/25",
+    "PLAYER_ID": 1628368
+   },
+   {
+    "PLAYER": "Stephon Castle",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#4 Pick in 2024 Draft",
+    "PLAYER_ID": 1642264
+   },
+   {
+    "PLAYER": "Luke Kornet",
+    "POSITION": "C-F",
+    "AGE": 31.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Signed on 07/07/25",
+    "PLAYER_ID": 1628436
+   },
+   {
+    "PLAYER": "Tarris Reed Jr.",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from DEN on 06/23/26",
+    "PLAYER_ID": 1643542
+   },
+   {
+    "PLAYER": "Carter Bryant",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#14 Pick in 2025 Draft",
+    "PLAYER_ID": 1642868
+   },
+   {
+    "PLAYER": "Maliq Brown",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#44 Pick in 2026 Draft",
+    "PLAYER_ID": 1643576
+   },
+   {
+    "PLAYER": "Ja'Kobi Gillespie",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#42 Pick in 2026 Draft",
+    "PLAYER_ID": 1643551
+   },
+   {
+    "PLAYER": "Jayden Quaintance",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#20 Pick in 2026 Draft",
+    "PLAYER_ID": 1643519
+   },
+   {
+    "PLAYER": "Tobias Harris",
+    "POSITION": "F",
+    "AGE": 34.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 202699
+   },
+   {
+    "PLAYER": "Devin Vassell",
+    "POSITION": "G-F",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#11 Pick in 2020 Draft",
+    "PLAYER_ID": 1630170
+   },
+   {
+    "PLAYER": "David Jones Garcia",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/23/25",
+    "PLAYER_ID": 1642357
+   },
+   {
+    "PLAYER": "Julian Champagnie",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": null,
+    "PLAYER_ID": 1630577
+   },
+   {
+    "PLAYER": "Harrison Barnes",
+    "POSITION": "F",
+    "AGE": 34.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Traded from SAC on 07/08/24",
+    "PLAYER_ID": 203084
+   }
+  ],
+  "Celtics": [
+   {
+    "PLAYER": "Jayson Tatum",
+    "POSITION": "F-G",
+    "AGE": 28.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "#3 Pick in 2017 Draft",
+    "PLAYER_ID": 1628369
+   },
+   {
+    "PLAYER": "Mitchell Robinson",
+    "POSITION": "C-F",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1629011
+   },
+   {
+    "PLAYER": "Ron Harper Jr.",
+    "POSITION": "G-F",
+    "AGE": 26.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 09/19/25",
+    "PLAYER_ID": 1631199
+   },
+   {
+    "PLAYER": "Derrick White",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from SAS on 02/10/22",
+    "PLAYER_ID": 1628401
+   },
+   {
+    "PLAYER": "Payton Pritchard",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#26 Pick in 2020 Draft",
+    "PLAYER_ID": 1630202
+   },
+   {
+    "PLAYER": "Chris Cenac Jr.",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#27 Pick in 2026 Draft",
+    "PLAYER_ID": 1643416
+   },
+   {
+    "PLAYER": "Paul George",
+    "POSITION": "F",
+    "AGE": 36.0,
+    "EXP": "16",
+    "HOW_ACQUIRED": "Traded from PHI on 07/06/26",
+    "PLAYER_ID": 202331
+   },
+   {
+    "PLAYER": "Dillon Mitchell",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#40 Pick in 2026 Draft",
+    "PLAYER_ID": 1641759
+   },
+   {
+    "PLAYER": "Jordan Walsh",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from SAC on 06/28/23",
+    "PLAYER_ID": 1641775
+   },
+   {
+    "PLAYER": "Hugo González",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#28 Pick in 2025 Draft",
+    "PLAYER_ID": 1642864
+   },
+   {
+    "PLAYER": "Sam Hauser",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 08/13/21",
+    "PLAYER_ID": 1630573
+   },
+   {
+    "PLAYER": "Mike Conley",
+    "POSITION": "G",
+    "AGE": 39.0,
+    "EXP": "19",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 201144
+   },
+   {
+    "PLAYER": "Luka Garza",
+    "POSITION": "C",
+    "AGE": 27.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 07/07/25",
+    "PLAYER_ID": 1630568
+   },
+   {
+    "PLAYER": "Baylor Scheierman",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#30 Pick in 2024 Draft",
+    "PLAYER_ID": 1631248
+   },
+   {
+    "PLAYER": "Amari Williams",
+    "POSITION": "F-C",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from ORL on 06/26/25",
+    "PLAYER_ID": 1642873
+   },
+   {
+    "PLAYER": "Neemias Queta",
+    "POSITION": "C",
+    "AGE": 27.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 09/19/23",
+    "PLAYER_ID": 1629674
+   },
+   {
+    "PLAYER": "Devin Carter",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/14/26",
+    "PLAYER_ID": 1642269
+   }
+  ],
+  "Nets": [
+   {
+    "PLAYER": "Josh Minott",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from BOS on 02/05/26",
+    "PLAYER_ID": 1631169
+   },
+   {
+    "PLAYER": "Mikel Brown Jr.",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#6 Pick in 2026 Draft",
+    "PLAYER_ID": 1643414
+   },
+   {
+    "PLAYER": "Keon Ellis",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1631165
+   },
+   {
+    "PLAYER": "Danny Wolf",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#27 Pick in 2025 Draft",
+    "PLAYER_ID": 1642874
+   },
+   {
+    "PLAYER": "Drake Powell",
+    "POSITION": "G-F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from ATL on 07/07/25",
+    "PLAYER_ID": 1642962
+   },
+   {
+    "PLAYER": "Egor Dëmin",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#8 Pick in 2025 Draft",
+    "PLAYER_ID": 1642856
+   },
+   {
+    "PLAYER": "Joshua Jefferson",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from MIN on 07/10/26",
+    "PLAYER_ID": 1643538
+   },
+   {
+    "PLAYER": "Nolan Traore",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#19 Pick in 2025 Draft",
+    "PLAYER_ID": 1642849
+   },
+   {
+    "PLAYER": "Moritz Wagner",
+    "POSITION": "F-C",
+    "AGE": 29.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/31/26",
+    "PLAYER_ID": 1629021
+   },
+   {
+    "PLAYER": "Terance Mann",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from ATL on 07/07/25",
+    "PLAYER_ID": 1629611
+   },
+   {
+    "PLAYER": "Grant Nelson",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/15/25",
+    "PLAYER_ID": 1641761
+   },
+   {
+    "PLAYER": "Michael Porter Jr.",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from DEN on 07/08/25",
+    "PLAYER_ID": 1629008
+   },
+   {
+    "PLAYER": "Day'Ron Sharpe",
+    "POSITION": "C",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Draft Rights Traded from PHX on 08/06/21",
+    "PLAYER_ID": 1630549
+   },
+   {
+    "PLAYER": "Noah Clowney",
+    "POSITION": "F-C",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#21 Pick in 2023 Draft",
+    "PLAYER_ID": 1641730
+   },
+   {
+    "PLAYER": "Julius Randle",
+    "POSITION": "F-C",
+    "AGE": 31.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from MIN on 07/10/26",
+    "PLAYER_ID": 203944
+   },
+   {
+    "PLAYER": "Chaney Johnson",
+    "POSITION": "G-F",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 12/26/25",
+    "PLAYER_ID": 1643052
+   },
+   {
+    "PLAYER": "Tyler Bilodeau",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#43 Pick in 2026 Draft",
+    "PLAYER_ID": 1643548
+   },
+   {
+    "PLAYER": "Ben Saraf",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#26 Pick in 2025 Draft",
+    "PLAYER_ID": 1642879
+   }
+  ],
+  "Kings": [
+   {
+    "PLAYER": "Malik Monk",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Signed on 07/06/22",
+    "PLAYER_ID": 1628370
+   },
+   {
+    "PLAYER": "Sean Pedulla",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/23/26",
+    "PLAYER_ID": 1642951
+   },
+   {
+    "PLAYER": "Darius Acuff Jr.",
+    "POSITION": "G",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#7 Pick in 2026 Draft",
+    "PLAYER_ID": 1643411
+   },
+   {
+    "PLAYER": "Zach LaVine",
+    "POSITION": "G",
+    "AGE": 31.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from CHI on 02/03/25",
+    "PLAYER_ID": 203897
+   },
+   {
+    "PLAYER": "Precious Achiuwa",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 11/04/25",
+    "PLAYER_ID": 1630173
+   },
+   {
+    "PLAYER": "Domantas Sabonis",
+    "POSITION": "F-C",
+    "AGE": 30.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from IND on 02/08/22",
+    "PLAYER_ID": 1627734
+   },
+   {
+    "PLAYER": "Keegan Murray",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#4 Pick in 2022 Draft",
+    "PLAYER_ID": 1631099
+   },
+   {
+    "PLAYER": "De'Andre Hunter",
+    "POSITION": "F-G",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CLE on 02/01/26",
+    "PLAYER_ID": 1629631
+   },
+   {
+    "PLAYER": "Leaky Black",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/25/26",
+    "PLAYER_ID": 1641778
+   },
+   {
+    "PLAYER": "Jonathan Mogbo",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/02/26",
+    "PLAYER_ID": 1642367
+   },
+   {
+    "PLAYER": "Ben Simmons",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 09/07/26",
+    "PLAYER_ID": 1627732
+   },
+   {
+    "PLAYER": "Daeqwon Plowden",
+    "POSITION": "G-F",
+    "AGE": 28.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/30/25",
+    "PLAYER_ID": 1631342
+   },
+   {
+    "PLAYER": "Dylan Cardwell",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/02/25",
+    "PLAYER_ID": 1642928
+   },
+   {
+    "PLAYER": "Alex Karaban",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from CLE on 06/24/26",
+    "PLAYER_ID": 1642284
+   },
+   {
+    "PLAYER": "Emanuel Sharp",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#45 Pick in 2026 Draft",
+    "PLAYER_ID": 1643567
+   },
+   {
+    "PLAYER": "Maxime Raynaud",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#42 Pick in 2025 Draft",
+    "PLAYER_ID": 1642875
+   }
+  ],
+  "Hawks": [
+   {
+    "PLAYER": "Luguentz Dort",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from OKC on 07/19/26",
+    "PLAYER_ID": 1629652
+   },
+   {
+    "PLAYER": "RayJ Dennis",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 12/31/25",
+    "PLAYER_ID": 1642484
+   },
+   {
+    "PLAYER": "Keshon Gilbert",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 03/04/26",
+    "PLAYER_ID": 1642933
+   },
+   {
+    "PLAYER": "Jalen Johnson",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#20 Pick in 2021 Draft",
+    "PLAYER_ID": 1630552
+   },
+   {
+    "PLAYER": "Aaron Wiggins",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from OKC on 07/06/26",
+    "PLAYER_ID": 1630598
+   },
+   {
+    "PLAYER": "CJ McCollum",
+    "POSITION": "G",
+    "AGE": 35.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Traded from WAS on 01/09/26",
+    "PLAYER_ID": 203468
+   },
+   {
+    "PLAYER": "Kingston Flemings",
+    "POSITION": "G",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#8 Pick in 2026 Draft",
+    "PLAYER_ID": 1643412
+   },
+   {
+    "PLAYER": "Dyson Daniels",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from NOP on 07/06/24",
+    "PLAYER_ID": 1630700
+   },
+   {
+    "PLAYER": "Nickeil Alexander-Walker",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from MIN on 07/06/25",
+    "PLAYER_ID": 1629638
+   },
+   {
+    "PLAYER": "Dorian Finney-Smith",
+    "POSITION": "F",
+    "AGE": 33.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from CHA on 09/22/26",
+    "PLAYER_ID": 1627827
+   },
+   {
+    "PLAYER": "Henri Veesaar",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from LAC on 06/24/26",
+    "PLAYER_ID": 1643539
+   },
+   {
+    "PLAYER": "Asa Newell",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from NOP on 06/25/25",
+    "PLAYER_ID": 1642854
+   },
+   {
+    "PLAYER": "Onyeka Okongwu",
+    "POSITION": "F-C",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#6 Pick in 2020 Draft",
+    "PLAYER_ID": 1630168
+   },
+   {
+    "PLAYER": "Mouhamed Gueye",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from BOS on 06/28/23",
+    "PLAYER_ID": 1631243
+   },
+   {
+    "PLAYER": "Zuby Ejiofor",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#23 Pick in 2026 Draft",
+    "PLAYER_ID": 1643544
+   },
+   {
+    "PLAYER": "Jalen Wilson",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/22/26",
+    "PLAYER_ID": 1630592
+   },
+   {
+    "PLAYER": "Corey Kispert",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from WAS on 01/09/26",
+    "PLAYER_ID": 1630557
+   },
+   {
+    "PLAYER": "Jock Landale",
+    "POSITION": "C",
+    "AGE": 31.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from UTA on 02/05/26",
+    "PLAYER_ID": 1629111
+   }
+  ],
+  "Hornets": [
+   {
+    "PLAYER": "Royce O'Neale",
+    "POSITION": "F",
+    "AGE": 33.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from PHX on 07/13/26",
+    "PLAYER_ID": 1626220
+   },
+   {
+    "PLAYER": "Naz Reid",
+    "POSITION": "C-F",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from MIN on 07/10/26",
+    "PLAYER_ID": 1629675
+   },
+   {
+    "PLAYER": "Grant Williams",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from DAL on 02/08/24",
+    "PLAYER_ID": 1629684
+   },
+   {
+    "PLAYER": "Coby White",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CHI on 02/04/26",
+    "PLAYER_ID": 1629632
+   },
+   {
+    "PLAYER": "Sion James",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#33 Pick in 2025 Draft",
+    "PLAYER_ID": 1642883
+   },
+   {
+    "PLAYER": "Christian Anderson",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#18 Pick in 2026 Draft",
+    "PLAYER_ID": 1643515
+   },
+   {
+    "PLAYER": "Kon Knueppel",
+    "POSITION": "G-F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#4 Pick in 2025 Draft",
+    "PLAYER_ID": 1642851
+   },
+   {
+    "PLAYER": "Grayson Allen",
+    "POSITION": "G",
+    "AGE": 31.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from PHX on 07/13/26",
+    "PLAYER_ID": 1628960
+   },
+   {
+    "PLAYER": "Michael Ajayi",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1642369
+   },
+   {
+    "PLAYER": "Ryan Kalkbrenner",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#34 Pick in 2025 Draft",
+    "PLAYER_ID": 1641750
+   },
+   {
+    "PLAYER": "Moussa Diabaté",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/31/24",
+    "PLAYER_ID": 1631217
+   },
+   {
+    "PLAYER": "PJ Hall",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 12/24/25",
+    "PLAYER_ID": 1641790
+   },
+   {
+    "PLAYER": "Dennis Schröder",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Traded from CLE on 08/20/26",
+    "PLAYER_ID": 203471
+   },
+   {
+    "PLAYER": "Kylan Boswell",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1643573
+   },
+   {
+    "PLAYER": "Hannes Steinbach",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#14 Pick in 2026 Draft",
+    "PLAYER_ID": 1643419
+   },
+   {
+    "PLAYER": "Brandon Miller",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#2 Pick in 2023 Draft",
+    "PLAYER_ID": 1641706
+   },
+   {
+    "PLAYER": "Tidjane Salaün",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#6 Pick in 2024 Draft",
+    "PLAYER_ID": 1642275
+   },
+   {
+    "PLAYER": "Liam McNeeley",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from PHX on 06/30/25",
+    "PLAYER_ID": 1642862
+   }
+  ],
+  "Bulls": [
+   {
+    "PLAYER": "Noa Essengue",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#12 Pick in 2025 Draft",
+    "PLAYER_ID": 1642855
+   },
+   {
+    "PLAYER": "Josh Giddey",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from OKC on 06/21/24",
+    "PLAYER_ID": 1630581
+   },
+   {
+    "PLAYER": "Dailyn Swain",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#15 Pick in 2026 Draft",
+    "PLAYER_ID": 1643517
+   },
+   {
+    "PLAYER": "Buddy Hield",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from CHA on 09/27/26",
+    "PLAYER_ID": 1627741
+   },
+   {
+    "PLAYER": "Caleb Wilson",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#4 Pick in 2026 Draft",
+    "PLAYER_ID": 1643410
+   },
+   {
+    "PLAYER": "Nic Claxton",
+    "POSITION": "C",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from BKN on 07/10/26",
+    "PLAYER_ID": 1629651
+   },
+   {
+    "PLAYER": "Leonard Miller",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from MIN on 02/05/26",
+    "PLAYER_ID": 1631159
+   },
+   {
+    "PLAYER": "Zach Collins",
+    "POSITION": "F-C",
+    "AGE": 28.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from SAS on 02/03/25",
+    "PLAYER_ID": 1628380
+   },
+   {
+    "PLAYER": "Matas Buzelis",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#11 Pick in 2024 Draft",
+    "PLAYER_ID": 1641824
+   },
+   {
+    "PLAYER": "Jordan Hawkins",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 10/05/26",
+    "PLAYER_ID": 1641722
+   },
+   {
+    "PLAYER": "Tobe Awaka",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/03/26",
+    "PLAYER_ID": 1643591
+   },
+   {
+    "PLAYER": "Jaylin Sellers",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/03/26",
+    "PLAYER_ID": 1643637
+   },
+   {
+    "PLAYER": "Norman Powell",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/10/26",
+    "PLAYER_ID": 1626181
+   },
+   {
+    "PLAYER": "Jalen Smith",
+    "POSITION": "F-C",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 07/08/24",
+    "PLAYER_ID": 1630188
+   },
+   {
+    "PLAYER": "Tre Jones",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from SAS on 02/03/25",
+    "PLAYER_ID": 1630200
+   },
+   {
+    "PLAYER": "Isaac Okoro",
+    "POSITION": "F-G",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from CLE on 07/06/25",
+    "PLAYER_ID": 1630171
+   },
+   {
+    "PLAYER": "Patrick Williams",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#4 Pick in 2020 Draft",
+    "PLAYER_ID": 1630172
+   }
+  ],
+  "Cavaliers": [
+   {
+    "PLAYER": "James Harden",
+    "POSITION": "G",
+    "AGE": 37.0,
+    "EXP": "17",
+    "HOW_ACQUIRED": "Traded from LAC on 02/04/26",
+    "PLAYER_ID": 201935
+   },
+   {
+    "PLAYER": "Thomas Bryant",
+    "POSITION": "C-F",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Signed on 09/25/25",
+    "PLAYER_ID": 1628418
+   },
+   {
+    "PLAYER": "Evan Mobley",
+    "POSITION": "C",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#3 Pick in 2021 Draft",
+    "PLAYER_ID": 1630596
+   },
+   {
+    "PLAYER": "Sam Merrill",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 03/03/23",
+    "PLAYER_ID": 1630241
+   },
+   {
+    "PLAYER": "Peyton Watson",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from DEN on 08/20/26",
+    "PLAYER_ID": 1631212
+   },
+   {
+    "PLAYER": "Craig Porter Jr.",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/03/23",
+    "PLAYER_ID": 1641854
+   },
+   {
+    "PLAYER": "Riley Minix",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 02/13/26",
+    "PLAYER_ID": 1642434
+   },
+   {
+    "PLAYER": "Meleek Thomas",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#34 Pick in 2026 Draft",
+    "PLAYER_ID": 1643509
+   },
+   {
+    "PLAYER": "Khalifa Diop",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#39 Pick in 2022 Draft",
+    "PLAYER_ID": 1631215
+   },
+   {
+    "PLAYER": "Jaylon Tyson",
+    "POSITION": "G-F",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#20 Pick in 2024 Draft",
+    "PLAYER_ID": 1642281
+   },
+   {
+    "PLAYER": "Tyrese Proctor",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#49 Pick in 2025 Draft",
+    "PLAYER_ID": 1642878
+   },
+   {
+    "PLAYER": "Jarrett Allen",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from BKN on 01/16/21",
+    "PLAYER_ID": 1628386
+   },
+   {
+    "PLAYER": "Mario Hezonja",
+    "POSITION": "F-G",
+    "AGE": 31.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 07/31/26",
+    "PLAYER_ID": 1626209
+   },
+   {
+    "PLAYER": "Nae'Qwan Tomlin",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/23/24",
+    "PLAYER_ID": 1641772
+   },
+   {
+    "PLAYER": "Donovan Mitchell",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from UTA on 09/03/22",
+    "PLAYER_ID": 1628378
+   },
+   {
+    "PLAYER": "Norchad Omier",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 11/05/26",
+    "PLAYER_ID": 1641807
+   },
+   {
+    "PLAYER": "Ernest Udeh, Jr.",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/01/26",
+    "PLAYER_ID": 1643640
+   }
+  ],
+  "Mavericks": [
+   {
+    "PLAYER": "Max Christie",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from LAL on 02/02/25",
+    "PLAYER_ID": 1631108
+   },
+   {
+    "PLAYER": "Walter Clayton Jr.",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/21/26",
+    "PLAYER_ID": 1642383
+   },
+   {
+    "PLAYER": "Dereck Lively II",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from OKC on 07/06/23",
+    "PLAYER_ID": 1641726
+   },
+   {
+    "PLAYER": "Naji Marshall",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 07/06/24",
+    "PLAYER_ID": 1630230
+   },
+   {
+    "PLAYER": "Marcus Sasser",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from DET on 07/08/26",
+    "PLAYER_ID": 1631204
+   },
+   {
+    "PLAYER": "Jett Howard",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/20/26",
+    "PLAYER_ID": 1641724
+   },
+   {
+    "PLAYER": "Zaccharie Risacher",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Traded from ATL on 07/19/26",
+    "PLAYER_ID": 1642258
+   },
+   {
+    "PLAYER": "Kyrie Irving",
+    "POSITION": "G",
+    "AGE": 34.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Traded from BKN on 02/06/23",
+    "PLAYER_ID": 202681
+   },
+   {
+    "PLAYER": "Tarik Biberović",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 07/08/26",
+    "PLAYER_ID": 1641844
+   },
+   {
+    "PLAYER": "Morez Johnson Jr.",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#9 Pick in 2026 Draft",
+    "PLAYER_ID": 1643516
+   },
+   {
+    "PLAYER": "Caleb Martin",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from PHI on 02/04/25",
+    "PLAYER_ID": 1628997
+   },
+   {
+    "PLAYER": "Daniel Gafford",
+    "POSITION": "F-C",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from WAS on 02/08/24",
+    "PLAYER_ID": 1629655
+   },
+   {
+    "PLAYER": "P.J. Washington",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CHA on 02/08/24",
+    "PLAYER_ID": 1629023
+   },
+   {
+    "PLAYER": "Moussa Cissé",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/08/25",
+    "PLAYER_ID": 1630619
+   },
+   {
+    "PLAYER": "Cooper Flagg",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#1 Pick in 2025 Draft",
+    "PLAYER_ID": 1642843
+   },
+   {
+    "PLAYER": "Tobi Lawal",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#48 Pick in 2026 Draft",
+    "PLAYER_ID": 1643588
+   },
+   {
+    "PLAYER": "Santi Aldama",
+    "POSITION": "F-C",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from MEM on 07/08/26",
+    "PLAYER_ID": 1630583
+   },
+   {
+    "PLAYER": "Sergio de Larrea",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from LAL on 06/24/26",
+    "PLAYER_ID": 1643547
+   }
+  ],
+  "Nuggets": [
+   {
+    "PLAYER": "Christian Braun",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#21 Pick in 2022 Draft",
+    "PLAYER_ID": 1631128
+   },
+   {
+    "PLAYER": "Cam Whitmore",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 09/18/26",
+    "PLAYER_ID": 1641715
+   },
+   {
+    "PLAYER": "Julian Strawther",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from IND on 06/23/23",
+    "PLAYER_ID": 1631124
+   },
+   {
+    "PLAYER": "Marvin Bagley III",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/15/26",
+    "PLAYER_ID": 1628963
+   },
+   {
+    "PLAYER": "Tyus Jones",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 03/05/26",
+    "PLAYER_ID": 1626145
+   },
+   {
+    "PLAYER": "Trevon Brazile",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#35 Pick in 2026 Draft",
+    "PLAYER_ID": 1642350
+   },
+   {
+    "PLAYER": "Ryan Nembhard",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 09/30/26",
+    "PLAYER_ID": 1642948
+   },
+   {
+    "PLAYER": "DeMar DeRozan",
+    "POSITION": "G-F",
+    "AGE": 37.0,
+    "EXP": "17",
+    "HOW_ACQUIRED": "Signed on 09/08/26",
+    "PLAYER_ID": 201942
+   },
+   {
+    "PLAYER": "Alpha Diallo",
+    "POSITION": "G",
+    "AGE": 29.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/13/26",
+    "PLAYER_ID": 1643813
+   },
+   {
+    "PLAYER": "Bryce Hopkins",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#49 Pick in 2026 Draft",
+    "PLAYER_ID": 1643624
+   },
+   {
+    "PLAYER": "DaRon Holmes II",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from PHX on 06/26/24",
+    "PLAYER_ID": 1641747
+   },
+   {
+    "PLAYER": "Nikola Jokić",
+    "POSITION": "C",
+    "AGE": 31.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "#41 Pick in 2014 Draft",
+    "PLAYER_ID": 203999
+   },
+   {
+    "PLAYER": "Spencer Jones",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/30/24",
+    "PLAYER_ID": 1642461
+   },
+   {
+    "PLAYER": "Zeke Nnaji",
+    "POSITION": "F-C",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#22 Pick in 2020 Draft",
+    "PLAYER_ID": 1630192
+   },
+   {
+    "PLAYER": "Cameron Johnson",
+    "POSITION": "F",
+    "AGE": 30.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from BKN on 07/08/25",
+    "PLAYER_ID": 1629661
+   },
+   {
+    "PLAYER": "Jamal Murray",
+    "POSITION": "G",
+    "AGE": 29.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "#7 Pick in 2016 Draft",
+    "PLAYER_ID": 1627750
+   },
+   {
+    "PLAYER": "Aaron Gordon",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from ORL on 03/25/21",
+    "PLAYER_ID": 203932
+   }
+  ],
+  "Pistons": [
+   {
+    "PLAYER": "Jalen Duren",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 07/06/22",
+    "PLAYER_ID": 1631105
+   },
+   {
+    "PLAYER": "Cade Cunningham",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#1 Pick in 2021 Draft",
+    "PLAYER_ID": 1630595
+   },
+   {
+    "PLAYER": "Ronald Holland II",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#5 Pick in 2024 Draft",
+    "PLAYER_ID": 1641842
+   },
+   {
+    "PLAYER": "Paul Reed",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Awarded on Waivers on 07/09/24",
+    "PLAYER_ID": 1630194
+   },
+   {
+    "PLAYER": "Chaz Lanier",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#37 Pick in 2025 Draft",
+    "PLAYER_ID": 1642404
+   },
+   {
+    "PLAYER": "Ausar Thompson",
+    "POSITION": "G-F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#5 Pick in 2023 Draft",
+    "PLAYER_ID": 1641709
+   },
+   {
+    "PLAYER": "Taurean Prince",
+    "POSITION": "F",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from MIL on 07/08/26",
+    "PLAYER_ID": 1627752
+   },
+   {
+    "PLAYER": "Isaac Jones",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Awarded on Waivers on 11/06/25",
+    "PLAYER_ID": 1642403
+   },
+   {
+    "PLAYER": "Isaiah Joe",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from OKC on 07/06/26",
+    "PLAYER_ID": 1630198
+   },
+   {
+    "PLAYER": "John Collins",
+    "POSITION": "F-C",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from LAC on 07/08/26",
+    "PLAYER_ID": 1628381
+   },
+   {
+    "PLAYER": "Ebuka Okorie",
+    "POSITION": "G",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 06/24/26",
+    "PLAYER_ID": 1643536
+   },
+   {
+    "PLAYER": "Daniss Jenkins",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/06/24",
+    "PLAYER_ID": 1642450
+   },
+   {
+    "PLAYER": "Kevin Huerter",
+    "POSITION": "G-F",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from CHI on 02/03/26",
+    "PLAYER_ID": 1628989
+   },
+   {
+    "PLAYER": "Javonte Green",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 08/14/25",
+    "PLAYER_ID": 1629750
+   },
+   {
+    "PLAYER": "Ugonna Onyenso",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/24/26",
+    "PLAYER_ID": 1642391
+   },
+   {
+    "PLAYER": "Tolu Smith",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/17/24",
+    "PLAYER_ID": 1642449
+   },
+   {
+    "PLAYER": "Duncan Robinson",
+    "POSITION": "F",
+    "AGE": 32.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from MIA on 07/07/25",
+    "PLAYER_ID": 1629130
+   },
+   {
+    "PLAYER": "Elijah Harkless",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/08/26",
+    "PLAYER_ID": 1641989
+   }
+  ],
+  "Warriors": [
+   {
+    "PLAYER": "Gary Payton II",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from POR on 02/09/23",
+    "PLAYER_ID": 1627780
+   },
+   {
+    "PLAYER": "Yaxel Lendeborg",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#11 Pick in 2026 Draft",
+    "PLAYER_ID": 1642865
+   },
+   {
+    "PLAYER": "Brandin Podziemski",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#19 Pick in 2023 Draft",
+    "PLAYER_ID": 1641764
+   },
+   {
+    "PLAYER": "Will Richard",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 07/06/25",
+    "PLAYER_ID": 1642954
+   },
+   {
+    "PLAYER": "Moses Moody",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#14 Pick in 2021 Draft",
+    "PLAYER_ID": 1630541
+   },
+   {
+    "PLAYER": "Kristaps Porziņģis",
+    "POSITION": "F-C",
+    "AGE": 31.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Traded from ATL on 02/05/26",
+    "PLAYER_ID": 204001
+   },
+   {
+    "PLAYER": "De'Anthony Melton",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 10/01/25",
+    "PLAYER_ID": 1629001
+   },
+   {
+    "PLAYER": "Jimmy Butler III",
+    "POSITION": "F",
+    "AGE": 37.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Traded from MIA on 02/06/25",
+    "PLAYER_ID": 202710
+   },
+   {
+    "PLAYER": "Brandon Williams",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 08/26/26",
+    "PLAYER_ID": 1630314
+   },
+   {
+    "PLAYER": "Gui Santos",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#55 Pick in 2022 Draft",
+    "PLAYER_ID": 1630611
+   },
+   {
+    "PLAYER": "LJ Cryer",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 09/29/25",
+    "PLAYER_ID": 1643018
+   },
+   {
+    "PLAYER": "Al Horford",
+    "POSITION": "C",
+    "AGE": 40.0,
+    "EXP": "19",
+    "HOW_ACQUIRED": "Signed on 10/01/25",
+    "PLAYER_ID": 201143
+   },
+   {
+    "PLAYER": "Draymond Green",
+    "POSITION": "F-C",
+    "AGE": 36.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "#35 Pick in 2012 Draft",
+    "PLAYER_ID": 203110
+   },
+   {
+    "PLAYER": "Charles Bassey",
+    "POSITION": "F-C",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 04/05/26",
+    "PLAYER_ID": 1629646
+   },
+   {
+    "PLAYER": "Stephen Curry",
+    "POSITION": "G",
+    "AGE": 38.0,
+    "EXP": "17",
+    "HOW_ACQUIRED": "#7 Pick in 2009 Draft",
+    "PLAYER_ID": 201939
+   },
+   {
+    "PLAYER": "Georges Niang",
+    "POSITION": "F",
+    "AGE": 33.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Signed on 08/25/26",
+    "PLAYER_ID": 1627777
+   },
+   {
+    "PLAYER": "Malevy Leons",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 12/08/25",
+    "PLAYER_ID": 1642502
+   },
+   {
+    "PLAYER": "Graham Ike",
+    "POSITION": "F-C",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 09/21/26",
+    "PLAYER_ID": 1643633
+   }
+  ],
+  "Rockets": [
+   {
+    "PLAYER": "Amen Thompson",
+    "POSITION": "G-F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#4 Pick in 2023 Draft",
+    "PLAYER_ID": 1641708
+   },
+   {
+    "PLAYER": "Bruce Thornton",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/24/26",
+    "PLAYER_ID": 1643570
+   },
+   {
+    "PLAYER": "Julian Phillips",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/24/26",
+    "PLAYER_ID": 1641763
+   },
+   {
+    "PLAYER": "Fred VanVleet",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Signed on 07/07/23",
+    "PLAYER_ID": 1627832
+   },
+   {
+    "PLAYER": "Kevin Durant",
+    "POSITION": "F",
+    "AGE": 38.0,
+    "EXP": "19",
+    "HOW_ACQUIRED": "Traded from PHX on 07/06/25",
+    "PLAYER_ID": 201142
+   },
+   {
+    "PLAYER": "Jae'Sean Tate",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 11/25/20",
+    "PLAYER_ID": 1630256
+   },
+   {
+    "PLAYER": "Oscar Tshiebwe",
+    "POSITION": "F-C",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/23/26",
+    "PLAYER_ID": 1631131
+   },
+   {
+    "PLAYER": "Jabari Smith Jr.",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#3 Pick in 2022 Draft",
+    "PLAYER_ID": 1631095
+   },
+   {
+    "PLAYER": "Steven Adams",
+    "POSITION": "C",
+    "AGE": 33.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Traded from MEM on 02/01/24",
+    "PLAYER_ID": 203500
+   },
+   {
+    "PLAYER": "Reed Sheppard",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#3 Pick in 2024 Draft",
+    "PLAYER_ID": 1642263
+   },
+   {
+    "PLAYER": "Tari Eason",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#17 Pick in 2022 Draft",
+    "PLAYER_ID": 1631106
+   },
+   {
+    "PLAYER": "Quadir Copeland",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/07/26",
+    "PLAYER_ID": 1643595
+   },
+   {
+    "PLAYER": "Isaiah Crawford",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/26/25",
+    "PLAYER_ID": 1642384
+   },
+   {
+    "PLAYER": "Alperen Sengun",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Draft Rights Traded from OKC on 07/30/21",
+    "PLAYER_ID": 1630578
+   },
+   {
+    "PLAYER": "Clint Capela",
+    "POSITION": "C",
+    "AGE": 32.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from ATL on 07/06/25",
+    "PLAYER_ID": 203991
+   },
+   {
+    "PLAYER": "Bogdan Bogdanović",
+    "POSITION": "G",
+    "AGE": 34.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Signed on 07/08/26",
+    "PLAYER_ID": 203992
+   },
+   {
+    "PLAYER": "Marcus Smart",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Signed on 07/10/26",
+    "PLAYER_ID": 203935
+   }
+  ],
+  "Pacers": [
+   {
+    "PLAYER": "Tyrese Haliburton",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from SAC on 02/08/22",
+    "PLAYER_ID": 1630169
+   },
+   {
+    "PLAYER": "Obi Toppin",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from NYK on 07/07/23",
+    "PLAYER_ID": 1630167
+   },
+   {
+    "PLAYER": "Andrew Nembhard",
+    "POSITION": "G-F",
+    "AGE": 26.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#31 Pick in 2022 Draft",
+    "PLAYER_ID": 1629614
+   },
+   {
+    "PLAYER": "Braden Smith",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from CHI on 06/24/26",
+    "PLAYER_ID": 1643552
+   },
+   {
+    "PLAYER": "Jarace Walker",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from WAS on 06/23/23",
+    "PLAYER_ID": 1641716
+   },
+   {
+    "PLAYER": "T.J. McConnell",
+    "POSITION": "G",
+    "AGE": 34.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/29/19",
+    "PLAYER_ID": 204456
+   },
+   {
+    "PLAYER": "Kelly Oubre Jr.",
+    "POSITION": "F-G",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/07/26",
+    "PLAYER_ID": 1626162
+   },
+   {
+    "PLAYER": "Johnny Furphy",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from SAS on 07/06/24",
+    "PLAYER_ID": 1642277
+   },
+   {
+    "PLAYER": "Jalen Slawson",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/09/25",
+    "PLAYER_ID": 1641771
+   },
+   {
+    "PLAYER": "Larry Nance Jr.",
+    "POSITION": "F-C",
+    "AGE": 33.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/09/26",
+    "PLAYER_ID": 1626204
+   },
+   {
+    "PLAYER": "Aaron Nesmith",
+    "POSITION": "G-F",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from BOS on 07/09/22",
+    "PLAYER_ID": 1630174
+   },
+   {
+    "PLAYER": "Kobe Brown",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from LAC on 02/05/26",
+    "PLAYER_ID": 1641738
+   },
+   {
+    "PLAYER": "Ben Sheppard",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#26 Pick in 2023 Draft",
+    "PLAYER_ID": 1641767
+   },
+   {
+    "PLAYER": "Quenton Jackson",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 03/04/24",
+    "PLAYER_ID": 1631245
+   },
+   {
+    "PLAYER": "Jay Huff",
+    "POSITION": "C",
+    "AGE": 29.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from MEM on 07/06/25",
+    "PLAYER_ID": 1630643
+   },
+   {
+    "PLAYER": "Ivica Zubac",
+    "POSITION": "C",
+    "AGE": 29.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from LAC on 02/05/26",
+    "PLAYER_ID": 1627826
+   },
+   {
+    "PLAYER": "Pascal Siakam",
+    "POSITION": "F",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from TOR on 01/17/24",
+    "PLAYER_ID": 1627783
+   }
+  ],
+  "Clippers": [
+   {
+    "PLAYER": "Keaton Wagler",
+    "POSITION": "G",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#5 Pick in 2026 Draft",
+    "PLAYER_ID": 1643413
+   },
+   {
+    "PLAYER": "Bradley Beal",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Signed on 07/18/25",
+    "PLAYER_ID": 203078
+   },
+   {
+    "PLAYER": "Kobe Sanders",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/26/25",
+    "PLAYER_ID": 1642920
+   },
+   {
+    "PLAYER": "Derrick Jones Jr.",
+    "POSITION": "F",
+    "AGE": 29.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Signed on 07/09/24",
+    "PLAYER_ID": 1627884
+   },
+   {
+    "PLAYER": "Brandon Ingram",
+    "POSITION": "F",
+    "AGE": 29.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from TOR on 09/14/26",
+    "PLAYER_ID": 1627742
+   },
+   {
+    "PLAYER": "Kris Dunn",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from UTA on 07/18/24",
+    "PLAYER_ID": 1627739
+   },
+   {
+    "PLAYER": "Gradey Dick",
+    "POSITION": "G-F",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from TOR on 09/14/26",
+    "PLAYER_ID": 1641711
+   },
+   {
+    "PLAYER": "Darius Garland",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CLE on 02/04/26",
+    "PLAYER_ID": 1629636
+   },
+   {
+    "PLAYER": "Brook Lopez",
+    "POSITION": "C",
+    "AGE": 38.0,
+    "EXP": "18",
+    "HOW_ACQUIRED": "Signed on 07/06/25",
+    "PLAYER_ID": 201572
+   },
+   {
+    "PLAYER": "Nick Martinelli",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from HOU on 06/24/26",
+    "PLAYER_ID": 1643568
+   },
+   {
+    "PLAYER": "Yanic Konan Niederhäuser",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#30 Pick in 2025 Draft",
+    "PLAYER_ID": 1642949
+   },
+   {
+    "PLAYER": "Baba Miller",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#36 Pick in 2026 Draft",
+    "PLAYER_ID": 1642394
+   },
+   {
+    "PLAYER": "Jalen Pickett",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 08/12/26",
+    "PLAYER_ID": 1629618
+   },
+   {
+    "PLAYER": "Jordan Miller",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#48 Pick in 2023 Draft",
+    "PLAYER_ID": 1641757
+   },
+   {
+    "PLAYER": "Isaiah Jackson",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from IND on 02/05/26",
+    "PLAYER_ID": 1630543
+   },
+   {
+    "PLAYER": "Cam Christie",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#46 Pick in 2024 Draft",
+    "PLAYER_ID": 1642353
+   },
+   {
+    "PLAYER": "Rui Hachimura",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1629060
+   },
+   {
+    "PLAYER": "Max Strus",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CLE on 08/20/26",
+    "PLAYER_ID": 1629622
+   }
+  ],
+  "Lakers": [
+   {
+    "PLAYER": "Lawson Lovering",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/28/26",
+    "PLAYER_ID": 1643133
+   },
+   {
+    "PLAYER": "Adou Thiero",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from BKN on 07/06/25",
+    "PLAYER_ID": 1642876
+   },
+   {
+    "PLAYER": "Jarred Vanderbilt",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from UTA on 02/09/23",
+    "PLAYER_ID": 1629020
+   },
+   {
+    "PLAYER": "Matisse Thybulle",
+    "POSITION": "G-F",
+    "AGE": 29.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 07/27/26",
+    "PLAYER_ID": 1629680
+   },
+   {
+    "PLAYER": "Quentin Grimes",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 07/07/26",
+    "PLAYER_ID": 1629656
+   },
+   {
+    "PLAYER": "Jaden Hardy",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from WAS on 07/07/26",
+    "PLAYER_ID": 1630702
+   },
+   {
+    "PLAYER": "Bronny James",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#55 Pick in 2024 Draft",
+    "PLAYER_ID": 1642355
+   },
+   {
+    "PLAYER": "Collin Sexton",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/11/26",
+    "PLAYER_ID": 1629012
+   },
+   {
+    "PLAYER": "Ziaire Williams",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 07/19/26",
+    "PLAYER_ID": 1630533
+   },
+   {
+    "PLAYER": "Jake LaRavia",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/06/25",
+    "PLAYER_ID": 1631222
+   },
+   {
+    "PLAYER": "Walker Kessler",
+    "POSITION": "C",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from UTA on 07/08/26",
+    "PLAYER_ID": 1631117
+   },
+   {
+    "PLAYER": "Austin Reaves",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 08/03/21",
+    "PLAYER_ID": 1630559
+   },
+   {
+    "PLAYER": "Chris Mañon",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/24/25",
+    "PLAYER_ID": 1643024
+   },
+   {
+    "PLAYER": "Cameron Carr",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/24/26",
+    "PLAYER_ID": 1643418
+   },
+   {
+    "PLAYER": "Arthur Kaluma",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/25/25",
+    "PLAYER_ID": 1641751
+   },
+   {
+    "PLAYER": "Sandro Mamukelashvili",
+    "POSITION": "F-C",
+    "AGE": 27.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 07/07/26",
+    "PLAYER_ID": 1630572
+   },
+   {
+    "PLAYER": "Kevon Looney",
+    "POSITION": "F",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/12/26",
+    "PLAYER_ID": 1626172
+   },
+   {
+    "PLAYER": "Luka Dončić",
+    "POSITION": "F-G",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from DAL on 02/02/25",
+    "PLAYER_ID": 1629029
+   }
+  ],
+  "Grizzlies": [
+   {
+    "PLAYER": "Jaylen Wells",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#39 Pick in 2024 Draft",
+    "PLAYER_ID": 1642377
+   },
+   {
+    "PLAYER": "Scotty Pippen Jr.",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 01/16/24",
+    "PLAYER_ID": 1630590
+   },
+   {
+    "PLAYER": "Ty Jerome",
+    "POSITION": "G-F",
+    "AGE": 29.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 07/14/25",
+    "PLAYER_ID": 1629660
+   },
+   {
+    "PLAYER": "Jerami Grant",
+    "POSITION": "F",
+    "AGE": 32.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from POR on 06/29/26",
+    "PLAYER_ID": 203924
+   },
+   {
+    "PLAYER": "Richie Saunders",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#32 Pick in 2026 Draft",
+    "PLAYER_ID": 1643563
+   },
+   {
+    "PLAYER": "Javon Small",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#48 Pick in 2025 Draft",
+    "PLAYER_ID": 1642914
+   },
+   {
+    "PLAYER": "Zach Edey",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#9 Pick in 2024 Draft",
+    "PLAYER_ID": 1641744
+   },
+   {
+    "PLAYER": "Kris Murray",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from POR on 06/29/26",
+    "PLAYER_ID": 1631200
+   },
+   {
+    "PLAYER": "Olivier-Maxence Prosper",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 09/04/25",
+    "PLAYER_ID": 1641765
+   },
+   {
+    "PLAYER": "Jahmai Mashack",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from GSW on 07/06/25",
+    "PLAYER_ID": 1642942
+   },
+   {
+    "PLAYER": "Taylor Hendricks",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from UTA on 02/03/26",
+    "PLAYER_ID": 1641707
+   },
+   {
+    "PLAYER": "Cedric Coward",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from POR on 06/25/25",
+    "PLAYER_ID": 1642907
+   },
+   {
+    "PLAYER": "Cam Spencer",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from DET on 07/06/24",
+    "PLAYER_ID": 1642285
+   },
+   {
+    "PLAYER": "Cameron Boozer",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#3 Pick in 2026 Draft",
+    "PLAYER_ID": 1643409
+   },
+   {
+    "PLAYER": "Isaiah Stewart",
+    "POSITION": "F-C",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from DET on 07/08/26",
+    "PLAYER_ID": 1630191
+   },
+   {
+    "PLAYER": "Karim López",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from DET on 06/24/26",
+    "PLAYER_ID": 1643510
+   },
+   {
+    "PLAYER": "Quinten Post",
+    "POSITION": "C",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/08/26",
+    "PLAYER_ID": 1642366
+   },
+   {
+    "PLAYER": "GG Jackson",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#45 Pick in 2023 Draft",
+    "PLAYER_ID": 1641713
+   }
+  ],
+  "Heat": [
+   {
+    "PLAYER": "Simone Fontecchio",
+    "POSITION": "F",
+    "AGE": 30.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from DET on 07/07/25",
+    "PLAYER_ID": 1631323
+   },
+   {
+    "PLAYER": "Davion Mitchell",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from TOR on 02/06/25",
+    "PLAYER_ID": 1630558
+   },
+   {
+    "PLAYER": "Ryan Conwell",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from OKC on 06/24/26",
+    "PLAYER_ID": 1643553
+   },
+   {
+    "PLAYER": "Nikola Jović",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#27 Pick in 2022 Draft",
+    "PLAYER_ID": 1631107
+   },
+   {
+    "PLAYER": "Giannis Antetokounmpo",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Traded from MIL on 07/06/26",
+    "PLAYER_ID": 203507
+   },
+   {
+    "PLAYER": "Nick Richards",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 08/27/26",
+    "PLAYER_ID": 1630208
+   },
+   {
+    "PLAYER": "Pelle Larsson",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from HOU on 06/27/24",
+    "PLAYER_ID": 1641796
+   },
+   {
+    "PLAYER": "Tim Hardaway Jr.",
+    "POSITION": "G",
+    "AGE": 34.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 203501
+   },
+   {
+    "PLAYER": "Klay Thompson",
+    "POSITION": "G-F",
+    "AGE": 36.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Signed on 08/23/26",
+    "PLAYER_ID": 202691
+   },
+   {
+    "PLAYER": "Dru Smith",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/01/23",
+    "PLAYER_ID": 1630696
+   },
+   {
+    "PLAYER": "Bam Adebayo",
+    "POSITION": "C-F",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "#14 Pick in 2017 Draft",
+    "PLAYER_ID": 1628389
+   },
+   {
+    "PLAYER": "Myron Gardner",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/24/25",
+    "PLAYER_ID": 1642066
+   },
+   {
+    "PLAYER": "Keshad Johnson",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/01/24",
+    "PLAYER_ID": 1642352
+   },
+   {
+    "PLAYER": "Andrew Wiggins",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from GSW on 02/06/25",
+    "PLAYER_ID": 203952
+   },
+   {
+    "PLAYER": "Tre Donaldson",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/03/26",
+    "PLAYER_ID": 1643621
+   },
+   {
+    "PLAYER": "Vladislav Goldin",
+    "POSITION": "C",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/02/25",
+    "PLAYER_ID": 1642884
+   },
+   {
+    "PLAYER": "Bobby Portis Jr.",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Traded from MIL on 07/06/26",
+    "PLAYER_ID": 1626171
+   }
+  ],
+  "Bucks": [
+   {
+    "PLAYER": "Jericho Sims",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from NYK on 02/06/25",
+    "PLAYER_ID": 1630579
+   },
+   {
+    "PLAYER": "Brayden Burries",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#10 Pick in 2026 Draft",
+    "PLAYER_ID": 1643415
+   },
+   {
+    "PLAYER": "Myles Turner",
+    "POSITION": "C-F",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Signed on 07/06/25",
+    "PLAYER_ID": 1626167
+   },
+   {
+    "PLAYER": "Gary Trent Jr.",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/20/24",
+    "PLAYER_ID": 1629018
+   },
+   {
+    "PLAYER": "Kel'el Ware",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Traded from MIA on 07/06/26",
+    "PLAYER_ID": 1642276
+   },
+   {
+    "PLAYER": "Tyler Herro",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from MIA on 07/06/26",
+    "PLAYER_ID": 1629639
+   },
+   {
+    "PLAYER": "Caris LeVert",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from DET on 07/08/26",
+    "PLAYER_ID": 1627747
+   },
+   {
+    "PLAYER": "Ryan Rollins",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 02/20/24",
+    "PLAYER_ID": 1631157
+   },
+   {
+    "PLAYER": "Nate Ament",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from MIA on 07/06/26",
+    "PLAYER_ID": 1643417
+   },
+   {
+    "PLAYER": "Kyle Kuzma",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from WAS on 02/06/25",
+    "PLAYER_ID": 1628398
+   },
+   {
+    "PLAYER": "Kam Jones",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/05/26",
+    "PLAYER_ID": 1642880
+   },
+   {
+    "PLAYER": "AJ Green",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/01/22",
+    "PLAYER_ID": 1631260
+   },
+   {
+    "PLAYER": "Ousmane Dieng",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from CHI on 02/05/26",
+    "PLAYER_ID": 1631172
+   },
+   {
+    "PLAYER": "Bogoljub Marković",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#47 Pick in 2025 Draft",
+    "PLAYER_ID": 1642881
+   },
+   {
+    "PLAYER": "Jaime Jaquez Jr.",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from MIA on 07/06/26",
+    "PLAYER_ID": 1631170
+   },
+   {
+    "PLAYER": "Kasparas Jakučionis",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Traded from MIA on 07/06/26",
+    "PLAYER_ID": 1642857
+   },
+   {
+    "PLAYER": "Cormac Ryan",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 09/10/25",
+    "PLAYER_ID": 1642504
+   },
+   {
+    "PLAYER": "Pete Nance",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 02/27/25",
+    "PLAYER_ID": 1631250
+   }
+  ],
+  "Timberwolves": [
+   {
+    "PLAYER": "Donte DiVincenzo",
+    "POSITION": "G",
+    "AGE": 29.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from NYK on 10/02/24",
+    "PLAYER_ID": 1628978
+   },
+   {
+    "PLAYER": "LaMelo Ball",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from CHA on 07/10/26",
+    "PLAYER_ID": 1630163
+   },
+   {
+    "PLAYER": "Jaden McDaniels",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Draft Rights Traded from OKC on 11/20/20",
+    "PLAYER_ID": 1630183
+   },
+   {
+    "PLAYER": "Terrence Shannon Jr",
+    "POSITION": "G-F",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#27 Pick in 2024 Draft",
+    "PLAYER_ID": 1630545
+   },
+   {
+    "PLAYER": "Anthony Edwards",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#1 Pick in 2020 Draft",
+    "PLAYER_ID": 1630162
+   },
+   {
+    "PLAYER": "Jaylen Clark",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#53 Pick in 2023 Draft",
+    "PLAYER_ID": 1641740
+   },
+   {
+    "PLAYER": "Bones Hyland",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 02/27/25",
+    "PLAYER_ID": 1630538
+   },
+   {
+    "PLAYER": "Cody Williams",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Traded from UTA on 08/29/26",
+    "PLAYER_ID": 1642262
+   },
+   {
+    "PLAYER": "Ayo Dosunmu",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from CHI on 02/05/26",
+    "PLAYER_ID": 1630245
+   },
+   {
+    "PLAYER": "Zyon Pullin",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 09/28/25",
+    "PLAYER_ID": 1642389
+   },
+   {
+    "PLAYER": "Joan Beringer",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#17 Pick in 2025 Draft",
+    "PLAYER_ID": 1642866
+   },
+   {
+    "PLAYER": "Jonathan Kuminga",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 09/03/26",
+    "PLAYER_ID": 1630228
+   },
+   {
+    "PLAYER": "Rudy Gobert",
+    "POSITION": "C",
+    "AGE": 34.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Traded from UTA on 07/06/22",
+    "PLAYER_ID": 203497
+   },
+   {
+    "PLAYER": "Isaiah Evans",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from BKN on 07/10/26",
+    "PLAYER_ID": 1642912
+   },
+   {
+    "PLAYER": "Trey Lyles",
+    "POSITION": "F",
+    "AGE": 31.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Signed on 07/10/26",
+    "PLAYER_ID": 1626168
+   },
+   {
+    "PLAYER": "Rocco Zikarsky",
+    "POSITION": "C",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from LAL on 07/06/25",
+    "PLAYER_ID": 1642911
+   }
+  ],
+  "Pelicans": [
+   {
+    "PLAYER": "Jeremiah Fears",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#7 Pick in 2025 Draft",
+    "PLAYER_ID": 1642847
+   },
+   {
+    "PLAYER": "Zion Williamson",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "#1 Pick in 2019 Draft",
+    "PLAYER_ID": 1629627
+   },
+   {
+    "PLAYER": "Herbert Jones",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#35 Pick in 2021 Draft",
+    "PLAYER_ID": 1630529
+   },
+   {
+    "PLAYER": "Jordan Poole",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from WAS on 07/06/25",
+    "PLAYER_ID": 1629673
+   },
+   {
+    "PLAYER": "Dejounte Murray",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from ATL on 07/06/24",
+    "PLAYER_ID": 1627749
+   },
+   {
+    "PLAYER": "DeAndre Jordan",
+    "POSITION": "C",
+    "AGE": 38.0,
+    "EXP": "18",
+    "HOW_ACQUIRED": "Signed on 10/23/25",
+    "PLAYER_ID": 201599
+   },
+   {
+    "PLAYER": "Malik Dia",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 08/18/26",
+    "PLAYER_ID": 1643738
+   },
+   {
+    "PLAYER": "Trendon Watford",
+    "POSITION": "G-F",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 08/17/26",
+    "PLAYER_ID": 1630570
+   },
+   {
+    "PLAYER": "Jaron Pierre Jr.",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#58 Pick in 2026 Draft",
+    "PLAYER_ID": 1643555
+   },
+   {
+    "PLAYER": "Bryce McGowens",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/30/25",
+    "PLAYER_ID": 1631121
+   },
+   {
+    "PLAYER": "Julian Reese",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 09/24/26",
+    "PLAYER_ID": 1642882
+   },
+   {
+    "PLAYER": "AJ Johnson",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Traded from MEM on 09/08/26",
+    "PLAYER_ID": 1642358
+   },
+   {
+    "PLAYER": "Karlo Matković",
+    "POSITION": "F-C",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#52 Pick in 2022 Draft",
+    "PLAYER_ID": 1631255
+   },
+   {
+    "PLAYER": "Yves Missi",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#21 Pick in 2024 Draft",
+    "PLAYER_ID": 1642274
+   },
+   {
+    "PLAYER": "Derik Queen",
+    "POSITION": "C",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from ATL on 06/25/25",
+    "PLAYER_ID": 1642852
+   },
+   {
+    "PLAYER": "Bennedict Mathurin",
+    "POSITION": "G-F",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 09/10/26",
+    "PLAYER_ID": 1631097
+   },
+   {
+    "PLAYER": "Trey Murphy III",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 08/07/21",
+    "PLAYER_ID": 1630530
+   },
+   {
+    "PLAYER": "Saddiq Bey",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from WAS on 07/06/25",
+    "PLAYER_ID": 1630180
+   }
+  ],
+  "Knicks": [
+   {
+    "PLAYER": "Andre Drummond",
+    "POSITION": "C",
+    "AGE": 33.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 203083
+   },
+   {
+    "PLAYER": "Jordan Clarkson",
+    "POSITION": "G",
+    "AGE": 34.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Signed on 07/07/25",
+    "PLAYER_ID": 203903
+   },
+   {
+    "PLAYER": "Dalton Knecht",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 10/23/26",
+    "PLAYER_ID": 1642261
+   },
+   {
+    "PLAYER": "Miles McBride",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Draft Rights Traded from OKC on 07/30/21",
+    "PLAYER_ID": 1630540
+   },
+   {
+    "PLAYER": "Josh Hart",
+    "POSITION": "G",
+    "AGE": 31.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from POR on 02/09/23",
+    "PLAYER_ID": 1628404
+   },
+   {
+    "PLAYER": "Pacôme Dadiet",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#25 Pick in 2024 Draft",
+    "PLAYER_ID": 1642359
+   },
+   {
+    "PLAYER": "Jose Alvarado",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from NOP on 02/05/26",
+    "PLAYER_ID": 1630631
+   },
+   {
+    "PLAYER": "OG Anunoby",
+    "POSITION": "F-G",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from TOR on 12/30/23",
+    "PLAYER_ID": 1628384
+   },
+   {
+    "PLAYER": "Jalen Brunson",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/12/22",
+    "PLAYER_ID": 1628973
+   },
+   {
+    "PLAYER": "Tyler Kolek",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from POR on 06/27/24",
+    "PLAYER_ID": 1642278
+   },
+   {
+    "PLAYER": "Jaden Akins",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 09/15/26",
+    "PLAYER_ID": 1643022
+   },
+   {
+    "PLAYER": "Mikal Bridges",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from BKN on 07/06/24",
+    "PLAYER_ID": 1628969
+   },
+   {
+    "PLAYER": "Karl-Anthony Towns",
+    "POSITION": "C-F",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "Traded from MIN on 10/02/24",
+    "PLAYER_ID": 1626157
+   },
+   {
+    "PLAYER": "James Wiseman",
+    "POSITION": "C",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 09/15/26",
+    "PLAYER_ID": 1630164
+   },
+   {
+    "PLAYER": "Landry Shamet",
+    "POSITION": "G",
+    "AGE": 29.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 09/14/24",
+    "PLAYER_ID": 1629013
+   },
+   {
+    "PLAYER": "Mohamed Diawara",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from LAC on 06/26/25",
+    "PLAYER_ID": 1642885
+   },
+   {
+    "PLAYER": "Tyler Nickel",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#47 Pick in 2026 Draft",
+    "PLAYER_ID": 1643589
+   }
+  ],
+  "Thunder": [
+   {
+    "PLAYER": "Shai Gilgeous-Alexander",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from LAC on 07/10/19",
+    "PLAYER_ID": 1628983
+   },
+   {
+    "PLAYER": "Jared McCain",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Traded from PHI on 02/04/26",
+    "PLAYER_ID": 1642272
+   },
+   {
+    "PLAYER": "Jaylin Williams",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#34 Pick in 2022 Draft",
+    "PLAYER_ID": 1631119
+   },
+   {
+    "PLAYER": "Chet Holmgren",
+    "POSITION": "C-F",
+    "AGE": 24.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#2 Pick in 2022 Draft",
+    "PLAYER_ID": 1631096
+   },
+   {
+    "PLAYER": "Jalen Williams",
+    "POSITION": "G-F",
+    "AGE": 25.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#12 Pick in 2022 Draft",
+    "PLAYER_ID": 1631114
+   },
+   {
+    "PLAYER": "Alex Caruso",
+    "POSITION": "G",
+    "AGE": 32.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from CHI on 06/21/24",
+    "PLAYER_ID": 1627936
+   },
+   {
+    "PLAYER": "Nique Clifford",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Traded from SAC on 11/08/26",
+    "PLAYER_ID": 1642363
+   },
+   {
+    "PLAYER": "Thomas Sorber",
+    "POSITION": "C",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#15 Pick in 2025 Draft",
+    "PLAYER_ID": 1642850
+   },
+   {
+    "PLAYER": "Bennett Stirtz",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 06/23/26",
+    "PLAYER_ID": 1642892
+   },
+   {
+    "PLAYER": "Aday Mara",
+    "POSITION": "C",
+    "AGE": 21.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#12 Pick in 2026 Draft",
+    "PLAYER_ID": 1643530
+   },
+   {
+    "PLAYER": "Micah Peavy",
+    "POSITION": "G-F",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/24/26",
+    "PLAYER_ID": 1642877
+   },
+   {
+    "PLAYER": "Josh Dix",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/03/26",
+    "PLAYER_ID": 1643717
+   },
+   {
+    "PLAYER": "Cason Wallace",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from DAL on 07/06/23",
+    "PLAYER_ID": 1641717
+   },
+   {
+    "PLAYER": "Brooks Barnhizer",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#44 Pick in 2025 Draft",
+    "PLAYER_ID": 1642964
+   },
+   {
+    "PLAYER": "Ajay Mitchell",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/27/24",
+    "PLAYER_ID": 1642349
+   },
+   {
+    "PLAYER": "Kenrich Williams",
+    "POSITION": "G-F",
+    "AGE": 31.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from NOP on 11/23/20",
+    "PLAYER_ID": 1629026
+   },
+   {
+    "PLAYER": "Nikola Topić",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#12 Pick in 2024 Draft",
+    "PLAYER_ID": 1642260
+   },
+   {
+    "PLAYER": "Isaiah Hartenstein",
+    "POSITION": "C-F",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/06/24",
+    "PLAYER_ID": 1628392
+   }
+  ],
+  "Magic": [
+   {
+    "PLAYER": "Anthony Black",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#6 Pick in 2023 Draft",
+    "PLAYER_ID": 1641710
+   },
+   {
+    "PLAYER": "Jonathan Isaac",
+    "POSITION": "F",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "#6 Pick in 2017 Draft",
+    "PLAYER_ID": 1628371
+   },
+   {
+    "PLAYER": "Jevon Carter",
+    "POSITION": "G",
+    "AGE": 31.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 02/06/26",
+    "PLAYER_ID": 1628975
+   },
+   {
+    "PLAYER": "Desmond Bane",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from MEM on 06/15/25",
+    "PLAYER_ID": 1630217
+   },
+   {
+    "PLAYER": "Jalen Suggs",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#5 Pick in 2021 Draft",
+    "PLAYER_ID": 1630591
+   },
+   {
+    "PLAYER": "Paolo Banchero",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#1 Pick in 2022 Draft",
+    "PLAYER_ID": 1631094
+   },
+   {
+    "PLAYER": "Jamal Cain",
+    "POSITION": "F",
+    "AGE": 27.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/25/25",
+    "PLAYER_ID": 1631288
+   },
+   {
+    "PLAYER": "Nikola Vučević",
+    "POSITION": "C",
+    "AGE": 36.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Signed on 07/01/26",
+    "PLAYER_ID": 202696
+   },
+   {
+    "PLAYER": "Jase Richardson",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#25 Pick in 2025 Draft",
+    "PLAYER_ID": 1642859
+   },
+   {
+    "PLAYER": "Colin Castleton",
+    "POSITION": "C",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 08/22/25",
+    "PLAYER_ID": 1630658
+   },
+   {
+    "PLAYER": "Franz Wagner",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#8 Pick in 2021 Draft",
+    "PLAYER_ID": 1630532
+   },
+   {
+    "PLAYER": "Tristan da Silva",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#18 Pick in 2024 Draft",
+    "PLAYER_ID": 1641783
+   },
+   {
+    "PLAYER": "Izaiyah Nelson",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from WAS on 06/24/26",
+    "PLAYER_ID": 1643593
+   },
+   {
+    "PLAYER": "Alex Morales",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 10/08/22",
+    "PLAYER_ID": 1631457
+   },
+   {
+    "PLAYER": "Wendell Carter Jr.",
+    "POSITION": "C-F",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from CHI on 03/25/21",
+    "PLAYER_ID": 1628976
+   },
+   {
+    "PLAYER": "Goga Bitadze",
+    "POSITION": "C-F",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 02/13/23",
+    "PLAYER_ID": 1629048
+   },
+   {
+    "PLAYER": "Noah Penda",
+    "POSITION": "G-F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from BOS on 06/26/25",
+    "PLAYER_ID": 1642869
+   }
+  ],
+  "76ers": [
+   {
+    "PLAYER": "Tyrese Maxey",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "#21 Pick in 2020 Draft",
+    "PLAYER_ID": 1630178
+   },
+   {
+    "PLAYER": "Labaron Philon Jr.",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#22 Pick in 2026 Draft",
+    "PLAYER_ID": 1642889
+   },
+   {
+    "PLAYER": "Kentavious Caldwell-Pope",
+    "POSITION": "G",
+    "AGE": 33.0,
+    "EXP": "13",
+    "HOW_ACQUIRED": "Signed on 08/05/26",
+    "PLAYER_ID": 203484
+   },
+   {
+    "PLAYER": "Anfernee Simons",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1629014
+   },
+   {
+    "PLAYER": "Jaylen Brown",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from BOS on 07/06/26",
+    "PLAYER_ID": 1627759
+   },
+   {
+    "PLAYER": "Caleb Love",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/05/26",
+    "PLAYER_ID": 1631126
+   },
+   {
+    "PLAYER": "Justin Edwards",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/04/24",
+    "PLAYER_ID": 1642348
+   },
+   {
+    "PLAYER": "Rayan Rupert",
+    "POSITION": "G-F",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/08/26",
+    "PLAYER_ID": 1641712
+   },
+   {
+    "PLAYER": "Joel Embiid",
+    "POSITION": "C-F",
+    "AGE": 32.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "#3 Pick in 2014 Draft",
+    "PLAYER_ID": 203954
+   },
+   {
+    "PLAYER": "LeBron James",
+    "POSITION": "F",
+    "AGE": 41.0,
+    "EXP": "23",
+    "HOW_ACQUIRED": "Signed on 07/26/26",
+    "PLAYER_ID": 2544
+   },
+   {
+    "PLAYER": "Dominick Barlow",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/09/25",
+    "PLAYER_ID": 1631230
+   },
+   {
+    "PLAYER": "Adem Bona",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#41 Pick in 2024 Draft",
+    "PLAYER_ID": 1641737
+   },
+   {
+    "PLAYER": "Jabari Walker",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 07/05/25",
+    "PLAYER_ID": 1631133
+   },
+   {
+    "PLAYER": "Dean Wade",
+    "POSITION": "F-C",
+    "AGE": 29.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1629731
+   },
+   {
+    "PLAYER": "Ariel Hukporti",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 1630574
+   },
+   {
+    "PLAYER": "VJ Edgecombe",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#3 Pick in 2025 Draft",
+    "PLAYER_ID": 1642845
+   },
+   {
+    "PLAYER": "Tacko Fall",
+    "POSITION": "C",
+    "AGE": 30.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 09/01/26",
+    "PLAYER_ID": 1629605
+   }
+  ],
+  "Suns": [
+   {
+    "PLAYER": "Ryan Dunn",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from DEN on 06/26/24",
+    "PLAYER_ID": 1642346
+   },
+   {
+    "PLAYER": "Drew Timme",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Awarded on Waivers on 10/19/26",
+    "PLAYER_ID": 1631166
+   },
+   {
+    "PLAYER": "Dillon Brooks",
+    "POSITION": "G-F",
+    "AGE": 30.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from HOU on 07/06/25",
+    "PLAYER_ID": 1628415
+   },
+   {
+    "PLAYER": "Jalen Green",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from HOU on 07/06/25",
+    "PLAYER_ID": 1630224
+   },
+   {
+    "PLAYER": "Luke Kennard",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Signed on 07/14/26",
+    "PLAYER_ID": 1628379
+   },
+   {
+    "PLAYER": "Khaman Maluach",
+    "POSITION": "C",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from HOU on 07/06/25",
+    "PLAYER_ID": 1642863
+   },
+   {
+    "PLAYER": "Oso Ighodaro",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/27/24",
+    "PLAYER_ID": 1642345
+   },
+   {
+    "PLAYER": "Collin Gillespie",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/02/24",
+    "PLAYER_ID": 1631221
+   },
+   {
+    "PLAYER": "Devin Booker",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "11",
+    "HOW_ACQUIRED": "#13 Pick in 2015 Draft",
+    "PLAYER_ID": 1626164
+   },
+   {
+    "PLAYER": "Jamaree Bouyea",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Signed on 11/18/25",
+    "PLAYER_ID": 1631123
+   },
+   {
+    "PLAYER": "Koa Peat",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from DAL on 06/24/26",
+    "PLAYER_ID": 1643520
+   },
+   {
+    "PLAYER": "Rasheer Fleming",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from MIN on 07/06/25",
+    "PLAYER_ID": 1642853
+   },
+   {
+    "PLAYER": "Miles Bridges",
+    "POSITION": "F",
+    "AGE": 28.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from CHA on 07/13/26",
+    "PLAYER_ID": 1628970
+   },
+   {
+    "PLAYER": "Jordan Goodwin",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Awarded on Waivers on 07/23/25",
+    "PLAYER_ID": 1630692
+   },
+   {
+    "PLAYER": "Mark Williams",
+    "POSITION": "C",
+    "AGE": 24.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "Traded from CHA on 06/30/25",
+    "PLAYER_ID": 1631109
+   },
+   {
+    "PLAYER": "Duop Reath",
+    "POSITION": "C",
+    "AGE": 30.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 09/25/26",
+    "PLAYER_ID": 1641871
+   },
+   {
+    "PLAYER": "Pat Spencer",
+    "POSITION": "G",
+    "AGE": 30.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 07/03/26",
+    "PLAYER_ID": 1630311
+   }
+  ],
+  "TrailBlazers": [
+   {
+    "PLAYER": "Damian Lillard",
+    "POSITION": "G",
+    "AGE": 36.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Signed on 07/19/25",
+    "PLAYER_ID": 203081
+   },
+   {
+    "PLAYER": "Scoot Henderson",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#3 Pick in 2023 Draft",
+    "PLAYER_ID": 1630703
+   },
+   {
+    "PLAYER": "Ja Morant",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from MEM on 06/29/26",
+    "PLAYER_ID": 1629630
+   },
+   {
+    "PLAYER": "John Tonje",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 07/24/26",
+    "PLAYER_ID": 1642910
+   },
+   {
+    "PLAYER": "Jrue Holiday",
+    "POSITION": "G",
+    "AGE": 36.0,
+    "EXP": "17",
+    "HOW_ACQUIRED": "Traded from BOS on 07/07/25",
+    "PLAYER_ID": 201950
+   },
+   {
+    "PLAYER": "Deni Avdija",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from WAS on 07/06/24",
+    "PLAYER_ID": 1630166
+   },
+   {
+    "PLAYER": "Micah Potter",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Awarded on Waivers on 07/10/26",
+    "PLAYER_ID": 1630695
+   },
+   {
+    "PLAYER": "Branden Carlson",
+    "POSITION": "C",
+    "AGE": 27.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/01/26",
+    "PLAYER_ID": 1642382
+   },
+   {
+    "PLAYER": "Chris Youngblood",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 03/03/26",
+    "PLAYER_ID": 1642959
+   },
+   {
+    "PLAYER": "Yang Hansen",
+    "POSITION": "C",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from MEM on 06/25/25",
+    "PLAYER_ID": 1642905
+   },
+   {
+    "PLAYER": "Shaedon Sharpe",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "4",
+    "HOW_ACQUIRED": "#7 Pick in 2022 Draft",
+    "PLAYER_ID": 1631101
+   },
+   {
+    "PLAYER": "Donovan Clingan",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#7 Pick in 2024 Draft",
+    "PLAYER_ID": 1642270
+   },
+   {
+    "PLAYER": "Vít Krejčí",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from ATL on 02/01/26",
+    "PLAYER_ID": 1630249
+   },
+   {
+    "PLAYER": "Jayson Kent",
+    "POSITION": "F",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 03/03/26",
+    "PLAYER_ID": 1643257
+   },
+   {
+    "PLAYER": "Toumani Camara",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from PHX on 09/27/23",
+    "PLAYER_ID": 1641739
+   },
+   {
+    "PLAYER": "Robert Williams III",
+    "POSITION": "C-F",
+    "AGE": 29.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from BOS on 10/01/23",
+    "PLAYER_ID": 1629057
+   },
+   {
+    "PLAYER": "Sidy Cissoko",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 02/08/25",
+    "PLAYER_ID": 1631321
+   }
+  ],
+  "Raptors": [
+   {
+    "PLAYER": "Jamal Shead",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from SAC on 06/28/24",
+    "PLAYER_ID": 1642347
+   },
+   {
+    "PLAYER": "Kawhi Leonard",
+    "POSITION": "F",
+    "AGE": 35.0,
+    "EXP": "15",
+    "HOW_ACQUIRED": "Traded from LAC on 09/14/26",
+    "PLAYER_ID": 202695
+   },
+   {
+    "PLAYER": "Scottie Barnes",
+    "POSITION": "F-G",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "#4 Pick in 2021 Draft",
+    "PLAYER_ID": 1630567
+   },
+   {
+    "PLAYER": "Immanuel Quickley",
+    "POSITION": "G",
+    "AGE": 27.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from NYK on 12/30/23",
+    "PLAYER_ID": 1630193
+   },
+   {
+    "PLAYER": "Jaden Bradley",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#50 Pick in 2026 Draft",
+    "PLAYER_ID": 1643558
+   },
+   {
+    "PLAYER": "RJ Barrett",
+    "POSITION": "F-G",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Traded from NYK on 12/30/23",
+    "PLAYER_ID": 1629628
+   },
+   {
+    "PLAYER": "Kevin McCullar Jr.",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 11/05/26",
+    "PLAYER_ID": 1641755
+   },
+   {
+    "PLAYER": "Nate Bittle",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Signed on 07/09/26",
+    "PLAYER_ID": 1642927
+   },
+   {
+    "PLAYER": "Kyle Anderson",
+    "POSITION": "F-G",
+    "AGE": 33.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Signed on 07/06/26",
+    "PLAYER_ID": 203937
+   },
+   {
+    "PLAYER": "Ja'Kobe Walter",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#19 Pick in 2024 Draft",
+    "PLAYER_ID": 1642266
+   },
+   {
+    "PLAYER": "Malachi Smith",
+    "POSITION": "G",
+    "AGE": 26.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 08/17/26",
+    "PLAYER_ID": 1641869
+   },
+   {
+    "PLAYER": "Jakob Poeltl",
+    "POSITION": "C",
+    "AGE": 31.0,
+    "EXP": "10",
+    "HOW_ACQUIRED": "Traded from SAS on 02/09/23",
+    "PLAYER_ID": 1627751
+   },
+   {
+    "PLAYER": "Allen Graves",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#19 Pick in 2026 Draft",
+    "PLAYER_ID": 1643512
+   },
+   {
+    "PLAYER": "Collin Murray-Boyles",
+    "POSITION": "F",
+    "AGE": 21.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#9 Pick in 2025 Draft",
+    "PLAYER_ID": 1642867
+   },
+   {
+    "PLAYER": "Trayce Jackson-Davis",
+    "POSITION": "F",
+    "AGE": 26.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Traded from GSW on 02/05/26",
+    "PLAYER_ID": 1631218
+   },
+   {
+    "PLAYER": "Alijah Martin",
+    "POSITION": "G",
+    "AGE": 24.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#39 Pick in 2025 Draft",
+    "PLAYER_ID": 1642918
+   },
+   {
+    "PLAYER": "Jamison Battle",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/16/24",
+    "PLAYER_ID": 1642419
+   }
+  ],
+  "Jazz": [
+   {
+    "PLAYER": "Harrison Ingram",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/25/26",
+    "PLAYER_ID": 1631127
+   },
+   {
+    "PLAYER": "Kobe Bufkin",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Signed on 10/23/26",
+    "PLAYER_ID": 1641723
+   },
+   {
+    "PLAYER": "Kyle Filipowski",
+    "POSITION": "C",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#32 Pick in 2024 Draft",
+    "PLAYER_ID": 1642271
+   },
+   {
+    "PLAYER": "Keyonte George",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#16 Pick in 2023 Draft",
+    "PLAYER_ID": 1641718
+   },
+   {
+    "PLAYER": "Josh Green",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Traded from MIN on 08/29/26",
+    "PLAYER_ID": 1630182
+   },
+   {
+    "PLAYER": "Isaiah Collier",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#29 Pick in 2024 Draft",
+    "PLAYER_ID": 1642268
+   },
+   {
+    "PLAYER": "Svi Mykhailiuk",
+    "POSITION": "G-F",
+    "AGE": 29.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 08/10/24",
+    "PLAYER_ID": 1629004
+   },
+   {
+    "PLAYER": "Jaxson Hayes",
+    "POSITION": "C-F",
+    "AGE": 26.0,
+    "EXP": "7",
+    "HOW_ACQUIRED": "Signed on 07/09/26",
+    "PLAYER_ID": 1629637
+   },
+   {
+    "PLAYER": "Tony Bradley",
+    "POSITION": "C-F",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Awarded on Waivers on 10/17/26",
+    "PLAYER_ID": 1628396
+   },
+   {
+    "PLAYER": "Trey Alexander",
+    "POSITION": "G",
+    "AGE": 23.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Signed on 07/07/26",
+    "PLAYER_ID": 1641725
+   },
+   {
+    "PLAYER": "Ace Bailey",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#5 Pick in 2025 Draft",
+    "PLAYER_ID": 1642846
+   },
+   {
+    "PLAYER": "Jaren Jackson Jr.",
+    "POSITION": "F-C",
+    "AGE": 27.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from MEM on 02/03/26",
+    "PLAYER_ID": 1628991
+   },
+   {
+    "PLAYER": "Josh Okogie",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 07/09/26",
+    "PLAYER_ID": 1629006
+   },
+   {
+    "PLAYER": "Darryn Peterson",
+    "POSITION": "G",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#2 Pick in 2026 Draft",
+    "PLAYER_ID": 1643408
+   },
+   {
+    "PLAYER": "Lauri Markkanen",
+    "POSITION": "F-C",
+    "AGE": 29.0,
+    "EXP": "9",
+    "HOW_ACQUIRED": "Traded from CLE on 09/03/22",
+    "PLAYER_ID": 1628374
+   },
+   {
+    "PLAYER": "Brice Sensabaugh",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#28 Pick in 2023 Draft",
+    "PLAYER_ID": 1641729
+   },
+   {
+    "PLAYER": "Jusuf Nurkić",
+    "POSITION": "C",
+    "AGE": 32.0,
+    "EXP": "12",
+    "HOW_ACQUIRED": "Traded from CHA on 06/29/25",
+    "PLAYER_ID": 203994
+   },
+   {
+    "PLAYER": "Mo Bamba",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Signed on 02/26/26",
+    "PLAYER_ID": 1628964
+   }
+  ],
+  "Wizards": [
+   {
+    "PLAYER": "Bilal Coulibaly",
+    "POSITION": "G",
+    "AGE": 22.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "Draft Rights Traded from IND on 06/23/23",
+    "PLAYER_ID": 1641731
+   },
+   {
+    "PLAYER": "Tristan Vukčević",
+    "POSITION": "F",
+    "AGE": 23.0,
+    "EXP": "3",
+    "HOW_ACQUIRED": "#42 Pick in 2023 Draft",
+    "PLAYER_ID": 1641774
+   },
+   {
+    "PLAYER": "Tre Mann",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Traded from CHA on 08/20/26",
+    "PLAYER_ID": 1630544
+   },
+   {
+    "PLAYER": "Trae Young",
+    "POSITION": "G",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from ATL on 01/09/26",
+    "PLAYER_ID": 1629027
+   },
+   {
+    "PLAYER": "AJ Dybantsa",
+    "POSITION": "F",
+    "AGE": 19.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "#1 Pick in 2026 Draft",
+    "PLAYER_ID": 1643407
+   },
+   {
+    "PLAYER": "Jamir Watkins",
+    "POSITION": "F",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#43 Pick in 2025 Draft",
+    "PLAYER_ID": 1642364
+   },
+   {
+    "PLAYER": "Bub Carrington",
+    "POSITION": "G",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from POR on 07/06/24",
+    "PLAYER_ID": 1642267
+   },
+   {
+    "PLAYER": "Deandre Ayton",
+    "POSITION": "C",
+    "AGE": 28.0,
+    "EXP": "8",
+    "HOW_ACQUIRED": "Traded from LAL on 07/07/26",
+    "PLAYER_ID": 1629028
+   },
+   {
+    "PLAYER": "Justin Champagnie",
+    "POSITION": "G-F",
+    "AGE": 25.0,
+    "EXP": "5",
+    "HOW_ACQUIRED": "Signed on 02/22/24",
+    "PLAYER_ID": 1630551
+   },
+   {
+    "PLAYER": "Tre Johnson",
+    "POSITION": "G",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "#6 Pick in 2025 Draft",
+    "PLAYER_ID": 1642848
+   },
+   {
+    "PLAYER": "Anthony Gill",
+    "POSITION": "F",
+    "AGE": 34.0,
+    "EXP": "6",
+    "HOW_ACQUIRED": "Signed on 11/30/20",
+    "PLAYER_ID": 1630264
+   },
+   {
+    "PLAYER": "Kyshawn George",
+    "POSITION": "F",
+    "AGE": 22.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "Draft Rights Traded from NYK on 06/26/24",
+    "PLAYER_ID": 1642273
+   },
+   {
+    "PLAYER": "Alex Sarr",
+    "POSITION": "C",
+    "AGE": 21.0,
+    "EXP": "2",
+    "HOW_ACQUIRED": "#2 Pick in 2024 Draft",
+    "PLAYER_ID": 1642259
+   },
+   {
+    "PLAYER": "Khris Middleton",
+    "POSITION": "F",
+    "AGE": 35.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Traded from DAL on 07/08/26",
+    "PLAYER_ID": 203114
+   },
+   {
+    "PLAYER": "Anthony Davis",
+    "POSITION": "F-C",
+    "AGE": 33.0,
+    "EXP": "14",
+    "HOW_ACQUIRED": "Traded from DAL on 02/05/26",
+    "PLAYER_ID": 203076
+   },
+   {
+    "PLAYER": "Reece Beekman",
+    "POSITION": "G",
+    "AGE": 25.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Signed on 09/27/26",
+    "PLAYER_ID": 1641736
+   },
+   {
+    "PLAYER": "Will Riley",
+    "POSITION": "F",
+    "AGE": 20.0,
+    "EXP": "1",
+    "HOW_ACQUIRED": "Draft Rights Traded from UTA on 06/25/25",
+    "PLAYER_ID": 1642860
+   },
+   {
+    "PLAYER": "Felix Okpara",
+    "POSITION": "C",
+    "AGE": 22.0,
+    "EXP": "R",
+    "HOW_ACQUIRED": "Draft Rights Traded from ORL on 06/24/26",
+    "PLAYER_ID": 1643590
+   }
+  ]
+ }
+}

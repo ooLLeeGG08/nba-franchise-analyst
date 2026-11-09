@@ -1,0 +1,185 @@
+{
+ "_note": "Typed by hand from the user's 2026-27 team cap screenshot (Nov 9, 2026). Values in $M, rounded to 0.1. Team salary for the cap checker = first apron - apron1_room (the two apron columns agree for every team).",
+ "teams": {
+  "Brooklyn Nets": {
+   "payroll": 160.1,
+   "tax_room": 40.4,
+   "apron1_room": 49.0,
+   "apron2_room": 61.6
+  },
+  "Memphis Grizzlies": {
+   "payroll": 120.6,
+   "tax_room": 39.3,
+   "apron1_room": 45.6,
+   "apron2_room": 58.2
+  },
+  "Chicago Bulls": {
+   "payroll": 164.7,
+   "tax_room": 35.7,
+   "apron1_room": 42.0,
+   "apron2_room": 54.7
+  },
+  "Charlotte Hornets": {
+   "payroll": 161.7,
+   "tax_room": 29.4,
+   "apron1_room": 37.5,
+   "apron2_room": 50.2
+  },
+  "Utah Jazz": {
+   "payroll": 183.0,
+   "tax_room": 17.5,
+   "apron1_room": 19.5,
+   "apron2_room": 32.2
+  },
+  "Los Angeles Clippers": {
+   "payroll": 181.1,
+   "tax_room": 17.2,
+   "apron1_room": 25.8,
+   "apron2_room": 38.5
+  },
+  "Milwaukee Bucks": {
+   "payroll": 160.4,
+   "tax_room": 12.7,
+   "apron1_room": 16.5,
+   "apron2_room": 29.2
+  },
+  "Dallas Mavericks": {
+   "payroll": 177.2,
+   "tax_room": 11.1,
+   "apron1_room": 18.3,
+   "apron2_room": 31.0
+  },
+  "Portland Trail Blazers": {
+   "payroll": 191.8,
+   "tax_room": 8.3,
+   "apron1_room": 16.9,
+   "apron2_room": 29.6
+  },
+  "Sacramento Kings": {
+   "payroll": 190.7,
+   "tax_room": 6.2,
+   "apron1_room": 10.9,
+   "apron2_room": 23.6
+  },
+  "Washington Wizards": {
+   "payroll": 194.5,
+   "tax_room": 6.0,
+   "apron1_room": 14.6,
+   "apron2_room": 27.2
+  },
+  "Detroit Pistons": {
+   "payroll": 190.7,
+   "tax_room": 5.9,
+   "apron1_room": 14.5,
+   "apron2_room": 27.2
+  },
+  "New Orleans Pelicans": {
+   "payroll": 196.2,
+   "tax_room": 4.1,
+   "apron1_room": 5.7,
+   "apron2_room": 18.4
+  },
+  "San Antonio Spurs": {
+   "payroll": 198.3,
+   "tax_room": 2.1,
+   "apron1_room": 8.0,
+   "apron2_room": 20.7
+  },
+  "Atlanta Hawks": {
+   "payroll": 193.3,
+   "tax_room": 2.0,
+   "apron1_room": 9.4,
+   "apron2_room": 22.0
+  },
+  "Boston Celtics": {
+   "payroll": 198.7,
+   "tax_room": 1.7,
+   "apron1_room": 10.3,
+   "apron2_room": 23.0
+  },
+  "Houston Rockets": {
+   "payroll": 200.4,
+   "tax_room": 0.0,
+   "apron1_room": 8.6,
+   "apron2_room": 21.3
+  },
+  "Los Angeles Lakers": {
+   "payroll": 196.7,
+   "tax_room": -0.5,
+   "apron1_room": 8.1,
+   "apron2_room": 20.8
+  },
+  "Toronto Raptors": {
+   "payroll": 201.2,
+   "tax_room": -1.0,
+   "apron1_room": 1.0,
+   "apron2_room": 13.6
+  },
+  "Indiana Pacers": {
+   "payroll": 206.3,
+   "tax_room": -5.9,
+   "apron1_room": 2.2,
+   "apron2_room": 14.9
+  },
+  "Miami Heat": {
+   "payroll": 206.2,
+   "tax_room": -6.0,
+   "apron1_room": 2.6,
+   "apron2_room": 15.2
+  },
+  "Philadelphia 76ers": {
+   "payroll": 207.2,
+   "tax_room": -6.8,
+   "apron1_room": 1.8,
+   "apron2_room": 14.5
+  },
+  "Cleveland Cavaliers": {
+   "payroll": 206.7,
+   "tax_room": -12.2,
+   "apron1_room": -3.6,
+   "apron2_room": 9.1
+  },
+  "Phoenix Suns": {
+   "payroll": 190.6,
+   "tax_room": -13.3,
+   "apron1_room": -4.8,
+   "apron2_room": 7.9
+  },
+  "Minnesota Timberwolves": {
+   "payroll": 213.3,
+   "tax_room": -15.0,
+   "apron1_room": -8.1,
+   "apron2_room": 4.5
+  },
+  "Oklahoma City Thunder": {
+   "payroll": 217.5,
+   "tax_room": -17.2,
+   "apron1_room": -8.6,
+   "apron2_room": 4.0
+  },
+  "Orlando Magic": {
+   "payroll": 209.9,
+   "tax_room": -17.4,
+   "apron1_room": -10.2,
+   "apron2_room": 2.5
+  },
+  "Denver Nuggets": {
+   "payroll": 217.5,
+   "tax_room": -18.8,
+   "apron1_room": -15.3,
+   "apron2_room": -2.6
+  },
+  "Golden State Warriors": {
+   "payroll": 220.8,
+   "tax_room": -20.4,
+   "apron1_room": -12.3,
+   "apron2_room": 0.3
+  },
+  "New York Knicks": {
+   "payroll": 220.9,
+   "tax_room": -20.4,
+   "apron1_room": -11.9,
+   "apron2_room": 0.8
+  }
+ }
+}

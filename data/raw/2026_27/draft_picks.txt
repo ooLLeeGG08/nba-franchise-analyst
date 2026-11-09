@@ -1,0 +1,694 @@
+==================================================
+NBA FUTURE DRAFT PICKS TRACKER - ALL 30 TEAMS
+==================================================
+
+--- ATLANTA HAWKS ---
+Year 2027:
+  First Round: To SAN; Less favorable of MIL and NOP if either or both 5-30 (via NOP)
+  Second Round: 1; 31-55 Own; 56-60 to DAL
+Year 2028:
+  First Round: More favorable of (i) ATL and (ii) less favorable of UTH and CLE then least favorable of all to CLE (via UTH swap for CLE; via ATL swap for CLE or UTH)
+  Second Round: 0; To BRK (via GOS)
+Year 2029:
+  First Round: Own
+  Second Round: 1; More favorable of ATL and MIA to CHA then other to OKC (via OKC); CLE
+Year 2030:
+  First Round: Own
+  Second Round: 1; To OKC; NYK (via POR)
+Year 2031:
+  First Round: Own
+  Second Round: 0; More favorable of ATL and HOU 31-55 [or ATL if HOU 56-60] to OKC then other to HOU (via ATL swap for HOU)
+Year 2032:
+  First Round: Own
+  Second Round: 0; To OKC (via LAL to ATL; via LAL to ATL)
+Year 2033:
+  First Round: Own
+  Second Round: 2; Own; SAC
+
+--- BOSTON CELTICS ---
+Year 2027:
+  First Round: Own
+  Second Round: 0; More favorable of BOS and ORL to UTH then other to PHX (via BOS to ORL to BOS to UTH; via ORL to CHA to PHX)
+Year 2028:
+  First Round: 1 Own; 2-30 Own or SAN (via SAN swap for BOS) [BOS then has a complex swap right with PHL]; LAC 17-30 or [by swap from BOS] more favorable of (i) less favorable of BOS and SAN and (ii) more favorable of PHL 1-8 and LAC 1-16 [or (ii) LAC 1-16 if PHL 9-30] then least favorable of all to PHL (via SAN swap for BOS; via BOS swap of BOS or SAN for PHL or LAC)
+  Second Round: 1 + 1; 31-45 to SAN if BOS 1 in 2028; 46-60 to NYK (via ORL to PHX); Most favorable of GOS, MIL and OKC (via GOS to POR to WAS to PHL; via MIL to BRK to HOU to OKC to PHL; via OKC to PHL)
+Year 2029:
+  First Round: Most and least favorable of BOS, POR and MIL to POR; second most favorable to WAS (via BOS to POR; via MIL to POR; via POR to WAS)
+  Second Round: 0; To OKC
+Year 2030:
+  First Round: Own
+  Second Round: 1 + 1; To BRK (via HOU); CHA 56-60; Most favorable of PHX, POR and WAS (via PHX and POR to WAS to PHL)
+Year 2031:
+  First Round: Own; PHL
+  Second Round: 1 + 1; Less favorable of BOS and CLE then other to UTH (via CLE to ATL to BOS); HOU 56-60
+Year 2032:
+  First Round: Frozen (through 2027-28)
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- BROOKLYN NETS ---
+Year 2027:
+  First Round: Own or HOU (via HOU swap for BRK); NYK
+  Second Round: 2; More favorable of BRK and DAL to WAS then other to MIL (via DAL to BRK to DET to MIL; via DET to WAS); LAL if LAL conveys 1st round pick to UTH in 2027
+Year 2028:
+  First Round: If (i) PHL 9-30 is third most favorable and (ii) NYK is most or second most favorable of BRK, PHL 9-30, PHX and NYK, then most and third most favorable to BRK; or most / two most favorable to BRK in all other scenarios; least favorable of BRK, PHX and NYK to NYK if NYK and / or if PHL 9-30 is less favorable than BRK and PHX; or second most favorable of BRK, PHX and NYK to NYK in all other scenarios; more favorable of (i) WAS and (ii) least / less favorable of BRK, PHL 9-30 and PHX to WAS then least favorable of all to PHX [WAS can then swap with MIL] (via BRK swap of BRK or PHL for PHX; via BRK swap of BRK or PHX for NYK; via WAS swap for PHX, BRK or PHL)
+  Second Round: 3 + 1; Own; ATL (via GOS); MEM (via PHX); PHL if PHL 1-8 in 2028
+Year 2029:
+  First Round: Own; Least favorable of DAL, PHX and HOU (via DAL and PHX to BRK; via DAL or PHX to HOU; via HOU swap for DAL or PHX); NYK
+  Second Round: 3; Own; DAL; GOS; MEM (via PHX)
+Year 2030:
+  First Round: Own
+  Second Round: 1; Own; BOS (via HOU); DAL (via BOS to MEM); LAL
+Year 2031:
+  First Round: Own; NYK
+  Second Round: 2; Own; LAL
+Year 2032:
+  First Round: Own; DEN
+  Second Round: 2; Own; DEN; MIA; TOR
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- CHARLOTTE HORNETS ---
+Year 2027:
+  First Round: Own; DAL 3-30; MIA 15-30
+  Second Round: 1 + 2; To OKC if SAN 1-16 in 2027 or to SAC if SAN 17-30 in 2027 (via NYK to ATL to SAN to SAC); MEM (via LAC to HOU); More favorable of POR and NOP (via POR)
+Year 2028:
+  First Round: Own or swap for MIN; MIA if not already settled
+  Second Round: 1 + 1; More favorable of CHA and LAC then other to DET [DET may convey to UTH] (via CHA to DAL); HOU; MIA if DAL does not convey 1st round pick to CHA in 2027 (via SAN to DAL); ORL
+Year 2029:
+  First Round: Own; Least / less favorable of UTH, CLE and MIN 6-30 (via UTH to PHX)* *CHA will also have a complex swap right with MIN and PHX will receive a least favorable pick
+  Second Round: 1; Own; More favorable of ATL and MIA (via OKC); DEN if DEN has conveyed a first potential 1st round pick to OKC by 2029; MIN if MIN conveys 1st round pick to UTH in 2029
+Year 2030:
+  First Round: Own* *CHA will have a complex swap right with MIN, receiving MIN, SAN or DAL
+  Second Round: 1; 31-55 Own; 56-60 to BOS; More favorable of UTH and LAC (via UTH)
+Year 2031:
+  First Round: Own
+  Second Round: 1; Own; MIL; PHX
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own; MIL; MIN
+Year 2033:
+  First Round: Own; MIN; PHX
+  Second Round: 3; Own; HOU; MIN
+
+--- CHICAGO BULLS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; To OKC (via WAS to NOP to WAS to DAL); CLE (via ATL to MIN)
+Year 2028:
+  First Round: Own
+  Second Round: 1; Most favorable of CHI, IND and PHX; less favorable of (i) CHI and (ii) more favorable of IND and PHX to IND (via PHX to IND; via CHI swap for IND or PHX)
+Year 2029:
+  First Round: Own
+  Second Round: 1; Own; Least favorable of DET, MIL and NYK (via MIL to BRK to DET; via NYK to DET; via SAC to CHI)
+Year 2030:
+  First Round: Own
+  Second Round: 1; Own or swap for IND
+Year 2031:
+  First Round: Own
+  Second Round: 1; Own; DEN (via PHX to CHA); More favorable of MIN and GOS (via MIN swap for GOS); NYK (via CHA)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own; More favorable of PHX and HOU (via PHX to MIN)
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- CLEVELAND CAVALIERS ---
+Year 2027:
+  First Round: Most favorable of CLE, MIN and UTH (cannot be 1-5) to MEM; second most favorable to UTH and least favorable to PHX (via UTH)
+  Second Round: 0; To CHI (via ATL to MIN)
+Year 2028:
+  First Round: Least favorable of CLE, UTH and ATL; less favorable of (i) more favorable of CLE and UTH and (ii) LAL to LAL then most favorable of all to UTH; more favorable of (i) ATL and (ii) less favorable of CLE and UTH to ATL (via UTH swap for CLE; via UTH swap of UTH or CLE for LAL; via ATL swap for CLE or UTH)
+  Second Round: 1; To UTH
+Year 2029:
+  First Round: Most / two most favorable of CLE, UTH and MIN 6-30 to UTH; least / less favorable to CHA (via CLE and MIN to UTH; via UTH to PHX to CHA; via CHA swap of CHA, CLE or UTH for MIN)* *CHA will also have a complex swap right with MIN and PHX will receive a least favorable pick
+  Second Round: 0; To ATL
+Year 2030:
+  First Round: Own
+  Second Round: 1; To SAN
+Year 2031:
+  First Round: To DEN
+  Second Round: 0; More favorable of CLE and BOS to UTH then other to BOS (via CLE to ATL to BOS)
+Year 2032:
+  First Round: Own
+  Second Round: 1; To UTH
+Year 2033:
+  First Round: Frozen (through 2028-29)
+  Second Round: 1; Own
+
+--- DALLAS MAVERICKS ---
+Year 2027:
+  First Round: 1-2 Own; 3-30 to CHA
+  Second Round: 1; More favorable of DAL and BRK to WAS then other to MIL (via DET to WAS; via DAL to BRK to DET to MIL); ATL 56-60
+Year 2028:
+  First Round: Own or OKC (via OKC swap for DAL)
+  Second Round: 1; To LAC (via SAC to IND)
+Year 2029:
+  First Round: Two most favorable of DAL, HOU and PHX to HOU then other to BRK (via DAL and PHX to BRK; via DAL or PHX to HOU; via HOU swap for DAL or PHX); LAL
+  Second Round: 1; To BRK
+Year 2030:
+  First Round: Own or SAN (via SAN swap for DAL); less favorable of (i) MIN 2-30 and (ii) more favorable of DAL and SAN [or MIN if MIN not conveyable] to MIN then most / more favorable of all to SAN [MIN may convey to CHA] (via SAN swap for DAL; via SAN swap of SAN or DAL for MIN)
+  Second Round: 1; To BRK (via BOS to MEM)
+Year 2031:
+  First Round: Own
+  Second Round: 1; To DET (via PHL to DET to MEM)
+Year 2032:
+  First Round: Own
+  Second Round: 1; To NYK
+Year 2033:
+  First Round: Own
+  Second Round: 1; To WAS
+
+--- DENVER NUGGETS ---
+Year 2027:
+  First Round: 1-5 Own; two most / more favorable of DEN 6-30, OKC and LAC to OKC; more favorable of (i) least / less favorable of DEN 6-30, OKC and LAC and (ii) TOR to LAC then least favorable of all to TOR (via OKC swap of OKC or DEN for LAC; via LAC swap of DEN, OKC or LAC for TOR)
+  Second Round: 1; To UTH (via CLE to CHI to BOS)
+Year 2028:
+  First Round: 1-5 Own; 6-30 to OKC if not already settled
+  Second Round: 1; 31-33 Own; 34-60 to WAS (via SAN to SAC); MIN (via SAN)
+Year 2029:
+  First Round: 1-5 Own; 6-30 to OKC if not already settled; or 1-5 Own; 6-30 to OKC if DEN conveys a first potential 1st round pick to OKC in 2027
+  Second Round: 1; To CHA if DEN has conveyed a first potential 1st round pick to OKC by 2029 or to OKC if DEN has not conveyed a first potential 1st round pick to OKC by 2029
+Year 2030:
+  First Round: 1-5 Own; 6-30 to OKC if not already settled and if DEN has conveyed a first potential 1st round pick to OKC by 2028
+  Second Round: 1; Most favorable of DEN, HOU and MIA to MEM; two least favorable to OKC (via DEN to CHA to OKC or DEN to OKC; via OKC to MEM)
+Year 2031:
+  First Round: Own; CLE
+  Second Round: 2; To CHI (via PHX to CHA); SAC (via SAN)
+Year 2032:
+  First Round: To BRK
+  Second Round: 0; To BRK; SAC (via CLE)
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- DETROIT PISTONS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; Own
+Year 2028:
+  First Round: Own
+  Second Round: 1; 31-55 Own*; 56-60 to PHL; Less favorable of CHA and LAC (via CHA to DAL)*; MIA if DAL conveys 1st round pick to CHA in 2027 (via SAN to DAL)*; NYK* *Least / less favorable of these to UTH
+Year 2029:
+  First Round: Own
+  Second Round: 1; Two most favorable of DET, MIL and NYK then other to CHI (via MIL to BRK to DET; via NYK to DET; via DET to MEM; via MEM to DET; via SAC to CHI)
+Year 2030:
+  First Round: Own
+  Second Round: 1; Own
+Year 2031:
+  First Round: Own
+  Second Round: 1; To OKC; DAL (via PHL to DET to MEM); Less favorable of GOS and MIN (via MIN swap for GOS)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own (via MEM)
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own --- DET heavily protected and unspecified 2nd round pick to LAC
+
+--- GOLDEN STATE WARRIORS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; More favorable of GOS and PHX to PHL then other to WAS [PHL may convey to WAS] (via WAS)
+Year 2028:
+  First Round: Own
+  Second Round: 1; Most favorable of GOS, MIL and OKC to BOS then others to PHL (via GOS to POR to WAS to PHL; via MIL to BRK to HOU to OKC to PHL; via OKC to PHL)
+Year 2029:
+  First Round: Own
+  Second Round: 1; To BRK
+Year 2030:
+  First Round: 1-20 Own; 21-30 to MEM (via WAS to DAL)
+  Second Round: 1; To MEM if GOS does not convey 1st round pick to MEM in 2030 (via WAS to DAL)
+Year 2031:
+  First Round: Own
+  Second Round: 1; More favorable of GOS and MIN to CHI then other to DET (via MIN swap for GOS)
+Year 2032:
+  First Round: Own
+  Second Round: 1; 31-50 Own; 51-60 to MEM
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- HOUSTON ROCKETS ---
+Year 2027:
+  First Round: Own or swap for BRK; PHX (via BRK)
+  Second Round: 2; Most favorable of HOU, OKC, IND and MIA to PHL; second most favorable to NOP and third most favorable to NYK; more favorable of (i) SAN and (ii) least favorable of HOU, OKC, IND and MIA to SAN then least favorable of all to MIA [PHL may convey to WAS] (via HOU to DET to OKC to NYK to NOP; via IND and MIA to OKC to UTH to SAN to MIA; via OKC to PHL); Less favorable of POR and NOP if 56-60 (via POR to BOS)
+Year 2028:
+  First Round: Own
+  Second Round: 1; To CHA
+Year 2029:
+  First Round: Two most favorable of HOU, DAL and PHX then other to BRK (via DAL and PHX to BRK; via DAL or PHX to HOU; via HOU swap for DAL or PHX)
+  Second Round: 2; To MEM (via OKC to WAS to DAL)
+Year 2030:
+  First Round: Own
+  Second Round: 1; Most favorable of HOU, DEN and MIA to MEM then others to OKC (via DEN to CHA to OKC or DEN to OKC; via OKC to MEM)
+Year 2031:
+  First Round: Own
+  Second Round: 1; Less favorable of HOU 31-55 and ATL then other [or ATL if HOU 56-60] to OKC (via ATL swap for HOU); 56-60 to BOS
+Year 2032:
+  First Round: Own
+  Second Round: 1; More favorable of HOU and PHX to CHI then other to PHX (via PHX to MIN)
+Year 2033:
+  First Round: Own
+  Second Round: 1; To CHA
+
+--- INDIANA PACERS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; Most favorable of IND, OKC, HOU and MIA to PHL; second most favorable to NOP and third most favorable to NYK; more favorable of (i) SAN and (ii) least favorable of IND, OKC, HOU and MIA to SAN then least favorable of all to MIA [PHL may convey to WAS] (via IND and MIA to OKC to UTH to SAN to MIA; via HOU to DET to OKC to NYK to NOP; via OKC to PHL); UTH (via CLE)
+Year 2028:
+  First Round: Own
+  Second Round: 1; Less favorable of (i) more favorable of IND and PHX and (ii) CHI then most favorable of all to CHI; less favorable of IND and PHX to NYK (via PHX to IND; via CHI swap for IND or PHX)
+Year 2029:
+  First Round: Forfeited by LAC: To LAC
+  Second Round: 0; More favorable of IND and WAS then other to POR (via IND to NYK)
+Year 2030:
+  First Round: Own
+  Second Round: 1; Own or CHI (via CHI swap for IND)
+Year 2031:
+  First Round: Own
+  Second Round: 1; Least favorable of IND, MIA and MEM; more favorable of IND and MIA to WAS; more favorable of (i) MEM and (ii) less favorable of IND and MIA to MEM (via MIA swap for IND; via UTH to WAS; via MEM swap for IND or MIA)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- LOS ANGELES CLIPPERS ---
+Year 2027:
+  First Round: More favorable of (i) least / less favorable of LAC, DEN 6-30 and OKC and (ii) TOR then least favorable of all to TOR; two most / more favorable of LAC, DEN 6-30 and OKC to OKC (via OKC swap of OKC or DEN for LAC; via LAC swap of LAC, DEN or OKC for TOR)
+  Second Round: 1; To UTH (via ATL to LAC)
+Year 2028:
+  First Round: LAC 17-30 to BOS or [via swap from BOS] more favorable of (i) more favorable of LAC 1-16 and PHL 1-8 [or (i) LAC 1-16 if PHL 9-30] and (ii) less favorable of BOS and SAN to BOS then least favorable of all to PHL (via SAN swap for BOS; via BOS swap of BOS or SAN for LAC or PHL)
+  Second Round: 0; More favorable of LAC and CHA to CHA then other to DET [DET may convey to UTH] (via CHA to DAL); DAL (via SAC to IND)
+Year 2029:
+  First Round: 1-3 Own; 4-30 Own or PHL (via PHL swap for LAC); Forfeited by LAC: IND
+  Second Round: 1; To SAN (via PHL)
+Year 2030:
+  First Round: Forfeited
+  Second Round: 0; More favorable of LAC and UTH to CHA then other to LAC (via LAC to UTH); TOR
+Year 2031:
+  First Round: Forfeited; TOR
+  Second Round: 1; Own
+Year 2032:
+  First Round: Forfeited
+  Second Round: 0; Own
+Year 2033:
+  First Round: Forfeited; TOR
+  Second Round: 1; Own; TOR --- DET heavily protected and unspecified 2nd round pick to LAC
+
+--- LOS ANGELES LAKERS ---
+Year 2027:
+  First Round: 1-4 Own; 5-30 to MEM (via UTH)
+  Second Round: 1; To BRK if LAL conveys 1st round pick to MEM in 2027 or to MEM if LAL does not convey 1st round pick to MEM in 2027 (via UTH to MEM)
+Year 2028:
+  First Round: Less favorable of (i) LAL and (ii) more favorable of UTH and CLE then most favorable of all to UTH (via UTH swap for CLE; via UTH swap of UTH or CLE for LAL)
+  Second Round: 1; More favorable of LAL and WAS to ORL then other to WAS (via WAS to LAL to ORL; via LAL to WAS)
+Year 2029:
+  First Round: To DAL
+  Second Round: 0; To MEM (via WAS)
+Year 2030:
+  First Round: Own or UTH (via UTH swap for LAL)
+  Second Round: 1; To BRK
+Year 2031:
+  First Round: To UTH
+  Second Round: 0; To BRK; WAS
+Year 2032:
+  First Round: Own
+  Second Round: 1; To OKC (via ATL; via ATL); WAS
+Year 2033:
+  First Round: To UTH
+  Second Round: 0; Own
+
+--- MEMPHIS GRIZZLIES ---
+Year 2027:
+  First Round: Own; LAL 5-30; Most favorable of UTH (cannot be 1-5), CLE and MIN (via UTH)
+  Second Round: 2 + 1; To CHA (via LAC to HOU); LAL if LAL does not convey 1st round pick to MEM in 2027 (via UTH)
+Year 2028:
+  First Round: Own
+  Second Round: 1; To BRK (via PHX)
+Year 2029:
+  First Round: Own or swap for ORL 3-30
+  Second Round: 1; To BRK (via PHX); HOU (via OKC to WAS to DAL); LAL (via WAS); ORL if ORL 1-2 in 2029; POR (via PHL to IND)
+Year 2030:
+  First Round: More favorable of (i) MEM and (ii) less favorable of PHX and WAS then least favorable of all to PHX (via WAS swap for PHX; via MEM swap for PHX or WAS); GOS 21-30 (via WAS to DAL); ORL
+  Second Round: 2 + 1; 31-50 Own; 51-60 to MIN; Most favorable of DEN, HOU and MIA (via DEN to CHA to OKC or DEN to OKC; via OKC to MEM); GOS if GOS does not convey 1st round pick to MEM in 2030 (via WAS to DAL)
+Year 2031:
+  First Round: Own; PHX (via UTH)
+  Second Round: 2; More favorable of (i) MEM and (ii) less favorable of IND and MIA then least favorable of all to IND (via MIA swap for IND; via MEM swap for IND or MIA)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Most favorable of MEM, PHL and UTH; less favorable of (i) more favorable of MEM and PHL and (ii) UTH to WAS; less favorable of MEM and PHL to PHL (via MEM swap for PHL; via UTH to WAS; via MEM swap of MEM or PHL for UTH); GOS 51-60
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own; OKC; WAS --- NOP unspecified 2nd round pick to MEM --- NOP unspecified 2nd round pick swap to MEM
+
+--- MIAMI HEAT ---
+Year 2027:
+  First Round: 1-14 Own; 15-30 to CHA
+  Second Round: 1; Least favorable of MIA, OKC, HOU, IND and SAN; most favorable of MIA, OKC, HOU and IND to PHL; second most favorable to NOP and third most favorable to NYK; more favorable of (i) SAN and (ii) least favorable of MIA, OKC, HOU and IND to SAN [PHL may convey to WAS] (via MIA and IND to OKC to UTH to SAN to MIA; via HOU to DET to OKC to NYK to NOP; via OKC to PHL)
+Year 2028:
+  First Round: To CHA if not already settled
+  Second Round: 1; To DET if DAL conveys 1st round pick to CHA in 2027 or to CHA if DAL does not convey 1st round pick to CHA in 2027 [DET may convey to UTH] (via SAN to DAL)
+Year 2029:
+  First Round: Own
+  Second Round: 1; More favorable of MIA and ATL to CHA then other to OKC (via OKC)
+Year 2030:
+  First Round: Least favorable of MIA, MIL and POR; more favorable of (i) MIA and (ii) less favorable MIL and POR to MIL (via POR swap for MIL; via MIL swap of MIL or POR for MIA)
+  Second Round: 1; Most favorable of MIA, DEN and HOU to MEM then others to OKC (via DEN to CHA to OKC or DEN to OKC; via OKC to MEM)
+Year 2031:
+  First Round: To MIL
+  Second Round: 0; More favorable of MIA and IND to WAS; more favorable of (i) MEM and (ii) less favorable of MIA and IND to MEM then least favorable of all to IND (via MIA swap for IND; via UTH to WAS; via MEM swap for IND or MIA)
+Year 2032:
+  First Round: Own
+  Second Round: 1; To BRK
+Year 2033:
+  First Round: To MIL
+  Second Round: 0; To MIL
+
+--- MILWAUKEE BUCKS ---
+Year 2027:
+  First Round: More favorable of MIL and NOP to NOP then other to ATL if 5-30 or MIL and NOP to NOP if both 1-4 (via NOP)
+  Second Round: 0; Own (via PHL to DET); Less favorable of BRK and DAL (via DAL to BRK to DET to MIL)
+Year 2028:
+  First Round: Less favorable of (i) less favorable of MIL and POR and (ii) more favorable of (a) WAS and (b) least / less favorable of BRK, PHL 9-30 and PHX then more favorable of (i) and (ii) to WAS (via POR swap for MIL; via BRK swap of BRK or PHL for PHX; via WAS swap for PHX, BRK or PHL; via WAS swap of WAS, BRK, PHL or PHX for MIL or POR)
+  Second Round: 1; Most favorable of MIL, GOS and OKC to BOS then others to PHL (via MIL to BRK to HOU to OKC to PHL; via GOS to POR to WAS to PHL; via OKC to PHL)
+Year 2029:
+  First Round: Most and least favorable of MIL, BOS and POR to POR; second most favorable to WAS (via BOS to POR; via MIL to POR; via POR to WAS)
+  Second Round: 0; Two most favorable of MIL, DET and NYK to DET then other to CHI (via MIL to BRK to DET; via NYK to DET; via DET to MEM; via MEM to DET; via SAC to CHI)
+Year 2030:
+  First Round: More favorable of (i) less favorable MIL and POR and (ii) MIA then least favorable of all to MIA; more favorable of MIL and POR to POR (via POR swap for MIL; via MIL swap of MIL or POR for MIA)
+  Second Round: 1; To ORL
+Year 2031:
+  First Round: Own; MIA
+  Second Round: 2; To CHA
+Year 2032:
+  First Round: Own
+  Second Round: 1; To CHA
+Year 2033:
+  First Round: Own; MIA
+  Second Round: 2; Own; MIA
+
+--- MINNESOTA TIMBERWOLVES ---
+Year 2027:
+  First Round: Most favorable of MIN, CLE and UTH (cannot be 1-5) to MEM; second most favorable to UTH and least favorable to PHX (via UTH)
+  Second Round: 0; To POR (via HOU to OKC to NYK)
+Year 2028:
+  First Round: Own or CHA (via CHA swap for MIN)
+  Second Round: 1; To DEN (via SAN)
+Year 2029:
+  First Round: 1-5 Own; most / two most favorable of MIN 6-30, CLE and UTH to UTH then other to CHA (via CLE and MIN to UTH; via UTH to PHX to CHA; via CHA swap of CHA, CLE or UTH for MIN)* *CHA will also have a complex swap right with MIN and PHX will receive a least favorable pick
+  Second Round: 1; To CHA if MIN conveys 1st round pick to UTH in 2029 or to UTH if MIN does not convey 1st round pick to UTH in 2029
+Year 2030:
+  First Round: 1 Own; less favorable of (i) MIN 2-30 and (ii) more favorable of SAN and DAL then most / more favorable of all to SAN [MIN may convey to CHA] (via SAN swap for DAL; via SAN swap of SAN or DAL for MIN)* *CHA will have a complex swap right with MIN, receiving MIN, SAN or DAL
+  Second Round: 1; To SAC (via DET to OKC); MEM 51-60
+Year 2031:
+  First Round: To SAC (via SAN)
+  Second Round: 0; More favorable of MIN and GOS to CHI then other to DET (via MIN swap for GOS)
+Year 2032:
+  First Round: Frozen (through 2027-28)
+  Second Round: 1; To CHA
+Year 2033:
+  First Round: To CHA
+  Second Round: 0; To CHA
+
+--- NEW ORLEANS PELICANS ---
+Year 2027:
+  First Round: More favorable of NOP and MIL to NOP then other to ATL if 5-30 or NOP and MIL if both 1-4 (via NOP)
+  Second Round: 1 + 1; More favorable of NOP and POR to CHA then other to POR [POR may convey to HOU] (via NOP); Second most favorable of OKC, HOU, IND and MIA (via HOU to DET to OKC to NYK)
+Year 2028:
+  First Round: Own
+  Second Round: 1; To SAN
+Year 2029:
+  First Round: Own
+  Second Round: 1; To SAN
+Year 2030:
+  First Round: Own
+  Second Round: 1; Own or ORL (via ORL swap for NOP)
+Year 2031:
+  First Round: Own
+  Second Round: 1; More favorable of NOP and ORL to ORL then other to OKC (via ORL swap for NOP); TOR
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own --- NOP unspecified 2nd round pick to MEM --- NOP unspecified 2nd round pick swap to MEM
+
+--- NEW YORK KNICKS ---
+Year 2027:
+  First Round: To BRK
+  Second Round: 0; Own; Third most favorable of OKC, HOU, IND and MIA (via HOU to DET to OKC); WAS (via HOU to OKC)
+Year 2028:
+  First Round: Least favorable of NYK, BRK and PHX if NYK and / or if PHL 9-30 is less favorable than BRK and PHX; or second most favorable of NYK, BRK and PHX in all other scenarios; if (i) PHL 9-30 is third most favorable and (ii) NYK is most or second most favorable of NYK, BRK, PHL 9-30 and PHX, then most and third most favorable to BRK; or most / two most favorable to BRK in all other scenarios (via BRK swap of BRK or PHL for PHX; via BRK swap of BRK or PHX for NYK; via WAS swap for PHX, BRK or PHL)
+  Second Round: 1; To DET [DET may convey to UTH]; BOS 46-60 (via ORL to PHX); Less favorable of IND and PHX (via IND)
+Year 2029:
+  First Round: To BRK
+  Second Round: 0; Two most favorable of NYK, DET and MIL to DET then other to CHI (via MIL to BRK to DET; via NYK to DET; via DET to MEM; via MEM to DET; via SAC to CHI); PHX; SAC (via WAS to HOU)
+Year 2030:
+  First Round: Own
+  Second Round: 1; To ATL (via POR); PHL (via DAL)
+Year 2031:
+  First Round: To BRK
+  Second Round: 0; To CHI (via CHA)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own; DAL
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own; PHX
+
+--- OKLAHOMA CITY THUNDER ---
+Year 2027:
+  First Round: Two most / more favorable of OKC, DEN 6-30 and LAC; more favorable of (i) least / less favorable of OKC, DEN 6-30 and LAC and (ii) TOR to LAC then least favorable of all to TOR (via OKC swap of OKC or DEN for LAC; via LAC swap of DEN, OKC or LAC for TOR); SAN 17-30 (via SAC)
+  Second Round: 1 + 2; Most favorable of OKC, HOU, IND and MIA to PHL; second most favorable to NOP and third most favorable to NYK; more favorable of (i) SAN and (ii) least favorable of OKC, HOU, IND and MIA to SAN then least favorable of all to MIA [PHL may convey to WAS] (via HOU to DET to OKC to NYK to NOP; via IND and MIA to OKC to UTH to SAN to MIA; via OKC to PHL); CHA if SAN 1-16 in 2027 (via SAC); CHI (via WAS to NOP to WAS to DAL); SAC if SAN 1-16 in 2027
+Year 2028:
+  First Round: Own or swap for DAL; DEN 6-30 if not already settled
+  Second Round: 1 + 1; Most favorable of OKC, GOS and MIL to BOS then others to PHL (via OKC to PHL; GOS to POR to WAS to PHL; via MIL to BRK to HOU to OKC)
+Year 2029:
+  First Round: Own; DEN 6-30 if not already settled; or DEN 6-30 if DEN conveys a first potential 1st round pick to OKC in 2027
+  Second Round: 1 + 1; Own; Less favorable of ATL and MIA; BOS; DEN if DEN has not conveyed a first potential 1st round pick to OKC by 2029
+Year 2030:
+  First Round: Own; DEN 6-30 if not already settled and if DEN has conveyed a first potential 1st round pick to OKC by 2028
+  Second Round: 1 + 1; Own; ATL; Two least favorable of DEN, HOU and MIA (via DEN to CHA or DEN to OKC)
+Year 2031:
+  First Round: Own
+  Second Round: 1; Own; More favorable of ATL and HOU 31-55 [or ATL if HOU 56-60] (via ATL swap for HOU); DET; Less favorable of NOP and ORL (via ORL swap for NOP)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own; ATL (via LAL to ATL; via LAL to ATL); LAL (via ATL; via ATL)
+Year 2033:
+  First Round: Own
+  Second Round: 1; To MEM
+
+--- ORLANDO MAGIC ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; More favorable of ORL and BOS to UTH then other to PHX (via BOS to ORL to BOS to UTH; via ORL to CHA to PHX)
+Year 2028:
+  First Round: To POR (via MEM)
+  Second Round: 0; To CHA; More favorable of LAL and WAS (via LAL)
+Year 2029:
+  First Round: 1-2 Own; 3-30 Own or MEM (via MEM swap for ORL)
+  Second Round: 1; To MEM if ORL 1-2 in 2029
+Year 2030:
+  First Round: To MEM
+  Second Round: 0; Own or swap for NOP; MIL
+Year 2031:
+  First Round: Own
+  Second Round: 1; More favorable of ORL and NOP then other to OKC (via ORL swap for NOP)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- PHILADELPHIA SIXERS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; Own*; More favorable of GOS and PHX (via WAS)*; Most favorable of OKC, HOU, IND and MIA (via HOU to DET to OKC; via IND and MIA to OKC; via OKC to PHL)* *Second most favorable of these to WAS
+Year 2028:
+  First Round: 1-8 Own if LAC 17-30; or [via swap from BOS] least favorable of (i) PHL 1-8, LAC 1-16, BOS and SAN or (ii) LAC 1-16, BOS and SAN; more favorable of (i) more favorable of PHL 1-8 and LAC 1-16 [or (i) LAC 1-16 if PHL 9-30] and (ii) less favorable of BOS and SAN to BOS; if (i) PHL 9-30 is third most favorable and (ii) NYK is most or second most favorable of PHL 9-30, PHX, BRK and NYK, then most and third most favorable to BRK; or most / two most favorable to BRK in all other scenarios; least favorable of PHX, BRK and NYK to NYK if NYK and / or if PHL 9-30 is less favorable than PHX and BRK; or second most favorable of PHX, BRK and NYK to NYK in all other scenarios; more favorable of (i) WAS and (ii) least / less favorable of PHL 9-30, PHX and BRK to WAS then least favorable of all to PHX [WAS can then swap with MIL] (via SAN swap for BOS; via BOS swap of BOS or SAN for PHL or LAC; via BRK swap of BRK or PHL for PHX; via BRK swap of BRK or PHX for NYK; via WAS swap for PHX, BRK or PHL)
+  Second Round: 1; To BRK if PHL 1-8 in 2028; DET 56-60; Two least favorable of GOS, MIL and OKC (via GOS to POR to WAS; via MIL to BRK to HOU to OKC)
+Year 2029:
+  First Round: Own or swap for LAC 4-30
+  Second Round: 1; Own
+Year 2030:
+  First Round: Own
+  Second Round: 1; To NYK (via DAL); Less favorable of (i) more favorable of PHX and POR and (ii) WAS (via PHX and POR to WAS)
+Year 2031:
+  First Round: To BOS
+  Second Round: 0; Own
+Year 2032:
+  First Round: Own
+  Second Round: 1; Less favorable of PHL and MEM; less favorable of (i) more favorable of PHL and MEM and (ii) UTH to WAS then most favorable of all to MEM (via MEM swap for PHL; via UTH to WAS; via MEM swap of MEM or PHL for UTH)
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- PHOENIX SUNS ---
+Year 2027:
+  First Round: To HOU (via BRK); Least favorable of UTH (cannot be 1-5), CLE and MIN (via UTH)
+  Second Round: 1; More favorable of PHX and GOS to PHL then other to WAS [PHL may convey to WAS] (via WAS); Less favorable of BOS and ORL (via BOS to ORL to CHA)
+Year 2028:
+  First Round: Least favorable of PHX, PHL 9-30, WAS and BRK; more favorable of (i) WAS and (ii) least / less favorable of PHX, PHL 9-30 and BRK to WAS [WAS can then swap with MIL]; if (i) PHL 9-30 is third most favorable and (ii) NYK is most or second most favorable of PHX, PHL 9-30, BRK and NYK, then most and third most favorable to BRK; or most / two most favorable to BRK in all other scenarios; least favorable of PHX, BRK and NYK to NYK if NYK and / or if PHL 9-30 is less favorable than PHX and BRK; or second most favorable of PHX, BRK and NYK to NYK in all other scenarios (via BRK swap of BRK or PHL for PHX; via BRK swap of BRK or PHX for NYK; via WAS swap for PHX, BRK or PHL)
+  Second Round: 1; Less favorable of (i) more favorable of PHX and IND and (ii) CHI to IND then most favorable of all to CHI; less favorable of PHX and IND to NYK (via PHX to IND; via CHI swap for IND or PHX)
+Year 2029:
+  First Round: Two most favorable of PHX, DAL and HOU to HOU then other to BRK (via DAL and PHX to BRK; via DAL or PHX to HOU; via HOU swap for DAL or PHX) --- PHX will receive a least favorable pick from a complex CHA-MIN conveyance, including CHA's swap right
+  Second Round: 1; To NYK
+Year 2030:
+  First Round: Least favorable of PHX, WAS and MEM; more favorable of (i) MEM and (ii) less favorable of PHX and WAS to MEM; more favorable of PHX and WAS to WAS (via WAS swap for PHX; via MEM swap for PHX or WAS)
+  Second Round: 1; Less favorable of (i) more favorable of PHX and POR and (ii) WAS to PHL then most favorable of all to BOS; less favorable of PHX and POR to WAS (via PHX and POR to WAS to PHL)
+Year 2031:
+  First Round: To MEM (via UTH)
+  Second Round: 0; To CHA
+Year 2032:
+  First Round: Frozen (through 2027-28)
+  Second Round: 1; Less favorable of PHX and HOU then other to CHI (via PHX to MIN)
+Year 2033:
+  First Round: To CHA
+  Second Round: 0; To NYK
+
+--- PORTLAND TRAIL BLAZERS ---
+Year 2027:
+  First Round: Own
+  Second Round: 1; Less favorable of POR and NOP then other to CHA [POR may convey to HOU; see following]; then less favorable of POR and NOP to HOU if 56-60 (via POR to NOP to CHA; via POR to BOS to HOU); MIN (via HOU to OKC to NYK)
+Year 2028:
+  First Round: Own or swap for MIL [WAS then has a complex swap right with MIL]; ORL (via MEM)
+  Second Round: 2; Own; SAC (via CHI to SAC to MEM)
+Year 2029:
+  First Round: Most and least favorable of POR, BOS and MIL; second most favorable to WAS (via BOS to POR; via MIL to POR; via POR to WAS)
+  Second Round: 2; To MEM (via PHL to IND); Less favorable of IND and WAS (via IND to NYK)
+Year 2030:
+  First Round: Own or swap for MIL; more favorable of (i) less favorable MIL and POR and (ii) MIA to MIL then least favorable of all to MIA (via POR swap for MIL; via MIL swap of MIL or POR for MIA)
+  Second Round: 1; Less favorable of (i) more favorable of POR and PHX and (ii) WAS to PHL then most favorable of all to BOS; less favorable of POR and PHX to WAS (via PHX and POR to WAS to PHL)
+Year 2031:
+  First Round: Own
+  Second Round: 1; Own
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- SACRAMENTO KINGS ---
+Year 2027:
+  First Round: Own; SAN 1-16
+  Second Round: 1 + 1; To OKC if SAN 1-16 in 2027; CHA if SAN 17-30 in 2027 (via NYK to ATL to SAN)
+Year 2028:
+  First Round: Own
+  Second Round: 1; To POR (via CHI to SAC to MEM); UTH (via OKC)
+Year 2029:
+  First Round: Own
+  Second Round: 1; To NYK (via WAS to HOU)
+Year 2030:
+  First Round: Own
+  Second Round: 1; To SAN (via IND); MIN (via DET to OKC)
+Year 2031:
+  First Round: Own or SAN (via SAN swap for SAC); MIN (via SAN)
+  Second Round: 2; To DEN (via SAN)
+Year 2032:
+  First Round: Own
+  Second Round: 1; To DEN (via CLE)
+Year 2033:
+  First Round: Own
+  Second Round: 1; To ATL
+
+--- SAN ANTONIO SPURS ---
+Year 2027:
+  First Round: 1-16 to SAC; 17-30 to OKC (via SAC); ATL
+  Second Round: 1; More favorable of (i) SAN and (ii) least favorable of OKC, HOU, IND and MIA then least favorable of all to MIA (via HOU to DET to OKC; via MIA to OKC to UTH to SAN to MIA)
+Year 2028:
+  First Round: Own or swap for BOS 2-30 [BOS then has a complex swap right with PHL]
+  Second Round: 1; Own; BOS 31-45 if BOS 1 in 2028; NOP
+Year 2029:
+  First Round: Own
+  Second Round: 1; Own; LAC (via PHL); NOP
+Year 2030:
+  First Round: Most / more favorable of SAN, DAL and MIN 2-30; less favorable of (i) more favorable of SAN and DAL and (ii) MIN 2-30 [or MIN if MIN not conveyable] to MIN [MIN may convey to CHA]; less favorable of SAN and DAL to DAL (via SAN swap for DAL; via SAN swap of SAN or DAL for MIN)
+  Second Round: 1; Own; CLE; SAC (via IND)
+Year 2031:
+  First Round: Own or swap for SAC
+  Second Round: 1; Own
+Year 2032:
+  First Round: Own
+  Second Round: 1; Own
+Year 2033:
+  First Round: Own
+  Second Round: 1; Own
+
+--- TORONTO RAPTORS ---
+Year 2027:
+  First Round: Least / less favorable of TOR, LAC, DEN 6-30 and OKC; more favorable of (i) TOR and (i) least / less favorable of LAC, DEN 6-30 and OKC to LAC (via OKC swap of OKC or DEN for LAC; via LAC swap of LAC, DEN or OKC for TOR)
+  Second Round: 1; Own
+Year 2028:
+  First Round: Own
+  Second Round: 1; Own
+Year 2029:
+  First Round: Own
+  Second Round: 1; Own
+Year 2030:
+  First Round: Own
+  Second Round: 1; To LAC
+Year 2031:
+  First Round: To LAC
+  Second Round: 0; To NOP
+Year 2032:
+  First Round: Own
+  Second Round: 1; To BRK
+Year 2033:
+  First Round: To LAC
+  Second Round: 0; To LAC
+
+--- UTAH JAZZ ---
+Year 2027:
+  First Round: Second most favorable of UTH (cannot be 1-5), CLE and MIN; most favorable to MEM and least favorable to PHX (via UTH)
+  Second Round: 1; To IND (via CLE); More favorable of BOS and ORL (via BOS to ORL to BOS); DEN (via CLE to CHI to BOS); LAC (via ATL to LAC)
+Year 2028:
+  First Round: Most favorable of UTH, CLE and LAL; less favorable of (i) more favorable of UTH and CLE and (ii) LAL to LAL; less favorable of UTH and CLE to CLE [CLE may convey UTH to ATL] (via UTH swap for CLE; via UTH swap of UTH or CLE for LAL)
+  Second Round: 1; To SAC (via OKC); CLE; Least / less favorable of (i) DET 31-55, (ii) less favorable of CHA and LAC (via CHA to DAL), (iii) MIA if DAL conveys 1st round pick to CHA in 2027 (via SAN to DAL) and (iv) NYK
+Year 2029:
+  First Round: Most / two most favorable of UTH, CLE and MIN 6-30 to UTH; least / less favorable to CHA (via CLE and MIN to UTH; via UTH to PHX to CHA; via CHA swap of CHA, CLE or UTH for MIN)* *CHA will also have a complex swap right with MIN and PHX will receive a least favorable pick
+  Second Round: 1 + 1; Own; MIN if MIN does not convey 1st round pick to UTH in 2029
+Year 2030:
+  First Round: Own or swap for LAL
+  Second Round: 1; Less favorable of UTH and LAC then other to CHA (via LAC to UTH)
+Year 2031:
+  First Round: Own; LAL
+  Second Round: 2; Own; More favorable of BOS and CLE (via CLE to ATL to BOS)
+Year 2032:
+  First Round: Own
+  Second Round: 1; Less favorable of (i) UTH and (i) more favorable of MEM and PHL to WAS then most favorable of all to MEM (via UTH to WAS; via MEM swap for PHL; via MEM swap of MEM or PHL for UTH); CLE
+Year 2033:
+  First Round: Own; LAL
+  Second Round: 2; Own
+
+--- WASHINGTON WIZARDS ---
+Year 2027:
+  First Round: Own (cannot be 1)
+  Second Round: 1; To NYK (via HOU to OKC); More favorable of BRK and DAL (via DAL to BRK to DET to WAS); Less favorable of GOS and PHX; Second most favorable of (i) PHL (via LAC), (ii) more favorable of GOS and PHX (via WAS to LAC) and (iii) most favorable of OKC, HOU, IND and MIA (via HOU to DET to OKC to LAC; via IND and MIA to OKC to LAC)
+Year 2028:
+  First Round: More favorable of (i) more favorable of (a) WAS and (b) least / less favorable of BRK, PHL 9-30 and PHX and (ii) less favorable of MIL and POR then less favorable of (i) and (ii) to MIL; least favorable of WAS, PHL 9-30, BRK and PHX to PHX (via POR swap for MIL; via BRK swap of BRK or PHL for PHX; via WAS swap for PHX, BRK or PHL; via WAS swap of WAS, BRK, PHL or PHX for MIL or POR)
+  Second Round: 1; Less favorable of WAS and LAL then other to ORL (via WAS to LAL to ORL; via LAL to WAS); DEN 34-60 (via SAN to SAC)
+Year 2029:
+  First Round: Own; Second most favorable of POR, BOS and MIL (via BOS to POR; via MIL to POR; via POR to WAS)
+  Second Round: 2; More favorable of WAS and IND to IND then other to POR (via IND to NYK)
+Year 2030:
+  First Round: More favorable of WAS and PHX; more favorable of (i) MEM and (ii) less favorable of WAS and PHX to MEM then least favorable of all to PHX (via WAS swap for PHX; via MEM swap for WAS or PHX)
+  Second Round: 1; Less favorable of (i) WAS and (ii) more favorable of PHX and POR to PHL then most favorable of all to BOS (via PHX and POR to WAS to PHL); Less favorable of PHX and POR
+Year 2031:
+  First Round: Own
+  Second Round: 1; To LAL; More favorable of MIA and IND (via MIA swap for IND; via UTH)
+Year 2032:
+  First Round: Own
+  Second Round: 1; To LAL; Less favorable of (i) UTH and (i) more favorable of MEM and PHL (via MEM swap for PHL; via MEM swap of MEM or PHL for UTH; via UTH to WAS)
+Year 2033:
+  First Round: Own
+  Second Round: 1; To MEM; DAL
+
