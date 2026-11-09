@@ -126,6 +126,35 @@ def sim_trade_check():
         return jsonify({"error": str(err)}), 400
 
 
+@app.route('/api/sim/team/<code>/suggestions')
+def sim_suggestions(code):
+    from datetime import date
+    from tradesim.ai import NameIndex, get_llm
+    from tradesim.suggest import cached_suggest
+    from tradesim.teams import TEAM_INFO
+    code = code.upper()
+    if code not in TEAM_INFO:
+        return jsonify({"error": f"Unknown team {code}"}), 404
+    s = _sim()
+    if "names" not in s:
+        s["names"] = NameIndex(s["league"].players)
+    return jsonify(cached_suggest(code, s["engine"], s["league"], s["cba"], date.today(), get_llm(), s["names"]))
+
+
+@app.route('/api/sim/players/resolve')
+def sim_resolve_player():
+    """Turn a typed name into database players: exact, ambiguous (the user picks), or none."""
+    from tradesim.ai import NameIndex
+    s = _sim()
+    if "names" not in s:
+        s["names"] = NameIndex(s["league"].players)
+    q = request.args.get("q", "")
+    r = s["names"].resolve(q)
+    r["players"] = [{"id": pid, "name": s["league"].players[pid]["name"], "team": s["league"].players[pid]["team"]}
+                    for pid in r["candidates"]]
+    return jsonify(r)
+
+
 @app.route('/api/sim/team/<code>')
 def sim_team(code):
     from tradesim.analysis import team_analysis

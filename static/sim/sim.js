@@ -190,12 +190,62 @@
     }
 
     function ideasCard(t) {
-        const ideas = [1, 2, 3, 4].map((i) => `<div class="idea"><span>Trade idea ${i}</span><span>Coming soon</span></div>`).join("");
         return `
-            <section class="card">
-                <div class="card-head"><h2>Trade ideas</h2><span class="note">${esc(t.suggestions.message)}</span></div>
-                <div class="ideas">${ideas}</div>
+            <section class="card" id="ideas">
+                <div class="card-head"><h2>Trade ideas</h2><span class="note">legal under the cap rules</span></div>
+                <div class="ideas"><p class="searching">Searching the league for players who fit… about 15 seconds the first time.</p>
+                ${[1, 2, 3, 4].map(() => `<div class="idea skeleton"></div>`).join("")}</div>
             </section>`;
+    }
+
+    function playerLine(p, from) {
+        return `<li><span>${esc(p.name)} <small>${esc(p.position || "")} · ${money(p.salary)}${from ? ` · from ${esc(from)}` : ""}</small></span><span class="amt">${signed(p.impact)}</span></li>`;
+    }
+
+    function suggestionCard(s, code) {
+        const link = `#/trade/${code}/${s.partner}?m=${encodeMoves(s.moves)}`;
+        const picks = s.picks_out.map((p) => `<li><span>${esc(p.label)} pick</span><span class="amt">pick</span></li>`).join("");
+        const ex = s.explanation;
+        return `
+            <article class="suggestion">
+                <div class="suggestion-head">
+                    <span class="gain">${signed(s.win_change)} wins</span>
+                    <span class="note">80% of seasons: ${signed(s.win_change_80[0], 0)} to ${signed(s.win_change_80[1], 0)}</span>
+                    <span class="pill ok">✓ Works</span>
+                </div>
+                <div class="sides compact">
+                    <div><h3>${esc(code)} gets</h3><ul class="moves">${s.gets.map((g) => playerLine(g, s.partner)).join("")}</ul></div>
+                    <div><h3>${esc(code)} sends</h3><ul class="moves">${s.sends.map((x) => playerLine(x)).join("")}${picks}</ul></div>
+                </div>
+                <p class="facts">Playoffs ${pct(s.playoff_before)} → ${pct(s.playoff_after)} · ${esc(s.cap.team.status_after)} · ${esc(s.partner)} ${signed(s.partner_win_change)} wins</p>
+                <p class="explain">${esc(ex.text)} <span class="source">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></p>
+                <a class="button secondary wide" href="${link}">Open in trade machine</a>
+            </article>`;
+    }
+
+    async function loadIdeas(t) {
+        const box = document.getElementById("ideas");
+        let data;
+        try {
+            data = await getJSON(`/api/sim/team/${t.code}/suggestions`);
+        } catch (err) {
+            if (box) box.querySelector(".ideas").innerHTML = `<p class="error">Couldn't load trade ideas.</p>`;
+            return;
+        }
+        if (!document.getElementById("ideas") || !location.hash.startsWith(`#/team/${t.code}`)) return;
+        const n = data.needs;
+        const needLine = `<p class="needs-line">Looking for <strong>${n.positions.map((p) => ({ G: "guards", F: "forwards", C: "centers" })[p]).join(" and ")}</strong>
+            with <strong>${esc(n.skills.join(", "))}</strong> <span class="source">${n.source === "ai" ? "AI read of the numbers" : "from the numbers"}</span></p>`;
+        const rules = data.rules.max_partner_loss_wins != null
+            ? `Only trades that add ${data.rules.min_win_gain}+ wins without costing the partner more than ${data.rules.max_partner_loss_wins} wins.` : "";
+        const body = data.suggestions.length
+            ? data.suggestions.map((s) => suggestionCard(s, t.code)).join("")
+            : `<p class="empty">No trade found that fits. ${esc(rules)}</p>`;
+        box.innerHTML = `
+            <div class="card-head"><h2>Trade ideas</h2><span class="note">${data.searched.candidates} players searched · ${data.searched.legal_trades} legal</span></div>
+            ${needLine}${n.note ? `<p class="note">${esc(n.note)}</p>` : ""}
+            <div class="ideas">${body}</div>
+            ${data.suggestions.length && rules ? `<p class="note" style="margin-top:10px">${esc(rules)}</p>` : ""}`;
     }
 
     function rosterCard(t) {
@@ -235,6 +285,7 @@
             ${capCard(t)}
             ${rosterCard(t)}
             <div class="action-bar"><div class="inner"><a class="button wide" href="#/trade/${t.code}">Propose a trade</a></div></div>`);
+        loadIdeas(t);
     }
 
     // --- screen 4: trade machine ----------------------------------------------------------------

@@ -65,7 +65,10 @@ def parse_contracts(text):
 # --- Basketball-Reference stats ----------------------------------------------
 
 _STAT_FIELDS = {"G": int, "GS": int, "MP": int, "PER": float, "TS%": float, "USG%": float,
-                "OBPM": float, "DBPM": float, "BPM": float, "VORP": float, "WS/48": float}
+                "OBPM": float, "DBPM": float, "BPM": float, "VORP": float, "WS/48": float,
+                # used for skill profiles in trade suggestions (tradesim.skills)
+                "3PAr": float, "ORB%": float, "DRB%": float, "TRB%": float, "AST%": float, "STL%": float,
+                "BLK%": float, "TOV%": float}
 
 
 def _tab_rows(text):

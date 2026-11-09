@@ -109,5 +109,12 @@
     },
     "_max_extra_minutes": "When teammates are out, a player can take at most this many minutes on top of his usual role.",
     "_diminishing_returns": "Simplification, default mild: if the top-3 players add more than `threshold` points (impact x minutes / 48), 15% of the excess is removed."
+  },
+  "suggestions": {
+    "count": 4,
+    "max_partner_loss_wins": 1.5,
+    "min_win_gain": 0.5,
+    "_max_partner_loss_wins": "Realism rule for suggestions only (not the cap checker): skip trades that cost the partner more than this many projected wins. null = pure 'best legal trade by win gain', which produces heists (e.g. a superstar for a role player).",
+    "_min_win_gain": "Only suggest trades that add at least this many projected wins."
   }
 }

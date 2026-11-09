@@ -241,3 +241,19 @@ details.roster[open] summary::after { content: "Hide"; }
 .saved a { flex: 1; font-size: 13.5px; color: var(--text); text-decoration: none; line-height: 1.4; }
 .toast { text-align: center; font-size: 13.5px; color: var(--text); margin: 0 0 8px; }
 .button[disabled] { background: var(--surface-2); color: var(--faint); cursor: not-allowed; border: 1px solid var(--border); }
+
+/* --- trade ideas (Stage 5) --- */
+.searching { font-size: 14px; color: var(--muted); }
+.idea.skeleton { height: 88px; border-radius: 12px; border: 0; background: linear-gradient(90deg, var(--surface-2), #22262e, var(--surface-2)); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.needs-line { font-size: 14px; color: var(--text); margin-bottom: 12px; line-height: 1.5; }
+.source { display: inline-block; font-size: 11.5px; color: var(--faint); margin-left: 4px; }
+.suggestion { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--surface-2); display: grid; gap: 10px; }
+.suggestion-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.suggestion-head .gain { font: 800 22px "Inter Tight", sans-serif; color: var(--good); }
+.suggestion-head .pill { margin-left: auto; }
+.sides.compact { gap: 8px; }
+.sides.compact .moves li { padding: 6px 0; }
+.facts { font-size: 13px; color: var(--muted); }
+.explain { font-size: 14px; color: var(--text); opacity: 0.92; line-height: 1.5; }
+.note { font-size: 12.5px; color: var(--faint); }

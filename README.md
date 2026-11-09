@@ -104,6 +104,27 @@ than deleted; safe to remove.
    Exceptions can't be traded; the checker applies one automatically and says which. The trade
    lives in the URL (shareable); Save (only for trades that work) keeps it in a list on this
    device for the trade-selection screen (Stage 6).
+5. Trade ideas (Stage 5, `GET /api/sim/team/<code>/suggestions`, `tradesim/suggest.py`):
+   - Needs: the LLM (`tradesim/ai.py`, Groq via `GROQ_API_KEY`) reads the team's numbers (no
+     player names) and returns JSON: positions (G/F/C) and skills from a fixed list that maps
+     to stats (`tradesim/skills.py`: shooting, rim protection, rebounding, playmaking,
+     perimeter defense, scoring). Anything outside the lists, or a summary naming a player, is
+     replaced from the data. Without a key, needs come from the data and the page says so.
+   - Search (code only): database players at a needed position, 55th+ percentile in the needed
+     skills and a 0.75+ impact upgrade on the team's weakest regular there; 1-3 player packages
+     that keep both rosters at 14-15 and pass salary matching, plus a sweetener pick for big
+     upgrades; every package through the cap checker; a quick strength screen, then a
+     10,000-season simulation of the best; top 4 by win gain.
+   - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
+     than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
+     is a heist (e.g. Wembanyama for a role player).
+   - Explanations: 1-2 sentences per trade from a facts sheet; rejected if they name anyone not
+     in the trade (a lone last name must match exactly one player in it) or use a number not
+     in the facts, and replaced by a template sentence. The LLM never names players from
+     memory, decides legality or picks trades.
+   - `GET /api/sim/players/resolve?q=` turns a typed name into database players (exact,
+     ambiguous with candidates for the user to pick, or none).
+   - Results are cached per team and inputs (first load about 15 s).
 
 Stage 1 adds the data layer and a cap-legality checker (`tradesim/`).
 
@@ -256,6 +277,8 @@ by < 0.5.
   estimated from past results, so a new coach's effect isn't captured.
 - **Mid-season trades:** the simulator plays every roster for the full season from 0-0;
   real teams change during the season.
+- **Trade ideas don't model acceptance:** the realism rule only limits how much the partner
+  loses in projected wins; contracts, age, picks and team plans aren't valued.
 - **Injury model is simple:** one random spell per player per season from his history, plus
   a hand-maintained list of known 15+ game absences; shorter known injuries are ignored;
   when several players are out their costs are simply added; fatigue is only the
