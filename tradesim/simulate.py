@@ -176,10 +176,13 @@ def season_table(league=None, cfg=None):
 
 
 if __name__ == "__main__":
-    for conf in ("East", "West"):
-        print(f"\n{conf}")
-        print(f"{'':3} {'Team':4} {'Str':>5} {'Wins':>5} {'Range':>8} {'Playoff':>8} {'Play-in':>8} {'#1 seed':>8}")
-        for i, r in enumerate([r for r in season_table() if r["conference"] == conf], 1):
-            print(f"{i:>2}. {r['team']:4} {r['strength']:+5.1f} {r['mean_wins']:5.1f} "
-                  f"{r['range'][0]:>3}-{r['range'][1]:<4} {r['playoff_pct']:8.0%} {r['play_in_pct']:8.0%} "
-                  f"{r['top_seed_pct']:8.0%}")
+    from tradesim.report import terminal_summary, write_reports
+    cfg = load_sim_config()
+    table = season_table(cfg=cfg)
+    paths = write_reports(table, "season_2026_27", "2026-27 season projection (current rosters)", notes=[
+        f"{cfg['simulation']['n_seasons']:,} simulated seasons, seed {cfg['simulation']['seed']}, every team starts 0-0.",
+        "Strength = expected net rating per 100 possessions vs an average team.",
+        "Range = 10th to 90th percentile of simulated wins. Playoff = seeds 1-6, play-in = seeds 7-10.",
+    ])
+    print(terminal_summary(table))
+    print("Full results:", *paths, sep="\n  ")
