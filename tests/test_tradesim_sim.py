@@ -193,3 +193,21 @@ def test_injured_players_fall_back_to_2024_25(league, cfg):
     hali = next(b for b in breakdown if b["id"] == "tyrese-haliburton")
     assert hali["value"] == pytest.approx(player_value(5.8, 2451, cfg), abs=0.01)
     assert hali["minutes"] > 30
+
+
+def test_strength_uncertainty_widens_ranges_but_keeps_totals(league, cfg, schedule):
+    from tradesim.simulate import load_strength_sd
+    s = league_strengths(league, cfg)
+    sd = load_strength_sd()
+    assert 1 < sd < 8
+    luck_only = simulate_season(schedule, s, load_fit(), cfg)
+    with_sd = simulate_season(schedule, s, load_fit(), cfg, strength_sd=sd)
+    assert (with_sd["wins"].sum(axis=1) == 1230).all()
+    width = lambda sim: np.mean([t["range"][1] - t["range"][0] for t in sim["teams"].values()])
+    assert width(with_sd) > width(luck_only) * 1.5
+
+
+def test_same_offsets_before_and_after_mean_no_phantom_change(league, cfg, schedule):
+    s = league_strengths(league, cfg)
+    out = compare(schedule, s, s, load_fit(), cfg, strength_sd=3.5)
+    assert all(t["win_change"] == 0 for t in out.values())

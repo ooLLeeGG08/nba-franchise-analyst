@@ -116,8 +116,12 @@ Settings are in `config/sim.json`; fitted constants are saved to `data/model/fit
 4. **Season** (`tradesim/simulate.py`): each of the 1,230 games is a biased coin flip;
    5,000 seasons are drawn at once with numpy (about 0.1 s). Output: average wins, a
    10th-90th percentile range, the win distribution, and conference seed frequencies.
-   Before/after comparisons reuse the same random numbers. Only teams in working trades
-   change; draft picks don't affect the simulation.
+   Each simulated season also shifts every team's strength by a random amount
+   (spread 3.5 points, measured by the forecast backtest), so the range includes
+   uncertainty about how good a team really is, not just game luck. Before/after
+   comparisons reuse the same random numbers. Only teams in working trades change;
+   draft picks don't affect the simulation. `python -m tradesim.simulate` prints the
+   2026-27 projection table.
 
 **Backtest on 2025-26** (`data/model/backtest_2025_26.json`):
 
@@ -162,8 +166,8 @@ replacement level). Forecasts with projected minutes are somewhat too extreme
     replacement level, so teams with good rookies are likely underrated.
   - Forecasts from last season's stats miss by about 8 wins per team on average
     (see the backtest): player development, aging and injuries aren't modelled.
-  - The win range reflects game-to-game luck only, not uncertainty about how good a
-    team really is, so real outcomes vary more.
+  - The win range's team-strength uncertainty is measured on one season (2025-26): with
+    it, 21 of 30 forecasts landed inside their 10-90% range (about 24 expected).
   - The 2026-27 schedule's last 2 games per team (in-season tournament) aren't set yet;
     they're filled with random same-conference matchups.
   - Playoff seeding breaks ties at random, not with the NBA's tiebreakers.

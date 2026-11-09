@@ -10,9 +10,15 @@ One season = one biased coin flip per game. All seasons are drawn at once:
 HOME / AWAY are n_games x 30 one-hot matrices (which team is home/away in each game),
 so the matrix product counts each team's wins in every season at once.
 
+Team-strength uncertainty: each simulated season also shifts every team's strength
+by a random amount (spread measured by the forecast backtest), so the win ranges
+include "we don't know exactly how good this team is", not just game luck.
+
 Comparisons (before vs after trades) reuse the same random numbers ("common random
 numbers"), so the difference comes from the trade, not from luck.
 """
+import json
+
 import numpy as np
 
 from tradesim.fit import load_fit
@@ -35,10 +41,14 @@ def _schedule_arrays(schedule):
     return home, away, neutral, home_onehot, away_onehot
 
 
-def win_probabilities(schedule, strengths, fit):
+def win_probabilities(schedule, strengths, fit, offsets=None):
+    """P(home wins) for every game. With `offsets` (n_seasons x 30 strength shifts),
+    returns one row of probabilities per simulated season."""
     home, away, neutral, _, _ = _schedule_arrays(schedule)
     s = np.array([strengths[c] for c in CODES])
-    logit = fit["home"] * (~neutral) + fit["slope"] * (s[home] - s[away])
+    if offsets is not None:
+        s = s[None, :] + offsets
+    logit = fit["home"] * (~neutral) + fit["slope"] * (s[..., home] - s[..., away])
     return 1 / (1 + np.exp(-logit))
 
 
@@ -47,10 +57,33 @@ def draw_uniforms(n_games, cfg):
     return rng.random((cfg["simulation"]["n_seasons"], n_games), dtype=np.float32)
 
 
-def simulate_season(schedule, strengths, fit, cfg, uniforms=None):
-    """Simulate the season many times. Returns {team: summary} plus the raw wins matrix."""
+def draw_offsets(strength_sd, cfg):
+    """Team-strength uncertainty: in each simulated season every team is shifted by a
+    random amount (normal, spread = strength_sd points), because we don't know exactly
+    how good a team really is. The spread is measured by the forecast backtest."""
+    if not strength_sd:
+        return None
+    rng = np.random.default_rng(cfg["simulation"]["seed"] + 2)
+    return rng.normal(0, strength_sd, (cfg["simulation"]["n_seasons"], len(CODES))).astype(np.float32)
+
+
+def load_strength_sd():
+    """Spread of team-strength uncertainty from the forecast backtest."""
+    from tradesim.backtest import BACKTEST_PATH
+    with open(BACKTEST_PATH) as f:
+        return json.load(f)["strength_uncertainty"]["strength_sd_points"]
+
+
+def simulate_season(schedule, strengths, fit, cfg, uniforms=None, strength_sd=0.0, offsets=None):
+    """Simulate the season many times. Returns {team: summary} plus the raw wins matrix.
+
+    strength_sd=0 simulates game-to-game luck only (used by the backtest, which
+    measures the uncertainty). The app passes load_strength_sd() so the ranges
+    also include uncertainty about each team's true strength."""
     _, _, _, home_onehot, away_onehot = _schedule_arrays(schedule)
-    p = win_probabilities(schedule, strengths, fit).astype(np.float32)
+    if offsets is None:
+        offsets = draw_offsets(strength_sd, cfg)
+    p = win_probabilities(schedule, strengths, fit, offsets).astype(np.float32)
     if uniforms is None:
         uniforms = draw_uniforms(len(schedule), cfg)
     home_won = (uniforms < p).astype(np.float32)
@@ -93,12 +126,14 @@ def _summaries(wins, seeds, cfg):
     return out
 
 
-def compare(schedule, before, after, fit, cfg, teams=None):
-    """Simulate with `before` and `after` strengths using the same random numbers.
-    Returns per-team before/after summaries and the change in average wins."""
+def compare(schedule, before, after, fit, cfg, teams=None, strength_sd=0.0):
+    """Simulate with `before` and `after` strengths using the same random numbers (and the
+    same strength offsets). Returns per-team before/after summaries and the change in
+    average wins."""
     uniforms = draw_uniforms(len(schedule), cfg)
-    b = simulate_season(schedule, before, fit, cfg, uniforms)
-    a = simulate_season(schedule, after, fit, cfg, uniforms)
+    offsets = draw_offsets(strength_sd, cfg)
+    b = simulate_season(schedule, before, fit, cfg, uniforms, offsets=offsets)
+    a = simulate_season(schedule, after, fit, cfg, uniforms, offsets=offsets)
     out = {}
     for c in teams or CODES:
         out[c] = {"before": b["teams"][c], "after": a["teams"][c],
@@ -107,17 +142,44 @@ def compare(schedule, before, after, fit, cfg, teams=None):
     return out
 
 
-def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, fit=None):
+def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, fit=None, strength_sd=None):
     """Check `trades` in order, apply the ones that work, and simulate 2026-27 before and
     after. Only teams in working trades change; every other roster stays as it is.
     Draft picks don't change team strength."""
     from tradesim.checker import check_trades_in_sequence
     cfg = cfg or load_sim_config()
     fit = fit or load_fit()
+    strength_sd = load_strength_sd() if strength_sd is None else strength_sd
     results, final = check_trades_in_sequence(league, cba, trades, on_date)
     changed = sorted({code for r in results if r["works"] for code in r["teams"]})
     before = league_strengths(league, cfg)
     after = dict(before)
     after.update(league_strengths(final, cfg, changed))
     return {"checks": results, "changed_teams": changed,
-            "teams": compare(schedule, before, after, fit, cfg)}
+            "teams": compare(schedule, before, after, fit, cfg, strength_sd=strength_sd)}
+
+
+def season_table(league=None, cfg=None):
+    """2026-27 projection for every team from current rosters, with uncertainty."""
+    from tradesim.games import load_schedule_2026_27
+    from tradesim.league import League
+    league = league or League.load()
+    cfg = cfg or load_sim_config()
+    strengths = league_strengths(league, cfg)
+    mean = sum(strengths.values()) / len(strengths)
+    sim = simulate_season(load_schedule_2026_27(), strengths, load_fit(), cfg, strength_sd=load_strength_sd())
+    rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(strengths[c] - mean, 1),
+             **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct")},
+             "top_seed_pct": sim["teams"][c]["seed_frequency"][0]}
+            for c in CODES]
+    return sorted(rows, key=lambda r: -r["mean_wins"])
+
+
+if __name__ == "__main__":
+    for conf in ("East", "West"):
+        print(f"\n{conf}")
+        print(f"{'':3} {'Team':4} {'Str':>5} {'Wins':>5} {'Range':>8} {'Playoff':>8} {'Play-in':>8} {'#1 seed':>8}")
+        for i, r in enumerate([r for r in season_table() if r["conference"] == conf], 1):
+            print(f"{i:>2}. {r['team']:4} {r['strength']:+5.1f} {r['mean_wins']:5.1f} "
+                  f"{r['range'][0]:>3}-{r['range'][1]:<4} {r['playoff_pct']:8.0%} {r['play_in_pct']:8.0%} "
+                  f"{r['top_seed_pct']:8.0%}")

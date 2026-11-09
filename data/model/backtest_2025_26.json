@@ -1016,6 +1016,7 @@
   "observed_rmse_wins": 10.33,
   "luck_wins": 4.53,
   "extra_wins": 9.29,
-  "strength_sd_points": 3.49
+  "strength_sd_points": 3.49,
+  "forecast_inside_10_90_range_with_uncertainty": 21
  }
 }

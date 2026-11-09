@@ -117,6 +117,11 @@ def run(cfg=None, write=True):
                       for c in sorted(TEAM_INFO, key=lambda c: -actual[c])},
         }
     report["strength_uncertainty"] = _strength_uncertainty(report["versions"]["D_forecast"], fit)
+    # Check: with that uncertainty added, about 80% of teams should land inside their 10-90% range.
+    sim = simulate_season(schedule, versions["D_forecast"], fit, cfg,
+                          strength_sd=report["strength_uncertainty"]["strength_sd_points"])
+    report["strength_uncertainty"]["forecast_inside_10_90_range_with_uncertainty"] = sum(
+        1 for c in TEAM_INFO if sim["teams"][c]["range"][0] <= actual[c] <= sim["teams"][c]["range"][1])
     if write:
         os.makedirs(os.path.dirname(BACKTEST_PATH), exist_ok=True)
         with open(BACKTEST_PATH, "w") as f:
@@ -150,4 +155,6 @@ if __name__ == "__main__":
     u = r["strength_uncertainty"]
     print(f"Forecast spread {u['observed_rmse_wins']} wins = luck {u['luck_wins']} + team-strength uncertainty "
           f"{u['extra_wins']} wins (about {u['strength_sd_points']} points of strength)")
+    print(f"With that uncertainty added, {u['forecast_inside_10_90_range_with_uncertainty']}/30 forecasts land "
+          f"inside their 10-90% range (target about 24)")
     print(f"Wrote {BACKTEST_PATH}")
