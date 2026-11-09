@@ -35,6 +35,22 @@ from tradesim.simulate import CODES, INDEX, load_strength_sd
 from tradesim.standings import SeasonTable, divisions, play_in, summaries
 
 GAMES = 82
+ENGINE_VERSION = "stage6-2"  # bump when simulation logic changes, so old baseline caches are ignored
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE_DIR = os.path.join(_ROOT, "data", "cache")
+# Everything the baseline depends on. Changing any of these files invalidates the cache.
+INPUT_FILES = ["data/2026_27/league.json", "data/model/player_ratings_2026_27.json", "data/model/ratings_fit.json",
+               "data/model/game_model.json", "data/model/uncertainty.json", "data/model/strength_check.json",
+               "data/raw/2026_27/schedule.json", "data/raw/standings/standings_2026-27.json", "config/sim.json"]
+
+
+def fingerprint(n_sims, seed, schedule):
+    h = hashlib.sha256(f"{ENGINE_VERSION}:{n_sims}:{seed}".encode())
+    for rel in INPUT_FILES:
+        with open(os.path.join(_ROOT, rel), "rb") as f:
+            h.update(f.read())
+    h.update(json.dumps(schedule, sort_keys=True).encode())
+    return h.hexdigest()[:16]
 UNCERTAINTY_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "model",
                                 "uncertainty.json")
 
@@ -70,7 +86,7 @@ def draw_absences(player_ids, ratings, kappa, n_sims, seed):
         rate = rng.beta(kappa * p, kappa * (1 - p), n_sims)
         missed = rng.binomial(GAMES, 1 - rate)
         start = (rng.random(n_sims) * (GAMES - missed + 1)).astype(np.int32)
-        out[pid] = (missed.astype(np.int32), start)
+        out[pid] = (missed.astype(np.uint8), start.astype(np.uint8))  # both 0-82
     return out
 
 
@@ -94,13 +110,16 @@ def _team_game_index(schedule):
 
 
 class Engine:
-    """Everything shared by the baseline and the scenarios: schedule, fitted models, random
-    draws. Teams whose rotation didn't change reuse their baseline strength arrays."""
+    """Everything shared by the baseline and the scenarios: schedule, fitted models and the
+    random draws. Seasons are simulated in chunks (simulation.chunk_size), so memory stays
+    flat however many seasons are run. Player and team draws are whole arrays; game noise is
+    drawn per chunk from its own fixed seed. Baseline and scenario share all of them."""
 
     def __init__(self, league, schedule, cfg, n_sims=None, team_season_sd=None):
         self.league, self.schedule, self.cfg = league, schedule, cfg
         self.n_sims = n_sims or cfg["simulation"]["n_seasons"]
-        seed = cfg["simulation"]["seed"]
+        self.chunk = cfg["simulation"].get("chunk_size", 2000)
+        self.seed = seed = cfg["simulation"]["seed"]
         self.ratings = load_ratings()
         self.model = load_model()
         ratings_fit = load_ratings_fit()
@@ -114,9 +133,6 @@ class Engine:
         self.residual_draws = {c: (self.residual_sd * _stream(seed, f"team:{c}").standard_normal(self.n_sims)
                                    + team_season[:, INDEX[c]]).astype(np.float32) for c in CODES}
         self.sim_cfg = {**cfg, "simulation": {**cfg["simulation"], "n_seasons": self.n_sims}}
-        # Game noise (standard normal per game): margin = expected margin + sigma x noise.
-        self.noise = np.random.default_rng(seed).standard_normal((self.n_sims, len(schedule)), dtype=np.float32)
-        self.play_in_noise = np.random.default_rng(seed + 3).standard_normal((self.n_sims, 2, 3))
         self.divisions = divisions()
         self.G = np.zeros((len(CODES), len(CODES)))
         for g in schedule:
@@ -133,14 +149,19 @@ class Engine:
         self.home_onehot[np.arange(len(schedule)), self.home] = 1
         self.away_onehot[np.arange(len(schedule)), self.away] = 1
         self.baseline_rotations = apply_moves(league, [], cfg, self.ratings)
-        self.baseline_strengths = {c: self.team_game_strengths(self.baseline_rotations[c]) for c in CODES}
 
-    def team_game_strengths(self, rotation):
-        """(n_sims x 82) strength of one team in each of its games."""
+    def chunks(self):
+        for start in range(0, self.n_sims, self.chunk):
+            yield start, min(start + self.chunk, self.n_sims)
+
+    def team_game_strengths(self, rotation, lo=0, hi=None):
+        """((hi - lo) x 82) strength of one team in each of its games, seasons lo..hi."""
+        hi = self.n_sims if hi is None else hi
         ids = list(rotation.players)
-        impacts = np.stack([self.impacts[pid] for pid in ids], axis=1)  # sims x players
+        impacts = np.stack([self.impacts[pid][lo:hi] for pid in ids], axis=1)  # seasons x players
         weights = np.array([rotation.minutes[pid] / 48 for pid in ids], dtype=np.float32)
-        full = impacts @ weights + rotation.residual + self.residual_draws[rotation.code] - rotation.diminishing_returns()
+        full = (impacts @ weights + rotation.residual + self.residual_draws[rotation.code][lo:hi]
+                - rotation.diminishing_returns())
         strengths = np.repeat(full[:, None], GAMES, axis=1).astype(np.float32)
         game = np.arange(GAMES)
         position = {pid: i for i, pid in enumerate(ids)}
@@ -153,77 +174,140 @@ class Engine:
                 vec[position[k]] = v
             cost = impacts @ vec  # per simulated season
             missed, start = self.absences[pid]
+            missed, start = missed[lo:hi].astype(np.int16), start[lo:hi].astype(np.int16)
             out = (game[None, :] >= start[:, None]) & (game[None, :] < (start + missed)[:, None])
             strengths -= cost[:, None] * out
         return strengths
 
     def uncertainty(self):
-        """How much a team's season-average strength varies across simulated seasons, and the
-        forecast error it should roughly match (tradesim.strength_check)."""
-        sds = [float(np.std(s.mean(axis=1))) for s in self.baseline_strengths.values()]
-        return {"season_strength_sd": round(float(np.mean(sds)), 3), "residual_sd": round(self.residual_sd, 3),
-                "team_season_sd": round(self.team_season_sd, 3), "measured_forecast_sd": load_strength_sd()}
+        """How much a team's season-average strength varies across simulated seasons (baseline
+        rosters), and the forecast error it should roughly match (tradesim.strength_check)."""
+        season_means = self._season_mean_strengths(self.baseline_rotations)
+        return {"season_strength_sd": round(float(np.mean(season_means.std(axis=0))), 3),
+                "residual_sd": round(self.residual_sd, 3), "team_season_sd": round(self.team_season_sd, 3),
+                "measured_forecast_sd": load_strength_sd()}
+
+    def _season_mean_strengths(self, rotations):
+        out = np.zeros((self.n_sims, len(CODES)), dtype=np.float32)
+        for lo, hi in self.chunks():
+            for c in CODES:
+                out[lo:hi, INDEX[c]] = self.team_game_strengths(rotations[c], lo, hi).mean(axis=1)
+        return out
 
     def simulate(self, rotations=None, changed=()):
-        """Simulate the season for a set of rotations; teams not in `changed` reuse the baseline."""
-        strengths = dict(self.baseline_strengths)
-        for code in changed:
-            strengths[code] = self.team_game_strengths(rotations[code])
-        stacked = np.stack([strengths[c] for c in CODES])  # 30 x sims x 82
-        diff = stacked[self.home, :, self.home_i].T - stacked[self.away, :, self.away_i].T  # sims x games
+        """Simulate the season for a set of rotations (default: baseline rosters)."""
+        rotations = {**self.baseline_rotations, **({c: rotations[c] for c in changed} if rotations else {})}
+        n = self.n_sims
+        wins = np.zeros((n, len(CODES)), dtype=np.int16)
+        seeds = np.zeros((n, len(CODES)), dtype=np.int8)
+        playoff = np.zeros((n, len(CODES)), dtype=bool)
+        strength_sum = np.zeros(len(CODES))
         m = self.model
-        margin = diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest + m["sigma"] * self.noise
-        home_won = (margin > 0).astype(np.float32)
-        wins = np.rint(home_won @ self.home_onehot + (1 - home_won) @ self.away_onehot).astype(np.int16)
-        pdiff = margin @ self.home_onehot - margin @ self.away_onehot
-        last_game = {c: strengths[c][:, -1] for c in CODES}
-        seeds, playoff = self._standings(home_won, pdiff, last_game)
-        mean_strength = {c: float(strengths[c].mean()) for c in CODES}
+        for chunk_index, (lo, hi) in enumerate(self.chunks()):
+            strengths = np.stack([self.team_game_strengths(rotations[c], lo, hi) for c in CODES])  # 30 x k x 82
+            diff = strengths[self.home, :, self.home_i].T - strengths[self.away, :, self.away_i].T  # k x games
+            # Game noise (standard normal per game): margin = expected margin + sigma x noise.
+            noise = np.random.default_rng([self.seed, 1, chunk_index]).standard_normal(diff.shape, dtype=np.float32)
+            margin = diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest + m["sigma"] * noise
+            del diff, noise
+            home_won = (margin > 0).astype(np.float32)
+            wins[lo:hi] = np.rint(home_won @ self.home_onehot + (1 - home_won) @ self.away_onehot)
+            pdiff = margin @ self.home_onehot - margin @ self.away_onehot
+            del margin
+            play_in_noise = np.random.default_rng([self.seed, 3, chunk_index]).standard_normal((hi - lo, 2, 3))
+            seeds[lo:hi], playoff[lo:hi] = self._standings(home_won, pdiff, strengths[:, :, -1], play_in_noise, lo)
+            strength_sum += strengths.mean(axis=2).sum(axis=1)
+        mean_strength = {c: float(strength_sum[INDEX[c]] / n) for c in CODES}
         return {"teams": summaries(wins, seeds, playoff, self.sim_cfg), "wins": wins, "seeds": seeds,
                 "playoff": playoff, "mean_strength": mean_strength}
 
-    def _standings(self, home_won, pdiff, last_game):
-        """Seeds (NBA tiebreakers) and playoff spots (play-in) for every simulated season."""
-        n = self.n_sims
-        W = np.zeros((n, len(CODES), len(CODES)), dtype=np.int16)
+    def _standings(self, home_won, pdiff, last_game, play_in_noise, offset):
+        """Seeds (NBA tiebreakers) and playoff spots (play-in) for one chunk of seasons.
+        last_game: 30 x k strengths in each team's last regular-season game."""
+        k = home_won.shape[0]
+        W = np.zeros((k, len(CODES), len(CODES)), dtype=np.int16)
         won = home_won.astype(np.int16)
         for i in range(len(self.schedule)):
             W[:, self.home[i], self.away[i]] += won[:, i]
             W[:, self.away[i], self.home[i]] += 1 - won[:, i]
-        seeds = np.zeros((n, len(CODES)), dtype=np.int8)
-        playoff = np.zeros((n, len(CODES)), dtype=bool)
-        seed = self.cfg["simulation"]["seed"]
-        for s in range(n):
-            table = SeasonTable(W[s], self.G, pdiff[s], self.divisions, np.random.default_rng([seed, 5, s]))
-            for k, conf in enumerate(("East", "West")):
+        seeds = np.zeros((k, len(CODES)), dtype=np.int8)
+        playoff = np.zeros((k, len(CODES)), dtype=bool)
+        for s in range(k):
+            table = SeasonTable(W[s], self.G, pdiff[s], self.divisions,
+                                np.random.default_rng([self.seed, 5, offset + s]))
+            for j, conf in enumerate(("East", "West")):
                 order = table.seeds(conf)
                 for rank, team in enumerate(order, 1):
                     seeds[s, INDEX[team]] = rank
                 for team in order[:6]:
                     playoff[s, INDEX[team]] = True
-                strength = {t: float(last_game[t][s]) for t in order[6:10]}
-                for team in play_in(order, strength, self.model, self.play_in_noise[s, k]):
+                strength = {t: float(last_game[INDEX[t], s]) for t in order[6:10]}
+                for team in play_in(order, strength, self.model, play_in_noise[s, j]):
                     playoff[s, INDEX[team]] = True
         return seeds, playoff
 
-    def baseline(self):
-        if not hasattr(self, "_baseline"):
-            self._baseline = self.simulate()
+    def baseline(self, use_cache=True):
+        """Baseline (real rosters). Cached on disk per input fingerprint: per-season wins, seeds
+        and playoff flags (about 1 MB at 10,000 seasons), so later scenarios don't re-simulate it."""
+        if hasattr(self, "_baseline"):
+            return self._baseline
+        path = os.path.join(CACHE_DIR, f"baseline_{fingerprint(self.n_sims, self.cfg['simulation']['seed'], self.schedule)}.npz")
+        if use_cache and os.path.exists(path):
+            data = np.load(path)
+            wins, seeds, playoff = data["wins"], data["seeds"], data["playoff"]
+            self._baseline = {"teams": summaries(wins, seeds, playoff, self.sim_cfg), "wins": wins, "seeds": seeds,
+                              "playoff": playoff, "mean_strength": dict(zip(CODES, data["mean_strength"].tolist())),
+                              "from_cache": True}
+            return self._baseline
+        self._baseline = self.simulate()
+        if use_cache:
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            np.savez_compressed(path, wins=self._baseline["wins"], seeds=self._baseline["seeds"],
+                                playoff=self._baseline["playoff"],
+                                mean_strength=np.array([self._baseline["mean_strength"][c] for c in CODES]))
+        self._baseline["from_cache"] = False
         return self._baseline
 
     def scenario(self, moves):
-        """Simulate `moves` ([{"player", "from", "to"}]) against the baseline."""
+        """Simulate `moves` ([{"player", "from", "to"}]) against the baseline. Changes are
+        paired season by season (same random numbers), with Monte Carlo standard errors."""
         rotations = apply_moves(self.league, moves, self.cfg, self.ratings)
         changed = sorted(c for c in CODES if set(rotations[c].players) != set(self.baseline_rotations[c].players))
         base, scen = self.baseline(), self.simulate(rotations, changed)
+        hl = self.cfg["simulation"]["highlight"]
+        floor = {"mean_wins": hl["wins"], "playoff_pct": hl["pct_points"] / 100,
+                 "play_in_pct": hl["pct_points"] / 100, "top_seed_pct": hl["pct_points"] / 100}
         teams = {}
         for c in CODES:
-            b, a = base["teams"][c], scen["teams"][c]
-            teams[c] = {"before": b, "after": a, "changed_roster": c in changed,
-                        "win_change": round(a["mean_wins"] - b["mean_wins"], 2),
-                        "playoff_change": round(a["playoff_pct"] - b["playoff_pct"], 4),
+            b, a, i = base["teams"][c], scen["teams"][c], INDEX[c]
+            delta = paired_changes(base, scen, i)
+            moved = any(abs(d["change"]) > 2 * d["mcse"] and abs(d["change"]) >= floor[key]
+                        for key, d in delta.items())
+            teams[c] = {"before": b, "after": a, "changed_roster": c in changed, "moved": c in changed or moved,
+                        "delta": delta,
+                        "win_change": delta["mean_wins"]["change"],
+                        "playoff_change": delta["playoff_pct"]["change"],
                         "strength_before": round(base["mean_strength"][c], 2),
                         "strength_after": round(scen["mean_strength"][c], 2),
                         "full_strength_before": round(self.baseline_rotations[c].full_strength(), 2),
                         "full_strength_after": round(rotations[c].full_strength(), 2)}
-        return {"changed_teams": changed, "teams": teams, "rotations": {c: rotations[c].breakdown() for c in changed}}
+        return {"moves": moves, "changed_teams": changed, "teams": teams, "n_sims": self.n_sims,
+                "rotations": {c: rotations[c].breakdown() for c in changed}}
+
+
+def paired_changes(base, scen, i):
+    """Change per key number (scenario - baseline), averaged over seasons that share every
+    random draw, with its Monte Carlo SE = SD of the per-season differences / sqrt(n)."""
+    n = base["wins"].shape[0]
+    pairs = {
+        "mean_wins": (base["wins"][:, i].astype(float), scen["wins"][:, i].astype(float)),
+        "playoff_pct": (base["playoff"][:, i].astype(float), scen["playoff"][:, i].astype(float)),
+        "play_in_pct": (((base["seeds"][:, i] >= 7) & (base["seeds"][:, i] <= 10)).astype(float),
+                        ((scen["seeds"][:, i] >= 7) & (scen["seeds"][:, i] <= 10)).astype(float)),
+        "top_seed_pct": ((base["seeds"][:, i] == 1).astype(float), (scen["seeds"][:, i] == 1).astype(float)),
+    }
+    out = {}
+    for key, (before, after) in pairs.items():
+        diff = after - before
+        out[key] = {"change": round(float(diff.mean()), 4), "mcse": round(float(diff.std() / np.sqrt(n)), 4)}
+    return out

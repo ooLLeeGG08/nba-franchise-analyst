@@ -19,14 +19,21 @@
     "_no_stats_mpg": "Expected minutes for players with no 2025-26 stats (2026 draft picks by pick number; injured veterans use 'other')."
   },
   "simulation": {
-    "n_seasons": 5000,
+    "n_seasons": 10000,
     "seed": 2027,
     "range_percentiles": [
       10,
       90
     ],
     "playoff_seeds": 6,
-    "play_in_seeds": 10
+    "play_in_seeds": 10,
+    "highlight": {
+      "wins": 0.5,
+      "pct_points": 2.0
+    },
+    "_highlight": "A team not in the trade is highlighted if a change is beyond 2 Monte Carlo SE AND at least this big (wins, or points of playoff / play-in / #1-seed odds). Paired changes are so precise that tiny ripple effects would otherwise flag every team.",
+    "chunk_size": 2000,
+    "_chunk_size": "Seasons simulated at once. Keeps memory flat (about 150 MB) whatever n_seasons is."
   },
   "fit": {
     "season": "2025-26",

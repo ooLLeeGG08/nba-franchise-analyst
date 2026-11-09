@@ -83,8 +83,9 @@ def test_player_impacts_are_drawn_per_player_not_fixed():
 
 def test_team_strength_varies_between_simulated_seasons():
     engine = Engine(League.load(), load_schedule_2026_27(), load_sim_config(), n_sims=1000)
-    full = engine.baseline_strengths["DEN"].max(axis=1)  # best game each season ~ full strength
-    assert full.std() > 0.5
+    from tradesim.simulate import INDEX
+    season_means = engine._season_mean_strengths(engine.baseline_rotations)
+    assert season_means[:, INDEX["DEN"]].std() > 0.5
     u = engine.uncertainty()
     assert 1.5 < u["season_strength_sd"] < 4.5
 

@@ -192,7 +192,6 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   traded player misses the same games in both worlds.
 - *Diminishing returns (simplification, default mild):* if a team's top 3 add more than 10
   points, 15% of the excess is removed. Not fitted; it only affects stacked teams.
-- Speed: about 0.2 s for 5,000 seasons per scenario after a 0.6 s setup.
 
 **Method: game model and uncertainty (Stage 4).** `tradesim/game_model.py`.
 
@@ -276,6 +275,24 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   for every team in 2018-19 and 2021-22 to 2025-26 (25 two-team and 5 three-team ties).
   The two differences are official-data quirks, not tiebreakers: 2019-20 froze non-bubble
   teams' standings in March; 2020-21's official ranks include the play-in result.
+
+**Method: runs and output (Stage 6).**
+
+- 10,000 simulated seasons (seed 2027), run in chunks of 2,000 so memory stays flat
+  (about 220 MB peak). Every random draw is fixed by the seed: same inputs, same output.
+- Baseline and scenario share every draw (player impacts, absences, team terms, game noise,
+  tiebreak draws), so a scenario's changes are paired season by season.
+- The baseline is cached in `data/cache/` (per-season wins, seeds and playoff flags, about
+  1 MB), keyed by a fingerprint of every input file and setting; any data refresh or
+  config change re-simulates it. A scenario then simulates only once: about 2.4 s.
+- `python -m tradesim.scenario kawhi-leonard:TOR:CLE` writes `reports/scenario_<name>.csv`
+  and `.md`: per team, baseline -> scenario for avg wins, 10-90% range, playoff %, play-in %
+  and #1 seed %, each change +/- its Monte Carlo SE. Teams whose roster changed are flagged;
+  other teams are flagged only if a change is beyond 2 SE and at least 0.5 wins or 2 points
+  of odds (`simulation.highlight`): paired changes are so precise that tiny ripples (e.g.
+  -0.07 +/- 0.01 wins) would otherwise flag everyone.
+- Monte Carlo SE at 10,000 seasons: season table at most 0.10 wins and 0.5 points of any
+  percentage; paired changes about 0.04 wins for traded teams (vs about 0.15 unpaired).
 
 **Data sources:** every raw file is listed with its source URL and as-of date in
 `data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.

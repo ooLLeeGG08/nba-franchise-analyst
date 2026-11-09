@@ -142,3 +142,58 @@ def test_engine_totals(engine):
     base = engine.baseline()
     assert (base["wins"].sum(axis=1) == 1230).all()
     assert engine.residual_sd > 0
+
+
+# --- Stage 6: runs, cache, paired changes ------------------------------------------------------------
+
+def test_config_runs_10000_seasons(cfg):
+    assert cfg["simulation"]["n_seasons"] == 10000
+
+
+def test_baseline_cache_returns_identical_results(league, cfg, tmp_path, monkeypatch):
+    import tradesim.engine as eng
+    monkeypatch.setattr(eng, "CACHE_DIR", str(tmp_path))
+    first = Engine(league, load_schedule_2026_27(), cfg, n_sims=600).baseline()
+    second = Engine(league, load_schedule_2026_27(), cfg, n_sims=600).baseline()
+    assert not first["from_cache"] and second["from_cache"]
+    assert np.array_equal(first["wins"], second["wins"]) and first["teams"] == second["teams"]
+    # A different number of seasons is a different cache entry.
+    assert not Engine(league, load_schedule_2026_27(), cfg, n_sims=500).baseline()["from_cache"]
+
+
+def test_chunked_runs_are_reproducible_and_chunk_size_only_reshuffles_noise(league, cfg):
+    chunked = {**cfg, "simulation": {**cfg["simulation"], "chunk_size": 250}}
+    a = Engine(league, load_schedule_2026_27(), chunked, n_sims=500).baseline(use_cache=False)
+    b = Engine(league, load_schedule_2026_27(), chunked, n_sims=500).baseline(use_cache=False)
+    assert np.array_equal(a["wins"], b["wins"])
+    # Chunk size changes which noise each season gets, but not the model: averages agree.
+    other = {**cfg, "simulation": {**cfg["simulation"], "chunk_size": 500}}
+    c = Engine(league, load_schedule_2026_27(), other, n_sims=500).baseline(use_cache=False)
+    assert abs(a["teams"]["OKC"]["mean_wins"] - c["teams"]["OKC"]["mean_wins"]) < 1.5
+
+
+def test_paired_changes_have_small_mcse(engine):
+    out = engine.scenario([move("kawhi-leonard", "TOR", "CLE")])
+    cle = out["teams"]["CLE"]
+    paired = cle["delta"]["mean_wins"]["mcse"]
+    unpaired = np.hypot(cle["before"]["mcse"]["mean_wins"], cle["after"]["mcse"]["mean_wins"])
+    assert paired < unpaired / 2           # sharing random draws makes changes far more precise
+    assert cle["changed_roster"] and cle["moved"]
+    assert cle["delta"]["mean_wins"]["change"] > 10 * paired
+
+
+def test_only_meaningful_ripples_are_highlighted(engine):
+    out = engine.scenario([move("derrick-white", "BOS", "ATL"), move("dyson-daniels", "ATL", "BOS")])
+    flagged = {c for c, t in out["teams"].items() if t["moved"]}
+    assert flagged == {"ATL", "BOS"}  # roster changes only; near-equal swap moves nobody else
+
+
+def test_scenario_report_files(engine, tmp_path):
+    from tradesim.report import scenario_markdown, write_scenario_reports
+    out = engine.scenario([move("kawhi-leonard", "TOR", "CLE")])
+    csv_path, md_path = write_scenario_reports(out, "test", "Test", directory=str(tmp_path))
+    text = open(md_path).read()
+    assert text.isascii() and "| ** | CLE |" in text and "| ** | TOR |" in text
+    rows = [line for line in text.splitlines() if line.startswith("| ") and "Team" not in line]
+    assert len(rows) == 30 and all(line.count("|") == 12 for line in rows)
+    assert open(csv_path).read().count("\n") == 31

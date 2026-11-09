@@ -171,7 +171,7 @@ def season_table(league=None, cfg=None, engine=None):
     sim = engine.baseline()
     mean = sum(sim["mean_strength"].values()) / len(CODES)
     rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(sim["mean_strength"][c] - mean, 1),
-             **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct")},
+             **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct", "mcse")},
              "top_seed_pct": sim["teams"][c]["seed_frequency"][0]}
             for c in CODES]
     return sorted(rows, key=lambda r: -r["mean_wins"])
@@ -187,6 +187,15 @@ if __name__ == "__main__":
         "Range = 10th to 90th percentile of simulated wins.",
         "Playoff = made the playoffs (seeds 1-6, or won through the play-in). Play-in = finished 7-10.",
         "Seeds use the NBA's tiebreakers; #1 seed = regular-season first place.",
+        "Monte Carlo SE (largest across teams): avg wins "
+        f"{max(r['mcse']['mean_wins'] for r in table):.2f}, playoff "
+        f"{max(r['mcse']['playoff_pct'] for r in table) * 100:.1f} pts, play-in "
+        f"{max(r['mcse']['play_in_pct'] for r in table) * 100:.1f} pts, #1 seed "
+        f"{max(r['mcse']['top_seed_pct'] for r in table) * 100:.1f} pts. Per-team values are in the CSV.",
     ])
+    worst = {k: max(r["mcse"][k] for r in table) for k in ("mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct")}
     print(terminal_summary(table))
+    print(f"Monte Carlo SE (largest across teams): avg wins {worst['mean_wins']:.2f}, playoff "
+          f"{worst['playoff_pct'] * 100:.1f} pts, play-in {worst['play_in_pct'] * 100:.1f} pts, "
+          f"#1 seed {worst['top_seed_pct'] * 100:.1f} pts")
     print("Full results:", *paths, sep="\n  ")

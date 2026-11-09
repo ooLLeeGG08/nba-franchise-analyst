@@ -22,7 +22,7 @@ def test_raw_rows_are_complete_and_numeric(table):
     assert len(table) == 30
     for r in table:
         assert set(r) == {"team", "conference", "strength", "mean_wins", "range", "playoff_pct", "play_in_pct",
-                          "top_seed_pct"}
+                          "top_seed_pct", "mcse"}
         for key in ("strength", "mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct"):
             assert isinstance(r[key], (int, float)), (r["team"], key)
         assert r["range"][0] <= r["mean_wins"] <= r["range"][1]

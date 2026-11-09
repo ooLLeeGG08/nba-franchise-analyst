@@ -62,7 +62,13 @@ class SeasonTable:
         self.W, self.G, self.pdiff, self.division, self.rng = W, G, pdiff, division, rng
         self.wins = W.sum(axis=1)
         self.games = G.sum(axis=1)
-        self.pct = {c: self.wins[INDEX[c]] / self.games[INDEX[c]] for c in CODES}
+        self.pct = dict(zip(CODES, (self.wins / self.games).tolist()))
+        # With equal games for everyone (every simulated 2026-27 season), whole win counts
+        # rank teams exactly; otherwise win % rounded to 9 decimals.
+        if len(set(self.games.tolist())) == 1:
+            self.rank_key = dict(zip(CODES, self.wins.tolist()))
+        else:
+            self.rank_key = {c: round(p, 9) for c, p in self.pct.items()}
         self._eligible = {}
 
     # --- records ---------------------------------------------------------------------------
@@ -70,15 +76,15 @@ class SeasonTable:
     def pct_vs(self, team, opponents):
         i = INDEX[team]
         idx = [INDEX[o] for o in opponents if o != team]
-        games = self.G[i, idx].sum()
-        return None if games == 0 else self.W[i, idx].sum() / games
+        games = float(self.G[i, idx].sum())
+        return None if games == 0 else float(self.W[i, idx].sum()) / games
 
     def eligible(self, conference):
         """Playoff-eligible teams: win % at least the 10th-best in the conference (ties included)."""
         if conference not in self._eligible:
             teams = [c for c in CODES if TEAM_INFO[c]["conference"] == conference]
-            cutoff = sorted((self.pct[c] for c in teams), reverse=True)[9]
-            self._eligible[conference] = [c for c in teams if self.pct[c] >= cutoff - 1e-12]
+            cutoff = sorted((self.rank_key[c] for c in teams), reverse=True)[9]
+            self._eligible[conference] = [c for c in teams if self.rank_key[c] >= cutoff]
         return self._eligible[conference]
 
     def division_winners(self):
@@ -86,8 +92,8 @@ class SeasonTable:
             winners = set()
             for div in set(self.division.values()):
                 teams = [c for c in CODES if self.division[c] == div]
-                best = max(self.pct[c] for c in teams)
-                leaders = [c for c in teams if abs(self.pct[c] - best) < 1e-12]
+                best = max(self.rank_key[c] for c in teams)
+                leaders = [c for c in teams if self.rank_key[c] == best]
                 winners.add(self.order(leaders, skip_division_winner=True)[0])
             self._div_winners = winners
         return self._div_winners
@@ -137,10 +143,10 @@ class SeasonTable:
     def seeds(self, conference):
         """Teams of `conference` in seed order 1-15."""
         teams = [c for c in CODES if TEAM_INFO[c]["conference"] == conference]
-        rounded = {c: round(self.pct[c], 9) for c in teams}
         out = []
-        for level in sorted(set(rounded.values()), reverse=True):
-            out += self.order([c for c in teams if rounded[c] == level])
+        for level in sorted({self.rank_key[c] for c in teams}, reverse=True):
+            group = [c for c in teams if self.rank_key[c] == level]
+            out += group if len(group) == 1 else self.order(group)
         return out
 
 
@@ -194,6 +200,8 @@ def summaries(wins, seeds, playoff, cfg):
     """Per-team summary over simulated seasons. seeds: regular-season seed (1-15);
     playoff: made the playoffs (top 6, or won through the play-in)."""
     lo, hi = cfg["simulation"]["range_percentiles"]
+    n = wins.shape[0]
+    mcse_pct = lambda p: round(float(np.sqrt(p * (1 - p) / n)), 4)
     out = {}
     for c in CODES:
         w, s, p = wins[:, INDEX[c]], seeds[:, INDEX[c]], playoff[:, INDEX[c]]
@@ -207,4 +215,8 @@ def summaries(wins, seeds, playoff, cfg):
             "playoff_pct": round(float(np.mean(p)), 4),
             "top_seed_pct": round(float(np.mean(s == 1)), 4),
         }
+        t = out[c]
+        # Monte Carlo standard errors (how much these numbers would move with other random draws).
+        t["mcse"] = {"mean_wins": round(float(w.std() / np.sqrt(n)), 4), "playoff_pct": mcse_pct(t["playoff_pct"]),
+                     "play_in_pct": mcse_pct(t["play_in_pct"]), "top_seed_pct": mcse_pct(t["top_seed_pct"])}
     return out
