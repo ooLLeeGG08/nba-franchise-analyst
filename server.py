@@ -69,7 +69,51 @@ def _team_dashboard_bundle(team_key, season=None):
 
 @app.route('/')
 def index():
+    """Trade simulator (mobile-first single-page app)."""
+    return send_from_directory('static/sim', 'index.html')
+
+
+@app.route('/analyst')
+def analyst_index():
+    """The original chat-based franchise analyst, kept while the trade simulator is built."""
     return send_from_directory('static', 'index.html')
+
+
+# --- trade simulator API ----------------------------------------------------------------------
+
+_SIM = {}
+
+
+def _sim():
+    """League, CBA config and simulation engine, loaded once (the baseline comes from the
+    on-disk cache when the data hasn't changed)."""
+    if not _SIM:
+        from tradesim.engine import Engine
+        from tradesim.games import load_schedule_2026_27
+        from tradesim.league import League, load_cba
+        from tradesim.model import load_sim_config
+        league, cfg = League.load(), load_sim_config()
+        engine = Engine(league, load_schedule_2026_27(), cfg)
+        engine.baseline()
+        _SIM.update(league=league, cba=load_cba(), cfg=cfg, engine=engine)
+    return _SIM
+
+
+@app.route('/api/sim/teams')
+def sim_teams():
+    from tradesim.analysis import teams_overview
+    return jsonify({"conferences": teams_overview(_sim()["engine"])})
+
+
+@app.route('/api/sim/team/<code>')
+def sim_team(code):
+    from tradesim.analysis import team_analysis
+    from tradesim.teams import TEAM_INFO
+    code = code.upper()
+    if code not in TEAM_INFO:
+        return jsonify({"error": f"Unknown team {code}"}), 404
+    s = _sim()
+    return jsonify(team_analysis(code, s["engine"], s["league"], s["cba"]))
 
 
 @app.route('/<path:filename>')

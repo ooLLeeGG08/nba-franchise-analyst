@@ -85,7 +85,19 @@ than deleted; safe to remove.
 
 ## Trade Simulator (in progress, `trade-simulator` branch)
 
-Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI yet.
+`python server.py`, then open http://localhost:8080. The original chat analyst moved to `/analyst`.
+
+**Screens so far (Stage 3)**, mobile-first, plain JavaScript in `static/sim/`:
+1. Landing: title, one line, Begin.
+2. Team selection: Eastern / Western, then the team (team colors and three-letter codes, no logos).
+3. Team analysis (`/api/sim/team/<code>`, `tradesim/analysis.py`): 2026-27 projection (avg wins,
+   10-90% range, playoff / play-in / #1-seed odds), where the team needs help (guards, forwards,
+   centers ranked 1-30 by player impact weighted by expected minutes, so injuries count; bottom
+   third = a need), weakest regulars, long-term injuries, payroll against the cap, tax line and
+   aprons, roster, and four placeholder trade-idea cards (Stage 5). "Propose a trade" opens a
+   placeholder for the trade machine (Stage 4).
+
+Stage 1 adds the data layer and a cap-legality checker (`tradesim/`).
 
 - `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
   into `data/2026_27/league.json` and prints a report of anything it couldn't match.
