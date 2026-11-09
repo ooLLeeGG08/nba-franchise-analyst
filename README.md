@@ -82,3 +82,34 @@ than deleted; safe to remove.
 - **Minor, not-yet-addressed engineering items:** `requirements.txt` has no
   version pins (a fresh install could pull a breaking dependency update);
   CORS is wide open (`CORS(app)`, every origin allowed); there's no CI.
+
+## Trade Simulator (in progress, `trade-simulator` branch)
+
+Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI yet.
+
+- `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
+  into `data/2026_27/league.json` and prints a report of anything it couldn't match.
+- `config/cba_2026_27.json` holds every cap threshold and percentage, with sources.
+- `tradesim/checker.py` returns pass / fail / not checked / warning for each rule and team.
+
+### Limitations
+
+- **Cap legality only.** The checker says whether a trade is allowed under the cap
+  rules, not whether the other team would accept it.
+- **Rules marked "not checked"** (the data needed isn't available):
+  - Contract extensions and the poison-pill rule (no extension dates).
+  - The Jan 15 restriction on players who re-signed with a raise over 20% (no raise data).
+  - The 30-day wait for 2026 draft picks (no rookie signing dates).
+  - Trade exceptions other than the 5 large ones in `trade_exceptions.txt`.
+  - Cash sent earlier in the season (only this trade's cash is checked).
+  - Outcomes of protected, swap and conditional picks (passed on as written), and
+    Stepien Rule cases that depend on them.
+- **Data caveats:**
+  - Team salary (payroll + dead money) comes from the cap screenshot's apron columns,
+    accurate to about ±$0.1M.
+  - Hard caps from offseason moves come from a Hoops Rumors list dated July 10, 2026.
+  - The Hornets' exception amount ($40,770,520) and date may be a copy error in the source file.
+  - The one-year Bird veto list may be from last season.
+  - Re-acquire checks only know each player's most recent move.
+- **Roster rule:** each team must end a trade with 14-15 standard contracts (per the
+  project spec). The Kings currently have 13, so any trade that doesn't add a player fails.
