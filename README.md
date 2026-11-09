@@ -294,6 +294,18 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
 - Monte Carlo SE at 10,000 seasons: season table at most 0.10 wins and 0.5 points of any
   percentage; paired changes about 0.04 wins for traded teams (vs about 0.15 unpaired).
 
+**Long-term injuries.** `config/long_injuries.json` lists players expected to miss 15+ games
+(counted on the team's remaining schedule from the file's as-of date), each with an estimated
+return date (or games out), source URL and date added. For a listed player the simulator
+*replaces* his sampled availability with
+`(games already played + games after his return x his normal availability) / 82`, still
+drawing a spread around it; games he has already missed are counted once. It is a
+reduced-availability season, not specific dates, so every simulation still starts at 0-0.
+Affected teams are marked "Long-term injury adjusted" in the season table, with the file's
+as-of date. Current file: 17 players on 11 teams from ESPN's injury page (as of 2026-11-09);
+shorter absences and players not in the contracts data are listed under `excluded`.
+Update it by hand, then run `python -m tradesim.ratings`.
+
 **Data sources:** every raw file is listed with its source URL and as-of date in
 `data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.
 
@@ -317,8 +329,10 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   - The one-year Bird veto list may be from last season.
   - Re-acquire checks only know each player's most recent move.
 - **Simulator:**
-  - Injury model is simple: one spell per season per player, and when several players are
-    out their absence costs are simply added. Fatigue is only the fitted back-to-back penalty.
+  - Injury model is simple: random absences from each player's history (one spell per season),
+    plus a hand-maintained list of known 15+ game absences; shorter known injuries aren't
+    used. When several players are out their absence costs are simply added. Fatigue is only
+    the fitted back-to-back penalty.
   - The game spread (sigma) was fitted against season-average strengths, so it also contains
     some night-to-night lineup variation that the simulator adds separately (about 1%).
   - Simplified minutes: a "next man up" rule with G/F/C positions, not real rotations.

@@ -169,15 +169,17 @@ def season_table(league=None, cfg=None, engine=None):
     cfg = cfg or load_sim_config()
     engine = engine or Engine(league, load_schedule_2026_27(), cfg)
     sim = engine.baseline()
+    injured_teams = set(engine.ratings.get("long_injury_teams", []))
     mean = sum(sim["mean_strength"].values()) / len(CODES)
     rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(sim["mean_strength"][c] - mean, 1),
              **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct", "mcse")},
-             "top_seed_pct": sim["teams"][c]["seed_frequency"][0]}
+             "top_seed_pct": sim["teams"][c]["seed_frequency"][0], "injury_adjusted": c in injured_teams}
             for c in CODES]
     return sorted(rows, key=lambda r: -r["mean_wins"])
 
 
 if __name__ == "__main__":
+    from tradesim.ratings import load_long_injuries
     from tradesim.report import terminal_summary, write_reports
     cfg = load_sim_config()
     table = season_table(cfg=cfg)
@@ -187,6 +189,8 @@ if __name__ == "__main__":
         "Range = 10th to 90th percentile of simulated wins.",
         "Playoff = made the playoffs (seeds 1-6, or won through the play-in). Play-in = finished 7-10.",
         "Seeds use the NBA's tiebreakers; #1 seed = regular-season first place.",
+        "Long-term injury adjusted (column, or + in the terminal): teams with a player in config/long_injuries.json "
+        f"(as of {load_long_injuries()['as_of']}): his availability is set to expected games played / 82.",
         "Monte Carlo SE (largest across teams): avg wins "
         f"{max(r['mcse']['mean_wins'] for r in table):.2f}, playoff "
         f"{max(r['mcse']['playoff_pct'] for r in table) * 100:.1f} pts, play-in "
@@ -195,6 +199,7 @@ if __name__ == "__main__":
     ])
     worst = {k: max(r["mcse"][k] for r in table) for k in ("mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct")}
     print(terminal_summary(table))
+    print(f"+ = long-term injury adjusted (config/long_injuries.json, as of {load_long_injuries()['as_of']})")
     print(f"Monte Carlo SE (largest across teams): avg wins {worst['mean_wins']:.2f}, playoff "
           f"{worst['playoff_pct'] * 100:.1f} pts, play-in {worst['play_in_pct'] * 100:.1f} pts, "
           f"#1 seed {worst['top_seed_pct'] * 100:.1f} pts")

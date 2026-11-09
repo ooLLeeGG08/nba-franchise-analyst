@@ -369,6 +369,49 @@ def prior_mpg(player_key, pick, fit, cfg, season=CURRENT_SEASON):
     return rk["undrafted_mpg"]
 
 
+INJURIES_PATH = os.path.join(ROOT, "config", "long_injuries.json")
+# The two in-season-tournament games not yet scheduled are played in mid-December; for
+# counting games after a return date they're treated as on this date.
+PLACEHOLDER_GAME_DATE = "2026-12-15"
+
+
+def load_long_injuries(path=INJURIES_PATH):
+    with open(path) as f:
+        return json.load(f)
+
+
+def games_after(team, from_date, schedule_games):
+    """Team's games still to play on or after `from_date` (placeholders count as mid-December)."""
+    n = 0
+    for g in schedule_games:
+        if team not in (g["home"], g["away"]) or str(g.get("status", "")).startswith("Final"):
+            continue
+        if (g.get("date") or PLACEHOLDER_GAME_DATE) >= from_date:
+            n += 1
+    return n
+
+
+def injury_availability(entry, player, games_now, normal_availability, injuries, schedule_games):
+    """Expected share of the 82 games a long-term-injured player plays this season:
+    (games already played + games after his return x his normal availability) / 82.
+    Raises if the absence is shorter than min_games_out."""
+    team = player["team"]
+    if entry["team"] != team:
+        raise ValueError(f"long_injuries: {entry['player']} listed with {entry['team']}, but plays for {team}")
+    remaining = games_after(team, injuries["as_of"], schedule_games)
+    if "return_date" in entry:
+        after_return = games_after(team, entry["return_date"], schedule_games)
+    else:
+        after_return = max(remaining - entry["games_out"], 0)
+    games_out = remaining - after_return
+    if games_out < injuries["min_games_out"]:
+        raise ValueError(f"long_injuries: {entry['player']} is out {games_out} games; the file is for "
+                         f"{injuries['min_games_out']}+ game absences")
+    expected = games_now + after_return * normal_availability
+    return min(max(expected / 82, 0.005), 1.0), {"games_out": games_out, "games_after_return": after_return,
+                                                "expected_games_played": round(expected, 1)}
+
+
 def build_ratings(league=None, fit_result=None, cfg=None, write=True):
     from tradesim.league import League
     cfg = cfg or load_sim_config()
@@ -376,6 +419,13 @@ def build_ratings(league=None, fit_result=None, cfg=None, write=True):
     league = league or League.load()
     rc = cfg["ratings"]
     now = load_season(CURRENT_SEASON)[0]
+    injuries = load_long_injuries()
+    injured = {e["player"]: e for e in injuries["injuries"]}
+    unknown = set(injured) - set(league.players)
+    if unknown:
+        raise ValueError(f"long_injuries: unknown players {sorted(unknown)}")
+    with open(os.path.join(ROOT, "data", "raw", "2026_27", "schedule.json")) as f:
+        schedule_games = json.load(f)["games"]
     players = {}
     for pid, p in league.players.items():
         key = name_key(p["name"])
@@ -393,12 +443,20 @@ def build_ratings(league=None, fit_result=None, cfg=None, write=True):
         g_now = cur.get("g") or 0
         mpg_playing = ((cur.get("mp") or 0) + rc["minutes_prior_games"] * mpg_before) / (g_now + rc["minutes_prior_games"])
         avail = availability(key, CURRENT_SEASON, fit_result, cfg, games_now=g_now)
+        long_injury = None
+        if pid in injured:
+            # Override (not on top): his normal availability from earlier seasons, applied only to
+            # the games after his return; games he has already played count as played.
+            normal = availability(key, CURRENT_SEASON, fit_result, cfg)
+            avail, long_injury = injury_availability(injured[pid], p, g_now, normal, injuries, schedule_games)
+            long_injury.update({"return_date": injured[pid].get("return_date"), "source_url": injured[pid]["source_url"]})
         players[pid] = {"name": p["name"], "team": p["team"], "age": age, "pick": pick,
                         "history_seasons": len(hist), "prior": round(prior, 3), "prior_se": round(tau, 3),
                         "bpm_2026_27": cur.get("bpm"), "minutes_2026_27": cur.get("mp"), "games_2026_27": g_now,
                         "impact": round(impact, 3), "se": round(se, 3),
                         "mpg_prior": round(mpg_before, 2), "mpg_when_playing": round(mpg_playing, 2),
-                        "availability": round(avail, 3), "mpg_projected": round(mpg_playing * avail, 2)}
+                        "availability": round(avail, 3), "mpg_projected": round(mpg_playing * avail, 2),
+                        "long_injury": long_injury}
     # Team residuals: 2025-26 (full season) and 2026-27 to date, weighted by games, times rho.
     rho = fit_result["team_residual"]["rho"]
     r25 = fit_result["team_residual"]["by_season"]["2025-26"]
@@ -410,7 +468,9 @@ def build_ratings(league=None, fit_result=None, cfg=None, write=True):
         combined = (g25 * r25[code] + g26 * r26[code]) / (g25 + g26)
         residuals[code] = {"residual_2025_26": r25[code], "residual_2026_27": round(r26[code], 2),
                            "games_2026_27": g26, "residual": round(rho * combined, 3)}
-    out = {"as_of": "2026-11-09", "players": players, "team_residuals": residuals}
+    out = {"as_of": "2026-11-09", "players": players, "team_residuals": residuals,
+           "long_injuries_as_of": injuries["as_of"],
+           "long_injury_teams": sorted({players[pid]["team"] for pid in injured})}
     if write:
         with open(RATINGS_PATH, "w") as f:
             json.dump(out, f, indent=1, ensure_ascii=False)

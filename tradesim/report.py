@@ -15,7 +15,7 @@ REPORTS_DIR = os.path.join(ROOT, "reports")
 
 COLUMNS = ["conference", "rank", "team", "strength", "mean_wins", "range_low", "range_high",
            "playoff_pct", "play_in_pct", "top_seed_pct",
-           "mean_wins_mcse", "playoff_pct_mcse", "play_in_pct_mcse", "top_seed_pct_mcse"]
+           "mean_wins_mcse", "playoff_pct_mcse", "play_in_pct_mcse", "top_seed_pct_mcse", "injury_adjusted"]
 
 
 def ranked_rows(rows):
@@ -32,7 +32,8 @@ def ranked_rows(rows):
                         "playoff_pct": float(r["playoff_pct"]), "play_in_pct": float(r["play_in_pct"]),
                         "top_seed_pct": float(r["top_seed_pct"]),
                         **{f"{k}_mcse": float(r.get("mcse", {}).get(k, 0.0))
-                           for k in ("mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct")}})
+                           for k in ("mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct")},
+                        "injury_adjusted": bool(r.get("injury_adjusted", False))})
     return out
 
 
@@ -45,12 +46,13 @@ def markdown(rows, title, notes=()):
     lines += [f"- {n}" for n in notes]
     for conference in ("East", "West"):
         lines += ["", f"## {conference}", "",
-                  "| # | Team | Strength | Avg wins | Range (10-90%) | Playoff | Play-in | #1 seed |",
-                  "|---|---|---|---|---|---|---|---|"]
+                  "| # | Team | Strength | Avg wins | Range (10-90%) | Playoff | Play-in | #1 seed | Long-term injury |",
+                  "|---|---|---|---|---|---|---|---|---|"]
         for r in (r for r in rows if r["conference"] == conference):
             lines.append(f"| {r['rank']} | {r['team']} | {r['strength']:+.1f} | {r['mean_wins']:.1f} | "
                          f"{r['range_low']}-{r['range_high']} | {_pct(r['playoff_pct'])} | "
-                         f"{_pct(r['play_in_pct'])} | {_pct(r['top_seed_pct'])} |")
+                         f"{_pct(r['play_in_pct'])} | {_pct(r['top_seed_pct'])} | "
+                         f"{'adjusted' if r['injury_adjusted'] else ''} |")
     return "\n".join(lines) + "\n"
 
 
@@ -75,7 +77,8 @@ def terminal_summary(rows):
     for conference in ("East", "West"):
         lines.append(f"{conference:<5} Team   Str  Wins  Range  PO%  PI%  #1%")
         for r in (r for r in ranked_rows(rows) if r["conference"] == conference):
-            lines.append(f"{r['rank']:>4}  {r['team']:<4} {r['strength']:+5.1f} {r['mean_wins']:5.1f} "
+            lines.append(f"{r['rank']:>4}  {r['team'] + ('+' if r['injury_adjusted'] else ''):<4} "
+                         f"{r['strength']:+5.1f} {r['mean_wins']:5.1f} "
                          f"{r['range_low']:>2}-{r['range_high']:<2} {r['playoff_pct'] * 100:4.0f} "
                          f"{r['play_in_pct'] * 100:4.0f} {r['top_seed_pct'] * 100:4.0f}")
         lines.append("")

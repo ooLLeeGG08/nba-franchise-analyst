@@ -41,7 +41,8 @@ CACHE_DIR = os.path.join(_ROOT, "data", "cache")
 # Everything the baseline depends on. Changing any of these files invalidates the cache.
 INPUT_FILES = ["data/2026_27/league.json", "data/model/player_ratings_2026_27.json", "data/model/ratings_fit.json",
                "data/model/game_model.json", "data/model/uncertainty.json", "data/model/strength_check.json",
-               "data/raw/2026_27/schedule.json", "data/raw/standings/standings_2026-27.json", "config/sim.json"]
+               "data/raw/2026_27/schedule.json", "data/raw/standings/standings_2026-27.json", "config/sim.json",
+               "config/long_injuries.json"]
 
 
 def fingerprint(n_sims, seed, schedule):

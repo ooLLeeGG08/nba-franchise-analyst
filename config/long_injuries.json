@@ -1,0 +1,175 @@
+{
+  "_note": "Long-term injuries only (15+ games out from as_of, counted on the team's schedule). For each listed player the simulator replaces his sampled availability with expected games played / 82 (games already played + games after his return x his normal availability), still drawing a spread around it. It is a reduced-availability season, not specific dates, so every simulation still starts at 0-0. Give either return_date (estimated return) or games_out (from as_of). Re-check and update by hand.",
+  "as_of": "2026-11-09",
+  "min_games_out": 15,
+  "injuries": [
+    {
+      "player": "kristaps-porzingis",
+      "name": "Kristaps Porzingis",
+      "team": "GSW",
+      "return_date": "2027-01-02",
+      "note": "Announced he is stepping away from basketball.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "jimmy-butler",
+      "name": "Jimmy Butler III",
+      "team": "GSW",
+      "return_date": "2027-01-02",
+      "note": "Knee; recovering from a torn right ACL, could return Jan-Feb.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "johnny-furphy",
+      "name": "Johnny Furphy",
+      "team": "IND",
+      "return_date": "2027-01-02",
+      "note": "Knee.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "ben-sheppard",
+      "name": "Ben Sheppard",
+      "team": "IND",
+      "return_date": "2027-01-02",
+      "note": "Left knee meniscus surgery; several months.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "jordan-miller",
+      "name": "Jordan Miller",
+      "team": "LAC",
+      "return_date": "2027-03-02",
+      "note": "Torn left rotator cuff surgery; re-evaluate in six months.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "anthony-edwards",
+      "name": "Anthony Edwards",
+      "team": "MIN",
+      "return_date": "2026-12-21",
+      "note": "Arthroscopic procedure on right knee.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "donte-divincenzo",
+      "name": "Donte DiVincenzo",
+      "team": "MIN",
+      "return_date": "2027-04-02",
+      "note": "Achilles.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "cason-wallace",
+      "name": "Cason Wallace",
+      "team": "OKC",
+      "return_date": "2027-03-02",
+      "note": "Torn left shoulder labrum surgery; re-evaluate before season end.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "chet-holmgren",
+      "name": "Chet Holmgren",
+      "team": "OKC",
+      "return_date": "2027-01-02",
+      "note": "Small patellar tendon tear; at least 8-10 weeks.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "jalen-williams",
+      "name": "Jalen Williams",
+      "team": "OKC",
+      "return_date": "2027-03-02",
+      "note": "Fractured left fibula and ankle ligaments; re-evaluate before season end.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "ariel-hukporti",
+      "name": "Ariel Hukporti",
+      "team": "PHI",
+      "return_date": "2027-10-01",
+      "note": "Season-ending ruptured right Achilles.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "mark-williams",
+      "name": "Mark Williams",
+      "team": "PHX",
+      "return_date": "2027-02-03",
+      "note": "Torn left shoulder labrum surgery.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "vit-krejci",
+      "name": "Vit Krejci",
+      "team": "POR",
+      "return_date": "2027-01-02",
+      "note": "Left leg fracture.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "shaedon-sharpe",
+      "name": "Shaedon Sharpe",
+      "team": "POR",
+      "return_date": "2027-03-02",
+      "note": "Torn meniscus; expected to miss six months.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "ben-simmons",
+      "name": "Ben Simmons",
+      "team": "SAC",
+      "return_date": "2027-10-01",
+      "note": "Torn right Achilles surgery.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "justin-champagnie",
+      "name": "Justin Champagnie",
+      "team": "WAS",
+      "return_date": "2027-02-25",
+      "note": "Foot; several months.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    },
+    {
+      "player": "henri-veesaar",
+      "name": "Henri Veesaar",
+      "team": "ATL",
+      "return_date": "2027-07-01",
+      "note": "Torn right ACL; expected to miss 2026-27.",
+      "source_url": "https://www.espn.com/nba/injuries",
+      "date_added": "2026-11-09"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Jamir Watkins",
+      "team": "WAS",
+      "reason": "Not in the contracts data (likely a two-way contract)",
+      "source_url": "https://www.espn.com/nba/injuries"
+    },
+    {
+      "name": "Jaren Jackson Jr.",
+      "team": "UTA",
+      "return_date": "2026-12-14",
+      "reason": "14 games out by the schedule (under 15); sampled normally",
+      "source_url": "https://www.espn.com/nba/injuries"
+    }
+  ]
+}

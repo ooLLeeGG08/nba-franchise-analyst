@@ -22,7 +22,7 @@ def test_raw_rows_are_complete_and_numeric(table):
     assert len(table) == 30
     for r in table:
         assert set(r) == {"team", "conference", "strength", "mean_wins", "range", "playoff_pct", "play_in_pct",
-                          "top_seed_pct", "mcse"}
+                          "top_seed_pct", "mcse", "injury_adjusted"}
         for key in ("strength", "mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct"):
             assert isinstance(r[key], (int, float)), (r["team"], key)
         assert r["range"][0] <= r["mean_wins"] <= r["range"][1]
@@ -53,7 +53,7 @@ def test_markdown_rows_all_have_eight_cells_and_are_ascii(written):
     assert text.isascii()
     table_lines = [line for line in text.splitlines() if line.startswith("|")]
     assert len(table_lines) == 2 * (15 + 2)  # header + divider + 15 teams, per conference
-    assert all(line.count("|") == 9 for line in table_lines)
+    assert all(line.count("|") == 10 for line in table_lines)
 
 
 def test_strength_shows_as_signed_number_not_percent(written):

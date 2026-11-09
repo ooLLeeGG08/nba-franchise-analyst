@@ -17,7 +17,8 @@
    "mpg_prior": 30.91,
    "mpg_when_playing": 30.12,
    "availability": 0.693,
-   "mpg_projected": 20.87
+   "mpg_projected": 20.87,
+   "long_injury": null
   },
   "nikola-jokic": {
    "name": "Nikola Jokić",
@@ -35,7 +36,8 @@
    "mpg_prior": 34.85,
    "mpg_when_playing": 35.56,
    "availability": 0.779,
-   "mpg_projected": 27.69
+   "mpg_projected": 27.69,
+   "long_injury": null
   },
   "anthony-davis": {
    "name": "Anthony Davis",
@@ -53,7 +55,8 @@
    "mpg_prior": 31.3,
    "mpg_when_playing": 32.35,
    "availability": 0.529,
-   "mpg_projected": 17.1
+   "mpg_projected": 17.1,
+   "long_injury": null
   },
   "giannis-antetokounmpo": {
    "name": "Giannis Antetokounmpo",
@@ -71,7 +74,8 @@
    "mpg_prior": 28.86,
    "mpg_when_playing": 31.49,
    "availability": 0.662,
-   "mpg_projected": 20.83
+   "mpg_projected": 20.83,
+   "long_injury": null
   },
   "jayson-tatum": {
    "name": "Jayson Tatum",
@@ -89,7 +93,8 @@
    "mpg_prior": 26.1,
    "mpg_when_playing": 31.04,
    "availability": 0.599,
-   "mpg_projected": 18.59
+   "mpg_projected": 18.59,
+   "long_injury": null
   },
   "joel-embiid": {
    "name": "Joel Embiid",
@@ -107,7 +112,8 @@
    "mpg_prior": 31.61,
    "mpg_when_playing": 31.79,
    "availability": 0.478,
-   "mpg_projected": 15.19
+   "mpg_projected": 15.19,
+   "long_injury": null
   },
   "jaylen-brown": {
    "name": "Jaylen Brown",
@@ -125,7 +131,8 @@
    "mpg_prior": 34.41,
    "mpg_when_playing": 35.34,
    "availability": 0.783,
-   "mpg_projected": 27.66
+   "mpg_projected": 27.66,
+   "long_injury": null
   },
   "devin-booker": {
    "name": "Devin Booker",
@@ -143,7 +150,8 @@
    "mpg_prior": 33.53,
    "mpg_when_playing": 34.44,
    "availability": 0.794,
-   "mpg_projected": 27.36
+   "mpg_projected": 27.36,
+   "long_injury": null
   },
   "karl-anthony-towns": {
    "name": "Karl-Anthony Towns",
@@ -161,7 +169,8 @@
    "mpg_prior": 30.96,
    "mpg_when_playing": 31.34,
    "availability": 0.83,
-   "mpg_projected": 26.0
+   "mpg_projected": 26.0,
+   "long_injury": null
   },
   "jimmy-butler": {
    "name": "Jimmy Butler III",
@@ -178,8 +187,15 @@
    "se": 1.299,
    "mpg_prior": 31.11,
    "mpg_when_playing": 31.11,
-   "availability": 0.583,
-   "mpg_projected": 18.14
+   "availability": 0.355,
+   "mpg_projected": 11.04,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 48,
+    "expected_games_played": 29.1,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "paul-george": {
    "name": "Paul George",
@@ -197,7 +213,8 @@
    "mpg_prior": 30.68,
    "mpg_when_playing": 30.31,
    "availability": 0.56,
-   "mpg_projected": 16.97
+   "mpg_projected": 16.97,
+   "long_injury": null
   },
   "kawhi-leonard": {
    "name": "Kawhi Leonard",
@@ -215,7 +232,8 @@
    "mpg_prior": 32.08,
    "mpg_when_playing": 30.34,
    "availability": 0.626,
-   "mpg_projected": 19.0
+   "mpg_projected": 19.0,
+   "long_injury": null
   },
   "cade-cunningham": {
    "name": "Cade Cunningham",
@@ -233,7 +251,8 @@
    "mpg_prior": 33.94,
    "mpg_when_playing": 33.91,
    "availability": 0.779,
-   "mpg_projected": 26.41
+   "mpg_projected": 26.41,
+   "long_injury": null
   },
   "donovan-mitchell": {
    "name": "Donovan Mitchell",
@@ -251,7 +270,8 @@
    "mpg_prior": 33.46,
    "mpg_when_playing": 33.69,
    "availability": 0.81,
-   "mpg_projected": 27.29
+   "mpg_projected": 27.29,
+   "long_injury": null
   },
   "evan-mobley": {
    "name": "Evan Mobley",
@@ -269,7 +289,8 @@
    "mpg_prior": 31.91,
    "mpg_when_playing": 32.44,
    "availability": 0.791,
-   "mpg_projected": 25.64
+   "mpg_projected": 25.64,
+   "long_injury": null
   },
   "jamal-murray": {
    "name": "Jamal Murray",
@@ -287,7 +308,8 @@
    "mpg_prior": 35.36,
    "mpg_when_playing": 36.14,
    "availability": 0.806,
-   "mpg_projected": 29.13
+   "mpg_projected": 29.13,
+   "long_injury": null
   },
   "bam-adebayo": {
    "name": "Bam Adebayo",
@@ -305,7 +327,8 @@
    "mpg_prior": 32.4,
    "mpg_when_playing": 32.67,
    "availability": 0.849,
-   "mpg_projected": 27.74
+   "mpg_projected": 27.74,
+   "long_injury": null
   },
   "deaaron-fox": {
    "name": "De'Aaron Fox",
@@ -323,7 +346,8 @@
    "mpg_prior": 30.99,
    "mpg_when_playing": 29.93,
    "availability": 0.783,
-   "mpg_projected": 23.43
+   "mpg_projected": 23.43,
+   "long_injury": null
   },
   "luka-doncic": {
    "name": "Luka Dončić",
@@ -341,7 +365,8 @@
    "mpg_prior": 35.77,
    "mpg_when_playing": 35.92,
    "availability": 0.701,
-   "mpg_projected": 25.16
+   "mpg_projected": 25.16,
+   "long_injury": null
   },
   "trae-young": {
    "name": "Trae Young",
@@ -359,7 +384,8 @@
    "mpg_prior": 19.2,
    "mpg_when_playing": 29.87,
    "availability": 0.615,
-   "mpg_projected": 18.36
+   "mpg_projected": 18.36,
+   "long_injury": null
   },
   "jaren-jackson": {
    "name": "Jaren Jackson Jr.",
@@ -377,7 +403,8 @@
    "mpg_prior": 30.29,
    "mpg_when_playing": 28.38,
    "availability": 0.712,
-   "mpg_projected": 20.22
+   "mpg_projected": 20.22,
+   "long_injury": null
   },
   "zach-lavine": {
    "name": "Zach LaVine",
@@ -395,7 +422,8 @@
    "mpg_prior": 31.38,
    "mpg_when_playing": 32.26,
    "availability": 0.701,
-   "mpg_projected": 22.6
+   "mpg_projected": 22.6,
+   "long_injury": null
   },
   "anthony-edwards": {
    "name": "Anthony Edwards",
@@ -412,8 +440,15 @@
    "se": 1.211,
    "mpg_prior": 35.03,
    "mpg_when_playing": 34.46,
-   "availability": 0.783,
-   "mpg_projected": 26.97
+   "availability": 0.564,
+   "mpg_projected": 19.44,
+   "long_injury": {
+    "games_out": 16,
+    "games_after_return": 53,
+    "expected_games_played": 46.3,
+    "return_date": "2026-12-21",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "pascal-siakam": {
    "name": "Pascal Siakam",
@@ -431,7 +466,8 @@
    "mpg_prior": 33.18,
    "mpg_when_playing": 32.35,
    "availability": 0.802,
-   "mpg_projected": 25.95
+   "mpg_projected": 25.95,
+   "long_injury": null
   },
   "tyrese-haliburton": {
    "name": "Tyrese Haliburton",
@@ -449,7 +485,8 @@
    "mpg_prior": 33.58,
    "mpg_when_playing": 33.32,
    "availability": 0.521,
-   "mpg_projected": 17.35
+   "mpg_projected": 17.35,
+   "long_injury": null
   },
   "lauri-markkanen": {
    "name": "Lauri Markkanen",
@@ -467,7 +504,8 @@
    "mpg_prior": 34.36,
    "mpg_when_playing": 32.21,
    "availability": 0.599,
-   "mpg_projected": 19.29
+   "mpg_projected": 19.29,
+   "long_injury": null
   },
   "domantas-sabonis": {
    "name": "Domantas Sabonis",
@@ -485,7 +523,8 @@
    "mpg_prior": 28.2,
    "mpg_when_playing": 32.93,
    "availability": 0.603,
-   "mpg_projected": 19.85
+   "mpg_projected": 19.85,
+   "long_injury": null
   },
   "kevin-durant": {
    "name": "Kevin Durant",
@@ -503,7 +542,8 @@
    "mpg_prior": 36.41,
    "mpg_when_playing": 34.87,
    "availability": 0.806,
-   "mpg_projected": 28.11
+   "mpg_projected": 28.11,
+   "long_injury": null
   },
   "og-anunoby": {
    "name": "OG Anunoby",
@@ -521,7 +561,8 @@
    "mpg_prior": 33.19,
    "mpg_when_playing": 33.07,
    "availability": 0.806,
-   "mpg_projected": 26.66
+   "mpg_projected": 26.66,
+   "long_injury": null
   },
   "darius-garland": {
    "name": "Darius Garland",
@@ -539,7 +580,8 @@
    "mpg_prior": 29.87,
    "mpg_when_playing": 32.17,
    "availability": 0.724,
-   "mpg_projected": 23.29
+   "mpg_projected": 23.29,
+   "long_injury": null
   },
   "ja-morant": {
    "name": "Ja Morant",
@@ -557,7 +599,8 @@
    "mpg_prior": 28.45,
    "mpg_when_playing": 27.25,
    "availability": 0.509,
-   "mpg_projected": 13.87
+   "mpg_projected": 13.87,
+   "long_injury": null
   },
   "zion-williamson": {
    "name": "Zion Williamson",
@@ -575,7 +618,8 @@
    "mpg_prior": 29.69,
    "mpg_when_playing": 31.9,
    "availability": 0.618,
-   "mpg_projected": 19.73
+   "mpg_projected": 19.73,
+   "long_injury": null
   },
   "franz-wagner": {
    "name": "Franz Wagner",
@@ -593,7 +637,8 @@
    "mpg_prior": 29.97,
    "mpg_when_playing": 34.13,
    "availability": 0.622,
-   "mpg_projected": 21.24
+   "mpg_projected": 21.24,
+   "long_injury": null
   },
   "scottie-barnes": {
    "name": "Scottie Barnes",
@@ -611,7 +656,8 @@
    "mpg_prior": 33.51,
    "mpg_when_playing": 33.35,
    "availability": 0.818,
-   "mpg_projected": 27.28
+   "mpg_projected": 27.28,
+   "long_injury": null
   },
   "austin-reaves": {
    "name": "Austin Reaves",
@@ -629,7 +675,8 @@
    "mpg_prior": 34.55,
    "mpg_when_playing": 35.67,
    "availability": 0.748,
-   "mpg_projected": 26.67
+   "mpg_projected": 26.67,
+   "long_injury": null
   },
   "chet-holmgren": {
    "name": "Chet Holmgren",
@@ -646,8 +693,15 @@
    "se": 1.238,
    "mpg_prior": 28.94,
    "mpg_when_playing": 29.34,
-   "availability": 0.626,
-   "mpg_projected": 18.38
+   "availability": 0.411,
+   "mpg_projected": 12.05,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 48,
+    "expected_games_played": 33.7,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "jalen-williams": {
    "name": "Jalen Williams",
@@ -664,8 +718,15 @@
    "se": 1.235,
    "mpg_prior": 28.36,
    "mpg_when_playing": 29.6,
-   "availability": 0.63,
-   "mpg_projected": 18.66
+   "availability": 0.201,
+   "mpg_projected": 5.96,
+   "long_injury": {
+    "games_out": 49,
+    "games_after_return": 21,
+    "expected_games_played": 16.5,
+    "return_date": "2027-03-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "lamelo-ball": {
    "name": "LaMelo Ball",
@@ -683,7 +744,8 @@
    "mpg_prior": 28.01,
    "mpg_when_playing": 27.82,
    "availability": 0.728,
-   "mpg_projected": 20.25
+   "mpg_projected": 20.25,
+   "long_injury": null
   },
   "paolo-banchero": {
    "name": "Paolo Banchero",
@@ -701,7 +763,8 @@
    "mpg_prior": 34.75,
    "mpg_when_playing": 34.54,
    "availability": 0.689,
-   "mpg_projected": 23.79
+   "mpg_projected": 23.79,
+   "long_injury": null
   },
   "michael-porter": {
    "name": "Michael Porter Jr.",
@@ -719,7 +782,8 @@
    "mpg_prior": 32.48,
    "mpg_when_playing": 32.89,
    "availability": 0.763,
-   "mpg_projected": 25.1
+   "mpg_projected": 25.1,
+   "long_injury": null
   },
   "shai-gilgeous-alexander": {
    "name": "Shai Gilgeous-Alexander",
@@ -737,7 +801,8 @@
    "mpg_prior": 33.22,
    "mpg_when_playing": 32.94,
    "availability": 0.822,
-   "mpg_projected": 27.07
+   "mpg_projected": 27.07,
+   "long_injury": null
   },
   "tyrese-maxey": {
    "name": "Tyrese Maxey",
@@ -755,7 +820,8 @@
    "mpg_prior": 38.01,
    "mpg_when_playing": 36.94,
    "availability": 0.74,
-   "mpg_projected": 27.33
+   "mpg_projected": 27.33,
+   "long_injury": null
   },
   "jalen-duren": {
    "name": "Jalen Duren",
@@ -773,7 +839,8 @@
    "mpg_prior": 28.23,
    "mpg_when_playing": 25.59,
    "availability": 0.806,
-   "mpg_projected": 20.63
+   "mpg_projected": 20.63,
+   "long_injury": null
   },
   "brandon-ingram": {
    "name": "Brandon Ingram",
@@ -791,7 +858,8 @@
    "mpg_prior": 33.82,
    "mpg_when_playing": 33.82,
    "availability": 0.591,
-   "mpg_projected": 19.99
+   "mpg_projected": 19.99,
+   "long_injury": null
   },
   "kyrie-irving": {
    "name": "Kyrie Irving",
@@ -809,7 +877,8 @@
    "mpg_prior": 36.08,
    "mpg_when_playing": 32.03,
    "availability": 0.446,
-   "mpg_projected": 14.3
+   "mpg_projected": 14.3,
+   "long_injury": null
   },
   "desmond-bane": {
    "name": "Desmond Bane",
@@ -827,7 +896,8 @@
    "mpg_prior": 33.61,
    "mpg_when_playing": 34.16,
    "availability": 0.841,
-   "mpg_projected": 28.74
+   "mpg_projected": 28.74,
+   "long_injury": null
   },
   "jalen-brunson": {
    "name": "Jalen Brunson",
@@ -845,7 +915,8 @@
    "mpg_prior": 35.0,
    "mpg_when_playing": 34.43,
    "availability": 0.798,
-   "mpg_projected": 27.49
+   "mpg_projected": 27.49,
+   "long_injury": null
   },
   "rudy-gobert": {
    "name": "Rudy Gobert",
@@ -863,7 +934,8 @@
    "mpg_prior": 31.32,
    "mpg_when_playing": 30.37,
    "availability": 0.837,
-   "mpg_projected": 25.44
+   "mpg_projected": 25.44,
+   "long_injury": null
   },
   "jalen-green": {
    "name": "Jalen Green",
@@ -881,7 +953,8 @@
    "mpg_prior": 25.88,
    "mpg_when_playing": 27.8,
    "availability": 0.697,
-   "mpg_projected": 19.37
+   "mpg_projected": 19.37,
+   "long_injury": null
   },
   "alperen-sengun": {
    "name": "Alperen Sengun",
@@ -899,7 +972,8 @@
    "mpg_prior": 33.31,
    "mpg_when_playing": 34.12,
    "availability": 0.83,
-   "mpg_projected": 28.31
+   "mpg_projected": 28.31,
+   "long_injury": null
   },
   "jrue-holiday": {
    "name": "Jrue Holiday",
@@ -917,7 +991,8 @@
    "mpg_prior": 29.43,
    "mpg_when_playing": 27.15,
    "availability": 0.705,
-   "mpg_projected": 19.13
+   "mpg_projected": 19.13,
+   "long_injury": null
   },
   "jerami-grant": {
    "name": "Jerami Grant",
@@ -935,7 +1010,8 @@
    "mpg_prior": 29.74,
    "mpg_when_playing": 26.12,
    "availability": 0.662,
-   "mpg_projected": 17.28
+   "mpg_projected": 17.28,
+   "long_injury": null
   },
   "jordan-poole": {
    "name": "Jordan Poole",
@@ -953,7 +1029,8 @@
    "mpg_prior": 23.92,
    "mpg_when_playing": 20.4,
    "availability": 0.654,
-   "mpg_projected": 13.34
+   "mpg_projected": 13.34,
+   "long_injury": null
   },
   "mikal-bridges": {
    "name": "Mikal Bridges",
@@ -971,7 +1048,8 @@
    "mpg_prior": 32.83,
    "mpg_when_playing": 28.44,
    "availability": 0.896,
-   "mpg_projected": 25.49
+   "mpg_projected": 25.49,
+   "long_injury": null
   },
   "julius-randle": {
    "name": "Julius Randle",
@@ -989,7 +1067,8 @@
    "mpg_prior": 33.04,
    "mpg_when_playing": 33.35,
    "availability": 0.837,
-   "mpg_projected": 27.93
+   "mpg_projected": 27.93,
+   "long_injury": null
   },
   "tyler-herro": {
    "name": "Tyler Herro",
@@ -1007,7 +1086,8 @@
    "mpg_prior": 31.3,
    "mpg_when_playing": 30.9,
    "availability": 0.689,
-   "mpg_projected": 21.29
+   "mpg_projected": 21.29,
+   "long_injury": null
   },
   "dejounte-murray": {
    "name": "Dejounte Murray",
@@ -1025,7 +1105,8 @@
    "mpg_prior": 19.45,
    "mpg_when_playing": 27.85,
    "availability": 0.423,
-   "mpg_projected": 11.78
+   "mpg_projected": 11.78,
+   "long_injury": null
   },
   "immanuel-quickley": {
    "name": "Immanuel Quickley",
@@ -1043,7 +1124,8 @@
    "mpg_prior": 31.87,
    "mpg_when_playing": 31.8,
    "availability": 0.654,
-   "mpg_projected": 20.79
+   "mpg_projected": 20.79,
+   "long_injury": null
   },
   "jalen-suggs": {
    "name": "Jalen Suggs",
@@ -1061,7 +1143,8 @@
    "mpg_prior": 27.61,
    "mpg_when_playing": 29.76,
    "availability": 0.591,
-   "mpg_projected": 17.59
+   "mpg_projected": 17.59,
+   "long_injury": null
   },
   "aaron-gordon": {
    "name": "Aaron Gordon",
@@ -1079,7 +1162,8 @@
    "mpg_prior": 27.92,
    "mpg_when_playing": 28.74,
    "availability": 0.591,
-   "mpg_projected": 16.99
+   "mpg_projected": 16.99,
+   "long_injury": null
   },
   "james-harden": {
    "name": "James Harden",
@@ -1097,7 +1181,8 @@
    "mpg_prior": 34.83,
    "mpg_when_playing": 33.88,
    "availability": 0.841,
-   "mpg_projected": 28.5
+   "mpg_projected": 28.5,
+   "long_injury": null
   },
   "derrick-white": {
    "name": "Derrick White",
@@ -1115,7 +1200,8 @@
    "mpg_prior": 34.09,
    "mpg_when_playing": 31.23,
    "availability": 0.857,
-   "mpg_projected": 26.77
+   "mpg_projected": 26.77,
+   "long_injury": null
   },
   "andrew-wiggins": {
    "name": "Andrew Wiggins",
@@ -1133,7 +1219,8 @@
    "mpg_prior": 30.34,
    "mpg_when_playing": 27.71,
    "availability": 0.759,
-   "mpg_projected": 21.04
+   "mpg_projected": 21.04,
+   "long_injury": null
   },
   "walker-kessler": {
    "name": "Walker Kessler",
@@ -1151,7 +1238,8 @@
    "mpg_prior": 7.7,
    "mpg_when_playing": 23.72,
    "availability": 0.509,
-   "mpg_projected": 12.07
+   "mpg_projected": 12.07,
+   "long_injury": null
   },
   "jalen-johnson": {
    "name": "Jalen Johnson",
@@ -1169,7 +1257,8 @@
    "mpg_prior": 35.17,
    "mpg_when_playing": 33.83,
    "availability": 0.673,
-   "mpg_projected": 22.78
+   "mpg_projected": 22.78,
+   "long_injury": null
   },
   "rj-barrett": {
    "name": "RJ Barrett",
@@ -1187,7 +1276,8 @@
    "mpg_prior": 30.28,
    "mpg_when_playing": 32.1,
    "availability": 0.705,
-   "mpg_projected": 22.62
+   "mpg_projected": 22.62,
+   "long_injury": null
   },
   "jarrett-allen": {
    "name": "Jarrett Allen",
@@ -1205,7 +1295,8 @@
    "mpg_prior": 27.12,
    "mpg_when_playing": 25.97,
    "availability": 0.791,
-   "mpg_projected": 20.53
+   "mpg_projected": 20.53,
+   "long_injury": null
   },
   "draymond-green": {
    "name": "Draymond Green",
@@ -1223,7 +1314,8 @@
    "mpg_prior": 27.49,
    "mpg_when_playing": 27.49,
    "availability": 0.783,
-   "mpg_projected": 21.52
+   "mpg_projected": 21.52,
+   "long_injury": null
   },
   "devin-vassell": {
    "name": "Devin Vassell",
@@ -1241,7 +1333,8 @@
    "mpg_prior": 30.51,
    "mpg_when_playing": 30.17,
    "availability": 0.771,
-   "mpg_projected": 23.26
+   "mpg_projected": 23.26,
+   "long_injury": null
   },
   "trey-murphy": {
    "name": "Trey Murphy III",
@@ -1259,7 +1352,8 @@
    "mpg_prior": 35.47,
    "mpg_when_playing": 33.74,
    "availability": 0.72,
-   "mpg_projected": 24.3
+   "mpg_projected": 24.3,
+   "long_injury": null
   },
   "coby-white": {
    "name": "Coby White",
@@ -1277,7 +1371,8 @@
    "mpg_prior": 24.98,
    "mpg_when_playing": 21.86,
    "availability": 0.716,
-   "mpg_projected": 15.66
+   "mpg_projected": 15.66,
+   "long_injury": null
   },
   "myles-turner": {
    "name": "Myles Turner",
@@ -1295,7 +1390,8 @@
    "mpg_prior": 26.93,
    "mpg_when_playing": 27.04,
    "availability": 0.818,
-   "mpg_projected": 22.12
+   "mpg_projected": 22.12,
+   "long_injury": null
   },
   "jaden-mcdaniels": {
    "name": "Jaden McDaniels",
@@ -1313,7 +1409,8 @@
    "mpg_prior": 31.73,
    "mpg_when_playing": 33.16,
    "availability": 0.869,
-   "mpg_projected": 28.81
+   "mpg_projected": 28.81,
+   "long_injury": null
   },
   "dyson-daniels": {
    "name": "Dyson Daniels",
@@ -1331,7 +1428,8 @@
    "mpg_prior": 33.16,
    "mpg_when_playing": 31.17,
    "availability": 0.857,
-   "mpg_projected": 26.72
+   "mpg_projected": 26.72,
+   "long_injury": null
   },
   "fred-vanvleet": {
    "name": "Fred VanVleet",
@@ -1349,7 +1447,8 @@
    "mpg_prior": 35.18,
    "mpg_when_playing": 31.99,
    "availability": 0.486,
-   "mpg_projected": 15.53
+   "mpg_projected": 15.53,
+   "long_injury": null
   },
   "josh-giddey": {
    "name": "Josh Giddey",
@@ -1367,7 +1466,8 @@
    "mpg_prior": 32.06,
    "mpg_when_playing": 29.31,
    "availability": 0.74,
-   "mpg_projected": 21.68
+   "mpg_projected": 21.68,
+   "long_injury": null
   },
   "deandre-hunter": {
    "name": "De'Andre Hunter",
@@ -1385,7 +1485,8 @@
    "mpg_prior": 26.13,
    "mpg_when_playing": 29.4,
    "availability": 0.681,
-   "mpg_projected": 20.03
+   "mpg_projected": 20.03,
+   "long_injury": null
   },
   "keegan-murray": {
    "name": "Keegan Murray",
@@ -1403,7 +1504,8 @@
    "mpg_prior": 34.48,
    "mpg_when_playing": 31.17,
    "availability": 0.618,
-   "mpg_projected": 19.28
+   "mpg_projected": 19.28,
+   "long_injury": null
   },
   "jabari-smith": {
    "name": "Jabari Smith Jr.",
@@ -1421,7 +1523,8 @@
    "mpg_prior": 35.13,
    "mpg_when_playing": 35.11,
    "availability": 0.783,
-   "mpg_projected": 27.48
+   "mpg_projected": 27.48,
+   "long_injury": null
   },
   "nicolas-claxton": {
    "name": "Nic Claxton",
@@ -1439,7 +1542,8 @@
    "mpg_prior": 27.83,
    "mpg_when_playing": 26.19,
    "availability": 0.767,
-   "mpg_projected": 20.09
+   "mpg_projected": 20.09,
+   "long_injury": null
   },
   "naz-reid": {
    "name": "Naz Reid",
@@ -1457,7 +1561,8 @@
    "mpg_prior": 26.06,
    "mpg_when_playing": 28.15,
    "availability": 0.873,
-   "mpg_projected": 24.57
+   "mpg_projected": 24.57,
+   "long_injury": null
   },
   "isaiah-hartenstein": {
    "name": "Isaiah Hartenstein",
@@ -1475,7 +1580,8 @@
    "mpg_prior": 24.19,
    "mpg_when_playing": 24.13,
    "availability": 0.665,
-   "mpg_projected": 16.06
+   "mpg_projected": 16.06,
+   "long_injury": null
   },
   "cameron-johnson": {
    "name": "Cameron Johnson",
@@ -1493,7 +1599,8 @@
    "mpg_prior": 30.5,
    "mpg_when_playing": 28.95,
    "availability": 0.673,
-   "mpg_projected": 19.49
+   "mpg_projected": 19.49,
+   "long_injury": null
   },
   "miles-bridges": {
    "name": "Miles Bridges",
@@ -1511,7 +1618,8 @@
    "mpg_prior": 31.0,
    "mpg_when_playing": 31.77,
    "availability": 0.802,
-   "mpg_projected": 25.49
+   "mpg_projected": 25.49,
+   "long_injury": null
   },
   "christian-braun": {
    "name": "Christian Braun",
@@ -1529,7 +1637,8 @@
    "mpg_prior": 31.8,
    "mpg_when_playing": 33.31,
    "availability": 0.732,
-   "mpg_projected": 24.38
+   "mpg_projected": 24.38,
+   "long_injury": null
   },
   "norman-powell": {
    "name": "Norman Powell",
@@ -1547,7 +1656,8 @@
    "mpg_prior": 29.6,
    "mpg_when_playing": 29.08,
    "availability": 0.712,
-   "mpg_projected": 20.71
+   "mpg_projected": 20.71,
+   "long_injury": null
   },
   "cj-mccollum": {
    "name": "CJ McCollum",
@@ -1565,7 +1675,8 @@
    "mpg_prior": 29.79,
    "mpg_when_playing": 27.0,
    "availability": 0.779,
-   "mpg_projected": 21.03
+   "mpg_projected": 21.03,
+   "long_injury": null
   },
   "dillon-brooks": {
    "name": "Dillon Brooks",
@@ -1583,7 +1694,8 @@
    "mpg_prior": 30.39,
    "mpg_when_playing": 30.84,
    "availability": 0.763,
-   "mpg_projected": 23.54
+   "mpg_projected": 23.54,
+   "long_injury": null
   },
   "josh-hart": {
    "name": "Josh Hart",
@@ -1601,7 +1713,8 @@
    "mpg_prior": 30.21,
    "mpg_when_playing": 31.09,
    "availability": 0.806,
-   "mpg_projected": 25.06
+   "mpg_projected": 25.06,
+   "long_injury": null
   },
   "kyle-kuzma": {
    "name": "Kyle Kuzma",
@@ -1619,7 +1732,8 @@
    "mpg_prior": 26.17,
    "mpg_when_playing": 26.99,
    "availability": 0.783,
-   "mpg_projected": 21.13
+   "mpg_projected": 21.13,
+   "long_injury": null
   },
   "peyton-watson": {
    "name": "Peyton Watson",
@@ -1637,7 +1751,8 @@
    "mpg_prior": 29.59,
    "mpg_when_playing": 29.0,
    "availability": 0.728,
-   "mpg_projected": 21.11
+   "mpg_projected": 21.11,
+   "long_injury": null
   },
   "ivica-zubac": {
    "name": "Ivica Zubac",
@@ -1655,7 +1770,8 @@
    "mpg_prior": 30.12,
    "mpg_when_playing": 25.26,
    "availability": 0.74,
-   "mpg_projected": 18.69
+   "mpg_projected": 18.69,
+   "long_injury": null
   },
   "malik-monk": {
    "name": "Malik Monk",
@@ -1673,7 +1789,8 @@
    "mpg_prior": 22.0,
    "mpg_when_playing": 18.71,
    "availability": 0.751,
-   "mpg_projected": 14.06
+   "mpg_projected": 14.06,
+   "long_injury": null
   },
   "shaedon-sharpe": {
    "name": "Shaedon Sharpe",
@@ -1690,8 +1807,15 @@
    "se": 1.299,
    "mpg_prior": 29.42,
    "mpg_when_playing": 29.42,
-   "availability": 0.697,
-   "mpg_projected": 20.5
+   "availability": 0.185,
+   "mpg_projected": 5.46,
+   "long_injury": {
+    "games_out": 50,
+    "games_after_return": 21,
+    "expected_games_played": 15.2,
+    "return_date": "2027-03-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "kristaps-porzingis": {
    "name": "Kristaps Porziņģis",
@@ -1708,8 +1832,15 @@
    "se": 1.299,
    "mpg_prior": 24.03,
    "mpg_when_playing": 24.03,
-   "availability": 0.509,
-   "mpg_projected": 12.23
+   "availability": 0.31,
+   "mpg_projected": 7.44,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 48,
+    "expected_games_played": 25.4,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "pj-washington": {
    "name": "P.J. Washington",
@@ -1727,7 +1858,8 @@
    "mpg_prior": 31.0,
    "mpg_when_playing": 32.67,
    "availability": 0.701,
-   "mpg_projected": 22.89
+   "mpg_projected": 22.89,
+   "long_injury": null
   },
   "alex-caruso": {
    "name": "Alex Caruso",
@@ -1745,7 +1877,8 @@
    "mpg_prior": 18.21,
    "mpg_when_playing": 18.34,
    "availability": 0.677,
-   "mpg_projected": 12.42
+   "mpg_projected": 12.42,
+   "long_injury": null
   },
   "andrew-nembhard": {
    "name": "Andrew Nembhard",
@@ -1763,7 +1896,8 @@
    "mpg_prior": 31.33,
    "mpg_when_playing": 32.44,
    "availability": 0.728,
-   "mpg_projected": 23.61
+   "mpg_projected": 23.61,
+   "long_injury": null
   },
   "jakob-poeltl": {
    "name": "Jakob Poeltl",
@@ -1781,7 +1915,8 @@
    "mpg_prior": 24.98,
    "mpg_when_playing": 22.99,
    "availability": 0.65,
-   "mpg_projected": 14.94
+   "mpg_projected": 14.94,
+   "long_injury": null
   },
   "ayo-dosunmu": {
    "name": "Ayo Dosunmu",
@@ -1799,7 +1934,8 @@
    "mpg_prior": 27.26,
    "mpg_when_playing": 30.08,
    "availability": 0.712,
-   "mpg_projected": 21.43
+   "mpg_projected": 21.43,
+   "long_injury": null
   },
   "grayson-allen": {
    "name": "Grayson Allen",
@@ -1817,7 +1953,8 @@
    "mpg_prior": 28.76,
    "mpg_when_playing": 26.85,
    "availability": 0.708,
-   "mpg_projected": 19.02
+   "mpg_projected": 19.02,
+   "long_injury": null
   },
   "wendell-carter": {
    "name": "Wendell Carter Jr.",
@@ -1835,7 +1972,8 @@
    "mpg_prior": 29.33,
    "mpg_when_playing": 32.05,
    "availability": 0.826,
-   "mpg_projected": 26.46
+   "mpg_projected": 26.46,
+   "long_injury": null
   },
   "toumani-camara": {
    "name": "Toumani Camara",
@@ -1853,7 +1991,8 @@
    "mpg_prior": 33.3,
    "mpg_when_playing": 29.39,
    "availability": 0.88,
-   "mpg_projected": 25.88
+   "mpg_projected": 25.88,
+   "long_injury": null
   },
   "keldon-johnson": {
    "name": "Keldon Johnson",
@@ -1871,7 +2010,8 @@
    "mpg_prior": 23.3,
    "mpg_when_playing": 23.43,
    "availability": 0.88,
-   "mpg_projected": 20.63
+   "mpg_projected": 20.63,
+   "long_injury": null
   },
   "patrick-williams": {
    "name": "Patrick Williams",
@@ -1889,7 +2029,8 @@
    "mpg_prior": 20.47,
    "mpg_when_playing": 20.91,
    "availability": 0.755,
-   "mpg_projected": 15.79
+   "mpg_projected": 15.79,
+   "long_injury": null
   },
   "luguentz-dort": {
    "name": "Luguentz Dort",
@@ -1907,7 +2048,8 @@
    "mpg_prior": 26.8,
    "mpg_when_playing": 25.87,
    "availability": 0.81,
-   "mpg_projected": 20.96
+   "mpg_projected": 20.96,
+   "long_injury": null
   },
   "daniel-gafford": {
    "name": "Daniel Gafford",
@@ -1925,7 +2067,8 @@
    "mpg_prior": 21.73,
    "mpg_when_playing": 22.04,
    "availability": 0.697,
-   "mpg_projected": 15.36
+   "mpg_projected": 15.36,
+   "long_injury": null
   },
   "santi-aldama": {
    "name": "Santi Aldama",
@@ -1943,7 +2086,8 @@
    "mpg_prior": 27.86,
    "mpg_when_playing": 23.9,
    "availability": 0.65,
-   "mpg_projected": 15.53
+   "mpg_projected": 15.53,
+   "long_injury": null
   },
   "john-collins": {
    "name": "John Collins",
@@ -1961,7 +2105,8 @@
    "mpg_prior": 27.13,
    "mpg_when_playing": 26.62,
    "availability": 0.681,
-   "mpg_projected": 18.13
+   "mpg_projected": 18.13,
+   "long_injury": null
   },
   "victor-wembanyama": {
    "name": "Victor Wembanyama",
@@ -1979,7 +2124,8 @@
    "mpg_prior": 29.16,
    "mpg_when_playing": 29.92,
    "availability": 0.689,
-   "mpg_projected": 20.61
+   "mpg_projected": 20.61,
+   "long_injury": null
   },
   "max-strus": {
    "name": "Max Strus",
@@ -1997,7 +2143,8 @@
    "mpg_prior": 14.4,
    "mpg_when_playing": 17.25,
    "availability": 0.474,
-   "mpg_projected": 8.17
+   "mpg_projected": 8.17,
+   "long_injury": null
   },
   "nikola-jovic": {
    "name": "Nikola Jović",
@@ -2015,7 +2162,8 @@
    "mpg_prior": 17.19,
    "mpg_when_playing": 14.25,
    "availability": 0.611,
-   "mpg_projected": 8.7
+   "mpg_projected": 8.7,
+   "long_injury": null
   },
   "onyeka-okongwu": {
    "name": "Onyeka Okongwu",
@@ -2033,7 +2181,8 @@
    "mpg_prior": 31.04,
    "mpg_when_playing": 30.01,
    "availability": 0.841,
-   "mpg_projected": 25.25
+   "mpg_projected": 25.25,
+   "long_injury": null
   },
   "duncan-robinson": {
    "name": "Duncan Robinson",
@@ -2051,7 +2200,8 @@
    "mpg_prior": 27.44,
    "mpg_when_playing": 29.44,
    "availability": 0.845,
-   "mpg_projected": 24.89
+   "mpg_projected": 24.89,
+   "long_injury": null
   },
   "terance-mann": {
    "name": "Terance Mann",
@@ -2069,7 +2219,8 @@
    "mpg_prior": 24.27,
    "mpg_when_playing": 19.93,
    "availability": 0.748,
-   "mpg_projected": 14.9
+   "mpg_projected": 14.9,
+   "long_injury": null
   },
   "julian-champagnie": {
    "name": "Julian Champagnie",
@@ -2087,7 +2238,8 @@
    "mpg_prior": 27.63,
    "mpg_when_playing": 26.34,
    "availability": 0.9,
-   "mpg_projected": 23.71
+   "mpg_projected": 23.71,
+   "long_injury": null
   },
   "gary-trent": {
    "name": "Gary Trent Jr.",
@@ -2105,7 +2257,8 @@
    "mpg_prior": 21.18,
    "mpg_when_playing": 16.99,
    "availability": 0.771,
-   "mpg_projected": 13.1
+   "mpg_projected": 13.1,
+   "long_injury": null
   },
   "brandon-miller": {
    "name": "Brandon Miller",
@@ -2123,7 +2276,8 @@
    "mpg_prior": 30.28,
    "mpg_when_playing": 30.76,
    "availability": 0.618,
-   "mpg_projected": 19.02
+   "mpg_projected": 19.02,
+   "long_injury": null
   },
   "mitchell-robinson": {
    "name": "Mitchell Robinson",
@@ -2141,7 +2295,8 @@
    "mpg_prior": 19.58,
    "mpg_when_playing": 19.07,
    "availability": 0.556,
-   "mpg_projected": 10.6
+   "mpg_projected": 10.6,
+   "long_injury": null
   },
   "tobias-harris": {
    "name": "Tobias Harris",
@@ -2159,7 +2314,8 @@
    "mpg_prior": 27.71,
    "mpg_when_playing": 27.71,
    "availability": 0.751,
-   "mpg_projected": 20.83
+   "mpg_projected": 20.83,
+   "long_injury": null
   },
   "isaiah-stewart": {
    "name": "Isaiah Stewart",
@@ -2177,7 +2333,8 @@
    "mpg_prior": 22.71,
    "mpg_when_playing": 20.13,
    "availability": 0.755,
-   "mpg_projected": 15.2
+   "mpg_projected": 15.2,
+   "long_injury": null
   },
   "obi-toppin": {
    "name": "Obi Toppin",
@@ -2195,7 +2352,8 @@
    "mpg_prior": 17.67,
    "mpg_when_playing": 20.36,
    "availability": 0.65,
-   "mpg_projected": 13.23
+   "mpg_projected": 13.23,
+   "long_injury": null
   },
   "herbert-jones": {
    "name": "Herbert Jones",
@@ -2213,7 +2371,8 @@
    "mpg_prior": 28.36,
    "mpg_when_playing": 24.45,
    "availability": 0.556,
-   "mpg_projected": 13.59
+   "mpg_projected": 13.59,
+   "long_injury": null
   },
   "caris-levert": {
    "name": "Caris LeVert",
@@ -2231,7 +2390,8 @@
    "mpg_prior": 19.23,
    "mpg_when_playing": 19.23,
    "availability": 0.705,
-   "mpg_projected": 13.55
+   "mpg_projected": 13.55,
+   "long_injury": null
   },
   "dennis-schroder": {
    "name": "Dennis Schröder",
@@ -2249,7 +2409,8 @@
    "mpg_prior": 24.24,
    "mpg_when_playing": 27.87,
    "availability": 0.822,
-   "mpg_projected": 22.91
+   "mpg_projected": 22.91,
+   "long_injury": null
   },
   "aj-dybantsa": {
    "name": "AJ Dybantsa",
@@ -2267,7 +2428,8 @@
    "mpg_prior": 33.37,
    "mpg_when_playing": 32.35,
    "availability": 0.678,
-   "mpg_projected": 21.92
+   "mpg_projected": 21.92,
+   "long_injury": null
   },
   "josh-green": {
    "name": "Josh Green",
@@ -2285,7 +2447,8 @@
    "mpg_prior": 15.66,
    "mpg_when_playing": 17.1,
    "availability": 0.744,
-   "mpg_projected": 12.71
+   "mpg_projected": 12.71,
+   "long_injury": null
   },
   "bobby-portis": {
    "name": "Bobby Portis Jr.",
@@ -2303,7 +2466,8 @@
    "mpg_prior": 24.16,
    "mpg_when_playing": 21.85,
    "availability": 0.712,
-   "mpg_projected": 15.57
+   "mpg_projected": 15.57,
+   "long_injury": null
   },
   "cooper-flagg": {
    "name": "Cooper Flagg",
@@ -2321,7 +2485,8 @@
    "mpg_prior": 33.49,
    "mpg_when_playing": 33.53,
    "availability": 0.778,
-   "mpg_projected": 26.09
+   "mpg_projected": 26.09,
+   "long_injury": null
   },
   "nickeil-alexander-walker": {
    "name": "Nickeil Alexander-Walker",
@@ -2339,7 +2504,8 @@
    "mpg_prior": 33.37,
    "mpg_when_playing": 31.62,
    "availability": 0.888,
-   "mpg_projected": 28.08
+   "mpg_projected": 28.08,
+   "long_injury": null
   },
   "grant-williams": {
    "name": "Grant Williams",
@@ -2357,7 +2523,8 @@
    "mpg_prior": 19.75,
    "mpg_when_playing": 19.75,
    "availability": 0.423,
-   "mpg_projected": 8.35
+   "mpg_projected": 8.35,
+   "long_injury": null
   },
   "dorian-finney-smith": {
    "name": "Dorian Finney-Smith",
@@ -2375,7 +2542,8 @@
    "mpg_prior": 16.76,
    "mpg_when_playing": 12.1,
    "availability": 0.622,
-   "mpg_projected": 7.53
+   "mpg_projected": 7.53,
+   "long_injury": null
   },
   "jock-landale": {
    "name": "Jock Landale",
@@ -2393,7 +2561,8 @@
    "mpg_prior": 22.15,
    "mpg_when_playing": 18.14,
    "availability": 0.677,
-   "mpg_projected": 12.29
+   "mpg_projected": 12.29,
+   "long_injury": null
   },
   "tari-eason": {
    "name": "Tari Eason",
@@ -2411,7 +2580,8 @@
    "mpg_prior": 25.82,
    "mpg_when_playing": 24.74,
    "availability": 0.716,
-   "mpg_projected": 17.72
+   "mpg_projected": 17.72,
+   "long_injury": null
   },
   "robert-williams": {
    "name": "Robert Williams III",
@@ -2429,7 +2599,8 @@
    "mpg_prior": 17.08,
    "mpg_when_playing": 16.79,
    "availability": 0.556,
-   "mpg_projected": 9.33
+   "mpg_projected": 9.33,
+   "long_injury": null
   },
   "rui-hachimura": {
    "name": "Rui Hachimura",
@@ -2447,7 +2618,8 @@
    "mpg_prior": 28.34,
    "mpg_when_playing": 29.64,
    "availability": 0.744,
-   "mpg_projected": 22.04
+   "mpg_projected": 22.04,
+   "long_injury": null
   },
   "corey-kispert": {
    "name": "Corey Kispert",
@@ -2465,7 +2637,8 @@
    "mpg_prior": 18.62,
    "mpg_when_playing": 13.65,
    "availability": 0.708,
-   "mpg_projected": 9.67
+   "mpg_projected": 9.67,
+   "long_injury": null
   },
   "quentin-grimes": {
    "name": "Quentin Grimes",
@@ -2483,7 +2656,8 @@
    "mpg_prior": 29.41,
    "mpg_when_playing": 27.13,
    "availability": 0.849,
-   "mpg_projected": 23.04
+   "mpg_projected": 23.04,
+   "long_injury": null
   },
   "zaccharie-risacher": {
    "name": "Zaccharie Risacher",
@@ -2501,7 +2675,8 @@
    "mpg_prior": 22.43,
    "mpg_when_playing": 24.21,
    "availability": 0.814,
-   "mpg_projected": 19.71
+   "mpg_projected": 19.71,
+   "long_injury": null
   },
   "scoot-henderson": {
    "name": "Scoot Henderson",
@@ -2519,7 +2694,8 @@
    "mpg_prior": 24.93,
    "mpg_when_playing": 23.26,
    "availability": 0.63,
-   "mpg_projected": 14.66
+   "mpg_projected": 14.66,
+   "long_injury": null
   },
   "damian-lillard": {
    "name": "Damian Lillard",
@@ -2537,7 +2713,8 @@
    "mpg_prior": 36.09,
    "mpg_when_playing": 31.82,
    "availability": 0.482,
-   "mpg_projected": 15.32
+   "mpg_projected": 15.32,
+   "long_injury": null
   },
   "darryn-peterson": {
    "name": "Darryn Peterson",
@@ -2555,7 +2732,8 @@
    "mpg_prior": 29.54,
    "mpg_when_playing": 30.31,
    "availability": 0.721,
-   "mpg_projected": 21.87
+   "mpg_projected": 21.87,
+   "long_injury": null
   },
   "deni-avdija": {
    "name": "Deni Avdija",
@@ -2573,7 +2751,8 @@
    "mpg_prior": 33.32,
    "mpg_when_playing": 32.54,
    "availability": 0.794,
-   "mpg_projected": 25.85
+   "mpg_projected": 25.85,
+   "long_injury": null
   },
   "sandro-mamukelashvili": {
    "name": "Sandro Mamukelashvili",
@@ -2591,7 +2770,8 @@
    "mpg_prior": 21.89,
    "mpg_when_playing": 22.34,
    "availability": 0.814,
-   "mpg_projected": 18.18
+   "mpg_projected": 18.18,
+   "long_injury": null
   },
   "steven-adams": {
    "name": "Steven Adams",
@@ -2609,7 +2789,8 @@
    "mpg_prior": 22.81,
    "mpg_when_playing": 20.34,
    "availability": 0.575,
-   "mpg_projected": 11.71
+   "mpg_projected": 11.71,
+   "long_injury": null
   },
   "dylan-harper": {
    "name": "Dylan Harper",
@@ -2627,7 +2808,8 @@
    "mpg_prior": 22.58,
    "mpg_when_playing": 28.86,
    "availability": 0.778,
-   "mpg_projected": 22.45
+   "mpg_projected": 22.45,
+   "long_injury": null
   },
   "donte-divincenzo": {
    "name": "Donte DiVincenzo",
@@ -2644,8 +2826,15 @@
    "se": 1.299,
    "mpg_prior": 30.41,
    "mpg_when_playing": 30.41,
-   "availability": 0.783,
-   "mpg_projected": 23.81
+   "availability": 0.06,
+   "mpg_projected": 1.81,
+   "long_injury": {
+    "games_out": 63,
+    "games_after_return": 6,
+    "expected_games_played": 4.9,
+    "return_date": "2027-04-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "moses-moody": {
    "name": "Moses Moody",
@@ -2663,7 +2852,8 @@
    "mpg_prior": 25.67,
    "mpg_when_playing": 25.67,
    "availability": 0.744,
-   "mpg_projected": 19.09
+   "mpg_projected": 19.09,
+   "long_injury": null
   },
   "jarred-vanderbilt": {
    "name": "Jarred Vanderbilt",
@@ -2681,7 +2871,8 @@
    "mpg_prior": 17.35,
    "mpg_when_playing": 14.52,
    "availability": 0.638,
-   "mpg_projected": 9.27
+   "mpg_projected": 9.27,
+   "long_injury": null
   },
   "davion-mitchell": {
    "name": "Davion Mitchell",
@@ -2699,7 +2890,8 @@
    "mpg_prior": 28.57,
    "mpg_when_playing": 33.26,
    "availability": 0.822,
-   "mpg_projected": 27.33
+   "mpg_projected": 27.33,
+   "long_injury": null
   },
   "alex-sarr": {
    "name": "Alex Sarr",
@@ -2717,7 +2909,8 @@
    "mpg_prior": 27.19,
    "mpg_when_playing": 26.28,
    "availability": 0.705,
-   "mpg_projected": 18.52
+   "mpg_projected": 18.52,
+   "long_injury": null
   },
   "amen-thompson": {
    "name": "Amen Thompson",
@@ -2735,7 +2928,8 @@
    "mpg_prior": 37.38,
    "mpg_when_playing": 34.66,
    "availability": 0.837,
-   "mpg_projected": 29.03
+   "mpg_projected": 29.03,
+   "long_injury": null
   },
   "cameron-boozer": {
    "name": "Cameron Boozer",
@@ -2753,7 +2947,8 @@
    "mpg_prior": 27.29,
    "mpg_when_playing": 30.39,
    "availability": 0.71,
-   "mpg_projected": 21.59
+   "mpg_projected": 21.59,
+   "long_injury": null
   },
   "isaac-okoro": {
    "name": "Isaac Okoro",
@@ -2771,7 +2966,8 @@
    "mpg_prior": 26.9,
    "mpg_when_playing": 21.61,
    "availability": 0.716,
-   "mpg_projected": 15.48
+   "mpg_projected": 15.48,
+   "long_injury": null
   },
   "mark-williams": {
    "name": "Mark Williams",
@@ -2788,8 +2984,15 @@
    "se": 1.299,
    "mpg_prior": 23.6,
    "mpg_when_playing": 23.6,
-   "availability": 0.626,
-   "mpg_projected": 14.78
+   "availability": 0.262,
+   "mpg_projected": 6.18,
+   "long_injury": {
+    "games_out": 39,
+    "games_after_return": 33,
+    "expected_games_played": 21.5,
+    "return_date": "2027-02-03",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "vj-edgecombe": {
    "name": "VJ Edgecombe",
@@ -2807,7 +3010,8 @@
    "mpg_prior": 34.97,
    "mpg_when_playing": 34.06,
    "availability": 0.813,
-   "mpg_projected": 27.67
+   "mpg_projected": 27.67,
+   "long_injury": null
   },
   "jusuf-nurkic": {
    "name": "Jusuf Nurkić",
@@ -2825,7 +3029,8 @@
    "mpg_prior": 26.41,
    "mpg_when_playing": 26.41,
    "availability": 0.579,
-   "mpg_projected": 15.3
+   "mpg_projected": 15.3,
+   "long_injury": null
   },
   "isaiah-joe": {
    "name": "Isaiah Joe",
@@ -2843,7 +3048,8 @@
    "mpg_prior": 21.23,
    "mpg_when_playing": 18.52,
    "availability": 0.798,
-   "mpg_projected": 14.78
+   "mpg_projected": 14.78,
+   "long_injury": null
   },
   "ausar-thompson": {
    "name": "Ausar Thompson",
@@ -2861,7 +3067,8 @@
    "mpg_prior": 25.97,
    "mpg_when_playing": 26.68,
    "availability": 0.767,
-   "mpg_projected": 20.47
+   "mpg_projected": 20.47,
+   "long_injury": null
   },
   "reed-sheppard": {
    "name": "Reed Sheppard",
@@ -2879,7 +3086,8 @@
    "mpg_prior": 26.18,
    "mpg_when_playing": 22.91,
    "availability": 0.771,
-   "mpg_projected": 17.66
+   "mpg_projected": 17.66,
+   "long_injury": null
   },
   "aaron-nesmith": {
    "name": "Aaron Nesmith",
@@ -2897,7 +3105,8 @@
    "mpg_prior": 29.67,
    "mpg_when_playing": 26.49,
    "availability": 0.603,
-   "mpg_projected": 15.97
+   "mpg_projected": 15.97,
+   "long_injury": null
   },
   "tj-mcconnell": {
    "name": "T.J. McConnell",
@@ -2915,7 +3124,8 @@
    "mpg_prior": 17.2,
    "mpg_when_playing": 15.83,
    "availability": 0.751,
-   "mpg_projected": 11.9
+   "mpg_projected": 11.9,
+   "long_injury": null
   },
   "royce-oneale": {
    "name": "Royce O'Neale",
@@ -2933,7 +3143,8 @@
    "mpg_prior": 28.37,
    "mpg_when_playing": 21.99,
    "availability": 0.857,
-   "mpg_projected": 18.85
+   "mpg_projected": 18.85,
+   "long_injury": null
   },
   "sam-hauser": {
    "name": "Sam Hauser",
@@ -2951,7 +3162,8 @@
    "mpg_prior": 24.79,
    "mpg_when_playing": 22.26,
    "availability": 0.841,
-   "mpg_projected": 18.73
+   "mpg_projected": 18.73,
+   "long_injury": null
   },
   "collin-gillespie": {
    "name": "Collin Gillespie",
@@ -2969,7 +3181,8 @@
    "mpg_prior": 28.52,
    "mpg_when_playing": 26.12,
    "availability": 0.693,
-   "mpg_projected": 18.1
+   "mpg_projected": 18.1,
+   "long_injury": null
   },
   "caleb-wilson": {
    "name": "Caleb Wilson",
@@ -2987,7 +3200,8 @@
    "mpg_prior": 25.7,
    "mpg_when_playing": 30.04,
    "availability": 0.71,
-   "mpg_projected": 21.34
+   "mpg_projected": 21.34,
+   "long_injury": null
   },
   "kon-knueppel": {
    "name": "Kon Knueppel",
@@ -3005,7 +3219,8 @@
    "mpg_prior": 31.49,
    "mpg_when_playing": 27.24,
    "availability": 0.795,
-   "mpg_projected": 21.67
+   "mpg_projected": 21.67,
+   "long_injury": null
   },
   "derrick-jones": {
    "name": "Derrick Jones Jr.",
@@ -3023,7 +3238,8 @@
    "mpg_prior": 27.0,
    "mpg_when_playing": 28.69,
    "availability": 0.748,
-   "mpg_projected": 21.45
+   "mpg_projected": 21.45,
+   "long_injury": null
   },
   "luke-kornet": {
    "name": "Luke Kornet",
@@ -3041,7 +3257,8 @@
    "mpg_prior": 21.03,
    "mpg_when_playing": 17.14,
    "availability": 0.81,
-   "mpg_projected": 13.89
+   "mpg_projected": 13.89,
+   "long_injury": null
   },
   "anthony-black": {
    "name": "Anthony Black",
@@ -3059,7 +3276,8 @@
    "mpg_prior": 29.84,
    "mpg_when_playing": 29.93,
    "availability": 0.798,
-   "mpg_projected": 23.89
+   "mpg_projected": 23.89,
+   "long_injury": null
   },
   "aj-green": {
    "name": "AJ Green",
@@ -3077,7 +3295,8 @@
    "mpg_prior": 29.1,
    "mpg_when_playing": 23.17,
    "availability": 0.849,
-   "mpg_projected": 19.67
+   "mpg_projected": 19.67,
+   "long_injury": null
   },
   "stephon-castle": {
    "name": "Stephon Castle",
@@ -3095,7 +3314,8 @@
    "mpg_prior": 29.97,
    "mpg_when_playing": 29.39,
    "availability": 0.841,
-   "mpg_projected": 24.73
+   "mpg_projected": 24.73,
+   "long_injury": null
   },
   "caleb-martin": {
    "name": "Caleb Martin",
@@ -3113,7 +3333,8 @@
    "mpg_prior": 14.76,
    "mpg_when_playing": 16.71,
    "availability": 0.646,
-   "mpg_projected": 10.79
+   "mpg_projected": 10.79,
+   "long_injury": null
   },
   "dayron-sharpe": {
    "name": "Day'Ron Sharpe",
@@ -3131,7 +3352,8 @@
    "mpg_prior": 18.71,
    "mpg_when_playing": 22.04,
    "availability": 0.697,
-   "mpg_projected": 15.35
+   "mpg_projected": 15.35,
+   "long_injury": null
   },
   "keaton-wagler": {
    "name": "Keaton Wagler",
@@ -3149,7 +3371,8 @@
    "mpg_prior": 24.47,
    "mpg_when_playing": 23.67,
    "availability": 0.71,
-   "mpg_projected": 16.81
+   "mpg_projected": 16.81,
+   "long_injury": null
   },
   "buddy-hield": {
    "name": "Buddy Hield",
@@ -3167,7 +3390,8 @@
    "mpg_prior": 16.06,
    "mpg_when_playing": 14.18,
    "availability": 0.771,
-   "mpg_projected": 10.93
+   "mpg_projected": 10.93,
+   "long_injury": null
   },
   "ace-bailey": {
    "name": "Ace Bailey",
@@ -3185,7 +3409,8 @@
    "mpg_prior": 27.61,
    "mpg_when_playing": 29.6,
    "availability": 0.795,
-   "mpg_projected": 23.54
+   "mpg_projected": 23.54,
+   "long_injury": null
   },
   "kevin-huerter": {
    "name": "Kevin Huerter",
@@ -3203,7 +3428,8 @@
    "mpg_prior": 22.45,
    "mpg_when_playing": 22.16,
    "availability": 0.794,
-   "mpg_projected": 17.61
+   "mpg_projected": 17.61,
+   "long_injury": null
   },
   "jalen-smith": {
    "name": "Jalen Smith",
@@ -3221,7 +3447,8 @@
    "mpg_prior": 20.66,
    "mpg_when_playing": 22.38,
    "availability": 0.712,
-   "mpg_projected": 15.94
+   "mpg_projected": 15.94,
+   "long_injury": null
   },
   "naji-marshall": {
    "name": "Naji Marshall",
@@ -3239,7 +3466,8 @@
    "mpg_prior": 29.51,
    "mpg_when_playing": 26.71,
    "availability": 0.806,
-   "mpg_projected": 21.54
+   "mpg_projected": 21.54,
+   "long_injury": null
   },
   "collin-sexton": {
    "name": "Collin Sexton",
@@ -3257,7 +3485,8 @@
    "mpg_prior": 23.74,
    "mpg_when_playing": 19.45,
    "availability": 0.771,
-   "mpg_projected": 14.99
+   "mpg_projected": 14.99,
+   "long_injury": null
   },
   "bilal-coulibaly": {
    "name": "Bilal Coulibaly",
@@ -3275,7 +3504,8 @@
    "mpg_prior": 26.21,
    "mpg_when_playing": 25.94,
    "availability": 0.708,
-   "mpg_projected": 18.38
+   "mpg_projected": 18.38,
+   "long_injury": null
   },
   "ty-jerome": {
    "name": "Ty Jerome",
@@ -3293,7 +3523,8 @@
    "mpg_prior": 16.95,
    "mpg_when_playing": 25.21,
    "availability": 0.583,
-   "mpg_projected": 14.71
+   "mpg_projected": 14.71,
+   "long_injury": null
   },
   "brook-lopez": {
    "name": "Brook Lopez",
@@ -3311,7 +3542,8 @@
    "mpg_prior": 21.8,
    "mpg_when_playing": 23.14,
    "availability": 0.861,
-   "mpg_projected": 19.92
+   "mpg_projected": 19.92,
+   "long_injury": null
   },
   "sam-merrill": {
    "name": "Sam Merrill",
@@ -3329,7 +3561,8 @@
    "mpg_prior": 26.48,
    "mpg_when_playing": 24.31,
    "availability": 0.736,
-   "mpg_projected": 17.89
+   "mpg_projected": 17.89,
+   "long_injury": null
   },
   "ronald-holland": {
    "name": "Ronald Holland II",
@@ -3347,7 +3580,8 @@
    "mpg_prior": 19.88,
    "mpg_when_playing": 17.1,
    "availability": 0.877,
-   "mpg_projected": 14.99
+   "mpg_projected": 14.99,
+   "long_injury": null
   },
   "dean-wade": {
    "name": "Dean Wade",
@@ -3365,7 +3599,8 @@
    "mpg_prior": 22.34,
    "mpg_when_playing": 23.84,
    "availability": 0.716,
-   "mpg_projected": 17.07
+   "mpg_projected": 17.07,
+   "long_injury": null
   },
   "keon-ellis": {
    "name": "Keon Ellis",
@@ -3383,7 +3618,8 @@
    "mpg_prior": 20.53,
    "mpg_when_playing": 21.83,
    "availability": 0.849,
-   "mpg_projected": 18.54
+   "mpg_projected": 18.54,
+   "long_injury": null
   },
   "moritz-wagner": {
    "name": "Moritz Wagner",
@@ -3401,7 +3637,8 @@
    "mpg_prior": 11.86,
    "mpg_when_playing": 16.09,
    "availability": 0.517,
-   "mpg_projected": 8.31
+   "mpg_projected": 8.31,
+   "long_injury": null
   },
   "quinten-post": {
    "name": "Quinten Post",
@@ -3419,7 +3656,8 @@
    "mpg_prior": 17.3,
    "mpg_when_playing": 15.71,
    "availability": 0.673,
-   "mpg_projected": 10.58
+   "mpg_projected": 10.58,
+   "long_injury": null
   },
   "aaron-wiggins": {
    "name": "Aaron Wiggins",
@@ -3437,7 +3675,8 @@
    "mpg_prior": 21.75,
    "mpg_when_playing": 24.74,
    "availability": 0.814,
-   "mpg_projected": 20.14
+   "mpg_projected": 20.14,
+   "long_injury": null
   },
   "mikel-brown": {
    "name": "Mikel Brown Jr.",
@@ -3455,7 +3694,8 @@
    "mpg_prior": 23.46,
    "mpg_when_playing": 23.28,
    "availability": 0.689,
-   "mpg_projected": 16.03
+   "mpg_projected": 16.03,
+   "long_injury": null
   },
   "tre-johnson": {
    "name": "Tre Johnson",
@@ -3473,7 +3713,8 @@
    "mpg_prior": 24.05,
    "mpg_when_playing": 22.52,
    "availability": 0.72,
-   "mpg_projected": 16.22
+   "mpg_projected": 16.22,
+   "long_injury": null
   },
   "zach-collins": {
    "name": "Zach Collins",
@@ -3491,7 +3732,8 @@
    "mpg_prior": 9.2,
    "mpg_when_playing": 8.91,
    "availability": 0.532,
-   "mpg_projected": 4.74
+   "mpg_projected": 4.74,
+   "long_injury": null
   },
   "jarace-walker": {
    "name": "Jarace Walker",
@@ -3509,7 +3751,8 @@
    "mpg_prior": 25.7,
    "mpg_when_playing": 24.17,
    "availability": 0.849,
-   "mpg_projected": 20.52
+   "mpg_projected": 20.52,
+   "long_injury": null
   },
   "max-christie": {
    "name": "Max Christie",
@@ -3527,7 +3770,8 @@
    "mpg_prior": 29.14,
    "mpg_when_playing": 24.05,
    "availability": 0.861,
-   "mpg_projected": 20.71
+   "mpg_projected": 20.71,
+   "long_injury": null
   },
   "tidjane-salaun": {
    "name": "Tidjane Salaün",
@@ -3545,7 +3789,8 @@
    "mpg_prior": 15.54,
    "mpg_when_playing": 15.05,
    "availability": 0.634,
-   "mpg_projected": 9.54
+   "mpg_projected": 9.54,
+   "long_injury": null
   },
   "deandre-ayton": {
    "name": "Deandre Ayton",
@@ -3563,7 +3808,8 @@
    "mpg_prior": 27.19,
    "mpg_when_playing": 19.2,
    "availability": 0.697,
-   "mpg_projected": 13.38
+   "mpg_projected": 13.38,
+   "long_injury": null
   },
   "kelly-oubre": {
    "name": "Kelly Oubre Jr.",
@@ -3581,7 +3827,8 @@
    "mpg_prior": 31.48,
    "mpg_when_playing": 25.8,
    "availability": 0.681,
-   "mpg_projected": 17.57
+   "mpg_projected": 17.57,
+   "long_injury": null
   },
   "darius-acuff": {
    "name": "Darius Acuff Jr.",
@@ -3599,7 +3846,8 @@
    "mpg_prior": 22.61,
    "mpg_when_playing": 32.27,
    "availability": 0.721,
-   "mpg_projected": 23.28
+   "mpg_projected": 23.28,
+   "long_injury": null
   },
   "harrison-barnes": {
    "name": "Harrison Barnes",
@@ -3617,7 +3865,8 @@
    "mpg_prior": 25.79,
    "mpg_when_playing": 17.84,
    "availability": 0.873,
-   "mpg_projected": 15.57
+   "mpg_projected": 15.57,
+   "long_injury": null
   },
   "tre-jones": {
    "name": "Tre Jones",
@@ -3635,7 +3884,8 @@
    "mpg_prior": 26.95,
    "mpg_when_playing": 21.05,
    "availability": 0.689,
-   "mpg_projected": 14.5
+   "mpg_projected": 14.5,
+   "long_injury": null
   },
   "tre-mann": {
    "name": "Tre Mann",
@@ -3653,7 +3903,8 @@
    "mpg_prior": 12.62,
    "mpg_when_playing": 9.46,
    "availability": 0.493,
-   "mpg_projected": 4.67
+   "mpg_projected": 4.67,
+   "long_injury": null
   },
   "jeremiah-fears": {
    "name": "Jeremiah Fears",
@@ -3671,7 +3922,8 @@
    "mpg_prior": 25.76,
    "mpg_when_playing": 27.92,
    "availability": 0.853,
-   "mpg_projected": 23.81
+   "mpg_projected": 23.81,
+   "long_injury": null
   },
   "taylor-hendricks": {
    "name": "Taylor Hendricks",
@@ -3689,7 +3941,8 @@
    "mpg_prior": 18.95,
    "mpg_when_playing": 12.42,
    "availability": 0.478,
-   "mpg_projected": 5.93
+   "mpg_projected": 5.93,
+   "long_injury": null
   },
   "jaylin-williams": {
    "name": "Jaylin Williams",
@@ -3707,7 +3960,8 @@
    "mpg_prior": 19.65,
    "mpg_when_playing": 18.94,
    "availability": 0.685,
-   "mpg_projected": 12.97
+   "mpg_projected": 12.97,
+   "long_injury": null
   },
   "payton-pritchard": {
    "name": "Payton Pritchard",
@@ -3725,7 +3979,8 @@
    "mpg_prior": 32.35,
    "mpg_when_playing": 28.58,
    "availability": 0.88,
-   "mpg_projected": 25.17
+   "mpg_projected": 25.17,
+   "long_injury": null
   },
   "goga-bitadze": {
    "name": "Goga Bitadze",
@@ -3743,7 +3998,8 @@
    "mpg_prior": 15.19,
    "mpg_when_playing": 11.49,
    "availability": 0.771,
-   "mpg_projected": 8.86
+   "mpg_projected": 8.86,
+   "long_injury": null
   },
   "donovan-clingan": {
    "name": "Donovan Clingan",
@@ -3761,7 +4017,8 @@
    "mpg_prior": 27.19,
    "mpg_when_playing": 25.57,
    "availability": 0.818,
-   "mpg_projected": 20.91
+   "mpg_projected": 20.91,
+   "long_injury": null
   },
   "bennedict-mathurin": {
    "name": "Bennedict Mathurin",
@@ -3779,7 +4036,8 @@
    "mpg_prior": 30.0,
    "mpg_when_playing": 20.0,
    "availability": 0.751,
-   "mpg_projected": 15.03
+   "mpg_projected": 15.03,
+   "long_injury": null
   },
   "zeke-nnaji": {
    "name": "Zeke Nnaji",
@@ -3797,7 +4055,8 @@
    "mpg_prior": 12.04,
    "mpg_when_playing": 9.6,
    "availability": 0.654,
-   "mpg_projected": 6.27
+   "mpg_projected": 6.27,
+   "long_injury": null
   },
   "cason-wallace": {
    "name": "Cason Wallace",
@@ -3814,8 +4073,15 @@
    "se": 1.265,
    "mpg_prior": 26.57,
    "mpg_when_playing": 22.73,
-   "availability": 0.798,
-   "mpg_projected": 18.15
+   "availability": 0.246,
+   "mpg_projected": 5.59,
+   "long_injury": {
+    "games_out": 49,
+    "games_after_return": 21,
+    "expected_games_played": 20.2,
+    "return_date": "2027-03-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "kingston-flemings": {
    "name": "Kingston Flemings",
@@ -3833,7 +4099,8 @@
    "mpg_prior": 21.87,
    "mpg_when_playing": 21.76,
    "availability": 0.721,
-   "mpg_projected": 15.69
+   "mpg_projected": 15.69,
+   "long_injury": null
   },
   "dereck-lively": {
    "name": "Dereck Lively II",
@@ -3851,7 +4118,8 @@
    "mpg_prior": 5.75,
    "mpg_when_playing": 5.75,
    "availability": 0.388,
-   "mpg_projected": 2.23
+   "mpg_projected": 2.23,
+   "long_injury": null
   },
   "egor-demin": {
    "name": "Egor Dëmin",
@@ -3869,7 +4137,8 @@
    "mpg_prior": 25.15,
    "mpg_when_playing": 23.64,
    "availability": 0.646,
-   "mpg_projected": 15.26
+   "mpg_projected": 15.26,
+   "long_injury": null
   },
   "gradey-dick": {
    "name": "Gradey Dick",
@@ -3887,7 +4156,8 @@
    "mpg_prior": 14.04,
    "mpg_when_playing": 14.66,
    "availability": 0.763,
-   "mpg_projected": 11.19
+   "mpg_projected": 11.19,
+   "long_injury": null
   },
   "clint-capela": {
    "name": "Clint Capela",
@@ -3905,7 +4175,8 @@
    "mpg_prior": 12.35,
    "mpg_when_playing": 13.34,
    "availability": 0.751,
-   "mpg_projected": 10.02
+   "mpg_projected": 10.02,
+   "long_injury": null
   },
   "isaiah-jackson": {
    "name": "Isaiah Jackson",
@@ -3923,7 +4194,8 @@
    "mpg_prior": 16.51,
    "mpg_when_playing": 19.27,
    "availability": 0.486,
-   "mpg_projected": 9.36
+   "mpg_projected": 9.36,
+   "long_injury": null
   },
   "al-horford": {
    "name": "Al Horford",
@@ -3941,7 +4213,8 @@
    "mpg_prior": 21.53,
    "mpg_when_playing": 19.28,
    "availability": 0.662,
-   "mpg_projected": 12.76
+   "mpg_projected": 12.76,
+   "long_injury": null
   },
   "morez-johnson": {
    "name": "Morez Johnson Jr.",
@@ -3959,7 +4232,8 @@
    "mpg_prior": 21.22,
    "mpg_when_playing": 18.41,
    "availability": 0.721,
-   "mpg_projected": 13.28
+   "mpg_projected": 13.28,
+   "long_injury": null
   },
   "collin-murray-boyles": {
    "name": "Collin Murray-Boyles",
@@ -3977,7 +4251,8 @@
    "mpg_prior": 21.86,
    "mpg_when_playing": 22.02,
    "availability": 0.703,
-   "mpg_projected": 15.49
+   "mpg_projected": 15.49,
+   "long_injury": null
   },
   "keyonte-george": {
    "name": "Keyonte George",
@@ -3995,7 +4270,8 @@
    "mpg_prior": 33.07,
    "mpg_when_playing": 32.42,
    "availability": 0.732,
-   "mpg_projected": 23.73
+   "mpg_projected": 23.73,
+   "long_injury": null
   },
   "saddiq-bey": {
    "name": "Saddiq Bey",
@@ -4013,7 +4289,8 @@
    "mpg_prior": 31.19,
    "mpg_when_playing": 28.4,
    "availability": 0.54,
-   "mpg_projected": 15.34
+   "mpg_projected": 15.34,
+   "long_injury": null
   },
   "bradley-beal": {
    "name": "Bradley Beal",
@@ -4031,7 +4308,8 @@
    "mpg_prior": 6.05,
    "mpg_when_playing": 6.05,
    "availability": 0.45,
-   "mpg_projected": 2.72
+   "mpg_projected": 2.72,
+   "long_injury": null
   },
   "brayden-burries": {
    "name": "Brayden Burries",
@@ -4049,7 +4327,8 @@
    "mpg_prior": 20.64,
    "mpg_when_playing": 20.88,
    "availability": 0.721,
-   "mpg_projected": 15.06
+   "mpg_projected": 15.06,
+   "long_injury": null
   },
   "zach-edey": {
    "name": "Zach Edey",
@@ -4067,7 +4346,8 @@
    "mpg_prior": 14.2,
    "mpg_when_playing": 18.08,
    "availability": 0.552,
-   "mpg_projected": 9.98
+   "mpg_projected": 9.98,
+   "long_injury": null
   },
   "khaman-maluach": {
    "name": "Khaman Maluach",
@@ -4085,7 +4365,8 @@
    "mpg_prior": 8.93,
    "mpg_when_playing": 15.51,
    "availability": 0.634,
-   "mpg_projected": 9.84
+   "mpg_projected": 9.84,
+   "long_injury": null
   },
   "yaxel-lendeborg": {
    "name": "Yaxel Lendeborg",
@@ -4103,7 +4384,8 @@
    "mpg_prior": 20.11,
    "mpg_when_playing": 28.24,
    "availability": 0.721,
-   "mpg_projected": 20.37
+   "mpg_projected": 20.37,
+   "long_injury": null
   },
   "tim-hardaway": {
    "name": "Tim Hardaway Jr.",
@@ -4121,7 +4403,8 @@
    "mpg_prior": 26.59,
    "mpg_when_playing": 18.66,
    "availability": 0.873,
-   "mpg_projected": 16.29
+   "mpg_projected": 16.29,
+   "long_injury": null
   },
   "deanthony-melton": {
    "name": "De'Anthony Melton",
@@ -4139,7 +4422,8 @@
    "mpg_prior": 22.96,
    "mpg_when_playing": 22.19,
    "availability": 0.474,
-   "mpg_projected": 10.51
+   "mpg_projected": 10.51,
+   "long_injury": null
   },
   "jonathan-kuminga": {
    "name": "Jonathan Kuminga",
@@ -4157,7 +4441,8 @@
    "mpg_prior": 23.06,
    "mpg_when_playing": 28.33,
    "availability": 0.587,
-   "mpg_projected": 16.64
+   "mpg_projected": 16.64,
+   "long_injury": null
   },
   "luke-kennard": {
    "name": "Luke Kennard",
@@ -4175,7 +4460,8 @@
    "mpg_prior": 21.55,
    "mpg_when_playing": 18.4,
    "availability": 0.806,
-   "mpg_projected": 14.83
+   "mpg_projected": 14.83,
+   "long_injury": null
   },
   "marcus-smart": {
    "name": "Marcus Smart",
@@ -4193,7 +4479,8 @@
    "mpg_prior": 28.53,
    "mpg_when_playing": 25.14,
    "availability": 0.622,
-   "mpg_projected": 15.65
+   "mpg_projected": 15.65,
+   "long_injury": null
   },
   "cody-williams": {
    "name": "Cody Williams",
@@ -4211,7 +4498,8 @@
    "mpg_prior": 24.34,
    "mpg_when_playing": 12.97,
    "availability": 0.701,
-   "mpg_projected": 9.09
+   "mpg_projected": 9.09,
+   "long_injury": null
   },
   "cedric-coward": {
    "name": "Cedric Coward",
@@ -4229,7 +4517,8 @@
    "mpg_prior": 25.77,
    "mpg_when_playing": 27.45,
    "availability": 0.726,
-   "mpg_projected": 19.94
+   "mpg_projected": 19.94,
+   "long_injury": null
   },
   "anfernee-simons": {
    "name": "Anfernee Simons",
@@ -4247,7 +4536,8 @@
    "mpg_prior": 24.95,
    "mpg_when_playing": 22.86,
    "availability": 0.751,
-   "mpg_projected": 17.18
+   "mpg_projected": 17.18,
+   "long_injury": null
   },
   "jaden-hardy": {
    "name": "Jaden Hardy",
@@ -4265,7 +4555,8 @@
    "mpg_prior": 15.75,
    "mpg_when_playing": 9.07,
    "availability": 0.689,
-   "mpg_projected": 6.25
+   "mpg_projected": 6.25,
+   "long_injury": null
   },
   "jake-laravia": {
    "name": "Jake LaRavia",
@@ -4283,7 +4574,8 @@
    "mpg_prior": 25.13,
    "mpg_when_playing": 24.44,
    "availability": 0.837,
-   "mpg_projected": 20.47
+   "mpg_projected": 20.47,
+   "long_injury": null
   },
   "jaxson-hayes": {
    "name": "Jaxson Hayes",
@@ -4301,7 +4593,8 @@
    "mpg_prior": 18.29,
    "mpg_when_playing": 22.89,
    "availability": 0.732,
-   "mpg_projected": 16.75
+   "mpg_projected": 16.75,
+   "long_injury": null
   },
   "josh-okogie": {
    "name": "Josh Okogie",
@@ -4319,7 +4612,8 @@
    "mpg_prior": 17.36,
    "mpg_when_playing": 18.06,
    "availability": 0.716,
-   "mpg_projected": 12.93
+   "mpg_projected": 12.93,
+   "long_injury": null
   },
   "spencer-jones": {
    "name": "Spencer Jones",
@@ -4337,7 +4631,8 @@
    "mpg_prior": 22.14,
    "mpg_when_playing": 21.95,
    "availability": 0.552,
-   "mpg_projected": 12.12
+   "mpg_projected": 12.12,
+   "long_injury": null
   },
   "jaime-jaquez": {
    "name": "Jaime Jaquez Jr.",
@@ -4355,7 +4650,8 @@
    "mpg_prior": 28.28,
    "mpg_when_playing": 27.96,
    "availability": 0.81,
-   "mpg_projected": 22.65
+   "mpg_projected": 22.65,
+   "long_injury": null
   },
   "jordan-goodwin": {
    "name": "Jordan Goodwin",
@@ -4373,7 +4669,8 @@
    "mpg_prior": 22.46,
    "mpg_when_playing": 20.53,
    "availability": 0.626,
-   "mpg_projected": 12.86
+   "mpg_projected": 12.86,
+   "long_injury": null
   },
   "aday-mara": {
    "name": "Aday Mara",
@@ -4391,7 +4688,8 @@
    "mpg_prior": 19.63,
    "mpg_when_playing": 19.68,
    "availability": 0.721,
-   "mpg_projected": 14.19
+   "mpg_projected": 14.19,
+   "long_injury": null
   },
   "ousmane-dieng": {
    "name": "Ousmane Dieng",
@@ -4409,7 +4707,8 @@
    "mpg_prior": 19.28,
    "mpg_when_playing": 14.28,
    "availability": 0.615,
-   "mpg_projected": 8.78
+   "mpg_projected": 8.78,
+   "long_injury": null
   },
   "matas-buzelis": {
    "name": "Matas Buzelis",
@@ -4427,7 +4726,8 @@
    "mpg_prior": 29.19,
    "mpg_when_playing": 27.0,
    "availability": 0.869,
-   "mpg_projected": 23.45
+   "mpg_projected": 23.45,
+   "long_injury": null
   },
   "noa-essengue": {
    "name": "Noa Essengue",
@@ -4445,7 +4745,8 @@
    "mpg_prior": 0.3,
    "mpg_when_playing": 8.81,
    "availability": 0.381,
-   "mpg_projected": 3.35
+   "mpg_projected": 3.35,
+   "long_injury": null
   },
   "kris-dunn": {
    "name": "Kris Dunn",
@@ -4463,7 +4764,8 @@
    "mpg_prior": 27.2,
    "mpg_when_playing": 28.78,
    "availability": 0.865,
-   "mpg_projected": 24.89
+   "mpg_projected": 24.89,
+   "long_injury": null
   },
   "brandin-podziemski": {
    "name": "Brandin Podziemski",
@@ -4481,7 +4783,8 @@
    "mpg_prior": 28.45,
    "mpg_when_playing": 31.79,
    "availability": 0.822,
-   "mpg_projected": 26.13
+   "mpg_projected": 26.13,
+   "long_injury": null
   },
   "paul-reed": {
    "name": "Paul Reed",
@@ -4499,7 +4802,8 @@
    "mpg_prior": 13.86,
    "mpg_when_playing": 21.95,
    "availability": 0.685,
-   "mpg_projected": 15.04
+   "mpg_projected": 15.04,
+   "long_injury": null
   },
   "klay-thompson": {
    "name": "Klay Thompson",
@@ -4517,7 +4821,8 @@
    "mpg_prior": 21.7,
    "mpg_when_playing": 23.43,
    "availability": 0.81,
-   "mpg_projected": 18.98
+   "mpg_projected": 18.98,
+   "long_injury": null
   },
   "khris-middleton": {
    "name": "Khris Middleton",
@@ -4535,7 +4840,8 @@
    "mpg_prior": 22.84,
    "mpg_when_playing": 18.32,
    "availability": 0.63,
-   "mpg_projected": 11.55
+   "mpg_projected": 11.55,
+   "long_injury": null
   },
   "nate-ament": {
    "name": "Nate Ament",
@@ -4553,7 +4859,8 @@
    "mpg_prior": 19.19,
    "mpg_when_playing": 17.23,
    "availability": 0.7,
-   "mpg_projected": 12.05
+   "mpg_projected": 12.05,
+   "long_injury": null
   },
   "landry-shamet": {
    "name": "Landry Shamet",
@@ -4571,7 +4878,8 @@
    "mpg_prior": 22.96,
    "mpg_when_playing": 24.49,
    "availability": 0.65,
-   "mpg_projected": 15.91
+   "mpg_projected": 15.91,
+   "long_injury": null
   },
   "precious-achiuwa": {
    "name": "Precious Achiuwa",
@@ -4589,7 +4897,8 @@
    "mpg_prior": 23.9,
    "mpg_when_playing": 26.3,
    "availability": 0.767,
-   "mpg_projected": 20.18
+   "mpg_projected": 20.18,
+   "long_injury": null
   },
   "nikola-topic": {
    "name": "Nikola Topić",
@@ -4607,7 +4916,8 @@
    "mpg_prior": 8.0,
    "mpg_when_playing": 8.0,
    "availability": 0.381,
-   "mpg_projected": 3.05
+   "mpg_projected": 3.05,
+   "long_injury": null
   },
   "derik-queen": {
    "name": "Derik Queen",
@@ -4625,7 +4935,8 @@
    "mpg_prior": 24.98,
    "mpg_when_playing": 23.26,
    "availability": 0.847,
-   "mpg_projected": 19.7
+   "mpg_projected": 19.7,
+   "long_injury": null
   },
   "noah-clowney": {
    "name": "Noah Clowney",
@@ -4643,7 +4954,8 @@
    "mpg_prior": 26.97,
    "mpg_when_playing": 22.12,
    "availability": 0.697,
-   "mpg_projected": 15.41
+   "mpg_projected": 15.41,
+   "long_injury": null
   },
   "kris-murray": {
    "name": "Kris Murray",
@@ -4661,7 +4973,8 @@
    "mpg_prior": 23.39,
    "mpg_when_playing": 18.27,
    "availability": 0.736,
-   "mpg_projected": 13.44
+   "mpg_projected": 13.44,
+   "long_injury": null
   },
   "jordan-miller": {
    "name": "Jordan Miller",
@@ -4678,8 +4991,15 @@
    "se": 1.299,
    "mpg_prior": 22.08,
    "mpg_when_playing": 22.08,
-   "availability": 0.599,
-   "mpg_projected": 13.23
+   "availability": 0.167,
+   "mpg_projected": 3.69,
+   "long_injury": {
+    "games_out": 49,
+    "games_after_return": 22,
+    "expected_games_played": 13.7,
+    "return_date": "2027-03-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "hannes-steinbach": {
    "name": "Hannes Steinbach",
@@ -4697,7 +5017,8 @@
    "mpg_prior": 18.78,
    "mpg_when_playing": 15.99,
    "availability": 0.656,
-   "mpg_projected": 10.49
+   "mpg_projected": 10.49,
+   "long_injury": null
   },
   "marcus-sasser": {
    "name": "Marcus Sasser",
@@ -4715,7 +5036,8 @@
    "mpg_prior": 12.03,
    "mpg_when_playing": 14.87,
    "availability": 0.626,
-   "mpg_projected": 9.31
+   "mpg_projected": 9.31,
+   "long_injury": null
   },
   "carter-bryant": {
    "name": "Carter Bryant",
@@ -4733,7 +5055,8 @@
    "mpg_prior": 11.52,
    "mpg_when_playing": 10.61,
    "availability": 0.784,
-   "mpg_projected": 8.32
+   "mpg_projected": 8.32,
+   "long_injury": null
   },
   "ben-sheppard": {
    "name": "Ben Sheppard",
@@ -4750,8 +5073,15 @@
    "se": 1.29,
    "mpg_prior": 21.38,
    "mpg_when_playing": 19.82,
-   "availability": 0.724,
-   "mpg_projected": 14.35
+   "availability": 0.45,
+   "mpg_projected": 8.93,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 48,
+    "expected_games_played": 36.9,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "kenrich-williams": {
    "name": "Kenrich Williams",
@@ -4769,7 +5099,8 @@
    "mpg_prior": 15.27,
    "mpg_when_playing": 17.36,
    "availability": 0.748,
-   "mpg_projected": 12.97
+   "mpg_projected": 12.97,
+   "long_injury": null
   },
   "dailyn-swain": {
    "name": "Dailyn Swain",
@@ -4787,7 +5118,8 @@
    "mpg_prior": 18.39,
    "mpg_when_playing": 15.85,
    "availability": 0.634,
-   "mpg_projected": 10.05
+   "mpg_projected": 10.05,
+   "long_injury": null
   },
   "bub-carrington": {
    "name": "Bub Carrington",
@@ -4805,7 +5137,8 @@
    "mpg_prior": 27.7,
    "mpg_when_playing": 22.1,
    "availability": 0.9,
-   "mpg_projected": 19.89
+   "mpg_projected": 19.89,
+   "long_injury": null
   },
   "thomas-sorber": {
    "name": "Thomas Sorber",
@@ -4823,7 +5156,8 @@
    "mpg_prior": 18.39,
    "mpg_when_playing": 18.39,
    "availability": 0.612,
-   "mpg_projected": 11.26
+   "mpg_projected": 11.26,
+   "long_injury": null
   },
   "brice-sensabaugh": {
    "name": "Brice Sensabaugh",
@@ -4841,7 +5175,8 @@
    "mpg_prior": 23.49,
    "mpg_when_playing": 17.3,
    "availability": 0.83,
-   "mpg_projected": 14.35
+   "mpg_projected": 14.35,
+   "long_injury": null
   },
   "julian-strawther": {
    "name": "Julian Strawther",
@@ -4859,7 +5194,8 @@
    "mpg_prior": 15.11,
    "mpg_when_playing": 15.11,
    "availability": 0.697,
-   "mpg_projected": 10.52
+   "mpg_projected": 10.52,
+   "long_injury": null
   },
   "bennett-stirtz": {
    "name": "Bennett Stirtz",
@@ -4877,7 +5213,8 @@
    "mpg_prior": 18.04,
    "mpg_when_playing": 18.01,
    "availability": 0.721,
-   "mpg_projected": 12.99
+   "mpg_projected": 12.99,
+   "long_injury": null
   },
   "kelel-ware": {
    "name": "Kel'el Ware",
@@ -4895,7 +5232,8 @@
    "mpg_prior": 22.13,
    "mpg_when_playing": 18.91,
    "availability": 0.81,
-   "mpg_projected": 15.32
+   "mpg_projected": 15.32,
+   "long_injury": null
   },
   "yang-hansen": {
    "name": "Yang Hansen",
@@ -4913,7 +5251,8 @@
    "mpg_prior": 6.98,
    "mpg_when_playing": 8.72,
    "availability": 0.605,
-   "mpg_projected": 5.28
+   "mpg_projected": 5.28,
+   "long_injury": null
   },
   "gui-santos": {
    "name": "Gui Santos",
@@ -4931,7 +5270,8 @@
    "mpg_prior": 20.51,
    "mpg_when_playing": 19.55,
    "availability": 0.732,
-   "mpg_projected": 14.31
+   "mpg_projected": 14.31,
+   "long_injury": null
   },
   "josh-minott": {
    "name": "Josh Minott",
@@ -4949,7 +5289,8 @@
    "mpg_prior": 17.02,
    "mpg_when_playing": 11.43,
    "availability": 0.618,
-   "mpg_projected": 7.07
+   "mpg_projected": 7.07,
+   "long_injury": null
   },
   "ebuka-okorie": {
    "name": "Ebuka Okorie",
@@ -4967,7 +5308,8 @@
    "mpg_prior": 17.7,
    "mpg_when_playing": 11.39,
    "availability": 0.656,
-   "mpg_projected": 7.47
+   "mpg_projected": 7.47,
+   "long_injury": null
   },
   "jose-alvarado": {
    "name": "Jose Alvarado",
@@ -4985,7 +5327,8 @@
    "mpg_prior": 19.86,
    "mpg_when_playing": 16.03,
    "availability": 0.724,
-   "mpg_projected": 11.61
+   "mpg_projected": 11.61,
+   "long_injury": null
   },
   "jared-mccain": {
    "name": "Jared McCain",
@@ -5003,7 +5346,8 @@
    "mpg_prior": 17.31,
    "mpg_when_playing": 22.57,
    "availability": 0.611,
-   "mpg_projected": 13.78
+   "mpg_projected": 13.78,
+   "long_injury": null
   },
   "joan-beringer": {
    "name": "Joan Beringer",
@@ -5021,7 +5365,8 @@
    "mpg_prior": 7.85,
    "mpg_when_playing": 13.7,
    "availability": 0.617,
-   "mpg_projected": 8.45
+   "mpg_projected": 8.45,
+   "long_injury": null
   },
   "christian-anderson": {
    "name": "Christian Anderson",
@@ -5039,7 +5384,8 @@
    "mpg_prior": 17.39,
    "mpg_when_playing": 13.85,
    "availability": 0.71,
-   "mpg_projected": 9.84
+   "mpg_projected": 9.84,
+   "long_injury": null
   },
   "allen-graves": {
    "name": "Allen Graves",
@@ -5057,7 +5403,8 @@
    "mpg_prior": 17.09,
    "mpg_when_playing": 14.6,
    "availability": 0.71,
-   "mpg_projected": 10.37
+   "mpg_projected": 10.37,
+   "long_injury": null
   },
   "nolan-traore": {
    "name": "Nolan Traore",
@@ -5075,7 +5422,8 @@
    "mpg_prior": 22.2,
    "mpg_when_playing": 22.13,
    "availability": 0.703,
-   "mpg_projected": 15.56
+   "mpg_projected": 15.56,
+   "long_injury": null
   },
   "daniss-jenkins": {
    "name": "Daniss Jenkins",
@@ -5093,7 +5441,8 @@
    "mpg_prior": 20.21,
    "mpg_when_playing": 23.22,
    "availability": 0.564,
-   "mpg_projected": 13.09
+   "mpg_projected": 13.09,
+   "long_injury": null
   },
   "ryan-rollins": {
    "name": "Ryan Rollins",
@@ -5111,7 +5460,8 @@
    "mpg_prior": 32.11,
    "mpg_when_playing": 26.24,
    "availability": 0.767,
-   "mpg_projected": 20.13
+   "mpg_projected": 20.13,
+   "long_injury": null
   },
   "tristan-da-silva": {
    "name": "Tristan da Silva",
@@ -5129,7 +5479,8 @@
    "mpg_prior": 24.66,
    "mpg_when_playing": 28.45,
    "availability": 0.845,
-   "mpg_projected": 24.05
+   "mpg_projected": 24.05,
+   "long_injury": null
   },
   "miles-mcbride": {
    "name": "Miles McBride",
@@ -5147,7 +5498,8 @@
    "mpg_prior": 26.34,
    "mpg_when_playing": 20.48,
    "availability": 0.665,
-   "mpg_projected": 13.63
+   "mpg_projected": 13.63,
+   "long_injury": null
   },
   "javonte-green": {
    "name": "Javonte Green",
@@ -5165,7 +5517,8 @@
    "mpg_prior": 17.63,
    "mpg_when_playing": 18.08,
    "availability": 0.841,
-   "mpg_projected": 15.22
+   "mpg_projected": 15.22,
+   "long_injury": null
   },
   "jayden-quaintance": {
    "name": "Jayden Quaintance",
@@ -5183,7 +5536,8 @@
    "mpg_prior": 16.8,
    "mpg_when_playing": 16.8,
    "availability": 0.612,
-   "mpg_projected": 10.29
+   "mpg_projected": 10.29,
+   "long_injury": null
   },
   "deandre-jordan": {
    "name": "DeAndre Jordan",
@@ -5201,7 +5555,8 @@
    "mpg_prior": 9.95,
    "mpg_when_playing": 11.82,
    "availability": 0.493,
-   "mpg_projected": 5.83
+   "mpg_projected": 5.83,
+   "long_injury": null
   },
   "lebron-james": {
    "name": "LeBron James",
@@ -5219,7 +5574,8 @@
    "mpg_prior": 33.15,
    "mpg_when_playing": 32.98,
    "availability": 0.763,
-   "mpg_projected": 25.17
+   "mpg_projected": 25.17,
+   "long_injury": null
   },
   "svi-mykhailiuk": {
    "name": "Svi Mykhailiuk",
@@ -5237,7 +5593,8 @@
    "mpg_prior": 23.12,
    "mpg_when_playing": 17.84,
    "availability": 0.603,
-   "mpg_projected": 10.75
+   "mpg_projected": 10.75,
+   "long_injury": null
   },
   "kasparas-jakucionis": {
    "name": "Kasparas Jakučionis",
@@ -5255,7 +5612,8 @@
    "mpg_prior": 17.83,
    "mpg_when_playing": 18.34,
    "availability": 0.686,
-   "mpg_projected": 12.58
+   "mpg_projected": 12.58,
+   "long_injury": null
   },
   "taurean-prince": {
    "name": "Taurean Prince",
@@ -5273,7 +5631,8 @@
    "mpg_prior": 23.5,
    "mpg_when_playing": 18.79,
    "availability": 0.642,
-   "mpg_projected": 12.06
+   "mpg_projected": 12.06,
+   "long_injury": null
   },
   "jakobe-walter": {
    "name": "Ja'Kobe Walter",
@@ -5291,7 +5650,8 @@
    "mpg_prior": 20.47,
    "mpg_when_playing": 26.03,
    "availability": 0.74,
-   "mpg_projected": 19.25
+   "mpg_projected": 19.25,
+   "long_injury": null
   },
   "karim-lopez": {
    "name": "Karim López",
@@ -5309,7 +5669,8 @@
    "mpg_prior": 16.53,
    "mpg_when_playing": 11.71,
    "availability": 0.645,
-   "mpg_projected": 7.55
+   "mpg_projected": 7.55,
+   "long_injury": null
   },
   "will-riley": {
    "name": "Will Riley",
@@ -5327,7 +5688,8 @@
    "mpg_prior": 22.07,
    "mpg_when_playing": 12.87,
    "availability": 0.795,
-   "mpg_projected": 10.24
+   "mpg_projected": 10.24,
+   "long_injury": null
   },
   "jaylon-tyson": {
    "name": "Jaylon Tyson",
@@ -5345,7 +5707,8 @@
    "mpg_prior": 26.92,
    "mpg_when_playing": 23.86,
    "availability": 0.681,
-   "mpg_projected": 16.25
+   "mpg_projected": 16.25,
+   "long_injury": null
   },
   "labaron-philon": {
    "name": "Labaron Philon Jr.",
@@ -5363,7 +5726,8 @@
    "mpg_prior": 16.28,
    "mpg_when_playing": 10.85,
    "availability": 0.678,
-   "mpg_projected": 7.36
+   "mpg_projected": 7.36,
+   "long_injury": null
   },
   "drake-powell": {
    "name": "Drake Powell",
@@ -5381,7 +5745,8 @@
    "mpg_prior": 20.95,
    "mpg_when_playing": 16.6,
    "availability": 0.703,
-   "mpg_projected": 11.67
+   "mpg_projected": 11.67,
+   "long_injury": null
   },
   "yves-missi": {
    "name": "Yves Missi",
@@ -5399,7 +5764,8 @@
    "mpg_prior": 19.65,
    "mpg_when_playing": 19.61,
    "availability": 0.771,
-   "mpg_projected": 15.12
+   "mpg_projected": 15.12,
+   "long_injury": null
   },
   "mo-bamba": {
    "name": "Mo Bamba",
@@ -5417,7 +5783,8 @@
    "mpg_prior": 2.2,
    "mpg_when_playing": 10.55,
    "availability": 0.384,
-   "mpg_projected": 4.05
+   "mpg_projected": 4.05,
+   "long_injury": null
   },
   "zuby-ejiofor": {
    "name": "Zuby Ejiofor",
@@ -5435,7 +5802,8 @@
    "mpg_prior": 16.03,
    "mpg_when_playing": 14.01,
    "availability": 0.678,
-   "mpg_projected": 9.5
+   "mpg_projected": 9.5,
+   "long_injury": null
   },
   "dominick-barlow": {
    "name": "Dominick Barlow",
@@ -5453,7 +5821,8 @@
    "mpg_prior": 23.79,
    "mpg_when_playing": 23.79,
    "availability": 0.634,
-   "mpg_projected": 15.09
+   "mpg_projected": 15.09,
+   "long_injury": null
   },
   "ariel-hukporti": {
    "name": "Ariel Hukporti",
@@ -5470,8 +5839,15 @@
    "se": 1.299,
    "mpg_prior": 9.22,
    "mpg_when_playing": 9.22,
-   "availability": 0.529,
-   "mpg_projected": 4.87
+   "availability": 0.005,
+   "mpg_projected": 0.05,
+   "long_injury": {
+    "games_out": 69,
+    "games_after_return": 0,
+    "expected_games_played": 0.0,
+    "return_date": "2027-10-01",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "asa-newell": {
    "name": "Asa Newell",
@@ -5489,7 +5865,8 @@
    "mpg_prior": 11.36,
    "mpg_when_playing": 11.18,
    "availability": 0.605,
-   "mpg_projected": 6.77
+   "mpg_projected": 6.77,
+   "long_injury": null
   },
   "daron-holmes": {
    "name": "DaRon Holmes II",
@@ -5507,7 +5884,8 @@
    "mpg_prior": 8.4,
    "mpg_when_playing": 6.38,
    "availability": 0.484,
-   "mpg_projected": 3.09
+   "mpg_projected": 3.09,
+   "long_injury": null
   },
   "cameron-carr": {
    "name": "Cameron Carr",
@@ -5525,7 +5903,8 @@
    "mpg_prior": 15.8,
    "mpg_when_playing": 10.37,
    "availability": 0.645,
-   "mpg_projected": 6.69
+   "mpg_projected": 6.69,
+   "long_injury": null
   },
   "nique-clifford": {
    "name": "Nique Clifford",
@@ -5543,7 +5922,8 @@
    "mpg_prior": 25.09,
    "mpg_when_playing": 13.5,
    "availability": 0.801,
-   "mpg_projected": 10.81
+   "mpg_projected": 10.81,
+   "long_injury": null
   },
   "aj-johnson": {
    "name": "AJ Johnson",
@@ -5561,7 +5941,8 @@
    "mpg_prior": 9.46,
    "mpg_when_playing": 7.61,
    "availability": 0.529,
-   "mpg_projected": 4.02
+   "mpg_projected": 4.02,
+   "long_injury": null
   },
   "sergio-de-larrea": {
    "name": "Sergio de Larrea",
@@ -5579,7 +5960,8 @@
    "mpg_prior": 15.57,
    "mpg_when_playing": 13.76,
    "availability": 0.656,
-   "mpg_projected": 9.03
+   "mpg_projected": 9.03,
+   "long_injury": null
   },
   "ron-harper": {
    "name": "Ron Harper Jr.",
@@ -5597,7 +5979,8 @@
    "mpg_prior": 10.97,
    "mpg_when_playing": 8.58,
    "availability": 0.357,
-   "mpg_projected": 3.06
+   "mpg_projected": 3.06,
+   "long_injury": null
   },
   "jase-richardson": {
    "name": "Jase Richardson",
@@ -5615,7 +5998,8 @@
    "mpg_prior": 10.87,
    "mpg_when_playing": 18.45,
    "availability": 0.686,
-   "mpg_projected": 12.66
+   "mpg_projected": 12.66,
+   "long_injury": null
   },
   "kyshawn-george": {
    "name": "Kyshawn George",
@@ -5633,7 +6017,8 @@
    "mpg_prior": 28.98,
    "mpg_when_playing": 31.66,
    "availability": 0.712,
-   "mpg_projected": 22.55
+   "mpg_projected": 22.55,
+   "long_injury": null
   },
   "jaylen-clark": {
    "name": "Jaylen Clark",
@@ -5651,7 +6036,8 @@
    "mpg_prior": 13.06,
    "mpg_when_playing": 13.75,
    "availability": 0.681,
-   "mpg_projected": 9.37
+   "mpg_projected": 9.37,
+   "long_injury": null
   },
   "tarris-reed": {
    "name": "Tarris Reed Jr.",
@@ -5669,7 +6055,8 @@
    "mpg_prior": 15.35,
    "mpg_when_playing": 9.89,
    "availability": 0.678,
-   "mpg_projected": 6.7
+   "mpg_projected": 6.7,
+   "long_injury": null
   },
   "ben-saraf": {
    "name": "Ben Saraf",
@@ -5687,7 +6074,8 @@
    "mpg_prior": 20.82,
    "mpg_when_playing": 18.02,
    "availability": 0.582,
-   "mpg_projected": 10.49
+   "mpg_projected": 10.49,
+   "long_injury": null
   },
   "kyle-filipowski": {
    "name": "Kyle Filipowski",
@@ -5705,7 +6093,8 @@
    "mpg_prior": 23.39,
    "mpg_when_playing": 14.33,
    "availability": 0.83,
-   "mpg_projected": 11.89
+   "mpg_projected": 11.89,
+   "long_injury": null
   },
   "tarik-biberovic": {
    "name": "Tarik Biberović",
@@ -5723,7 +6112,8 @@
    "mpg_prior": 11.11,
    "mpg_when_playing": 11.11,
    "availability": 0.612,
-   "mpg_projected": 6.8
+   "mpg_projected": 6.8,
+   "long_injury": null
   },
   "tristan-vukcevic": {
    "name": "Tristan Vukčević",
@@ -5741,7 +6131,8 @@
    "mpg_prior": 13.69,
    "mpg_when_playing": 13.69,
    "availability": 0.548,
-   "mpg_projected": 7.51
+   "mpg_projected": 7.51,
+   "long_injury": null
   },
   "chris-cenac": {
    "name": "Chris Cenac Jr.",
@@ -5759,7 +6150,8 @@
    "mpg_prior": 15.14,
    "mpg_when_playing": 10.72,
    "availability": 0.645,
-   "mpg_projected": 6.91
+   "mpg_projected": 6.91,
+   "long_injury": null
   },
   "pacome-dadiet": {
    "name": "Pacôme Dadiet",
@@ -5777,7 +6169,8 @@
    "mpg_prior": 4.69,
    "mpg_when_playing": 4.78,
    "availability": 0.411,
-   "mpg_projected": 1.97
+   "mpg_projected": 1.97,
+   "long_injury": null
   },
   "joshua-jefferson": {
    "name": "Joshua Jefferson",
@@ -5795,7 +6188,8 @@
    "mpg_prior": 14.94,
    "mpg_when_playing": 13.12,
    "availability": 0.623,
-   "mpg_projected": 8.18
+   "mpg_projected": 8.18,
+   "long_injury": null
   },
   "alex-karaban": {
    "name": "Alex Karaban",
@@ -5813,7 +6207,8 @@
    "mpg_prior": 14.75,
    "mpg_when_playing": 12.27,
    "availability": 0.667,
-   "mpg_projected": 8.18
+   "mpg_projected": 8.18,
+   "long_injury": null
   },
   "danny-wolf": {
    "name": "Danny Wolf",
@@ -5831,7 +6226,8 @@
    "mpg_prior": 20.82,
    "mpg_when_playing": 21.71,
    "availability": 0.68,
-   "mpg_projected": 14.77
+   "mpg_projected": 14.77,
+   "long_injury": null
   },
   "koa-peat": {
    "name": "Koa Peat",
@@ -5849,7 +6245,8 @@
    "mpg_prior": 14.56,
    "mpg_when_playing": 9.65,
    "availability": 0.656,
-   "mpg_projected": 6.33
+   "mpg_projected": 6.33,
+   "long_injury": null
   },
   "hugo-gonzalez": {
    "name": "Hugo González",
@@ -5867,7 +6264,8 @@
    "mpg_prior": 14.65,
    "mpg_when_playing": 13.42,
    "availability": 0.807,
-   "mpg_projected": 10.82
+   "mpg_projected": 10.82,
+   "long_injury": null
   },
   "liam-mcneeley": {
    "name": "Liam McNeeley",
@@ -5885,7 +6283,8 @@
    "mpg_prior": 11.87,
    "mpg_when_playing": 10.64,
    "availability": 0.531,
-   "mpg_projected": 5.64
+   "mpg_projected": 5.64,
+   "long_injury": null
   },
   "yanic-konan-niederhauser": {
    "name": "Yanic Konan Niederhäuser",
@@ -5903,7 +6302,8 @@
    "mpg_prior": 10.34,
    "mpg_when_playing": 10.34,
    "availability": 0.559,
-   "mpg_projected": 5.78
+   "mpg_projected": 5.78,
+   "long_injury": null
   },
   "ajay-mitchell": {
    "name": "Ajay Mitchell",
@@ -5921,7 +6321,8 @@
    "mpg_prior": 25.84,
    "mpg_when_playing": 26.81,
    "availability": 0.622,
-   "mpg_projected": 16.69
+   "mpg_projected": 16.69,
+   "long_injury": null
   },
   "terrence-shannon": {
    "name": "Terrence Shannon Jr",
@@ -5939,7 +6340,8 @@
    "mpg_prior": 12.51,
    "mpg_when_playing": 18.04,
    "availability": 0.544,
-   "mpg_projected": 9.82
+   "mpg_projected": 9.82,
+   "long_injury": null
   },
   "jericho-sims": {
    "name": "Jericho Sims",
@@ -5957,7 +6359,8 @@
    "mpg_prior": 19.67,
    "mpg_when_playing": 13.12,
    "availability": 0.712,
-   "mpg_projected": 9.35
+   "mpg_projected": 9.35,
+   "long_injury": null
   },
   "luka-garza": {
    "name": "Luka Garza",
@@ -5975,7 +6378,8 @@
    "mpg_prior": 16.2,
    "mpg_when_playing": 13.93,
    "availability": 0.681,
-   "mpg_projected": 9.49
+   "mpg_projected": 9.49,
+   "long_injury": null
   },
   "micah-potter": {
    "name": "Micah Potter",
@@ -5993,7 +6397,8 @@
    "mpg_prior": 19.32,
    "mpg_when_playing": 13.66,
    "availability": 0.572,
-   "mpg_projected": 7.81
+   "mpg_projected": 7.81,
+   "long_injury": null
   },
   "ryan-dunn": {
    "name": "Ryan Dunn",
@@ -6011,7 +6416,8 @@
    "mpg_prior": 19.36,
    "mpg_when_playing": 17.29,
    "availability": 0.814,
-   "mpg_projected": 14.08
+   "mpg_projected": 14.08,
+   "long_injury": null
   },
   "isaiah-collier": {
    "name": "Isaiah Collier",
@@ -6029,7 +6435,8 @@
    "mpg_prior": 25.71,
    "mpg_when_playing": 18.97,
    "availability": 0.767,
-   "mpg_projected": 14.55
+   "mpg_projected": 14.55,
+   "long_injury": null
   },
   "baylor-scheierman": {
    "name": "Baylor Scheierman",
@@ -6047,7 +6454,8 @@
    "mpg_prior": 18.56,
    "mpg_when_playing": 19.65,
    "availability": 0.681,
-   "mpg_projected": 13.38
+   "mpg_projected": 13.38,
+   "long_injury": null
   },
   "jay-huff": {
    "name": "Jay Huff",
@@ -6065,7 +6473,8 @@
    "mpg_prior": 20.96,
    "mpg_when_playing": 19.2,
    "availability": 0.826,
-   "mpg_projected": 15.86
+   "mpg_projected": 15.86,
+   "long_injury": null
   },
   "justin-champagnie": {
    "name": "Justin Champagnie",
@@ -6082,8 +6491,15 @@
    "se": 1.249,
    "mpg_prior": 19.96,
    "mpg_when_playing": 19.2,
-   "availability": 0.748,
-   "mpg_projected": 14.35
+   "availability": 0.262,
+   "mpg_projected": 5.03,
+   "long_injury": {
+    "games_out": 47,
+    "games_after_return": 23,
+    "expected_games_played": 21.5,
+    "return_date": "2027-02-25",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "neemias-queta": {
    "name": "Neemias Queta",
@@ -6101,7 +6517,8 @@
    "mpg_prior": 25.34,
    "mpg_when_playing": 22.98,
    "availability": 0.798,
-   "mpg_projected": 18.35
+   "mpg_projected": 18.35,
+   "long_injury": null
   },
   "vit-krejci": {
    "name": "Vít Krejčí",
@@ -6118,8 +6535,15 @@
    "se": 1.25,
    "mpg_prior": 21.42,
    "mpg_when_playing": 14.92,
-   "availability": 0.724,
-   "mpg_projected": 10.81
+   "availability": 0.518,
+   "mpg_projected": 7.73,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 49,
+    "expected_games_played": 42.5,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "kobe-sanders": {
    "name": "Kobe Sanders",
@@ -6137,7 +6561,8 @@
    "mpg_prior": 19.87,
    "mpg_when_playing": 22.52,
    "availability": 0.767,
-   "mpg_projected": 17.27
+   "mpg_projected": 17.27,
+   "long_injury": null
   },
   "mohamed-diawara": {
    "name": "Mohamed Diawara",
@@ -6155,7 +6580,8 @@
    "mpg_prior": 9.19,
    "mpg_when_playing": 9.88,
    "availability": 0.743,
-   "mpg_projected": 7.35
+   "mpg_projected": 7.35,
+   "long_injury": null
   },
   "bryce-mcgowens": {
    "name": "Bryce McGowens",
@@ -6173,7 +6599,8 @@
    "mpg_prior": 20.95,
    "mpg_when_playing": 13.88,
    "availability": 0.454,
-   "mpg_projected": 6.3
+   "mpg_projected": 6.3,
+   "long_injury": null
   },
   "dru-smith": {
    "name": "Dru Smith",
@@ -6191,7 +6618,8 @@
    "mpg_prior": 16.3,
    "mpg_when_playing": 11.95,
    "availability": 0.572,
-   "mpg_projected": 6.83
+   "mpg_projected": 6.83,
+   "long_injury": null
   },
   "jabari-walker": {
    "name": "Jabari Walker",
@@ -6209,7 +6637,8 @@
    "mpg_prior": 11.91,
    "mpg_when_playing": 11.29,
    "availability": 0.732,
-   "mpg_projected": 8.27
+   "mpg_projected": 8.27,
+   "long_injury": null
   },
   "jamal-cain": {
    "name": "Jamal Cain",
@@ -6227,7 +6656,8 @@
    "mpg_prior": 12.15,
    "mpg_when_playing": 16.91,
    "availability": 0.556,
-   "mpg_projected": 9.4
+   "mpg_projected": 9.4,
+   "long_injury": null
   },
   "jamaree-bouyea": {
    "name": "Jamaree Bouyea",
@@ -6245,7 +6675,8 @@
    "mpg_prior": 14.0,
    "mpg_when_playing": 9.33,
    "availability": 0.435,
-   "mpg_projected": 4.06
+   "mpg_projected": 4.06,
+   "long_injury": null
   },
   "quenton-jackson": {
    "name": "Quenton Jackson",
@@ -6263,7 +6694,8 @@
    "mpg_prior": 18.31,
    "mpg_when_playing": 20.3,
    "availability": 0.56,
-   "mpg_projected": 11.37
+   "mpg_projected": 11.37,
+   "long_injury": null
   },
   "olivier-maxence-prosper": {
    "name": "Olivier-Maxence Prosper",
@@ -6281,7 +6713,8 @@
    "mpg_prior": 18.57,
    "mpg_when_playing": 13.09,
    "availability": 0.646,
-   "mpg_projected": 8.46
+   "mpg_projected": 8.46,
+   "long_injury": null
   },
   "sidy-cissoko": {
    "name": "Sidy Cissoko",
@@ -6299,7 +6732,8 @@
    "mpg_prior": 19.13,
    "mpg_when_playing": 20.55,
    "availability": 0.634,
-   "mpg_projected": 13.03
+   "mpg_projected": 13.03,
+   "long_injury": null
   },
   "moussa-diabate": {
    "name": "Moussa Diabaté",
@@ -6317,7 +6751,8 @@
    "mpg_prior": 26.01,
    "mpg_when_playing": 27.79,
    "availability": 0.818,
-   "mpg_projected": 22.73
+   "mpg_projected": 22.73,
+   "long_injury": null
   },
   "scotty-pippen": {
    "name": "Scotty Pippen Jr.",
@@ -6335,7 +6770,8 @@
    "mpg_prior": 10.6,
    "mpg_when_playing": 13.3,
    "availability": 0.587,
-   "mpg_projected": 7.81
+   "mpg_projected": 7.81,
+   "long_injury": null
   },
   "andre-drummond": {
    "name": "Andre Drummond",
@@ -6353,7 +6789,8 @@
    "mpg_prior": 19.54,
    "mpg_when_playing": 15.55,
    "availability": 0.658,
-   "mpg_projected": 10.23
+   "mpg_projected": 10.23,
+   "long_injury": null
   },
   "anthony-gill": {
    "name": "Anthony Gill",
@@ -6371,7 +6808,8 @@
    "mpg_prior": 17.29,
    "mpg_when_playing": 13.78,
    "availability": 0.642,
-   "mpg_projected": 8.85
+   "mpg_projected": 8.85,
+   "long_injury": null
   },
   "ben-simmons": {
    "name": "Ben Simmons",
@@ -6388,8 +6826,15 @@
    "se": 1.299,
    "mpg_prior": 21.96,
    "mpg_when_playing": 21.96,
-   "availability": 0.419,
-   "mpg_projected": 9.2
+   "availability": 0.005,
+   "mpg_projected": 0.11,
+   "long_injury": {
+    "games_out": 70,
+    "games_after_return": 0,
+    "expected_games_played": 0.0,
+    "return_date": "2027-10-01",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "bogdan-bogdanovic": {
    "name": "Bogdan Bogdanović",
@@ -6407,7 +6852,8 @@
    "mpg_prior": 19.65,
    "mpg_when_playing": 14.08,
    "availability": 0.56,
-   "mpg_projected": 7.88
+   "mpg_projected": 7.88,
+   "long_injury": null
   },
   "branden-carlson": {
    "name": "Branden Carlson",
@@ -6425,7 +6871,8 @@
    "mpg_prior": 11.62,
    "mpg_when_playing": 9.9,
    "availability": 0.525,
-   "mpg_projected": 5.19
+   "mpg_projected": 5.19,
+   "long_injury": null
   },
   "brandon-williams": {
    "name": "Brandon Williams",
@@ -6443,7 +6890,8 @@
    "mpg_prior": 22.17,
    "mpg_when_playing": 19.27,
    "availability": 0.642,
-   "mpg_projected": 12.37
+   "mpg_projected": 12.37,
+   "long_injury": null
   },
   "charles-bassey": {
    "name": "Charles Bassey",
@@ -6461,7 +6909,8 @@
    "mpg_prior": 7.65,
    "mpg_when_playing": 10.17,
    "availability": 0.443,
-   "mpg_projected": 4.5
+   "mpg_projected": 4.5,
+   "long_injury": null
   },
   "daeqwon-plowden": {
    "name": "Daeqwon Plowden",
@@ -6479,7 +6928,8 @@
    "mpg_prior": 26.38,
    "mpg_when_playing": 18.16,
    "availability": 0.396,
-   "mpg_projected": 7.18
+   "mpg_projected": 7.18,
+   "long_injury": null
   },
   "demar-derozan": {
    "name": "DeMar DeRozan",
@@ -6497,7 +6947,8 @@
    "mpg_prior": 31.25,
    "mpg_when_playing": 27.35,
    "availability": 0.849,
-   "mpg_projected": 23.23
+   "mpg_projected": 23.23,
+   "long_injury": null
   },
   "gary-payton": {
    "name": "Gary Payton II",
@@ -6515,7 +6966,8 @@
    "mpg_prior": 15.64,
    "mpg_when_playing": 14.08,
    "availability": 0.787,
-   "mpg_projected": 11.08
+   "mpg_projected": 11.08,
+   "long_injury": null
   },
   "georges-niang": {
    "name": "Georges Niang",
@@ -6533,7 +6985,8 @@
    "mpg_prior": 21.48,
    "mpg_when_playing": 20.96,
    "availability": 0.568,
-   "mpg_projected": 11.9
+   "mpg_projected": 11.9,
+   "long_injury": null
   },
   "isaiah-crawford": {
    "name": "Isaiah Crawford",
@@ -6551,7 +7004,8 @@
    "mpg_prior": 4.6,
    "mpg_when_playing": 4.82,
    "availability": 0.357,
-   "mpg_projected": 1.72
+   "mpg_projected": 1.72,
+   "long_injury": null
   },
   "jaesean-tate": {
    "name": "Jae'Sean Tate",
@@ -6569,7 +7023,8 @@
    "mpg_prior": 8.8,
    "mpg_when_playing": 5.46,
    "availability": 0.626,
-   "mpg_projected": 3.42
+   "mpg_projected": 3.42,
+   "long_injury": null
   },
   "james-wiseman": {
    "name": "James Wiseman",
@@ -6587,7 +7042,8 @@
    "mpg_prior": 2.9,
    "mpg_when_playing": 3.94,
    "availability": 0.255,
-   "mpg_projected": 1.01
+   "mpg_projected": 1.01,
+   "long_injury": null
   },
   "jevon-carter": {
    "name": "Jevon Carter",
@@ -6605,7 +7061,8 @@
    "mpg_prior": 16.36,
    "mpg_when_playing": 15.28,
    "availability": 0.587,
-   "mpg_projected": 8.97
+   "mpg_projected": 8.97,
+   "long_injury": null
   },
   "jonathan-isaac": {
    "name": "Jonathan Isaac",
@@ -6623,7 +7080,8 @@
    "mpg_prior": 10.02,
    "mpg_when_playing": 10.02,
    "availability": 0.701,
-   "mpg_projected": 7.02
+   "mpg_projected": 7.02,
+   "long_injury": null
   },
   "jordan-clarkson": {
    "name": "Jordan Clarkson",
@@ -6641,7 +7099,8 @@
    "mpg_prior": 17.76,
    "mpg_when_playing": 13.22,
    "availability": 0.677,
-   "mpg_projected": 8.95
+   "mpg_projected": 8.95,
+   "long_injury": null
   },
   "jordan-mclaughlin": {
    "name": "Jordan McLaughlin",
@@ -6659,7 +7118,8 @@
    "mpg_prior": 6.41,
    "mpg_when_playing": 7.0,
    "availability": 0.591,
-   "mpg_projected": 4.14
+   "mpg_projected": 4.14,
+   "long_injury": null
   },
   "kentavious-caldwell-pope": {
    "name": "Kentavious Caldwell-Pope",
@@ -6677,7 +7137,8 @@
    "mpg_prior": 21.33,
    "mpg_when_playing": 21.73,
    "availability": 0.763,
-   "mpg_projected": 16.58
+   "mpg_projected": 16.58,
+   "long_injury": null
   },
   "kevon-looney": {
    "name": "Kevon Looney",
@@ -6695,7 +7156,8 @@
    "mpg_prior": 14.67,
    "mpg_when_playing": 10.23,
    "availability": 0.618,
-   "mpg_projected": 6.33
+   "mpg_projected": 6.33,
+   "long_injury": null
   },
   "kyle-anderson": {
    "name": "Kyle Anderson",
@@ -6713,7 +7175,8 @@
    "mpg_prior": 19.84,
    "mpg_when_playing": 12.29,
    "availability": 0.65,
-   "mpg_projected": 7.99
+   "mpg_projected": 7.99,
+   "long_injury": null
   },
   "larry-nance": {
    "name": "Larry Nance Jr.",
@@ -6731,7 +7194,8 @@
    "mpg_prior": 12.83,
    "mpg_when_playing": 14.72,
    "availability": 0.486,
-   "mpg_projected": 7.15
+   "mpg_projected": 7.15,
+   "long_injury": null
   },
   "mario-hezonja": {
    "name": "Mario Hezonja",
@@ -6749,7 +7213,8 @@
    "mpg_prior": 24.47,
    "mpg_when_playing": 21.62,
    "availability": 0.721,
-   "mpg_projected": 15.6
+   "mpg_projected": 15.6,
+   "long_injury": null
   },
   "marvin-bagley": {
    "name": "Marvin Bagley III",
@@ -6767,7 +7232,8 @@
    "mpg_prior": 20.02,
    "mpg_when_playing": 15.24,
    "availability": 0.607,
-   "mpg_projected": 9.25
+   "mpg_projected": 9.25,
+   "long_injury": null
   },
   "matisse-thybulle": {
    "name": "Matisse Thybulle",
@@ -6785,7 +7251,8 @@
    "mpg_prior": 16.0,
    "mpg_when_playing": 21.94,
    "availability": 0.439,
-   "mpg_projected": 9.62
+   "mpg_projected": 9.62,
+   "long_injury": null
   },
   "mike-conley": {
    "name": "Mike Conley",
@@ -6803,7 +7270,8 @@
    "mpg_prior": 18.35,
    "mpg_when_playing": 13.75,
    "availability": 0.724,
-   "mpg_projected": 9.96
+   "mpg_projected": 9.96,
+   "long_injury": null
   },
   "bones-hyland": {
    "name": "Bones Hyland",
@@ -6821,7 +7289,8 @@
    "mpg_prior": 16.58,
    "mpg_when_playing": 13.62,
    "availability": 0.634,
-   "mpg_projected": 8.64
+   "mpg_projected": 8.64,
+   "long_injury": null
   },
   "nick-richards": {
    "name": "Nick Richards",
@@ -6839,7 +7308,8 @@
    "mpg_prior": 14.6,
    "mpg_when_playing": 8.3,
    "availability": 0.65,
-   "mpg_projected": 5.39
+   "mpg_projected": 5.39,
+   "long_injury": null
   },
   "nikola-vucevic": {
    "name": "Nikola Vučević",
@@ -6857,7 +7327,8 @@
    "mpg_prior": 28.41,
    "mpg_when_playing": 15.65,
    "availability": 0.791,
-   "mpg_projected": 12.37
+   "mpg_projected": 12.37,
+   "long_injury": null
   },
   "simone-fontecchio": {
    "name": "Simone Fontecchio",
@@ -6875,7 +7346,8 @@
    "mpg_prior": 16.76,
    "mpg_when_playing": 10.64,
    "availability": 0.802,
-   "mpg_projected": 8.54
+   "mpg_projected": 8.54,
+   "long_injury": null
   },
   "thomas-bryant": {
    "name": "Thomas Bryant",
@@ -6893,7 +7365,8 @@
    "mpg_prior": 12.2,
    "mpg_when_playing": 12.1,
    "availability": 0.732,
-   "mpg_projected": 8.86
+   "mpg_projected": 8.86,
+   "long_injury": null
   },
   "tony-bradley": {
    "name": "Tony Bradley",
@@ -6911,7 +7384,8 @@
    "mpg_prior": 10.98,
    "mpg_when_playing": 7.76,
    "availability": 0.45,
-   "mpg_projected": 3.5
+   "mpg_projected": 3.5,
+   "long_injury": null
   },
   "trendon-watford": {
    "name": "Trendon Watford",
@@ -6929,7 +7403,8 @@
    "mpg_prior": 16.3,
    "mpg_when_playing": 17.05,
    "availability": 0.622,
-   "mpg_projected": 10.61
+   "mpg_projected": 10.61,
+   "long_injury": null
   },
   "trey-lyles": {
    "name": "Trey Lyles",
@@ -6947,7 +7422,8 @@
    "mpg_prior": 19.55,
    "mpg_when_playing": 18.8,
    "availability": 0.532,
-   "mpg_projected": 10.01
+   "mpg_projected": 10.01,
+   "long_injury": null
   },
   "tyus-jones": {
    "name": "Tyus Jones",
@@ -6965,7 +7441,8 @@
    "mpg_prior": 14.61,
    "mpg_when_playing": 12.47,
    "availability": 0.83,
-   "mpg_projected": 10.34
+   "mpg_projected": 10.34,
+   "long_injury": null
   },
   "ziaire-williams": {
    "name": "Ziaire Williams",
@@ -6983,7 +7460,8 @@
    "mpg_prior": 22.88,
    "mpg_when_playing": 23.64,
    "availability": 0.716,
-   "mpg_projected": 16.94
+   "mpg_projected": 16.94,
+   "long_injury": null
   },
   "cam-spencer": {
    "name": "Cam Spencer",
@@ -7001,7 +7479,8 @@
    "mpg_prior": 23.81,
    "mpg_when_playing": 21.14,
    "availability": 0.634,
-   "mpg_projected": 13.41
+   "mpg_projected": 13.41,
+   "long_injury": null
   },
   "justin-edwards": {
    "name": "Justin Edwards",
@@ -7019,7 +7498,8 @@
    "mpg_prior": 15.27,
    "mpg_when_playing": 9.48,
    "availability": 0.658,
-   "mpg_projected": 6.23
+   "mpg_projected": 6.23,
+   "long_injury": null
   },
   "naeqwan-tomlin": {
    "name": "Nae'Qwan Tomlin",
@@ -7037,7 +7517,8 @@
    "mpg_prior": 15.69,
    "mpg_when_playing": 15.69,
    "availability": 0.489,
-   "mpg_projected": 7.68
+   "mpg_projected": 7.68,
+   "long_injury": null
   },
   "ryan-kalkbrenner": {
    "name": "Ryan Kalkbrenner",
@@ -7055,7 +7536,8 @@
    "mpg_prior": 21.43,
    "mpg_when_playing": 18.61,
    "availability": 0.778,
-   "mpg_projected": 14.48
+   "mpg_projected": 14.48,
+   "long_injury": null
   },
   "sion-james": {
    "name": "Sion James",
@@ -7073,7 +7555,8 @@
    "mpg_prior": 22.48,
    "mpg_when_playing": 24.03,
    "availability": 0.853,
-   "mpg_projected": 20.49
+   "mpg_projected": 20.49,
+   "long_injury": null
   },
   "tolu-smith": {
    "name": "Tolu Smith",
@@ -7091,7 +7574,8 @@
    "mpg_prior": 6.85,
    "mpg_when_playing": 5.1,
    "availability": 0.31,
-   "mpg_projected": 1.58
+   "mpg_projected": 1.58,
+   "long_injury": null
   },
   "craig-porter": {
    "name": "Craig Porter Jr.",
@@ -7109,7 +7593,8 @@
    "mpg_prior": 17.94,
    "mpg_when_playing": 12.51,
    "availability": 0.701,
-   "mpg_projected": 8.77
+   "mpg_projected": 8.77,
+   "long_injury": null
   },
   "gg-jackson": {
    "name": "GG Jackson",
@@ -7127,7 +7612,8 @@
    "mpg_prior": 21.42,
    "mpg_when_playing": 17.85,
    "availability": 0.579,
-   "mpg_projected": 10.34
+   "mpg_projected": 10.34,
+   "long_injury": null
   },
   "jordan-walsh": {
    "name": "Jordan Walsh",
@@ -7145,7 +7631,8 @@
    "mpg_prior": 17.82,
    "mpg_when_playing": 16.34,
    "availability": 0.728,
-   "mpg_projected": 11.9
+   "mpg_projected": 11.9,
+   "long_injury": null
   },
   "leonard-miller": {
    "name": "Leonard Miller",
@@ -7163,7 +7650,8 @@
    "mpg_prior": 15.63,
    "mpg_when_playing": 16.86,
    "availability": 0.482,
-   "mpg_projected": 8.12
+   "mpg_projected": 8.12,
+   "long_injury": null
   },
   "mouhamed-gueye": {
    "name": "Mouhamed Gueye",
@@ -7181,7 +7669,8 @@
    "mpg_prior": 15.31,
    "mpg_when_playing": 15.31,
    "availability": 0.65,
-   "mpg_projected": 9.95
+   "mpg_projected": 9.95,
+   "long_injury": null
   },
   "trayce-jackson-davis": {
    "name": "Trayce Jackson-Davis",
@@ -7199,7 +7688,8 @@
    "mpg_prior": 9.36,
    "mpg_when_playing": 7.68,
    "availability": 0.701,
-   "mpg_projected": 5.38
+   "mpg_projected": 5.38,
+   "long_injury": null
   },
   "adem-bona": {
    "name": "Adem Bona",
@@ -7217,7 +7707,8 @@
    "mpg_prior": 17.38,
    "mpg_when_playing": 15.35,
    "availability": 0.759,
-   "mpg_projected": 11.65
+   "mpg_projected": 11.65,
+   "long_injury": null
   },
   "bronny-james": {
    "name": "Bronny James",
@@ -7235,7 +7726,8 @@
    "mpg_prior": 8.93,
    "mpg_when_playing": 5.66,
    "availability": 0.509,
-   "mpg_projected": 2.88
+   "mpg_projected": 2.88,
+   "long_injury": null
   },
   "jamal-shead": {
    "name": "Jamal Shead",
@@ -7253,7 +7745,8 @@
    "mpg_prior": 22.59,
    "mpg_when_playing": 22.85,
    "availability": 0.869,
-   "mpg_projected": 19.85
+   "mpg_projected": 19.85,
+   "long_injury": null
   },
   "jamison-battle": {
    "name": "Jamison Battle",
@@ -7271,7 +7764,8 @@
    "mpg_prior": 8.48,
    "mpg_when_playing": 13.96,
    "availability": 0.724,
-   "mpg_projected": 10.1
+   "mpg_projected": 10.1,
+   "long_injury": null
   },
   "jaylen-wells": {
    "name": "Jaylen Wells",
@@ -7289,7 +7783,8 @@
    "mpg_prior": 26.39,
    "mpg_when_playing": 26.85,
    "availability": 0.834,
-   "mpg_projected": 22.38
+   "mpg_projected": 22.38,
+   "long_injury": null
   },
   "johnny-furphy": {
    "name": "Johnny Furphy",
@@ -7306,8 +7801,15 @@
    "se": 1.299,
    "mpg_prior": 18.37,
    "mpg_when_playing": 18.37,
-   "availability": 0.552,
-   "mpg_projected": 10.14
+   "availability": 0.336,
+   "mpg_projected": 6.17,
+   "long_injury": {
+    "games_out": 22,
+    "games_after_return": 48,
+    "expected_games_played": 27.5,
+    "return_date": "2027-01-02",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "karlo-matkovic": {
    "name": "Karlo Matković",
@@ -7325,7 +7827,8 @@
    "mpg_prior": 14.71,
    "mpg_when_playing": 17.11,
    "availability": 0.662,
-   "mpg_projected": 11.32
+   "mpg_projected": 11.32,
+   "long_injury": null
   },
   "oso-ighodaro": {
    "name": "Oso Ighodaro",
@@ -7343,7 +7846,8 @@
    "mpg_prior": 22.05,
    "mpg_when_playing": 21.84,
    "availability": 0.802,
-   "mpg_projected": 17.52
+   "mpg_projected": 17.52,
+   "long_injury": null
   },
   "pelle-larsson": {
    "name": "Pelle Larsson",
@@ -7361,7 +7865,8 @@
    "mpg_prior": 26.41,
    "mpg_when_playing": 28.4,
    "availability": 0.748,
-   "mpg_projected": 21.23
+   "mpg_projected": 21.23,
+   "long_injury": null
   },
   "tyler-kolek": {
    "name": "Tyler Kolek",
@@ -7379,7 +7884,8 @@
    "mpg_prior": 11.73,
    "mpg_when_playing": 12.14,
    "availability": 0.65,
-   "mpg_projected": 7.89
+   "mpg_projected": 7.89,
+   "long_injury": null
   },
   "alijah-martin": {
    "name": "Alijah Martin",
@@ -7397,7 +7903,8 @@
    "mpg_prior": 6.35,
    "mpg_when_playing": 8.52,
    "availability": 0.502,
-   "mpg_projected": 4.27
+   "mpg_projected": 4.27,
+   "long_injury": null
   },
   "moussa-cisse": {
    "name": "Moussa Cissé",
@@ -7415,7 +7922,8 @@
    "mpg_prior": 13.95,
    "mpg_when_playing": 7.56,
    "availability": 0.582,
-   "mpg_projected": 4.4
+   "mpg_projected": 4.4,
+   "long_injury": null
   },
   "adou-thiero": {
    "name": "Adou Thiero",
@@ -7433,7 +7941,8 @@
    "mpg_prior": 5.96,
    "mpg_when_playing": 6.4,
    "availability": 0.479,
-   "mpg_projected": 3.06
+   "mpg_projected": 3.06,
+   "long_injury": null
   },
   "chaz-lanier": {
    "name": "Chaz Lanier",
@@ -7451,7 +7960,8 @@
    "mpg_prior": 7.71,
    "mpg_when_playing": 6.19,
    "availability": 0.536,
-   "mpg_projected": 3.32
+   "mpg_projected": 3.32,
+   "long_injury": null
   },
   "dylan-cardwell": {
    "name": "Dylan Cardwell",
@@ -7469,7 +7979,8 @@
    "mpg_prior": 20.61,
    "mpg_when_playing": 18.76,
    "availability": 0.594,
-   "mpg_projected": 11.14
+   "mpg_projected": 11.14,
+   "long_injury": null
   },
   "maxime-raynaud": {
    "name": "Maxime Raynaud",
@@ -7487,7 +7998,8 @@
    "mpg_prior": 26.54,
    "mpg_when_playing": 26.54,
    "availability": 0.749,
-   "mpg_projected": 19.89
+   "mpg_projected": 19.89,
+   "long_injury": null
   },
   "myron-gardner": {
    "name": "Myron Gardner",
@@ -7505,7 +8017,8 @@
    "mpg_prior": 9.13,
    "mpg_when_playing": 5.57,
    "availability": 0.611,
-   "mpg_projected": 3.4
+   "mpg_projected": 3.4,
+   "long_injury": null
   },
   "noah-penda": {
    "name": "Noah Penda",
@@ -7523,7 +8036,8 @@
    "mpg_prior": 12.83,
    "mpg_when_playing": 12.83,
    "availability": 0.663,
-   "mpg_projected": 8.51
+   "mpg_projected": 8.51,
+   "long_injury": null
   },
   "rasheer-fleming": {
    "name": "Rasheer Fleming",
@@ -7541,7 +8055,8 @@
    "mpg_prior": 12.24,
    "mpg_when_playing": 10.88,
    "availability": 0.651,
-   "mpg_projected": 7.09
+   "mpg_projected": 7.09,
+   "long_injury": null
   },
   "tyrese-proctor": {
    "name": "Tyrese Proctor",
@@ -7559,7 +8074,8 @@
    "mpg_prior": 10.9,
    "mpg_when_playing": 14.04,
    "availability": 0.663,
-   "mpg_projected": 9.3
+   "mpg_projected": 9.3,
+   "long_injury": null
   },
   "will-richard": {
    "name": "Will Richard",
@@ -7577,7 +8093,8 @@
    "mpg_prior": 19.96,
    "mpg_when_playing": 18.12,
    "availability": 0.778,
-   "mpg_projected": 14.1
+   "mpg_projected": 14.1,
+   "long_injury": null
   },
   "baba-miller": {
    "name": "Baba Miller",
@@ -7595,7 +8112,8 @@
    "mpg_prior": 13.55,
    "mpg_when_playing": 11.29,
    "availability": 0.7,
-   "mpg_projected": 7.9
+   "mpg_projected": 7.9,
+   "long_injury": null
   },
   "alpha-diallo": {
    "name": "Alpha Diallo",
@@ -7613,7 +8131,8 @@
    "mpg_prior": 12.97,
    "mpg_when_playing": 12.11,
    "availability": 0.645,
-   "mpg_projected": 7.81
+   "mpg_projected": 7.81,
+   "long_injury": null
   },
   "bogoljub-markovic": {
    "name": "Bogoljub Marković",
@@ -7631,7 +8150,8 @@
    "mpg_prior": 12.08,
    "mpg_when_playing": 10.9,
    "availability": 0.623,
-   "mpg_projected": 6.79
+   "mpg_projected": 6.79,
+   "long_injury": null
   },
   "bruce-thornton": {
    "name": "Bruce Thornton",
@@ -7649,7 +8169,8 @@
    "mpg_prior": 14.38,
    "mpg_when_playing": 8.26,
    "availability": 0.678,
-   "mpg_projected": 5.6
+   "mpg_projected": 5.6,
+   "long_injury": null
   },
   "emanuel-sharp": {
    "name": "Emanuel Sharp",
@@ -7667,7 +8188,8 @@
    "mpg_prior": 12.32,
    "mpg_when_playing": 16.17,
    "availability": 0.721,
-   "mpg_projected": 11.67
+   "mpg_projected": 11.67,
+   "long_injury": null
   },
   "henri-veesaar": {
    "name": "Henri Veesaar",
@@ -7684,8 +8206,15 @@
    "se": 1.918,
    "mpg_prior": 11.52,
    "mpg_when_playing": 11.52,
-   "availability": 0.612,
-   "mpg_projected": 7.05
+   "availability": 0.005,
+   "mpg_projected": 0.06,
+   "long_injury": {
+    "games_out": 69,
+    "games_after_return": 0,
+    "expected_games_played": 0.0,
+    "return_date": "2027-07-01",
+    "source_url": "https://www.espn.com/nba/injuries"
+   }
   },
   "isaiah-evans": {
    "name": "Isaiah Evans",
@@ -7703,7 +8232,8 @@
    "mpg_prior": 14.03,
    "mpg_when_playing": 8.22,
    "availability": 0.667,
-   "mpg_projected": 5.48
+   "mpg_projected": 5.48,
+   "long_injury": null
   },
   "jaden-bradley": {
    "name": "Jaden Bradley",
@@ -7721,7 +8251,8 @@
    "mpg_prior": 11.74,
    "mpg_when_playing": 7.56,
    "availability": 0.689,
-   "mpg_projected": 5.2
+   "mpg_projected": 5.2,
+   "long_injury": null
   },
   "khalifa-diop": {
    "name": "Khalifa Diop",
@@ -7739,7 +8270,8 @@
    "mpg_prior": 13.11,
    "mpg_when_playing": 13.11,
    "availability": 0.612,
-   "mpg_projected": 8.03
+   "mpg_projected": 8.03,
+   "long_injury": null
   },
   "meleek-thomas": {
    "name": "Meleek Thomas",
@@ -7757,7 +8289,8 @@
    "mpg_prior": 13.87,
    "mpg_when_playing": 18.95,
    "availability": 0.689,
-   "mpg_projected": 13.05
+   "mpg_projected": 13.05,
+   "long_injury": null
   },
   "ryan-conwell": {
    "name": "Ryan Conwell",
@@ -7775,7 +8308,8 @@
    "mpg_prior": 13.4,
    "mpg_when_playing": 12.15,
    "availability": 0.7,
-   "mpg_projected": 8.5
+   "mpg_projected": 8.5,
+   "long_injury": null
   },
   "trevon-brazile": {
    "name": "Trevon Brazile",
@@ -7793,7 +8327,8 @@
    "mpg_prior": 13.71,
    "mpg_when_playing": 18.27,
    "availability": 0.7,
-   "mpg_projected": 12.78
+   "mpg_projected": 12.78,
+   "long_injury": null
   },
   "blake-wesley": {
    "name": "Blake Wesley",
@@ -7811,7 +8346,8 @@
    "mpg_prior": 11.65,
    "mpg_when_playing": 9.6,
    "availability": 0.575,
-   "mpg_projected": 5.53
+   "mpg_projected": 5.53,
+   "long_injury": null
   }
  },
  "team_residuals": {
@@ -7995,5 +8531,19 @@
    "games_2026_27": 10,
    "residual": 0.101
   }
- }
+ },
+ "long_injuries_as_of": "2026-11-09",
+ "long_injury_teams": [
+  "ATL",
+  "GSW",
+  "IND",
+  "LAC",
+  "MIN",
+  "OKC",
+  "PHI",
+  "PHX",
+  "POR",
+  "SAC",
+  "WAS"
+ ]
 }
