@@ -233,9 +233,17 @@ def _load_vegas():
         return {(r["season"], r["team"]): float(r["total"]) for r in csv.DictReader(f)}
 
 
+def scaled_vegas(vegas, season):
+    """A season's Vegas totals scaled (multiplied) so the 30 teams sum to exactly 1,230 wins.
+    Sportsbook totals sum a little higher (1,234-1,253 here)."""
+    raw = {c: vegas[(season, c)] for c in TEAM_INFO}
+    factor = 41 * 30 / sum(raw.values())
+    return {c: v * factor for c, v in raw.items()}
+
+
 def vegas_playoff_odds(season, totals, game_fit, latent_sd, n_sims=N_SIMS, seed=2027):
-    """Playoff and top-6 odds implied by Vegas win totals, through the same season machinery:
-    find team strengths whose expected wins match the totals (scaled to sum to 1,230), then
+    """Playoff and top-6 odds implied by win totals (Vegas, model or a blend), through the same
+    season machinery: find team strengths whose expected wins match the totals, then
     simulate the real schedule with the game model, the same latent spread, tiebreakers and
     the play-in."""
     from tradesim.game_model import back_to_backs, norm_cdf
@@ -247,8 +255,8 @@ def vegas_playoff_odds(season, totals, game_fit, latent_sd, n_sims=N_SIMS, seed=
     court = np.array([0.0 if g["neutral"] else 1.0 for g in games])
     b2b_h, b2b_a = back_to_backs(games)
     edge = game_fit["home_edge"] * court - game_fit["b2b_penalty"] * (b2b_h - b2b_a)
-    target = np.array([totals[c] for c in codes])
-    target = target - (target.sum() - 41 * 30) / 30  # sportsbook totals sum a bit above 1,230
+    target = np.array([totals[c] for c in codes], dtype=float)
+    target = target * (41 * 30) / target.sum()  # callers pass totals already scaled to 1,230; keeps it exact
     rng = np.random.default_rng(seed)
     latent = latent_sd * rng.standard_normal((n_sims, 30))
     s = (target - 41) / 2.7
@@ -301,52 +309,107 @@ def _slope_ci(rows, pred_key, n_boot=2000, seed=0):
     return round(slope(rows), 2), [round(float(x), 2) for x in np.percentile(boots, [5, 95])]
 
 
+def _season_boot_ci(rows, stat, n_boot=4000, seed=1):
+    """90% interval of stat(rows) from resampling whole seasons with replacement."""
+    seasons = sorted({r["season"] for r in rows})
+    by = {s: [r for r in rows if r["season"] == s] for s in seasons}
+    rng = np.random.default_rng(seed)
+    vals = [stat([r for s in rng.choice(seasons, len(seasons)) for r in by[s]]) for _ in range(n_boot)]
+    return [round(float(x), 4) for x in np.percentile(vals, [5, 95])]
+
+
+def _metrics(rows, pred_key, p_key, p6_key=None):
+    pred = np.array([r[pred_key] for r in rows])
+    act = np.array([r["actual_wins"] for r in rows])
+    p = np.clip(np.array([r[p_key] for r in rows]), 0.001, 0.999)
+    y = np.array([r["made_playoffs"] for r in rows])
+    slope, ci = _slope_ci(rows, pred_key)
+    out = {"win_mae": round(float(np.mean(np.abs(pred - act))), 2),
+           "win_rmse": round(float(np.sqrt(np.mean((pred - act) ** 2))), 2),
+           "slope": slope, "slope_90ci": ci, "corr": round(float(np.corrcoef(pred, act)[0, 1]), 2),
+           "playoff_brier": round(float(np.mean((p - y) ** 2)), 4),
+           "playoff_log_loss": round(float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p))), 4)}
+    if p6_key:
+        p6 = np.array([r[p6_key] for r in rows])
+        out["top6_brier"] = round(float(np.mean((p6 - np.array([r["made_top6"] for r in rows])) ** 2)), 4)
+    return out
+
+
+def _brier(rows, key):
+    return float(np.mean([(r[key] - r["made_playoffs"]) ** 2 for r in rows]))
+
+
+def _mae(rows, key):
+    return float(np.mean([abs(r[key] - r["actual_wins"]) for r in rows]))
+
+
+def fit_blend_weight(rows):
+    """w minimizing the squared error of w x model + (1 - w) x Vegas (clipped to 0-1)."""
+    m = np.array([r["predicted_wins"] for r in rows])
+    v = np.array([r["vegas_wins"] for r in rows])
+    a = np.array([r["actual_wins"] for r in rows])
+    d = m - v
+    return float(np.clip(np.sum(d * (a - v)) / np.sum(d * d), 0, 1))
+
+
 def vegas_comparison(results, sigma, latent_sd):
-    """Side by side with preseason Vegas win totals (data/vegas_win_totals.csv: team, season,
-    total, source_url), if the file exists."""
+    """Model vs preseason Vegas win totals (data/vegas_win_totals.csv), side by side, plus a
+    leave-one-season-out blend. Vegas totals are scaled to sum to 1,230 per season."""
     if not os.path.exists(VEGAS_PATH):
         return {"status": "skipped: data/vegas_win_totals.csv not found"}
     vegas = _load_vegas()
-    rows = [r for r in _rows(results, sigma) if (r["season"], r["team"]) in vegas]
-    if len(rows) != len(_rows(results, sigma)):
+    rows = _rows(results, sigma)
+    if any((r["season"], r["team"]) not in vegas for r in rows):
         return {"status": "incomplete: not every team-season has a Vegas total"}
     by_season = {r["season"]: r for r in results}
-    for season in sorted({r["season"] for r in rows}):
-        totals = {c: vegas[(season, c)] for c in TEAM_INFO}
-        odds = vegas_playoff_odds(season, totals, by_season[season]["game_model"], latent_sd)
-        for r in rows:
-            if r["season"] == season:
-                r["vegas_wins"] = vegas[(season, r["team"])]
-                r["vegas_playoff_pct"] = odds[r["team"]]["playoff_pct"]
-                r["vegas_top6_pct"] = odds[r["team"]]["top6_pct"]
-
-    def metrics(pred_key, p_key, p6_key):
-        pred = np.array([r[pred_key] for r in rows])
-        act = np.array([r["actual_wins"] for r in rows])
-        p = np.clip(np.array([r[p_key] for r in rows]), 0.001, 0.999)
-        y = np.array([r["made_playoffs"] for r in rows])
-        p6 = np.array([r[p6_key] for r in rows])
-        y6 = np.array([r["made_top6"] for r in rows])
-        slope, ci = _slope_ci(rows, pred_key)
-        return {"win_mae": round(float(np.mean(np.abs(pred - act))), 2),
-                "win_rmse": round(float(np.sqrt(np.mean((pred - act) ** 2))), 2),
-                "slope": slope, "slope_90ci": ci, "corr": round(float(np.corrcoef(pred, act)[0, 1]), 2),
-                "playoff_brier": round(float(np.mean((p - y) ** 2)), 4),
-                "playoff_log_loss": round(float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p))), 4),
-                "top6_brier": round(float(np.mean((p6 - y6) ** 2)), 4)}
-
-    by = {}
-    for season in sorted({r["season"] for r in rows}):
+    seasons = sorted({r["season"] for r in rows})
+    for season in seasons:
+        scaled = scaled_vegas(vegas, season)
         sel = [r for r in rows if r["season"] == season]
-        by[season] = {"model_mae": round(float(np.mean([abs(r["predicted_wins"] - r["actual_wins"]) for r in sel])), 2),
-                      "vegas_mae": round(float(np.mean([abs(r["vegas_wins"] - r["actual_wins"]) for r in sel])), 2)}
+        model_totals = {r["team"]: r["predicted_wins"] for r in sel}
+        gfit = by_season[season]["game_model"]
+        v_odds = vegas_playoff_odds(season, scaled, gfit, latent_sd)
+        m_odds = vegas_playoff_odds(season, model_totals, gfit, latent_sd)  # diagnostic: same converter
+        for r in sel:
+            r["vegas_raw"] = vegas[(season, r["team"])]
+            r["vegas_wins"] = scaled[r["team"]]
+            r["vegas_playoff_pct"] = v_odds[r["team"]]["playoff_pct"]
+            r["vegas_top6_pct"] = v_odds[r["team"]]["top6_pct"]
+            r["model_via_converter_playoff_pct"] = m_odds[r["team"]]["playoff_pct"]
+    # Blend, w fitted leave-one-season-out on the other seasons' win totals.
+    folds = {}
+    for held in seasons:
+        w = fit_blend_weight([r for r in rows if r["season"] != held])
+        folds[held] = round(w, 3)
+        sel = [r for r in rows if r["season"] == held]
+        blend_totals = {r["team"]: w * r["predicted_wins"] + (1 - w) * r["vegas_wins"] for r in sel}
+        b_odds = vegas_playoff_odds(held, blend_totals, by_season[held]["game_model"], latent_sd)
+        for r in sel:
+            r["blend_wins"] = blend_totals[r["team"]]
+            r["blend_playoff_pct"] = b_odds[r["team"]]["playoff_pct"]
+    diff_brier = _season_boot_ci(rows, lambda rs: _brier(rs, "playoff_pct") - _brier(rs, "vegas_playoff_pct"))
+    diff_mae = _season_boot_ci(rows, lambda rs: _mae(rs, "predicted_wins") - _mae(rs, "vegas_wins"))
+    blend_vs_vegas_brier = _season_boot_ci(rows, lambda rs: _brier(rs, "blend_playoff_pct") - _brier(rs, "vegas_playoff_pct"))
+    blend_vs_vegas_mae = _season_boot_ci(rows, lambda rs: _mae(rs, "blend_wins") - _mae(rs, "vegas_wins"))
+    by = {s: {"model_mae": round(_mae([r for r in rows if r["season"] == s], "predicted_wins"), 2),
+              "vegas_mae": round(_mae([r for r in rows if r["season"] == s], "vegas_wins"), 2),
+              "blend_mae": round(_mae([r for r in rows if r["season"] == s], "blend_wins"), 2)} for s in seasons}
     return {"status": "ok", "teams": len(rows), "latent_sd": round(latent_sd, 2),
-            "model": metrics("predicted_wins", "playoff_pct", "top6_pct"),
-            "vegas": metrics("vegas_wins", "vegas_playoff_pct", "vegas_top6_pct"),
-            "by_season": by,
-            "note": ("Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines "
-                     "(Basketball-Reference preseason odds pages, which credit sportsoddshistory.com). Vegas playoff "
-                     "odds are derived by running the totals through the same season simulator.")}
+            "model": _metrics(rows, "predicted_wins", "playoff_pct", "top6_pct"),
+            "vegas": _metrics(rows, "vegas_wins", "vegas_playoff_pct", "vegas_top6_pct"),
+            "vegas_raw_mae": round(_mae(rows, "vegas_raw"), 2),
+            "model_via_converter": {"playoff_brier": round(_brier(rows, "model_via_converter_playoff_pct"), 4)},
+            "differences_90ci": {"brier_model_minus_vegas": diff_brier, "mae_model_minus_vegas": diff_mae,
+                                 "brier_blend_minus_vegas": blend_vs_vegas_brier,
+                                 "mae_blend_minus_vegas": blend_vs_vegas_mae},
+            "blend": {"w_by_fold": folds, "w_all": round(fit_blend_weight(rows), 3),
+                      **_metrics(rows, "blend_wins", "blend_playoff_pct")},
+            "by_season": by, "rows": rows,
+            "note": ("Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines scaled to "
+                     "1,230 per season (Basketball-Reference preseason odds pages, crediting sportsoddshistory.com). "
+                     "Vegas and blend playoff odds come from running their totals through the same season "
+                     "simulator; 'model via converter' does the same with the model's totals, to separate "
+                     "better totals from the conversion to odds.")}
 
 
 def _sd_without_team_term():
@@ -427,18 +490,29 @@ def write_report(r, path=os.path.join(ROOT, "reports", "backtest_nov9.md")):
         lines.append(f"- {v['status']}")
     else:
         lines += [f"- {v['note']}", "",
-                  "| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason) |", "|---|---|---|"]
+                  "| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason, scaled) | Blend (w by fold) |",
+                  "|---|---|---|---|"]
         rows = [("Win-total average error", "win_mae", "{:.2f}"), ("Win-total RMSE", "win_rmse", "{:.2f}"),
                 ("Slope of actual on predicted", "slope", "{:.2f}"), ("Correlation", "corr", "{:.2f}"),
-                ("Playoff Brier", "playoff_brier", "{:.4f}"), ("Playoff log loss", "playoff_log_loss", "{:.4f}"),
-                ("Top-6 Brier", "top6_brier", "{:.4f}")]
+                ("Playoff Brier", "playoff_brier", "{:.4f}"), ("Playoff log loss", "playoff_log_loss", "{:.4f}")]
         for label, key, fmt in rows:
-            lines.append(f"| {label} | {fmt.format(v['model'][key])} | {fmt.format(v['vegas'][key])} |")
-        lines.append(f"| Slope, 90% interval (resampling seasons) | {v['model']['slope_90ci'][0]:.2f} to "
-                     f"{v['model']['slope_90ci'][1]:.2f} | {v['vegas']['slope_90ci'][0]:.2f} to "
-                     f"{v['vegas']['slope_90ci'][1]:.2f} |")
-        lines += ["", "| Season | Model MAE | Vegas MAE |", "|---|---|---|"]
-        lines += [f"| {s} | {x['model_mae']:.2f} | {x['vegas_mae']:.2f} |" for s, x in v["by_season"].items()]
+            lines.append(f"| {label} | {fmt.format(v['model'][key])} | {fmt.format(v['vegas'][key])} | "
+                         f"{fmt.format(v['blend'][key])} |")
+        d = v["differences_90ci"]
+        lines += ["", f"- Vegas totals before scaling: average error {v['vegas_raw_mae']}.",
+                  f"- Model totals through the same odds converter as Vegas: playoff Brier "
+                  f"{v['model_via_converter']['playoff_brier']} (so the gap is in the totals, not the conversion).",
+                  "- 90% intervals from resampling whole seasons:",
+                  f"  - Brier, model - Vegas: {d['brier_model_minus_vegas'][0]:+.4f} to {d['brier_model_minus_vegas'][1]:+.4f}",
+                  f"  - Average error, model - Vegas: {d['mae_model_minus_vegas'][0]:+.2f} to {d['mae_model_minus_vegas'][1]:+.2f}",
+                  f"  - Brier, blend - Vegas: {d['brier_blend_minus_vegas'][0]:+.4f} to {d['brier_blend_minus_vegas'][1]:+.4f}",
+                  f"  - Average error, blend - Vegas: {d['mae_blend_minus_vegas'][0]:+.2f} to {d['mae_blend_minus_vegas'][1]:+.2f}",
+                  f"- Blend weight on the model, fitted leave-one-season-out: "
+                  + ", ".join(f"{k} {w:.2f}" for k, w in v["blend"]["w_by_fold"].items())
+                  + f" (all seasons: {v['blend']['w_all']:.2f}).",
+                  "", "| Season | Model MAE | Vegas MAE | Blend MAE |", "|---|---|---|---|"]
+        lines += [f"| {s} | {x['model_mae']:.2f} | {x['vegas_mae']:.2f} | {x['blend_mae']:.2f} |"
+                  for s, x in v["by_season"].items()]
     with open(path, "w") as f:
         f.write("\n".join(lines) + "\n")
     return path
@@ -458,7 +532,10 @@ if __name__ == "__main__":
     v = r["vegas"]
     print("Vegas:", v["status"])
     if v["status"] == "ok":
-        for k in ("win_mae", "win_rmse", "slope", "slope_90ci", "playoff_brier", "playoff_log_loss", "top6_brier"):
-            print(f"  {k:18s} model {v['model'][k]}   vegas {v['vegas'][k]}")
+        for k in ("win_mae", "win_rmse", "slope", "slope_90ci", "playoff_brier", "playoff_log_loss"):
+            print(f"  {k:18s} model {v['model'][k]}   vegas {v['vegas'][k]}   blend {v['blend'][k]}")
+        print("  vegas raw MAE", v["vegas_raw_mae"], "| model via converter Brier", v["model_via_converter"])
+        print("  90% intervals:", v["differences_90ci"])
+        print("  blend w by fold:", v["blend"]["w_by_fold"], "all seasons:", v["blend"]["w_all"])
         print("  by season:", v["by_season"])
     print("Wrote", OUT_PATH, "and", write_report(r))

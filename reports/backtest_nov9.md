@@ -75,23 +75,30 @@ Share of players (500+ minutes) whose full-season BPM landed inside their 50% / 
 
 ## Model vs Vegas preseason win totals
 
-- Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines (Basketball-Reference preseason odds pages, which credit sportsoddshistory.com). Vegas playoff odds are derived by running the totals through the same season simulator.
+- Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines scaled to 1,230 per season (Basketball-Reference preseason odds pages, crediting sportsoddshistory.com). Vegas and blend playoff odds come from running their totals through the same season simulator; 'model via converter' does the same with the model's totals, to separate better totals from the conversion to odds.
 
-| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason) |
-|---|---|---|
-| Win-total average error | 7.26 | 7.12 |
-| Win-total RMSE | 9.03 | 9.02 |
-| Slope of actual on predicted | 0.95 | 0.84 |
-| Correlation | 0.68 | 0.69 |
-| Playoff Brier | 0.1741 | 0.1518 |
-| Playoff log loss | 0.5123 | 0.4585 |
-| Top-6 Brier | 0.1795 | 0.1666 |
-| Slope, 90% interval (resampling seasons) | 0.85 to 1.07 | 0.73 to 1.01 |
+| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason, scaled) | Blend (w by fold) |
+|---|---|---|---|
+| Win-total average error | 7.26 | 7.10 | 7.12 |
+| Win-total RMSE | 9.03 | 9.00 | 8.89 |
+| Slope of actual on predicted | 0.95 | 0.85 | 0.93 |
+| Correlation | 0.68 | 0.69 | 0.69 |
+| Playoff Brier | 0.1741 | 0.1518 | 0.1604 |
+| Playoff log loss | 0.5123 | 0.4588 | 0.4782 |
 
-| Season | Model MAE | Vegas MAE |
-|---|---|---|
-| 2021-22 | 7.25 | 6.93 |
-| 2022-23 | 5.04 | 6.27 |
-| 2023-24 | 7.65 | 6.57 |
-| 2024-25 | 7.19 | 8.37 |
-| 2025-26 | 9.19 | 7.47 |
+- Vegas totals before scaling: average error 7.12.
+- Model totals through the same odds converter as Vegas: playoff Brier 0.1749 (so the gap is in the totals, not the conversion).
+- 90% intervals from resampling whole seasons:
+  - Brier, model - Vegas: +0.0078 to +0.0336
+  - Average error, model - Vegas: -0.70 to +1.04
+  - Brier, blend - Vegas: +0.0017 to +0.0155
+  - Average error, blend - Vegas: -0.42 to +0.48
+- Blend weight on the model, fitted leave-one-season-out: 2021-22 0.51, 2022-23 0.42, 2023-24 0.60, 2024-25 0.27, 2025-26 0.63 (all seasons: 0.49).
+
+| Season | Model MAE | Vegas MAE | Blend MAE |
+|---|---|---|---|
+| 2021-22 | 7.25 | 6.94 | 6.73 |
+| 2022-23 | 5.04 | 6.17 | 5.58 |
+| 2023-24 | 7.65 | 6.57 | 7.09 |
+| 2024-25 | 7.19 | 8.35 | 7.79 |
+| 2025-26 | 9.19 | 7.44 | 8.40 |

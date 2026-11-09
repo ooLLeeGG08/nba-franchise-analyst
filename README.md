@@ -182,21 +182,30 @@ sigma_t fitted on the other seasons; full season simulated from 0-0 on the real 
 | Players inside their 50% / 80% rating interval | 47-55% / 76-86% by season (no SE scaling needed) |
 
 **Model vs Vegas** (`data/vegas_win_totals.csv`: preseason totals 2021-22 to 2025-26 from
-Basketball-Reference's preseason odds pages, which credit sportsoddshistory.com; Vegas playoff
-odds come from running the totals through the same season simulator):
+Basketball-Reference's preseason odds pages, which credit sportsoddshistory.com; each season
+scaled to sum to 1,230; Vegas playoff odds come from running the totals through the same
+season simulator). Blend = w x model + (1 - w) x Vegas, with w fitted leave-one-season-out.
 
-| 150 team-seasons | Model (as of Nov 9) | Vegas (preseason) |
-|---|---|---|
-| Win-total average error | 7.26 | 7.12 |
-| Win-total RMSE | 9.03 | 9.02 |
-| Slope of actual on predicted (90% interval, resampling seasons) | 0.95 (0.85-1.07) | 0.84 (0.73-1.01) |
-| Playoff Brier | 0.174 | 0.152 |
-| Top-6 Brier | 0.180 | 0.167 |
+| 150 team-seasons | Model (as of Nov 9) | Vegas (preseason) | Blend |
+|---|---|---|---|
+| Win-total average error | 7.26 | 7.10 | 7.12 |
+| Win-total RMSE | 9.03 | 9.00 | 8.89 |
+| Slope of actual on predicted | 0.95 (90%: 0.85-1.07) | 0.85 | 0.93 |
+| Playoff Brier | 0.174 | 0.152 | 0.160 |
 
-Vegas is about level on win totals (the model wins 2022-23 and 2024-25) and clearly better on
-playoff odds, even though the model's forecasts already know about 10 games of results. The
-slope stays at 0.95, with an interval that includes 1.0, so predictions are not shrunk toward
-41; this is tracked by a test and reconsidered if it drops below about 0.95.
+- Win totals: no real difference (model - Vegas average error, 90% interval -0.70 to +1.04,
+  resampling whole seasons).
+- Playoff odds: Vegas is better (model - Vegas Brier +0.008 to +0.034). Running the model's
+  totals through the same converter gives the same Brier (0.175), so Vegas's edge is in its
+  totals for teams near the playoff cut, not in the conversion.
+- The blend (w = 0.27-0.63 by fold) ties Vegas on win totals and is worse on playoff odds
+  (blend - Vegas Brier +0.002 to +0.016), so it doesn't beat each alone and Vegas totals are
+  not used for 2026-27. (It does beat the model alone.)
+- Slope stays at 0.95, interval includes 1.0: no shrink toward 41 (tracked by a test).
+- Biggest 2025-26 misses vs Vegas (`reports/miss_breakdown_2025_26.md`): LAL and PHI (stars
+  out at the start of the season are missing from the backtest's Nov 9 rosters, plus luck in
+  close games), NYK (three starters far above their prior together), BKN (rookies far below
+  their draft-slot prior), CHI (rating misses, injuries, mid-season trades).
 
 Playoff-odds calibration (sigma_t chosen leave-one-season-out):
 
@@ -233,7 +242,8 @@ by < 0.5.
   back-to-back penalty.
 - BPM undervalues some defensive specialists (a few teams look better when one sits).
 - The backtest uses pre-season player ratings (no early-season player BPM exists for past
-  seasons), so it's slightly harder than the live 2026-27 setting.
+  seasons) and builds Nov 9 rosters from players who had played by then, so stars out
+  injured at the start are missing; both make it harder than the live 2026-27 setting.
 - The 2026-27 schedule's 30 in-season-tournament games aren't set yet (filled with
   same-conference matchups); "playoff-eligible" in the tiebreakers is read as the top 10.
 - The game spread (sigma) was fitted on season-average strengths, so it also contains a

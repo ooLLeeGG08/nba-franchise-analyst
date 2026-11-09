@@ -102,3 +102,24 @@ def test_slope_tracking():
     assert r["loso"]["slope"] >= 0.9
     lo, hi = r["vegas"]["model"]["slope_90ci"]
     assert lo < 1.0 < hi or r["loso"]["slope"] >= 0.95
+
+
+def test_scaled_vegas_sums_to_1230():
+    vegas = bt._load_vegas()
+    for season in bt.SEASONS:
+        assert sum(bt.scaled_vegas(vegas, season).values()) == pytest.approx(1230)
+
+
+def test_blend_weight_fit():
+    rows = [{"predicted_wins": m, "vegas_wins": v, "actual_wins": 0.3 * m + 0.7 * v}
+            for m, v in [(30, 40), (50, 45), (41, 60), (25, 20), (55, 50)]]
+    assert bt.fit_blend_weight(rows) == pytest.approx(0.3)
+
+
+def test_blend_and_intervals_reported(report):
+    v = report["vegas"]
+    assert set(v["blend"]["w_by_fold"]) == set(bt.SEASONS)
+    assert all(0 <= w <= 1 for w in v["blend"]["w_by_fold"].values())
+    for key in ("brier_model_minus_vegas", "mae_model_minus_vegas", "brier_blend_minus_vegas", "mae_blend_minus_vegas"):
+        lo, hi = v["differences_90ci"][key]
+        assert lo <= hi
