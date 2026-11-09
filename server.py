@@ -141,6 +141,36 @@ def sim_suggestions(code):
     return jsonify(cached_suggest(code, s["engine"], s["league"], s["cba"], date.today(), get_llm(), s["names"]))
 
 
+@app.route('/api/sim/sequence/check', methods=['POST'])
+def sim_sequence_check():
+    from datetime import date
+    from tradesim.sequence_api import check_sequence
+    from tradesim.trade_api import BadTrade
+    s = _sim()
+    try:
+        out = check_sequence(request.get_json(silent=True), s["league"], s["cba"], date.today())
+    except BadTrade as err:
+        return jsonify({"error": str(err)}), 400
+    out.pop("working")
+    return jsonify(out)
+
+
+@app.route('/api/sim/sequence/simulate', methods=['POST'])
+def sim_sequence_simulate():
+    from datetime import date
+    from tradesim.ai import NameIndex, get_llm
+    from tradesim.sequence_api import simulate_sequence
+    from tradesim.trade_api import BadTrade
+    s = _sim()
+    if "names" not in s:
+        s["names"] = NameIndex(s["league"].players)
+    try:
+        return jsonify(simulate_sequence(request.get_json(silent=True), s["league"], s["cba"], s["engine"],
+                                         date.today(), get_llm(), s["names"]))
+    except BadTrade as err:
+        return jsonify({"error": str(err)}), 400
+
+
 @app.route('/api/sim/players/resolve')
 def sim_resolve_player():
     """Turn a typed name into database players: exact, ambiguous (the user picks), or none."""

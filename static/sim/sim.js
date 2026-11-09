@@ -285,7 +285,9 @@
             ${ideasCard(t)}
             ${capCard(t)}
             ${rosterCard(t)}
-            <div class="action-bar"><div class="inner"><a class="button wide" href="#/trade/${t.code}">Propose a trade</a></div></div>`);
+            <div class="action-bar"><div class="inner two">
+                <a class="button secondary" href="#/trade/${t.code}">Propose a trade</a>
+                <a class="button" href="#/select/${t.code}">Choose trades</a></div></div>`);
         loadIdeas(t);
     }
 
@@ -654,6 +656,235 @@
         return trade(codes, moves);
     }
 
+    // --- screen 5: trade selection ----------------------------------------------------------------
+    // The 4 suggestions plus saved trades involving this team, as checkable cards. Every change
+    // re-checks the chosen trades in order on the server (/api/sim/sequence/check).
+
+    const selection = {};  // team -> Set of chosen trade ids
+
+    function tradeOptions(code, ideas) {
+        const opts = (ideas.suggestions || []).map((sg) => ({
+            id: `s${sg.rank}`, kind: "Suggestion", moves: sg.moves, partner: sg.partner,
+            title: `Gets ${sg.gets.map((g) => g.name).join(" + ")} from ${sg.partner}`,
+            detail: `Sends ${sg.sends.map((x) => x.name).concat(sg.picks_out.map((p) => p.label + " pick")).join(", ")}`,
+            badge: `${signed(sg.win_change)} wins alone`,
+        }));
+        loadSaved().forEach((sv, i) => {
+            if (!sv.teams.includes(code)) return;
+            opts.push({ id: `saved${i}`, kind: "Your trade", moves: sv.moves, title: sv.summary, detail: "", badge: "" });
+        });
+        return opts;
+    }
+
+    function encodeTrades(trades) {
+        return trades.map((t) => encodeMoves(t.moves)).join("~");
+    }
+
+    function decodeTrades(text) {
+        return (text || "").split("~").filter(Boolean).map((part, i) => ({ id: `t${i}`, moves: decodeMoves(part) }));
+    }
+
+    async function postJSON(url, body) {
+        const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || `${res.status}`);
+        return data;
+    }
+
+    async function select(code) {
+        render(`<div class="loading">Loading trades…</div>`);
+        let t, ideas;
+        try {
+            [t, ideas] = await Promise.all([getJSON(`/api/sim/team/${code}`), getJSON(`/api/sim/team/${code}/suggestions`)]);
+        } catch (err) {
+            return showError(err);
+        }
+        const options = tradeOptions(code, ideas);
+        const chosen = selection[code] || (selection[code] = new Set());
+        let check = null;
+
+        const draw = () => {
+            const picked = options.filter((o) => chosen.has(o.id));
+            const verdict = (o) => check && check.trades.find((v) => v.id === o.id);
+            const cards = options.map((o) => {
+                const v = chosen.has(o.id) ? verdict(o) : null;
+                const blocked = v && !v.works;
+                return `
+                    <label class="pick-card ${chosen.has(o.id) ? "on" : ""} ${blocked ? "blocked" : ""}">
+                        <input type="checkbox" data-pick="${o.id}" ${chosen.has(o.id) ? "checked" : ""}>
+                        <span class="pick-body">
+                            <span class="pick-kind">${esc(o.kind)}${o.badge ? ` · ${esc(o.badge)}` : ""}</span>
+                            <strong>${esc(o.title)}</strong>
+                            ${o.detail ? `<small>${esc(o.detail)}</small>` : ""}
+                            ${blocked ? `<span class="blocked-reason">Blocked: ${esc(v.reason)}</span>` : ""}
+                        </span>
+                    </label>`;
+            }).join("");
+            const working = check ? check.trades.filter((v) => v.works).length : 0;
+            const payroll = check && picked.length ? Object.entries(check.payroll).map(([c, p]) => `
+                <li><span>${esc(c)} <small>${esc(p.status_before)}${p.status_after !== p.status_before ? ` → ${esc(p.status_after)}` : ""} · ${p.contracts_after} contracts</small></span>
+                    <span class="amt">${money(p.before)} → ${money(p.after)}</span></li>`).join("") : "";
+            render(`
+                <div class="topbar"><a class="back" href="#/team/${code}">‹ ${esc(code)}</a><h2 class="title">Choose trades</h2></div>
+                <p class="intro">Pick any trades to run together, or none. They're checked in the order shown, each against the rosters and payroll the earlier ones leave.</p>
+                <div class="pick-list">${cards || `<p class="empty">No suggestions or saved trades yet. Build one in the trade machine.</p>`}</div>
+                ${picked.length ? `
+                <section class="card">
+                    <div class="card-head"><h2>Combined effect</h2><span class="note">${check ? `${working} of ${picked.length} trades work together` : "Checking…"}</span></div>
+                    <ul class="moves">${payroll}</ul>
+                </section>` : ""}
+                <div class="action-bar"><div class="inner">
+                    <a class="button wide" href="#/results/${code}?t=${encodeTrades(picked.filter((o) => !check || (verdict(o) || {}).works))}">
+                        ${picked.length ? `Simulate the season with ${working || picked.length} trade${(working || picked.length) > 1 ? "s" : ""}` : "Simulate the season as is"}</a>
+                </div></div>`);
+            app.querySelectorAll("[data-pick]").forEach((box) => box.addEventListener("change", async () => {
+                if (box.checked) chosen.add(box.dataset.pick); else chosen.delete(box.dataset.pick);
+                check = null;
+                draw();
+                const now = options.filter((o) => chosen.has(o.id));
+                if (!now.length) return;
+                try {
+                    check = await postJSON("/api/sim/sequence/check", { team: code, trades: now.map((o) => ({ id: o.id, moves: o.moves })) });
+                } catch (err) {
+                    check = { trades: [], payroll: {} };
+                }
+                draw();
+            }));
+        };
+        draw();
+        if (chosen.size) {
+            const now = options.filter((o) => chosen.has(o.id));
+            try { check = await postJSON("/api/sim/sequence/check", { team: code, trades: now.map((o) => ({ id: o.id, moves: o.moves })) }); } catch (e) { /* shown as checking */ }
+            draw();
+        }
+    }
+
+    // --- screen 6: results ------------------------------------------------------------------------
+
+    function percentile(dist, q) {
+        const total = dist.reduce((a, b) => a + b, 0);
+        let run = 0;
+        for (let w = 0; w < dist.length; w++) {
+            run += dist[w];
+            if (run >= q * total) return w;
+        }
+        return dist.length - 1;
+    }
+
+    // Two win distributions (before / after) as frequency lines with a light fill.
+    // Colors: palette slots 1 and 2 (dark), validated against the card surface.
+    function distributionChart(before, after) {
+        const W = 340, H = 180, pad = { l: 34, r: 10, t: 14, b: 26 };
+        const nb = before.reduce((a, b) => a + b, 0), na = after.reduce((a, b) => a + b, 0);
+        const pb = before.map((c) => c / nb), pa = after.map((c) => c / na);
+        const nonzero = (p) => p.map((v, i) => (v > 0.0005 ? i : null)).filter((i) => i !== null);
+        const xs = nonzero(pb).concat(nonzero(pa));
+        const lo = Math.max(0, Math.min(...xs) - 2), hi = Math.min(82, Math.max(...xs) + 2);
+        const ymax = Math.max(...pb, ...pa) * 1.12;
+        const x = (w) => pad.l + ((w - lo) / (hi - lo)) * (W - pad.l - pad.r);
+        const y = (p) => H - pad.b - (p / ymax) * (H - pad.t - pad.b);
+        const line = (p) => p.slice(lo, hi + 1).map((v, i) => `${i ? "L" : "M"}${x(lo + i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+        const area = (p) => `${line(p)}L${x(hi).toFixed(1)},${y(0)}L${x(lo).toFixed(1)},${y(0)}Z`;
+        const ticks = [];
+        for (let w = Math.ceil(lo / 10) * 10; w <= hi; w += 10) ticks.push(w);
+        const yticks = [0.02, 0.04, 0.06, 0.08, 0.10].filter((v) => v < ymax);
+        // Direct labels sit beside each curve's peak, on the outer side so they never collide.
+        const peak = (p) => p.indexOf(Math.max(...p.slice(lo, hi + 1)));
+        const afterRight = peak(pa) >= peak(pb);
+        const label = (p, name, cls) => {
+            const w = peak(p);
+            const right = (cls === "after") === afterRight;
+            return `<text class="direct ${cls}" x="${(x(w) + (right ? 6 : -6)).toFixed(1)}" y="${(y(p[w]) - 4).toFixed(1)}" text-anchor="${right ? "start" : "end"}">${name}</text>`;
+        };
+        return `
+            <div class="chart" data-lo="${lo}" data-hi="${hi}">
+                <div class="legend"><span><i class="sw before"></i>Before</span><span><i class="sw after"></i>After</span></div>
+                <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of simulated wins before and after the trades">
+                    ${yticks.map((v) => `<line class="grid" x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${pad.l - 6}" y="${y(v) + 3}" text-anchor="end">${Math.round(v * 100)}%</text>`).join("")}
+                    <line class="baseline" x1="${pad.l}" x2="${W - pad.r}" y1="${y(0)}" y2="${y(0)}"/>
+                    ${ticks.map((w) => `<text class="axis" x="${x(w)}" y="${H - 8}" text-anchor="middle">${w}</text>`).join("")}
+                    <path class="area before" d="${area(pb)}"/><path class="area after" d="${area(pa)}"/>
+                    <path class="line before" d="${line(pb)}"/><path class="line after" d="${line(pa)}"/>
+                    ${label(pb, "Before", "before")}${label(pa, "After", "after")}
+                    <line class="crosshair" x1="0" x2="0" y1="${pad.t}" y2="${y(0)}" visibility="hidden"/>
+                    <rect class="hit" x="${pad.l}" y="${pad.t}" width="${W - pad.l - pad.r}" height="${H - pad.t - pad.b}"/>
+                </svg>
+                <div class="tooltip" hidden></div>
+                <p class="axis-title">Wins in a simulated season</p>
+            </div>`;
+    }
+
+    function wireChart(root, before, after) {
+        const chart = root.querySelector(".chart");
+        if (!chart) return;
+        const svg = chart.querySelector("svg"), hit = chart.querySelector(".hit"), cross = chart.querySelector(".crosshair");
+        const tip = chart.querySelector(".tooltip");
+        const lo = +chart.dataset.lo, hi = +chart.dataset.hi;
+        const nb = before.reduce((a, b) => a + b, 0), na = after.reduce((a, b) => a + b, 0);
+        const move = (ev) => {
+            const r = hit.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+            const frac = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
+            const w = Math.round(lo + frac * (hi - lo));
+            const vbX = 34 + ((w - lo) / (hi - lo)) * (340 - 44);
+            cross.setAttribute("x1", vbX); cross.setAttribute("x2", vbX); cross.setAttribute("visibility", "visible");
+            tip.hidden = false;
+            tip.innerHTML = `<strong>${w} wins</strong><span><i class="sw before"></i>Before ${(before[w] / nb * 100).toFixed(1)}%</span><span><i class="sw after"></i>After ${(after[w] / na * 100).toFixed(1)}%</span>`;
+            const left = (vbX / 340) * sr.width;
+            tip.style.left = `${Math.min(Math.max(left - 70, 0), sr.width - 140)}px`;
+        };
+        const leave = () => { tip.hidden = true; cross.setAttribute("visibility", "hidden"); };
+        hit.addEventListener("pointermove", move);
+        hit.addEventListener("pointerdown", move);
+        hit.addEventListener("pointerleave", leave);
+    }
+
+    async function results(code, query) {
+        const trades = decodeTrades(new URLSearchParams(query).get("t"));
+        render(`<div class="loading">Simulating 10,000 seasons…</div>`);
+        let r;
+        try {
+            r = await postJSON("/api/sim/sequence/simulate", { team: code, trades });
+        } catch (err) {
+            return showError(err);
+        }
+        const b = r.before, a = r.after, d = r.delta;
+        const odds = [["Make playoffs", "playoff_pct"], ["Play-in", "play_in_pct"], ["#1 seed", "top_seed_pct"]].map(([label, k]) =>
+            `<div class="stat"><div class="value">${pct(a[k])}</div><div class="label">${label} <span class="was">was ${pct(b[k])}</span></div></div>`).join("");
+        const pcts = [0.1, 0.25, 0.5, 0.75, 0.9];
+        const table = `<table class="data-table"><thead><tr><th>Percentile</th><th>Before</th><th>After</th></tr></thead><tbody>
+            ${pcts.map((q) => `<tr><td>${q * 100}th</td><td>${percentile(b.distribution, q)}</td><td>${percentile(a.distribution, q)}</td></tr>`).join("")}</tbody></table>`;
+        const others = r.others.map((o) => `
+            <li><span>${badge(o)}<span class="who">${esc(o.name)}${o.in_trade ? "" : ` <small>not in the trade</small>`}</span></span>
+                <span class="amt">${o.wins_before.toFixed(1)} → ${o.wins_after.toFixed(1)} <strong class="${o.win_change < 0 ? "neg" : "pos"}">${signed(o.win_change)}</strong></span></li>`).join("");
+        const applied = r.trades.map((t, i) => `<li>${t.works ? "✓" : "✗"} Trade ${i + 1}${t.works ? "" : ` blocked: ${esc(t.reason)}`}</li>`).join("");
+        const ex = r.explanation;
+        render(`
+            <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><h2 class="title">Results</h2></div>
+            <header class="team-head">${badge(r, "large")}<div><h1>${esc(r.name)}</h1>
+                <div class="sub">${r.applied ? `With ${r.applied} trade${r.applied > 1 ? "s" : ""}` : "No trades: the season as it stands"} · ${r.n_sims.toLocaleString()} simulated seasons</div></div></header>
+            <section class="card">
+                <div class="card-head"><h2>Projected wins</h2><span class="note">±${d.mean_wins.mcse.toFixed(2)} wins (simulation error)</span></div>
+                <div class="projection-row">
+                    <div class="big-number">${b.mean_wins.toFixed(1)}<span class="arrow">→</span>${a.mean_wins.toFixed(1)}</div>
+                    <div class="range-pill"><strong class="${d.mean_wins.change < 0 ? "neg" : "pos"}">${signed(d.mean_wins.change)} wins</strong>80% of seasons: ${signed(d.mean_wins.p10, 0)} to ${signed(d.mean_wins.p90, 0)}</div>
+                </div>
+                <p class="ranges">Range (10–90%): <strong>${b.range[0]}–${b.range[1]}</strong> before → <strong>${a.range[0]}–${a.range[1]}</strong> after</p>
+                ${distributionChart(b.distribution, a.distribution)}
+                <details class="table-view"><summary>Show as table</summary>${table}</details>
+            </section>
+            <section class="card"><div class="stats">${odds}</div></section>
+            <section class="card">
+                <div class="card-head"><h2>What changed</h2><span class="note">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></div>
+                <p class="explain">${esc(ex.text)}</p>
+            </section>
+            ${others ? `<section class="card"><div class="card-head"><h2>Other teams</h2><span class="note">avg wins</span></div><ul class="moves others">${others}</ul></section>` : ""}
+            ${applied ? `<section class="card"><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
+            <div class="action-bar"><div class="inner two">
+                <a class="button secondary" href="#/select/${code}">Change trades</a>
+                <a class="button" href="#/teams">Start over</a></div></div>`);
+        wireChart(app, b.distribution, a.distribution);
+    }
+
     // --- router -----------------------------------------------------------------------------------
 
     function route() {
@@ -664,6 +895,8 @@
         if (parts[0] === "teams") return teams();
         if (parts[0] === "team" && parts[1]) return team(parts[1].toUpperCase());
         if (parts[0] === "trade" && parts[1]) return openTrade(parts.slice(1).join("/"), query);
+        if (parts[0] === "select" && parts[1]) return select(parts[1].toUpperCase());
+        if (parts[0] === "results" && parts[1]) return results(parts[1].toUpperCase(), query);
         return landing();
     }
 

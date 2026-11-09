@@ -259,3 +259,56 @@ details.roster[open] summary::after { content: "Hide"; }
 .note { font-size: 12.5px; color: var(--faint); }
 .match { justify-self: start; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface); color: var(--warn); border: 1px solid var(--border); }
 .match.fit { color: var(--good); }
+
+/* --- trade selection and results (Stage 6) --- */
+.action-bar .inner.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.action-bar .inner.two .button { padding: 0 12px; font-size: 15px; }
+.intro { font-size: 14.5px; margin: 4px 0 14px; }
+.pick-list { display: grid; gap: 10px; margin-bottom: 12px; }
+.pick-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; }
+.pick-card.on { border-color: var(--accent); }
+.pick-card.blocked { border-color: rgba(255, 93, 93, 0.5); }
+.pick-card input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.pick-body { display: grid; gap: 3px; font-size: 14px; }
+.pick-body strong { font-weight: 600; line-height: 1.35; }
+.pick-body small { color: var(--muted); font-size: 12.5px; }
+.pick-kind { font-size: 11.5px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.05em; }
+.blocked-reason { color: var(--bad); font-size: 12.5px; }
+.big-number .arrow { font-size: 26px; color: var(--muted); margin: 0 8px; vertical-align: 8px; }
+.pos { color: var(--good); }
+.neg { color: var(--bad); }
+.range-pill strong { font-size: 18px; }
+.ranges { font-size: 13.5px; margin-top: 10px; }
+.ranges strong { color: var(--text); }
+.was { display: block; color: var(--faint); font-size: 11px; }
+.others li > span:first-child { display: flex; align-items: center; gap: 10px; }
+.others .badge { width: 30px; height: 30px; font-size: 10px; }
+.applied { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+
+/* chart: palette slots 1 (blue) and 2 (orange), dark steps, validated on the card surface */
+.chart { --series-1: #3987e5; --series-2: #d95926; position: relative; margin-top: 14px; }
+.chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.chart .grid { stroke: var(--border); stroke-width: 1; }
+.chart .baseline { stroke: var(--border-strong, #323841); stroke-width: 1; }
+.chart .axis { fill: var(--faint); font-size: 10px; }
+.chart .line { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.chart .line.before { stroke: var(--series-1); }
+.chart .line.after { stroke: var(--series-2); }
+.chart .area { stroke: none; }
+.chart .area.before { fill: var(--series-1); opacity: 0.12; }
+.chart .area.after { fill: var(--series-2); opacity: 0.16; }
+.chart .direct { fill: var(--text); font-size: 10.5px; font-weight: 600; }
+.chart .crosshair { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart .hit { fill: transparent; cursor: crosshair; }
+.chart .legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.sw.before { background: var(--series-1, #3987e5); }
+.sw.after { background: var(--series-2, #d95926); }
+.chart .tooltip { position: absolute; top: 24px; width: 140px; padding: 8px 10px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); font-size: 12px; color: var(--text); display: grid; gap: 2px; pointer-events: none; }
+.chart .tooltip[hidden] { display: none; }
+.axis-title { font-size: 11.5px; color: var(--faint); text-align: center; margin-top: 2px; }
+.table-view { margin-top: 10px; font-size: 13px; }
+.table-view summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.data-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.data-table th, .data-table td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--border); }
+.data-table th:first-child, .data-table td:first-child { text-align: left; color: var(--muted); }

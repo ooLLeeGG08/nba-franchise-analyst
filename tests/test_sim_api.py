@@ -130,3 +130,55 @@ def test_check_input_validation(client):
 def test_unknown_player_is_a_clear_error(client):
     data = client.post("/api/sim/trade/check", json={"moves": [mv("not-a-player", "ATL", "BOS")]}).get_json()
     assert not data["works"] and any("Unknown player" in e for e in data["errors"])
+
+
+# --- Stage 6: trade selection and results ---------------------------------------------------
+
+def _atl_ideas(client):
+    sug = client.get("/api/sim/team/ATL/suggestions").get_json()["suggestions"]
+    return [{"id": f"s{s['rank']}", "moves": s["moves"]} for s in sug]
+
+
+def test_sequence_blocks_trades_that_reuse_a_player(client):
+    """Trades are checked in order: a later trade sending a player already traded is blocked."""
+    ideas = _atl_ideas(client)
+    r = client.post("/api/sim/sequence/check", json={"team": "ATL", "trades": ideas[:2]}).get_json()
+    first, second = r["trades"]
+    assert first["works"]
+    shared = {m["id"] for m in ideas[0]["moves"]} & {m["id"] for m in ideas[1]["moves"]}
+    if shared:
+        assert not second["works"] and second["conflict"] and "moved there in trade 1" in second["reason"]
+    assert "ATL" in r["payroll"] and "working" not in r
+
+
+def test_sequence_payroll_matches_the_trade(client):
+    ideas = _atl_ideas(client)
+    r = client.post("/api/sim/sequence/check", json={"team": "ATL", "trades": ideas[:1]}).get_json()
+    total_before = sum(p["before"] for p in r["payroll"].values())
+    total_after = sum(p["after"] for p in r["payroll"].values())
+    assert total_before == total_after  # salary only moves between the two teams
+
+
+def test_sequence_input_validation(client):
+    assert client.post("/api/sim/sequence/check", json={"team": "XXX", "trades": []}).status_code == 400
+    assert client.post("/api/sim/sequence/check", json={"team": "ATL", "trades": [1]}).status_code == 400
+    many = [{"moves": []}] * 13
+    assert client.post("/api/sim/sequence/check", json={"team": "ATL", "trades": many}).status_code == 400
+
+
+def test_results_with_no_trades_equal_the_baseline(client):
+    r = client.post("/api/sim/sequence/simulate", json={"team": "ATL", "trades": []}).get_json()
+    assert r["applied"] == 0 and r["delta"]["mean_wins"]["change"] == 0
+    assert r["before"]["distribution"] == r["after"]["distribution"]
+    assert sum(r["before"]["distribution"]) == r["n_sims"] and r["code"] == "ATL"
+
+
+def test_results_for_a_suggestion_match_its_card(client):
+    """Same trade, same random draws: the results screen repeats the suggestion's numbers."""
+    sug = client.get("/api/sim/team/ATL/suggestions").get_json()["suggestions"][0]
+    r = client.post("/api/sim/sequence/simulate",
+                    json={"team": "ATL", "trades": [{"id": "s1", "moves": sug["moves"]}]}).get_json()
+    assert r["applied"] == 1
+    assert abs(r["delta"]["mean_wins"]["change"] - sug["win_change"]) < 0.06
+    assert any(o["code"] == sug["partner"] and o["in_trade"] for o in r["others"])
+    assert r["explanation"]["text"]
