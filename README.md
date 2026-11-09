@@ -44,10 +44,13 @@ than deleted; safe to remove.
 
 ## Known limitations
 
-- **No 2026-27 data.** The app was deliberately kept at "2025-26 is latest"
-  rather than including the new season, which had too few games played for
-  meaningful stats/leaders when this was built. If asked about 2026-27, the
-  model is instructed to say its data ends at 2025-26.
+- **2026-27 is rosters only.** `data/team_rosters.json` includes 2026-27
+  rosters (fetched 2026-11-09), but stats, leaders and dashboards stay on
+  2025-26 as the latest season — the new season had too few games for
+  meaningful stats. The season list comes from the stats files, so a roster
+  season ahead of the stats doesn't become "latest". Every team's chat
+  context includes its current (2026-27) roster; for 2026-27 stats the model
+  says its stats end at 2025-26.
 - **No front-office head (GM / president of basketball ops) data anywhere.**
   No live source exists for this, and nothing was hand-curated to avoid
   reintroducing the stale-data problem this app was built to fix. The model

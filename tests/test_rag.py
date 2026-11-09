@@ -636,3 +636,34 @@ def test_is_analytical_query_false_for_simple_lookups():
     assert not rag.is_analytical_query("What's LeBron's PPG this season?")
     assert not rag.is_analytical_query("Who is the Spurs' head coach?")
     assert not rag.is_analytical_query("Tell me about the Lakers")
+
+
+# --- 2026-27 rosters arrive before 2026-27 stats ---------------------------
+
+def test_roster_only_season_does_not_become_latest_stats_season():
+    assert latest_season() == "2025-26"
+    assert "2026-27" not in available_seasons()
+    assert rag.roster_only_seasons() == ["2026-27"]
+    assert rag.current_roster_season() == "2026-27"
+
+
+def test_2026_27_rosters_cover_all_30_teams():
+    for team in rag.ROSTERS:
+        assert get_team_roster(team, "2026-27"), team
+
+
+def test_resolve_season_recognizes_roster_only_season():
+    assert resolve_season("Who is on the 2026-27 Lakers?", []) == "2026-27"
+
+
+def test_team_context_always_includes_current_roster():
+    doc = retrieve_context("Lakers", "2025-26")
+    assert "Roster (2025-26)" in doc
+    assert "Current roster (2026-27" in doc
+
+
+def test_team_context_for_roster_only_season_says_no_stats():
+    doc = retrieve_context("Lakers", "2026-27")
+    assert "Roster (2026-27)" in doc
+    assert "No 2026-27 stats are tracked yet" in doc
+    assert "Current roster" not in doc

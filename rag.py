@@ -103,12 +103,35 @@ _SEASON_VERBOSE_RE = re.compile(r"\b((?:19|20)\d{2})-((?:19|20)\d{2})\b")
 _BARE_YEAR_RE = re.compile(r"\b((?:19|20)\d{2})\b")
 
 
-def _all_seasons():
+def _roster_seasons():
     return sorted(next(iter(ROSTERS.values())).keys()) if ROSTERS else []
 
 
+def _all_seasons():
+    """Seasons with stats data. Rosters can run a season ahead of the stats
+    (e.g. 2026-27 rosters before any 2026-27 stats exist), so this list --
+    which drives latest_season(), dashboards and leaders -- comes from the
+    stats file rather than the roster file."""
+    stats_seasons = set(next(iter(TEAM_ADVANCED.values())).keys()) if TEAM_ADVANCED else set()
+    return [s for s in _roster_seasons() if s in stats_seasons]
+
+
+def roster_only_seasons():
+    """Seasons that have rosters but no stats yet, oldest first."""
+    stats_seasons = set(_all_seasons())
+    return [s for s in _roster_seasons() if s not in stats_seasons]
+
+
+def current_roster_season():
+    """The newest season with a roster, even if it has no stats yet."""
+    seasons = _roster_seasons()
+    return seasons[-1] if seasons else None
+
+
 def _detect_season(text):
-    all_seasons = _all_seasons()
+    # Roster-only seasons count too, so "the 2026-27 Lakers" resolves to
+    # 2026-27 (roster available) instead of silently falling back.
+    all_seasons = _roster_seasons()
 
     match = _SEASON_KEY_RE.search(text)
     if match and match.group(0) in all_seasons:
@@ -401,10 +424,26 @@ def _team_document(team, season):
             )
         )
 
+    if season in roster_only_seasons():
+        lines.append(
+            f"No {season} stats are tracked yet (stats end at {latest_season()}); "
+            f"only the {season} roster is available."
+        )
+
     roster = get_team_roster(team, season)
     if roster:
         lines.append(
             f"Roster ({season}): " + ", ".join(f"{p['player']} ({p['position']})" for p in roster)
+        )
+
+    # Always show who is on the team now, so "who plays for X?" isn't
+    # answered from last season's roster.
+    current = current_roster_season()
+    current_roster = get_team_roster(team, current) if current != season else None
+    if current_roster:
+        lines.append(
+            f"Current roster ({current}, live via nba_api -- roster only, no {current} stats): "
+            + ", ".join(f"{p['player']} ({p['position']})" for p in current_roster)
         )
 
     trades = info.get("trade_history", [])
