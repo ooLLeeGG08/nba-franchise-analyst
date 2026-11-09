@@ -37,7 +37,7 @@ def load_schedule_2026_27(path=SCHEDULE_2026_27, seed=0):
     """
     with open(path) as f:
         raw = json.load(f)["games"]
-    games = [{"home": g["home"], "away": g["away"], "neutral": False, "placeholder": False}
+    games = [{"home": g["home"], "away": g["away"], "neutral": False, "placeholder": False, "date": g["date"]}
              for g in raw if g["home"] in TEAM_INFO and g["away"] in TEAM_INFO]
     counts = {code: 0 for code in TEAM_INFO}
     for g in games:
@@ -56,9 +56,10 @@ def load_schedule_2026_27(path=SCHEDULE_2026_27, seed=0):
                 break
         else:
             raise ValueError(f"{conference}: couldn't pair open schedule slots")
-        games += [{"home": a, "away": b, "neutral": False, "placeholder": True} for a, b in pairs]
+        games += [{"home": a, "away": b, "neutral": False, "placeholder": True, "date": None} for a, b in pairs]
     return games
 
 
 def schedule_from_results(results):
-    return [{"home": g["home"], "away": g["away"], "neutral": g["neutral"], "placeholder": False} for g in results]
+    return [{"home": g["home"], "away": g["away"], "neutral": g["neutral"], "placeholder": False, "date": g["date"]}
+            for g in results]

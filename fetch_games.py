@@ -5,7 +5,10 @@
 - data/raw/2026_27/schedule.json: the full 2026-27 regular-season schedule
   (home/away for all 1,230 games). Used for the season simulation.
 
-Run:  python fetch_games.py
+- data/raw/games/games_<season>.json: every game 2018-19 to 2024-25 (python fetch_games.py
+  --history), for fitting the game model on several seasons.
+
+Run:  python fetch_games.py  [--history]
 """
 import json
 import os
@@ -68,6 +71,28 @@ def _write(path, payload):
     print(f"Wrote {path}")
 
 
+HISTORY_SEASONS = ["2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25"]
+# 2019-20 games from July 30, 2020 were played in the Orlando "bubble": no real home court.
+BUBBLE_START = "2020-07-30"
+
+
+def fetch_history():
+    """Every regular-season game 2018-19 to 2024-25, for fitting the game model."""
+    import time
+    today = date.today().isoformat()
+    for season in HISTORY_SEASONS:
+        games = fetch_results(season)
+        for g in games:
+            if season == "2019-20" and g["date"] >= BUBBLE_START:
+                g["neutral"] = True
+        _write(os.path.join(ROOT, "data", "raw", "games", f"games_{season}.json"),
+               {"source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+                "as_of": today, "note": "2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral.",
+                "games": games})
+        print(f"{season}: {len(games)} games")
+        time.sleep(1)
+
+
 def main():
     today = date.today().isoformat()
     results = fetch_results("2025-26")
@@ -81,4 +106,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    fetch_history() if "--history" in sys.argv else main()

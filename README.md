@@ -194,6 +194,69 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   points, 15% of the excess is removed. Not fitted; it only affects stacked teams.
 - Speed: about 0.2 s for 5,000 seasons per scenario after a 0.6 s setup.
 
+**Method: game model and uncertainty (Stage 4).** `tradesim/game_model.py`.
+
+- `P(home win) = Phi((S_home - S_away + home_edge - b2b_penalty x (home_b2b - away_b2b)) / sigma)`,
+  fitted by maximum likelihood on all 8,289 regular-season games 2018-19 to 2024-25, with
+  each team's actual season net rating as its strength (so the game model doesn't depend
+  on the player model):
+
+  | Constant | Value | +/- |
+  |---|---|---|
+  | Home edge (0 on neutral floors, incl. the 2020 bubble) | 2.00 pts | 0.19 |
+  | Back-to-back penalty (played the day before) | 2.36 pts | 0.37 |
+  | Sigma (spread of one game around the expected margin) | 12.61 pts | 0.36 |
+
+  A margin regression gives the same picture (home 1.90, b2b 2.40, noise 13.2). On 2025-26
+  (not used to fit) the model picks 70% of winners (Brier 0.196). The home edge varies by
+  season (1.4 to 3.2; lowest in the 2020-21 no-fans season).
+- Every simulated season draws each player's impact once from `N(rating, SE)` and keeps it
+  for the season; no fixed point ratings. On top, each team gets a small residual draw
+  (1.41 = residual spread x sqrt(1 - rho^2)) and a **shared team-season error**
+  `eps_team ~ N(0, sigma_t)`, one draw per team per season, for what moves a whole team
+  together (players' rating errors are otherwise independent). All draws are tied to the
+  player or the team, so baseline and scenario share them.
+- **Setting sigma_t** (`python -m tradesim.calibrate`): the forecasts miss observed season
+  net ratings by 3.86 points; 1.42 of that is game luck in the observed ratings
+  (sigma / sqrt(games), more in short seasons), leaving a latent target of 3.59. Without
+  the team term the simulator's season-strength spread is 2.73, so
+  `sigma_t = sqrt(3.59^2 - 2.73^2) = 2.33`. (A first version subtracted 1.70 points of
+  luck estimated from raw margin spread, which overstates luck; target 3.47.)
+
+  | Interval coverage, 210 team-seasons | 50% interval | 80% interval |
+  |---|---|---|
+  | Before (player draws only) | 45% | 68% |
+  | After (+ sigma_t = 2.33) | 49% | 81% |
+
+  eps_team is **zero-sum** in each simulated season (mean across the 30 teams removed, then
+  scaled by sqrt(30/29) so each team's SD stays sigma_t). Every simulated season totals
+  exactly 1,230 wins.
+
+  **Leave-one-season-out check** (`python -m tradesim.calibrate`): sigma_t refitted on 6
+  seasons and scored on the 7th; sigma_t ranges 2.13 to
+  2.60 across folds. Pooled coverage:
+  49% inside the 50% interval, 81% inside the 80% interval.
+
+  **Playoff (top-6) odds calibration**, same folds, 210 team-seasons (team-level simulation
+  of each past season from its pre-season forecasts; the full player engine is Stage 7):
+
+  | Predicted | Teams | Avg predicted | Actual |
+  |---|---|---|---|
+  | 0%-10% | 38 | 4% | 3% |
+  | 10%-30% | 50 | 20% | 24% |
+  | 30%-50% | 39 | 40% | 33% |
+  | 50%-70% | 48 | 60% | 56% |
+  | 70%-90% | 32 | 79% | 88% |
+  | 90%-100% | 3 | 96% | 100% |
+
+  Brier 0.1646 (always guessing the base rate: 0.24). Team-seasons in
+  the same year aren't independent, so effective n is below 210: buckets of 30-50 teams carry
+  about +/-7 points of noise, and coverage differences of about +/-3 points are noise.
+
+  Individual players are not underdispersed (81% of 3,583 player-seasons inside their 80%
+  interval), so player SEs are left unscaled. Stage 7 refits sigma_t on win totals and
+  playoff odds with the full engine.
+
 **Data sources:** every raw file is listed with its source URL and as-of date in
 `data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.
 
@@ -217,8 +280,10 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   - The one-year Bird veto list may be from last season.
   - Re-acquire checks only know each player's most recent move.
 - **Simulator:**
-  - Injury model is simple: one spell per season per player, no fatigue or back-to-backs yet
-    (Stage 4), and when several players are out their absence costs are simply added.
+  - Injury model is simple: one spell per season per player, and when several players are
+    out their absence costs are simply added. Fatigue is only the fitted back-to-back penalty.
+  - The game spread (sigma) was fitted against season-average strengths, so it also contains
+    some night-to-night lineup variation that the simulator adds separately (about 1%).
   - Simplified minutes: a "next man up" rule with G/F/C positions, not real rotations.
   - BPM undervalues some defensive specialists, so a few teams look slightly better when
     one of them sits.

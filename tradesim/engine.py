@@ -1,35 +1,60 @@
-"""Season simulation with player availability and scenarios (sim-accuracy Stage 3).
+"""Season simulation with player ratings, availability and scenarios (sim-accuracy Stages 3-4).
 
 Per simulated season:
-  1. Absences. Each player gets a games-played rate for the season, drawn from a Beta
-     distribution around his expected availability (spread fitted in tradesim.ratings),
-     then a number of missed games, played out as one injury spell starting at a random
-     game. Draws are tied to the PLAYER (seeded by his id), not his team, so a traded
-     player misses the same games in the baseline and the scenario.
-  2. Strength per game. strength = full-strength rotation - absence cost of everyone
-     out that game (tradesim.rotation), plus a team-level offset for remaining
-     uncertainty (Stage 4 moves this to individual players).
-  3. Games. P(home win) from the fitted model, one biased coin flip per game.
+  1. Player impacts. Each player's impact is drawn once from N(rating, SE) (tradesim.ratings),
+     then used for the whole season. No fixed point ratings.
+  2. Team terms. Each team's residual gets a small random shift (the part that doesn't
+     carry over from year to year: residual spread x sqrt(1 - rho^2)), plus a shared
+     team-season error eps_team ~ N(0, sigma_t): one draw per team per season, for what
+     moves a whole team together (players' rating errors are otherwise independent).
+     sigma_t is set by tradesim.calibrate (data/model/uncertainty.json).
+  3. Absences. Each player gets a games-played rate for the season (Beta around his expected
+     availability) and misses that many games as one injury spell at a random point.
+  4. Strength per game = full-strength rotation at the drawn impacts - the cost of everyone
+     out that game (their minutes go to their backups, tradesim.rotation).
+  5. Games. P(home win) = Phi((S_home - S_away + home edge - b2b penalty) / sigma)
+     (tradesim.game_model), one biased coin flip per game.
 
-Baseline and scenario share every random number (absences, offsets, coin flips), so
-the difference between them comes from the moves, not from luck.
+Every random draw is tied to the PLAYER (impacts, absences) or the TEAM (residual, by team
+code) or the game (coin flips), never to a team's roster. Baseline and scenario therefore
+share all of them, and differences come from the moves, not from luck.
 """
 import hashlib
 import json
+import os
 
 import numpy as np
 
-from tradesim.fit import load_fit as load_game_fit
+from tradesim.game_model import back_to_backs, load_model, norm_cdf
 from tradesim.ratings import load_fit as load_ratings_fit, load_ratings
 from tradesim.rotation import apply_moves
 from tradesim.simulate import CODES, INDEX, _seeds, _summaries, draw_uniforms, load_strength_sd
-from tradesim.teams import TEAM_INFO
 
 GAMES = 82
+UNCERTAINTY_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "model",
+                                "uncertainty.json")
 
 
-def _player_seed(seed, pid):
-    return int.from_bytes(hashlib.sha256(f"{seed}:{pid}".encode()).digest()[:8], "little")
+def load_team_season_sd(path=UNCERTAINTY_PATH):
+    """sigma_t for the shared team-season error (0 until tradesim.calibrate has run)."""
+    if not os.path.exists(path):
+        return 0.0
+    with open(path) as f:
+        return json.load(f)["sigma_t"]
+
+
+def _stream(seed, label):
+    """A random generator for one player or team, the same in every scenario."""
+    return np.random.default_rng(int.from_bytes(hashlib.sha256(f"{seed}:{label}".encode()).digest()[:8], "little"))
+
+
+def team_season_errors(sigma_t, n_sims, seed):
+    """Shared team-season errors, n_sims x 30. Zero-sum within each simulated season (one
+    team's luck is the league's, so the league average strength doesn't drift): subtract the
+    mean across the 30 teams, then scale by sqrt(30/29) so each team's SD stays sigma_t."""
+    z = np.stack([_stream(seed, f"team_season:{c}").standard_normal(n_sims) for c in CODES], axis=1)
+    n = len(CODES)
+    return sigma_t * (z - z.mean(axis=1, keepdims=True)) * np.sqrt(n / (n - 1))
 
 
 def draw_absences(player_ids, ratings, kappa, n_sims, seed):
@@ -37,7 +62,7 @@ def draw_absences(player_ids, ratings, kappa, n_sims, seed):
     out = {}
     for pid in player_ids:
         p = min(max(ratings["players"][pid]["availability"], 0.02), 0.995)
-        rng = np.random.default_rng(_player_seed(seed, pid))
+        rng = _stream(seed, pid)
         rate = rng.beta(kappa * p, kappa * (1 - p), n_sims)
         missed = rng.binomial(GAMES, 1 - rate)
         start = (rng.random(n_sims) * (GAMES - missed + 1)).astype(np.int32)
@@ -45,18 +70,11 @@ def draw_absences(player_ids, ratings, kappa, n_sims, seed):
     return out
 
 
-def team_game_strengths(rotation, absences, n_sims):
-    """(n_sims x 82) strength of one team in each of its games."""
-    strengths = np.full((n_sims, GAMES), rotation.full_strength(), dtype=np.float32)
-    game = np.arange(GAMES)
-    for pid in rotation.players:
-        cost = rotation.absence_cost(pid)
-        if abs(cost) < 1e-6:
-            continue
-        missed, start = absences[pid]
-        out = (game[None, :] >= start[:, None]) & (game[None, :] < (start + missed)[:, None])
-        strengths -= np.float32(cost) * out
-    return strengths
+def draw_impacts(player_ids, ratings, n_sims, seed):
+    """{player_id: impact per simulated season}, drawn from N(rating, SE), one stream per player."""
+    return {pid: (ratings["players"][pid]["impact"] + ratings["players"][pid]["se"]
+                  * _stream(seed, f"impact:{pid}").standard_normal(n_sims)).astype(np.float32)
+            for pid in player_ids}
 
 
 def _team_game_index(schedule):
@@ -72,55 +90,82 @@ def _team_game_index(schedule):
 
 
 class Engine:
-    """Holds everything shared by the baseline and the scenarios: schedule, fitted models,
-    random numbers. Simulating a roster setup reuses the per-team strength arrays of every
-    team whose rotation didn't change."""
+    """Everything shared by the baseline and the scenarios: schedule, fitted models, random
+    draws. Teams whose rotation didn't change reuse their baseline strength arrays."""
 
-    def __init__(self, league, schedule, cfg, n_sims=None):
+    def __init__(self, league, schedule, cfg, n_sims=None, team_season_sd=None):
         self.league, self.schedule, self.cfg = league, schedule, cfg
         self.n_sims = n_sims or cfg["simulation"]["n_seasons"]
-        self.ratings = load_ratings()
-        self.game_fit = load_game_fit()
         seed = cfg["simulation"]["seed"]
-        kappa = load_ratings_fit()["availability"]["kappa"]
-        self.absences = draw_absences(sorted(self.ratings["players"]), self.ratings, kappa, self.n_sims, seed)
-        sim_cfg = {**cfg, "simulation": {**cfg["simulation"], "n_seasons": self.n_sims}}
-        self.sim_cfg = sim_cfg
-        self.uniforms = draw_uniforms(len(schedule), sim_cfg)
+        self.ratings = load_ratings()
+        self.model = load_model()
+        ratings_fit = load_ratings_fit()
+        players = sorted(self.ratings["players"])
+        self.absences = draw_absences(players, self.ratings, ratings_fit["availability"]["kappa"], self.n_sims, seed)
+        self.impacts = draw_impacts(players, self.ratings, self.n_sims, seed)
+        tr = ratings_fit["team_residual"]
+        self.residual_sd = float(tr["residual_sd"] * np.sqrt(1 - tr["rho"] ** 2))
+        self.team_season_sd = load_team_season_sd() if team_season_sd is None else team_season_sd
+        team_season = team_season_errors(self.team_season_sd, self.n_sims, seed)
+        self.residual_draws = {c: (self.residual_sd * _stream(seed, f"team:{c}").standard_normal(self.n_sims)
+                                   + team_season[:, INDEX[c]]).astype(np.float32) for c in CODES}
+        self.sim_cfg = {**cfg, "simulation": {**cfg["simulation"], "n_seasons": self.n_sims}}
+        self.uniforms = draw_uniforms(len(schedule), self.sim_cfg)
         self.home = np.array([INDEX[g["home"]] for g in schedule])
         self.away = np.array([INDEX[g["away"]] for g in schedule])
-        self.neutral = np.array([g["neutral"] for g in schedule])
+        self.home_court = np.array([0.0 if g["neutral"] else 1.0 for g in schedule], dtype=np.float32)
+        b2b_home, b2b_away = back_to_backs(schedule)
+        self.rest = (b2b_home - b2b_away).astype(np.float32)
         self.home_i, self.away_i = _team_game_index(schedule)
         self.home_onehot = np.zeros((len(schedule), len(CODES)), dtype=np.float32)
         self.away_onehot = np.zeros((len(schedule), len(CODES)), dtype=np.float32)
         self.home_onehot[np.arange(len(schedule)), self.home] = 1
         self.away_onehot[np.arange(len(schedule)), self.away] = 1
         self.baseline_rotations = apply_moves(league, [], cfg, self.ratings)
-        self.baseline_strengths = {c: team_game_strengths(self.baseline_rotations[c], self.absences, self.n_sims)
-                                   for c in CODES}
-        # Team-level uncertainty left after absences: the measured forecast spread minus
-        # the spread absences already create (Stage 4 replaces this with player-level draws).
-        total_sd = load_strength_sd()
-        absence_var = float(np.mean([np.var(s.mean(axis=1)) for s in self.baseline_strengths.values()]))
-        self.team_sd = float(np.sqrt(max(total_sd ** 2 - absence_var, 0.0)))
-        self.absence_sd = float(np.sqrt(absence_var))
-        rng = np.random.default_rng(seed + 2)
-        self.offsets = rng.normal(0, self.team_sd, (self.n_sims, len(CODES))).astype(np.float32)
+        self.baseline_strengths = {c: self.team_game_strengths(self.baseline_rotations[c]) for c in CODES}
+
+    def team_game_strengths(self, rotation):
+        """(n_sims x 82) strength of one team in each of its games."""
+        ids = list(rotation.players)
+        impacts = np.stack([self.impacts[pid] for pid in ids], axis=1)  # sims x players
+        weights = np.array([rotation.minutes[pid] / 48 for pid in ids], dtype=np.float32)
+        full = impacts @ weights + rotation.residual + self.residual_draws[rotation.code] - rotation.diminishing_returns()
+        strengths = np.repeat(full[:, None], GAMES, axis=1).astype(np.float32)
+        game = np.arange(GAMES)
+        position = {pid: i for i, pid in enumerate(ids)}
+        for pid in ids:
+            w = rotation.absence_weights(pid)
+            if not w:
+                continue
+            vec = np.zeros(len(ids), dtype=np.float32)
+            for k, v in w.items():
+                vec[position[k]] = v
+            cost = impacts @ vec  # per simulated season
+            missed, start = self.absences[pid]
+            out = (game[None, :] >= start[:, None]) & (game[None, :] < (start + missed)[:, None])
+            strengths -= cost[:, None] * out
+        return strengths
+
+    def uncertainty(self):
+        """How much a team's season-average strength varies across simulated seasons, and the
+        forecast error it should roughly match (tradesim.strength_check)."""
+        sds = [float(np.std(s.mean(axis=1))) for s in self.baseline_strengths.values()]
+        return {"season_strength_sd": round(float(np.mean(sds)), 3), "residual_sd": round(self.residual_sd, 3),
+                "team_season_sd": round(self.team_season_sd, 3), "measured_forecast_sd": load_strength_sd()}
 
     def simulate(self, rotations=None, changed=()):
-        """Simulate the season for a set of rotations. Teams not in `changed` reuse the
-        baseline strength arrays."""
+        """Simulate the season for a set of rotations; teams not in `changed` reuse the baseline."""
         strengths = dict(self.baseline_strengths)
         for code in changed:
-            strengths[code] = team_game_strengths(rotations[code], self.absences, self.n_sims)
+            strengths[code] = self.team_game_strengths(rotations[code])
         stacked = np.stack([strengths[c] for c in CODES])  # 30 x sims x 82
-        s_home = stacked[self.home, :, self.home_i].T + self.offsets[:, self.home]  # sims x games
-        s_away = stacked[self.away, :, self.away_i].T + self.offsets[:, self.away]
-        logit = self.game_fit["home"] * (~self.neutral) + self.game_fit["slope"] * (s_home - s_away)
-        home_won = (self.uniforms < 1 / (1 + np.exp(-logit))).astype(np.float32)
+        diff = stacked[self.home, :, self.home_i].T - stacked[self.away, :, self.away_i].T  # sims x games
+        m = self.model
+        p = norm_cdf((diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest) / m["sigma"])
+        home_won = (self.uniforms < p).astype(np.float32)
         wins = np.rint(home_won @ self.home_onehot + (1 - home_won) @ self.away_onehot).astype(np.int16)
         seeds = _seeds(wins, self.sim_cfg)
-        mean_strength = {c: float(strengths[c].mean() + self.offsets[:, INDEX[c]].mean()) for c in CODES}
+        mean_strength = {c: float(strengths[c].mean()) for c in CODES}
         return {"teams": _summaries(wins, seeds, self.sim_cfg), "wins": wins, "seeds": seeds,
                 "mean_strength": mean_strength}
 

@@ -1,0 +1,132 @@
+{
+ "target_latent_sd": 3.591,
+ "sim_sd_without_team_term": 2.733,
+ "sigma_t": 2.329,
+ "sim_sd_with_team_term": 3.591,
+ "coverage_before": {
+  "50%": {
+   "inside": 94,
+   "of": 210,
+   "share": 0.448
+  },
+  "80%": {
+   "inside": 143,
+   "of": 210,
+   "share": 0.681
+  }
+ },
+ "coverage_after": {
+  "50%": {
+   "inside": 102,
+   "of": 210,
+   "share": 0.486
+  },
+  "80%": {
+   "inside": 171,
+   "of": 210,
+   "share": 0.814
+  }
+ },
+ "note": "Starting value from the variance gap; Stage 7 refits sigma_t on win totals and playoff odds.",
+ "loso": {
+  "folds": {
+   "2019-20": {
+    "sigma_t": 2.423,
+    "50%": 16,
+    "80%": 26,
+    "of": 30
+   },
+   "2020-21": {
+    "sigma_t": 2.352,
+    "50%": 14,
+    "80%": 24,
+    "of": 30
+   },
+   "2021-22": {
+    "sigma_t": 2.275,
+    "50%": 12,
+    "80%": 25,
+    "of": 30
+   },
+   "2022-23": {
+    "sigma_t": 2.601,
+    "50%": 20,
+    "80%": 29,
+    "of": 30
+   },
+   "2023-24": {
+    "sigma_t": 2.266,
+    "50%": 14,
+    "80%": 22,
+    "of": 30
+   },
+   "2024-25": {
+    "sigma_t": 2.234,
+    "50%": 15,
+    "80%": 22,
+    "of": 30
+   },
+   "2025-26": {
+    "sigma_t": 2.128,
+    "50%": 11,
+    "80%": 23,
+    "of": 30
+   }
+  },
+  "pooled": {
+   "50%": {
+    "inside": 102,
+    "of": 210,
+    "share": 0.486
+   },
+   "80%": {
+    "inside": 171,
+    "of": 210,
+    "share": 0.814
+   }
+  }
+ },
+ "playoff_calibration": {
+  "table": [
+   {
+    "bucket": "0%-10%",
+    "teams": 38,
+    "predicted": 0.043,
+    "actual": 0.026
+   },
+   {
+    "bucket": "10%-30%",
+    "teams": 50,
+    "predicted": 0.198,
+    "actual": 0.24
+   },
+   {
+    "bucket": "30%-50%",
+    "teams": 39,
+    "predicted": 0.395,
+    "actual": 0.333
+   },
+   {
+    "bucket": "50%-70%",
+    "teams": 48,
+    "predicted": 0.601,
+    "actual": 0.562
+   },
+   {
+    "bucket": "70%-90%",
+    "teams": 32,
+    "predicted": 0.792,
+    "actual": 0.875
+   },
+   {
+    "bucket": "90%-100%",
+    "teams": 3,
+    "predicted": 0.96,
+    "actual": 1.0
+   }
+  ],
+  "brier": 0.1646,
+  "brier_base_rate": 0.24
+ },
+ "note_effective_n": "Team-seasons in the same year share a schedule and a league, so they aren't independent: effective n is below 210. Treat coverage differences of about +/-3 percentage points as noise."
+}

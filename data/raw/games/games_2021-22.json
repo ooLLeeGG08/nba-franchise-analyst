@@ -1,0 +1,11077 @@
+{
+"source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+"as_of": "2026-11-09",
+"note": "2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral.",
+"games": [
+{
+"game_id": "0022100001",
+"date": "2021-10-19",
+"home": "MIL",
+"away": "BKN",
+"home_pts": 127,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100002",
+"date": "2021-10-19",
+"home": "LAL",
+"away": "GSW",
+"home_pts": 114,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100003",
+"date": "2021-10-20",
+"home": "CHA",
+"away": "IND",
+"home_pts": 123,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100004",
+"date": "2021-10-20",
+"home": "DET",
+"away": "CHI",
+"home_pts": 88,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100005",
+"date": "2021-10-20",
+"home": "NYK",
+"away": "BOS",
+"home_pts": 138,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022100006",
+"date": "2021-10-20",
+"home": "TOR",
+"away": "WAS",
+"home_pts": 83,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100007",
+"date": "2021-10-20",
+"home": "MEM",
+"away": "CLE",
+"home_pts": 132,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100008",
+"date": "2021-10-20",
+"home": "MIN",
+"away": "HOU",
+"home_pts": 124,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100009",
+"date": "2021-10-20",
+"home": "NOP",
+"away": "PHI",
+"home_pts": 97,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100010",
+"date": "2021-10-20",
+"home": "SAS",
+"away": "ORL",
+"home_pts": 123,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100011",
+"date": "2021-10-20",
+"home": "UTA",
+"away": "OKC",
+"home_pts": 107,
+"away_pts": 86,
+"neutral": false
+},
+{
+"game_id": "0022100012",
+"date": "2021-10-20",
+"home": "PHX",
+"away": "DEN",
+"home_pts": 98,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100013",
+"date": "2021-10-20",
+"home": "POR",
+"away": "SAC",
+"home_pts": 121,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100014",
+"date": "2021-10-21",
+"home": "ATL",
+"away": "DAL",
+"home_pts": 113,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100015",
+"date": "2021-10-21",
+"home": "MIA",
+"away": "MIL",
+"home_pts": 137,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100016",
+"date": "2021-10-21",
+"home": "GSW",
+"away": "LAC",
+"home_pts": 115,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100017",
+"date": "2021-10-22",
+"home": "CLE",
+"away": "CHA",
+"home_pts": 112,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100018",
+"date": "2021-10-22",
+"home": "ORL",
+"away": "NYK",
+"home_pts": 96,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100019",
+"date": "2021-10-22",
+"home": "WAS",
+"away": "IND",
+"home_pts": 135,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022100020",
+"date": "2021-10-22",
+"home": "BOS",
+"away": "TOR",
+"home_pts": 83,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100021",
+"date": "2021-10-22",
+"home": "PHI",
+"away": "BKN",
+"home_pts": 109,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100022",
+"date": "2021-10-22",
+"home": "CHI",
+"away": "NOP",
+"home_pts": 128,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100023",
+"date": "2021-10-22",
+"home": "HOU",
+"away": "OKC",
+"home_pts": 124,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100024",
+"date": "2021-10-22",
+"home": "DEN",
+"away": "SAS",
+"home_pts": 102,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100025",
+"date": "2021-10-22",
+"home": "LAL",
+"away": "PHX",
+"home_pts": 105,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100026",
+"date": "2021-10-22",
+"home": "SAC",
+"away": "UTA",
+"home_pts": 101,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100027",
+"date": "2021-10-23",
+"home": "CLE",
+"away": "ATL",
+"home_pts": 101,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100028",
+"date": "2021-10-23",
+"home": "IND",
+"away": "MIA",
+"home_pts": 102,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100029",
+"date": "2021-10-23",
+"home": "TOR",
+"away": "DAL",
+"home_pts": 95,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100030",
+"date": "2021-10-23",
+"home": "CHI",
+"away": "DET",
+"home_pts": 97,
+"away_pts": 82,
+"neutral": false
+},
+{
+"game_id": "0022100031",
+"date": "2021-10-23",
+"home": "MIN",
+"away": "NOP",
+"home_pts": 96,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100032",
+"date": "2021-10-23",
+"home": "SAS",
+"away": "MIL",
+"home_pts": 111,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100033",
+"date": "2021-10-23",
+"home": "POR",
+"away": "PHX",
+"home_pts": 134,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100034",
+"date": "2021-10-23",
+"home": "LAC",
+"away": "MEM",
+"home_pts": 114,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100035",
+"date": "2021-10-24",
+"home": "BKN",
+"away": "CHA",
+"home_pts": 95,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100036",
+"date": "2021-10-24",
+"home": "NYK",
+"away": "ORL",
+"home_pts": 104,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100037",
+"date": "2021-10-24",
+"home": "HOU",
+"away": "BOS",
+"home_pts": 97,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100038",
+"date": "2021-10-24",
+"home": "OKC",
+"away": "PHI",
+"home_pts": 103,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100039",
+"date": "2021-10-24",
+"home": "SAC",
+"away": "GSW",
+"home_pts": 107,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100040",
+"date": "2021-10-24",
+"home": "LAL",
+"away": "MEM",
+"home_pts": 121,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100041",
+"date": "2021-10-25",
+"home": "CHA",
+"away": "BOS",
+"home_pts": 129,
+"away_pts": 140,
+"neutral": false
+},
+{
+"game_id": "0022100042",
+"date": "2021-10-25",
+"home": "IND",
+"away": "MIL",
+"home_pts": 109,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100043",
+"date": "2021-10-25",
+"home": "ATL",
+"away": "DET",
+"home_pts": 122,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100044",
+"date": "2021-10-25",
+"home": "BKN",
+"away": "WAS",
+"home_pts": 104,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100045",
+"date": "2021-10-25",
+"home": "MIA",
+"away": "ORL",
+"home_pts": 107,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100046",
+"date": "2021-10-25",
+"home": "TOR",
+"away": "CHI",
+"home_pts": 108,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100047",
+"date": "2021-10-25",
+"home": "MIN",
+"away": "NOP",
+"home_pts": 98,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100048",
+"date": "2021-10-25",
+"home": "DEN",
+"away": "CLE",
+"home_pts": 87,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100049",
+"date": "2021-10-25",
+"home": "LAC",
+"away": "POR",
+"home_pts": 116,
+"away_pts": 86,
+"neutral": false
+},
+{
+"game_id": "0022100050",
+"date": "2021-10-26",
+"home": "NYK",
+"away": "PHI",
+"home_pts": 112,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100051",
+"date": "2021-10-26",
+"home": "OKC",
+"away": "GSW",
+"home_pts": 98,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100052",
+"date": "2021-10-26",
+"home": "DAL",
+"away": "HOU",
+"home_pts": 116,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100053",
+"date": "2021-10-26",
+"home": "SAS",
+"away": "LAL",
+"home_pts": 121,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100054",
+"date": "2021-10-26",
+"home": "UTA",
+"away": "DEN",
+"home_pts": 122,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100055",
+"date": "2021-10-27",
+"home": "ORL",
+"away": "CHA",
+"home_pts": 111,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100056",
+"date": "2021-10-27",
+"home": "BOS",
+"away": "WAS",
+"home_pts": 107,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100057",
+"date": "2021-10-27",
+"home": "BKN",
+"away": "MIA",
+"home_pts": 93,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100058",
+"date": "2021-10-27",
+"home": "TOR",
+"away": "IND",
+"home_pts": 118,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100059",
+"date": "2021-10-27",
+"home": "NOP",
+"away": "ATL",
+"home_pts": 99,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100060",
+"date": "2021-10-27",
+"home": "MIL",
+"away": "MIN",
+"home_pts": 108,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100061",
+"date": "2021-10-27",
+"home": "OKC",
+"away": "LAL",
+"home_pts": 123,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100062",
+"date": "2021-10-27",
+"home": "PHX",
+"away": "SAC",
+"home_pts": 107,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100063",
+"date": "2021-10-27",
+"home": "POR",
+"away": "MEM",
+"home_pts": 116,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100064",
+"date": "2021-10-27",
+"home": "LAC",
+"away": "CLE",
+"home_pts": 79,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100065",
+"date": "2021-10-28",
+"home": "PHI",
+"away": "DET",
+"home_pts": 110,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100066",
+"date": "2021-10-28",
+"home": "WAS",
+"away": "ATL",
+"home_pts": 122,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100067",
+"date": "2021-10-28",
+"home": "CHI",
+"away": "NYK",
+"home_pts": 103,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100068",
+"date": "2021-10-28",
+"home": "HOU",
+"away": "UTA",
+"home_pts": 91,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100069",
+"date": "2021-10-28",
+"home": "DAL",
+"away": "SAS",
+"home_pts": 104,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100070",
+"date": "2021-10-28",
+"home": "GSW",
+"away": "MEM",
+"home_pts": 101,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100071",
+"date": "2021-10-29",
+"home": "TOR",
+"away": "ORL",
+"home_pts": 110,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100072",
+"date": "2021-10-29",
+"home": "BKN",
+"away": "IND",
+"home_pts": 105,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100073",
+"date": "2021-10-29",
+"home": "MIA",
+"away": "CHA",
+"home_pts": 114,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100074",
+"date": "2021-10-29",
+"home": "NOP",
+"away": "SAC",
+"home_pts": 109,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100075",
+"date": "2021-10-29",
+"home": "DEN",
+"away": "DAL",
+"home_pts": 106,
+"away_pts": 75,
+"neutral": false
+},
+{
+"game_id": "0022100076",
+"date": "2021-10-29",
+"home": "POR",
+"away": "LAC",
+"home_pts": 111,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100077",
+"date": "2021-10-29",
+"home": "LAL",
+"away": "CLE",
+"home_pts": 113,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100078",
+"date": "2021-10-30",
+"home": "WAS",
+"away": "BOS",
+"home_pts": 115,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100079",
+"date": "2021-10-30",
+"home": "DET",
+"away": "ORL",
+"home_pts": 110,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100080",
+"date": "2021-10-30",
+"home": "NOP",
+"away": "NYK",
+"home_pts": 117,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100081",
+"date": "2021-10-30",
+"home": "IND",
+"away": "TOR",
+"home_pts": 94,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100082",
+"date": "2021-10-30",
+"home": "PHI",
+"away": "ATL",
+"home_pts": 122,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100083",
+"date": "2021-10-30",
+"home": "CHI",
+"away": "UTA",
+"home_pts": 107,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100084",
+"date": "2021-10-30",
+"home": "MEM",
+"away": "MIA",
+"home_pts": 103,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100085",
+"date": "2021-10-30",
+"home": "MIL",
+"away": "SAS",
+"home_pts": 93,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100086",
+"date": "2021-10-30",
+"home": "GSW",
+"away": "OKC",
+"home_pts": 103,
+"away_pts": 82,
+"neutral": false
+},
+{
+"game_id": "0022100087",
+"date": "2021-10-30",
+"home": "MIN",
+"away": "DEN",
+"home_pts": 91,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100088",
+"date": "2021-10-30",
+"home": "PHX",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100089",
+"date": "2021-10-31",
+"home": "DAL",
+"away": "SAC",
+"home_pts": 105,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100090",
+"date": "2021-10-31",
+"home": "CHA",
+"away": "POR",
+"home_pts": 125,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100091",
+"date": "2021-10-31",
+"home": "MIL",
+"away": "UTA",
+"home_pts": 95,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100092",
+"date": "2021-10-31",
+"home": "BKN",
+"away": "DET",
+"home_pts": 117,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100093",
+"date": "2021-10-31",
+"home": "LAL",
+"away": "HOU",
+"home_pts": 95,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100094",
+"date": "2021-11-01",
+"home": "CHA",
+"away": "CLE",
+"home_pts": 110,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100095",
+"date": "2021-11-01",
+"home": "IND",
+"away": "SAS",
+"home_pts": 131,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100096",
+"date": "2021-11-01",
+"home": "PHI",
+"away": "POR",
+"home_pts": 113,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100097",
+"date": "2021-11-01",
+"home": "ATL",
+"away": "WAS",
+"home_pts": 118,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100098",
+"date": "2021-11-01",
+"home": "BOS",
+"away": "CHI",
+"home_pts": 114,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100099",
+"date": "2021-11-01",
+"home": "NYK",
+"away": "TOR",
+"home_pts": 104,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100100",
+"date": "2021-11-01",
+"home": "MEM",
+"away": "DEN",
+"home_pts": 106,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100101",
+"date": "2021-11-01",
+"home": "MIN",
+"away": "ORL",
+"home_pts": 97,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100102",
+"date": "2021-11-01",
+"home": "LAC",
+"away": "OKC",
+"home_pts": 99,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100103",
+"date": "2021-11-02",
+"home": "DET",
+"away": "MIL",
+"home_pts": 89,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100104",
+"date": "2021-11-02",
+"home": "DAL",
+"away": "MIA",
+"home_pts": 110,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100105",
+"date": "2021-11-02",
+"home": "UTA",
+"away": "SAC",
+"home_pts": 119,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100106",
+"date": "2021-11-02",
+"home": "PHX",
+"away": "NOP",
+"home_pts": 112,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100107",
+"date": "2021-11-02",
+"home": "LAL",
+"away": "HOU",
+"home_pts": 119,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100108",
+"date": "2021-11-03",
+"home": "CLE",
+"away": "POR",
+"home_pts": 107,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100109",
+"date": "2021-11-03",
+"home": "IND",
+"away": "NYK",
+"home_pts": 111,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100110",
+"date": "2021-11-03",
+"home": "ORL",
+"away": "BOS",
+"home_pts": 79,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100111",
+"date": "2021-11-03",
+"home": "PHI",
+"away": "CHI",
+"home_pts": 103,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100112",
+"date": "2021-11-03",
+"home": "WAS",
+"away": "TOR",
+"home_pts": 100,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100113",
+"date": "2021-11-03",
+"home": "BKN",
+"away": "ATL",
+"home_pts": 117,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100114",
+"date": "2021-11-03",
+"home": "MEM",
+"away": "DEN",
+"home_pts": 108,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100115",
+"date": "2021-11-03",
+"home": "MIN",
+"away": "LAC",
+"home_pts": 115,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022100116",
+"date": "2021-11-03",
+"home": "SAS",
+"away": "DAL",
+"home_pts": 108,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100117",
+"date": "2021-11-03",
+"home": "GSW",
+"away": "CHA",
+"home_pts": 114,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100118",
+"date": "2021-11-03",
+"home": "SAC",
+"away": "NOP",
+"home_pts": 112,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100119",
+"date": "2021-11-04",
+"home": "DET",
+"away": "PHI",
+"home_pts": 98,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100120",
+"date": "2021-11-04",
+"home": "ATL",
+"away": "UTA",
+"home_pts": 98,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100121",
+"date": "2021-11-04",
+"home": "MIA",
+"away": "BOS",
+"home_pts": 78,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100122",
+"date": "2021-11-04",
+"home": "PHX",
+"away": "HOU",
+"home_pts": 123,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100123",
+"date": "2021-11-04",
+"home": "LAL",
+"away": "OKC",
+"home_pts": 104,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100124",
+"date": "2021-11-05",
+"home": "DET",
+"away": "BKN",
+"home_pts": 90,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100125",
+"date": "2021-11-05",
+"home": "ORL",
+"away": "SAS",
+"home_pts": 89,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100126",
+"date": "2021-11-05",
+"home": "WAS",
+"away": "MEM",
+"home_pts": 115,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100127",
+"date": "2021-11-05",
+"home": "TOR",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100128",
+"date": "2021-11-05",
+"home": "MIL",
+"away": "NYK",
+"home_pts": 98,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100129",
+"date": "2021-11-05",
+"home": "MIN",
+"away": "LAC",
+"home_pts": 84,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100130",
+"date": "2021-11-05",
+"home": "GSW",
+"away": "NOP",
+"home_pts": 126,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100131",
+"date": "2021-11-05",
+"home": "POR",
+"away": "IND",
+"home_pts": 110,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100132",
+"date": "2021-11-05",
+"home": "SAC",
+"away": "CHA",
+"home_pts": 140,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100133",
+"date": "2021-11-06",
+"home": "DEN",
+"away": "HOU",
+"home_pts": 95,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100134",
+"date": "2021-11-06",
+"home": "MIA",
+"away": "UTA",
+"home_pts": 118,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100135",
+"date": "2021-11-06",
+"home": "CHI",
+"away": "PHI",
+"home_pts": 105,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100136",
+"date": "2021-11-06",
+"home": "DAL",
+"away": "BOS",
+"home_pts": 107,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100137",
+"date": "2021-11-06",
+"home": "PHX",
+"away": "ATL",
+"home_pts": 121,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100138",
+"date": "2021-11-06",
+"home": "POR",
+"away": "LAL",
+"home_pts": 105,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100139",
+"date": "2021-11-07",
+"home": "TOR",
+"away": "BKN",
+"home_pts": 103,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100140",
+"date": "2021-11-07",
+"home": "NYK",
+"away": "CLE",
+"home_pts": 109,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022100141",
+"date": "2021-11-07",
+"home": "ORL",
+"away": "UTA",
+"home_pts": 107,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100142",
+"date": "2021-11-07",
+"home": "WAS",
+"away": "MIL",
+"home_pts": 101,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100143",
+"date": "2021-11-07",
+"home": "SAC",
+"away": "IND",
+"home_pts": 91,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100144",
+"date": "2021-11-07",
+"home": "OKC",
+"away": "SAS",
+"home_pts": 99,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100145",
+"date": "2021-11-07",
+"home": "GSW",
+"away": "HOU",
+"home_pts": 120,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100146",
+"date": "2021-11-07",
+"home": "LAC",
+"away": "CHA",
+"home_pts": 120,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100147",
+"date": "2021-11-08",
+"home": "PHI",
+"away": "NYK",
+"home_pts": 96,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100148",
+"date": "2021-11-08",
+"home": "CHI",
+"away": "BKN",
+"home_pts": 118,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100149",
+"date": "2021-11-08",
+"home": "MEM",
+"away": "MIN",
+"home_pts": 125,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100150",
+"date": "2021-11-08",
+"home": "DAL",
+"away": "NOP",
+"home_pts": 108,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100151",
+"date": "2021-11-08",
+"home": "DEN",
+"away": "MIA",
+"home_pts": 113,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100152",
+"date": "2021-11-08",
+"home": "GSW",
+"away": "ATL",
+"home_pts": 127,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100153",
+"date": "2021-11-08",
+"home": "SAC",
+"away": "PHX",
+"home_pts": 104,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100154",
+"date": "2021-11-08",
+"home": "LAL",
+"away": "CHA",
+"home_pts": 126,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100155",
+"date": "2021-11-09",
+"home": "PHI",
+"away": "MIL",
+"home_pts": 109,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100156",
+"date": "2021-11-09",
+"home": "UTA",
+"away": "ATL",
+"home_pts": 110,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100157",
+"date": "2021-11-09",
+"home": "LAC",
+"away": "POR",
+"home_pts": 117,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100158",
+"date": "2021-11-10",
+"home": "CLE",
+"away": "WAS",
+"home_pts": 94,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100159",
+"date": "2021-11-10",
+"home": "ORL",
+"away": "BKN",
+"home_pts": 90,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100160",
+"date": "2021-11-10",
+"home": "BOS",
+"away": "TOR",
+"home_pts": 104,
+"away_pts": 88,
+"neutral": false
+},
+{
+"game_id": "0022100161",
+"date": "2021-11-10",
+"home": "NYK",
+"away": "MIL",
+"home_pts": 100,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100162",
+"date": "2021-11-10",
+"home": "HOU",
+"away": "DET",
+"home_pts": 104,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100163",
+"date": "2021-11-10",
+"home": "CHI",
+"away": "DAL",
+"home_pts": 117,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100164",
+"date": "2021-11-10",
+"home": "MEM",
+"away": "CHA",
+"home_pts": 108,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100165",
+"date": "2021-11-10",
+"home": "NOP",
+"away": "OKC",
+"home_pts": 100,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100166",
+"date": "2021-11-10",
+"home": "SAS",
+"away": "SAC",
+"home_pts": 136,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100167",
+"date": "2021-11-10",
+"home": "DEN",
+"away": "IND",
+"home_pts": 101,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100168",
+"date": "2021-11-10",
+"home": "PHX",
+"away": "POR",
+"home_pts": 119,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100169",
+"date": "2021-11-10",
+"home": "GSW",
+"away": "MIN",
+"home_pts": 123,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100170",
+"date": "2021-11-10",
+"home": "LAL",
+"away": "MIA",
+"home_pts": 120,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100171",
+"date": "2021-11-11",
+"home": "PHI",
+"away": "TOR",
+"home_pts": 109,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100172",
+"date": "2021-11-11",
+"home": "UTA",
+"away": "IND",
+"home_pts": 100,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100173",
+"date": "2021-11-11",
+"home": "LAC",
+"away": "MIA",
+"home_pts": 112,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100174",
+"date": "2021-11-12",
+"home": "CHA",
+"away": "NYK",
+"home_pts": 104,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100175",
+"date": "2021-11-12",
+"home": "BOS",
+"away": "MIL",
+"home_pts": 122,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100176",
+"date": "2021-11-12",
+"home": "CLE",
+"away": "DET",
+"home_pts": 98,
+"away_pts": 78,
+"neutral": false
+},
+{
+"game_id": "0022100177",
+"date": "2021-11-12",
+"home": "HOU",
+"away": "POR",
+"home_pts": 92,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100178",
+"date": "2021-11-12",
+"home": "MEM",
+"away": "PHX",
+"home_pts": 94,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100179",
+"date": "2021-11-12",
+"home": "NOP",
+"away": "BKN",
+"home_pts": 112,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100180",
+"date": "2021-11-12",
+"home": "OKC",
+"away": "SAC",
+"home_pts": 105,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100181",
+"date": "2021-11-12",
+"home": "SAS",
+"away": "DAL",
+"home_pts": 109,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100182",
+"date": "2021-11-12",
+"home": "DEN",
+"away": "ATL",
+"home_pts": 105,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100183",
+"date": "2021-11-12",
+"home": "GSW",
+"away": "CHI",
+"home_pts": 119,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100184",
+"date": "2021-11-12",
+"home": "LAL",
+"away": "MIN",
+"home_pts": 83,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100185",
+"date": "2021-11-13",
+"home": "UTA",
+"away": "MIA",
+"home_pts": 105,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100186",
+"date": "2021-11-13",
+"home": "IND",
+"away": "PHI",
+"home_pts": 118,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100187",
+"date": "2021-11-13",
+"home": "ORL",
+"away": "WAS",
+"home_pts": 92,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100188",
+"date": "2021-11-13",
+"home": "NOP",
+"away": "MEM",
+"home_pts": 112,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100189",
+"date": "2021-11-13",
+"home": "TOR",
+"away": "DET",
+"home_pts": 121,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100190",
+"date": "2021-11-13",
+"home": "CLE",
+"away": "BOS",
+"home_pts": 91,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100191",
+"date": "2021-11-13",
+"home": "LAC",
+"away": "MIN",
+"home_pts": 129,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100192",
+"date": "2021-11-14",
+"home": "LAL",
+"away": "SAS",
+"home_pts": 114,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100193",
+"date": "2021-11-14",
+"home": "ATL",
+"away": "MIL",
+"home_pts": 120,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100194",
+"date": "2021-11-14",
+"home": "CHA",
+"away": "GSW",
+"home_pts": 106,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100195",
+"date": "2021-11-14",
+"home": "HOU",
+"away": "PHX",
+"home_pts": 89,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100196",
+"date": "2021-11-14",
+"home": "OKC",
+"away": "BKN",
+"home_pts": 96,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100197",
+"date": "2021-11-14",
+"home": "DEN",
+"away": "POR",
+"home_pts": 124,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100198",
+"date": "2021-11-14",
+"home": "LAC",
+"away": "CHI",
+"home_pts": 90,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100199",
+"date": "2021-11-15",
+"home": "CLE",
+"away": "BOS",
+"home_pts": 92,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100200",
+"date": "2021-11-15",
+"home": "DET",
+"away": "SAC",
+"home_pts": 107,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100201",
+"date": "2021-11-15",
+"home": "WAS",
+"away": "NOP",
+"home_pts": 105,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100202",
+"date": "2021-11-15",
+"home": "ATL",
+"away": "ORL",
+"home_pts": 129,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100203",
+"date": "2021-11-15",
+"home": "NYK",
+"away": "IND",
+"home_pts": 92,
+"away_pts": 84,
+"neutral": false
+},
+{
+"game_id": "0022100204",
+"date": "2021-11-15",
+"home": "DAL",
+"away": "DEN",
+"home_pts": 111,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100205",
+"date": "2021-11-15",
+"home": "MEM",
+"away": "HOU",
+"home_pts": 136,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100206",
+"date": "2021-11-15",
+"home": "MIN",
+"away": "PHX",
+"home_pts": 96,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100207",
+"date": "2021-11-15",
+"home": "OKC",
+"away": "MIA",
+"home_pts": 90,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100208",
+"date": "2021-11-15",
+"home": "POR",
+"away": "TOR",
+"home_pts": 118,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100209",
+"date": "2021-11-15",
+"home": "LAL",
+"away": "CHI",
+"home_pts": 103,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100210",
+"date": "2021-11-16",
+"home": "BKN",
+"away": "GSW",
+"home_pts": 99,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100211",
+"date": "2021-11-16",
+"home": "UTA",
+"away": "PHI",
+"home_pts": 120,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100212",
+"date": "2021-11-16",
+"home": "LAC",
+"away": "SAS",
+"home_pts": 106,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100213",
+"date": "2021-11-17",
+"home": "CHA",
+"away": "WAS",
+"home_pts": 97,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100214",
+"date": "2021-11-17",
+"home": "DET",
+"away": "IND",
+"home_pts": 97,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100215",
+"date": "2021-11-17",
+"home": "ATL",
+"away": "BOS",
+"home_pts": 110,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100216",
+"date": "2021-11-17",
+"home": "BKN",
+"away": "CLE",
+"home_pts": 109,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100217",
+"date": "2021-11-17",
+"home": "MIA",
+"away": "NOP",
+"home_pts": 113,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100218",
+"date": "2021-11-17",
+"home": "NYK",
+"away": "ORL",
+"home_pts": 98,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100219",
+"date": "2021-11-17",
+"home": "MIL",
+"away": "LAL",
+"home_pts": 109,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100220",
+"date": "2021-11-17",
+"home": "MIN",
+"away": "SAC",
+"home_pts": 107,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100221",
+"date": "2021-11-17",
+"home": "OKC",
+"away": "HOU",
+"home_pts": 101,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100222",
+"date": "2021-11-17",
+"home": "PHX",
+"away": "DAL",
+"home_pts": 105,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100223",
+"date": "2021-11-17",
+"home": "POR",
+"away": "CHI",
+"home_pts": 112,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100224",
+"date": "2021-11-18",
+"home": "CLE",
+"away": "GSW",
+"home_pts": 89,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100225",
+"date": "2021-11-18",
+"home": "MIA",
+"away": "WAS",
+"home_pts": 112,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100226",
+"date": "2021-11-18",
+"home": "MEM",
+"away": "LAC",
+"home_pts": 120,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100227",
+"date": "2021-11-18",
+"home": "MIN",
+"away": "SAS",
+"home_pts": 115,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100228",
+"date": "2021-11-18",
+"home": "DEN",
+"away": "PHI",
+"home_pts": 89,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100229",
+"date": "2021-11-18",
+"home": "UTA",
+"away": "TOR",
+"home_pts": 119,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100230",
+"date": "2021-11-19",
+"home": "CHA",
+"away": "IND",
+"home_pts": 121,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100231",
+"date": "2021-11-19",
+"home": "DET",
+"away": "GSW",
+"home_pts": 102,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100232",
+"date": "2021-11-19",
+"home": "BOS",
+"away": "LAL",
+"home_pts": 130,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100233",
+"date": "2021-11-19",
+"home": "BKN",
+"away": "ORL",
+"home_pts": 115,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100234",
+"date": "2021-11-19",
+"home": "MIL",
+"away": "OKC",
+"home_pts": 96,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100235",
+"date": "2021-11-19",
+"home": "NOP",
+"away": "LAC",
+"home_pts": 94,
+"away_pts": 81,
+"neutral": false
+},
+{
+"game_id": "0022100236",
+"date": "2021-11-19",
+"home": "DEN",
+"away": "CHI",
+"home_pts": 108,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100237",
+"date": "2021-11-19",
+"home": "PHX",
+"away": "DAL",
+"home_pts": 112,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100238",
+"date": "2021-11-19",
+"home": "SAC",
+"away": "TOR",
+"home_pts": 89,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100239",
+"date": "2021-11-20",
+"home": "NYK",
+"away": "HOU",
+"home_pts": 106,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100240",
+"date": "2021-11-20",
+"home": "IND",
+"away": "NOP",
+"home_pts": 111,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100241",
+"date": "2021-11-20",
+"home": "WAS",
+"away": "MIA",
+"home_pts": 103,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100242",
+"date": "2021-11-20",
+"home": "ATL",
+"away": "CHA",
+"home_pts": 115,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100243",
+"date": "2021-11-20",
+"home": "BOS",
+"away": "OKC",
+"home_pts": 111,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100244",
+"date": "2021-11-20",
+"home": "MIL",
+"away": "ORL",
+"home_pts": 117,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100245",
+"date": "2021-11-20",
+"home": "MIN",
+"away": "MEM",
+"home_pts": 138,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100246",
+"date": "2021-11-20",
+"home": "POR",
+"away": "PHI",
+"home_pts": 118,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100247",
+"date": "2021-11-20",
+"home": "SAC",
+"away": "UTA",
+"home_pts": 105,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100248",
+"date": "2021-11-21",
+"home": "LAC",
+"away": "DAL",
+"home_pts": 97,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100249",
+"date": "2021-11-21",
+"home": "DET",
+"away": "LAL",
+"home_pts": 116,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100250",
+"date": "2021-11-21",
+"home": "CHI",
+"away": "NYK",
+"home_pts": 109,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100251",
+"date": "2021-11-21",
+"home": "PHX",
+"away": "DEN",
+"home_pts": 126,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100252",
+"date": "2021-11-21",
+"home": "GSW",
+"away": "TOR",
+"home_pts": 119,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100253",
+"date": "2021-11-22",
+"home": "CLE",
+"away": "BKN",
+"home_pts": 112,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100254",
+"date": "2021-11-22",
+"home": "WAS",
+"away": "CHA",
+"home_pts": 103,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100255",
+"date": "2021-11-22",
+"home": "ATL",
+"away": "OKC",
+"home_pts": 113,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100256",
+"date": "2021-11-22",
+"home": "BOS",
+"away": "HOU",
+"home_pts": 108,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100257",
+"date": "2021-11-22",
+"home": "CHI",
+"away": "IND",
+"home_pts": 77,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100258",
+"date": "2021-11-22",
+"home": "MIL",
+"away": "ORL",
+"home_pts": 123,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100259",
+"date": "2021-11-22",
+"home": "NOP",
+"away": "MIN",
+"home_pts": 96,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100260",
+"date": "2021-11-22",
+"home": "SAS",
+"away": "PHX",
+"home_pts": 111,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100261",
+"date": "2021-11-22",
+"home": "UTA",
+"away": "MEM",
+"home_pts": 118,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100262",
+"date": "2021-11-22",
+"home": "SAC",
+"away": "PHI",
+"home_pts": 94,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100263",
+"date": "2021-11-23",
+"home": "DET",
+"away": "MIA",
+"home_pts": 92,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100264",
+"date": "2021-11-23",
+"home": "NYK",
+"away": "LAL",
+"home_pts": 106,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100265",
+"date": "2021-11-23",
+"home": "POR",
+"away": "DEN",
+"home_pts": 119,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100266",
+"date": "2021-11-23",
+"home": "LAC",
+"away": "DAL",
+"home_pts": 104,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100267",
+"date": "2021-11-24",
+"home": "CLE",
+"away": "PHX",
+"home_pts": 115,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100268",
+"date": "2021-11-24",
+"home": "IND",
+"away": "LAL",
+"home_pts": 116,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100269",
+"date": "2021-11-24",
+"home": "ORL",
+"away": "CHA",
+"home_pts": 99,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100270",
+"date": "2021-11-24",
+"home": "BOS",
+"away": "BKN",
+"home_pts": 104,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100271",
+"date": "2021-11-24",
+"home": "HOU",
+"away": "CHI",
+"home_pts": 118,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100272",
+"date": "2021-11-24",
+"home": "MEM",
+"away": "TOR",
+"home_pts": 113,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022100273",
+"date": "2021-11-24",
+"home": "MIL",
+"away": "DET",
+"home_pts": 114,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100274",
+"date": "2021-11-24",
+"home": "MIN",
+"away": "MIA",
+"home_pts": 113,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100275",
+"date": "2021-11-24",
+"home": "NOP",
+"away": "WAS",
+"home_pts": 127,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100276",
+"date": "2021-11-24",
+"home": "OKC",
+"away": "UTA",
+"home_pts": 104,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100277",
+"date": "2021-11-24",
+"home": "SAS",
+"away": "ATL",
+"home_pts": 106,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100278",
+"date": "2021-11-24",
+"home": "GSW",
+"away": "PHI",
+"home_pts": 116,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100279",
+"date": "2021-11-24",
+"home": "SAC",
+"away": "POR",
+"home_pts": 125,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100280",
+"date": "2021-11-26",
+"home": "LAC",
+"away": "DET",
+"home_pts": 107,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100281",
+"date": "2021-11-26",
+"home": "CHA",
+"away": "MIN",
+"home_pts": 133,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100282",
+"date": "2021-11-26",
+"home": "NYK",
+"away": "PHX",
+"home_pts": 97,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100283",
+"date": "2021-11-26",
+"home": "ORL",
+"away": "CHI",
+"home_pts": 88,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100284",
+"date": "2021-11-26",
+"home": "IND",
+"away": "TOR",
+"home_pts": 114,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100285",
+"date": "2021-11-26",
+"home": "MEM",
+"away": "ATL",
+"home_pts": 100,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100286",
+"date": "2021-11-26",
+"home": "OKC",
+"away": "WAS",
+"home_pts": 99,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100287",
+"date": "2021-11-26",
+"home": "SAS",
+"away": "BOS",
+"home_pts": 96,
+"away_pts": 88,
+"neutral": false
+},
+{
+"game_id": "0022100288",
+"date": "2021-11-26",
+"home": "DEN",
+"away": "MIL",
+"home_pts": 109,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100289",
+"date": "2021-11-26",
+"home": "UTA",
+"away": "NOP",
+"home_pts": 97,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100290",
+"date": "2021-11-26",
+"home": "GSW",
+"away": "POR",
+"home_pts": 118,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100291",
+"date": "2021-11-26",
+"home": "LAL",
+"away": "SAC",
+"home_pts": 137,
+"away_pts": 141,
+"neutral": false
+},
+{
+"game_id": "0022100292",
+"date": "2021-11-27",
+"home": "PHI",
+"away": "MIN",
+"home_pts": 120,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100293",
+"date": "2021-11-27",
+"home": "ATL",
+"away": "NYK",
+"home_pts": 90,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100294",
+"date": "2021-11-27",
+"home": "BKN",
+"away": "PHX",
+"home_pts": 107,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100295",
+"date": "2021-11-27",
+"home": "CLE",
+"away": "ORL",
+"home_pts": 105,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100296",
+"date": "2021-11-27",
+"home": "CHI",
+"away": "MIA",
+"home_pts": 104,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100297",
+"date": "2021-11-27",
+"home": "HOU",
+"away": "CHA",
+"home_pts": 146,
+"away_pts": 143,
+"neutral": false
+},
+{
+"game_id": "0022100298",
+"date": "2021-11-27",
+"home": "DAL",
+"away": "WAS",
+"home_pts": 114,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100299",
+"date": "2021-11-27",
+"home": "UTA",
+"away": "NOP",
+"home_pts": 127,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100300",
+"date": "2021-11-28",
+"home": "LAC",
+"away": "GSW",
+"home_pts": 90,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100301",
+"date": "2021-11-28",
+"home": "IND",
+"away": "MIL",
+"home_pts": 100,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100302",
+"date": "2021-11-28",
+"home": "TOR",
+"away": "BOS",
+"home_pts": 97,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100303",
+"date": "2021-11-28",
+"home": "MEM",
+"away": "SAC",
+"home_pts": 128,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100304",
+"date": "2021-11-28",
+"home": "LAL",
+"away": "DET",
+"home_pts": 110,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100305",
+"date": "2021-11-29",
+"home": "PHI",
+"away": "ORL",
+"home_pts": 101,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100306",
+"date": "2021-11-29",
+"home": "MIA",
+"away": "DEN",
+"home_pts": 111,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100307",
+"date": "2021-11-29",
+"home": "CHI",
+"away": "CHA",
+"home_pts": 133,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100308",
+"date": "2021-11-29",
+"home": "HOU",
+"away": "OKC",
+"home_pts": 102,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100309",
+"date": "2021-11-29",
+"home": "MIN",
+"away": "IND",
+"home_pts": 100,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100310",
+"date": "2021-11-29",
+"home": "DAL",
+"away": "CLE",
+"home_pts": 96,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100311",
+"date": "2021-11-29",
+"home": "SAS",
+"away": "WAS",
+"home_pts": 116,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100312",
+"date": "2021-11-29",
+"home": "UTA",
+"away": "POR",
+"home_pts": 129,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100313",
+"date": "2021-11-29",
+"home": "LAC",
+"away": "NOP",
+"home_pts": 104,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100314",
+"date": "2021-11-30",
+"home": "BKN",
+"away": "NYK",
+"home_pts": 112,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100315",
+"date": "2021-11-30",
+"home": "TOR",
+"away": "MEM",
+"home_pts": 91,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100316",
+"date": "2021-11-30",
+"home": "PHX",
+"away": "GSW",
+"home_pts": 104,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100317",
+"date": "2021-11-30",
+"home": "POR",
+"away": "DET",
+"home_pts": 110,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100318",
+"date": "2021-11-30",
+"home": "SAC",
+"away": "LAL",
+"home_pts": 92,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100319",
+"date": "2021-12-01",
+"home": "IND",
+"away": "ATL",
+"home_pts": 111,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100320",
+"date": "2021-12-01",
+"home": "ORL",
+"away": "DEN",
+"home_pts": 108,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100321",
+"date": "2021-12-01",
+"home": "WAS",
+"away": "MIN",
+"home_pts": 115,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100322",
+"date": "2021-12-01",
+"home": "BOS",
+"away": "PHI",
+"home_pts": 88,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100323",
+"date": "2021-12-01",
+"home": "MIA",
+"away": "CLE",
+"home_pts": 85,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100324",
+"date": "2021-12-01",
+"home": "MIL",
+"away": "CHA",
+"home_pts": 127,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100325",
+"date": "2021-12-01",
+"home": "NOP",
+"away": "DAL",
+"home_pts": 107,
+"away_pts": 139,
+"neutral": false
+},
+{
+"game_id": "0022100326",
+"date": "2021-12-01",
+"home": "OKC",
+"away": "HOU",
+"home_pts": 110,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100327",
+"date": "2021-12-01",
+"home": "LAC",
+"away": "SAC",
+"home_pts": 115,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100328",
+"date": "2021-12-02",
+"home": "NYK",
+"away": "CHI",
+"home_pts": 115,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100329",
+"date": "2021-12-02",
+"home": "TOR",
+"away": "MIL",
+"home_pts": 97,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100330",
+"date": "2021-12-02",
+"home": "MEM",
+"away": "OKC",
+"home_pts": 152,
+"away_pts": 79,
+"neutral": false
+},
+{
+"game_id": "0022100331",
+"date": "2021-12-02",
+"home": "PHX",
+"away": "DET",
+"home_pts": 114,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100332",
+"date": "2021-12-02",
+"home": "POR",
+"away": "SAS",
+"home_pts": 83,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100333",
+"date": "2021-12-03",
+"home": "IND",
+"away": "MIA",
+"home_pts": 104,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100334",
+"date": "2021-12-03",
+"home": "WAS",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100335",
+"date": "2021-12-03",
+"home": "ATL",
+"away": "PHI",
+"home_pts": 96,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100336",
+"date": "2021-12-03",
+"home": "BKN",
+"away": "MIN",
+"home_pts": 110,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100337",
+"date": "2021-12-03",
+"home": "HOU",
+"away": "ORL",
+"home_pts": 118,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100338",
+"date": "2021-12-03",
+"home": "DAL",
+"away": "NOP",
+"home_pts": 91,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100339",
+"date": "2021-12-03",
+"home": "UTA",
+"away": "BOS",
+"home_pts": 137,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100340",
+"date": "2021-12-03",
+"home": "GSW",
+"away": "PHX",
+"home_pts": 118,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100341",
+"date": "2021-12-03",
+"home": "LAL",
+"away": "LAC",
+"home_pts": 115,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100342",
+"date": "2021-12-04",
+"home": "NYK",
+"away": "DEN",
+"home_pts": 99,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100343",
+"date": "2021-12-04",
+"home": "BKN",
+"away": "CHI",
+"home_pts": 107,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100344",
+"date": "2021-12-04",
+"home": "MIL",
+"away": "MIA",
+"home_pts": 124,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100345",
+"date": "2021-12-04",
+"home": "DAL",
+"away": "MEM",
+"home_pts": 90,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100346",
+"date": "2021-12-04",
+"home": "GSW",
+"away": "SAS",
+"home_pts": 107,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100347",
+"date": "2021-12-04",
+"home": "POR",
+"away": "BOS",
+"home_pts": 117,
+"away_pts": 145,
+"neutral": false
+},
+{
+"game_id": "0022100348",
+"date": "2021-12-04",
+"home": "SAC",
+"away": "LAC",
+"home_pts": 104,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100349",
+"date": "2021-12-05",
+"home": "CLE",
+"away": "UTA",
+"home_pts": 108,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100350",
+"date": "2021-12-05",
+"home": "ATL",
+"away": "CHA",
+"home_pts": 127,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100351",
+"date": "2021-12-05",
+"home": "TOR",
+"away": "WAS",
+"home_pts": 102,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100352",
+"date": "2021-12-05",
+"home": "HOU",
+"away": "NOP",
+"home_pts": 118,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100353",
+"date": "2021-12-06",
+"home": "CHA",
+"away": "PHI",
+"home_pts": 124,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100354",
+"date": "2021-12-06",
+"home": "DET",
+"away": "OKC",
+"home_pts": 103,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100355",
+"date": "2021-12-06",
+"home": "IND",
+"away": "WAS",
+"home_pts": 116,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100356",
+"date": "2021-12-06",
+"home": "MIA",
+"away": "MEM",
+"home_pts": 90,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100357",
+"date": "2021-12-06",
+"home": "CHI",
+"away": "DEN",
+"home_pts": 109,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100358",
+"date": "2021-12-06",
+"home": "MIL",
+"away": "CLE",
+"home_pts": 112,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100359",
+"date": "2021-12-06",
+"home": "MIN",
+"away": "ATL",
+"home_pts": 110,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100360",
+"date": "2021-12-06",
+"home": "PHX",
+"away": "SAS",
+"home_pts": 108,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100361",
+"date": "2021-12-06",
+"home": "GSW",
+"away": "ORL",
+"home_pts": 126,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100362",
+"date": "2021-12-06",
+"home": "POR",
+"away": "LAC",
+"home_pts": 90,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100363",
+"date": "2021-12-07",
+"home": "DAL",
+"away": "BKN",
+"home_pts": 99,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100364",
+"date": "2021-12-07",
+"home": "SAS",
+"away": "NYK",
+"home_pts": 109,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100365",
+"date": "2021-12-07",
+"home": "LAL",
+"away": "BOS",
+"home_pts": 117,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100366",
+"date": "2021-12-08",
+"home": "CHA",
+"away": "PHI",
+"home_pts": 106,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100367",
+"date": "2021-12-08",
+"home": "CLE",
+"away": "CHI",
+"home_pts": 115,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100368",
+"date": "2021-12-08",
+"home": "DET",
+"away": "WAS",
+"home_pts": 116,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100369",
+"date": "2021-12-08",
+"home": "IND",
+"away": "NYK",
+"home_pts": 122,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100370",
+"date": "2021-12-08",
+"home": "MIA",
+"away": "MIL",
+"home_pts": 113,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100371",
+"date": "2021-12-08",
+"home": "TOR",
+"away": "OKC",
+"home_pts": 109,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100372",
+"date": "2021-12-08",
+"home": "HOU",
+"away": "BKN",
+"home_pts": 114,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100373",
+"date": "2021-12-08",
+"home": "MEM",
+"away": "DAL",
+"home_pts": 96,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100374",
+"date": "2021-12-08",
+"home": "MIN",
+"away": "UTA",
+"home_pts": 104,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022100375",
+"date": "2021-12-08",
+"home": "NOP",
+"away": "DEN",
+"home_pts": 114,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100376",
+"date": "2021-12-08",
+"home": "GSW",
+"away": "POR",
+"home_pts": 104,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100377",
+"date": "2021-12-08",
+"home": "SAC",
+"away": "ORL",
+"home_pts": 142,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100378",
+"date": "2021-12-08",
+"home": "LAC",
+"away": "BOS",
+"home_pts": 114,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100379",
+"date": "2021-12-09",
+"home": "PHI",
+"away": "UTA",
+"home_pts": 96,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100380",
+"date": "2021-12-09",
+"home": "MEM",
+"away": "LAL",
+"home_pts": 108,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100381",
+"date": "2021-12-09",
+"home": "SAS",
+"away": "DEN",
+"home_pts": 123,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100382",
+"date": "2021-12-10",
+"home": "CHA",
+"away": "SAC",
+"home_pts": 124,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100383",
+"date": "2021-12-10",
+"home": "IND",
+"away": "DAL",
+"home_pts": 106,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100384",
+"date": "2021-12-10",
+"home": "ATL",
+"away": "BKN",
+"home_pts": 105,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100385",
+"date": "2021-12-10",
+"home": "TOR",
+"away": "NYK",
+"home_pts": 90,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100386",
+"date": "2021-12-10",
+"home": "HOU",
+"away": "MIL",
+"home_pts": 114,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100387",
+"date": "2021-12-10",
+"home": "MIN",
+"away": "CLE",
+"home_pts": 106,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100388",
+"date": "2021-12-10",
+"home": "NOP",
+"away": "DET",
+"home_pts": 109,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100389",
+"date": "2021-12-10",
+"home": "OKC",
+"away": "LAL",
+"home_pts": 95,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100390",
+"date": "2021-12-10",
+"home": "PHX",
+"away": "BOS",
+"home_pts": 111,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100391",
+"date": "2021-12-11",
+"home": "LAC",
+"away": "ORL",
+"home_pts": 106,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100392",
+"date": "2021-12-11",
+"home": "WAS",
+"away": "UTA",
+"home_pts": 98,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100393",
+"date": "2021-12-11",
+"home": "CLE",
+"away": "SAC",
+"home_pts": 117,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100394",
+"date": "2021-12-11",
+"home": "MIA",
+"away": "CHI",
+"home_pts": 118,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100395",
+"date": "2021-12-11",
+"home": "MEM",
+"away": "HOU",
+"home_pts": 113,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100396",
+"date": "2021-12-11",
+"home": "PHI",
+"away": "GSW",
+"home_pts": 102,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100397",
+"date": "2021-12-11",
+"home": "SAS",
+"away": "DEN",
+"home_pts": 112,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100398",
+"date": "2021-12-12",
+"home": "NYK",
+"away": "MIL",
+"home_pts": 97,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100399",
+"date": "2021-12-12",
+"home": "DET",
+"away": "BKN",
+"home_pts": 104,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100400",
+"date": "2021-12-12",
+"home": "OKC",
+"away": "DAL",
+"home_pts": 84,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100401",
+"date": "2021-12-12",
+"home": "SAS",
+"away": "NOP",
+"home_pts": 112,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100402",
+"date": "2021-12-12",
+"home": "POR",
+"away": "MIN",
+"home_pts": 111,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100403",
+"date": "2021-12-12",
+"home": "LAL",
+"away": "ORL",
+"home_pts": 106,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100404",
+"date": "2021-12-13",
+"home": "CLE",
+"away": "MIA",
+"home_pts": 105,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100405",
+"date": "2021-12-13",
+"home": "IND",
+"away": "GSW",
+"home_pts": 100,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100406",
+"date": "2021-12-13",
+"home": "TOR",
+"away": "SAC",
+"home_pts": 124,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100407",
+"date": "2021-12-13",
+"home": "ATL",
+"away": "HOU",
+"home_pts": 126,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100408",
+"date": "2021-12-13",
+"home": "BOS",
+"away": "MIL",
+"home_pts": 117,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100409",
+"date": "2021-12-13",
+"home": "MEM",
+"away": "PHI",
+"home_pts": 126,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100410",
+"date": "2021-12-13",
+"home": "DAL",
+"away": "CHA",
+"home_pts": 120,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100411",
+"date": "2021-12-13",
+"home": "DEN",
+"away": "WAS",
+"home_pts": 113,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100412",
+"date": "2021-12-13",
+"home": "LAC",
+"away": "PHX",
+"home_pts": 111,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100413",
+"date": "2021-12-14",
+"home": "BKN",
+"away": "TOR",
+"home_pts": 131,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100414",
+"date": "2021-12-14",
+"home": "NYK",
+"away": "GSW",
+"home_pts": 96,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100416",
+"date": "2021-12-14",
+"home": "POR",
+"away": "PHX",
+"home_pts": 107,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100417",
+"date": "2021-12-15",
+"home": "CLE",
+"away": "HOU",
+"home_pts": 124,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100418",
+"date": "2021-12-15",
+"home": "ORL",
+"away": "ATL",
+"home_pts": 99,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100419",
+"date": "2021-12-15",
+"home": "PHI",
+"away": "MIA",
+"home_pts": 96,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100420",
+"date": "2021-12-15",
+"home": "DAL",
+"away": "LAL",
+"home_pts": 104,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100421",
+"date": "2021-12-15",
+"home": "MIL",
+"away": "IND",
+"home_pts": 114,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100422",
+"date": "2021-12-15",
+"home": "OKC",
+"away": "NOP",
+"home_pts": 110,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100423",
+"date": "2021-12-15",
+"home": "SAS",
+"away": "CHA",
+"home_pts": 115,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022100424",
+"date": "2021-12-15",
+"home": "DEN",
+"away": "MIN",
+"home_pts": 107,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100425",
+"date": "2021-12-15",
+"home": "UTA",
+"away": "LAC",
+"home_pts": 124,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100426",
+"date": "2021-12-15",
+"home": "POR",
+"away": "MEM",
+"home_pts": 103,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100427",
+"date": "2021-12-15",
+"home": "SAC",
+"away": "WAS",
+"home_pts": 119,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100428",
+"date": "2021-12-16",
+"home": "IND",
+"away": "DET",
+"home_pts": 122,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100429",
+"date": "2021-12-16",
+"home": "BKN",
+"away": "PHI",
+"home_pts": 114,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100431",
+"date": "2021-12-16",
+"home": "HOU",
+"away": "NYK",
+"home_pts": 103,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100432",
+"date": "2021-12-16",
+"home": "PHX",
+"away": "WAS",
+"home_pts": 118,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100433",
+"date": "2021-12-17",
+"home": "ORL",
+"away": "MIA",
+"home_pts": 105,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100434",
+"date": "2021-12-17",
+"home": "ATL",
+"away": "DEN",
+"home_pts": 115,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100435",
+"date": "2021-12-17",
+"home": "BOS",
+"away": "GSW",
+"home_pts": 107,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100436",
+"date": "2021-12-17",
+"home": "MIN",
+"away": "LAL",
+"home_pts": 110,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100437",
+"date": "2021-12-17",
+"home": "UTA",
+"away": "SAS",
+"home_pts": 126,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100438",
+"date": "2021-12-17",
+"home": "NOP",
+"away": "MIL",
+"home_pts": 116,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100439",
+"date": "2021-12-17",
+"home": "POR",
+"away": "CHA",
+"home_pts": 125,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100440",
+"date": "2021-12-17",
+"home": "SAC",
+"away": "MEM",
+"home_pts": 105,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100441",
+"date": "2021-12-18",
+"home": "DET",
+"away": "HOU",
+"home_pts": 107,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100442",
+"date": "2021-12-18",
+"home": "BKN",
+"away": "ORL",
+"home_pts": 93,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100443",
+"date": "2021-12-18",
+"home": "TOR",
+"away": "GSW",
+"home_pts": 119,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100444",
+"date": "2021-12-18",
+"home": "OKC",
+"away": "LAC",
+"home_pts": 104,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100445",
+"date": "2021-12-18",
+"home": "BOS",
+"away": "NYK",
+"home_pts": 114,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100446",
+"date": "2021-12-18",
+"home": "MIL",
+"away": "CLE",
+"home_pts": 90,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100447",
+"date": "2021-12-18",
+"home": "UTA",
+"away": "WAS",
+"home_pts": 103,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100448",
+"date": "2021-12-19",
+"home": "CHI",
+"away": "LAL",
+"home_pts": 115,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100449",
+"date": "2021-12-19",
+"home": "DET",
+"away": "MIA",
+"home_pts": 100,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100450",
+"date": "2021-12-19",
+"home": "MEM",
+"away": "POR",
+"home_pts": 100,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100451",
+"date": "2021-12-19",
+"home": "SAC",
+"away": "SAS",
+"home_pts": 121,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100455",
+"date": "2021-12-19",
+"home": "MIN",
+"away": "DAL",
+"home_pts": 111,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100456",
+"date": "2021-12-19",
+"home": "PHX",
+"away": "CHA",
+"home_pts": 137,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100457",
+"date": "2021-12-20",
+"home": "BOS",
+"away": "PHI",
+"home_pts": 103,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100459",
+"date": "2021-12-20",
+"home": "CHI",
+"away": "HOU",
+"home_pts": 133,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100460",
+"date": "2021-12-20",
+"home": "MEM",
+"away": "OKC",
+"home_pts": 99,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100461",
+"date": "2021-12-20",
+"home": "UTA",
+"away": "CHA",
+"home_pts": 112,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100462",
+"date": "2021-12-20",
+"home": "GSW",
+"away": "SAC",
+"home_pts": 113,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100463",
+"date": "2021-12-20",
+"home": "LAC",
+"away": "SAS",
+"home_pts": 92,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100465",
+"date": "2021-12-21",
+"home": "MIA",
+"away": "IND",
+"home_pts": 125,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100466",
+"date": "2021-12-21",
+"home": "NYK",
+"away": "DET",
+"home_pts": 105,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100467",
+"date": "2021-12-21",
+"home": "NOP",
+"away": "POR",
+"home_pts": 111,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100468",
+"date": "2021-12-21",
+"home": "DAL",
+"away": "MIN",
+"home_pts": 114,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100469",
+"date": "2021-12-21",
+"home": "LAL",
+"away": "PHX",
+"home_pts": 90,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100470",
+"date": "2021-12-22",
+"home": "ATL",
+"away": "ORL",
+"home_pts": 98,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100471",
+"date": "2021-12-22",
+"home": "BOS",
+"away": "CLE",
+"home_pts": 111,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100473",
+"date": "2021-12-22",
+"home": "MIL",
+"away": "HOU",
+"home_pts": 126,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100474",
+"date": "2021-12-22",
+"home": "OKC",
+"away": "DEN",
+"home_pts": 108,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100475",
+"date": "2021-12-22",
+"home": "SAC",
+"away": "LAC",
+"home_pts": 89,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100476",
+"date": "2021-12-23",
+"home": "IND",
+"away": "HOU",
+"home_pts": 118,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100477",
+"date": "2021-12-23",
+"home": "ORL",
+"away": "NOP",
+"home_pts": 104,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100478",
+"date": "2021-12-23",
+"home": "PHI",
+"away": "ATL",
+"home_pts": 96,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100479",
+"date": "2021-12-23",
+"home": "MIA",
+"away": "DET",
+"home_pts": 115,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100480",
+"date": "2021-12-23",
+"home": "NYK",
+"away": "WAS",
+"home_pts": 117,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100481",
+"date": "2021-12-23",
+"home": "DAL",
+"away": "MIL",
+"home_pts": 95,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100482",
+"date": "2021-12-23",
+"home": "DEN",
+"away": "CHA",
+"home_pts": 107,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100483",
+"date": "2021-12-23",
+"home": "PHX",
+"away": "OKC",
+"home_pts": 113,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100484",
+"date": "2021-12-23",
+"home": "UTA",
+"away": "MIN",
+"home_pts": 128,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100485",
+"date": "2021-12-23",
+"home": "GSW",
+"away": "MEM",
+"home_pts": 113,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100487",
+"date": "2021-12-23",
+"home": "LAL",
+"away": "SAS",
+"home_pts": 110,
+"away_pts": 138,
+"neutral": false
+},
+{
+"game_id": "0022100488",
+"date": "2021-12-25",
+"home": "NYK",
+"away": "ATL",
+"home_pts": 101,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100489",
+"date": "2021-12-25",
+"home": "MIL",
+"away": "BOS",
+"home_pts": 117,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100490",
+"date": "2021-12-25",
+"home": "PHX",
+"away": "GSW",
+"home_pts": 107,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100491",
+"date": "2021-12-25",
+"home": "LAL",
+"away": "BKN",
+"home_pts": 115,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100492",
+"date": "2021-12-25",
+"home": "UTA",
+"away": "DAL",
+"home_pts": 120,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100493",
+"date": "2021-12-26",
+"home": "MIA",
+"away": "ORL",
+"home_pts": 93,
+"away_pts": 83,
+"neutral": false
+},
+{
+"game_id": "0022100494",
+"date": "2021-12-26",
+"home": "CLE",
+"away": "TOR",
+"home_pts": 144,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100495",
+"date": "2021-12-26",
+"home": "WAS",
+"away": "PHI",
+"home_pts": 96,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100496",
+"date": "2021-12-26",
+"home": "SAC",
+"away": "MEM",
+"home_pts": 102,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100497",
+"date": "2021-12-26",
+"home": "OKC",
+"away": "NOP",
+"home_pts": 117,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100498",
+"date": "2021-12-26",
+"home": "SAS",
+"away": "DET",
+"home_pts": 144,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100499",
+"date": "2021-12-26",
+"home": "CHI",
+"away": "IND",
+"home_pts": 113,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100500",
+"date": "2021-12-26",
+"home": "LAC",
+"away": "DEN",
+"home_pts": 100,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100501",
+"date": "2021-12-27",
+"home": "CHA",
+"away": "HOU",
+"home_pts": 123,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100502",
+"date": "2021-12-27",
+"home": "ATL",
+"away": "CHI",
+"home_pts": 118,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100503",
+"date": "2021-12-27",
+"home": "MIN",
+"away": "BOS",
+"home_pts": 108,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100504",
+"date": "2021-12-27",
+"home": "SAS",
+"away": "UTA",
+"home_pts": 104,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100505",
+"date": "2021-12-27",
+"home": "PHX",
+"away": "MEM",
+"home_pts": 113,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100506",
+"date": "2021-12-27",
+"home": "POR",
+"away": "DAL",
+"home_pts": 117,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100507",
+"date": "2021-12-27",
+"home": "LAC",
+"away": "BKN",
+"home_pts": 108,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100508",
+"date": "2021-12-28",
+"home": "ORL",
+"away": "MIL",
+"home_pts": 110,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100509",
+"date": "2021-12-28",
+"home": "MIA",
+"away": "WAS",
+"home_pts": 119,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100510",
+"date": "2021-12-28",
+"home": "TOR",
+"away": "PHI",
+"home_pts": 109,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100511",
+"date": "2021-12-28",
+"home": "HOU",
+"away": "LAL",
+"home_pts": 123,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100512",
+"date": "2021-12-28",
+"home": "MIN",
+"away": "NYK",
+"home_pts": 88,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100513",
+"date": "2021-12-28",
+"home": "NOP",
+"away": "CLE",
+"home_pts": 108,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100514",
+"date": "2021-12-28",
+"home": "GSW",
+"away": "DEN",
+"home_pts": 86,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100515",
+"date": "2021-12-28",
+"home": "SAC",
+"away": "OKC",
+"home_pts": 117,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100516",
+"date": "2021-12-29",
+"home": "DET",
+"away": "NYK",
+"home_pts": 85,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100517",
+"date": "2021-12-29",
+"home": "IND",
+"away": "CHA",
+"home_pts": 108,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100518",
+"date": "2021-12-29",
+"home": "BOS",
+"away": "LAC",
+"home_pts": 82,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100519",
+"date": "2021-12-29",
+"home": "CHI",
+"away": "ATL",
+"home_pts": 131,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100520",
+"date": "2021-12-29",
+"home": "MEM",
+"away": "LAL",
+"home_pts": 104,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100522",
+"date": "2021-12-29",
+"home": "PHX",
+"away": "OKC",
+"home_pts": 115,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100523",
+"date": "2021-12-29",
+"home": "POR",
+"away": "UTA",
+"home_pts": 105,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100524",
+"date": "2021-12-29",
+"home": "SAC",
+"away": "DAL",
+"home_pts": 95,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100525",
+"date": "2021-12-30",
+"home": "BKN",
+"away": "PHI",
+"home_pts": 102,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100526",
+"date": "2021-12-30",
+"home": "ORL",
+"away": "MIL",
+"home_pts": 118,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022100527",
+"date": "2021-12-30",
+"home": "WAS",
+"away": "CLE",
+"home_pts": 110,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100529",
+"date": "2021-12-31",
+"home": "BOS",
+"away": "PHX",
+"home_pts": 123,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100530",
+"date": "2021-12-31",
+"home": "IND",
+"away": "CHI",
+"home_pts": 106,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100531",
+"date": "2021-12-31",
+"home": "SAC",
+"away": "DAL",
+"home_pts": 96,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100532",
+"date": "2021-12-31",
+"home": "HOU",
+"away": "MIA",
+"home_pts": 110,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100533",
+"date": "2021-12-31",
+"home": "CLE",
+"away": "ATL",
+"home_pts": 118,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100534",
+"date": "2021-12-31",
+"home": "TOR",
+"away": "LAC",
+"home_pts": 116,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100535",
+"date": "2021-12-31",
+"home": "MEM",
+"away": "SAS",
+"home_pts": 118,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100536",
+"date": "2021-12-31",
+"home": "OKC",
+"away": "NYK",
+"home_pts": 95,
+"away_pts": 80,
+"neutral": false
+},
+{
+"game_id": "0022100537",
+"date": "2021-12-31",
+"home": "UTA",
+"away": "MIN",
+"home_pts": 120,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100538",
+"date": "2021-12-31",
+"home": "LAL",
+"away": "POR",
+"home_pts": 139,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100539",
+"date": "2022-01-01",
+"home": "MIL",
+"away": "NOP",
+"home_pts": 136,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100540",
+"date": "2022-01-01",
+"home": "DET",
+"away": "SAS",
+"home_pts": 117,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100541",
+"date": "2022-01-01",
+"home": "WAS",
+"away": "CHI",
+"home_pts": 119,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100542",
+"date": "2022-01-01",
+"home": "BKN",
+"away": "LAC",
+"home_pts": 116,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100543",
+"date": "2022-01-01",
+"home": "HOU",
+"away": "DEN",
+"home_pts": 111,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100544",
+"date": "2022-01-01",
+"home": "UTA",
+"away": "GSW",
+"home_pts": 116,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100545",
+"date": "2022-01-02",
+"home": "TOR",
+"away": "NYK",
+"home_pts": 120,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100546",
+"date": "2022-01-02",
+"home": "BOS",
+"away": "ORL",
+"home_pts": 116,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100547",
+"date": "2022-01-02",
+"home": "CLE",
+"away": "IND",
+"home_pts": 108,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100548",
+"date": "2022-01-02",
+"home": "SAC",
+"away": "MIA",
+"home_pts": 115,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100549",
+"date": "2022-01-02",
+"home": "CHA",
+"away": "PHX",
+"home_pts": 99,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100550",
+"date": "2022-01-02",
+"home": "OKC",
+"away": "DAL",
+"home_pts": 86,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100551",
+"date": "2022-01-02",
+"home": "LAL",
+"away": "MIN",
+"home_pts": 108,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100552",
+"date": "2022-01-03",
+"home": "PHI",
+"away": "HOU",
+"home_pts": 133,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100553",
+"date": "2022-01-03",
+"home": "WAS",
+"away": "CHA",
+"home_pts": 124,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100554",
+"date": "2022-01-03",
+"home": "BKN",
+"away": "MEM",
+"home_pts": 104,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100555",
+"date": "2022-01-03",
+"home": "CHI",
+"away": "ORL",
+"home_pts": 102,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100556",
+"date": "2022-01-03",
+"home": "MIL",
+"away": "DET",
+"home_pts": 106,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100557",
+"date": "2022-01-03",
+"home": "NOP",
+"away": "UTA",
+"home_pts": 104,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100558",
+"date": "2022-01-03",
+"home": "DAL",
+"away": "DEN",
+"home_pts": 103,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100559",
+"date": "2022-01-03",
+"home": "GSW",
+"away": "MIA",
+"home_pts": 115,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100560",
+"date": "2022-01-03",
+"home": "POR",
+"away": "ATL",
+"home_pts": 136,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022100561",
+"date": "2022-01-03",
+"home": "LAC",
+"away": "MIN",
+"home_pts": 104,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100562",
+"date": "2022-01-04",
+"home": "CLE",
+"away": "MEM",
+"home_pts": 106,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100563",
+"date": "2022-01-04",
+"home": "TOR",
+"away": "SAS",
+"home_pts": 129,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100564",
+"date": "2022-01-04",
+"home": "NYK",
+"away": "IND",
+"home_pts": 104,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100565",
+"date": "2022-01-04",
+"home": "NOP",
+"away": "PHX",
+"home_pts": 110,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100566",
+"date": "2022-01-04",
+"home": "LAL",
+"away": "SAC",
+"home_pts": 122,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100567",
+"date": "2022-01-05",
+"home": "CHA",
+"away": "DET",
+"home_pts": 140,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100568",
+"date": "2022-01-05",
+"home": "ORL",
+"away": "PHI",
+"home_pts": 106,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100569",
+"date": "2022-01-05",
+"home": "WAS",
+"away": "HOU",
+"home_pts": 111,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100570",
+"date": "2022-01-05",
+"home": "BOS",
+"away": "SAS",
+"home_pts": 97,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100571",
+"date": "2022-01-05",
+"home": "IND",
+"away": "BKN",
+"home_pts": 121,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100572",
+"date": "2022-01-05",
+"home": "DAL",
+"away": "GSW",
+"home_pts": 99,
+"away_pts": 82,
+"neutral": false
+},
+{
+"game_id": "0022100573",
+"date": "2022-01-05",
+"home": "MIL",
+"away": "TOR",
+"home_pts": 111,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100574",
+"date": "2022-01-05",
+"home": "MIN",
+"away": "OKC",
+"home_pts": 98,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100575",
+"date": "2022-01-05",
+"home": "DEN",
+"away": "UTA",
+"home_pts": 109,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100576",
+"date": "2022-01-05",
+"home": "POR",
+"away": "MIA",
+"home_pts": 109,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100577",
+"date": "2022-01-05",
+"home": "SAC",
+"away": "ATL",
+"home_pts": 102,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100578",
+"date": "2022-01-06",
+"home": "NYK",
+"away": "BOS",
+"home_pts": 108,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100579",
+"date": "2022-01-06",
+"home": "MEM",
+"away": "DET",
+"home_pts": 118,
+"away_pts": 88,
+"neutral": false
+},
+{
+"game_id": "0022100580",
+"date": "2022-01-06",
+"home": "NOP",
+"away": "GSW",
+"home_pts": 101,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100581",
+"date": "2022-01-06",
+"home": "PHX",
+"away": "LAC",
+"home_pts": 106,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100582",
+"date": "2022-01-07",
+"home": "PHI",
+"away": "SAS",
+"home_pts": 119,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100583",
+"date": "2022-01-07",
+"home": "BKN",
+"away": "MIL",
+"home_pts": 109,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100584",
+"date": "2022-01-07",
+"home": "TOR",
+"away": "UTA",
+"home_pts": 122,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100585",
+"date": "2022-01-07",
+"home": "CHI",
+"away": "WAS",
+"home_pts": 130,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100586",
+"date": "2022-01-07",
+"home": "HOU",
+"away": "DAL",
+"home_pts": 106,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100587",
+"date": "2022-01-07",
+"home": "OKC",
+"away": "MIN",
+"home_pts": 105,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022100588",
+"date": "2022-01-07",
+"home": "DEN",
+"away": "SAC",
+"home_pts": 121,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100589",
+"date": "2022-01-07",
+"home": "LAL",
+"away": "ATL",
+"home_pts": 134,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100590",
+"date": "2022-01-07",
+"home": "POR",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100591",
+"date": "2022-01-08",
+"home": "LAC",
+"away": "MEM",
+"home_pts": 108,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100592",
+"date": "2022-01-08",
+"home": "CHA",
+"away": "MIL",
+"home_pts": 114,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100593",
+"date": "2022-01-08",
+"home": "DET",
+"away": "ORL",
+"home_pts": 97,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100594",
+"date": "2022-01-08",
+"home": "IND",
+"away": "UTA",
+"home_pts": 125,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100595",
+"date": "2022-01-08",
+"home": "BOS",
+"away": "NYK",
+"home_pts": 99,
+"away_pts": 75,
+"neutral": false
+},
+{
+"game_id": "0022100596",
+"date": "2022-01-08",
+"home": "PHX",
+"away": "MIA",
+"home_pts": 100,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100597",
+"date": "2022-01-09",
+"home": "LAC",
+"away": "ATL",
+"home_pts": 106,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100598",
+"date": "2022-01-09",
+"home": "ORL",
+"away": "WAS",
+"home_pts": 100,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100599",
+"date": "2022-01-09",
+"home": "TOR",
+"away": "NOP",
+"home_pts": 105,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100600",
+"date": "2022-01-09",
+"home": "HOU",
+"away": "MIN",
+"home_pts": 123,
+"away_pts": 141,
+"neutral": false
+},
+{
+"game_id": "0022100601",
+"date": "2022-01-09",
+"home": "OKC",
+"away": "DEN",
+"home_pts": 95,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100602",
+"date": "2022-01-09",
+"home": "BKN",
+"away": "SAS",
+"home_pts": 121,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100603",
+"date": "2022-01-09",
+"home": "DAL",
+"away": "CHI",
+"home_pts": 113,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100604",
+"date": "2022-01-09",
+"home": "GSW",
+"away": "CLE",
+"home_pts": 96,
+"away_pts": 82,
+"neutral": false
+},
+{
+"game_id": "0022100605",
+"date": "2022-01-09",
+"home": "POR",
+"away": "SAC",
+"home_pts": 103,
+"away_pts": 88,
+"neutral": false
+},
+{
+"game_id": "0022100606",
+"date": "2022-01-09",
+"home": "LAL",
+"away": "MEM",
+"home_pts": 119,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100486",
+"date": "2022-01-10",
+"home": "POR",
+"away": "BKN",
+"home_pts": 114,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100607",
+"date": "2022-01-10",
+"home": "CHA",
+"away": "MIL",
+"home_pts": 103,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100608",
+"date": "2022-01-10",
+"home": "DET",
+"away": "UTA",
+"home_pts": 126,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100609",
+"date": "2022-01-10",
+"home": "BOS",
+"away": "IND",
+"home_pts": 101,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100610",
+"date": "2022-01-10",
+"home": "NYK",
+"away": "SAS",
+"home_pts": 111,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100611",
+"date": "2022-01-10",
+"home": "SAC",
+"away": "CLE",
+"home_pts": 108,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100711",
+"date": "2022-01-10",
+"home": "HOU",
+"away": "PHI",
+"home_pts": 91,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100415",
+"date": "2022-01-11",
+"home": "CHI",
+"away": "DET",
+"home_pts": 133,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100612",
+"date": "2022-01-11",
+"home": "WAS",
+"away": "OKC",
+"home_pts": 122,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100613",
+"date": "2022-01-11",
+"home": "TOR",
+"away": "PHX",
+"home_pts": 95,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100614",
+"date": "2022-01-11",
+"home": "MEM",
+"away": "GSW",
+"home_pts": 116,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100615",
+"date": "2022-01-11",
+"home": "NOP",
+"away": "MIN",
+"home_pts": 128,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100616",
+"date": "2022-01-11",
+"home": "LAC",
+"away": "DEN",
+"home_pts": 87,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100618",
+"date": "2022-01-12",
+"home": "IND",
+"away": "BOS",
+"home_pts": 100,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100619",
+"date": "2022-01-12",
+"home": "PHI",
+"away": "CHA",
+"home_pts": 98,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100620",
+"date": "2022-01-12",
+"home": "WAS",
+"away": "ORL",
+"home_pts": 112,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100621",
+"date": "2022-01-12",
+"home": "ATL",
+"away": "MIA",
+"home_pts": 91,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100622",
+"date": "2022-01-12",
+"home": "NYK",
+"away": "DAL",
+"home_pts": 108,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100623",
+"date": "2022-01-12",
+"home": "SAS",
+"away": "HOU",
+"home_pts": 124,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100624",
+"date": "2022-01-12",
+"home": "UTA",
+"away": "CLE",
+"home_pts": 91,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100625",
+"date": "2022-01-12",
+"home": "CHI",
+"away": "BKN",
+"home_pts": 112,
+"away_pts": 138,
+"neutral": false
+},
+{
+"game_id": "0022100626",
+"date": "2022-01-12",
+"home": "SAC",
+"away": "LAL",
+"home_pts": 125,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100627",
+"date": "2022-01-13",
+"home": "MIL",
+"away": "GSW",
+"home_pts": 118,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100628",
+"date": "2022-01-13",
+"home": "MEM",
+"away": "MIN",
+"home_pts": 116,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100629",
+"date": "2022-01-13",
+"home": "NOP",
+"away": "LAC",
+"home_pts": 113,
+"away_pts": 89,
+"neutral": false
+},
+{
+"game_id": "0022100630",
+"date": "2022-01-13",
+"home": "BKN",
+"away": "OKC",
+"home_pts": 109,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100631",
+"date": "2022-01-13",
+"home": "DEN",
+"away": "POR",
+"home_pts": 140,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100632",
+"date": "2022-01-14",
+"home": "CHA",
+"away": "ORL",
+"home_pts": 109,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100633",
+"date": "2022-01-14",
+"home": "DET",
+"away": "TOR",
+"home_pts": 103,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100634",
+"date": "2022-01-14",
+"home": "IND",
+"away": "PHX",
+"home_pts": 94,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100635",
+"date": "2022-01-14",
+"home": "PHI",
+"away": "BOS",
+"home_pts": 111,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100636",
+"date": "2022-01-14",
+"home": "MIA",
+"away": "ATL",
+"home_pts": 124,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100637",
+"date": "2022-01-14",
+"home": "CHI",
+"away": "GSW",
+"home_pts": 96,
+"away_pts": 138,
+"neutral": false
+},
+{
+"game_id": "0022100638",
+"date": "2022-01-14",
+"home": "SAS",
+"away": "CLE",
+"home_pts": 109,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100639",
+"date": "2022-01-14",
+"home": "MEM",
+"away": "DAL",
+"home_pts": 85,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100640",
+"date": "2022-01-14",
+"home": "SAC",
+"away": "HOU",
+"home_pts": 126,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100641",
+"date": "2022-01-15",
+"home": "MIL",
+"away": "TOR",
+"home_pts": 96,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100642",
+"date": "2022-01-15",
+"home": "WAS",
+"away": "POR",
+"home_pts": 110,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100643",
+"date": "2022-01-15",
+"home": "ATL",
+"away": "NYK",
+"home_pts": 108,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100644",
+"date": "2022-01-15",
+"home": "BKN",
+"away": "NOP",
+"home_pts": 120,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100645",
+"date": "2022-01-15",
+"home": "MIA",
+"away": "PHI",
+"home_pts": 98,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100646",
+"date": "2022-01-15",
+"home": "OKC",
+"away": "CLE",
+"home_pts": 102,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100647",
+"date": "2022-01-15",
+"home": "BOS",
+"away": "CHI",
+"home_pts": 114,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100648",
+"date": "2022-01-15",
+"home": "SAS",
+"away": "LAC",
+"home_pts": 101,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100649",
+"date": "2022-01-15",
+"home": "DEN",
+"away": "LAL",
+"home_pts": 133,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100650",
+"date": "2022-01-15",
+"home": "DAL",
+"away": "ORL",
+"home_pts": 108,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100617",
+"date": "2022-01-16",
+"home": "DET",
+"away": "PHX",
+"home_pts": 108,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022100651",
+"date": "2022-01-16",
+"home": "SAC",
+"away": "HOU",
+"home_pts": 112,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100652",
+"date": "2022-01-16",
+"home": "MIN",
+"away": "GSW",
+"home_pts": 119,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100653",
+"date": "2022-01-16",
+"home": "DEN",
+"away": "UTA",
+"home_pts": 102,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100654",
+"date": "2022-01-17",
+"home": "BOS",
+"away": "NOP",
+"home_pts": 104,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100655",
+"date": "2022-01-17",
+"home": "NYK",
+"away": "CHA",
+"home_pts": 87,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100656",
+"date": "2022-01-17",
+"home": "WAS",
+"away": "PHI",
+"home_pts": 117,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100657",
+"date": "2022-01-17",
+"home": "CLE",
+"away": "BKN",
+"home_pts": 114,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100658",
+"date": "2022-01-17",
+"home": "MEM",
+"away": "CHI",
+"home_pts": 119,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100659",
+"date": "2022-01-17",
+"home": "LAC",
+"away": "IND",
+"home_pts": 139,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100660",
+"date": "2022-01-17",
+"home": "ATL",
+"away": "MIL",
+"home_pts": 121,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100661",
+"date": "2022-01-17",
+"home": "ORL",
+"away": "POR",
+"home_pts": 88,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100662",
+"date": "2022-01-17",
+"home": "MIA",
+"away": "TOR",
+"home_pts": 104,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100663",
+"date": "2022-01-17",
+"home": "DAL",
+"away": "OKC",
+"home_pts": 104,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100664",
+"date": "2022-01-17",
+"home": "SAS",
+"away": "PHX",
+"home_pts": 107,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100665",
+"date": "2022-01-17",
+"home": "LAL",
+"away": "UTA",
+"home_pts": 101,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100666",
+"date": "2022-01-18",
+"home": "NYK",
+"away": "MIN",
+"home_pts": 110,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100667",
+"date": "2022-01-18",
+"home": "GSW",
+"away": "DET",
+"home_pts": 102,
+"away_pts": 86,
+"neutral": false
+},
+{
+"game_id": "0022100668",
+"date": "2022-01-19",
+"home": "PHI",
+"away": "ORL",
+"home_pts": 123,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100669",
+"date": "2022-01-19",
+"home": "WAS",
+"away": "BKN",
+"home_pts": 118,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100670",
+"date": "2022-01-19",
+"home": "ATL",
+"away": "MIN",
+"home_pts": 134,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100671",
+"date": "2022-01-19",
+"home": "BOS",
+"away": "CHA",
+"home_pts": 102,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100672",
+"date": "2022-01-19",
+"home": "MIA",
+"away": "POR",
+"home_pts": 104,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100673",
+"date": "2022-01-19",
+"home": "CHI",
+"away": "CLE",
+"home_pts": 117,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100674",
+"date": "2022-01-19",
+"home": "MIL",
+"away": "MEM",
+"home_pts": 126,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100675",
+"date": "2022-01-19",
+"home": "DAL",
+"away": "TOR",
+"home_pts": 102,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100676",
+"date": "2022-01-19",
+"home": "SAS",
+"away": "OKC",
+"home_pts": 118,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100677",
+"date": "2022-01-19",
+"home": "UTA",
+"away": "HOU",
+"home_pts": 111,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100678",
+"date": "2022-01-19",
+"home": "DEN",
+"away": "LAC",
+"home_pts": 130,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100679",
+"date": "2022-01-19",
+"home": "SAC",
+"away": "DET",
+"home_pts": 131,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100680",
+"date": "2022-01-19",
+"home": "LAL",
+"away": "IND",
+"home_pts": 104,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100681",
+"date": "2022-01-20",
+"home": "NYK",
+"away": "NOP",
+"home_pts": 91,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100682",
+"date": "2022-01-20",
+"home": "DAL",
+"away": "PHX",
+"home_pts": 101,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100683",
+"date": "2022-01-20",
+"home": "GSW",
+"away": "IND",
+"home_pts": 117,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100684",
+"date": "2022-01-21",
+"home": "CHA",
+"away": "OKC",
+"home_pts": 121,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100685",
+"date": "2022-01-21",
+"home": "ORL",
+"away": "LAL",
+"home_pts": 105,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100686",
+"date": "2022-01-21",
+"home": "PHI",
+"away": "LAC",
+"home_pts": 101,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100687",
+"date": "2022-01-21",
+"home": "ATL",
+"away": "MIA",
+"home_pts": 110,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100688",
+"date": "2022-01-21",
+"home": "BOS",
+"away": "POR",
+"home_pts": 105,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100689",
+"date": "2022-01-21",
+"home": "WAS",
+"away": "TOR",
+"home_pts": 105,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100690",
+"date": "2022-01-21",
+"home": "MIL",
+"away": "CHI",
+"home_pts": 94,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100691",
+"date": "2022-01-21",
+"home": "SAS",
+"away": "BKN",
+"home_pts": 102,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100692",
+"date": "2022-01-21",
+"home": "DEN",
+"away": "MEM",
+"home_pts": 118,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100693",
+"date": "2022-01-21",
+"home": "UTA",
+"away": "DET",
+"home_pts": 111,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100694",
+"date": "2022-01-21",
+"home": "GSW",
+"away": "HOU",
+"home_pts": 105,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100695",
+"date": "2022-01-22",
+"home": "CLE",
+"away": "OKC",
+"home_pts": 94,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100696",
+"date": "2022-01-22",
+"home": "MIL",
+"away": "SAC",
+"home_pts": 133,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100697",
+"date": "2022-01-22",
+"home": "PHX",
+"away": "IND",
+"home_pts": 113,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100698",
+"date": "2022-01-23",
+"home": "NYK",
+"away": "LAC",
+"home_pts": 110,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100699",
+"date": "2022-01-23",
+"home": "WAS",
+"away": "BOS",
+"home_pts": 87,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100700",
+"date": "2022-01-23",
+"home": "MIA",
+"away": "LAL",
+"home_pts": 113,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100701",
+"date": "2022-01-23",
+"home": "ORL",
+"away": "CHI",
+"home_pts": 114,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100702",
+"date": "2022-01-23",
+"home": "TOR",
+"away": "POR",
+"home_pts": 105,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100703",
+"date": "2022-01-23",
+"home": "CHA",
+"away": "ATL",
+"home_pts": 91,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100704",
+"date": "2022-01-23",
+"home": "SAS",
+"away": "PHI",
+"home_pts": 109,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100705",
+"date": "2022-01-23",
+"home": "DAL",
+"away": "MEM",
+"home_pts": 104,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022100706",
+"date": "2022-01-23",
+"home": "MIN",
+"away": "BKN",
+"home_pts": 136,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100707",
+"date": "2022-01-23",
+"home": "DEN",
+"away": "DET",
+"home_pts": 117,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100708",
+"date": "2022-01-23",
+"home": "GSW",
+"away": "UTA",
+"home_pts": 94,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100709",
+"date": "2022-01-24",
+"home": "CLE",
+"away": "NYK",
+"home_pts": 95,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100712",
+"date": "2022-01-24",
+"home": "NOP",
+"away": "IND",
+"home_pts": 117,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100713",
+"date": "2022-01-24",
+"home": "PHX",
+"away": "UTA",
+"home_pts": 115,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100730",
+"date": "2022-01-24",
+"home": "OKC",
+"away": "CHI",
+"home_pts": 110,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100454",
+"date": "2022-01-25",
+"home": "PHI",
+"away": "NOP",
+"home_pts": 117,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100714",
+"date": "2022-01-25",
+"home": "DET",
+"away": "DEN",
+"home_pts": 105,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100715",
+"date": "2022-01-25",
+"home": "TOR",
+"away": "CHA",
+"home_pts": 125,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100716",
+"date": "2022-01-25",
+"home": "WAS",
+"away": "LAC",
+"home_pts": 115,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100717",
+"date": "2022-01-25",
+"home": "BOS",
+"away": "SAC",
+"home_pts": 128,
+"away_pts": 75,
+"neutral": false
+},
+{
+"game_id": "0022100718",
+"date": "2022-01-25",
+"home": "BKN",
+"away": "LAL",
+"home_pts": 96,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100719",
+"date": "2022-01-25",
+"home": "HOU",
+"away": "SAS",
+"home_pts": 104,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022100720",
+"date": "2022-01-25",
+"home": "GSW",
+"away": "DAL",
+"home_pts": 130,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100721",
+"date": "2022-01-25",
+"home": "POR",
+"away": "MIN",
+"home_pts": 107,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100453",
+"date": "2022-01-26",
+"home": "BKN",
+"away": "DEN",
+"home_pts": 118,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100472",
+"date": "2022-01-26",
+"home": "CHI",
+"away": "TOR",
+"home_pts": 111,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100722",
+"date": "2022-01-26",
+"home": "CLE",
+"away": "MIL",
+"home_pts": 115,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100723",
+"date": "2022-01-26",
+"home": "IND",
+"away": "CHA",
+"home_pts": 126,
+"away_pts": 158,
+"neutral": false
+},
+{
+"game_id": "0022100724",
+"date": "2022-01-26",
+"home": "ORL",
+"away": "LAC",
+"home_pts": 102,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100725",
+"date": "2022-01-26",
+"home": "ATL",
+"away": "SAC",
+"home_pts": 121,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100727",
+"date": "2022-01-26",
+"home": "MIA",
+"away": "NYK",
+"home_pts": 110,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100728",
+"date": "2022-01-26",
+"home": "SAS",
+"away": "MEM",
+"home_pts": 110,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100731",
+"date": "2022-01-26",
+"home": "UTA",
+"away": "PHX",
+"home_pts": 97,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100732",
+"date": "2022-01-26",
+"home": "POR",
+"away": "DAL",
+"home_pts": 112,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100733",
+"date": "2022-01-27",
+"home": "PHI",
+"away": "LAL",
+"home_pts": 105,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100734",
+"date": "2022-01-27",
+"home": "GSW",
+"away": "MIN",
+"home_pts": 124,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100729",
+"date": "2022-01-28",
+"home": "NOP",
+"away": "DEN",
+"home_pts": 105,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100735",
+"date": "2022-01-28",
+"home": "CHA",
+"away": "LAL",
+"home_pts": 117,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100736",
+"date": "2022-01-28",
+"home": "ORL",
+"away": "DET",
+"home_pts": 119,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100737",
+"date": "2022-01-28",
+"home": "ATL",
+"away": "BOS",
+"home_pts": 108,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100738",
+"date": "2022-01-28",
+"home": "MIA",
+"away": "LAC",
+"home_pts": 121,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100739",
+"date": "2022-01-28",
+"home": "HOU",
+"away": "POR",
+"home_pts": 110,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100740",
+"date": "2022-01-28",
+"home": "MEM",
+"away": "UTA",
+"home_pts": 119,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100741",
+"date": "2022-01-28",
+"home": "OKC",
+"away": "IND",
+"home_pts": 110,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100742",
+"date": "2022-01-28",
+"home": "SAS",
+"away": "CHI",
+"home_pts": 131,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100743",
+"date": "2022-01-28",
+"home": "PHX",
+"away": "MIN",
+"home_pts": 134,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100744",
+"date": "2022-01-28",
+"home": "MIL",
+"away": "NYK",
+"home_pts": 123,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100745",
+"date": "2022-01-29",
+"home": "NOP",
+"away": "BOS",
+"home_pts": 97,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100746",
+"date": "2022-01-29",
+"home": "DAL",
+"away": "IND",
+"home_pts": 132,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100747",
+"date": "2022-01-29",
+"home": "PHI",
+"away": "SAC",
+"home_pts": 103,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100748",
+"date": "2022-01-29",
+"home": "MIA",
+"away": "TOR",
+"home_pts": 120,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100749",
+"date": "2022-01-29",
+"home": "MEM",
+"away": "WAS",
+"home_pts": 115,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100750",
+"date": "2022-01-29",
+"home": "GSW",
+"away": "BKN",
+"home_pts": 110,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100751",
+"date": "2022-01-30",
+"home": "ATL",
+"away": "LAL",
+"home_pts": 129,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100752",
+"date": "2022-01-30",
+"home": "CHA",
+"away": "LAC",
+"home_pts": 90,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100753",
+"date": "2022-01-30",
+"home": "CHI",
+"away": "POR",
+"home_pts": 130,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100754",
+"date": "2022-01-30",
+"home": "DET",
+"away": "CLE",
+"home_pts": 115,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100755",
+"date": "2022-01-30",
+"home": "ORL",
+"away": "DAL",
+"home_pts": 110,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100756",
+"date": "2022-01-30",
+"home": "MIL",
+"away": "DEN",
+"home_pts": 100,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022100757",
+"date": "2022-01-30",
+"home": "MIN",
+"away": "UTA",
+"home_pts": 126,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100758",
+"date": "2022-01-30",
+"home": "PHX",
+"away": "SAS",
+"home_pts": 115,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100759",
+"date": "2022-01-31",
+"home": "CLE",
+"away": "NOP",
+"home_pts": 93,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100760",
+"date": "2022-01-31",
+"home": "IND",
+"away": "LAC",
+"home_pts": 122,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100761",
+"date": "2022-01-31",
+"home": "PHI",
+"away": "MEM",
+"home_pts": 122,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100762",
+"date": "2022-01-31",
+"home": "BOS",
+"away": "MIA",
+"home_pts": 122,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100763",
+"date": "2022-01-31",
+"home": "NYK",
+"away": "SAC",
+"home_pts": 116,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100764",
+"date": "2022-01-31",
+"home": "HOU",
+"away": "GSW",
+"home_pts": 108,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100765",
+"date": "2022-01-31",
+"home": "OKC",
+"away": "POR",
+"home_pts": 98,
+"away_pts": 81,
+"neutral": false
+},
+{
+"game_id": "0022100767",
+"date": "2022-01-31",
+"home": "ATL",
+"away": "TOR",
+"home_pts": 100,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100766",
+"date": "2022-02-01",
+"home": "DET",
+"away": "NOP",
+"home_pts": 101,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100768",
+"date": "2022-02-01",
+"home": "MIL",
+"away": "WAS",
+"home_pts": 112,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100769",
+"date": "2022-02-01",
+"home": "CHI",
+"away": "ORL",
+"home_pts": 126,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100770",
+"date": "2022-02-01",
+"home": "MIN",
+"away": "DEN",
+"home_pts": 130,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100771",
+"date": "2022-02-01",
+"home": "SAS",
+"away": "GSW",
+"home_pts": 120,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100772",
+"date": "2022-02-01",
+"home": "PHX",
+"away": "BKN",
+"home_pts": 121,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100784",
+"date": "2022-02-01",
+"home": "TOR",
+"away": "MIA",
+"home_pts": 110,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100773",
+"date": "2022-02-02",
+"home": "IND",
+"away": "ORL",
+"home_pts": 118,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100774",
+"date": "2022-02-02",
+"home": "PHI",
+"away": "WAS",
+"home_pts": 103,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100775",
+"date": "2022-02-02",
+"home": "BOS",
+"away": "CHA",
+"home_pts": 113,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100776",
+"date": "2022-02-02",
+"home": "NYK",
+"away": "MEM",
+"home_pts": 108,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100777",
+"date": "2022-02-02",
+"home": "HOU",
+"away": "CLE",
+"home_pts": 115,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100778",
+"date": "2022-02-02",
+"home": "DAL",
+"away": "OKC",
+"home_pts": 114,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100779",
+"date": "2022-02-02",
+"home": "UTA",
+"away": "DEN",
+"home_pts": 108,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100780",
+"date": "2022-02-02",
+"home": "SAC",
+"away": "BKN",
+"home_pts": 112,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100781",
+"date": "2022-02-02",
+"home": "LAL",
+"away": "POR",
+"home_pts": 99,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100430",
+"date": "2022-02-03",
+"home": "TOR",
+"away": "CHI",
+"home_pts": 127,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100521",
+"date": "2022-02-03",
+"home": "SAS",
+"away": "MIA",
+"home_pts": 95,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100782",
+"date": "2022-02-03",
+"home": "DET",
+"away": "MIN",
+"home_pts": 117,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100783",
+"date": "2022-02-03",
+"home": "ATL",
+"away": "PHX",
+"home_pts": 124,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100785",
+"date": "2022-02-03",
+"home": "GSW",
+"away": "SAC",
+"home_pts": 126,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100786",
+"date": "2022-02-03",
+"home": "LAC",
+"away": "LAL",
+"home_pts": 111,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100787",
+"date": "2022-02-04",
+"home": "CHA",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100788",
+"date": "2022-02-04",
+"home": "DET",
+"away": "BOS",
+"home_pts": 93,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100789",
+"date": "2022-02-04",
+"home": "IND",
+"away": "CHI",
+"home_pts": 115,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100790",
+"date": "2022-02-04",
+"home": "TOR",
+"away": "ATL",
+"home_pts": 125,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100791",
+"date": "2022-02-04",
+"home": "DAL",
+"away": "PHI",
+"home_pts": 107,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100792",
+"date": "2022-02-04",
+"home": "SAS",
+"away": "HOU",
+"home_pts": 131,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100793",
+"date": "2022-02-04",
+"home": "UTA",
+"away": "BKN",
+"home_pts": 125,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100794",
+"date": "2022-02-04",
+"home": "DEN",
+"away": "NOP",
+"home_pts": 105,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100795",
+"date": "2022-02-04",
+"home": "POR",
+"away": "OKC",
+"home_pts": 93,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100796",
+"date": "2022-02-05",
+"home": "ORL",
+"away": "MEM",
+"home_pts": 115,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022100797",
+"date": "2022-02-05",
+"home": "CHA",
+"away": "MIA",
+"home_pts": 86,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100798",
+"date": "2022-02-05",
+"home": "WAS",
+"away": "PHX",
+"home_pts": 80,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100799",
+"date": "2022-02-05",
+"home": "LAL",
+"away": "NYK",
+"home_pts": 122,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100800",
+"date": "2022-02-05",
+"home": "POR",
+"away": "MIL",
+"home_pts": 108,
+"away_pts": 137,
+"neutral": false
+},
+{
+"game_id": "0022100801",
+"date": "2022-02-05",
+"home": "SAC",
+"away": "OKC",
+"home_pts": 113,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100802",
+"date": "2022-02-06",
+"home": "CHI",
+"away": "PHI",
+"home_pts": 108,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100803",
+"date": "2022-02-06",
+"home": "MIN",
+"away": "DET",
+"home_pts": 118,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100804",
+"date": "2022-02-06",
+"home": "DEN",
+"away": "BKN",
+"home_pts": 124,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100805",
+"date": "2022-02-06",
+"home": "CLE",
+"away": "IND",
+"home_pts": 98,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100806",
+"date": "2022-02-06",
+"home": "ORL",
+"away": "BOS",
+"home_pts": 83,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100807",
+"date": "2022-02-06",
+"home": "DAL",
+"away": "ATL",
+"home_pts": 103,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100808",
+"date": "2022-02-06",
+"home": "HOU",
+"away": "NOP",
+"home_pts": 107,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100809",
+"date": "2022-02-06",
+"home": "LAC",
+"away": "MIL",
+"home_pts": 113,
+"away_pts": 137,
+"neutral": false
+},
+{
+"game_id": "0022100810",
+"date": "2022-02-07",
+"home": "CHA",
+"away": "TOR",
+"home_pts": 101,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100811",
+"date": "2022-02-07",
+"home": "WAS",
+"away": "MIA",
+"home_pts": 100,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100812",
+"date": "2022-02-07",
+"home": "CHI",
+"away": "PHX",
+"home_pts": 124,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100813",
+"date": "2022-02-07",
+"home": "OKC",
+"away": "GSW",
+"home_pts": 98,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100814",
+"date": "2022-02-07",
+"home": "UTA",
+"away": "NYK",
+"home_pts": 113,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100815",
+"date": "2022-02-08",
+"home": "PHI",
+"away": "PHX",
+"home_pts": 109,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100816",
+"date": "2022-02-08",
+"home": "ATL",
+"away": "IND",
+"home_pts": 133,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100817",
+"date": "2022-02-08",
+"home": "BKN",
+"away": "BOS",
+"home_pts": 91,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022100818",
+"date": "2022-02-08",
+"home": "MEM",
+"away": "LAC",
+"home_pts": 135,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100819",
+"date": "2022-02-08",
+"home": "NOP",
+"away": "HOU",
+"home_pts": 110,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100820",
+"date": "2022-02-08",
+"home": "DAL",
+"away": "DET",
+"home_pts": 116,
+"away_pts": 86,
+"neutral": false
+},
+{
+"game_id": "0022100821",
+"date": "2022-02-08",
+"home": "DEN",
+"away": "NYK",
+"home_pts": 132,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100822",
+"date": "2022-02-08",
+"home": "LAL",
+"away": "MIL",
+"home_pts": 116,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022100823",
+"date": "2022-02-08",
+"home": "POR",
+"away": "ORL",
+"home_pts": 95,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100824",
+"date": "2022-02-08",
+"home": "SAC",
+"away": "MIN",
+"home_pts": 114,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022100825",
+"date": "2022-02-09",
+"home": "CLE",
+"away": "SAS",
+"home_pts": 105,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022100826",
+"date": "2022-02-09",
+"home": "CHA",
+"away": "CHI",
+"home_pts": 109,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100827",
+"date": "2022-02-09",
+"home": "OKC",
+"away": "TOR",
+"home_pts": 98,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100828",
+"date": "2022-02-09",
+"home": "UTA",
+"away": "GSW",
+"home_pts": 111,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100829",
+"date": "2022-02-09",
+"home": "POR",
+"away": "LAL",
+"home_pts": 107,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100830",
+"date": "2022-02-09",
+"home": "SAC",
+"away": "MIN",
+"home_pts": 132,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100831",
+"date": "2022-02-10",
+"home": "DET",
+"away": "MEM",
+"home_pts": 107,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100832",
+"date": "2022-02-10",
+"home": "WAS",
+"away": "BKN",
+"home_pts": 113,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100833",
+"date": "2022-02-10",
+"home": "NOP",
+"away": "MIA",
+"home_pts": 97,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100834",
+"date": "2022-02-10",
+"home": "HOU",
+"away": "TOR",
+"home_pts": 120,
+"away_pts": 139,
+"neutral": false
+},
+{
+"game_id": "0022100835",
+"date": "2022-02-10",
+"home": "DAL",
+"away": "LAC",
+"home_pts": 112,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100836",
+"date": "2022-02-10",
+"home": "PHX",
+"away": "MIL",
+"home_pts": 131,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100837",
+"date": "2022-02-10",
+"home": "GSW",
+"away": "NYK",
+"home_pts": 114,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100838",
+"date": "2022-02-11",
+"home": "DET",
+"away": "CHA",
+"home_pts": 119,
+"away_pts": 141,
+"neutral": false
+},
+{
+"game_id": "0022100839",
+"date": "2022-02-11",
+"home": "IND",
+"away": "CLE",
+"home_pts": 113,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100840",
+"date": "2022-02-11",
+"home": "PHI",
+"away": "OKC",
+"home_pts": 100,
+"away_pts": 87,
+"neutral": false
+},
+{
+"game_id": "0022100841",
+"date": "2022-02-11",
+"home": "ATL",
+"away": "SAS",
+"home_pts": 121,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022100842",
+"date": "2022-02-11",
+"home": "BOS",
+"away": "DEN",
+"home_pts": 108,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100843",
+"date": "2022-02-11",
+"home": "CHI",
+"away": "MIN",
+"home_pts": 134,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100844",
+"date": "2022-02-11",
+"home": "UTA",
+"away": "ORL",
+"home_pts": 114,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100845",
+"date": "2022-02-12",
+"home": "POR",
+"away": "NYK",
+"home_pts": 112,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100846",
+"date": "2022-02-12",
+"home": "CHA",
+"away": "MEM",
+"home_pts": 118,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100847",
+"date": "2022-02-12",
+"home": "WAS",
+"away": "SAC",
+"home_pts": 110,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100848",
+"date": "2022-02-12",
+"home": "NOP",
+"away": "SAS",
+"home_pts": 114,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100849",
+"date": "2022-02-12",
+"home": "PHI",
+"away": "CLE",
+"home_pts": 103,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100850",
+"date": "2022-02-12",
+"home": "TOR",
+"away": "DEN",
+"home_pts": 109,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100851",
+"date": "2022-02-12",
+"home": "MIA",
+"away": "BKN",
+"home_pts": 115,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100852",
+"date": "2022-02-12",
+"home": "CHI",
+"away": "OKC",
+"home_pts": 106,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100853",
+"date": "2022-02-12",
+"home": "DAL",
+"away": "LAC",
+"home_pts": 97,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100854",
+"date": "2022-02-12",
+"home": "GSW",
+"away": "LAL",
+"home_pts": 117,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100855",
+"date": "2022-02-12",
+"home": "PHX",
+"away": "ORL",
+"home_pts": 132,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100856",
+"date": "2022-02-13",
+"home": "BOS",
+"away": "ATL",
+"home_pts": 105,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100857",
+"date": "2022-02-13",
+"home": "IND",
+"away": "MIN",
+"home_pts": 120,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100858",
+"date": "2022-02-14",
+"home": "WAS",
+"away": "DET",
+"home_pts": 103,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022100859",
+"date": "2022-02-14",
+"home": "BKN",
+"away": "SAC",
+"home_pts": 109,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100860",
+"date": "2022-02-14",
+"home": "NYK",
+"away": "OKC",
+"home_pts": 123,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100861",
+"date": "2022-02-14",
+"home": "CHI",
+"away": "SAS",
+"home_pts": 120,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100862",
+"date": "2022-02-14",
+"home": "MIL",
+"away": "POR",
+"home_pts": 107,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100863",
+"date": "2022-02-14",
+"home": "NOP",
+"away": "TOR",
+"home_pts": 120,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100864",
+"date": "2022-02-14",
+"home": "DEN",
+"away": "ORL",
+"home_pts": 121,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100865",
+"date": "2022-02-14",
+"home": "UTA",
+"away": "HOU",
+"home_pts": 135,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100866",
+"date": "2022-02-14",
+"home": "LAC",
+"away": "GSW",
+"home_pts": 119,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022100867",
+"date": "2022-02-15",
+"home": "ATL",
+"away": "CLE",
+"home_pts": 124,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100868",
+"date": "2022-02-15",
+"home": "MIA",
+"away": "DAL",
+"home_pts": 99,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100869",
+"date": "2022-02-15",
+"home": "PHI",
+"away": "BOS",
+"home_pts": 87,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022100870",
+"date": "2022-02-15",
+"home": "MIL",
+"away": "IND",
+"home_pts": 128,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100871",
+"date": "2022-02-15",
+"home": "MIN",
+"away": "CHA",
+"home_pts": 126,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100872",
+"date": "2022-02-15",
+"home": "NOP",
+"away": "MEM",
+"home_pts": 109,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100873",
+"date": "2022-02-15",
+"home": "PHX",
+"away": "LAC",
+"home_pts": 103,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100874",
+"date": "2022-02-16",
+"home": "ORL",
+"away": "ATL",
+"home_pts": 109,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100875",
+"date": "2022-02-16",
+"home": "BOS",
+"away": "DET",
+"home_pts": 111,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100876",
+"date": "2022-02-16",
+"home": "IND",
+"away": "WAS",
+"home_pts": 113,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100877",
+"date": "2022-02-16",
+"home": "NYK",
+"away": "BKN",
+"home_pts": 106,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100878",
+"date": "2022-02-16",
+"home": "CHI",
+"away": "SAC",
+"home_pts": 125,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100879",
+"date": "2022-02-16",
+"home": "MEM",
+"away": "POR",
+"home_pts": 119,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100880",
+"date": "2022-02-16",
+"home": "MIN",
+"away": "TOR",
+"home_pts": 91,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100881",
+"date": "2022-02-16",
+"home": "OKC",
+"away": "SAS",
+"home_pts": 106,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100882",
+"date": "2022-02-16",
+"home": "PHX",
+"away": "HOU",
+"home_pts": 124,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100883",
+"date": "2022-02-16",
+"home": "GSW",
+"away": "DEN",
+"home_pts": 116,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100884",
+"date": "2022-02-16",
+"home": "LAL",
+"away": "UTA",
+"home_pts": 106,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100464",
+"date": "2022-02-17",
+"home": "BKN",
+"away": "WAS",
+"home_pts": 103,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100885",
+"date": "2022-02-17",
+"home": "CHA",
+"away": "MIA",
+"home_pts": 107,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100886",
+"date": "2022-02-17",
+"home": "NOP",
+"away": "DAL",
+"home_pts": 118,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100887",
+"date": "2022-02-17",
+"home": "MIL",
+"away": "PHI",
+"home_pts": 120,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100888",
+"date": "2022-02-17",
+"home": "LAC",
+"away": "HOU",
+"home_pts": 142,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100889",
+"date": "2022-02-24",
+"home": "DET",
+"away": "CLE",
+"home_pts": 106,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100890",
+"date": "2022-02-24",
+"home": "BKN",
+"away": "BOS",
+"home_pts": 106,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100891",
+"date": "2022-02-24",
+"home": "CHI",
+"away": "ATL",
+"home_pts": 112,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100892",
+"date": "2022-02-24",
+"home": "MIN",
+"away": "MEM",
+"home_pts": 119,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100893",
+"date": "2022-02-24",
+"home": "OKC",
+"away": "PHX",
+"home_pts": 104,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100894",
+"date": "2022-02-24",
+"home": "POR",
+"away": "GSW",
+"home_pts": 95,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100895",
+"date": "2022-02-24",
+"home": "SAC",
+"away": "DEN",
+"home_pts": 110,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022100896",
+"date": "2022-02-25",
+"home": "CHA",
+"away": "TOR",
+"home_pts": 125,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022100897",
+"date": "2022-02-25",
+"home": "IND",
+"away": "OKC",
+"home_pts": 125,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100898",
+"date": "2022-02-25",
+"home": "ORL",
+"away": "HOU",
+"home_pts": 119,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100899",
+"date": "2022-02-25",
+"home": "WAS",
+"away": "SAS",
+"home_pts": 153,
+"away_pts": 157,
+"neutral": false
+},
+{
+"game_id": "0022100900",
+"date": "2022-02-25",
+"home": "NYK",
+"away": "MIA",
+"home_pts": 100,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100901",
+"date": "2022-02-25",
+"home": "MIN",
+"away": "PHI",
+"home_pts": 102,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100902",
+"date": "2022-02-25",
+"home": "PHX",
+"away": "NOP",
+"home_pts": 102,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100903",
+"date": "2022-02-25",
+"home": "UTA",
+"away": "DAL",
+"home_pts": 114,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100904",
+"date": "2022-02-25",
+"home": "LAL",
+"away": "LAC",
+"home_pts": 102,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100905",
+"date": "2022-02-26",
+"home": "DET",
+"away": "BOS",
+"home_pts": 104,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100906",
+"date": "2022-02-26",
+"home": "ATL",
+"away": "TOR",
+"home_pts": 127,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022100907",
+"date": "2022-02-26",
+"home": "CLE",
+"away": "WAS",
+"home_pts": 92,
+"away_pts": 86,
+"neutral": false
+},
+{
+"game_id": "0022100908",
+"date": "2022-02-26",
+"home": "MIA",
+"away": "SAS",
+"home_pts": 133,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100909",
+"date": "2022-02-26",
+"home": "CHI",
+"away": "MEM",
+"home_pts": 110,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100910",
+"date": "2022-02-26",
+"home": "MIL",
+"away": "BKN",
+"home_pts": 123,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022100911",
+"date": "2022-02-26",
+"home": "DEN",
+"away": "SAC",
+"home_pts": 115,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100912",
+"date": "2022-02-27",
+"home": "NYK",
+"away": "PHI",
+"home_pts": 109,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022100913",
+"date": "2022-02-27",
+"home": "PHX",
+"away": "UTA",
+"home_pts": 114,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100914",
+"date": "2022-02-27",
+"home": "IND",
+"away": "BOS",
+"home_pts": 128,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100915",
+"date": "2022-02-27",
+"home": "CHA",
+"away": "DET",
+"home_pts": 126,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100916",
+"date": "2022-02-27",
+"home": "HOU",
+"away": "LAC",
+"home_pts": 98,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100917",
+"date": "2022-02-27",
+"home": "GSW",
+"away": "DAL",
+"home_pts": 101,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100918",
+"date": "2022-02-27",
+"home": "POR",
+"away": "DEN",
+"home_pts": 92,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100919",
+"date": "2022-02-27",
+"home": "LAL",
+"away": "NOP",
+"home_pts": 95,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100726",
+"date": "2022-02-28",
+"home": "BKN",
+"away": "TOR",
+"home_pts": 97,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022100920",
+"date": "2022-02-28",
+"home": "CLE",
+"away": "MIN",
+"home_pts": 122,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100921",
+"date": "2022-02-28",
+"home": "ORL",
+"away": "IND",
+"home_pts": 119,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100922",
+"date": "2022-02-28",
+"home": "MIA",
+"away": "CHI",
+"home_pts": 112,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022100923",
+"date": "2022-02-28",
+"home": "MEM",
+"away": "SAS",
+"home_pts": 118,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100924",
+"date": "2022-02-28",
+"home": "MIL",
+"away": "CHA",
+"home_pts": 130,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100925",
+"date": "2022-02-28",
+"home": "OKC",
+"away": "SAC",
+"home_pts": 110,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022100926",
+"date": "2022-03-01",
+"home": "WAS",
+"away": "DET",
+"home_pts": 116,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100927",
+"date": "2022-03-01",
+"home": "BOS",
+"away": "ATL",
+"home_pts": 107,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022100928",
+"date": "2022-03-01",
+"home": "TOR",
+"away": "BKN",
+"home_pts": 109,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100929",
+"date": "2022-03-01",
+"home": "HOU",
+"away": "LAC",
+"home_pts": 100,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100930",
+"date": "2022-03-01",
+"home": "MIN",
+"away": "GSW",
+"home_pts": 129,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100931",
+"date": "2022-03-01",
+"home": "LAL",
+"away": "DAL",
+"home_pts": 104,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100932",
+"date": "2022-03-02",
+"home": "CLE",
+"away": "CHA",
+"home_pts": 98,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100933",
+"date": "2022-03-02",
+"home": "ORL",
+"away": "IND",
+"home_pts": 114,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100934",
+"date": "2022-03-02",
+"home": "PHI",
+"away": "NYK",
+"home_pts": 123,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100935",
+"date": "2022-03-02",
+"home": "HOU",
+"away": "UTA",
+"home_pts": 127,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100936",
+"date": "2022-03-02",
+"home": "MIL",
+"away": "MIA",
+"home_pts": 120,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100937",
+"date": "2022-03-02",
+"home": "NOP",
+"away": "SAC",
+"home_pts": 125,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022100938",
+"date": "2022-03-02",
+"home": "DEN",
+"away": "OKC",
+"home_pts": 107,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100939",
+"date": "2022-03-02",
+"home": "PHX",
+"away": "POR",
+"home_pts": 120,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100710",
+"date": "2022-03-03",
+"home": "ATL",
+"away": "CHI",
+"home_pts": 130,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100940",
+"date": "2022-03-03",
+"home": "BOS",
+"away": "MEM",
+"home_pts": 120,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100941",
+"date": "2022-03-03",
+"home": "BKN",
+"away": "MIA",
+"home_pts": 107,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100942",
+"date": "2022-03-03",
+"home": "TOR",
+"away": "DET",
+"home_pts": 106,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100943",
+"date": "2022-03-03",
+"home": "DAL",
+"away": "GSW",
+"home_pts": 122,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100944",
+"date": "2022-03-03",
+"home": "SAS",
+"away": "SAC",
+"home_pts": 112,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100945",
+"date": "2022-03-03",
+"home": "LAC",
+"away": "LAL",
+"home_pts": 132,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100458",
+"date": "2022-03-04",
+"home": "TOR",
+"away": "ORL",
+"home_pts": 97,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100946",
+"date": "2022-03-04",
+"home": "DET",
+"away": "IND",
+"home_pts": 111,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100947",
+"date": "2022-03-04",
+"home": "PHI",
+"away": "CLE",
+"home_pts": 125,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100948",
+"date": "2022-03-04",
+"home": "WAS",
+"away": "ATL",
+"home_pts": 114,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100949",
+"date": "2022-03-04",
+"home": "CHI",
+"away": "MIL",
+"home_pts": 112,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022100950",
+"date": "2022-03-04",
+"home": "NOP",
+"away": "UTA",
+"home_pts": 124,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022100951",
+"date": "2022-03-04",
+"home": "OKC",
+"away": "MIN",
+"home_pts": 101,
+"away_pts": 138,
+"neutral": false
+},
+{
+"game_id": "0022100952",
+"date": "2022-03-04",
+"home": "DEN",
+"away": "HOU",
+"home_pts": 116,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022100953",
+"date": "2022-03-04",
+"home": "PHX",
+"away": "NYK",
+"home_pts": 115,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100954",
+"date": "2022-03-05",
+"home": "DAL",
+"away": "SAC",
+"home_pts": 114,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100955",
+"date": "2022-03-05",
+"home": "CHA",
+"away": "SAS",
+"home_pts": 123,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100956",
+"date": "2022-03-05",
+"home": "MIA",
+"away": "PHI",
+"home_pts": 99,
+"away_pts": 82,
+"neutral": false
+},
+{
+"game_id": "0022100957",
+"date": "2022-03-05",
+"home": "MEM",
+"away": "ORL",
+"home_pts": 124,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100958",
+"date": "2022-03-05",
+"home": "MIN",
+"away": "POR",
+"home_pts": 135,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022100959",
+"date": "2022-03-05",
+"home": "LAL",
+"away": "GSW",
+"home_pts": 124,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100960",
+"date": "2022-03-06",
+"home": "BOS",
+"away": "BKN",
+"home_pts": 126,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022100961",
+"date": "2022-03-06",
+"home": "MIL",
+"away": "PHX",
+"home_pts": 132,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022100962",
+"date": "2022-03-06",
+"home": "CLE",
+"away": "TOR",
+"home_pts": 104,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022100963",
+"date": "2022-03-06",
+"home": "WAS",
+"away": "IND",
+"home_pts": 133,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022100964",
+"date": "2022-03-06",
+"home": "HOU",
+"away": "MEM",
+"home_pts": 123,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022100965",
+"date": "2022-03-06",
+"home": "OKC",
+"away": "UTA",
+"home_pts": 103,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100966",
+"date": "2022-03-06",
+"home": "LAC",
+"away": "NYK",
+"home_pts": 93,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022100967",
+"date": "2022-03-06",
+"home": "DEN",
+"away": "NOP",
+"home_pts": 138,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100528",
+"date": "2022-03-07",
+"home": "DEN",
+"away": "GSW",
+"home_pts": 131,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022100968",
+"date": "2022-03-07",
+"home": "DET",
+"away": "ATL",
+"home_pts": 113,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100969",
+"date": "2022-03-07",
+"home": "PHI",
+"away": "CHI",
+"home_pts": 121,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100970",
+"date": "2022-03-07",
+"home": "MIA",
+"away": "HOU",
+"home_pts": 123,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100971",
+"date": "2022-03-07",
+"home": "MIN",
+"away": "POR",
+"home_pts": 124,
+"away_pts": 81,
+"neutral": false
+},
+{
+"game_id": "0022100972",
+"date": "2022-03-07",
+"home": "DAL",
+"away": "UTA",
+"home_pts": 111,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100973",
+"date": "2022-03-07",
+"home": "SAS",
+"away": "LAL",
+"home_pts": 117,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100974",
+"date": "2022-03-07",
+"home": "SAC",
+"away": "NYK",
+"home_pts": 115,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022100975",
+"date": "2022-03-08",
+"home": "CHA",
+"away": "BKN",
+"home_pts": 121,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022100976",
+"date": "2022-03-08",
+"home": "IND",
+"away": "CLE",
+"home_pts": 124,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022100977",
+"date": "2022-03-08",
+"home": "ORL",
+"away": "PHX",
+"home_pts": 99,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100978",
+"date": "2022-03-08",
+"home": "MEM",
+"away": "NOP",
+"home_pts": 132,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100979",
+"date": "2022-03-08",
+"home": "OKC",
+"away": "MIL",
+"home_pts": 115,
+"away_pts": 142,
+"neutral": false
+},
+{
+"game_id": "0022100980",
+"date": "2022-03-08",
+"home": "GSW",
+"away": "LAC",
+"home_pts": 112,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022100981",
+"date": "2022-03-09",
+"home": "CHA",
+"away": "BOS",
+"home_pts": 101,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100982",
+"date": "2022-03-09",
+"home": "DET",
+"away": "CHI",
+"home_pts": 108,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022100983",
+"date": "2022-03-09",
+"home": "MIA",
+"away": "PHX",
+"home_pts": 90,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022100984",
+"date": "2022-03-09",
+"home": "MIL",
+"away": "ATL",
+"home_pts": 124,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022100985",
+"date": "2022-03-09",
+"home": "HOU",
+"away": "LAL",
+"home_pts": 139,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022100986",
+"date": "2022-03-09",
+"home": "MIN",
+"away": "OKC",
+"home_pts": 132,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022100987",
+"date": "2022-03-09",
+"home": "NOP",
+"away": "ORL",
+"home_pts": 102,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022100988",
+"date": "2022-03-09",
+"home": "DAL",
+"away": "NYK",
+"home_pts": 77,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022100989",
+"date": "2022-03-09",
+"home": "SAS",
+"away": "TOR",
+"home_pts": 104,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022100990",
+"date": "2022-03-09",
+"home": "UTA",
+"away": "POR",
+"home_pts": 123,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022100991",
+"date": "2022-03-09",
+"home": "SAC",
+"away": "DEN",
+"home_pts": 100,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100992",
+"date": "2022-03-09",
+"home": "LAC",
+"away": "WAS",
+"home_pts": 115,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022100993",
+"date": "2022-03-10",
+"home": "PHI",
+"away": "BKN",
+"home_pts": 100,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022100994",
+"date": "2022-03-10",
+"home": "DEN",
+"away": "GSW",
+"home_pts": 102,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022100995",
+"date": "2022-03-11",
+"home": "ORL",
+"away": "MIN",
+"home_pts": 118,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022100996",
+"date": "2022-03-11",
+"home": "ATL",
+"away": "LAC",
+"home_pts": 112,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022100997",
+"date": "2022-03-11",
+"home": "BOS",
+"away": "DET",
+"home_pts": 114,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022100998",
+"date": "2022-03-11",
+"home": "MIA",
+"away": "CLE",
+"home_pts": 117,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022100999",
+"date": "2022-03-11",
+"home": "HOU",
+"away": "DAL",
+"home_pts": 100,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022101000",
+"date": "2022-03-11",
+"home": "MEM",
+"away": "NYK",
+"home_pts": 118,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101001",
+"date": "2022-03-11",
+"home": "NOP",
+"away": "CHA",
+"home_pts": 120,
+"away_pts": 142,
+"neutral": false
+},
+{
+"game_id": "0022101002",
+"date": "2022-03-11",
+"home": "SAS",
+"away": "UTA",
+"home_pts": 104,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101003",
+"date": "2022-03-11",
+"home": "PHX",
+"away": "TOR",
+"home_pts": 112,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022101004",
+"date": "2022-03-11",
+"home": "LAL",
+"away": "WAS",
+"home_pts": 122,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101005",
+"date": "2022-03-12",
+"home": "MIA",
+"away": "MIN",
+"home_pts": 104,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022101006",
+"date": "2022-03-12",
+"home": "CHI",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022101007",
+"date": "2022-03-12",
+"home": "SAS",
+"away": "IND",
+"home_pts": 108,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101008",
+"date": "2022-03-12",
+"home": "GSW",
+"away": "MIL",
+"home_pts": 122,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101009",
+"date": "2022-03-12",
+"home": "DEN",
+"away": "TOR",
+"home_pts": 115,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022101010",
+"date": "2022-03-12",
+"home": "UTA",
+"away": "SAC",
+"home_pts": 134,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101011",
+"date": "2022-03-12",
+"home": "POR",
+"away": "WAS",
+"home_pts": 127,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101012",
+"date": "2022-03-13",
+"home": "BKN",
+"away": "NYK",
+"home_pts": 110,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101013",
+"date": "2022-03-13",
+"home": "DET",
+"away": "LAC",
+"home_pts": 102,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101014",
+"date": "2022-03-13",
+"home": "BOS",
+"away": "DAL",
+"home_pts": 92,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022101015",
+"date": "2022-03-13",
+"home": "ORL",
+"away": "PHI",
+"home_pts": 114,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022101016",
+"date": "2022-03-13",
+"home": "ATL",
+"away": "IND",
+"home_pts": 131,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022101017",
+"date": "2022-03-13",
+"home": "NOP",
+"away": "HOU",
+"home_pts": 130,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022101018",
+"date": "2022-03-13",
+"home": "OKC",
+"away": "MEM",
+"home_pts": 118,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101019",
+"date": "2022-03-13",
+"home": "PHX",
+"away": "LAL",
+"home_pts": 140,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101020",
+"date": "2022-03-14",
+"home": "CLE",
+"away": "LAC",
+"home_pts": 120,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101021",
+"date": "2022-03-14",
+"home": "ATL",
+"away": "POR",
+"home_pts": 122,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022101022",
+"date": "2022-03-14",
+"home": "PHI",
+"away": "DEN",
+"home_pts": 110,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101023",
+"date": "2022-03-14",
+"home": "OKC",
+"away": "CHA",
+"home_pts": 116,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022101024",
+"date": "2022-03-14",
+"home": "SAS",
+"away": "MIN",
+"home_pts": 139,
+"away_pts": 149,
+"neutral": false
+},
+{
+"game_id": "0022101025",
+"date": "2022-03-14",
+"home": "GSW",
+"away": "WAS",
+"home_pts": 126,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101026",
+"date": "2022-03-14",
+"home": "SAC",
+"away": "CHI",
+"home_pts": 112,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101027",
+"date": "2022-03-14",
+"home": "UTA",
+"away": "MIL",
+"home_pts": 111,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022101028",
+"date": "2022-03-14",
+"home": "LAL",
+"away": "TOR",
+"home_pts": 103,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101029",
+"date": "2022-03-15",
+"home": "IND",
+"away": "MEM",
+"home_pts": 102,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022101030",
+"date": "2022-03-15",
+"home": "ORL",
+"away": "BKN",
+"home_pts": 108,
+"away_pts": 150,
+"neutral": false
+},
+{
+"game_id": "0022101031",
+"date": "2022-03-15",
+"home": "MIA",
+"away": "DET",
+"home_pts": 105,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101032",
+"date": "2022-03-15",
+"home": "NOP",
+"away": "PHX",
+"home_pts": 115,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022101033",
+"date": "2022-03-16",
+"home": "CHA",
+"away": "ATL",
+"home_pts": 116,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101034",
+"date": "2022-03-16",
+"home": "CLE",
+"away": "PHI",
+"home_pts": 114,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101035",
+"date": "2022-03-16",
+"home": "WAS",
+"away": "DEN",
+"home_pts": 109,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022101036",
+"date": "2022-03-16",
+"home": "BKN",
+"away": "DAL",
+"home_pts": 111,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022101037",
+"date": "2022-03-16",
+"home": "NYK",
+"away": "POR",
+"home_pts": 128,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101038",
+"date": "2022-03-16",
+"home": "HOU",
+"away": "PHX",
+"home_pts": 112,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022101039",
+"date": "2022-03-16",
+"home": "MIN",
+"away": "LAL",
+"home_pts": 124,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022101040",
+"date": "2022-03-16",
+"home": "SAS",
+"away": "OKC",
+"home_pts": 122,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101041",
+"date": "2022-03-16",
+"home": "UTA",
+"away": "CHI",
+"home_pts": 125,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101042",
+"date": "2022-03-16",
+"home": "GSW",
+"away": "BOS",
+"home_pts": 88,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101043",
+"date": "2022-03-16",
+"home": "SAC",
+"away": "MIL",
+"home_pts": 126,
+"away_pts": 135,
+"neutral": false
+},
+{
+"game_id": "0022101044",
+"date": "2022-03-16",
+"home": "LAC",
+"away": "TOR",
+"home_pts": 100,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101045",
+"date": "2022-03-17",
+"home": "ORL",
+"away": "DET",
+"home_pts": 120,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022101046",
+"date": "2022-03-18",
+"home": "PHI",
+"away": "DAL",
+"home_pts": 111,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101047",
+"date": "2022-03-18",
+"home": "ATL",
+"away": "MEM",
+"home_pts": 120,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022101048",
+"date": "2022-03-18",
+"home": "BKN",
+"away": "POR",
+"home_pts": 128,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022101049",
+"date": "2022-03-18",
+"home": "CLE",
+"away": "DEN",
+"home_pts": 119,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022101050",
+"date": "2022-03-18",
+"home": "NYK",
+"away": "WAS",
+"home_pts": 100,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022101051",
+"date": "2022-03-18",
+"home": "TOR",
+"away": "LAL",
+"home_pts": 123,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022101052",
+"date": "2022-03-18",
+"home": "MIA",
+"away": "OKC",
+"home_pts": 120,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101053",
+"date": "2022-03-18",
+"home": "HOU",
+"away": "IND",
+"home_pts": 118,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101054",
+"date": "2022-03-18",
+"home": "SAS",
+"away": "NOP",
+"home_pts": 91,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022101055",
+"date": "2022-03-18",
+"home": "UTA",
+"away": "LAC",
+"home_pts": 121,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022101056",
+"date": "2022-03-18",
+"home": "PHX",
+"away": "CHI",
+"home_pts": 129,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101057",
+"date": "2022-03-18",
+"home": "SAC",
+"away": "BOS",
+"home_pts": 97,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022101058",
+"date": "2022-03-19",
+"home": "MIN",
+"away": "MIL",
+"home_pts": 138,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101059",
+"date": "2022-03-19",
+"home": "CHA",
+"away": "DAL",
+"home_pts": 129,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101060",
+"date": "2022-03-19",
+"home": "CLE",
+"away": "DET",
+"home_pts": 113,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101061",
+"date": "2022-03-19",
+"home": "WAS",
+"away": "LAL",
+"home_pts": 127,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101062",
+"date": "2022-03-20",
+"home": "IND",
+"away": "POR",
+"home_pts": 129,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101063",
+"date": "2022-03-20",
+"home": "HOU",
+"away": "MEM",
+"home_pts": 98,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022101064",
+"date": "2022-03-20",
+"home": "ATL",
+"away": "NOP",
+"home_pts": 112,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022101065",
+"date": "2022-03-20",
+"home": "ORL",
+"away": "OKC",
+"home_pts": 90,
+"away_pts": 85,
+"neutral": false
+},
+{
+"game_id": "0022101066",
+"date": "2022-03-20",
+"home": "SAC",
+"away": "PHX",
+"home_pts": 124,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022101067",
+"date": "2022-03-20",
+"home": "NYK",
+"away": "UTA",
+"home_pts": 93,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101068",
+"date": "2022-03-20",
+"home": "DEN",
+"away": "BOS",
+"home_pts": 104,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022101069",
+"date": "2022-03-20",
+"home": "PHI",
+"away": "TOR",
+"home_pts": 88,
+"away_pts": 93,
+"neutral": false
+},
+{
+"game_id": "0022101070",
+"date": "2022-03-20",
+"home": "GSW",
+"away": "SAS",
+"home_pts": 108,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101071",
+"date": "2022-03-21",
+"home": "CHA",
+"away": "NOP",
+"home_pts": 106,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101072",
+"date": "2022-03-21",
+"home": "CLE",
+"away": "LAL",
+"home_pts": 120,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022101073",
+"date": "2022-03-21",
+"home": "DET",
+"away": "POR",
+"home_pts": 115,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101074",
+"date": "2022-03-21",
+"home": "PHI",
+"away": "MIA",
+"home_pts": 113,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101075",
+"date": "2022-03-21",
+"home": "BKN",
+"away": "UTA",
+"home_pts": 114,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101076",
+"date": "2022-03-21",
+"home": "CHI",
+"away": "TOR",
+"home_pts": 113,
+"away_pts": 99,
+"neutral": false
+},
+{
+"game_id": "0022101077",
+"date": "2022-03-21",
+"home": "HOU",
+"away": "WAS",
+"home_pts": 115,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022101078",
+"date": "2022-03-21",
+"home": "OKC",
+"away": "BOS",
+"home_pts": 123,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022101079",
+"date": "2022-03-21",
+"home": "DAL",
+"away": "MIN",
+"home_pts": 110,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101080",
+"date": "2022-03-22",
+"home": "ORL",
+"away": "GSW",
+"home_pts": 94,
+"away_pts": 90,
+"neutral": false
+},
+{
+"game_id": "0022101081",
+"date": "2022-03-22",
+"home": "NYK",
+"away": "ATL",
+"home_pts": 111,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022101082",
+"date": "2022-03-22",
+"home": "MIL",
+"away": "CHI",
+"home_pts": 126,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101083",
+"date": "2022-03-22",
+"home": "DEN",
+"away": "LAC",
+"home_pts": 127,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101084",
+"date": "2022-03-23",
+"home": "CHA",
+"away": "NYK",
+"home_pts": 106,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101085",
+"date": "2022-03-23",
+"home": "DET",
+"away": "ATL",
+"home_pts": 122,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101086",
+"date": "2022-03-23",
+"home": "IND",
+"away": "SAC",
+"home_pts": 109,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101087",
+"date": "2022-03-23",
+"home": "BOS",
+"away": "UTA",
+"home_pts": 125,
+"away_pts": 97,
+"neutral": false
+},
+{
+"game_id": "0022101088",
+"date": "2022-03-23",
+"home": "MIA",
+"away": "GSW",
+"home_pts": 104,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101089",
+"date": "2022-03-23",
+"home": "MEM",
+"away": "BKN",
+"home_pts": 132,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101090",
+"date": "2022-03-23",
+"home": "MIN",
+"away": "PHX",
+"home_pts": 116,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101091",
+"date": "2022-03-23",
+"home": "OKC",
+"away": "ORL",
+"home_pts": 118,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101092",
+"date": "2022-03-23",
+"home": "DAL",
+"away": "HOU",
+"home_pts": 110,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022101093",
+"date": "2022-03-23",
+"home": "LAL",
+"away": "PHI",
+"home_pts": 121,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022101094",
+"date": "2022-03-23",
+"home": "POR",
+"away": "SAS",
+"home_pts": 96,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022101095",
+"date": "2022-03-24",
+"home": "TOR",
+"away": "CLE",
+"home_pts": 117,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022101096",
+"date": "2022-03-24",
+"home": "MEM",
+"away": "IND",
+"home_pts": 133,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101097",
+"date": "2022-03-24",
+"home": "MIL",
+"away": "WAS",
+"home_pts": 114,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101098",
+"date": "2022-03-24",
+"home": "NOP",
+"away": "CHI",
+"home_pts": 126,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101099",
+"date": "2022-03-24",
+"home": "DEN",
+"away": "PHX",
+"home_pts": 130,
+"away_pts": 140,
+"neutral": false
+},
+{
+"game_id": "0022101100",
+"date": "2022-03-25",
+"home": "CHA",
+"away": "UTA",
+"home_pts": 107,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101101",
+"date": "2022-03-25",
+"home": "DET",
+"away": "WAS",
+"home_pts": 97,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022101102",
+"date": "2022-03-25",
+"home": "ATL",
+"away": "GSW",
+"home_pts": 121,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101103",
+"date": "2022-03-25",
+"home": "MIA",
+"away": "NYK",
+"home_pts": 103,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101104",
+"date": "2022-03-25",
+"home": "MIN",
+"away": "DAL",
+"home_pts": 116,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022101105",
+"date": "2022-03-25",
+"home": "POR",
+"away": "HOU",
+"home_pts": 106,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101106",
+"date": "2022-03-25",
+"home": "LAC",
+"away": "PHI",
+"home_pts": 97,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022101107",
+"date": "2022-03-26",
+"home": "NOP",
+"away": "SAS",
+"home_pts": 103,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101108",
+"date": "2022-03-26",
+"home": "ORL",
+"away": "SAC",
+"home_pts": 110,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101109",
+"date": "2022-03-26",
+"home": "TOR",
+"away": "IND",
+"home_pts": 131,
+"away_pts": 91,
+"neutral": false
+},
+{
+"game_id": "0022101110",
+"date": "2022-03-26",
+"home": "CLE",
+"away": "CHI",
+"home_pts": 94,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101111",
+"date": "2022-03-26",
+"home": "MIA",
+"away": "BKN",
+"home_pts": 95,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101112",
+"date": "2022-03-26",
+"home": "MEM",
+"away": "MIL",
+"home_pts": 127,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101113",
+"date": "2022-03-26",
+"home": "DEN",
+"away": "OKC",
+"home_pts": 113,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101114",
+"date": "2022-03-26",
+"home": "POR",
+"away": "HOU",
+"home_pts": 98,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101115",
+"date": "2022-03-27",
+"home": "DET",
+"away": "NYK",
+"home_pts": 102,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022101116",
+"date": "2022-03-27",
+"home": "BOS",
+"away": "MIN",
+"home_pts": 134,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101117",
+"date": "2022-03-27",
+"home": "WAS",
+"away": "GSW",
+"home_pts": 123,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101118",
+"date": "2022-03-27",
+"home": "PHX",
+"away": "PHI",
+"home_pts": 114,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022101119",
+"date": "2022-03-27",
+"home": "NOP",
+"away": "LAL",
+"home_pts": 116,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101120",
+"date": "2022-03-27",
+"home": "BKN",
+"away": "CHA",
+"home_pts": 110,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101121",
+"date": "2022-03-27",
+"home": "DAL",
+"away": "UTA",
+"home_pts": 114,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022101122",
+"date": "2022-03-28",
+"home": "CHA",
+"away": "DEN",
+"home_pts": 109,
+"away_pts": 113,
+"neutral": false
+},
+{
+"game_id": "0022101123",
+"date": "2022-03-28",
+"home": "CLE",
+"away": "ORL",
+"home_pts": 107,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101124",
+"date": "2022-03-28",
+"home": "IND",
+"away": "ATL",
+"home_pts": 123,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022101125",
+"date": "2022-03-28",
+"home": "MIA",
+"away": "SAC",
+"home_pts": 123,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022101126",
+"date": "2022-03-28",
+"home": "NYK",
+"away": "CHI",
+"home_pts": 109,
+"away_pts": 104,
+"neutral": false
+},
+{
+"game_id": "0022101127",
+"date": "2022-03-28",
+"home": "TOR",
+"away": "BOS",
+"home_pts": 115,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101128",
+"date": "2022-03-28",
+"home": "HOU",
+"away": "SAS",
+"home_pts": 120,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022101129",
+"date": "2022-03-28",
+"home": "MEM",
+"away": "GSW",
+"home_pts": 123,
+"away_pts": 95,
+"neutral": false
+},
+{
+"game_id": "0022101130",
+"date": "2022-03-28",
+"home": "POR",
+"away": "OKC",
+"home_pts": 131,
+"away_pts": 134,
+"neutral": false
+},
+{
+"game_id": "0022101131",
+"date": "2022-03-29",
+"home": "PHI",
+"away": "MIL",
+"home_pts": 116,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101132",
+"date": "2022-03-29",
+"home": "WAS",
+"away": "CHI",
+"home_pts": 94,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101133",
+"date": "2022-03-29",
+"home": "BKN",
+"away": "DET",
+"home_pts": 130,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022101134",
+"date": "2022-03-29",
+"home": "DAL",
+"away": "LAL",
+"home_pts": 128,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101135",
+"date": "2022-03-29",
+"home": "LAC",
+"away": "UTA",
+"home_pts": 121,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101136",
+"date": "2022-03-30",
+"home": "CLE",
+"away": "DAL",
+"home_pts": 112,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101137",
+"date": "2022-03-30",
+"home": "IND",
+"away": "DEN",
+"home_pts": 118,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101138",
+"date": "2022-03-30",
+"home": "WAS",
+"away": "ORL",
+"home_pts": 127,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101139",
+"date": "2022-03-30",
+"home": "BOS",
+"away": "MIA",
+"home_pts": 98,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101140",
+"date": "2022-03-30",
+"home": "NYK",
+"away": "CHA",
+"home_pts": 114,
+"away_pts": 125,
+"neutral": false
+},
+{
+"game_id": "0022101141",
+"date": "2022-03-30",
+"home": "TOR",
+"away": "MIN",
+"home_pts": 125,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101142",
+"date": "2022-03-30",
+"home": "HOU",
+"away": "SAC",
+"home_pts": 118,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101143",
+"date": "2022-03-30",
+"home": "OKC",
+"away": "ATL",
+"home_pts": 118,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022101144",
+"date": "2022-03-30",
+"home": "SAS",
+"away": "MEM",
+"home_pts": 111,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101145",
+"date": "2022-03-30",
+"home": "GSW",
+"away": "PHX",
+"home_pts": 103,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101146",
+"date": "2022-03-30",
+"home": "POR",
+"away": "NOP",
+"home_pts": 107,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022100452",
+"date": "2022-03-31",
+"home": "ATL",
+"away": "CLE",
+"home_pts": 131,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101147",
+"date": "2022-03-31",
+"home": "DET",
+"away": "PHI",
+"home_pts": 102,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022101148",
+"date": "2022-03-31",
+"home": "BKN",
+"away": "MIL",
+"home_pts": 119,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101149",
+"date": "2022-03-31",
+"home": "CHI",
+"away": "LAC",
+"home_pts": 135,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022101150",
+"date": "2022-03-31",
+"home": "UTA",
+"away": "LAL",
+"home_pts": 122,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101151",
+"date": "2022-04-01",
+"home": "ORL",
+"away": "TOR",
+"home_pts": 89,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101152",
+"date": "2022-04-01",
+"home": "WAS",
+"away": "DAL",
+"home_pts": 135,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101153",
+"date": "2022-04-01",
+"home": "BOS",
+"away": "IND",
+"home_pts": 128,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022101154",
+"date": "2022-04-01",
+"home": "HOU",
+"away": "SAC",
+"home_pts": 117,
+"away_pts": 122,
+"neutral": false
+},
+{
+"game_id": "0022101155",
+"date": "2022-04-01",
+"home": "MEM",
+"away": "PHX",
+"home_pts": 122,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101156",
+"date": "2022-04-01",
+"home": "MIL",
+"away": "LAC",
+"home_pts": 119,
+"away_pts": 153,
+"neutral": false
+},
+{
+"game_id": "0022101157",
+"date": "2022-04-01",
+"home": "OKC",
+"away": "DET",
+"home_pts": 101,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101158",
+"date": "2022-04-01",
+"home": "SAS",
+"away": "POR",
+"home_pts": 130,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101159",
+"date": "2022-04-01",
+"home": "DEN",
+"away": "MIN",
+"home_pts": 130,
+"away_pts": 136,
+"neutral": false
+},
+{
+"game_id": "0022101160",
+"date": "2022-04-01",
+"home": "LAL",
+"away": "NOP",
+"home_pts": 111,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101161",
+"date": "2022-04-02",
+"home": "PHI",
+"away": "CHA",
+"home_pts": 144,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101162",
+"date": "2022-04-02",
+"home": "NYK",
+"away": "CLE",
+"home_pts": 101,
+"away_pts": 119,
+"neutral": false
+},
+{
+"game_id": "0022101163",
+"date": "2022-04-02",
+"home": "ATL",
+"away": "BKN",
+"home_pts": 122,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101164",
+"date": "2022-04-02",
+"home": "CHI",
+"away": "MIA",
+"home_pts": 109,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022101165",
+"date": "2022-04-02",
+"home": "GSW",
+"away": "UTA",
+"home_pts": 111,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101166",
+"date": "2022-04-03",
+"home": "BOS",
+"away": "WAS",
+"home_pts": 144,
+"away_pts": 102,
+"neutral": false
+},
+{
+"game_id": "0022101167",
+"date": "2022-04-03",
+"home": "MIL",
+"away": "DAL",
+"home_pts": 112,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101168",
+"date": "2022-04-03",
+"home": "LAL",
+"away": "DEN",
+"home_pts": 118,
+"away_pts": 129,
+"neutral": false
+},
+{
+"game_id": "0022101169",
+"date": "2022-04-03",
+"home": "IND",
+"away": "DET",
+"home_pts": 117,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101170",
+"date": "2022-04-03",
+"home": "CLE",
+"away": "PHI",
+"home_pts": 108,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101171",
+"date": "2022-04-03",
+"home": "ORL",
+"away": "NYK",
+"home_pts": 88,
+"away_pts": 118,
+"neutral": false
+},
+{
+"game_id": "0022101172",
+"date": "2022-04-03",
+"home": "TOR",
+"away": "MIA",
+"home_pts": 109,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101173",
+"date": "2022-04-03",
+"home": "HOU",
+"away": "MIN",
+"home_pts": 132,
+"away_pts": 139,
+"neutral": false
+},
+{
+"game_id": "0022101174",
+"date": "2022-04-03",
+"home": "OKC",
+"away": "PHX",
+"home_pts": 117,
+"away_pts": 96,
+"neutral": false
+},
+{
+"game_id": "0022101175",
+"date": "2022-04-03",
+"home": "SAS",
+"away": "POR",
+"home_pts": 113,
+"away_pts": 92,
+"neutral": false
+},
+{
+"game_id": "0022101176",
+"date": "2022-04-03",
+"home": "SAC",
+"away": "GSW",
+"home_pts": 90,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101177",
+"date": "2022-04-03",
+"home": "LAC",
+"away": "NOP",
+"home_pts": 119,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022101178",
+"date": "2022-04-05",
+"home": "IND",
+"away": "PHI",
+"home_pts": 122,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022101179",
+"date": "2022-04-05",
+"home": "ORL",
+"away": "CLE",
+"home_pts": 120,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101180",
+"date": "2022-04-05",
+"home": "BKN",
+"away": "HOU",
+"home_pts": 118,
+"away_pts": 105,
+"neutral": false
+},
+{
+"game_id": "0022101181",
+"date": "2022-04-05",
+"home": "MIA",
+"away": "CHA",
+"home_pts": 144,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101182",
+"date": "2022-04-05",
+"home": "TOR",
+"away": "ATL",
+"home_pts": 118,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101183",
+"date": "2022-04-05",
+"home": "CHI",
+"away": "MIL",
+"home_pts": 106,
+"away_pts": 127,
+"neutral": false
+},
+{
+"game_id": "0022101184",
+"date": "2022-04-05",
+"home": "MIN",
+"away": "WAS",
+"home_pts": 114,
+"away_pts": 132,
+"neutral": false
+},
+{
+"game_id": "0022101185",
+"date": "2022-04-05",
+"home": "OKC",
+"away": "POR",
+"home_pts": 98,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022101186",
+"date": "2022-04-05",
+"home": "DEN",
+"away": "SAS",
+"home_pts": 97,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022101187",
+"date": "2022-04-05",
+"home": "UTA",
+"away": "MEM",
+"home_pts": 121,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101188",
+"date": "2022-04-05",
+"home": "SAC",
+"away": "NOP",
+"home_pts": 109,
+"away_pts": 123,
+"neutral": false
+},
+{
+"game_id": "0022101189",
+"date": "2022-04-05",
+"home": "PHX",
+"away": "LAL",
+"home_pts": 121,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101190",
+"date": "2022-04-06",
+"home": "DET",
+"away": "DAL",
+"home_pts": 113,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022101191",
+"date": "2022-04-06",
+"home": "NYK",
+"away": "BKN",
+"home_pts": 98,
+"away_pts": 110,
+"neutral": false
+},
+{
+"game_id": "0022101192",
+"date": "2022-04-06",
+"home": "ATL",
+"away": "WAS",
+"home_pts": 118,
+"away_pts": 103,
+"neutral": false
+},
+{
+"game_id": "0022101193",
+"date": "2022-04-06",
+"home": "CHI",
+"away": "BOS",
+"home_pts": 94,
+"away_pts": 117,
+"neutral": false
+},
+{
+"game_id": "0022101194",
+"date": "2022-04-06",
+"home": "UTA",
+"away": "OKC",
+"home_pts": 137,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101195",
+"date": "2022-04-06",
+"home": "LAC",
+"away": "PHX",
+"home_pts": 113,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101196",
+"date": "2022-04-07",
+"home": "CHA",
+"away": "ORL",
+"home_pts": 128,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101197",
+"date": "2022-04-07",
+"home": "TOR",
+"away": "PHI",
+"home_pts": 119,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101198",
+"date": "2022-04-07",
+"home": "MIL",
+"away": "BOS",
+"home_pts": 127,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101199",
+"date": "2022-04-07",
+"home": "MIN",
+"away": "SAS",
+"home_pts": 127,
+"away_pts": 121,
+"neutral": false
+},
+{
+"game_id": "0022101200",
+"date": "2022-04-07",
+"home": "NOP",
+"away": "POR",
+"home_pts": 127,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022101201",
+"date": "2022-04-07",
+"home": "DEN",
+"away": "MEM",
+"home_pts": 122,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101202",
+"date": "2022-04-07",
+"home": "GSW",
+"away": "LAL",
+"home_pts": 128,
+"away_pts": 112,
+"neutral": false
+},
+{
+"game_id": "0022101203",
+"date": "2022-04-08",
+"home": "DET",
+"away": "MIL",
+"home_pts": 101,
+"away_pts": 131,
+"neutral": false
+},
+{
+"game_id": "0022101204",
+"date": "2022-04-08",
+"home": "WAS",
+"away": "NYK",
+"home_pts": 92,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101205",
+"date": "2022-04-08",
+"home": "BKN",
+"away": "CLE",
+"home_pts": 118,
+"away_pts": 107,
+"neutral": false
+},
+{
+"game_id": "0022101206",
+"date": "2022-04-08",
+"home": "TOR",
+"away": "HOU",
+"home_pts": 117,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101207",
+"date": "2022-04-08",
+"home": "MIA",
+"away": "ATL",
+"home_pts": 113,
+"away_pts": 109,
+"neutral": false
+},
+{
+"game_id": "0022101208",
+"date": "2022-04-08",
+"home": "CHI",
+"away": "CHA",
+"home_pts": 117,
+"away_pts": 133,
+"neutral": false
+},
+{
+"game_id": "0022101209",
+"date": "2022-04-08",
+"home": "DAL",
+"away": "POR",
+"home_pts": 128,
+"away_pts": 78,
+"neutral": false
+},
+{
+"game_id": "0022101210",
+"date": "2022-04-08",
+"home": "UTA",
+"away": "PHX",
+"home_pts": 105,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101211",
+"date": "2022-04-08",
+"home": "LAL",
+"away": "OKC",
+"home_pts": 120,
+"away_pts": 101,
+"neutral": false
+},
+{
+"game_id": "0022101212",
+"date": "2022-04-09",
+"home": "LAC",
+"away": "SAC",
+"home_pts": 117,
+"away_pts": 98,
+"neutral": false
+},
+{
+"game_id": "0022101213",
+"date": "2022-04-09",
+"home": "MEM",
+"away": "NOP",
+"home_pts": 141,
+"away_pts": 114,
+"neutral": false
+},
+{
+"game_id": "0022101214",
+"date": "2022-04-09",
+"home": "PHI",
+"away": "IND",
+"home_pts": 133,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101215",
+"date": "2022-04-09",
+"home": "SAS",
+"away": "GSW",
+"home_pts": 94,
+"away_pts": 100,
+"neutral": false
+},
+{
+"game_id": "0022101216",
+"date": "2022-04-10",
+"home": "BKN",
+"away": "IND",
+"home_pts": 134,
+"away_pts": 126,
+"neutral": false
+},
+{
+"game_id": "0022101217",
+"date": "2022-04-10",
+"home": "CHA",
+"away": "WAS",
+"home_pts": 124,
+"away_pts": 108,
+"neutral": false
+},
+{
+"game_id": "0022101218",
+"date": "2022-04-10",
+"home": "CLE",
+"away": "MIL",
+"home_pts": 133,
+"away_pts": 115,
+"neutral": false
+},
+{
+"game_id": "0022101219",
+"date": "2022-04-10",
+"home": "DAL",
+"away": "SAS",
+"home_pts": 130,
+"away_pts": 120,
+"neutral": false
+},
+{
+"game_id": "0022101220",
+"date": "2022-04-10",
+"home": "DEN",
+"away": "LAL",
+"home_pts": 141,
+"away_pts": 146,
+"neutral": false
+},
+{
+"game_id": "0022101221",
+"date": "2022-04-10",
+"home": "HOU",
+"away": "ATL",
+"home_pts": 114,
+"away_pts": 130,
+"neutral": false
+},
+{
+"game_id": "0022101222",
+"date": "2022-04-10",
+"home": "LAC",
+"away": "OKC",
+"home_pts": 138,
+"away_pts": 88,
+"neutral": false
+},
+{
+"game_id": "0022101223",
+"date": "2022-04-10",
+"home": "MEM",
+"away": "BOS",
+"home_pts": 110,
+"away_pts": 139,
+"neutral": false
+},
+{
+"game_id": "0022101224",
+"date": "2022-04-10",
+"home": "MIN",
+"away": "CHI",
+"home_pts": 120,
+"away_pts": 124,
+"neutral": false
+},
+{
+"game_id": "0022101225",
+"date": "2022-04-10",
+"home": "NOP",
+"away": "GSW",
+"home_pts": 107,
+"away_pts": 128,
+"neutral": false
+},
+{
+"game_id": "0022101226",
+"date": "2022-04-10",
+"home": "NYK",
+"away": "TOR",
+"home_pts": 105,
+"away_pts": 94,
+"neutral": false
+},
+{
+"game_id": "0022101227",
+"date": "2022-04-10",
+"home": "ORL",
+"away": "MIA",
+"home_pts": 125,
+"away_pts": 111,
+"neutral": false
+},
+{
+"game_id": "0022101228",
+"date": "2022-04-10",
+"home": "PHI",
+"away": "DET",
+"home_pts": 118,
+"away_pts": 106,
+"neutral": false
+},
+{
+"game_id": "0022101229",
+"date": "2022-04-10",
+"home": "PHX",
+"away": "SAC",
+"home_pts": 109,
+"away_pts": 116,
+"neutral": false
+},
+{
+"game_id": "0022101230",
+"date": "2022-04-10",
+"home": "POR",
+"away": "UTA",
+"home_pts": 80,
+"away_pts": 111,
+"neutral": false
+}
+]
+}

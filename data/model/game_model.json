@@ -1,0 +1,46 @@
+{
+ "fit_seasons": [
+  "2018-19",
+  "2019-20",
+  "2020-21",
+  "2021-22",
+  "2022-23",
+  "2023-24",
+  "2024-25"
+ ],
+ "games": 8289,
+ "home_edge": 2.001,
+ "b2b_penalty": 2.363,
+ "sigma": 12.607,
+ "standard_errors": {
+  "home_edge": 0.186,
+  "b2b_penalty": 0.368,
+  "sigma": 0.362
+ },
+ "fit_scores": {
+  "log_loss": 0.6014,
+  "brier": 0.2074,
+  "accuracy": 0.6692
+ },
+ "check_2025_26": {
+  "log_loss": 0.5763,
+  "brier": 0.1957,
+  "accuracy": 0.7008
+ },
+ "margin_regression": {
+  "points_per_rating_point": 0.971,
+  "home_edge": 1.903,
+  "b2b_penalty": 2.405,
+  "noise_sd": 13.18
+ },
+ "home_edge_by_season": {
+  "2018-19": 3.23,
+  "2019-20": 1.95,
+  "2020-21": 1.54,
+  "2021-22": 1.4,
+  "2022-23": 2.66,
+  "2023-24": 1.61,
+  "2024-25": 1.61
+ },
+ "b2b_share": 0.255
+}

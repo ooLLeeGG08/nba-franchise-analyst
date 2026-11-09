@@ -150,15 +150,26 @@ class Rotation:
 
     # --- strength ------------------------------------------------------------------------------
 
-    def absence_cost(self, pid):
-        """Strength lost in a game `pid` misses (his minutes go to the next players up)."""
+    def absence_transfer(self, pid):
+        """{teammate: minutes gained} in a game `pid` misses (his minutes go to the next players up)."""
         mine = self.minutes[pid]
         if mine <= 0:
-            return 0.0
+            return {}
         after = self._give({k: v for k, v in self.minutes.items() if k != pid}, mine,
                            self.players[pid]["position"], exclude={pid}, below=mine)
-        gained = sum((after[k] - self.minutes[k]) * self.players[k]["impact"] for k in after)
-        return (mine * self.players[pid]["impact"] - gained) / 48
+        return {k: after[k] - self.minutes[k] for k in after if after[k] - self.minutes[k] > 1e-12}
+
+    def absence_weights(self, pid):
+        """Absence cost as weights on impacts: cost = sum(weight[k] x impact[k]). Lets the
+        simulator recompute the cost for each simulated set of player impacts."""
+        weights = {pid: self.minutes[pid] / 48} if self.minutes[pid] > 0 else {}
+        for k, gained in self.absence_transfer(pid).items():
+            weights[k] = weights.get(k, 0.0) - gained / 48
+        return weights
+
+    def absence_cost(self, pid):
+        """Strength lost in a game `pid` misses, at the players' rated impacts."""
+        return sum(w * self.players[k]["impact"] for k, w in self.absence_weights(pid).items())
 
     def diminishing_returns(self):
         dr = self.rc["diminishing_returns"]

@@ -141,4 +141,4 @@ def test_unchanged_teams_keep_identical_strength(engine):
 def test_engine_totals(engine):
     base = engine.baseline()
     assert (base["wins"].sum(axis=1) == 1230).all()
-    assert engine.team_sd >= 0 and engine.absence_sd > 0
+    assert engine.residual_sd > 0

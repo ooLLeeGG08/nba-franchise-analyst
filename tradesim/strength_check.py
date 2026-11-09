@@ -105,11 +105,29 @@ def run(cfg=None, write=True):
     for s in seasons:
         report["by_season"][s] = {f: _summary([rows[s][c][f] for c in TEAM_INFO], [rows[s][c]["actual"] for c in TEAM_INFO])
                                   for f in methods}
-    # Strength uncertainty for the simulator: forecast error minus the luck in an 82-game net rating.
-    luck = _net_rating_luck()
-    rmse = report["pooled"]["new_projected_min"]["rmse"]
-    report["strength_sd"] = round(float(np.sqrt(max(rmse ** 2 - luck ** 2, 0))), 2)
-    report["net_rating_luck_82_games"] = round(luck, 2)
+    # Latent strength uncertainty for the simulator: the forecast error against OBSERVED season
+    # net ratings, minus the game-to-game luck in those observed ratings. Luck per team-season =
+    # sigma / sqrt(games), with sigma the fitted single-game spread (tradesim.game_model); short
+    # seasons (2019-20, 2020-21) have more luck.
+    from tradesim.game_model import load_model
+    sigma = load_model()["sigma"]
+    games = team_ratings()
+    errors = []
+    for s in seasons:
+        mean_pred = np.mean([rows[s][t]["new_projected_min"] for t in TEAM_INFO])
+        for c in TEAM_INFO:
+            errors.append({"season": s, "team": c, "predicted": round(rows[s][c]["new_projected_min"] - mean_pred, 3),
+                           "actual": rows[s][c]["actual"], "games": games[s][c]["games"]})
+    err2 = np.mean([(e["predicted"] - e["actual"]) ** 2 for e in errors])
+    luck2 = np.mean([sigma ** 2 / e["games"] for e in errors])
+    report["forecast_rmse"] = round(float(np.sqrt(err2)), 3)
+    report["game_luck_sd"] = round(float(np.sqrt(luck2)), 3)
+    report["strength_sd"] = round(float(np.sqrt(max(err2 - luck2, 0))), 3)
+    # First version subtracted 1.70 points of luck estimated from single-game margin spread,
+    # which also contains opponent and home/away differences; kept for reference.
+    old_luck = _net_rating_luck()
+    report["strength_sd_first_version"] = round(float(np.sqrt(max(err2 - old_luck ** 2, 0))), 3)
+    report["team_season_errors"] = errors
     if write:
         with open(CHECK_PATH, "w") as f:
             json.dump(report, f, indent=1)
@@ -135,6 +153,7 @@ if __name__ == "__main__":
     for field, label in methods.items():
         p = r["pooled"][field]
         print(f"  {label:32s} slope {p['slope']:.2f}  avg error {p['mae']:.2f} pts  corr {p['corr']:.2f}")
-    print(f"Strength uncertainty for the simulator: {r['strength_sd']} points "
-          f"(after removing {r['net_rating_luck_82_games']} points of 82-game luck)")
+    print(f"Forecast error vs observed net rating: {r['forecast_rmse']} points; game luck in those ratings "
+          f"{r['game_luck_sd']} (sigma / sqrt(games)) -> latent strength uncertainty {r['strength_sd']} points "
+          f"(first version: {r['strength_sd_first_version']})")
     print(f"Wrote {CHECK_PATH}")
