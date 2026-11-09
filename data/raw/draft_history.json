@@ -1,0 +1,5417 @@
+{
+"source_url": "https://stats.nba.com/stats/drafthistory (nba_api DraftHistory)",
+"as_of": "2026-11-09",
+"picks": [
+{
+"draft_year": 2026,
+"pick": 1,
+"round": 1,
+"player": "AJ Dybantsa",
+"team": "WAS"
+},
+{
+"draft_year": 2026,
+"pick": 2,
+"round": 1,
+"player": "Darryn Peterson",
+"team": "UTA"
+},
+{
+"draft_year": 2026,
+"pick": 3,
+"round": 1,
+"player": "Cameron Boozer",
+"team": "MEM"
+},
+{
+"draft_year": 2026,
+"pick": 4,
+"round": 1,
+"player": "Caleb Wilson",
+"team": "CHI"
+},
+{
+"draft_year": 2026,
+"pick": 5,
+"round": 1,
+"player": "Keaton Wagler",
+"team": "LAC"
+},
+{
+"draft_year": 2026,
+"pick": 6,
+"round": 1,
+"player": "Mikel Brown Jr.",
+"team": "BKN"
+},
+{
+"draft_year": 2026,
+"pick": 7,
+"round": 1,
+"player": "Darius Acuff Jr.",
+"team": "SAC"
+},
+{
+"draft_year": 2026,
+"pick": 8,
+"round": 1,
+"player": "Kingston Flemings",
+"team": "ATL"
+},
+{
+"draft_year": 2026,
+"pick": 9,
+"round": 1,
+"player": "Morez Johnson Jr.",
+"team": "DAL"
+},
+{
+"draft_year": 2026,
+"pick": 10,
+"round": 1,
+"player": "Brayden Burries",
+"team": "MIL"
+},
+{
+"draft_year": 2026,
+"pick": 11,
+"round": 1,
+"player": "Yaxel Lendeborg",
+"team": "GSW"
+},
+{
+"draft_year": 2026,
+"pick": 12,
+"round": 1,
+"player": "Aday Mara",
+"team": "OKC"
+},
+{
+"draft_year": 2026,
+"pick": 13,
+"round": 1,
+"player": "Nate Ament",
+"team": "MIA"
+},
+{
+"draft_year": 2026,
+"pick": 14,
+"round": 1,
+"player": "Hannes Steinbach",
+"team": "CHA"
+},
+{
+"draft_year": 2026,
+"pick": 15,
+"round": 1,
+"player": "Dailyn Swain",
+"team": "CHI"
+},
+{
+"draft_year": 2026,
+"pick": 16,
+"round": 1,
+"player": "Bennett Stirtz",
+"team": "MEM"
+},
+{
+"draft_year": 2026,
+"pick": 17,
+"round": 1,
+"player": "Ebuka Okorie",
+"team": "OKC"
+},
+{
+"draft_year": 2026,
+"pick": 18,
+"round": 1,
+"player": "Christian Anderson",
+"team": "CHA"
+},
+{
+"draft_year": 2026,
+"pick": 19,
+"round": 1,
+"player": "Allen Graves",
+"team": "TOR"
+},
+{
+"draft_year": 2026,
+"pick": 20,
+"round": 1,
+"player": "Jayden Quaintance",
+"team": "SAS"
+},
+{
+"draft_year": 2026,
+"pick": 21,
+"round": 1,
+"player": "Karim L\u00f3pez",
+"team": "DET"
+},
+{
+"draft_year": 2026,
+"pick": 22,
+"round": 1,
+"player": "Labaron Philon Jr.",
+"team": "PHI"
+},
+{
+"draft_year": 2026,
+"pick": 23,
+"round": 1,
+"player": "Zuby Ejiofor",
+"team": "ATL"
+},
+{
+"draft_year": 2026,
+"pick": 24,
+"round": 1,
+"player": "Cameron Carr",
+"team": "NYK"
+},
+{
+"draft_year": 2026,
+"pick": 25,
+"round": 1,
+"player": "Sergio de Larrea",
+"team": "LAL"
+},
+{
+"draft_year": 2026,
+"pick": 26,
+"round": 1,
+"player": "Tarris Reed Jr.",
+"team": "DEN"
+},
+{
+"draft_year": 2026,
+"pick": 27,
+"round": 1,
+"player": "Chris Cenac Jr.",
+"team": "BOS"
+},
+{
+"draft_year": 2026,
+"pick": 28,
+"round": 1,
+"player": "Joshua Jefferson",
+"team": "MIN"
+},
+{
+"draft_year": 2026,
+"pick": 29,
+"round": 1,
+"player": "Alex Karaban",
+"team": "CLE"
+},
+{
+"draft_year": 2026,
+"pick": 30,
+"round": 1,
+"player": "Koa Peat",
+"team": "DAL"
+},
+{
+"draft_year": 2026,
+"pick": 31,
+"round": 2,
+"player": "Bruce Thornton",
+"team": "NYK"
+},
+{
+"draft_year": 2026,
+"pick": 32,
+"round": 2,
+"player": "Richie Saunders",
+"team": "MEM"
+},
+{
+"draft_year": 2026,
+"pick": 33,
+"round": 2,
+"player": "Isaiah Evans",
+"team": "BKN"
+},
+{
+"draft_year": 2026,
+"pick": 34,
+"round": 2,
+"player": "Meleek Thomas",
+"team": "SAC"
+},
+{
+"draft_year": 2026,
+"pick": 35,
+"round": 2,
+"player": "Trevon Brazile",
+"team": "SAS"
+},
+{
+"draft_year": 2026,
+"pick": 36,
+"round": 2,
+"player": "Baba Miller",
+"team": "LAC"
+},
+{
+"draft_year": 2026,
+"pick": 37,
+"round": 2,
+"player": "Ryan Conwell",
+"team": "OKC"
+},
+{
+"draft_year": 2026,
+"pick": 38,
+"round": 2,
+"player": "Braden Smith",
+"team": "CHI"
+},
+{
+"draft_year": 2026,
+"pick": 39,
+"round": 2,
+"player": "Jack Kayil",
+"team": "HOU"
+},
+{
+"draft_year": 2026,
+"pick": 40,
+"round": 2,
+"player": "Dillon Mitchell",
+"team": "BOS"
+},
+{
+"draft_year": 2026,
+"pick": 41,
+"round": 2,
+"player": "Otega Oweh",
+"team": "MIA"
+},
+{
+"draft_year": 2026,
+"pick": 42,
+"round": 2,
+"player": "Ja'Kobi Gillespie",
+"team": "SAS"
+},
+{
+"draft_year": 2026,
+"pick": 43,
+"round": 2,
+"player": "Tyler Bilodeau",
+"team": "BKN"
+},
+{
+"draft_year": 2026,
+"pick": 44,
+"round": 2,
+"player": "Maliq Brown",
+"team": "SAS"
+},
+{
+"draft_year": 2026,
+"pick": 45,
+"round": 2,
+"player": "Emanuel Sharp",
+"team": "SAC"
+},
+{
+"draft_year": 2026,
+"pick": 46,
+"round": 2,
+"player": "Felix Okpara",
+"team": "ORL"
+},
+{
+"draft_year": 2026,
+"pick": 47,
+"round": 2,
+"player": "Tyler Nickel",
+"team": "PHX"
+},
+{
+"draft_year": 2026,
+"pick": 48,
+"round": 2,
+"player": "Tobi Lawal",
+"team": "DAL"
+},
+{
+"draft_year": 2026,
+"pick": 49,
+"round": 2,
+"player": "Bryce Hopkins",
+"team": "DEN"
+},
+{
+"draft_year": 2026,
+"pick": 50,
+"round": 2,
+"player": "Jaden Bradley",
+"team": "TOR"
+},
+{
+"draft_year": 2026,
+"pick": 51,
+"round": 2,
+"player": "Izaiyah Nelson",
+"team": "WAS"
+},
+{
+"draft_year": 2026,
+"pick": 52,
+"round": 2,
+"player": "Henri Veesaar",
+"team": "LAC"
+},
+{
+"draft_year": 2026,
+"pick": 53,
+"round": 2,
+"player": "Ugonna Onyenso",
+"team": "HOU"
+},
+{
+"draft_year": 2026,
+"pick": 54,
+"round": 2,
+"player": "Lajae Jones",
+"team": "GSW"
+},
+{
+"draft_year": 2026,
+"pick": 55,
+"round": 2,
+"player": "Nick Martinelli",
+"team": "NYK"
+},
+{
+"draft_year": 2026,
+"pick": 56,
+"round": 2,
+"player": "Vsevolod Ishchenko",
+"team": "CHI"
+},
+{
+"draft_year": 2026,
+"pick": 57,
+"round": 2,
+"player": "Narcisse Ngoy",
+"team": "ATL"
+},
+{
+"draft_year": 2026,
+"pick": 58,
+"round": 2,
+"player": "Jaron Pierre Jr.",
+"team": "NOP"
+},
+{
+"draft_year": 2026,
+"pick": 59,
+"round": 2,
+"player": "Trey Kaufman-Renn",
+"team": "MIN"
+},
+{
+"draft_year": 2026,
+"pick": 60,
+"round": 2,
+"player": "Malique Lewis",
+"team": "WAS"
+},
+{
+"draft_year": 2025,
+"pick": 1,
+"round": 1,
+"player": "Cooper Flagg",
+"team": "DAL"
+},
+{
+"draft_year": 2025,
+"pick": 2,
+"round": 1,
+"player": "Dylan Harper",
+"team": "SAS"
+},
+{
+"draft_year": 2025,
+"pick": 3,
+"round": 1,
+"player": "VJ Edgecombe",
+"team": "PHI"
+},
+{
+"draft_year": 2025,
+"pick": 4,
+"round": 1,
+"player": "Kon Knueppel",
+"team": "CHA"
+},
+{
+"draft_year": 2025,
+"pick": 5,
+"round": 1,
+"player": "Ace Bailey",
+"team": "UTA"
+},
+{
+"draft_year": 2025,
+"pick": 6,
+"round": 1,
+"player": "Tre Johnson",
+"team": "WAS"
+},
+{
+"draft_year": 2025,
+"pick": 7,
+"round": 1,
+"player": "Jeremiah Fears",
+"team": "NOP"
+},
+{
+"draft_year": 2025,
+"pick": 8,
+"round": 1,
+"player": "Egor D\u00ebmin",
+"team": "BKN"
+},
+{
+"draft_year": 2025,
+"pick": 9,
+"round": 1,
+"player": "Collin Murray-Boyles",
+"team": "TOR"
+},
+{
+"draft_year": 2025,
+"pick": 10,
+"round": 1,
+"player": "Khaman Maluach",
+"team": "HOU"
+},
+{
+"draft_year": 2025,
+"pick": 11,
+"round": 1,
+"player": "Cedric Coward",
+"team": "POR"
+},
+{
+"draft_year": 2025,
+"pick": 12,
+"round": 1,
+"player": "Noa Essengue",
+"team": "CHI"
+},
+{
+"draft_year": 2025,
+"pick": 13,
+"round": 1,
+"player": "Derik Queen",
+"team": "ATL"
+},
+{
+"draft_year": 2025,
+"pick": 14,
+"round": 1,
+"player": "Carter Bryant",
+"team": "SAS"
+},
+{
+"draft_year": 2025,
+"pick": 15,
+"round": 1,
+"player": "Thomas Sorber",
+"team": "OKC"
+},
+{
+"draft_year": 2025,
+"pick": 16,
+"round": 1,
+"player": "Yang Hansen",
+"team": "MEM"
+},
+{
+"draft_year": 2025,
+"pick": 17,
+"round": 1,
+"player": "Joan Beringer",
+"team": "MIN"
+},
+{
+"draft_year": 2025,
+"pick": 18,
+"round": 1,
+"player": "Walter Clayton Jr.",
+"team": "WAS"
+},
+{
+"draft_year": 2025,
+"pick": 19,
+"round": 1,
+"player": "Nolan Traore",
+"team": "BKN"
+},
+{
+"draft_year": 2025,
+"pick": 20,
+"round": 1,
+"player": "Kasparas Jaku\u010dionis",
+"team": "MIA"
+},
+{
+"draft_year": 2025,
+"pick": 21,
+"round": 1,
+"player": "Will Riley",
+"team": "UTA"
+},
+{
+"draft_year": 2025,
+"pick": 22,
+"round": 1,
+"player": "Drake Powell",
+"team": "ATL"
+},
+{
+"draft_year": 2025,
+"pick": 23,
+"round": 1,
+"player": "Asa Newell",
+"team": "NOP"
+},
+{
+"draft_year": 2025,
+"pick": 24,
+"round": 1,
+"player": "Nique Clifford",
+"team": "OKC"
+},
+{
+"draft_year": 2025,
+"pick": 25,
+"round": 1,
+"player": "Jase Richardson",
+"team": "ORL"
+},
+{
+"draft_year": 2025,
+"pick": 26,
+"round": 1,
+"player": "Ben Saraf",
+"team": "BKN"
+},
+{
+"draft_year": 2025,
+"pick": 27,
+"round": 1,
+"player": "Danny Wolf",
+"team": "BKN"
+},
+{
+"draft_year": 2025,
+"pick": 28,
+"round": 1,
+"player": "Hugo Gonz\u00e1lez",
+"team": "BOS"
+},
+{
+"draft_year": 2025,
+"pick": 29,
+"round": 1,
+"player": "Liam McNeeley",
+"team": "PHX"
+},
+{
+"draft_year": 2025,
+"pick": 30,
+"round": 1,
+"player": "Yanic Konan Niederh\u00e4user",
+"team": "LAC"
+},
+{
+"draft_year": 2025,
+"pick": 31,
+"round": 2,
+"player": "Rasheer Fleming",
+"team": "MIN"
+},
+{
+"draft_year": 2025,
+"pick": 32,
+"round": 2,
+"player": "Noah Penda",
+"team": "BOS"
+},
+{
+"draft_year": 2025,
+"pick": 33,
+"round": 2,
+"player": "Sion James",
+"team": "CHA"
+},
+{
+"draft_year": 2025,
+"pick": 34,
+"round": 2,
+"player": "Ryan Kalkbrenner",
+"team": "CHA"
+},
+{
+"draft_year": 2025,
+"pick": 35,
+"round": 2,
+"player": "Johni Broome",
+"team": "PHI"
+},
+{
+"draft_year": 2025,
+"pick": 36,
+"round": 2,
+"player": "Adou Thiero",
+"team": "BKN"
+},
+{
+"draft_year": 2025,
+"pick": 37,
+"round": 2,
+"player": "Chaz Lanier",
+"team": "DET"
+},
+{
+"draft_year": 2025,
+"pick": 38,
+"round": 2,
+"player": "Kam Jones",
+"team": "SAS"
+},
+{
+"draft_year": 2025,
+"pick": 39,
+"round": 2,
+"player": "Alijah Martin",
+"team": "TOR"
+},
+{
+"draft_year": 2025,
+"pick": 40,
+"round": 2,
+"player": "Micah Peavy",
+"team": "WAS"
+},
+{
+"draft_year": 2025,
+"pick": 41,
+"round": 2,
+"player": "Koby Brea",
+"team": "GSW"
+},
+{
+"draft_year": 2025,
+"pick": 42,
+"round": 2,
+"player": "Maxime Raynaud",
+"team": "SAC"
+},
+{
+"draft_year": 2025,
+"pick": 43,
+"round": 2,
+"player": "Jamir Watkins",
+"team": "WAS"
+},
+{
+"draft_year": 2025,
+"pick": 44,
+"round": 2,
+"player": "Brooks Barnhizer",
+"team": "OKC"
+},
+{
+"draft_year": 2025,
+"pick": 45,
+"round": 2,
+"player": "Rocco Zikarsky",
+"team": "CHI"
+},
+{
+"draft_year": 2025,
+"pick": 46,
+"round": 2,
+"player": "Amari Williams",
+"team": "ORL"
+},
+{
+"draft_year": 2025,
+"pick": 47,
+"round": 2,
+"player": "Bogoljub Markovi\u0107",
+"team": "MIL"
+},
+{
+"draft_year": 2025,
+"pick": 48,
+"round": 2,
+"player": "Javon Small",
+"team": "MEM"
+},
+{
+"draft_year": 2025,
+"pick": 49,
+"round": 2,
+"player": "Tyrese Proctor",
+"team": "CLE"
+},
+{
+"draft_year": 2025,
+"pick": 50,
+"round": 2,
+"player": "Kobe Sanders",
+"team": "NYK"
+},
+{
+"draft_year": 2025,
+"pick": 51,
+"round": 2,
+"player": "Mohamed Diawara",
+"team": "LAC"
+},
+{
+"draft_year": 2025,
+"pick": 52,
+"round": 2,
+"player": "Alex Toohey",
+"team": "PHX"
+},
+{
+"draft_year": 2025,
+"pick": 53,
+"round": 2,
+"player": "John Tonje",
+"team": "UTA"
+},
+{
+"draft_year": 2025,
+"pick": 54,
+"round": 2,
+"player": "Taelon Peter",
+"team": "IND"
+},
+{
+"draft_year": 2025,
+"pick": 55,
+"round": 2,
+"player": "Lachlan Olbrich",
+"team": "LAL"
+},
+{
+"draft_year": 2025,
+"pick": 56,
+"round": 2,
+"player": "Will Richard",
+"team": "MEM"
+},
+{
+"draft_year": 2025,
+"pick": 57,
+"round": 2,
+"player": "Max Shulga",
+"team": "ORL"
+},
+{
+"draft_year": 2025,
+"pick": 58,
+"round": 2,
+"player": "Saliou Niang",
+"team": "CLE"
+},
+{
+"draft_year": 2025,
+"pick": 59,
+"round": 2,
+"player": "Jahmai Mashack",
+"team": "HOU"
+},
+{
+"draft_year": 2024,
+"pick": 1,
+"round": 1,
+"player": "Zaccharie Risacher",
+"team": "ATL"
+},
+{
+"draft_year": 2024,
+"pick": 2,
+"round": 1,
+"player": "Alex Sarr",
+"team": "WAS"
+},
+{
+"draft_year": 2024,
+"pick": 3,
+"round": 1,
+"player": "Reed Sheppard",
+"team": "HOU"
+},
+{
+"draft_year": 2024,
+"pick": 4,
+"round": 1,
+"player": "Stephon Castle",
+"team": "SAS"
+},
+{
+"draft_year": 2024,
+"pick": 5,
+"round": 1,
+"player": "Ronald Holland II",
+"team": "DET"
+},
+{
+"draft_year": 2024,
+"pick": 6,
+"round": 1,
+"player": "Tidjane Sala\u00fcn",
+"team": "CHA"
+},
+{
+"draft_year": 2024,
+"pick": 7,
+"round": 1,
+"player": "Donovan Clingan",
+"team": "POR"
+},
+{
+"draft_year": 2024,
+"pick": 8,
+"round": 1,
+"player": "Rob Dillingham",
+"team": "SAS"
+},
+{
+"draft_year": 2024,
+"pick": 9,
+"round": 1,
+"player": "Zach Edey",
+"team": "MEM"
+},
+{
+"draft_year": 2024,
+"pick": 10,
+"round": 1,
+"player": "Cody Williams",
+"team": "UTA"
+},
+{
+"draft_year": 2024,
+"pick": 11,
+"round": 1,
+"player": "Matas Buzelis",
+"team": "CHI"
+},
+{
+"draft_year": 2024,
+"pick": 12,
+"round": 1,
+"player": "Nikola Topi\u0107",
+"team": "OKC"
+},
+{
+"draft_year": 2024,
+"pick": 13,
+"round": 1,
+"player": "Devin Carter",
+"team": "SAC"
+},
+{
+"draft_year": 2024,
+"pick": 14,
+"round": 1,
+"player": "Bub Carrington",
+"team": "POR"
+},
+{
+"draft_year": 2024,
+"pick": 15,
+"round": 1,
+"player": "Kel'el Ware",
+"team": "MIA"
+},
+{
+"draft_year": 2024,
+"pick": 16,
+"round": 1,
+"player": "Jared McCain",
+"team": "PHI"
+},
+{
+"draft_year": 2024,
+"pick": 17,
+"round": 1,
+"player": "Dalton Knecht",
+"team": "LAL"
+},
+{
+"draft_year": 2024,
+"pick": 18,
+"round": 1,
+"player": "Tristan da Silva",
+"team": "ORL"
+},
+{
+"draft_year": 2024,
+"pick": 19,
+"round": 1,
+"player": "Ja'Kobe Walter",
+"team": "TOR"
+},
+{
+"draft_year": 2024,
+"pick": 20,
+"round": 1,
+"player": "Jaylon Tyson",
+"team": "CLE"
+},
+{
+"draft_year": 2024,
+"pick": 21,
+"round": 1,
+"player": "Yves Missi",
+"team": "NOP"
+},
+{
+"draft_year": 2024,
+"pick": 22,
+"round": 1,
+"player": "DaRon Holmes II",
+"team": "PHX"
+},
+{
+"draft_year": 2024,
+"pick": 23,
+"round": 1,
+"player": "AJ Johnson",
+"team": "MIL"
+},
+{
+"draft_year": 2024,
+"pick": 24,
+"round": 1,
+"player": "Kyshawn George",
+"team": "NYK"
+},
+{
+"draft_year": 2024,
+"pick": 25,
+"round": 1,
+"player": "Pac\u00f4me Dadiet",
+"team": "NYK"
+},
+{
+"draft_year": 2024,
+"pick": 26,
+"round": 1,
+"player": "Dillon Jones",
+"team": "WAS"
+},
+{
+"draft_year": 2024,
+"pick": 27,
+"round": 1,
+"player": "Terrence Shannon Jr",
+"team": "MIN"
+},
+{
+"draft_year": 2024,
+"pick": 28,
+"round": 1,
+"player": "Ryan Dunn",
+"team": "DEN"
+},
+{
+"draft_year": 2024,
+"pick": 29,
+"round": 1,
+"player": "Isaiah Collier",
+"team": "UTA"
+},
+{
+"draft_year": 2024,
+"pick": 30,
+"round": 1,
+"player": "Baylor Scheierman",
+"team": "BOS"
+},
+{
+"draft_year": 2024,
+"pick": 31,
+"round": 2,
+"player": "Jonathan Mogbo",
+"team": "TOR"
+},
+{
+"draft_year": 2024,
+"pick": 32,
+"round": 2,
+"player": "Kyle Filipowski",
+"team": "UTA"
+},
+{
+"draft_year": 2024,
+"pick": 33,
+"round": 2,
+"player": "Tyler Smith",
+"team": "MIL"
+},
+{
+"draft_year": 2024,
+"pick": 34,
+"round": 2,
+"player": "Tyler Kolek",
+"team": "POR"
+},
+{
+"draft_year": 2024,
+"pick": 35,
+"round": 2,
+"player": "Johnny Furphy",
+"team": "SAS"
+},
+{
+"draft_year": 2024,
+"pick": 36,
+"round": 2,
+"player": "Juan Nunez",
+"team": "IND"
+},
+{
+"draft_year": 2024,
+"pick": 37,
+"round": 2,
+"player": "Bobi Klintman",
+"team": "MIN"
+},
+{
+"draft_year": 2024,
+"pick": 38,
+"round": 2,
+"player": "Ajay Mitchell",
+"team": "NYK"
+},
+{
+"draft_year": 2024,
+"pick": 39,
+"round": 2,
+"player": "Jaylen Wells",
+"team": "MEM"
+},
+{
+"draft_year": 2024,
+"pick": 40,
+"round": 2,
+"player": "Oso Ighodaro",
+"team": "POR"
+},
+{
+"draft_year": 2024,
+"pick": 41,
+"round": 2,
+"player": "Adem Bona",
+"team": "PHI"
+},
+{
+"draft_year": 2024,
+"pick": 42,
+"round": 2,
+"player": "KJ Simpson",
+"team": "CHA"
+},
+{
+"draft_year": 2024,
+"pick": 43,
+"round": 2,
+"player": "Nikola Djurisic",
+"team": "MIA"
+},
+{
+"draft_year": 2024,
+"pick": 44,
+"round": 2,
+"player": "Pelle Larsson",
+"team": "HOU"
+},
+{
+"draft_year": 2024,
+"pick": 45,
+"round": 2,
+"player": "Jamal Shead",
+"team": "SAC"
+},
+{
+"draft_year": 2024,
+"pick": 46,
+"round": 2,
+"player": "Cam Christie",
+"team": "LAC"
+},
+{
+"draft_year": 2024,
+"pick": 47,
+"round": 2,
+"player": "Antonio Reeves",
+"team": "ORL"
+},
+{
+"draft_year": 2024,
+"pick": 48,
+"round": 2,
+"player": "Harrison Ingram",
+"team": "SAS"
+},
+{
+"draft_year": 2024,
+"pick": 49,
+"round": 2,
+"player": "Tristen Newton",
+"team": "IND"
+},
+{
+"draft_year": 2024,
+"pick": 50,
+"round": 2,
+"player": "Enrique Freeman",
+"team": "IND"
+},
+{
+"draft_year": 2024,
+"pick": 51,
+"round": 2,
+"player": "Melvin Ajinca",
+"team": "NYK"
+},
+{
+"draft_year": 2024,
+"pick": 52,
+"round": 2,
+"player": "Quinten Post",
+"team": "GSW"
+},
+{
+"draft_year": 2024,
+"pick": 53,
+"round": 2,
+"player": "Cam Spencer",
+"team": "DET"
+},
+{
+"draft_year": 2024,
+"pick": 54,
+"round": 2,
+"player": "Anton Watson",
+"team": "BOS"
+},
+{
+"draft_year": 2024,
+"pick": 55,
+"round": 2,
+"player": "Bronny James",
+"team": "LAL"
+},
+{
+"draft_year": 2024,
+"pick": 56,
+"round": 2,
+"player": "Kevin McCullar Jr.",
+"team": "PHX"
+},
+{
+"draft_year": 2024,
+"pick": 57,
+"round": 2,
+"player": "Ulrich Chomche",
+"team": "MEM"
+},
+{
+"draft_year": 2024,
+"pick": 58,
+"round": 2,
+"player": "Ariel Hukporti",
+"team": "DAL"
+},
+{
+"draft_year": 2023,
+"pick": 1,
+"round": 1,
+"player": "Victor Wembanyama",
+"team": "SAS"
+},
+{
+"draft_year": 2023,
+"pick": 2,
+"round": 1,
+"player": "Brandon Miller",
+"team": "CHA"
+},
+{
+"draft_year": 2023,
+"pick": 3,
+"round": 1,
+"player": "Scoot Henderson",
+"team": "POR"
+},
+{
+"draft_year": 2023,
+"pick": 4,
+"round": 1,
+"player": "Amen Thompson",
+"team": "HOU"
+},
+{
+"draft_year": 2023,
+"pick": 5,
+"round": 1,
+"player": "Ausar Thompson",
+"team": "DET"
+},
+{
+"draft_year": 2023,
+"pick": 6,
+"round": 1,
+"player": "Anthony Black",
+"team": "ORL"
+},
+{
+"draft_year": 2023,
+"pick": 7,
+"round": 1,
+"player": "Bilal Coulibaly",
+"team": "IND"
+},
+{
+"draft_year": 2023,
+"pick": 8,
+"round": 1,
+"player": "Jarace Walker",
+"team": "WAS"
+},
+{
+"draft_year": 2023,
+"pick": 9,
+"round": 1,
+"player": "Taylor Hendricks",
+"team": "UTA"
+},
+{
+"draft_year": 2023,
+"pick": 10,
+"round": 1,
+"player": "Cason Wallace",
+"team": "DAL"
+},
+{
+"draft_year": 2023,
+"pick": 11,
+"round": 1,
+"player": "Jett Howard",
+"team": "ORL"
+},
+{
+"draft_year": 2023,
+"pick": 12,
+"round": 1,
+"player": "Dereck Lively II",
+"team": "OKC"
+},
+{
+"draft_year": 2023,
+"pick": 13,
+"round": 1,
+"player": "Gradey Dick",
+"team": "TOR"
+},
+{
+"draft_year": 2023,
+"pick": 14,
+"round": 1,
+"player": "Jordan Hawkins",
+"team": "NOP"
+},
+{
+"draft_year": 2023,
+"pick": 15,
+"round": 1,
+"player": "Kobe Bufkin",
+"team": "ATL"
+},
+{
+"draft_year": 2023,
+"pick": 16,
+"round": 1,
+"player": "Keyonte George",
+"team": "UTA"
+},
+{
+"draft_year": 2023,
+"pick": 17,
+"round": 1,
+"player": "Jalen Hood-Schifino",
+"team": "LAL"
+},
+{
+"draft_year": 2023,
+"pick": 18,
+"round": 1,
+"player": "Jaime Jaquez Jr.",
+"team": "MIA"
+},
+{
+"draft_year": 2023,
+"pick": 19,
+"round": 1,
+"player": "Brandin Podziemski",
+"team": "GSW"
+},
+{
+"draft_year": 2023,
+"pick": 20,
+"round": 1,
+"player": "Cam Whitmore",
+"team": "HOU"
+},
+{
+"draft_year": 2023,
+"pick": 21,
+"round": 1,
+"player": "Noah Clowney",
+"team": "BKN"
+},
+{
+"draft_year": 2023,
+"pick": 22,
+"round": 1,
+"player": "Dariq Whitehead",
+"team": "BKN"
+},
+{
+"draft_year": 2023,
+"pick": 23,
+"round": 1,
+"player": "Kris Murray",
+"team": "POR"
+},
+{
+"draft_year": 2023,
+"pick": 24,
+"round": 1,
+"player": "Olivier-Maxence Prosper",
+"team": "SAC"
+},
+{
+"draft_year": 2023,
+"pick": 25,
+"round": 1,
+"player": "Marcus Sasser",
+"team": "MEM"
+},
+{
+"draft_year": 2023,
+"pick": 26,
+"round": 1,
+"player": "Ben Sheppard",
+"team": "IND"
+},
+{
+"draft_year": 2023,
+"pick": 27,
+"round": 1,
+"player": "Nick Smith Jr.",
+"team": "CHA"
+},
+{
+"draft_year": 2023,
+"pick": 28,
+"round": 1,
+"player": "Brice Sensabaugh",
+"team": "UTA"
+},
+{
+"draft_year": 2023,
+"pick": 29,
+"round": 1,
+"player": "Julian Strawther",
+"team": "IND"
+},
+{
+"draft_year": 2023,
+"pick": 30,
+"round": 1,
+"player": "Kobe Brown",
+"team": "LAC"
+},
+{
+"draft_year": 2023,
+"pick": 31,
+"round": 2,
+"player": "James Nnaji",
+"team": "DET"
+},
+{
+"draft_year": 2023,
+"pick": 32,
+"round": 2,
+"player": "Jalen Pickett",
+"team": "IND"
+},
+{
+"draft_year": 2023,
+"pick": 33,
+"round": 2,
+"player": "Leonard Miller",
+"team": "SAS"
+},
+{
+"draft_year": 2023,
+"pick": 34,
+"round": 2,
+"player": "Colby Jones",
+"team": "CHA"
+},
+{
+"draft_year": 2023,
+"pick": 35,
+"round": 2,
+"player": "Julian Phillips",
+"team": "BOS"
+},
+{
+"draft_year": 2023,
+"pick": 36,
+"round": 2,
+"player": "Andre Jackson Jr.",
+"team": "ORL"
+},
+{
+"draft_year": 2023,
+"pick": 37,
+"round": 2,
+"player": "Hunter Tyson",
+"team": "OKC"
+},
+{
+"draft_year": 2023,
+"pick": 38,
+"round": 2,
+"player": "Jordan Walsh",
+"team": "SAC"
+},
+{
+"draft_year": 2023,
+"pick": 39,
+"round": 2,
+"player": "Mouhamed Gueye",
+"team": "CHA"
+},
+{
+"draft_year": 2023,
+"pick": 40,
+"round": 2,
+"player": "Maxwell Lewis",
+"team": "DEN"
+},
+{
+"draft_year": 2023,
+"pick": 41,
+"round": 2,
+"player": "Amari Bailey",
+"team": "CHA"
+},
+{
+"draft_year": 2023,
+"pick": 42,
+"round": 2,
+"player": "Tristan Vuk\u010devi\u0107",
+"team": "WAS"
+},
+{
+"draft_year": 2023,
+"pick": 43,
+"round": 2,
+"player": "Rayan Rupert",
+"team": "POR"
+},
+{
+"draft_year": 2023,
+"pick": 44,
+"round": 2,
+"player": "Sidy Cissoko",
+"team": "SAS"
+},
+{
+"draft_year": 2023,
+"pick": 45,
+"round": 2,
+"player": "GG Jackson",
+"team": "MEM"
+},
+{
+"draft_year": 2023,
+"pick": 46,
+"round": 2,
+"player": "Seth Lundy",
+"team": "ATL"
+},
+{
+"draft_year": 2023,
+"pick": 47,
+"round": 2,
+"player": "Mojave King",
+"team": "LAL"
+},
+{
+"draft_year": 2023,
+"pick": 48,
+"round": 2,
+"player": "Jordan Miller",
+"team": "LAC"
+},
+{
+"draft_year": 2023,
+"pick": 49,
+"round": 2,
+"player": "Emoni Bates",
+"team": "CLE"
+},
+{
+"draft_year": 2023,
+"pick": 50,
+"round": 2,
+"player": "Keyontae Johnson",
+"team": "OKC"
+},
+{
+"draft_year": 2023,
+"pick": 51,
+"round": 2,
+"player": "Jalen Wilson",
+"team": "BKN"
+},
+{
+"draft_year": 2023,
+"pick": 52,
+"round": 2,
+"player": "Toumani Camara",
+"team": "PHX"
+},
+{
+"draft_year": 2023,
+"pick": 53,
+"round": 2,
+"player": "Jaylen Clark",
+"team": "MIN"
+},
+{
+"draft_year": 2023,
+"pick": 54,
+"round": 2,
+"player": "Jalen Slawson",
+"team": "SAC"
+},
+{
+"draft_year": 2023,
+"pick": 55,
+"round": 2,
+"player": "Isaiah Wong",
+"team": "IND"
+},
+{
+"draft_year": 2023,
+"pick": 56,
+"round": 2,
+"player": "Tarik Biberovi\u0107",
+"team": "MEM"
+},
+{
+"draft_year": 2023,
+"pick": 57,
+"round": 2,
+"player": "Trayce Jackson-Davis",
+"team": "WAS"
+},
+{
+"draft_year": 2023,
+"pick": 58,
+"round": 2,
+"player": "Chris Livingston",
+"team": "MIL"
+},
+{
+"draft_year": 2022,
+"pick": 1,
+"round": 1,
+"player": "Paolo Banchero",
+"team": "ORL"
+},
+{
+"draft_year": 2022,
+"pick": 2,
+"round": 1,
+"player": "Chet Holmgren",
+"team": "OKC"
+},
+{
+"draft_year": 2022,
+"pick": 3,
+"round": 1,
+"player": "Jabari Smith Jr.",
+"team": "HOU"
+},
+{
+"draft_year": 2022,
+"pick": 4,
+"round": 1,
+"player": "Keegan Murray",
+"team": "SAC"
+},
+{
+"draft_year": 2022,
+"pick": 5,
+"round": 1,
+"player": "Jaden Ivey",
+"team": "DET"
+},
+{
+"draft_year": 2022,
+"pick": 6,
+"round": 1,
+"player": "Bennedict Mathurin",
+"team": "IND"
+},
+{
+"draft_year": 2022,
+"pick": 7,
+"round": 1,
+"player": "Shaedon Sharpe",
+"team": "POR"
+},
+{
+"draft_year": 2022,
+"pick": 8,
+"round": 1,
+"player": "Dyson Daniels",
+"team": "NOP"
+},
+{
+"draft_year": 2022,
+"pick": 9,
+"round": 1,
+"player": "Jeremy Sochan",
+"team": "SAS"
+},
+{
+"draft_year": 2022,
+"pick": 10,
+"round": 1,
+"player": "Johnny Davis",
+"team": "WAS"
+},
+{
+"draft_year": 2022,
+"pick": 11,
+"round": 1,
+"player": "Ousmane Dieng",
+"team": "NYK"
+},
+{
+"draft_year": 2022,
+"pick": 12,
+"round": 1,
+"player": "Jalen Williams",
+"team": "OKC"
+},
+{
+"draft_year": 2022,
+"pick": 13,
+"round": 1,
+"player": "Jalen Duren",
+"team": "CHA"
+},
+{
+"draft_year": 2022,
+"pick": 14,
+"round": 1,
+"player": "Ochai Agbaji",
+"team": "CLE"
+},
+{
+"draft_year": 2022,
+"pick": 15,
+"round": 1,
+"player": "Mark Williams",
+"team": "CHA"
+},
+{
+"draft_year": 2022,
+"pick": 16,
+"round": 1,
+"player": "AJ Griffin",
+"team": "ATL"
+},
+{
+"draft_year": 2022,
+"pick": 17,
+"round": 1,
+"player": "Tari Eason",
+"team": "HOU"
+},
+{
+"draft_year": 2022,
+"pick": 18,
+"round": 1,
+"player": "Dalen Terry",
+"team": "CHI"
+},
+{
+"draft_year": 2022,
+"pick": 19,
+"round": 1,
+"player": "Jake LaRavia",
+"team": "MIN"
+},
+{
+"draft_year": 2022,
+"pick": 20,
+"round": 1,
+"player": "Malaki Branham",
+"team": "SAS"
+},
+{
+"draft_year": 2022,
+"pick": 21,
+"round": 1,
+"player": "Christian Braun",
+"team": "DEN"
+},
+{
+"draft_year": 2022,
+"pick": 22,
+"round": 1,
+"player": "Walker Kessler",
+"team": "MEM"
+},
+{
+"draft_year": 2022,
+"pick": 23,
+"round": 1,
+"player": "David Roddy",
+"team": "PHI"
+},
+{
+"draft_year": 2022,
+"pick": 24,
+"round": 1,
+"player": "MarJon Beauchamp",
+"team": "MIL"
+},
+{
+"draft_year": 2022,
+"pick": 25,
+"round": 1,
+"player": "Blake Wesley",
+"team": "SAS"
+},
+{
+"draft_year": 2022,
+"pick": 26,
+"round": 1,
+"player": "Wendell Moore Jr.",
+"team": "DAL"
+},
+{
+"draft_year": 2022,
+"pick": 27,
+"round": 1,
+"player": "Nikola Jovi\u0107",
+"team": "MIA"
+},
+{
+"draft_year": 2022,
+"pick": 28,
+"round": 1,
+"player": "Patrick Baldwin Jr.",
+"team": "GSW"
+},
+{
+"draft_year": 2022,
+"pick": 29,
+"round": 1,
+"player": "TyTy Washington Jr.",
+"team": "MEM"
+},
+{
+"draft_year": 2022,
+"pick": 30,
+"round": 1,
+"player": "Peyton Watson",
+"team": "OKC"
+},
+{
+"draft_year": 2022,
+"pick": 31,
+"round": 2,
+"player": "Andrew Nembhard",
+"team": "IND"
+},
+{
+"draft_year": 2022,
+"pick": 32,
+"round": 2,
+"player": "Caleb Houstan",
+"team": "ORL"
+},
+{
+"draft_year": 2022,
+"pick": 33,
+"round": 2,
+"player": "Christian Koloko",
+"team": "TOR"
+},
+{
+"draft_year": 2022,
+"pick": 34,
+"round": 2,
+"player": "Jaylin Williams",
+"team": "OKC"
+},
+{
+"draft_year": 2022,
+"pick": 35,
+"round": 2,
+"player": "Max Christie",
+"team": "LAL"
+},
+{
+"draft_year": 2022,
+"pick": 36,
+"round": 2,
+"player": "Gabriele Procida",
+"team": "POR"
+},
+{
+"draft_year": 2022,
+"pick": 37,
+"round": 2,
+"player": "Jaden Hardy",
+"team": "SAC"
+},
+{
+"draft_year": 2022,
+"pick": 38,
+"round": 2,
+"player": "Kennedy Chandler",
+"team": "SAS"
+},
+{
+"draft_year": 2022,
+"pick": 39,
+"round": 2,
+"player": "Khalifa Diop",
+"team": "CLE"
+},
+{
+"draft_year": 2022,
+"pick": 40,
+"round": 2,
+"player": "Bryce McGowens",
+"team": "MIN"
+},
+{
+"draft_year": 2022,
+"pick": 41,
+"round": 2,
+"player": "E.J. Liddell",
+"team": "NOP"
+},
+{
+"draft_year": 2022,
+"pick": 42,
+"round": 2,
+"player": "Trevor Keels",
+"team": "NYK"
+},
+{
+"draft_year": 2022,
+"pick": 43,
+"round": 2,
+"player": "Moussa Diabat\u00e9",
+"team": "LAC"
+},
+{
+"draft_year": 2022,
+"pick": 44,
+"round": 2,
+"player": "Ryan Rollins",
+"team": "ATL"
+},
+{
+"draft_year": 2022,
+"pick": 45,
+"round": 2,
+"player": "Josh Minott",
+"team": "CHA"
+},
+{
+"draft_year": 2022,
+"pick": 46,
+"round": 2,
+"player": "Ismael Kamagate",
+"team": "DET"
+},
+{
+"draft_year": 2022,
+"pick": 47,
+"round": 2,
+"player": "Vince Williams Jr.",
+"team": "MEM"
+},
+{
+"draft_year": 2022,
+"pick": 48,
+"round": 2,
+"player": "Kendall Brown",
+"team": "MIN"
+},
+{
+"draft_year": 2022,
+"pick": 49,
+"round": 2,
+"player": "Isaiah Mobley",
+"team": "CLE"
+},
+{
+"draft_year": 2022,
+"pick": 50,
+"round": 2,
+"player": "Matteo Spagnolo",
+"team": "MIN"
+},
+{
+"draft_year": 2022,
+"pick": 51,
+"round": 2,
+"player": "Tyrese Martin",
+"team": "GSW"
+},
+{
+"draft_year": 2022,
+"pick": 52,
+"round": 2,
+"player": "Karlo Matkovi\u0107",
+"team": "NOP"
+},
+{
+"draft_year": 2022,
+"pick": 53,
+"round": 2,
+"player": "JD Davison",
+"team": "BOS"
+},
+{
+"draft_year": 2022,
+"pick": 54,
+"round": 2,
+"player": "Yannick Nzosa",
+"team": "WAS"
+},
+{
+"draft_year": 2022,
+"pick": 55,
+"round": 2,
+"player": "Gui Santos",
+"team": "GSW"
+},
+{
+"draft_year": 2022,
+"pick": 56,
+"round": 2,
+"player": "Luke Travers",
+"team": "CLE"
+},
+{
+"draft_year": 2022,
+"pick": 57,
+"round": 2,
+"player": "Jabari Walker",
+"team": "POR"
+},
+{
+"draft_year": 2022,
+"pick": 58,
+"round": 2,
+"player": "Hugo Besson",
+"team": "IND"
+},
+{
+"draft_year": 2021,
+"pick": 1,
+"round": 1,
+"player": "Cade Cunningham",
+"team": "DET"
+},
+{
+"draft_year": 2021,
+"pick": 2,
+"round": 1,
+"player": "Jalen Green",
+"team": "HOU"
+},
+{
+"draft_year": 2021,
+"pick": 3,
+"round": 1,
+"player": "Evan Mobley",
+"team": "CLE"
+},
+{
+"draft_year": 2021,
+"pick": 4,
+"round": 1,
+"player": "Scottie Barnes",
+"team": "TOR"
+},
+{
+"draft_year": 2021,
+"pick": 5,
+"round": 1,
+"player": "Jalen Suggs",
+"team": "ORL"
+},
+{
+"draft_year": 2021,
+"pick": 6,
+"round": 1,
+"player": "Josh Giddey",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 7,
+"round": 1,
+"player": "Jonathan Kuminga",
+"team": "GSW"
+},
+{
+"draft_year": 2021,
+"pick": 8,
+"round": 1,
+"player": "Franz Wagner",
+"team": "ORL"
+},
+{
+"draft_year": 2021,
+"pick": 9,
+"round": 1,
+"player": "Davion Mitchell",
+"team": "SAC"
+},
+{
+"draft_year": 2021,
+"pick": 10,
+"round": 1,
+"player": "Ziaire Williams",
+"team": "NOP"
+},
+{
+"draft_year": 2021,
+"pick": 11,
+"round": 1,
+"player": "James Bouknight",
+"team": "CHA"
+},
+{
+"draft_year": 2021,
+"pick": 12,
+"round": 1,
+"player": "Joshua Primo",
+"team": "SAS"
+},
+{
+"draft_year": 2021,
+"pick": 13,
+"round": 1,
+"player": "Chris Duarte",
+"team": "IND"
+},
+{
+"draft_year": 2021,
+"pick": 14,
+"round": 1,
+"player": "Moses Moody",
+"team": "GSW"
+},
+{
+"draft_year": 2021,
+"pick": 15,
+"round": 1,
+"player": "Corey Kispert",
+"team": "WAS"
+},
+{
+"draft_year": 2021,
+"pick": 16,
+"round": 1,
+"player": "Alperen Sengun",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 17,
+"round": 1,
+"player": "Trey Murphy III",
+"team": "MEM"
+},
+{
+"draft_year": 2021,
+"pick": 18,
+"round": 1,
+"player": "Tre Mann",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 19,
+"round": 1,
+"player": "Kai Jones",
+"team": "NYK"
+},
+{
+"draft_year": 2021,
+"pick": 20,
+"round": 1,
+"player": "Jalen Johnson",
+"team": "ATL"
+},
+{
+"draft_year": 2021,
+"pick": 21,
+"round": 1,
+"player": "Keon Johnson",
+"team": "NYK"
+},
+{
+"draft_year": 2021,
+"pick": 22,
+"round": 1,
+"player": "Isaiah Jackson",
+"team": "LAL"
+},
+{
+"draft_year": 2021,
+"pick": 23,
+"round": 1,
+"player": "Usman Garuba",
+"team": "HOU"
+},
+{
+"draft_year": 2021,
+"pick": 24,
+"round": 1,
+"player": "Josh Christopher",
+"team": "HOU"
+},
+{
+"draft_year": 2021,
+"pick": 25,
+"round": 1,
+"player": "Quentin Grimes",
+"team": "LAC"
+},
+{
+"draft_year": 2021,
+"pick": 26,
+"round": 1,
+"player": "Bones Hyland",
+"team": "DEN"
+},
+{
+"draft_year": 2021,
+"pick": 27,
+"round": 1,
+"player": "Cam Thomas",
+"team": "BKN"
+},
+{
+"draft_year": 2021,
+"pick": 28,
+"round": 1,
+"player": "Jaden Springer",
+"team": "PHI"
+},
+{
+"draft_year": 2021,
+"pick": 29,
+"round": 1,
+"player": "Day'Ron Sharpe",
+"team": "PHX"
+},
+{
+"draft_year": 2021,
+"pick": 30,
+"round": 1,
+"player": "Santi Aldama",
+"team": "UTA"
+},
+{
+"draft_year": 2021,
+"pick": 31,
+"round": 2,
+"player": "Isaiah Todd",
+"team": "MIL"
+},
+{
+"draft_year": 2021,
+"pick": 32,
+"round": 2,
+"player": "Jeremiah Robinson-Earl",
+"team": "NYK"
+},
+{
+"draft_year": 2021,
+"pick": 33,
+"round": 2,
+"player": "Jason Preston",
+"team": "ORL"
+},
+{
+"draft_year": 2021,
+"pick": 34,
+"round": 2,
+"player": "Rokas Jokubaitis",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 35,
+"round": 2,
+"player": "Herbert Jones",
+"team": "NOP"
+},
+{
+"draft_year": 2021,
+"pick": 36,
+"round": 2,
+"player": "Miles McBride",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 37,
+"round": 2,
+"player": "JT Thor",
+"team": "DET"
+},
+{
+"draft_year": 2021,
+"pick": 38,
+"round": 2,
+"player": "Ayo Dosunmu",
+"team": "CHI"
+},
+{
+"draft_year": 2021,
+"pick": 39,
+"round": 2,
+"player": "Neemias Queta",
+"team": "SAC"
+},
+{
+"draft_year": 2021,
+"pick": 40,
+"round": 2,
+"player": "Jared Butler",
+"team": "SAC"
+},
+{
+"draft_year": 2021,
+"pick": 41,
+"round": 2,
+"player": "Joe Wieskamp",
+"team": "SAS"
+},
+{
+"draft_year": 2021,
+"pick": 42,
+"round": 2,
+"player": "Isaiah Livers",
+"team": "DET"
+},
+{
+"draft_year": 2021,
+"pick": 43,
+"round": 2,
+"player": "Greg Brown III",
+"team": "NOP"
+},
+{
+"draft_year": 2021,
+"pick": 44,
+"round": 2,
+"player": "Kessler Edwards",
+"team": "BKN"
+},
+{
+"draft_year": 2021,
+"pick": 45,
+"round": 2,
+"player": "Juhann Begarin",
+"team": "BOS"
+},
+{
+"draft_year": 2021,
+"pick": 46,
+"round": 2,
+"player": "Dalano Banton",
+"team": "TOR"
+},
+{
+"draft_year": 2021,
+"pick": 47,
+"round": 2,
+"player": "David Johnson",
+"team": "TOR"
+},
+{
+"draft_year": 2021,
+"pick": 48,
+"round": 2,
+"player": "Sharife Cooper",
+"team": "ATL"
+},
+{
+"draft_year": 2021,
+"pick": 49,
+"round": 2,
+"player": "Marcus Zegarowski",
+"team": "BKN"
+},
+{
+"draft_year": 2021,
+"pick": 50,
+"round": 2,
+"player": "Filip Petrusev",
+"team": "PHI"
+},
+{
+"draft_year": 2021,
+"pick": 51,
+"round": 2,
+"player": "Brandon Boston",
+"team": "MEM"
+},
+{
+"draft_year": 2021,
+"pick": 52,
+"round": 2,
+"player": "Luka Garza",
+"team": "DET"
+},
+{
+"draft_year": 2021,
+"pick": 53,
+"round": 2,
+"player": "Charles Bassey",
+"team": "PHI"
+},
+{
+"draft_year": 2021,
+"pick": 54,
+"round": 2,
+"player": "Sandro Mamukelashvili",
+"team": "IND"
+},
+{
+"draft_year": 2021,
+"pick": 55,
+"round": 2,
+"player": "Aaron Wiggins",
+"team": "OKC"
+},
+{
+"draft_year": 2021,
+"pick": 56,
+"round": 2,
+"player": "Scottie Lewis",
+"team": "CHA"
+},
+{
+"draft_year": 2021,
+"pick": 57,
+"round": 2,
+"player": "Balsa Koprivica",
+"team": "CHA"
+},
+{
+"draft_year": 2021,
+"pick": 58,
+"round": 2,
+"player": "Jericho Sims",
+"team": "NYK"
+},
+{
+"draft_year": 2021,
+"pick": 59,
+"round": 2,
+"player": "RaiQuan Gray",
+"team": "BKN"
+},
+{
+"draft_year": 2021,
+"pick": 60,
+"round": 2,
+"player": "Georgios Kalaitzakis",
+"team": "IND"
+},
+{
+"draft_year": 2020,
+"pick": 1,
+"round": 1,
+"player": "Anthony Edwards",
+"team": "MIN"
+},
+{
+"draft_year": 2020,
+"pick": 2,
+"round": 1,
+"player": "James Wiseman",
+"team": "GSW"
+},
+{
+"draft_year": 2020,
+"pick": 3,
+"round": 1,
+"player": "LaMelo Ball",
+"team": "CHA"
+},
+{
+"draft_year": 2020,
+"pick": 4,
+"round": 1,
+"player": "Patrick Williams",
+"team": "CHI"
+},
+{
+"draft_year": 2020,
+"pick": 5,
+"round": 1,
+"player": "Isaac Okoro",
+"team": "CLE"
+},
+{
+"draft_year": 2020,
+"pick": 6,
+"round": 1,
+"player": "Onyeka Okongwu",
+"team": "ATL"
+},
+{
+"draft_year": 2020,
+"pick": 7,
+"round": 1,
+"player": "Killian Hayes",
+"team": "DET"
+},
+{
+"draft_year": 2020,
+"pick": 8,
+"round": 1,
+"player": "Obi Toppin",
+"team": "NYK"
+},
+{
+"draft_year": 2020,
+"pick": 9,
+"round": 1,
+"player": "Deni Avdija",
+"team": "WAS"
+},
+{
+"draft_year": 2020,
+"pick": 10,
+"round": 1,
+"player": "Jalen Smith",
+"team": "PHX"
+},
+{
+"draft_year": 2020,
+"pick": 11,
+"round": 1,
+"player": "Devin Vassell",
+"team": "SAS"
+},
+{
+"draft_year": 2020,
+"pick": 12,
+"round": 1,
+"player": "Tyrese Haliburton",
+"team": "SAC"
+},
+{
+"draft_year": 2020,
+"pick": 13,
+"round": 1,
+"player": "Kira Lewis Jr.",
+"team": "NOP"
+},
+{
+"draft_year": 2020,
+"pick": 14,
+"round": 1,
+"player": "Aaron Nesmith",
+"team": "BOS"
+},
+{
+"draft_year": 2020,
+"pick": 15,
+"round": 1,
+"player": "Cole Anthony",
+"team": "ORL"
+},
+{
+"draft_year": 2020,
+"pick": 16,
+"round": 1,
+"player": "Isaiah Stewart",
+"team": "POR"
+},
+{
+"draft_year": 2020,
+"pick": 17,
+"round": 1,
+"player": "Aleksej Pokusevski",
+"team": "MIN"
+},
+{
+"draft_year": 2020,
+"pick": 18,
+"round": 1,
+"player": "Josh Green",
+"team": "DAL"
+},
+{
+"draft_year": 2020,
+"pick": 19,
+"round": 1,
+"player": "Saddiq Bey",
+"team": "BKN"
+},
+{
+"draft_year": 2020,
+"pick": 20,
+"round": 1,
+"player": "Precious Achiuwa",
+"team": "MIA"
+},
+{
+"draft_year": 2020,
+"pick": 21,
+"round": 1,
+"player": "Tyrese Maxey",
+"team": "PHI"
+},
+{
+"draft_year": 2020,
+"pick": 22,
+"round": 1,
+"player": "Zeke Nnaji",
+"team": "DEN"
+},
+{
+"draft_year": 2020,
+"pick": 23,
+"round": 1,
+"player": "Leandro Bolmaro",
+"team": "NYK"
+},
+{
+"draft_year": 2020,
+"pick": 24,
+"round": 1,
+"player": "R.J. Hampton",
+"team": "MIL"
+},
+{
+"draft_year": 2020,
+"pick": 25,
+"round": 1,
+"player": "Immanuel Quickley",
+"team": "OKC"
+},
+{
+"draft_year": 2020,
+"pick": 26,
+"round": 1,
+"player": "Payton Pritchard",
+"team": "BOS"
+},
+{
+"draft_year": 2020,
+"pick": 27,
+"round": 1,
+"player": "Udoka Azubuike",
+"team": "UTA"
+},
+{
+"draft_year": 2020,
+"pick": 28,
+"round": 1,
+"player": "Jaden McDaniels",
+"team": "LAL"
+},
+{
+"draft_year": 2020,
+"pick": 29,
+"round": 1,
+"player": "Malachi Flynn",
+"team": "TOR"
+},
+{
+"draft_year": 2020,
+"pick": 30,
+"round": 1,
+"player": "Desmond Bane",
+"team": "BOS"
+},
+{
+"draft_year": 2020,
+"pick": 31,
+"round": 2,
+"player": "Tyrell Terry",
+"team": "DAL"
+},
+{
+"draft_year": 2020,
+"pick": 32,
+"round": 2,
+"player": "Vernon Carey Jr.",
+"team": "CHA"
+},
+{
+"draft_year": 2020,
+"pick": 33,
+"round": 2,
+"player": "Daniel Oturu",
+"team": "MIN"
+},
+{
+"draft_year": 2020,
+"pick": 34,
+"round": 2,
+"player": "Theo Maledon",
+"team": "PHI"
+},
+{
+"draft_year": 2020,
+"pick": 35,
+"round": 2,
+"player": "Xavier Tillman",
+"team": "SAC"
+},
+{
+"draft_year": 2020,
+"pick": 36,
+"round": 2,
+"player": "Tyler Bey",
+"team": "PHI"
+},
+{
+"draft_year": 2020,
+"pick": 37,
+"round": 2,
+"player": "V\u00edt Krej\u010d\u00ed",
+"team": "WAS"
+},
+{
+"draft_year": 2020,
+"pick": 38,
+"round": 2,
+"player": "Saben Lee",
+"team": "UTA"
+},
+{
+"draft_year": 2020,
+"pick": 39,
+"round": 2,
+"player": "Elijah Hughes",
+"team": "NOP"
+},
+{
+"draft_year": 2020,
+"pick": 40,
+"round": 2,
+"player": "Robert Woodard II",
+"team": "MEM"
+},
+{
+"draft_year": 2020,
+"pick": 41,
+"round": 2,
+"player": "Tre Jones",
+"team": "SAS"
+},
+{
+"draft_year": 2020,
+"pick": 42,
+"round": 2,
+"player": "Nick Richards",
+"team": "NOP"
+},
+{
+"draft_year": 2020,
+"pick": 43,
+"round": 2,
+"player": "Jahmi'us Ramsey",
+"team": "SAC"
+},
+{
+"draft_year": 2020,
+"pick": 44,
+"round": 2,
+"player": "Marko Simonovic",
+"team": "CHI"
+},
+{
+"draft_year": 2020,
+"pick": 45,
+"round": 2,
+"player": "Jordan Nwora",
+"team": "MIL"
+},
+{
+"draft_year": 2020,
+"pick": 46,
+"round": 2,
+"player": "CJ Elleby",
+"team": "POR"
+},
+{
+"draft_year": 2020,
+"pick": 47,
+"round": 2,
+"player": "Yam Madar",
+"team": "BOS"
+},
+{
+"draft_year": 2020,
+"pick": 48,
+"round": 2,
+"player": "Nico Mannion",
+"team": "GSW"
+},
+{
+"draft_year": 2020,
+"pick": 49,
+"round": 2,
+"player": "Isaiah Joe",
+"team": "PHI"
+},
+{
+"draft_year": 2020,
+"pick": 50,
+"round": 2,
+"player": "Skylar Mays",
+"team": "ATL"
+},
+{
+"draft_year": 2020,
+"pick": 51,
+"round": 2,
+"player": "Justinian Jessup",
+"team": "GSW"
+},
+{
+"draft_year": 2020,
+"pick": 52,
+"round": 2,
+"player": "KJ Martin",
+"team": "SAC"
+},
+{
+"draft_year": 2020,
+"pick": 53,
+"round": 2,
+"player": "Cassius Winston",
+"team": "OKC"
+},
+{
+"draft_year": 2020,
+"pick": 54,
+"round": 2,
+"player": "Cassius Stanley",
+"team": "IND"
+},
+{
+"draft_year": 2020,
+"pick": 55,
+"round": 2,
+"player": "Jay Scrubb",
+"team": "BKN"
+},
+{
+"draft_year": 2020,
+"pick": 56,
+"round": 2,
+"player": "Grant Riller",
+"team": "CHA"
+},
+{
+"draft_year": 2020,
+"pick": 57,
+"round": 2,
+"player": "Reggie Perry",
+"team": "LAC"
+},
+{
+"draft_year": 2020,
+"pick": 58,
+"round": 2,
+"player": "Paul Reed",
+"team": "PHI"
+},
+{
+"draft_year": 2020,
+"pick": 59,
+"round": 2,
+"player": "Jalen Harris",
+"team": "TOR"
+},
+{
+"draft_year": 2020,
+"pick": 60,
+"round": 2,
+"player": "Sam Merrill",
+"team": "NOP"
+},
+{
+"draft_year": 2019,
+"pick": 1,
+"round": 1,
+"player": "Zion Williamson",
+"team": "NOP"
+},
+{
+"draft_year": 2019,
+"pick": 2,
+"round": 1,
+"player": "Ja Morant",
+"team": "MEM"
+},
+{
+"draft_year": 2019,
+"pick": 3,
+"round": 1,
+"player": "RJ Barrett",
+"team": "NYK"
+},
+{
+"draft_year": 2019,
+"pick": 4,
+"round": 1,
+"player": "De'Andre Hunter",
+"team": "LAL"
+},
+{
+"draft_year": 2019,
+"pick": 5,
+"round": 1,
+"player": "Darius Garland",
+"team": "CLE"
+},
+{
+"draft_year": 2019,
+"pick": 6,
+"round": 1,
+"player": "Jarrett Culver",
+"team": "PHX"
+},
+{
+"draft_year": 2019,
+"pick": 7,
+"round": 1,
+"player": "Coby White",
+"team": "CHI"
+},
+{
+"draft_year": 2019,
+"pick": 8,
+"round": 1,
+"player": "Jaxson Hayes",
+"team": "ATL"
+},
+{
+"draft_year": 2019,
+"pick": 9,
+"round": 1,
+"player": "Rui Hachimura",
+"team": "WAS"
+},
+{
+"draft_year": 2019,
+"pick": 10,
+"round": 1,
+"player": "Cam Reddish",
+"team": "ATL"
+},
+{
+"draft_year": 2019,
+"pick": 11,
+"round": 1,
+"player": "Cameron Johnson",
+"team": "MIN"
+},
+{
+"draft_year": 2019,
+"pick": 12,
+"round": 1,
+"player": "P.J. Washington",
+"team": "CHA"
+},
+{
+"draft_year": 2019,
+"pick": 13,
+"round": 1,
+"player": "Tyler Herro",
+"team": "MIA"
+},
+{
+"draft_year": 2019,
+"pick": 14,
+"round": 1,
+"player": "Romeo Langford",
+"team": "BOS"
+},
+{
+"draft_year": 2019,
+"pick": 15,
+"round": 1,
+"player": "Sekou Doumbouya",
+"team": "DET"
+},
+{
+"draft_year": 2019,
+"pick": 16,
+"round": 1,
+"player": "Chuma Okeke",
+"team": "ORL"
+},
+{
+"draft_year": 2019,
+"pick": 17,
+"round": 1,
+"player": "Nickeil Alexander-Walker",
+"team": "BKN"
+},
+{
+"draft_year": 2019,
+"pick": 18,
+"round": 1,
+"player": "Goga Bitadze",
+"team": "IND"
+},
+{
+"draft_year": 2019,
+"pick": 19,
+"round": 1,
+"player": "Luka Samanic",
+"team": "SAS"
+},
+{
+"draft_year": 2019,
+"pick": 20,
+"round": 1,
+"player": "Matisse Thybulle",
+"team": "BOS"
+},
+{
+"draft_year": 2019,
+"pick": 21,
+"round": 1,
+"player": "Brandon Clarke",
+"team": "OKC"
+},
+{
+"draft_year": 2019,
+"pick": 22,
+"round": 1,
+"player": "Grant Williams",
+"team": "BOS"
+},
+{
+"draft_year": 2019,
+"pick": 23,
+"round": 1,
+"player": "Darius Bazley",
+"team": "UTA"
+},
+{
+"draft_year": 2019,
+"pick": 24,
+"round": 1,
+"player": "Ty Jerome",
+"team": "PHI"
+},
+{
+"draft_year": 2019,
+"pick": 25,
+"round": 1,
+"player": "Nassir Little",
+"team": "POR"
+},
+{
+"draft_year": 2019,
+"pick": 26,
+"round": 1,
+"player": "Dylan Windler",
+"team": "CLE"
+},
+{
+"draft_year": 2019,
+"pick": 27,
+"round": 1,
+"player": "Mfiondu Kabengele",
+"team": "BKN"
+},
+{
+"draft_year": 2019,
+"pick": 28,
+"round": 1,
+"player": "Jordan Poole",
+"team": "GSW"
+},
+{
+"draft_year": 2019,
+"pick": 29,
+"round": 1,
+"player": "Keldon Johnson",
+"team": "SAS"
+},
+{
+"draft_year": 2019,
+"pick": 30,
+"round": 1,
+"player": "Kevin Porter Jr.",
+"team": "MIL"
+},
+{
+"draft_year": 2019,
+"pick": 31,
+"round": 2,
+"player": "Nic Claxton",
+"team": "BKN"
+},
+{
+"draft_year": 2019,
+"pick": 32,
+"round": 2,
+"player": "KZ Okpala",
+"team": "PHX"
+},
+{
+"draft_year": 2019,
+"pick": 33,
+"round": 2,
+"player": "Carsen Edwards",
+"team": "PHI"
+},
+{
+"draft_year": 2019,
+"pick": 34,
+"round": 2,
+"player": "Bruno Fernando",
+"team": "PHI"
+},
+{
+"draft_year": 2019,
+"pick": 35,
+"round": 2,
+"player": "Didi Louzada",
+"team": "ATL"
+},
+{
+"draft_year": 2019,
+"pick": 36,
+"round": 2,
+"player": "Cody Martin",
+"team": "CHA"
+},
+{
+"draft_year": 2019,
+"pick": 37,
+"round": 2,
+"player": "Deividas Sirvydis",
+"team": "DAL"
+},
+{
+"draft_year": 2019,
+"pick": 38,
+"round": 2,
+"player": "Daniel Gafford",
+"team": "CHI"
+},
+{
+"draft_year": 2019,
+"pick": 39,
+"round": 2,
+"player": "Alen Smailagic",
+"team": "NOP"
+},
+{
+"draft_year": 2019,
+"pick": 40,
+"round": 2,
+"player": "Justin James",
+"team": "SAC"
+},
+{
+"draft_year": 2019,
+"pick": 41,
+"round": 2,
+"player": "Eric Paschall",
+"team": "GSW"
+},
+{
+"draft_year": 2019,
+"pick": 42,
+"round": 2,
+"player": "Admiral Schofield",
+"team": "PHI"
+},
+{
+"draft_year": 2019,
+"pick": 43,
+"round": 2,
+"player": "Jaylen Nowell",
+"team": "MIN"
+},
+{
+"draft_year": 2019,
+"pick": 44,
+"round": 2,
+"player": "Bol Bol",
+"team": "MIA"
+},
+{
+"draft_year": 2019,
+"pick": 45,
+"round": 2,
+"player": "Isaiah Roby",
+"team": "DET"
+},
+{
+"draft_year": 2019,
+"pick": 46,
+"round": 2,
+"player": "Talen Horton-Tucker",
+"team": "ORL"
+},
+{
+"draft_year": 2019,
+"pick": 47,
+"round": 2,
+"player": "Ignas Brazdeikis",
+"team": "SAC"
+},
+{
+"draft_year": 2019,
+"pick": 48,
+"round": 2,
+"player": "Terance Mann",
+"team": "LAC"
+},
+{
+"draft_year": 2019,
+"pick": 49,
+"round": 2,
+"player": "Quinndary Weatherspoon",
+"team": "SAS"
+},
+{
+"draft_year": 2019,
+"pick": 50,
+"round": 2,
+"player": "Jarrell Brantley",
+"team": "IND"
+},
+{
+"draft_year": 2019,
+"pick": 51,
+"round": 2,
+"player": "Tremont Waters",
+"team": "BOS"
+},
+{
+"draft_year": 2019,
+"pick": 52,
+"round": 2,
+"player": "Jalen McDaniels",
+"team": "CHA"
+},
+{
+"draft_year": 2019,
+"pick": 53,
+"round": 2,
+"player": "Justin Wright-Foreman",
+"team": "UTA"
+},
+{
+"draft_year": 2019,
+"pick": 54,
+"round": 2,
+"player": "Marial Shayok",
+"team": "PHI"
+},
+{
+"draft_year": 2019,
+"pick": 55,
+"round": 2,
+"player": "Kyle Guy",
+"team": "NYK"
+},
+{
+"draft_year": 2019,
+"pick": 56,
+"round": 2,
+"player": "Jaylen Hands",
+"team": "LAC"
+},
+{
+"draft_year": 2019,
+"pick": 57,
+"round": 2,
+"player": "Jordan Bone",
+"team": "NOP"
+},
+{
+"draft_year": 2019,
+"pick": 58,
+"round": 2,
+"player": "Miye Oni",
+"team": "GSW"
+},
+{
+"draft_year": 2019,
+"pick": 59,
+"round": 2,
+"player": "Dewan Hernandez",
+"team": "TOR"
+},
+{
+"draft_year": 2019,
+"pick": 60,
+"round": 2,
+"player": "Vanja Marinkovic",
+"team": "SAC"
+},
+{
+"draft_year": 2018,
+"pick": 1,
+"round": 1,
+"player": "Deandre Ayton",
+"team": "PHX"
+},
+{
+"draft_year": 2018,
+"pick": 2,
+"round": 1,
+"player": "Marvin Bagley III",
+"team": "SAC"
+},
+{
+"draft_year": 2018,
+"pick": 3,
+"round": 1,
+"player": "Luka Don\u010di\u0107",
+"team": "ATL"
+},
+{
+"draft_year": 2018,
+"pick": 4,
+"round": 1,
+"player": "Jaren Jackson Jr.",
+"team": "MEM"
+},
+{
+"draft_year": 2018,
+"pick": 5,
+"round": 1,
+"player": "Trae Young",
+"team": "DAL"
+},
+{
+"draft_year": 2018,
+"pick": 6,
+"round": 1,
+"player": "Mo Bamba",
+"team": "ORL"
+},
+{
+"draft_year": 2018,
+"pick": 7,
+"round": 1,
+"player": "Wendell Carter Jr.",
+"team": "CHI"
+},
+{
+"draft_year": 2018,
+"pick": 8,
+"round": 1,
+"player": "Collin Sexton",
+"team": "CLE"
+},
+{
+"draft_year": 2018,
+"pick": 9,
+"round": 1,
+"player": "Kevin Knox II",
+"team": "NYK"
+},
+{
+"draft_year": 2018,
+"pick": 10,
+"round": 1,
+"player": "Mikal Bridges",
+"team": "PHI"
+},
+{
+"draft_year": 2018,
+"pick": 11,
+"round": 1,
+"player": "Shai Gilgeous-Alexander",
+"team": "CHA"
+},
+{
+"draft_year": 2018,
+"pick": 12,
+"round": 1,
+"player": "Miles Bridges",
+"team": "LAC"
+},
+{
+"draft_year": 2018,
+"pick": 13,
+"round": 1,
+"player": "Jerome Robinson",
+"team": "LAC"
+},
+{
+"draft_year": 2018,
+"pick": 14,
+"round": 1,
+"player": "Michael Porter Jr.",
+"team": "DEN"
+},
+{
+"draft_year": 2018,
+"pick": 15,
+"round": 1,
+"player": "Troy Brown Jr.",
+"team": "WAS"
+},
+{
+"draft_year": 2018,
+"pick": 16,
+"round": 1,
+"player": "Zhaire Smith",
+"team": "PHX"
+},
+{
+"draft_year": 2018,
+"pick": 17,
+"round": 1,
+"player": "Donte DiVincenzo",
+"team": "MIL"
+},
+{
+"draft_year": 2018,
+"pick": 18,
+"round": 1,
+"player": "Lonnie Walker IV",
+"team": "SAS"
+},
+{
+"draft_year": 2018,
+"pick": 19,
+"round": 1,
+"player": "Kevin Huerter",
+"team": "ATL"
+},
+{
+"draft_year": 2018,
+"pick": 20,
+"round": 1,
+"player": "Josh Okogie",
+"team": "MIN"
+},
+{
+"draft_year": 2018,
+"pick": 21,
+"round": 1,
+"player": "Grayson Allen",
+"team": "UTA"
+},
+{
+"draft_year": 2018,
+"pick": 22,
+"round": 1,
+"player": "Chandler Hutchison",
+"team": "CHI"
+},
+{
+"draft_year": 2018,
+"pick": 23,
+"round": 1,
+"player": "Aaron Holiday",
+"team": "IND"
+},
+{
+"draft_year": 2018,
+"pick": 24,
+"round": 1,
+"player": "Anfernee Simons",
+"team": "POR"
+},
+{
+"draft_year": 2018,
+"pick": 25,
+"round": 1,
+"player": "Moritz Wagner",
+"team": "LAL"
+},
+{
+"draft_year": 2018,
+"pick": 26,
+"round": 1,
+"player": "Landry Shamet",
+"team": "PHI"
+},
+{
+"draft_year": 2018,
+"pick": 27,
+"round": 1,
+"player": "Robert Williams III",
+"team": "BOS"
+},
+{
+"draft_year": 2018,
+"pick": 28,
+"round": 1,
+"player": "Jacob Evans",
+"team": "GSW"
+},
+{
+"draft_year": 2018,
+"pick": 29,
+"round": 1,
+"player": "Dzanan Musa",
+"team": "BKN"
+},
+{
+"draft_year": 2018,
+"pick": 30,
+"round": 1,
+"player": "Omari Spellman",
+"team": "ATL"
+},
+{
+"draft_year": 2018,
+"pick": 31,
+"round": 2,
+"player": "Elie Okobo",
+"team": "PHX"
+},
+{
+"draft_year": 2018,
+"pick": 32,
+"round": 2,
+"player": "Jevon Carter",
+"team": "MEM"
+},
+{
+"draft_year": 2018,
+"pick": 33,
+"round": 2,
+"player": "Jalen Brunson",
+"team": "DAL"
+},
+{
+"draft_year": 2018,
+"pick": 34,
+"round": 2,
+"player": "Devonte' Graham",
+"team": "ATL"
+},
+{
+"draft_year": 2018,
+"pick": 35,
+"round": 2,
+"player": "Melvin Frazier Jr.",
+"team": "ORL"
+},
+{
+"draft_year": 2018,
+"pick": 36,
+"round": 2,
+"player": "Mitchell Robinson",
+"team": "NYK"
+},
+{
+"draft_year": 2018,
+"pick": 37,
+"round": 2,
+"player": "Gary Trent Jr.",
+"team": "SAC"
+},
+{
+"draft_year": 2018,
+"pick": 38,
+"round": 2,
+"player": "Khyri Thomas",
+"team": "PHI"
+},
+{
+"draft_year": 2018,
+"pick": 39,
+"round": 2,
+"player": "Isaac Bonga",
+"team": "PHI"
+},
+{
+"draft_year": 2018,
+"pick": 40,
+"round": 2,
+"player": "Rodions Kurucs",
+"team": "BKN"
+},
+{
+"draft_year": 2018,
+"pick": 41,
+"round": 2,
+"player": "Jarred Vanderbilt",
+"team": "ORL"
+},
+{
+"draft_year": 2018,
+"pick": 42,
+"round": 2,
+"player": "Bruce Brown",
+"team": "DET"
+},
+{
+"draft_year": 2018,
+"pick": 43,
+"round": 2,
+"player": "Justin Jackson",
+"team": "DEN"
+},
+{
+"draft_year": 2018,
+"pick": 44,
+"round": 2,
+"player": "Issuf Sanon",
+"team": "WAS"
+},
+{
+"draft_year": 2018,
+"pick": 45,
+"round": 2,
+"player": "Hamidou Diallo",
+"team": "BKN"
+},
+{
+"draft_year": 2018,
+"pick": 46,
+"round": 2,
+"player": "De'Anthony Melton",
+"team": "HOU"
+},
+{
+"draft_year": 2018,
+"pick": 47,
+"round": 2,
+"player": "Svi Mykhailiuk",
+"team": "LAL"
+},
+{
+"draft_year": 2018,
+"pick": 48,
+"round": 2,
+"player": "Keita Bates-Diop",
+"team": "MIN"
+},
+{
+"draft_year": 2018,
+"pick": 49,
+"round": 2,
+"player": "Chimezie Metu",
+"team": "MIL"
+},
+{
+"draft_year": 2018,
+"pick": 50,
+"round": 2,
+"player": "Alize Johnson",
+"team": "IND"
+},
+{
+"draft_year": 2018,
+"pick": 51,
+"round": 2,
+"player": "Tony Carr",
+"team": "NOP"
+},
+{
+"draft_year": 2018,
+"pick": 52,
+"round": 2,
+"player": "Vincent Edwards",
+"team": "UTA"
+},
+{
+"draft_year": 2018,
+"pick": 53,
+"round": 2,
+"player": "Devon Hall",
+"team": "OKC"
+},
+{
+"draft_year": 2018,
+"pick": 54,
+"round": 2,
+"player": "Shake Milton",
+"team": "DAL"
+},
+{
+"draft_year": 2018,
+"pick": 55,
+"round": 2,
+"player": "Arnoldas Kulboka",
+"team": "CHA"
+},
+{
+"draft_year": 2018,
+"pick": 56,
+"round": 2,
+"player": "Ray Spalding",
+"team": "PHI"
+},
+{
+"draft_year": 2018,
+"pick": 57,
+"round": 2,
+"player": "Kevin Hervey",
+"team": "OKC"
+},
+{
+"draft_year": 2018,
+"pick": 58,
+"round": 2,
+"player": "Thomas Welsh",
+"team": "DEN"
+},
+{
+"draft_year": 2018,
+"pick": 59,
+"round": 2,
+"player": "George King",
+"team": "PHX"
+},
+{
+"draft_year": 2018,
+"pick": 60,
+"round": 2,
+"player": "Kostas Antetokounmpo",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 1,
+"round": 1,
+"player": "Markelle Fultz",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 2,
+"round": 1,
+"player": "Lonzo Ball",
+"team": "LAL"
+},
+{
+"draft_year": 2017,
+"pick": 3,
+"round": 1,
+"player": "Jayson Tatum",
+"team": "BOS"
+},
+{
+"draft_year": 2017,
+"pick": 4,
+"round": 1,
+"player": "Josh Jackson",
+"team": "PHX"
+},
+{
+"draft_year": 2017,
+"pick": 5,
+"round": 1,
+"player": "De'Aaron Fox",
+"team": "SAC"
+},
+{
+"draft_year": 2017,
+"pick": 6,
+"round": 1,
+"player": "Jonathan Isaac",
+"team": "ORL"
+},
+{
+"draft_year": 2017,
+"pick": 7,
+"round": 1,
+"player": "Lauri Markkanen",
+"team": "MIN"
+},
+{
+"draft_year": 2017,
+"pick": 8,
+"round": 1,
+"player": "Frank Ntilikina",
+"team": "NYK"
+},
+{
+"draft_year": 2017,
+"pick": 9,
+"round": 1,
+"player": "Dennis Smith Jr.",
+"team": "DAL"
+},
+{
+"draft_year": 2017,
+"pick": 10,
+"round": 1,
+"player": "Zach Collins",
+"team": "SAC"
+},
+{
+"draft_year": 2017,
+"pick": 11,
+"round": 1,
+"player": "Malik Monk",
+"team": "CHA"
+},
+{
+"draft_year": 2017,
+"pick": 12,
+"round": 1,
+"player": "Luke Kennard",
+"team": "DET"
+},
+{
+"draft_year": 2017,
+"pick": 13,
+"round": 1,
+"player": "Donovan Mitchell",
+"team": "DEN"
+},
+{
+"draft_year": 2017,
+"pick": 14,
+"round": 1,
+"player": "Bam Adebayo",
+"team": "MIA"
+},
+{
+"draft_year": 2017,
+"pick": 15,
+"round": 1,
+"player": "Justin Jackson",
+"team": "POR"
+},
+{
+"draft_year": 2017,
+"pick": 16,
+"round": 1,
+"player": "Justin Patton",
+"team": "CHI"
+},
+{
+"draft_year": 2017,
+"pick": 17,
+"round": 1,
+"player": "D.J. Wilson",
+"team": "MIL"
+},
+{
+"draft_year": 2017,
+"pick": 18,
+"round": 1,
+"player": "T.J. Leaf",
+"team": "IND"
+},
+{
+"draft_year": 2017,
+"pick": 19,
+"round": 1,
+"player": "John Collins",
+"team": "ATL"
+},
+{
+"draft_year": 2017,
+"pick": 20,
+"round": 1,
+"player": "Harry Giles III",
+"team": "POR"
+},
+{
+"draft_year": 2017,
+"pick": 21,
+"round": 1,
+"player": "Terrance Ferguson",
+"team": "OKC"
+},
+{
+"draft_year": 2017,
+"pick": 22,
+"round": 1,
+"player": "Jarrett Allen",
+"team": "BKN"
+},
+{
+"draft_year": 2017,
+"pick": 23,
+"round": 1,
+"player": "OG Anunoby",
+"team": "TOR"
+},
+{
+"draft_year": 2017,
+"pick": 24,
+"round": 1,
+"player": "Tyler Lydon",
+"team": "UTA"
+},
+{
+"draft_year": 2017,
+"pick": 25,
+"round": 1,
+"player": "An\u017eejs Pase\u010d\u0146iks",
+"team": "ORL"
+},
+{
+"draft_year": 2017,
+"pick": 26,
+"round": 1,
+"player": "Caleb Swanigan",
+"team": "POR"
+},
+{
+"draft_year": 2017,
+"pick": 27,
+"round": 1,
+"player": "Kyle Kuzma",
+"team": "BKN"
+},
+{
+"draft_year": 2017,
+"pick": 28,
+"round": 1,
+"player": "Tony Bradley",
+"team": "LAL"
+},
+{
+"draft_year": 2017,
+"pick": 29,
+"round": 1,
+"player": "Derrick White",
+"team": "SAS"
+},
+{
+"draft_year": 2017,
+"pick": 30,
+"round": 1,
+"player": "Josh Hart",
+"team": "UTA"
+},
+{
+"draft_year": 2017,
+"pick": 31,
+"round": 2,
+"player": "Frank Jackson",
+"team": "CHA"
+},
+{
+"draft_year": 2017,
+"pick": 32,
+"round": 2,
+"player": "Davon Reed",
+"team": "PHX"
+},
+{
+"draft_year": 2017,
+"pick": 33,
+"round": 2,
+"player": "Wes Iwundu",
+"team": "ORL"
+},
+{
+"draft_year": 2017,
+"pick": 34,
+"round": 2,
+"player": "Frank Mason III",
+"team": "SAC"
+},
+{
+"draft_year": 2017,
+"pick": 35,
+"round": 2,
+"player": "Ivan Rabb",
+"team": "ORL"
+},
+{
+"draft_year": 2017,
+"pick": 36,
+"round": 2,
+"player": "Jonah Bolden",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 37,
+"round": 2,
+"player": "Semi Ojeleye",
+"team": "BOS"
+},
+{
+"draft_year": 2017,
+"pick": 38,
+"round": 2,
+"player": "Jordan Bell",
+"team": "CHI"
+},
+{
+"draft_year": 2017,
+"pick": 39,
+"round": 2,
+"player": "Jawun Evans",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 40,
+"round": 2,
+"player": "Dwayne Bacon",
+"team": "NOP"
+},
+{
+"draft_year": 2017,
+"pick": 41,
+"round": 2,
+"player": "Tyler Dorsey",
+"team": "ATL"
+},
+{
+"draft_year": 2017,
+"pick": 42,
+"round": 2,
+"player": "Thomas Bryant",
+"team": "UTA"
+},
+{
+"draft_year": 2017,
+"pick": 43,
+"round": 2,
+"player": "Isaiah Hartenstein",
+"team": "HOU"
+},
+{
+"draft_year": 2017,
+"pick": 44,
+"round": 2,
+"player": "Damyean Dotson",
+"team": "NYK"
+},
+{
+"draft_year": 2017,
+"pick": 45,
+"round": 2,
+"player": "Dillon Brooks",
+"team": "HOU"
+},
+{
+"draft_year": 2017,
+"pick": 46,
+"round": 2,
+"player": "Sterling Brown",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 47,
+"round": 2,
+"player": "Ike Anigbogu",
+"team": "IND"
+},
+{
+"draft_year": 2017,
+"pick": 48,
+"round": 2,
+"player": "Sindarius Thornwell",
+"team": "MIL"
+},
+{
+"draft_year": 2017,
+"pick": 49,
+"round": 2,
+"player": "Vlatko Cancar",
+"team": "DEN"
+},
+{
+"draft_year": 2017,
+"pick": 50,
+"round": 2,
+"player": "Mathias Lessort",
+"team": "PHI"
+},
+{
+"draft_year": 2017,
+"pick": 51,
+"round": 2,
+"player": "Monte Morris",
+"team": "DEN"
+},
+{
+"draft_year": 2017,
+"pick": 52,
+"round": 2,
+"player": "Edmond Sumner",
+"team": "NOP"
+},
+{
+"draft_year": 2017,
+"pick": 53,
+"round": 2,
+"player": "Kadeem Allen",
+"team": "BOS"
+},
+{
+"draft_year": 2017,
+"pick": 54,
+"round": 2,
+"player": "Alec Peters",
+"team": "PHX"
+},
+{
+"draft_year": 2017,
+"pick": 55,
+"round": 2,
+"player": "Nigel Williams-Goss",
+"team": "UTA"
+},
+{
+"draft_year": 2017,
+"pick": 56,
+"round": 2,
+"player": "Jabari Bird",
+"team": "BOS"
+},
+{
+"draft_year": 2017,
+"pick": 57,
+"round": 2,
+"player": "Sasha Vezenkov",
+"team": "BKN"
+},
+{
+"draft_year": 2017,
+"pick": 58,
+"round": 2,
+"player": "Ognjen Jaramaz",
+"team": "NYK"
+},
+{
+"draft_year": 2017,
+"pick": 59,
+"round": 2,
+"player": "Jaron Blossomgame",
+"team": "SAS"
+},
+{
+"draft_year": 2017,
+"pick": 60,
+"round": 2,
+"player": "Alpha Kaba",
+"team": "ATL"
+},
+{
+"draft_year": 2016,
+"pick": 1,
+"round": 1,
+"player": "Ben Simmons",
+"team": "PHI"
+},
+{
+"draft_year": 2016,
+"pick": 2,
+"round": 1,
+"player": "Brandon Ingram",
+"team": "LAL"
+},
+{
+"draft_year": 2016,
+"pick": 3,
+"round": 1,
+"player": "Jaylen Brown",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 4,
+"round": 1,
+"player": "Dragan Bender",
+"team": "PHX"
+},
+{
+"draft_year": 2016,
+"pick": 5,
+"round": 1,
+"player": "Kris Dunn",
+"team": "MIN"
+},
+{
+"draft_year": 2016,
+"pick": 6,
+"round": 1,
+"player": "Buddy Hield",
+"team": "NOP"
+},
+{
+"draft_year": 2016,
+"pick": 7,
+"round": 1,
+"player": "Jamal Murray",
+"team": "DEN"
+},
+{
+"draft_year": 2016,
+"pick": 8,
+"round": 1,
+"player": "Marquese Chriss",
+"team": "PHX"
+},
+{
+"draft_year": 2016,
+"pick": 9,
+"round": 1,
+"player": "Jakob Poeltl",
+"team": "TOR"
+},
+{
+"draft_year": 2016,
+"pick": 10,
+"round": 1,
+"player": "Thon Maker",
+"team": "MIL"
+},
+{
+"draft_year": 2016,
+"pick": 11,
+"round": 1,
+"player": "Domantas Sabonis",
+"team": "OKC"
+},
+{
+"draft_year": 2016,
+"pick": 12,
+"round": 1,
+"player": "Taurean Prince",
+"team": "UTA"
+},
+{
+"draft_year": 2016,
+"pick": 13,
+"round": 1,
+"player": "Georgios Papagiannis",
+"team": "SAC"
+},
+{
+"draft_year": 2016,
+"pick": 14,
+"round": 1,
+"player": "Denzel Valentine",
+"team": "CHI"
+},
+{
+"draft_year": 2016,
+"pick": 15,
+"round": 1,
+"player": "Juancho Hernangomez",
+"team": "DEN"
+},
+{
+"draft_year": 2016,
+"pick": 16,
+"round": 1,
+"player": "Guerschon Yabusele",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 17,
+"round": 1,
+"player": "Wade Baldwin IV",
+"team": "MEM"
+},
+{
+"draft_year": 2016,
+"pick": 18,
+"round": 1,
+"player": "Henry Ellenson",
+"team": "DET"
+},
+{
+"draft_year": 2016,
+"pick": 19,
+"round": 1,
+"player": "Malik Beasley",
+"team": "DEN"
+},
+{
+"draft_year": 2016,
+"pick": 20,
+"round": 1,
+"player": "Caris LeVert",
+"team": "IND"
+},
+{
+"draft_year": 2016,
+"pick": 21,
+"round": 1,
+"player": "DeAndre' Bembry",
+"team": "ATL"
+},
+{
+"draft_year": 2016,
+"pick": 22,
+"round": 1,
+"player": "Malachi Richardson",
+"team": "CHA"
+},
+{
+"draft_year": 2016,
+"pick": 23,
+"round": 1,
+"player": "Ante Zizic",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 24,
+"round": 1,
+"player": "Timothe Luwawu-Cabarrot",
+"team": "PHI"
+},
+{
+"draft_year": 2016,
+"pick": 25,
+"round": 1,
+"player": "Brice Johnson",
+"team": "LAC"
+},
+{
+"draft_year": 2016,
+"pick": 26,
+"round": 1,
+"player": "Furkan Korkmaz",
+"team": "PHI"
+},
+{
+"draft_year": 2016,
+"pick": 27,
+"round": 1,
+"player": "Pascal Siakam",
+"team": "TOR"
+},
+{
+"draft_year": 2016,
+"pick": 28,
+"round": 1,
+"player": "Skal Labissiere",
+"team": "SAC"
+},
+{
+"draft_year": 2016,
+"pick": 29,
+"round": 1,
+"player": "Dejounte Murray",
+"team": "SAS"
+},
+{
+"draft_year": 2016,
+"pick": 30,
+"round": 1,
+"player": "Damian Jones",
+"team": "GSW"
+},
+{
+"draft_year": 2016,
+"pick": 31,
+"round": 2,
+"player": "Deyonta Davis",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 32,
+"round": 2,
+"player": "Ivica Zubac",
+"team": "LAL"
+},
+{
+"draft_year": 2016,
+"pick": 33,
+"round": 2,
+"player": "Cheick Diallo",
+"team": "LAC"
+},
+{
+"draft_year": 2016,
+"pick": 34,
+"round": 2,
+"player": "Tyler Ulis",
+"team": "PHX"
+},
+{
+"draft_year": 2016,
+"pick": 35,
+"round": 2,
+"player": "Rade Zagorac",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 36,
+"round": 2,
+"player": "Malcolm Brogdon",
+"team": "MIL"
+},
+{
+"draft_year": 2016,
+"pick": 37,
+"round": 2,
+"player": "Chinanu Onuaku",
+"team": "HOU"
+},
+{
+"draft_year": 2016,
+"pick": 38,
+"round": 2,
+"player": "Patrick McCaw",
+"team": "GSW"
+},
+{
+"draft_year": 2016,
+"pick": 39,
+"round": 2,
+"player": "David Michineau",
+"team": "NOP"
+},
+{
+"draft_year": 2016,
+"pick": 40,
+"round": 2,
+"player": "Diamond Stone",
+"team": "NOP"
+},
+{
+"draft_year": 2016,
+"pick": 41,
+"round": 2,
+"player": "Stephen Zimmerman",
+"team": "ORL"
+},
+{
+"draft_year": 2016,
+"pick": 42,
+"round": 2,
+"player": "Isaiah Whitehead",
+"team": "BKN"
+},
+{
+"draft_year": 2016,
+"pick": 43,
+"round": 2,
+"player": "Zhou Qi",
+"team": "HOU"
+},
+{
+"draft_year": 2016,
+"pick": 44,
+"round": 2,
+"player": "Isaia Cordinier",
+"team": "ATL"
+},
+{
+"draft_year": 2016,
+"pick": 45,
+"round": 2,
+"player": "Demetrius Jackson",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 46,
+"round": 2,
+"player": "AJ Hammons",
+"team": "DAL"
+},
+{
+"draft_year": 2016,
+"pick": 47,
+"round": 2,
+"player": "Jake Layman",
+"team": "ORL"
+},
+{
+"draft_year": 2016,
+"pick": 48,
+"round": 2,
+"player": "Paul Zipser",
+"team": "CHI"
+},
+{
+"draft_year": 2016,
+"pick": 49,
+"round": 2,
+"player": "Michael Gbinije",
+"team": "DET"
+},
+{
+"draft_year": 2016,
+"pick": 50,
+"round": 2,
+"player": "Georges Niang",
+"team": "IND"
+},
+{
+"draft_year": 2016,
+"pick": 51,
+"round": 2,
+"player": "Ben Bentil",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 52,
+"round": 2,
+"player": "Joel Bolomboy",
+"team": "UTA"
+},
+{
+"draft_year": 2016,
+"pick": 53,
+"round": 2,
+"player": "Petr Cornelie",
+"team": "DEN"
+},
+{
+"draft_year": 2016,
+"pick": 54,
+"round": 2,
+"player": "Kay Felder",
+"team": "ATL"
+},
+{
+"draft_year": 2016,
+"pick": 55,
+"round": 2,
+"player": "Marcus Paige",
+"team": "UTA"
+},
+{
+"draft_year": 2016,
+"pick": 56,
+"round": 2,
+"player": "Daniel Hamilton",
+"team": "DEN"
+},
+{
+"draft_year": 2016,
+"pick": 57,
+"round": 2,
+"player": "Wang Zhelin",
+"team": "MEM"
+},
+{
+"draft_year": 2016,
+"pick": 58,
+"round": 2,
+"player": "Abdel Nader",
+"team": "BOS"
+},
+{
+"draft_year": 2016,
+"pick": 59,
+"round": 2,
+"player": "Isaiah Cousins",
+"team": "SAC"
+},
+{
+"draft_year": 2016,
+"pick": 60,
+"round": 2,
+"player": "Tyrone Wallace",
+"team": "UTA"
+},
+{
+"draft_year": 2015,
+"pick": 1,
+"round": 1,
+"player": "Karl-Anthony Towns",
+"team": "MIN"
+},
+{
+"draft_year": 2015,
+"pick": 2,
+"round": 1,
+"player": "D'Angelo Russell",
+"team": "LAL"
+},
+{
+"draft_year": 2015,
+"pick": 3,
+"round": 1,
+"player": "Jahlil Okafor",
+"team": "PHI"
+},
+{
+"draft_year": 2015,
+"pick": 4,
+"round": 1,
+"player": "Kristaps Porzi\u0146\u0123is",
+"team": "NYK"
+},
+{
+"draft_year": 2015,
+"pick": 5,
+"round": 1,
+"player": "Mario Hezonja",
+"team": "ORL"
+},
+{
+"draft_year": 2015,
+"pick": 6,
+"round": 1,
+"player": "Willie Cauley-Stein",
+"team": "SAC"
+},
+{
+"draft_year": 2015,
+"pick": 7,
+"round": 1,
+"player": "Emmanuel Mudiay",
+"team": "DEN"
+},
+{
+"draft_year": 2015,
+"pick": 8,
+"round": 1,
+"player": "Stanley Johnson",
+"team": "DET"
+},
+{
+"draft_year": 2015,
+"pick": 9,
+"round": 1,
+"player": "Frank Kaminsky",
+"team": "CHA"
+},
+{
+"draft_year": 2015,
+"pick": 10,
+"round": 1,
+"player": "Justise Winslow",
+"team": "MIA"
+},
+{
+"draft_year": 2015,
+"pick": 11,
+"round": 1,
+"player": "Myles Turner",
+"team": "IND"
+},
+{
+"draft_year": 2015,
+"pick": 12,
+"round": 1,
+"player": "Trey Lyles",
+"team": "UTA"
+},
+{
+"draft_year": 2015,
+"pick": 13,
+"round": 1,
+"player": "Devin Booker",
+"team": "PHX"
+},
+{
+"draft_year": 2015,
+"pick": 14,
+"round": 1,
+"player": "Cameron Payne",
+"team": "OKC"
+},
+{
+"draft_year": 2015,
+"pick": 15,
+"round": 1,
+"player": "Kelly Oubre Jr.",
+"team": "ATL"
+},
+{
+"draft_year": 2015,
+"pick": 16,
+"round": 1,
+"player": "Terry Rozier",
+"team": "BOS"
+},
+{
+"draft_year": 2015,
+"pick": 17,
+"round": 1,
+"player": "Rashad Vaughn",
+"team": "MIL"
+},
+{
+"draft_year": 2015,
+"pick": 18,
+"round": 1,
+"player": "Sam Dekker",
+"team": "HOU"
+},
+{
+"draft_year": 2015,
+"pick": 19,
+"round": 1,
+"player": "Jerian Grant",
+"team": "WAS"
+},
+{
+"draft_year": 2015,
+"pick": 20,
+"round": 1,
+"player": "Delon Wright",
+"team": "TOR"
+},
+{
+"draft_year": 2015,
+"pick": 21,
+"round": 1,
+"player": "Justin Anderson",
+"team": "DAL"
+},
+{
+"draft_year": 2015,
+"pick": 22,
+"round": 1,
+"player": "Bobby Portis Jr.",
+"team": "CHI"
+},
+{
+"draft_year": 2015,
+"pick": 23,
+"round": 1,
+"player": "Rondae Hollis-Jefferson",
+"team": "POR"
+},
+{
+"draft_year": 2015,
+"pick": 24,
+"round": 1,
+"player": "Tyus Jones",
+"team": "CLE"
+},
+{
+"draft_year": 2015,
+"pick": 25,
+"round": 1,
+"player": "Jarell Martin",
+"team": "MEM"
+},
+{
+"draft_year": 2015,
+"pick": 26,
+"round": 1,
+"player": "Nikola Milutinov",
+"team": "SAS"
+},
+{
+"draft_year": 2015,
+"pick": 27,
+"round": 1,
+"player": "Larry Nance Jr.",
+"team": "LAL"
+},
+{
+"draft_year": 2015,
+"pick": 28,
+"round": 1,
+"player": "RJ Hunter",
+"team": "BOS"
+},
+{
+"draft_year": 2015,
+"pick": 29,
+"round": 1,
+"player": "Chris McCullough",
+"team": "BKN"
+},
+{
+"draft_year": 2015,
+"pick": 30,
+"round": 1,
+"player": "Kevon Looney",
+"team": "GSW"
+},
+{
+"draft_year": 2015,
+"pick": 31,
+"round": 2,
+"player": "Cedi Osman",
+"team": "MIN"
+},
+{
+"draft_year": 2015,
+"pick": 32,
+"round": 2,
+"player": "Montrezl Harrell",
+"team": "HOU"
+},
+{
+"draft_year": 2015,
+"pick": 33,
+"round": 2,
+"player": "Jordan Mickey",
+"team": "BOS"
+},
+{
+"draft_year": 2015,
+"pick": 34,
+"round": 2,
+"player": "Anthony Brown",
+"team": "LAL"
+},
+{
+"draft_year": 2015,
+"pick": 35,
+"round": 2,
+"player": "Willy Hernangomez",
+"team": "PHI"
+},
+{
+"draft_year": 2015,
+"pick": 36,
+"round": 2,
+"player": "Rakeem Christmas",
+"team": "MIN"
+},
+{
+"draft_year": 2015,
+"pick": 37,
+"round": 2,
+"player": "Richaun Holmes",
+"team": "PHI"
+},
+{
+"draft_year": 2015,
+"pick": 38,
+"round": 2,
+"player": "Darrun Hilliard",
+"team": "DET"
+},
+{
+"draft_year": 2015,
+"pick": 39,
+"round": 2,
+"player": "Juan Pablo Vaulet",
+"team": "CHA"
+},
+{
+"draft_year": 2015,
+"pick": 40,
+"round": 2,
+"player": "Josh Richardson",
+"team": "MIA"
+},
+{
+"draft_year": 2015,
+"pick": 41,
+"round": 2,
+"player": "Pat Connaughton",
+"team": "BKN"
+},
+{
+"draft_year": 2015,
+"pick": 42,
+"round": 2,
+"player": "Olivier Hanlan",
+"team": "UTA"
+},
+{
+"draft_year": 2015,
+"pick": 43,
+"round": 2,
+"player": "Joe Young",
+"team": "IND"
+},
+{
+"draft_year": 2015,
+"pick": 44,
+"round": 2,
+"player": "Andrew Harrison",
+"team": "PHX"
+},
+{
+"draft_year": 2015,
+"pick": 45,
+"round": 2,
+"player": "Marcus Thornton",
+"team": "BOS"
+},
+{
+"draft_year": 2015,
+"pick": 46,
+"round": 2,
+"player": "Norman Powell",
+"team": "MIL"
+},
+{
+"draft_year": 2015,
+"pick": 47,
+"round": 2,
+"player": "Arturas Gudaitis",
+"team": "PHI"
+},
+{
+"draft_year": 2015,
+"pick": 48,
+"round": 2,
+"player": "Dakari Johnson",
+"team": "OKC"
+},
+{
+"draft_year": 2015,
+"pick": 49,
+"round": 2,
+"player": "Aaron White",
+"team": "WAS"
+},
+{
+"draft_year": 2015,
+"pick": 50,
+"round": 2,
+"player": "Marcus Eriksson",
+"team": "ATL"
+},
+{
+"draft_year": 2015,
+"pick": 51,
+"round": 2,
+"player": "Tyler Harvey",
+"team": "ORL"
+},
+{
+"draft_year": 2015,
+"pick": 52,
+"round": 2,
+"player": "Satnam Singh",
+"team": "DAL"
+},
+{
+"draft_year": 2015,
+"pick": 53,
+"round": 2,
+"player": "Sir'Dominic Pointer",
+"team": "CLE"
+},
+{
+"draft_year": 2015,
+"pick": 54,
+"round": 2,
+"player": "Daniel Diez",
+"team": "UTA"
+},
+{
+"draft_year": 2015,
+"pick": 55,
+"round": 2,
+"player": "Cady Lalanne",
+"team": "SAS"
+},
+{
+"draft_year": 2015,
+"pick": 56,
+"round": 2,
+"player": "Branden Dawson",
+"team": "NOP"
+},
+{
+"draft_year": 2015,
+"pick": 57,
+"round": 2,
+"player": "Nikola Radicevic",
+"team": "DEN"
+},
+{
+"draft_year": 2015,
+"pick": 58,
+"round": 2,
+"player": "JP Tokoto",
+"team": "PHI"
+},
+{
+"draft_year": 2015,
+"pick": 59,
+"round": 2,
+"player": "Dimitrios Agravanis",
+"team": "ATL"
+},
+{
+"draft_year": 2015,
+"pick": 60,
+"round": 2,
+"player": "Luka Mitrovic",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 1,
+"round": 1,
+"player": "Andrew Wiggins",
+"team": "CLE"
+},
+{
+"draft_year": 2014,
+"pick": 2,
+"round": 1,
+"player": "Jabari Parker",
+"team": "MIL"
+},
+{
+"draft_year": 2014,
+"pick": 3,
+"round": 1,
+"player": "Joel Embiid",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 4,
+"round": 1,
+"player": "Aaron Gordon",
+"team": "ORL"
+},
+{
+"draft_year": 2014,
+"pick": 5,
+"round": 1,
+"player": "Dante Exum",
+"team": "UTA"
+},
+{
+"draft_year": 2014,
+"pick": 6,
+"round": 1,
+"player": "Marcus Smart",
+"team": "BOS"
+},
+{
+"draft_year": 2014,
+"pick": 7,
+"round": 1,
+"player": "Julius Randle",
+"team": "LAL"
+},
+{
+"draft_year": 2014,
+"pick": 8,
+"round": 1,
+"player": "Nik Stauskas",
+"team": "SAC"
+},
+{
+"draft_year": 2014,
+"pick": 9,
+"round": 1,
+"player": "Noah Vonleh",
+"team": "CHA"
+},
+{
+"draft_year": 2014,
+"pick": 10,
+"round": 1,
+"player": "Elfrid Payton",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 11,
+"round": 1,
+"player": "Doug McDermott",
+"team": "DEN"
+},
+{
+"draft_year": 2014,
+"pick": 12,
+"round": 1,
+"player": "Dario Saric",
+"team": "ORL"
+},
+{
+"draft_year": 2014,
+"pick": 13,
+"round": 1,
+"player": "Zach LaVine",
+"team": "MIN"
+},
+{
+"draft_year": 2014,
+"pick": 14,
+"round": 1,
+"player": "T.J. Warren",
+"team": "PHX"
+},
+{
+"draft_year": 2014,
+"pick": 15,
+"round": 1,
+"player": "Adreian Payne",
+"team": "ATL"
+},
+{
+"draft_year": 2014,
+"pick": 16,
+"round": 1,
+"player": "Jusuf Nurki\u0107",
+"team": "CHI"
+},
+{
+"draft_year": 2014,
+"pick": 17,
+"round": 1,
+"player": "James Young",
+"team": "BOS"
+},
+{
+"draft_year": 2014,
+"pick": 18,
+"round": 1,
+"player": "Tyler Ennis",
+"team": "PHX"
+},
+{
+"draft_year": 2014,
+"pick": 19,
+"round": 1,
+"player": "Gary Harris",
+"team": "CHI"
+},
+{
+"draft_year": 2014,
+"pick": 20,
+"round": 1,
+"player": "Bruno Caboclo",
+"team": "TOR"
+},
+{
+"draft_year": 2014,
+"pick": 21,
+"round": 1,
+"player": "Mitch McGary",
+"team": "OKC"
+},
+{
+"draft_year": 2014,
+"pick": 22,
+"round": 1,
+"player": "Jordan Adams",
+"team": "MEM"
+},
+{
+"draft_year": 2014,
+"pick": 23,
+"round": 1,
+"player": "Rodney Hood",
+"team": "UTA"
+},
+{
+"draft_year": 2014,
+"pick": 24,
+"round": 1,
+"player": "Shabazz Napier",
+"team": "CHA"
+},
+{
+"draft_year": 2014,
+"pick": 25,
+"round": 1,
+"player": "Clint Capela",
+"team": "HOU"
+},
+{
+"draft_year": 2014,
+"pick": 26,
+"round": 1,
+"player": "PJ Hairston",
+"team": "MIA"
+},
+{
+"draft_year": 2014,
+"pick": 27,
+"round": 1,
+"player": "Bogdan Bogdanovi\u0107",
+"team": "PHX"
+},
+{
+"draft_year": 2014,
+"pick": 28,
+"round": 1,
+"player": "C.J. Wilcox",
+"team": "LAC"
+},
+{
+"draft_year": 2014,
+"pick": 29,
+"round": 1,
+"player": "Josh Huestis",
+"team": "OKC"
+},
+{
+"draft_year": 2014,
+"pick": 30,
+"round": 1,
+"player": "Kyle Anderson",
+"team": "SAS"
+},
+{
+"draft_year": 2014,
+"pick": 31,
+"round": 2,
+"player": "Damien Inglis",
+"team": "MIL"
+},
+{
+"draft_year": 2014,
+"pick": 32,
+"round": 2,
+"player": "KJ McDaniels",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 33,
+"round": 2,
+"player": "Joe Harris",
+"team": "CLE"
+},
+{
+"draft_year": 2014,
+"pick": 34,
+"round": 2,
+"player": "Cleanthony Early",
+"team": "NYK"
+},
+{
+"draft_year": 2014,
+"pick": 35,
+"round": 2,
+"player": "Jarnell Stokes",
+"team": "UTA"
+},
+{
+"draft_year": 2014,
+"pick": 36,
+"round": 2,
+"player": "Johnny O'Bryant III",
+"team": "MIL"
+},
+{
+"draft_year": 2014,
+"pick": 37,
+"round": 2,
+"player": "DeAndre Daniels",
+"team": "TOR"
+},
+{
+"draft_year": 2014,
+"pick": 38,
+"round": 2,
+"player": "Spencer Dinwiddie",
+"team": "DET"
+},
+{
+"draft_year": 2014,
+"pick": 39,
+"round": 2,
+"player": "Jerami Grant",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 40,
+"round": 2,
+"player": "Glenn Robinson III",
+"team": "MIN"
+},
+{
+"draft_year": 2014,
+"pick": 41,
+"round": 2,
+"player": "Nikola Joki\u0107",
+"team": "DEN"
+},
+{
+"draft_year": 2014,
+"pick": 42,
+"round": 2,
+"player": "Nick Johnson",
+"team": "HOU"
+},
+{
+"draft_year": 2014,
+"pick": 43,
+"round": 2,
+"player": "Edy Tavares",
+"team": "ATL"
+},
+{
+"draft_year": 2014,
+"pick": 44,
+"round": 2,
+"player": "Markel Brown",
+"team": "MIN"
+},
+{
+"draft_year": 2014,
+"pick": 45,
+"round": 2,
+"player": "Dwight Powell",
+"team": "CHA"
+},
+{
+"draft_year": 2014,
+"pick": 46,
+"round": 2,
+"player": "Jordan Clarkson",
+"team": "WAS"
+},
+{
+"draft_year": 2014,
+"pick": 47,
+"round": 2,
+"player": "Russ Smith",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 48,
+"round": 2,
+"player": "Lamar Patterson",
+"team": "MIL"
+},
+{
+"draft_year": 2014,
+"pick": 49,
+"round": 2,
+"player": "Cameron Bairstow",
+"team": "CHI"
+},
+{
+"draft_year": 2014,
+"pick": 50,
+"round": 2,
+"player": "Alec Brown",
+"team": "PHX"
+},
+{
+"draft_year": 2014,
+"pick": 51,
+"round": 2,
+"player": "Thanasis Antetokounmpo",
+"team": "NYK"
+},
+{
+"draft_year": 2014,
+"pick": 52,
+"round": 2,
+"player": "Vasilije Micic",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 53,
+"round": 2,
+"player": "Alessandro Gentile",
+"team": "MIN"
+},
+{
+"draft_year": 2014,
+"pick": 54,
+"round": 2,
+"player": "Nemanja Dangubic",
+"team": "PHI"
+},
+{
+"draft_year": 2014,
+"pick": 55,
+"round": 2,
+"player": "Semaj Christon",
+"team": "MIA"
+},
+{
+"draft_year": 2014,
+"pick": 56,
+"round": 2,
+"player": "Devyn Marble",
+"team": "DEN"
+},
+{
+"draft_year": 2014,
+"pick": 57,
+"round": 2,
+"player": "Louis Labeyrie",
+"team": "IND"
+},
+{
+"draft_year": 2014,
+"pick": 58,
+"round": 2,
+"player": "Jordan McRae",
+"team": "SAS"
+},
+{
+"draft_year": 2014,
+"pick": 59,
+"round": 2,
+"player": "Xavier Thames",
+"team": "TOR"
+},
+{
+"draft_year": 2014,
+"pick": 60,
+"round": 2,
+"player": "Cory Jefferson",
+"team": "SAS"
+}
+]
+}

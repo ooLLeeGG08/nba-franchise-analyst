@@ -1,0 +1,277 @@
+{
+ "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+ "as_of": "2026-11-09",
+ "season": "2019-20",
+ "teams": [
+  {
+   "team": "LAL",
+   "conference": "West",
+   "division": "Pacific",
+   "wins": 52,
+   "losses": 19,
+   "playoff_rank": 1,
+   "division_rank": 1
+  },
+  {
+   "team": "MIL",
+   "conference": "East",
+   "division": "Central",
+   "wins": 56,
+   "losses": 17,
+   "playoff_rank": 1,
+   "division_rank": 1
+  },
+  {
+   "team": "LAC",
+   "conference": "West",
+   "division": "Pacific",
+   "wins": 49,
+   "losses": 23,
+   "playoff_rank": 2,
+   "division_rank": 2
+  },
+  {
+   "team": "TOR",
+   "conference": "East",
+   "division": "Atlantic",
+   "wins": 53,
+   "losses": 19,
+   "playoff_rank": 2,
+   "division_rank": 1
+  },
+  {
+   "team": "BOS",
+   "conference": "East",
+   "division": "Atlantic",
+   "wins": 48,
+   "losses": 24,
+   "playoff_rank": 3,
+   "division_rank": 2
+  },
+  {
+   "team": "DEN",
+   "conference": "West",
+   "division": "Northwest",
+   "wins": 46,
+   "losses": 27,
+   "playoff_rank": 3,
+   "division_rank": 1
+  },
+  {
+   "team": "HOU",
+   "conference": "West",
+   "division": "Southwest",
+   "wins": 44,
+   "losses": 28,
+   "playoff_rank": 4,
+   "division_rank": 1
+  },
+  {
+   "team": "IND",
+   "conference": "East",
+   "division": "Central",
+   "wins": 45,
+   "losses": 28,
+   "playoff_rank": 4,
+   "division_rank": 2
+  },
+  {
+   "team": "MIA",
+   "conference": "East",
+   "division": "Southeast",
+   "wins": 44,
+   "losses": 29,
+   "playoff_rank": 5,
+   "division_rank": 1
+  },
+  {
+   "team": "OKC",
+   "conference": "West",
+   "division": "Northwest",
+   "wins": 44,
+   "losses": 28,
+   "playoff_rank": 5,
+   "division_rank": 2
+  },
+  {
+   "team": "PHI",
+   "conference": "East",
+   "division": "Atlantic",
+   "wins": 43,
+   "losses": 30,
+   "playoff_rank": 6,
+   "division_rank": 3
+  },
+  {
+   "team": "UTA",
+   "conference": "West",
+   "division": "Northwest",
+   "wins": 44,
+   "losses": 28,
+   "playoff_rank": 6,
+   "division_rank": 3
+  },
+  {
+   "team": "DAL",
+   "conference": "West",
+   "division": "Southwest",
+   "wins": 43,
+   "losses": 32,
+   "playoff_rank": 7,
+   "division_rank": 2
+  },
+  {
+   "team": "BKN",
+   "conference": "East",
+   "division": "Atlantic",
+   "wins": 35,
+   "losses": 37,
+   "playoff_rank": 7,
+   "division_rank": 4
+  },
+  {
+   "team": "ORL",
+   "conference": "East",
+   "division": "Southeast",
+   "wins": 33,
+   "losses": 40,
+   "playoff_rank": 8,
+   "division_rank": 2
+  },
+  {
+   "team": "POR",
+   "conference": "West",
+   "division": "Northwest",
+   "wins": 35,
+   "losses": 39,
+   "playoff_rank": 8,
+   "division_rank": 4
+  },
+  {
+   "team": "MEM",
+   "conference": "West",
+   "division": "Southwest",
+   "wins": 34,
+   "losses": 39,
+   "playoff_rank": 9,
+   "division_rank": 3
+  },
+  {
+   "team": "WAS",
+   "conference": "East",
+   "division": "Southeast",
+   "wins": 25,
+   "losses": 47,
+   "playoff_rank": 9,
+   "division_rank": 3
+  },
+  {
+   "team": "PHX",
+   "conference": "West",
+   "division": "Pacific",
+   "wins": 34,
+   "losses": 39,
+   "playoff_rank": 10,
+   "division_rank": 3
+  },
+  {
+   "team": "CHA",
+   "conference": "East",
+   "division": "Southeast",
+   "wins": 23,
+   "losses": 42,
+   "playoff_rank": 10,
+   "division_rank": 4
+  },
+  {
+   "team": "CHI",
+   "conference": "East",
+   "division": "Central",
+   "wins": 22,
+   "losses": 43,
+   "playoff_rank": 11,
+   "division_rank": 3
+  },
+  {
+   "team": "SAS",
+   "conference": "West",
+   "division": "Southwest",
+   "wins": 32,
+   "losses": 39,
+   "playoff_rank": 11,
+   "division_rank": 4
+  },
+  {
+   "team": "NYK",
+   "conference": "East",
+   "division": "Atlantic",
+   "wins": 21,
+   "losses": 45,
+   "playoff_rank": 12,
+   "division_rank": 5
+  },
+  {
+   "team": "SAC",
+   "conference": "West",
+   "division": "Pacific",
+   "wins": 31,
+   "losses": 41,
+   "playoff_rank": 12,
+   "division_rank": 4
+  },
+  {
+   "team": "NOP",
+   "conference": "West",
+   "division": "Southwest",
+   "wins": 30,
+   "losses": 42,
+   "playoff_rank": 13,
+   "division_rank": 5
+  },
+  {
+   "team": "DET",
+   "conference": "East",
+   "division": "Central",
+   "wins": 20,
+   "losses": 46,
+   "playoff_rank": 13,
+   "division_rank": 4
+  },
+  {
+   "team": "ATL",
+   "conference": "East",
+   "division": "Southeast",
+   "wins": 20,
+   "losses": 47,
+   "playoff_rank": 14,
+   "division_rank": 5
+  },
+  {
+   "team": "MIN",
+   "conference": "West",
+   "division": "Northwest",
+   "wins": 19,
+   "losses": 45,
+   "playoff_rank": 14,
+   "division_rank": 5
+  },
+  {
+   "team": "CLE",
+   "conference": "East",
+   "division": "Central",
+   "wins": 19,
+   "losses": 46,
+   "playoff_rank": 15,
+   "division_rank": 5
+  },
+  {
+   "team": "GSW",
+   "conference": "West",
+   "division": "Pacific",
+   "wins": 15,
+   "losses": 50,
+   "playoff_rank": 15,
+   "division_rank": 5
+  }
+ ]
+}

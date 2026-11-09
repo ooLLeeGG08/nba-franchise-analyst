@@ -68,10 +68,11 @@ def draw_offsets(strength_sd, cfg):
 
 
 def load_strength_sd():
-    """Spread of team-strength uncertainty from the forecast backtest."""
-    from tradesim.backtest import BACKTEST_PATH
-    with open(BACKTEST_PATH) as f:
-        return json.load(f)["strength_uncertainty"]["strength_sd_points"]
+    """Spread of team-strength uncertainty, measured by tradesim.strength_check (forecast
+    error of team net ratings over 2019-20 to 2025-26, minus 82-game luck)."""
+    from tradesim.strength_check import CHECK_PATH
+    with open(CHECK_PATH) as f:
+        return json.load(f)["strength_sd"]
 
 
 def simulate_season(schedule, strengths, fit, cfg, uniforms=None, strength_sd=0.0, offsets=None):
@@ -142,44 +143,64 @@ def compare(schedule, before, after, fit, cfg, teams=None, strength_sd=0.0):
     return out
 
 
-def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, fit=None, strength_sd=None):
+def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, engine=None):
     """Check `trades` in order, apply the ones that work, and simulate 2026-27 before and
-    after. Only teams in working trades change; every other roster stays as it is.
-    Draft picks don't change team strength."""
+    after with the player-availability engine (tradesim.engine). Only teams in working
+    trades change; draft picks and cash don't affect the simulation."""
     from tradesim.checker import check_trades_in_sequence
+    from tradesim.engine import Engine
     cfg = cfg or load_sim_config()
-    fit = fit or load_fit()
-    strength_sd = load_strength_sd() if strength_sd is None else strength_sd
-    results, final = check_trades_in_sequence(league, cba, trades, on_date)
-    changed = sorted({code for r in results if r["works"] for code in r["teams"]})
-    before = league_strengths(league, cfg)
-    after = dict(before)
-    after.update(league_strengths(final, cfg, changed))
-    return {"checks": results, "changed_teams": changed,
-            "teams": compare(schedule, before, after, fit, cfg, strength_sd=strength_sd)}
+    results, _ = check_trades_in_sequence(league, cba, trades, on_date)
+    moves = [{"player": m["id"], "from": m["from"], "to": m["to"]}
+             for trade, r in zip(trades, results) if r["works"]
+             for m in trade["moves"] if m["type"] == "player"]
+    engine = engine or Engine(league, schedule, cfg)
+    out = engine.scenario(moves)
+    out["checks"] = results
+    return out
 
 
-def season_table(league=None, cfg=None):
-    """2026-27 projection for every team from current rosters, with uncertainty."""
+def season_table(league=None, cfg=None, engine=None):
+    """2026-27 projection for every team from current rosters (player-availability engine)."""
+    from tradesim.engine import Engine
     from tradesim.games import load_schedule_2026_27
     from tradesim.league import League
     league = league or League.load()
     cfg = cfg or load_sim_config()
-    strengths = league_strengths(league, cfg)
-    mean = sum(strengths.values()) / len(strengths)
-    sim = simulate_season(load_schedule_2026_27(), strengths, load_fit(), cfg, strength_sd=load_strength_sd())
-    rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(strengths[c] - mean, 1),
-             **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct")},
-             "top_seed_pct": sim["teams"][c]["seed_frequency"][0]}
+    engine = engine or Engine(league, load_schedule_2026_27(), cfg)
+    sim = engine.baseline()
+    injured_teams = set(engine.ratings.get("long_injury_teams", []))
+    mean = sum(sim["mean_strength"].values()) / len(CODES)
+    rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(sim["mean_strength"][c] - mean, 1),
+             **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct", "mcse")},
+             "top_seed_pct": sim["teams"][c]["seed_frequency"][0], "injury_adjusted": c in injured_teams}
             for c in CODES]
     return sorted(rows, key=lambda r: -r["mean_wins"])
 
 
 if __name__ == "__main__":
-    for conf in ("East", "West"):
-        print(f"\n{conf}")
-        print(f"{'':3} {'Team':4} {'Str':>5} {'Wins':>5} {'Range':>8} {'Playoff':>8} {'Play-in':>8} {'#1 seed':>8}")
-        for i, r in enumerate([r for r in season_table() if r["conference"] == conf], 1):
-            print(f"{i:>2}. {r['team']:4} {r['strength']:+5.1f} {r['mean_wins']:5.1f} "
-                  f"{r['range'][0]:>3}-{r['range'][1]:<4} {r['playoff_pct']:8.0%} {r['play_in_pct']:8.0%} "
-                  f"{r['top_seed_pct']:8.0%}")
+    from tradesim.ratings import load_long_injuries
+    from tradesim.report import terminal_summary, write_reports
+    cfg = load_sim_config()
+    table = season_table(cfg=cfg)
+    paths = write_reports(table, "season_2026_27", "2026-27 season projection (current rosters)", notes=[
+        f"{cfg['simulation']['n_seasons']:,} simulated seasons, seed {cfg['simulation']['seed']}, every team starts 0-0.",
+        "Strength = expected net rating per 100 possessions vs an average team.",
+        "Range (10-90%) = 10th to 90th percentile of simulated wins: 80% of simulated seasons land inside it.",
+        "Playoff = made the playoffs (seeds 1-6, or won through the play-in). Play-in = finished 7-10.",
+        "Seeds use the NBA's tiebreakers; #1 seed = regular-season first place.",
+        "Long-term injury adjusted (column, or + in the terminal): teams with a player in config/long_injuries.json "
+        f"(as of {load_long_injuries()['as_of']}): his availability is set to expected games played / 82.",
+        "Monte Carlo SE (largest across teams): avg wins "
+        f"{max(r['mcse']['mean_wins'] for r in table):.2f}, playoff "
+        f"{max(r['mcse']['playoff_pct'] for r in table) * 100:.1f} pts, play-in "
+        f"{max(r['mcse']['play_in_pct'] for r in table) * 100:.1f} pts, #1 seed "
+        f"{max(r['mcse']['top_seed_pct'] for r in table) * 100:.1f} pts. Per-team values are in the CSV.",
+    ])
+    worst = {k: max(r["mcse"][k] for r in table) for k in ("mean_wins", "playoff_pct", "play_in_pct", "top_seed_pct")}
+    print(terminal_summary(table))
+    print(f"+ = long-term injury adjusted (config/long_injuries.json, as of {load_long_injuries()['as_of']})")
+    print(f"Monte Carlo SE (largest across teams): avg wins {worst['mean_wins']:.2f}, playoff "
+          f"{worst['playoff_pct'] * 100:.1f} pts, play-in {worst['play_in_pct'] * 100:.1f} pts, "
+          f"#1 seed {worst['top_seed_pct'] * 100:.1f} pts")
+    print("Full results:", *paths, sep="\n  ")

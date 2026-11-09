@@ -93,54 +93,163 @@ Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI
 - `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
   Bird veto rights count as a fail.
 
-### Season simulator (Stage 2)
+### Season simulator
 
-`python fetch_games.py` gets 2025-26 results and the 2026-27 schedule;
-`python -m tradesim.fit` fits the win model; `python -m tradesim.backtest` runs the backtest.
-Settings are in `config/sim.json`; fitted constants are saved to `data/model/fit.json`.
+Simulates the full 82-game 2026-27 regular season, every team from 0-0, for the real
+rosters (baseline) and for any set of player moves (scenario). Games already played
+this season only inform player and team strength; they're never locked in as results.
 
-1. **Player value** (`tradesim/model.py`): Basketball-Reference BPM, blended with
-   replacement level (-2.0) as if the player had also played 250 replacement minutes:
-   `value = (BPM x MP + (-2.0) x 250) / (MP + 250)`.
-   Players who didn't play in 2025-26 (e.g. Haliburton, Lillard, Irving, VanVleet) use
-   their 2024-25 stats.
-   **Team strength** = sum of `(value - (-2.0)) x minutes / 48` over the roster. That is
-   the team's expected net rating per 100 possessions plus a constant, which cancels out.
-2. **Minutes:** expected minutes per game = 2025-26 minutes / max(games, 20). Players are
-   sorted by that and each gets his minutes until the team's 240 are used. After a trade,
-   the same rule runs on the new roster, so a departing player's minutes go to the next
-   players in line. 2026 draft picks get default minutes by pick number.
-3. **Win probability** (`tradesim/fit.py`): `P(home wins) = 1 / (1 + e^-(home + slope x
-   (S_home - S_away)))`, fitted on all 1,230 games of 2025-26 (no home edge on neutral
-   courts). Fit: home = 0.278 (even teams win 56.9% at home), slope = 0.130 per point.
-4. **Season** (`tradesim/simulate.py`): each of the 1,230 games is a biased coin flip;
-   5,000 seasons are drawn at once with numpy (about 0.1 s). Output: average wins, a
-   10th-90th percentile range, the win distribution, and conference seed frequencies.
-   Each simulated season also shifts every team's strength by a random amount
-   (spread 3.5 points, measured by the forecast backtest), so the range includes
-   uncertainty about how good a team really is, not just game luck. Before/after
-   comparisons reuse the same random numbers. Only teams in working trades change;
-   draft picks don't affect the simulation. `python -m tradesim.simulate` prints the
-   2026-27 projection table.
+**Run it**
 
-**Backtest on 2025-26** (`data/model/backtest_2025_26.json`):
+| Command | What it does |
+|---|---|
+| `python -m tradesim.simulate` | 2026-27 projection -> `reports/season_2026_27.csv` / `.md` |
+| `python -m tradesim.scenario kawhi-leonard:TOR:CLE` | Scenario vs baseline -> `reports/scenario_<name>.csv` / `.md` |
+| `python -m tradesim.ratings` | Refit player ratings (after any data refresh or `config/long_injuries.json` edit) |
+| `python -m tradesim.game_model` | Refit the game model |
+| `python -m tradesim.backtest_nov9` | Backtest 2021-22 to 2025-26 and fit sigma_t -> `reports/backtest_nov9.md` |
 
-| Version | Average error | Within 5 wins |
-|---|---|---|
-| Guess 41 wins for everyone | 11.6 wins | — |
-| In-sample, actual minutes (2025-26 stats) | 2.6 wins | 26/30 |
-| In-sample, projected minutes (2025-26 stats) | 2.9 wins | 26/30 |
-| **Forecast**, actual minutes (2024-25 stats) | 6.7 wins | 13/30 |
-| **Forecast**, projected minutes (2024-25 stats, the method used for 2026-27) | **8.0 wins** | 13/30 |
+#### Method
 
-The in-sample rows show the pipeline turns player stats into wins correctly. The
-forecast rows are the honest test: predicting a season from the previous season's stats
-misses by about 8 wins per team. The biggest misses were the 2025-26 Spurs (+27 wins
-vs forecast), Grizzlies (-20) and Hornets (+17.5, rookie Kon Knueppel counted as
-replacement level). Forecasts with projected minutes are somewhat too extreme
-(actual wins move about 0.73 wins per predicted win).
+1. **Player impact** (points per 100 possessions vs an average player; `tradesim/ratings.py`),
+   Basketball-Reference BPM with every setting fitted on 2019-20 to 2025-26:
+   - *Prior:* minutes-weighted BPM over the last 3 seasons (each older season counts half),
+     pulled toward -2.5 as if he'd also played 300 minutes there, plus an age adjustment
+     (+1.2 for 23 and under ... -0.4 for 34+).
+   - *Rookies:* by draft slot, `-0.88 - 0.58 x ln(pick)` (#1 -0.9, #30 -2.8); undrafted -3.0.
+   - *This season:* `impact = (K x prior + m x BPM_now) / (K + m)`, m = minutes so far,
+     K = 898 minutes (about 1,900 possessions), from a fitted noise model (how far players
+     move from their prior, tau = 1.3, vs BPM noise over m minutes).
+   - *Uncertainty:* each player has an SE (1.3 for veterans, 1.9 for rookies before this
+     season's games) that shrinks as his minutes grow.
+2. **Team strength** = `sum(impact x minutes / 48) + team residual`. The residual (observed
+   net rating minus the player sum, 2025-26 plus 2026-27 to date) carries over only 16%,
+   so it's under 1 point for every team.
+3. **Minutes and availability** (`tradesim/rotation.py`): minutes per game played (this
+   season blended with last); a full-strength rotation keeps the real rotation and trims the
+   deepest bench to 240. Each simulated season, every player gets a games-played rate drawn
+   around his expected availability (history plus this season, 68% league average for
+   rotation players), played out as one injury spell; while he's out his minutes go to his
+   backups (same G/F/C position first, closest on the depth chart, max +10 each).
+   `config/long_injuries.json` overrides availability for known 15+ game absences.
+4. **Moves:** departing players' minutes form a pool that incoming players fill first; any
+   extra comes from the lowest-impact same/adjacent-position players; leftovers go to the
+   next players up. A mild diminishing-returns haircut applies to stacked top-3s (15% of
+   their contribution above 10 points; a simplification, not fitted).
+5. **Game model** (`tradesim/game_model.py`): `P(home win) = Phi((S_home - S_away + 2.00 -
+   2.36 x b2b difference) / 12.61)`, fitted on all 8,289 games 2018-19 to 2024-25 with actual
+   season net ratings (home edge 0 on neutral floors). Each game produces a margin, so point
+   differential is available.
+6. **Uncertainty per simulated season:** every player's impact drawn once from
+   `N(rating, SE)`; a small team residual draw (1.41); and a shared, zero-sum team-season
+   error `eps_team ~ N(0, sigma_t)` for what moves a whole team together. sigma_t = 2.5,
+   fitted on the backtest (below).
+7. **Season rules** (`tradesim/standings.py`): win %, then the NBA's two-team and multi-team
+   tiebreakers (head-to-head, division winner, division and conference record, record vs
+   playoff-eligible teams, point differential; random draw last); seeds 7-10 play the
+   play-in. Playoff % = top 6 or won through the play-in.
+8. **Runs and output:** 10,000 seeded seasons in chunks of 2,000 (about 220 MB). Baseline
+   and scenario share every random draw, so changes are paired; the baseline is cached in
+   `data/cache/` per input fingerprint, so a scenario takes about 2.4 s. Reports give avg
+   wins, 10-90% range, playoff %, play-in %, #1 seed % and changes with Monte Carlo SEs plus
+   an 80% range for the change in wins (how much the move's effect varies across seasons);
+   teams in the move are flagged, plus any team whose change is beyond 2 SE and at least
+   0.5 wins or 2 points of odds.
 
-### Limitations
+#### Data sources
+
+Every raw file is listed with its source URL and as-of date in `data/raw/SOURCES.json`:
+Basketball-Reference advanced stats 2018-19 to 2026-27 (user exports), preseason Vegas win
+totals 2021-22 to 2025-26 (`data/vegas_win_totals.csv`, source URL per row), nba_api (game logs,
+schedules, standings and divisions, draft history, team ratings, rosters and acquisition
+dates, as-of-Nov-9 game logs for the backtest), the user's contracts and cap sheet, and
+ESPN's injury page for `config/long_injuries.json`. A few user-supplied files have no
+recorded URL and are marked so.
+
+#### Validation results
+
+**Backtest as of November 9, 2021-22 to 2025-26** (`reports/backtest_nov9.md`): for each
+season, only what was known on Nov 9 (rosters and minutes from game logs to that date,
+pre-season player ratings, team results to date), with the rating model, game model and
+sigma_t fitted on the other seasons; full season simulated from 0-0 on the real schedule.
+
+| Measure (150 team-seasons, held out) | Result |
+|---|---|
+| Win-total average error | 7.3 wins (guessing 41 for everyone: 10.1) |
+| Slope of actual on predicted wins | 0.95 (1.0 = right spread) |
+| Actual wins inside the 50% / 80% interval | 51% / 78% |
+| Playoff-odds Brier score | 0.175 (base rate: 0.249) |
+| Players inside their 50% / 80% rating interval | 47-55% / 76-86% by season (no SE scaling needed) |
+
+**Model vs Vegas** (`data/vegas_win_totals.csv`: preseason totals 2021-22 to 2025-26 from
+Basketball-Reference's preseason odds pages, which credit sportsoddshistory.com; each season
+scaled to sum to 1,230; Vegas playoff odds come from running the totals through the same
+season simulator). Blend = w x model + (1 - w) x Vegas, with w fitted leave-one-season-out.
+
+| 150 team-seasons | Model (as of Nov 9) | Vegas (preseason) | Blend |
+|---|---|---|---|
+| Win-total average error | 7.26 | 7.10 | 7.12 |
+| Win-total RMSE | 9.03 | 9.00 | 8.89 |
+| Slope of actual on predicted | 0.95 (90%: 0.85-1.07) | 0.85 | 0.93 |
+| Playoff Brier | 0.174 | 0.152 | 0.160 |
+
+- Win totals: no real difference (model - Vegas average error, 90% interval -0.70 to +1.04,
+  resampling whole seasons).
+- Playoff odds: Vegas is better (model - Vegas Brier +0.008 to +0.034). Running the model's
+  totals through the same converter gives the same Brier (0.175), so Vegas's edge is in its
+  totals for teams near the playoff cut, not in the conversion.
+- The blend (w = 0.27-0.63 by fold) ties Vegas on win totals and is worse on playoff odds
+  (blend - Vegas Brier +0.002 to +0.016), so it doesn't beat each alone and Vegas totals are
+  not used for 2026-27. (It does beat the model alone.)
+- Slope stays at 0.95, interval includes 1.0: no shrink toward 41 (tracked by a test).
+- Biggest 2025-26 misses vs Vegas (`reports/miss_breakdown_2025_26.md`): LAL and PHI (stars
+  out at the start of the season are missing from the backtest's Nov 9 rosters, plus luck in
+  close games), NYK (three starters far above their prior together), BKN (rookies far below
+  their draft-slot prior), CHI (rating misses, injuries, mid-season trades).
+
+Playoff-odds calibration (sigma_t chosen leave-one-season-out):
+
+| Predicted | Teams | Avg predicted | Actual |
+|---|---|---|---|
+| 0-10% | 16 | 6% | 0% |
+| 10-30% | 22 | 19% | 32% |
+| 30-50% | 28 | 41% | 39% |
+| 50-70% | 26 | 62% | 58% |
+| 70-90% | 49 | 79% | 78% |
+| 90-100% | 9 | 95% | 100% |
+
+sigma_t (2.5) minimizes the ranked probability score of actual win totals over the five
+seasons; chosen on 4 seasons it lands at 2.0-3.0 for every held-out season. Teams in the
+same season aren't independent, so treat +/-3 points of coverage and +/-8-10 points per
+calibration bucket as noise. Other checks: tiebreakers reproduce the NBA's official seeds
+for every team in 2018-19 and 2021-22 to 2025-26; the game model picks 70% of 2025-26
+winners (not used to fit); same seed gives identical output; minutes always total 240;
+moving a player to his own team changes nothing; swapping near-equal players moves wins
+by < 0.5.
+
+#### Known limitations
+
+- **Fit and chemistry:** players are added up; how they fit together (spacing, two
+  ball-dominant guards, defensive schemes) isn't modelled beyond the mild diminishing-returns
+  haircut and position buckets.
+- **Coaching changes:** the team residual (coaching/system) stays with the team and is
+  estimated from past results, so a new coach's effect isn't captured.
+- **Mid-season trades:** the simulator plays every roster for the full season from 0-0;
+  real teams change during the season.
+- **Injury model is simple:** one random spell per player per season from his history, plus
+  a hand-maintained list of known 15+ game absences; shorter known injuries are ignored;
+  when several players are out their costs are simply added; fatigue is only the
+  back-to-back penalty.
+- BPM undervalues some defensive specialists (a few teams look better when one sits).
+- The backtest uses pre-season player ratings (no early-season player BPM exists for past
+  seasons) and builds Nov 9 rosters from players who had played by then, so stars out
+  injured at the start are missing; both make it harder than the live 2026-27 setting.
+- The 2026-27 schedule's 30 in-season-tournament games aren't set yet (filled with
+  same-conference matchups); "playoff-eligible" in the tiebreakers is read as the top 10.
+- The game spread (sigma) was fitted on season-average strengths, so it also contains a
+  little night-to-night lineup variation the simulator adds separately (about 1%).
+
+### Trade checker limitations
 
 - **Cap legality only.** The checker says whether a trade is allowed under the cap
   rules, not whether the other team would accept it.
@@ -159,17 +268,5 @@ replacement level). Forecasts with projected minutes are somewhat too extreme
   - The Hornets' exception amount ($40,770,520) and date may be a copy error in the source file.
   - The one-year Bird veto list may be from last season.
   - Re-acquire checks only know each player's most recent move.
-- **Simulator:**
-  - No injuries or fatigue: every player is available for every game.
-  - Simplified minutes: a fixed "next man up" rule, not real rotations or positions.
-  - Rookies and players with no stats in either of the last two seasons count as
-    replacement level, so teams with good rookies are likely underrated.
-  - Forecasts from last season's stats miss by about 8 wins per team on average
-    (see the backtest): player development, aging and injuries aren't modelled.
-  - The win range's team-strength uncertainty is measured on one season (2025-26): with
-    it, 21 of 30 forecasts landed inside their 10-90% range (about 24 expected).
-  - The 2026-27 schedule's last 2 games per team (in-season tournament) aren't set yet;
-    they're filled with random same-conference matchups.
-  - Playoff seeding breaks ties at random, not with the NBA's tiebreakers.
 - **Roster rule:** each team must end a trade with 14-15 standard contracts (per the
   project spec). The Kings currently have 13, so any trade that doesn't add a player fails.

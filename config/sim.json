@@ -1,31 +1,113 @@
 {
   "_note": "Simulator settings. Fitted constants (home court, slope) are NOT here: they're fitted on 2025-26 games by `python -m tradesim.fit` and saved to data/model/fit.json.",
-
   "player_value": {
     "replacement_bpm": -2.0,
     "shrink_minutes": 250,
     "_replacement_bpm": "Basketball-Reference's replacement level (the BPM used for VORP).",
     "_shrink_minutes": "BPM is noisy in small samples, so each player's BPM is blended with replacement level as if he'd also played this many replacement-level minutes."
   },
-
   "minutes": {
     "team_minutes": 240,
     "games_floor": 20,
-    "no_stats_mpg": {"pick_1_5": 26, "pick_6_14": 18, "pick_15_30": 10, "other": 10},
+    "no_stats_mpg": {
+      "pick_1_5": 26,
+      "pick_6_14": 18,
+      "pick_15_30": 10,
+      "other": 10
+    },
     "_games_floor": "Minutes per game = minutes / max(games, 20), so a player with a few garbage-time games doesn't look like a starter.",
     "_no_stats_mpg": "Expected minutes for players with no 2025-26 stats (2026 draft picks by pick number; injured veterans use 'other')."
   },
-
   "simulation": {
-    "n_seasons": 5000,
+    "n_seasons": 10000,
     "seed": 2027,
-    "range_percentiles": [10, 90],
+    "range_percentiles": [
+      10,
+      90
+    ],
     "playoff_seeds": 6,
-    "play_in_seeds": 10
+    "play_in_seeds": 10,
+    "highlight": {
+      "wins": 0.5,
+      "pct_points": 2.0
+    },
+    "_highlight": "A team not in the trade is highlighted if a change is beyond 2 Monte Carlo SE AND at least this big (wins, or points of playoff / play-in / #1-seed odds). Paired changes are so precise that tiny ripple effects would otherwise flag every team.",
+    "chunk_size": 2000,
+    "_chunk_size": "Seasons simulated at once. Keeps memory flat (about 150 MB) whatever n_seasons is."
   },
-
   "fit": {
     "season": "2025-26",
     "newton_iterations": 25
+  },
+  "ratings": {
+    "_note": "Player-impact model settings. Fitted values (recency weight, shrinkage, age curve, rookie curve, K, SE, residual persistence) are written to data/model/ratings_fit.json by `python -m tradesim.ratings`.",
+    "history_seasons": 3,
+    "fit_target_seasons": [
+      "2019-20",
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25",
+      "2025-26"
+    ],
+    "grid": {
+      "recency": [
+        0.2,
+        0.35,
+        0.5,
+        0.65,
+        0.8,
+        1.0
+      ],
+      "shrink_minutes": [
+        0,
+        100,
+        200,
+        300,
+        400,
+        600,
+        800,
+        1200,
+        1600
+      ],
+      "prior_mean": [
+        -5.0,
+        -4.5,
+        -4.0,
+        -3.5,
+        -3.0,
+        -2.5,
+        -2.0,
+        -1.5,
+        -1.0
+      ]
+    },
+    "age_buckets": [
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33
+    ],
+    "min_target_minutes": 50,
+    "minutes_prior_games": 5,
+    "max_mpg": 42,
+    "_age_buckets": "Upper ages of each bucket: <=21, 22-23, 24-25, 26-27, 28-29, 30-31, 32-33, 34+.",
+    "_minutes_prior_games": "Minutes per game PLAYED = this season's blended with last season's, as if last season counted for 5 games. Projected minutes per team game = that x expected share of games played.",
+    "availability_prior_games": 82,
+    "_availability_prior_games": "Games-played share is shrunk toward the league average as if the player had also played this many games at the average rate."
+  },
+  "rotation": {
+    "max_mpg": 42,
+    "max_extra_minutes": 10,
+    "diminishing_returns": {
+      "threshold": 10.0,
+      "haircut": 0.15
+    },
+    "_max_extra_minutes": "When teammates are out, a player can take at most this many minutes on top of his usual role.",
+    "_diminishing_returns": "Simplification, default mild: if the top-3 players add more than `threshold` points (impact x minutes / 48), 15% of the excess is removed."
   }
 }

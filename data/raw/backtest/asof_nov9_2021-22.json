@@ -1,0 +1,2854 @@
+{
+ "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+ "as_of": "2026-11-09",
+ "season": "2021-22",
+ "cutoff": "11/09/2021",
+ "players": [
+  {
+   "name": "Aaron Gordon",
+   "games": 10,
+   "minutes": 298.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Aaron Henry",
+   "games": 1,
+   "minutes": 2.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Aaron Holiday",
+   "games": 10,
+   "minutes": 162.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Aaron Nesmith",
+   "games": 7,
+   "minutes": 69.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Abdel Nader",
+   "games": 8,
+   "minutes": 82.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Al Horford",
+   "games": 8,
+   "minutes": 236.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Alec Burks",
+   "games": 11,
+   "minutes": 199.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Aleksej Pokusevski",
+   "games": 9,
+   "minutes": 126.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Alex Caruso",
+   "games": 10,
+   "minutes": 280.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Alex Len",
+   "games": 7,
+   "minutes": 124.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Alize Johnson",
+   "games": 6,
+   "minutes": 49.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Alperen Sengun",
+   "games": 10,
+   "minutes": 193.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Amir Coffey",
+   "games": 7,
+   "minutes": 48.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Andre Drummond",
+   "games": 11,
+   "minutes": 229.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Andre Iguodala",
+   "games": 8,
+   "minutes": 162.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Andrew Wiggins",
+   "games": 10,
+   "minutes": 292.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Anfernee Simons",
+   "games": 11,
+   "minutes": 253.0,
+   "team": "POR"
+  },
+  {
+   "name": "Anthony Davis",
+   "games": 11,
+   "minutes": 375.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Anthony Edwards",
+   "games": 9,
+   "minutes": 325.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Armoni Brooks",
+   "games": 8,
+   "minutes": 64.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Austin Reaves",
+   "games": 10,
+   "minutes": 214.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Austin Rivers",
+   "games": 8,
+   "minutes": 98.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Avery Bradley",
+   "games": 10,
+   "minutes": 209.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Ayo Dosunmu",
+   "games": 9,
+   "minutes": 122.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Bam Adebayo",
+   "games": 9,
+   "minutes": 287.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Ben McLemore",
+   "games": 3,
+   "minutes": 22.0,
+   "team": "POR"
+  },
+  {
+   "name": "Blake Griffin",
+   "games": 10,
+   "minutes": 227.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Boban Marjanovic",
+   "games": 5,
+   "minutes": 37.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Bobby Portis Jr.",
+   "games": 6,
+   "minutes": 146.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Bogdan Bogdanovi\u0107",
+   "games": 11,
+   "minutes": 325.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Bojan Bogdanovic",
+   "games": 11,
+   "minutes": 338.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Bol Bol",
+   "games": 3,
+   "minutes": 10.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Bones Hyland",
+   "games": 7,
+   "minutes": 105.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Brad Wanamaker",
+   "games": 7,
+   "minutes": 95.0,
+   "team": "IND"
+  },
+  {
+   "name": "Bradley Beal",
+   "games": 9,
+   "minutes": 322.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Brandon Boston",
+   "games": 4,
+   "minutes": 13.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Brandon Clarke",
+   "games": 7,
+   "minutes": 101.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Brandon Ingram",
+   "games": 6,
+   "minutes": 222.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Brook Lopez",
+   "games": 1,
+   "minutes": 28.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Bruce Brown",
+   "games": 10,
+   "minutes": 265.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Bruno Fernando",
+   "games": 3,
+   "minutes": 6.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Bryn Forbes",
+   "games": 10,
+   "minutes": 118.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Buddy Hield",
+   "games": 11,
+   "minutes": 314.0,
+   "team": "SAC"
+  },
+  {
+   "name": "CJ Elleby",
+   "games": 6,
+   "minutes": 31.0,
+   "team": "POR"
+  },
+  {
+   "name": "CJ McCollum",
+   "games": 11,
+   "minutes": 373.0,
+   "team": "POR"
+  },
+  {
+   "name": "Cade Cunningham",
+   "games": 4,
+   "minutes": 110.0,
+   "team": "DET"
+  },
+  {
+   "name": "Caleb Martin",
+   "games": 7,
+   "minutes": 90.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Cam Reddish",
+   "games": 12,
+   "minutes": 276.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Cam Thomas",
+   "games": 6,
+   "minutes": 20.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Cameron Johnson",
+   "games": 9,
+   "minutes": 191.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Cameron Payne",
+   "games": 4,
+   "minutes": 68.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Caris LeVert",
+   "games": 5,
+   "minutes": 136.0,
+   "team": "IND"
+  },
+  {
+   "name": "Carmelo Anthony",
+   "games": 11,
+   "minutes": 315.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Cedi Osman",
+   "games": 10,
+   "minutes": 195.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Chandler Hutchison",
+   "games": 1,
+   "minutes": 6.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Charles Bassey",
+   "games": 4,
+   "minutes": 11.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Chimezie Metu",
+   "games": 2,
+   "minutes": 22.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Chris Boucher",
+   "games": 11,
+   "minutes": 147.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Chris Chiozza",
+   "games": 3,
+   "minutes": 27.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Chris Duarte",
+   "games": 11,
+   "minutes": 369.0,
+   "team": "IND"
+  },
+  {
+   "name": "Chris Paul",
+   "games": 9,
+   "minutes": 287.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Christian Wood",
+   "games": 10,
+   "minutes": 335.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Chuma Okeke",
+   "games": 5,
+   "minutes": 94.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Clint Capela",
+   "games": 12,
+   "minutes": 342.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Cody Martin",
+   "games": 12,
+   "minutes": 294.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Cody Zeller",
+   "games": 11,
+   "minutes": 168.0,
+   "team": "POR"
+  },
+  {
+   "name": "Cole Anthony",
+   "games": 11,
+   "minutes": 375.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Collin Sexton",
+   "games": 11,
+   "minutes": 320.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Corey Kispert",
+   "games": 9,
+   "minutes": 96.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Cory Joseph",
+   "games": 9,
+   "minutes": 191.0,
+   "team": "DET"
+  },
+  {
+   "name": "D'Angelo Russell",
+   "games": 7,
+   "minutes": 209.0,
+   "team": "MIN"
+  },
+  {
+   "name": "D.J. Augustin",
+   "games": 10,
+   "minutes": 117.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Dalano Banton",
+   "games": 11,
+   "minutes": 132.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Damian Jones",
+   "games": 2,
+   "minutes": 14.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Damian Lillard",
+   "games": 11,
+   "minutes": 380.0,
+   "team": "POR"
+  },
+  {
+   "name": "Damion Lee",
+   "games": 9,
+   "minutes": 218.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Daniel Gafford",
+   "games": 8,
+   "minutes": 151.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Daniel Theis",
+   "games": 8,
+   "minutes": 185.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Danilo Gallinari",
+   "games": 9,
+   "minutes": 152.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Danny Green",
+   "games": 9,
+   "minutes": 223.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Danuel House Jr.",
+   "games": 3,
+   "minutes": 34.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Darius Bazley",
+   "games": 9,
+   "minutes": 245.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Darius Garland",
+   "games": 9,
+   "minutes": 297.0,
+   "team": "CLE"
+  },
+  {
+   "name": "David Johnson",
+   "games": 1,
+   "minutes": 0.0,
+   "team": "TOR"
+  },
+  {
+   "name": "David Nwaba",
+   "games": 10,
+   "minutes": 136.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Davion Mitchell",
+   "games": 11,
+   "minutes": 302.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Davis Bertans",
+   "games": 7,
+   "minutes": 119.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Day'Ron Sharpe",
+   "games": 5,
+   "minutes": 17.0,
+   "team": "BKN"
+  },
+  {
+   "name": "De'Aaron Fox",
+   "games": 11,
+   "minutes": 390.0,
+   "team": "SAC"
+  },
+  {
+   "name": "De'Andre Hunter",
+   "games": 10,
+   "minutes": 285.0,
+   "team": "ATL"
+  },
+  {
+   "name": "De'Anthony Melton",
+   "games": 10,
+   "minutes": 285.0,
+   "team": "MEM"
+  },
+  {
+   "name": "DeAndre Jordan",
+   "games": 11,
+   "minutes": 159.0,
+   "team": "LAL"
+  },
+  {
+   "name": "DeAndre' Bembry",
+   "games": 10,
+   "minutes": 142.0,
+   "team": "BKN"
+  },
+  {
+   "name": "DeJon Jarreau",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "IND"
+  },
+  {
+   "name": "DeMar DeRozan",
+   "games": 10,
+   "minutes": 350.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Dean Wade",
+   "games": 8,
+   "minutes": 118.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Deandre Ayton",
+   "games": 6,
+   "minutes": 176.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Dejounte Murray",
+   "games": 10,
+   "minutes": 344.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Delon Wright",
+   "games": 10,
+   "minutes": 111.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Deni Avdija",
+   "games": 10,
+   "minutes": 219.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Dennis Schr\u00f6der",
+   "games": 10,
+   "minutes": 316.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Dennis Smith Jr.",
+   "games": 6,
+   "minutes": 70.0,
+   "team": "POR"
+  },
+  {
+   "name": "Denzel Valentine",
+   "games": 6,
+   "minutes": 13.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Derrick Favors",
+   "games": 8,
+   "minutes": 141.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Derrick Jones Jr.",
+   "games": 6,
+   "minutes": 94.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Derrick Rose",
+   "games": 11,
+   "minutes": 249.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Derrick White",
+   "games": 10,
+   "minutes": 319.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Desmond Bane",
+   "games": 10,
+   "minutes": 303.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Devin Booker",
+   "games": 9,
+   "minutes": 298.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Devin Vassell",
+   "games": 10,
+   "minutes": 259.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Devonte' Graham",
+   "games": 11,
+   "minutes": 358.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Dewayne Dedmon",
+   "games": 10,
+   "minutes": 142.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Didi Louzada",
+   "games": 2,
+   "minutes": 7.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Domantas Sabonis",
+   "games": 11,
+   "minutes": 406.0,
+   "team": "IND"
+  },
+  {
+   "name": "Donovan Mitchell",
+   "games": 10,
+   "minutes": 325.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Dorian Finney-Smith",
+   "games": 10,
+   "minutes": 315.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Doug McDermott",
+   "games": 7,
+   "minutes": 173.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Draymond Green",
+   "games": 10,
+   "minutes": 306.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Drew Eubanks",
+   "games": 10,
+   "minutes": 141.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Duane Washington Jr.",
+   "games": 2,
+   "minutes": 4.0,
+   "team": "IND"
+  },
+  {
+   "name": "Duncan Robinson",
+   "games": 10,
+   "minutes": 283.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Dwight Howard",
+   "games": 9,
+   "minutes": 130.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Dwight Powell",
+   "games": 10,
+   "minutes": 240.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Dylan Windler",
+   "games": 7,
+   "minutes": 70.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Ed Davis",
+   "games": 2,
+   "minutes": 3.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Elfrid Payton",
+   "games": 5,
+   "minutes": 75.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Elijah Hughes",
+   "games": 3,
+   "minutes": 10.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Enes Freedom",
+   "games": 2,
+   "minutes": 10.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Eric Bledsoe",
+   "games": 10,
+   "minutes": 269.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Eric Gordon",
+   "games": 8,
+   "minutes": 214.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Eric Paschall",
+   "games": 11,
+   "minutes": 168.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Eugene Omoruyi",
+   "games": 2,
+   "minutes": 11.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Evan Fournier",
+   "games": 11,
+   "minutes": 334.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Evan Mobley",
+   "games": 11,
+   "minutes": 376.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Facundo Campazzo",
+   "games": 10,
+   "minutes": 160.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Frank Jackson",
+   "games": 9,
+   "minutes": 169.0,
+   "team": "DET"
+  },
+  {
+   "name": "Frank Kaminsky",
+   "games": 5,
+   "minutes": 96.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Frank Ntilikina",
+   "games": 9,
+   "minutes": 127.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Franz Wagner",
+   "games": 11,
+   "minutes": 350.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Fred VanVleet",
+   "games": 11,
+   "minutes": 428.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Furkan Korkmaz",
+   "games": 11,
+   "minutes": 286.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Gabe Vincent",
+   "games": 8,
+   "minutes": 54.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Gabriel Deck",
+   "games": 3,
+   "minutes": 19.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Garrett Temple",
+   "games": 9,
+   "minutes": 183.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Gary Harris",
+   "games": 6,
+   "minutes": 138.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Gary Payton II",
+   "games": 10,
+   "minutes": 113.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Gary Trent Jr.",
+   "games": 11,
+   "minutes": 370.0,
+   "team": "TOR"
+  },
+  {
+   "name": "George Hill",
+   "games": 11,
+   "minutes": 300.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Georges Niang",
+   "games": 12,
+   "minutes": 276.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Georgios Kalaitzakis",
+   "games": 5,
+   "minutes": 29.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Giannis Antetokounmpo",
+   "games": 11,
+   "minutes": 357.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Goga Bitadze",
+   "games": 8,
+   "minutes": 57.0,
+   "team": "IND"
+  },
+  {
+   "name": "Goran Dragic",
+   "games": 4,
+   "minutes": 62.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Gordon Hayward",
+   "games": 12,
+   "minutes": 423.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Gorgui Dieng",
+   "games": 12,
+   "minutes": 126.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Grant Williams",
+   "games": 10,
+   "minutes": 173.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Grayson Allen",
+   "games": 11,
+   "minutes": 324.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Greg Brown III",
+   "games": 6,
+   "minutes": 29.0,
+   "team": "POR"
+  },
+  {
+   "name": "Hamidou Diallo",
+   "games": 6,
+   "minutes": 77.0,
+   "team": "DET"
+  },
+  {
+   "name": "Harrison Barnes",
+   "games": 11,
+   "minutes": 410.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Hassan Whiteside",
+   "games": 11,
+   "minutes": 184.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Herbert Jones",
+   "games": 8,
+   "minutes": 195.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Ignas Brazdeikis",
+   "games": 6,
+   "minutes": 48.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Immanuel Quickley",
+   "games": 11,
+   "minutes": 166.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Isaac Bonga",
+   "games": 3,
+   "minutes": 6.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Isaac Okoro",
+   "games": 4,
+   "minutes": 108.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Isaiah Hartenstein",
+   "games": 9,
+   "minutes": 140.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Isaiah Jackson",
+   "games": 2,
+   "minutes": 12.0,
+   "team": "IND"
+  },
+  {
+   "name": "Isaiah Joe",
+   "games": 7,
+   "minutes": 56.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Isaiah Roby",
+   "games": 5,
+   "minutes": 50.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Isaiah Stewart",
+   "games": 9,
+   "minutes": 214.0,
+   "team": "DET"
+  },
+  {
+   "name": "Isaiah Todd",
+   "games": 1,
+   "minutes": 5.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Ish Smith",
+   "games": 11,
+   "minutes": 182.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Ivica Zubac",
+   "games": 10,
+   "minutes": 237.0,
+   "team": "LAC"
+  },
+  {
+   "name": "JT Thor",
+   "games": 2,
+   "minutes": 2.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Ja Morant",
+   "games": 10,
+   "minutes": 352.0,
+   "team": "MEM"
+  },
+  {
+   "name": "JaMychal Green",
+   "games": 10,
+   "minutes": 128.0,
+   "team": "DEN"
+  },
+  {
+   "name": "JaQuori McLaughlin",
+   "games": 1,
+   "minutes": 2.0,
+   "team": "DAL"
+  },
+  {
+   "name": "JaVale McGee",
+   "games": 9,
+   "minutes": 151.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Jabari Parker",
+   "games": 4,
+   "minutes": 40.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Jaden McDaniels",
+   "games": 9,
+   "minutes": 233.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Jaden Springer",
+   "games": 1,
+   "minutes": 2.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Jae Crowder",
+   "games": 9,
+   "minutes": 266.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Jae'Sean Tate",
+   "games": 10,
+   "minutes": 277.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Jahmi'us Ramsey",
+   "games": 1,
+   "minutes": 2.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Jake Layman",
+   "games": 2,
+   "minutes": 8.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Jakob Poeltl",
+   "games": 7,
+   "minutes": 210.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Jalen Brunson",
+   "games": 10,
+   "minutes": 286.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Jalen Green",
+   "games": 10,
+   "minutes": 323.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Jalen Johnson",
+   "games": 4,
+   "minutes": 15.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Jalen McDaniels",
+   "games": 10,
+   "minutes": 106.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Jalen Smith",
+   "games": 2,
+   "minutes": 19.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Jalen Suggs",
+   "games": 11,
+   "minutes": 316.0,
+   "team": "ORL"
+  },
+  {
+   "name": "James Bouknight",
+   "games": 5,
+   "minutes": 9.0,
+   "team": "CHA"
+  },
+  {
+   "name": "James Harden",
+   "games": 11,
+   "minutes": 377.0,
+   "team": "BKN"
+  },
+  {
+   "name": "James Johnson",
+   "games": 5,
+   "minutes": 56.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Jamorko Pickett",
+   "games": 3,
+   "minutes": 8.0,
+   "team": "DET"
+  },
+  {
+   "name": "Jared Butler",
+   "games": 9,
+   "minutes": 45.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Jaren Jackson Jr.",
+   "games": 10,
+   "minutes": 269.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Jarred Vanderbilt",
+   "games": 9,
+   "minutes": 172.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Jarrett Allen",
+   "games": 11,
+   "minutes": 358.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Jarrett Culver",
+   "games": 2,
+   "minutes": 16.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Javonte Green",
+   "games": 10,
+   "minutes": 193.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Jaxson Hayes",
+   "games": 10,
+   "minutes": 122.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Jay Huff",
+   "games": 1,
+   "minutes": 8.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Jay Scrubb",
+   "games": 2,
+   "minutes": 12.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Jaylen Brown",
+   "games": 8,
+   "minutes": 291.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Jaylen Nowell",
+   "games": 3,
+   "minutes": 24.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Jayson Tatum",
+   "games": 10,
+   "minutes": 372.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Jeff Dowtin Jr.",
+   "games": 2,
+   "minutes": 6.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Jeff Green",
+   "games": 10,
+   "minutes": 181.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Jerami Grant",
+   "games": 8,
+   "minutes": 262.0,
+   "team": "DET"
+  },
+  {
+   "name": "Jeremiah Robinson-Earl",
+   "games": 9,
+   "minutes": 157.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Jeremy Lamb",
+   "games": 8,
+   "minutes": 136.0,
+   "team": "IND"
+  },
+  {
+   "name": "Jericho Sims",
+   "games": 5,
+   "minutes": 25.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Jevon Carter",
+   "games": 11,
+   "minutes": 152.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Jimmy Butler III",
+   "games": 10,
+   "minutes": 350.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Jock Landale",
+   "games": 4,
+   "minutes": 10.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Joe Harris",
+   "games": 11,
+   "minutes": 346.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Joe Ingles",
+   "games": 11,
+   "minutes": 277.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Joel Ayayi",
+   "games": 1,
+   "minutes": 4.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Joel Embiid",
+   "games": 9,
+   "minutes": 278.0,
+   "team": "PHI"
+  },
+  {
+   "name": "John Collins",
+   "games": 12,
+   "minutes": 375.0,
+   "team": "ATL"
+  },
+  {
+   "name": "John Konchar",
+   "games": 9,
+   "minutes": 118.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Jonas Valanciunas",
+   "games": 11,
+   "minutes": 369.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Jonathan Kuminga",
+   "games": 5,
+   "minutes": 23.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Jordan Clarkson",
+   "games": 11,
+   "minutes": 279.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Jordan McLaughlin",
+   "games": 8,
+   "minutes": 101.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Jordan Nwora",
+   "games": 11,
+   "minutes": 235.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Jordan Poole",
+   "games": 10,
+   "minutes": 288.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Jose Alvarado",
+   "games": 2,
+   "minutes": 7.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Josh Christopher",
+   "games": 6,
+   "minutes": 47.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Josh Giddey",
+   "games": 9,
+   "minutes": 264.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Josh Green",
+   "games": 6,
+   "minutes": 36.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Josh Hart",
+   "games": 7,
+   "minutes": 191.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Josh Jackson",
+   "games": 9,
+   "minutes": 201.0,
+   "team": "DET"
+  },
+  {
+   "name": "Josh Okogie",
+   "games": 7,
+   "minutes": 111.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Josh Richardson",
+   "games": 8,
+   "minutes": 181.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Joshua Primo",
+   "games": 2,
+   "minutes": 6.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Jrue Holiday",
+   "games": 5,
+   "minutes": 124.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Juan Toscano-Anderson",
+   "games": 10,
+   "minutes": 137.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Juancho Hernangomez",
+   "games": 5,
+   "minutes": 14.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Julius Randle",
+   "games": 11,
+   "minutes": 403.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Justin Champagnie",
+   "games": 4,
+   "minutes": 15.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Justin Holiday",
+   "games": 11,
+   "minutes": 320.0,
+   "team": "IND"
+  },
+  {
+   "name": "Justin Robinson",
+   "games": 11,
+   "minutes": 159.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Justise Winslow",
+   "games": 9,
+   "minutes": 80.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Jusuf Nurki\u0107",
+   "games": 11,
+   "minutes": 277.0,
+   "team": "POR"
+  },
+  {
+   "name": "KJ Martin",
+   "games": 9,
+   "minutes": 131.0,
+   "team": "HOU"
+  },
+  {
+   "name": "KZ Okpala",
+   "games": 5,
+   "minutes": 19.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Kai Jones",
+   "games": 4,
+   "minutes": 5.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Karl-Anthony Towns",
+   "games": 9,
+   "minutes": 318.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Keita Bates-Diop",
+   "games": 9,
+   "minutes": 125.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Kelan Martin",
+   "games": 4,
+   "minutes": 35.0,
+   "team": "IND"
+  },
+  {
+   "name": "Keldon Johnson",
+   "games": 10,
+   "minutes": 300.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Kelly Olynyk",
+   "games": 9,
+   "minutes": 203.0,
+   "team": "DET"
+  },
+  {
+   "name": "Kelly Oubre Jr.",
+   "games": 12,
+   "minutes": 318.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Kemba Walker",
+   "games": 10,
+   "minutes": 264.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Kenrich Williams",
+   "games": 9,
+   "minutes": 195.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Kent Bazemore",
+   "games": 11,
+   "minutes": 278.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Kentavious Caldwell-Pope",
+   "games": 10,
+   "minutes": 305.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Keon Johnson",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Kevin Durant",
+   "games": 11,
+   "minutes": 384.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Kevin Huerter",
+   "games": 11,
+   "minutes": 244.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Kevin Knox II",
+   "games": 3,
+   "minutes": 6.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Kevin Love",
+   "games": 7,
+   "minutes": 146.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Kevin Pangos",
+   "games": 3,
+   "minutes": 8.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Kevin Porter Jr.",
+   "games": 10,
+   "minutes": 314.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Kevon Looney",
+   "games": 10,
+   "minutes": 154.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Khem Birch",
+   "games": 10,
+   "minutes": 238.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Khris Middleton",
+   "games": 6,
+   "minutes": 188.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Killian Hayes",
+   "games": 8,
+   "minutes": 197.0,
+   "team": "DET"
+  },
+  {
+   "name": "Killian Tillie",
+   "games": 3,
+   "minutes": 22.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Kira Lewis Jr.",
+   "games": 11,
+   "minutes": 151.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Kristaps Porzi\u0146\u0123is",
+   "games": 5,
+   "minutes": 132.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Kyle Anderson",
+   "games": 10,
+   "minutes": 225.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Kyle Kuzma",
+   "games": 10,
+   "minutes": 332.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Kyle Lowry",
+   "games": 9,
+   "minutes": 291.0,
+   "team": "MIA"
+  },
+  {
+   "name": "LaMarcus Aldridge",
+   "games": 10,
+   "minutes": 201.0,
+   "team": "BKN"
+  },
+  {
+   "name": "LaMelo Ball",
+   "games": 12,
+   "minutes": 377.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Lamar Stevens",
+   "games": 7,
+   "minutes": 74.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Landry Shamet",
+   "games": 9,
+   "minutes": 154.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Larry Nance Jr.",
+   "games": 11,
+   "minutes": 189.0,
+   "team": "POR"
+  },
+  {
+   "name": "Lauri Markkanen",
+   "games": 8,
+   "minutes": 245.0,
+   "team": "CLE"
+  },
+  {
+   "name": "LeBron James",
+   "games": 6,
+   "minutes": 223.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Leandro Bolmaro",
+   "games": 3,
+   "minutes": 9.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Lonnie Walker IV",
+   "games": 10,
+   "minutes": 241.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Lonzo Ball",
+   "games": 10,
+   "minutes": 343.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Lou Williams",
+   "games": 8,
+   "minutes": 90.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Luguentz Dort",
+   "games": 8,
+   "minutes": 261.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Luka Don\u010di\u0107",
+   "games": 10,
+   "minutes": 343.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Luka Garza",
+   "games": 5,
+   "minutes": 40.0,
+   "team": "DET"
+  },
+  {
+   "name": "Luke Kennard",
+   "games": 10,
+   "minutes": 270.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Malachi Flynn",
+   "games": 6,
+   "minutes": 29.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Malcolm Brogdon",
+   "games": 6,
+   "minutes": 220.0,
+   "team": "IND"
+  },
+  {
+   "name": "Malik Beasley",
+   "games": 9,
+   "minutes": 235.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Malik Fitts",
+   "games": 3,
+   "minutes": 7.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Malik Monk",
+   "games": 11,
+   "minutes": 217.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Marcus Garrett",
+   "games": 2,
+   "minutes": 7.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Marcus Morris Sr.",
+   "games": 2,
+   "minutes": 55.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Marcus Smart",
+   "games": 9,
+   "minutes": 317.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Markieff Morris",
+   "games": 10,
+   "minutes": 188.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Markus Howard",
+   "games": 3,
+   "minutes": 11.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Marvin Bagley III",
+   "games": 1,
+   "minutes": 10.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Mason Plumlee",
+   "games": 12,
+   "minutes": 324.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Matisse Thybulle",
+   "games": 9,
+   "minutes": 224.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Matt Thomas",
+   "games": 2,
+   "minutes": 4.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Maurice Harkless",
+   "games": 10,
+   "minutes": 227.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Max Strus",
+   "games": 6,
+   "minutes": 105.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Maxi Kleber",
+   "games": 6,
+   "minutes": 112.0,
+   "team": "DAL"
+  },
+  {
+   "name": "McKinley Wright IV",
+   "games": 1,
+   "minutes": 4.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Michael Porter Jr.",
+   "games": 9,
+   "minutes": 265.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Mikal Bridges",
+   "games": 9,
+   "minutes": 296.0,
+   "team": "PHX"
+  },
+  {
+   "name": "Mike Conley",
+   "games": 9,
+   "minutes": 261.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Mike Muscala",
+   "games": 7,
+   "minutes": 107.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Miles Bridges",
+   "games": 12,
+   "minutes": 438.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Miles McBride",
+   "games": 5,
+   "minutes": 4.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Mitchell Robinson",
+   "games": 10,
+   "minutes": 274.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Miye Oni",
+   "games": 4,
+   "minutes": 9.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Mo Bamba",
+   "games": 11,
+   "minutes": 340.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Monte Morris",
+   "games": 10,
+   "minutes": 293.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Montrezl Harrell",
+   "games": 10,
+   "minutes": 299.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Moritz Wagner",
+   "games": 10,
+   "minutes": 106.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Moses Brown",
+   "games": 5,
+   "minutes": 16.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Moses Moody",
+   "games": 8,
+   "minutes": 57.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Mychal Mulder",
+   "games": 2,
+   "minutes": 7.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Myles Turner",
+   "games": 11,
+   "minutes": 310.0,
+   "team": "IND"
+  },
+  {
+   "name": "Naji Marshall",
+   "games": 11,
+   "minutes": 164.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Nassir Little",
+   "games": 11,
+   "minutes": 222.0,
+   "team": "POR"
+  },
+  {
+   "name": "Nathan Knight",
+   "games": 2,
+   "minutes": 4.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Naz Reid",
+   "games": 9,
+   "minutes": 131.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Nemanja Bjelica",
+   "games": 10,
+   "minutes": 152.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Nerlens Noel",
+   "games": 4,
+   "minutes": 84.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Nic Claxton",
+   "games": 4,
+   "minutes": 75.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Nick Richards",
+   "games": 9,
+   "minutes": 78.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Nickeil Alexander-Walker",
+   "games": 11,
+   "minutes": 351.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Nicolas Batum",
+   "games": 9,
+   "minutes": 251.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Nikola Joki\u0107",
+   "games": 10,
+   "minutes": 318.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Nikola Vu\u010devi\u0107",
+   "games": 10,
+   "minutes": 344.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Norman Powell",
+   "games": 9,
+   "minutes": 256.0,
+   "team": "POR"
+  },
+  {
+   "name": "OG Anunoby",
+   "games": 11,
+   "minutes": 407.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Obi Toppin",
+   "games": 11,
+   "minutes": 157.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Omer Yurtseven",
+   "games": 7,
+   "minutes": 23.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Oshae Brissett",
+   "games": 7,
+   "minutes": 99.0,
+   "team": "IND"
+  },
+  {
+   "name": "Otto Porter Jr.",
+   "games": 9,
+   "minutes": 154.0,
+   "team": "GSW"
+  },
+  {
+   "name": "P.J. Tucker",
+   "games": 10,
+   "minutes": 267.0,
+   "team": "MIA"
+  },
+  {
+   "name": "P.J. Washington",
+   "games": 7,
+   "minutes": 146.0,
+   "team": "CHA"
+  },
+  {
+   "name": "PJ Dozier",
+   "games": 10,
+   "minutes": 187.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Pascal Siakam",
+   "games": 1,
+   "minutes": 25.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Pat Connaughton",
+   "games": 11,
+   "minutes": 320.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Patrick Beverley",
+   "games": 7,
+   "minutes": 173.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Patrick Williams",
+   "games": 5,
+   "minutes": 124.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Patty Mills",
+   "games": 11,
+   "minutes": 274.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Paul George",
+   "games": 10,
+   "minutes": 352.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Paul Millsap",
+   "games": 10,
+   "minutes": 104.0,
+   "team": "BKN"
+  },
+  {
+   "name": "Paul Reed",
+   "games": 9,
+   "minutes": 94.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Payton Pritchard",
+   "games": 9,
+   "minutes": 106.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Petr Cornelie",
+   "games": 1,
+   "minutes": 3.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Precious Achiuwa",
+   "games": 11,
+   "minutes": 259.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Quentin Grimes",
+   "games": 4,
+   "minutes": 18.0,
+   "team": "NYK"
+  },
+  {
+   "name": "R.J. Hampton",
+   "games": 11,
+   "minutes": 198.0,
+   "team": "ORL"
+  },
+  {
+   "name": "RJ Barrett",
+   "games": 11,
+   "minutes": 387.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Rajon Rondo",
+   "games": 7,
+   "minutes": 110.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Raul Neto",
+   "games": 9,
+   "minutes": 199.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Reggie Bullock Jr.",
+   "games": 10,
+   "minutes": 202.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Reggie Jackson",
+   "games": 10,
+   "minutes": 353.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Richaun Holmes",
+   "games": 11,
+   "minutes": 302.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Ricky Rubio",
+   "games": 11,
+   "minutes": 307.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Robert Covington",
+   "games": 11,
+   "minutes": 324.0,
+   "team": "POR"
+  },
+  {
+   "name": "Robert Williams III",
+   "games": 9,
+   "minutes": 278.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Robin Lopez",
+   "games": 5,
+   "minutes": 59.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Rodney Hood",
+   "games": 6,
+   "minutes": 86.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Rodney McGruder",
+   "games": 5,
+   "minutes": 24.0,
+   "team": "DET"
+  },
+  {
+   "name": "Romeo Langford",
+   "games": 6,
+   "minutes": 112.0,
+   "team": "BOS"
+  },
+  {
+   "name": "Royce O'Neale",
+   "games": 11,
+   "minutes": 344.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Ruben Nembhard Jr.",
+   "games": 1,
+   "minutes": 2.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Rudy Gobert",
+   "games": 11,
+   "minutes": 338.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Russell Westbrook",
+   "games": 11,
+   "minutes": 393.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Saben Lee",
+   "games": 4,
+   "minutes": 27.0,
+   "team": "DET"
+  },
+  {
+   "name": "Saddiq Bey",
+   "games": 9,
+   "minutes": 296.0,
+   "team": "DET"
+  },
+  {
+   "name": "Sam Dekker",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Sam Merrill",
+   "games": 3,
+   "minutes": 38.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Sandro Mamukelashvili",
+   "games": 7,
+   "minutes": 62.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Santi Aldama",
+   "games": 3,
+   "minutes": 22.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Scottie Barnes",
+   "games": 9,
+   "minutes": 314.0,
+   "team": "TOR"
+  },
+  {
+   "name": "Sekou Doumbouya",
+   "games": 1,
+   "minutes": 8.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Semi Ojeleye",
+   "games": 6,
+   "minutes": 104.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Serge Ibaka",
+   "games": 2,
+   "minutes": 14.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Seth Curry",
+   "games": 11,
+   "minutes": 368.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Shai Gilgeous-Alexander",
+   "games": 9,
+   "minutes": 316.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Shake Milton",
+   "games": 8,
+   "minutes": 209.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Sharife Cooper",
+   "games": 2,
+   "minutes": 7.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Skylar Mays",
+   "games": 4,
+   "minutes": 15.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Solomon Hill",
+   "games": 5,
+   "minutes": 77.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Spencer Dinwiddie",
+   "games": 9,
+   "minutes": 264.0,
+   "team": "WAS"
+  },
+  {
+   "name": "Stephen Curry",
+   "games": 10,
+   "minutes": 336.0,
+   "team": "GSW"
+  },
+  {
+   "name": "Sterling Brown",
+   "games": 8,
+   "minutes": 91.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Steven Adams",
+   "games": 10,
+   "minutes": 251.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Svi Mykhailiuk",
+   "games": 11,
+   "minutes": 211.0,
+   "team": "TOR"
+  },
+  {
+   "name": "T.J. McConnell",
+   "games": 11,
+   "minutes": 287.0,
+   "team": "IND"
+  },
+  {
+   "name": "Tacko Fall",
+   "games": 2,
+   "minutes": 3.0,
+   "team": "CLE"
+  },
+  {
+   "name": "Taj Gibson",
+   "games": 6,
+   "minutes": 112.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Taurean Prince",
+   "games": 9,
+   "minutes": 126.0,
+   "team": "MIN"
+  },
+  {
+   "name": "Terance Mann",
+   "games": 10,
+   "minutes": 304.0,
+   "team": "LAC"
+  },
+  {
+   "name": "Terence Davis",
+   "games": 9,
+   "minutes": 117.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Terrence Ross",
+   "games": 11,
+   "minutes": 288.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Terry Rozier",
+   "games": 7,
+   "minutes": 229.0,
+   "team": "CHA"
+  },
+  {
+   "name": "Thaddeus Young",
+   "games": 7,
+   "minutes": 115.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Thanasis Antetokounmpo",
+   "games": 10,
+   "minutes": 176.0,
+   "team": "MIL"
+  },
+  {
+   "name": "Theo Maledon",
+   "games": 9,
+   "minutes": 127.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Tim Hardaway Jr.",
+   "games": 10,
+   "minutes": 318.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Timothe Luwawu-Cabarrot",
+   "games": 6,
+   "minutes": 25.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Tobias Harris",
+   "games": 6,
+   "minutes": 198.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Tomas Satoransky",
+   "games": 6,
+   "minutes": 84.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Tony Bradley",
+   "games": 7,
+   "minutes": 74.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Tony Snell",
+   "games": 5,
+   "minutes": 38.0,
+   "team": "POR"
+  },
+  {
+   "name": "Torrey Craig",
+   "games": 11,
+   "minutes": 204.0,
+   "team": "IND"
+  },
+  {
+   "name": "Trae Young",
+   "games": 12,
+   "minutes": 416.0,
+   "team": "ATL"
+  },
+  {
+   "name": "Tre Jones",
+   "games": 9,
+   "minutes": 60.0,
+   "team": "SAS"
+  },
+  {
+   "name": "Tre Mann",
+   "games": 5,
+   "minutes": 52.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Trent Forrest",
+   "games": 6,
+   "minutes": 54.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Trey Burke",
+   "games": 3,
+   "minutes": 29.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Trey Lyles",
+   "games": 9,
+   "minutes": 141.0,
+   "team": "DET"
+  },
+  {
+   "name": "Trey Murphy III",
+   "games": 11,
+   "minutes": 219.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Tristan Thompson",
+   "games": 6,
+   "minutes": 81.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Troy Brown Jr.",
+   "games": 7,
+   "minutes": 70.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Ty Jerome",
+   "games": 6,
+   "minutes": 89.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Tyler Herro",
+   "games": 10,
+   "minutes": 315.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Tyrese Haliburton",
+   "games": 10,
+   "minutes": 327.0,
+   "team": "SAC"
+  },
+  {
+   "name": "Tyrese Maxey",
+   "games": 12,
+   "minutes": 424.0,
+   "team": "PHI"
+  },
+  {
+   "name": "Tyus Jones",
+   "games": 10,
+   "minutes": 168.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Udoka Azubuike",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "UTA"
+  },
+  {
+   "name": "Udonis Haslem",
+   "games": 2,
+   "minutes": 5.0,
+   "team": "MIA"
+  },
+  {
+   "name": "Usman Garuba",
+   "games": 5,
+   "minutes": 30.0,
+   "team": "HOU"
+  },
+  {
+   "name": "Vernon Carey Jr.",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "CHA"
+  },
+  {
+   "name": "V\u00edt Krej\u010d\u00ed",
+   "games": 3,
+   "minutes": 9.0,
+   "team": "OKC"
+  },
+  {
+   "name": "Wayne Ellington",
+   "games": 3,
+   "minutes": 58.0,
+   "team": "LAL"
+  },
+  {
+   "name": "Wayne Selden",
+   "games": 1,
+   "minutes": 1.0,
+   "team": "NYK"
+  },
+  {
+   "name": "Wendell Carter Jr.",
+   "games": 11,
+   "minutes": 323.0,
+   "team": "ORL"
+  },
+  {
+   "name": "Will Barton",
+   "games": 10,
+   "minutes": 333.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Willie Cauley-Stein",
+   "games": 10,
+   "minutes": 105.0,
+   "team": "DAL"
+  },
+  {
+   "name": "Willy Hernangomez",
+   "games": 3,
+   "minutes": 14.0,
+   "team": "NOP"
+  },
+  {
+   "name": "Xavier Tillman",
+   "games": 8,
+   "minutes": 119.0,
+   "team": "MEM"
+  },
+  {
+   "name": "Zach LaVine",
+   "games": 10,
+   "minutes": 351.0,
+   "team": "CHI"
+  },
+  {
+   "name": "Zeke Nnaji",
+   "games": 3,
+   "minutes": 11.0,
+   "team": "DEN"
+  },
+  {
+   "name": "Ziaire Williams",
+   "games": 9,
+   "minutes": 166.0,
+   "team": "MEM"
+  }
+ ],
+ "teams": {
+  "ATL": {
+   "games": 12,
+   "points_for": 1289,
+   "points_against": 1337
+  },
+  "UTA": {
+   "games": 11,
+   "points_for": 1227,
+   "points_against": 1124
+  },
+  "POR": {
+   "games": 11,
+   "points_for": 1212,
+   "points_against": 1191
+  },
+  "PHI": {
+   "games": 12,
+   "points_for": 1316,
+   "points_against": 1247
+  },
+  "LAC": {
+   "games": 10,
+   "points_for": 1080,
+   "points_against": 1027
+  },
+  "MIL": {
+   "games": 11,
+   "points_for": 1185,
+   "points_against": 1195
+  },
+  "PHX": {
+   "games": 9,
+   "points_for": 991,
+   "points_against": 983
+  },
+  "MIA": {
+   "games": 10,
+   "points_for": 1101,
+   "points_against": 1015
+  },
+  "DAL": {
+   "games": 10,
+   "points_for": 1024,
+   "points_against": 1047
+  },
+  "CHA": {
+   "games": 12,
+   "points_for": 1371,
+   "points_against": 1420
+  },
+  "GSW": {
+   "games": 10,
+   "points_for": 1152,
+   "points_against": 1020
+  },
+  "MEM": {
+   "games": 10,
+   "points_for": 1099,
+   "points_against": 1138
+  },
+  "LAL": {
+   "games": 11,
+   "points_for": 1227,
+   "points_against": 1236
+  },
+  "CHI": {
+   "games": 10,
+   "points_for": 1089,
+   "points_against": 1019
+  },
+  "NOP": {
+   "games": 11,
+   "points_for": 1106,
+   "points_against": 1235
+  },
+  "SAC": {
+   "games": 11,
+   "points_for": 1214,
+   "points_against": 1202
+  },
+  "DEN": {
+   "games": 10,
+   "points_for": 1019,
+   "points_against": 985
+  },
+  "NYK": {
+   "games": 11,
+   "points_for": 1229,
+   "points_against": 1203
+  },
+  "MIN": {
+   "games": 9,
+   "points_for": 936,
+   "points_against": 973
+  },
+  "BKN": {
+   "games": 11,
+   "points_for": 1156,
+   "points_against": 1151
+  },
+  "WAS": {
+   "games": 10,
+   "points_for": 1103,
+   "points_against": 1059
+  },
+  "SAS": {
+   "games": 10,
+   "points_for": 1074,
+   "points_against": 1070
+  },
+  "IND": {
+   "games": 11,
+   "points_for": 1201,
+   "points_against": 1207
+  },
+  "HOU": {
+   "games": 10,
+   "points_for": 1038,
+   "points_against": 1112
+  },
+  "ORL": {
+   "games": 11,
+   "points_for": 1106,
+   "points_against": 1186
+  },
+  "CLE": {
+   "games": 11,
+   "points_for": 1166,
+   "points_against": 1154
+  },
+  "TOR": {
+   "games": 11,
+   "points_for": 1152,
+   "points_against": 1120
+  },
+  "OKC": {
+   "games": 9,
+   "points_for": 883,
+   "points_against": 967
+  },
+  "BOS": {
+   "games": 10,
+   "points_for": 1088,
+   "points_against": 1102
+  },
+  "DET": {
+   "games": 9,
+   "points_for": 854,
+   "points_against": 965
+  }
+ },
+ "playoff_teams": [
+  "ATL",
+  "BKN",
+  "BOS",
+  "CHI",
+  "DAL",
+  "DEN",
+  "GSW",
+  "MEM",
+  "MIA",
+  "MIL",
+  "MIN",
+  "NOP",
+  "PHI",
+  "PHX",
+  "TOR",
+  "UTA"
+ ]
+}

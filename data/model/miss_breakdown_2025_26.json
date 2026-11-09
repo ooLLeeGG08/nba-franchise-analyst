@@ -1,0 +1,152 @@
+[
+ {
+  "team": "LAL",
+  "actual": 53,
+  "model": 36.8,
+  "vegas": 46.3,
+  "model_error": 16.2,
+  "vegas_error": 6.7,
+  "worse_than_vegas_by": 9.5,
+  "actual_net_rating": 1.5,
+  "parts_points": {
+   "rating": -1.12,
+   "rookies": 0.04,
+   "injuries": -0.24
+  },
+  "turnover_minutes_share": 0.16,
+  "top_newcomers": [
+   "LeBron James",
+   "Luke Kennard",
+   "Drew Timme"
+  ],
+  "injured": [
+   "Austin Reaves 51 of ~70 games",
+   "Gabe Vincent 29 of ~46 games",
+   "Nick Smith Jr. 30 of ~55 games"
+  ],
+  "rating_misses": [
+   "Luka Dončić: prior +7.7, actual +9.3",
+   "Rui Hachimura: prior -0.5, actual -2.2",
+   "Austin Reaves: prior +1.6, actual +2.8"
+  ]
+ },
+ {
+  "team": "NYK",
+  "actual": 53,
+  "model": 44.6,
+  "vegas": 53.2,
+  "model_error": 8.4,
+  "vegas_error": 0.2,
+  "worse_than_vegas_by": 8.2,
+  "actual_net_rating": 6.4,
+  "parts_points": {
+   "rating": 5.02,
+   "rookies": 0.21,
+   "injuries": -0.3
+  },
+  "turnover_minutes_share": 0.04,
+  "top_newcomers": [
+   "Jose Alvarado",
+   "Kevin McCullar Jr.",
+   "Jeremy Sochan"
+  ],
+  "injured": [
+   "Miles McBride 41 of ~63 games"
+  ],
+  "rating_misses": [
+   "Mikal Bridges: prior -0.1, actual +2.7",
+   "OG Anunoby: prior +0.4, actual +2.0",
+   "Josh Hart: prior +1.3, actual +3.0"
+  ]
+ },
+ {
+  "team": "PHI",
+  "actual": 45,
+  "model": 36.0,
+  "vegas": 43.3,
+  "model_error": 9.0,
+  "vegas_error": 1.7,
+  "worse_than_vegas_by": 7.3,
+  "actual_net_rating": -0.1,
+  "parts_points": {
+   "rating": -0.03,
+   "rookies": 0.57,
+   "injuries": 0.04
+  },
+  "turnover_minutes_share": 0.1,
+  "top_newcomers": [
+   "Paul George",
+   "Cameron Payne",
+   "MarJon Beauchamp"
+  ],
+  "injured": [
+   "Kelly Oubre Jr. 50 of ~62 games"
+  ],
+  "rating_misses": [
+   "Tyrese Maxey: prior +2.4, actual +5.4",
+   "Quentin Grimes: prior +0.3, actual -1.6",
+   "VJ Edgecombe: prior -1.7, actual -0.5"
+  ]
+ },
+ {
+  "team": "BKN",
+  "actual": 20,
+  "model": 27.4,
+  "vegas": 19.4,
+  "model_error": 7.4,
+  "vegas_error": 0.6,
+  "worse_than_vegas_by": 6.8,
+  "actual_net_rating": -10.0,
+  "parts_points": {
+   "rating": -1.47,
+   "rookies": -3.27,
+   "injuries": -0.69
+  },
+  "turnover_minutes_share": 0.08,
+  "top_newcomers": [
+   "Malachi Smith",
+   "Chaney Johnson",
+   "Ochai Agbaji"
+  ],
+  "injured": [
+   "Cam Thomas 24 of ~50 games",
+   "Michael Porter Jr. 52 of ~72 games"
+  ],
+  "rating_misses": [
+   "Nolan Traoré: prior -2.6, actual -6.8",
+   "Michael Porter Jr.: prior +0.4, actual +3.0",
+   "Drake Powell: prior -2.6, actual -6.0"
+  ]
+ },
+ {
+  "team": "CHI",
+  "actual": 31,
+  "model": 40.1,
+  "vegas": 33.3,
+  "model_error": 9.1,
+  "vegas_error": 2.3,
+  "worse_than_vegas_by": 6.8,
+  "actual_net_rating": -5.3,
+  "parts_points": {
+   "rating": -1.68,
+   "rookies": 0.0,
+   "injuries": -1.44
+  },
+  "turnover_minutes_share": 0.26,
+  "top_newcomers": [
+   "Coby White",
+   "Collin Sexton",
+   "Rob Dillingham"
+  ],
+  "injured": [
+   "Ayo Dosunmu 45 of ~60 games",
+   "Josh Giddey 54 of ~69 games",
+   "Kevin Huerter 44 of ~64 games"
+  ],
+  "rating_misses": [
+   "Isaac Okoro: prior -0.2, actual -3.8",
+   "Patrick Williams: prior -2.1, actual -4.5",
+   "Ayo Dosunmu: prior -1.0, actual +0.8"
+  ]
+ }
+]
