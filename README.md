@@ -102,6 +102,8 @@ Settings are in `config/sim.json`; fitted constants are saved to `data/model/fit
 1. **Player value** (`tradesim/model.py`): Basketball-Reference BPM, blended with
    replacement level (-2.0) as if the player had also played 250 replacement minutes:
    `value = (BPM x MP + (-2.0) x 250) / (MP + 250)`.
+   Players who didn't play in 2025-26 (e.g. Haliburton, Lillard, Irving, VanVleet) use
+   their 2024-25 stats.
    **Team strength** = sum of `(value - (-2.0)) x minutes / 48` over the roster. That is
    the team's expected net rating per 100 possessions plus a constant, which cancels out.
 2. **Minutes:** expected minutes per game = 2025-26 minutes / max(games, 20). Players are
@@ -119,14 +121,20 @@ Settings are in `config/sim.json`; fitted constants are saved to `data/model/fit
 
 **Backtest on 2025-26** (`data/model/backtest_2025_26.json`):
 
-| Version | Average error | RMSE | Within 5 wins |
-|---|---|---|---|
-| Guess 41 wins for everyone | 11.6 wins | — | — |
-| Actual minutes | 2.6 wins | 3.2 | 26/30 |
-| Projected minutes (the rule used for trades) | 2.9 wins | 3.6 | 26/30 |
+| Version | Average error | Within 5 wins |
+|---|---|---|
+| Guess 41 wins for everyone | 11.6 wins | — |
+| In-sample, actual minutes (2025-26 stats) | 2.6 wins | 26/30 |
+| In-sample, projected minutes (2025-26 stats) | 2.9 wins | 26/30 |
+| **Forecast**, actual minutes (2024-25 stats) | 6.7 wins | 13/30 |
+| **Forecast**, projected minutes (2024-25 stats, the method used for 2026-27) | **8.0 wins** | 13/30 |
 
-This is in-sample: 2025-26 stats predicting 2025-26 wins. It shows the pipeline turns
-player stats into wins correctly, not how well it forecasts a new season.
+The in-sample rows show the pipeline turns player stats into wins correctly. The
+forecast rows are the honest test: predicting a season from the previous season's stats
+misses by about 8 wins per team. The biggest misses were the 2025-26 Spurs (+27 wins
+vs forecast), Grizzlies (-20) and Hornets (+17.5, rookie Kon Knueppel counted as
+replacement level). Forecasts with projected minutes are somewhat too extreme
+(actual wins move about 0.73 wins per predicted win).
 
 ### Limitations
 
@@ -150,9 +158,10 @@ player stats into wins correctly, not how well it forecasts a new season.
 - **Simulator:**
   - No injuries or fatigue: every player is available for every game.
   - Simplified minutes: a fixed "next man up" rule, not real rotations or positions.
-  - Players with no 2025-26 stats count as replacement level. That includes rookies and
-    veterans who missed all of last season (e.g. Haliburton, Lillard, Irving, VanVleet),
-    so their teams are likely underrated.
+  - Rookies and players with no stats in either of the last two seasons count as
+    replacement level, so teams with good rookies are likely underrated.
+  - Forecasts from last season's stats miss by about 8 wins per team on average
+    (see the backtest): player development, aging and injuries aren't modelled.
   - The win range reflects game-to-game luck only, not uncertainty about how good a
     team really is, so real outcomes vary more.
   - The 2026-27 schedule's last 2 games per team (in-season tournament) aren't set yet;

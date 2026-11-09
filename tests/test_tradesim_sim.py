@@ -178,6 +178,18 @@ def test_picks_do_not_change_strength(league, cfg, schedule):
 def test_backtest_beats_naive_guess(cfg):
     r = backtest.run(cfg, write=False)
     assert len(schedule_from_results(load_results_2025_26())) == 1230
-    for v in r["versions"].values():
-        assert v["mae"] < 4.0
-        assert v["mae"] < r["naive_41_wins"]["mae"] / 2
+    naive = r["naive_41_wins"]["mae"]
+    for name, v in r["versions"].items():
+        if v["in_sample"]:
+            assert v["mae"] < 4.0, name
+        else:
+            assert v["mae"] < naive * 0.8, name  # forecasts from 2024-25 stats
+    assert r["strength_uncertainty"]["strength_sd_points"] > 0
+
+
+def test_injured_players_fall_back_to_2024_25(league, cfg):
+    """Haliburton missed 2025-26; his 2024-25 season (BPM +5.8, 2,451 minutes) is used."""
+    _, breakdown = team_strength(league.roster("IND"), cfg)
+    hali = next(b for b in breakdown if b["id"] == "tyrese-haliburton")
+    assert hali["value"] == pytest.approx(player_value(5.8, 2451, cfg), abs=0.01)
+    assert hali["minutes"] > 30

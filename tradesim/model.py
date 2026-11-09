@@ -8,8 +8,8 @@ Player value (per 100 possessions, vs. an average player)
         value = (BPM x MP + replacement x K) / (MP + K)
 
     MP = minutes played in 2025-26, K = shrink_minutes (250), replacement = -2.0.
-    Players with no 2025-26 stats (2026 rookies, injured all season) get the
-    replacement value.
+    Players who didn't play in 2025-26 (e.g. injured all season) use their 2024-25
+    stats instead; players with neither (2026 rookies) get the replacement value.
 
 Team strength (net rating per 100 possessions, before centring)
     Five players are on the court, so each minute is 1/48 of a player-game:
@@ -48,10 +48,19 @@ def player_value(bpm, minutes, cfg):
     return (bpm * minutes + pv["replacement_bpm"] * k) / (minutes + k)
 
 
+def latest_stats(player):
+    """2025-26 stats, or 2024-25 for players who didn't play last season, or None."""
+    for key in ("stats_2025_26", "stats_2024_25"):
+        st = player.get(key)
+        if st and st.get("mp"):
+            return st
+    return None
+
+
 def expected_mpg(player, cfg):
-    """Expected minutes per game from 2025-26, or a default for players with no stats."""
+    """Expected minutes per game from the latest season played, or a default for players with no stats."""
     mc = cfg["minutes"]
-    st = player.get("stats_2025_26")
+    st = latest_stats(player)
     if st and st.get("mp") and st.get("g"):
         return st["mp"] / max(st["g"], mc["games_floor"])
     acq = player.get("acquired", {})
@@ -90,7 +99,7 @@ def team_strength(players, cfg):
     minutes = allocate_minutes(mpgs, cfg)
     breakdown, strength = [], 0.0
     for p in players:
-        st = p.get("stats_2025_26") or {}
+        st = latest_stats(p) or {}
         value = player_value(st.get("bpm"), st.get("mp"), cfg)
         contribution = (value - repl) * minutes[p["id"]] / 48
         strength += contribution
