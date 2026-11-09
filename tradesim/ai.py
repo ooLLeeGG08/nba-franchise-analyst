@@ -117,7 +117,13 @@ NEEDS_SYSTEM = (
 def data_needs(facts):
     """Needs straight from the numbers (used without an LLM, or to fill gaps)."""
     positions = [g for g, name in POSITIONS.items() if name in facts["needs"]][:2] or ["F"]
-    skills = sorted(facts["team_skills"], key=lambda s: facts["team_skills"][s])[:2]
+    if facts.get("position_skills") and facts.get("league_position_skills"):
+        # skills where the team's players at the most-needed position fall furthest behind the
+        # league's players at that position (a center need -> e.g. rim protection, rebounding)
+        team, league = facts["position_skills"][positions[0]], facts["league_position_skills"][positions[0]]
+        skills = sorted(team, key=lambda sk: team[sk] - league[sk])[:2]
+    else:
+        skills = sorted(facts["team_skills"], key=lambda s: facts["team_skills"][s])[:2]
     p = facts["projection"]["playoff_pct"]
     timeline = "contend" if p >= 0.5 else ("retool" if p >= 0.2 else "rebuild")
     summary = (f"Weakest at {', '.join(POSITIONS[x].lower() for x in positions)}; lowest skills: "

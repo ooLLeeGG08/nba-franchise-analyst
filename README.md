@@ -111,10 +111,15 @@ than deleted; safe to remove.
      perimeter defense, scoring). Anything outside the lists, or a summary naming a player, is
      replaced from the data. Without a key, needs come from the data and the page says so.
    - Search (code only): database players at a needed position, 55th+ percentile in the needed
-     skills and a 0.75+ impact upgrade on the team's weakest regular there; 1-3 player packages
-     that keep both rosters at 14-15 and pass salary matching, plus a sweetener pick for big
-     upgrades; every package through the cap checker; a quick strength screen, then a
-     10,000-season simulation of the best; top 4 by win gain.
+     skills (judged against other teams' players at that position) and a 0.75+ impact upgrade
+     on the team's weakest regular there. Packages of 1-3 players (plus a cheap filler from the
+     partner when a team needs bodies) that keep both rosters at 14-15 and pass salary
+     matching get a quick strength check for both teams; the one that helps the team most
+     within the realism limit is checked by the cap checker (with a sweetener pick for big
+     upgrades). If fewer than 4 come out, the search widens: lower skill bar, the next-weakest
+     position, then the best available upgrade; each card says "fits the need", "partial fit"
+     or "best available upgrade". The best go to a 10,000-season simulation; top 4 by win gain.
+     29 of 30 teams get 4 ideas (Sacramento, at 13 contracts, gets 1).
    - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
      than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
      is a heist (e.g. Wembanyama for a role player).

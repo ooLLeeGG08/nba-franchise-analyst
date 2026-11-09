@@ -213,6 +213,7 @@
                     <span class="note">80% of seasons: ${signed(s.win_change_80[0], 0)} to ${signed(s.win_change_80[1], 0)}</span>
                     <span class="pill ok">✓ Works</span>
                 </div>
+                <span class="match ${s.match === "fits the need" ? "fit" : ""}">${esc(s.match[0].toUpperCase() + s.match.slice(1))}</span>
                 <div class="sides compact">
                     <div><h3>${esc(code)} gets</h3><ul class="moves">${s.gets.map((g) => playerLine(g, s.partner)).join("")}</ul></div>
                     <div><h3>${esc(code)} sends</h3><ul class="moves">${s.sends.map((x) => playerLine(x)).join("")}${picks}</ul></div>
@@ -242,7 +243,7 @@
             ? data.suggestions.map((s) => suggestionCard(s, t.code)).join("")
             : `<p class="empty">No trade found that fits. ${esc(rules)}</p>`;
         box.innerHTML = `
-            <div class="card-head"><h2>Trade ideas</h2><span class="note">${data.searched.candidates} players searched · ${data.searched.legal_trades} legal</span></div>
+            <div class="card-head"><h2>Trade ideas</h2><span class="note">${data.searched.candidates} players searched · ${data.searched.legal_balanced} legal and balanced</span></div>
             ${needLine}${n.note ? `<p class="note">${esc(n.note)}</p>` : ""}
             <div class="ideas">${body}</div>
             ${data.suggestions.length && rules ? `<p class="note" style="margin-top:10px">${esc(rules)}</p>` : ""}`;

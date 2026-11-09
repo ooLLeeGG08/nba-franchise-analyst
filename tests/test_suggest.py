@@ -151,14 +151,43 @@ def test_suggestions_respect_realism_rules_and_variety(result):
     assert changes == sorted(changes, reverse=True)
 
 
-def test_suggestions_fill_a_needed_position(result, league):
+def test_suggestions_say_how_well_they_fit(result, league):
+    """'fits the need' = needed position and 55th+ percentile in the needed skills; looser
+    matches are labelled."""
     r, _ = result
     from tradesim.rotation import buckets
     wanted = {{"G": 0, "F": 1, "C": 2}[p] for p in r["needs"]["positions"]}
     for s in r["suggestions"]:
-        assert buckets(s["gets"][0]["position"]) & wanted
+        assert s["match"] in ("fits the need", "partial fit", "best available upgrade")
         fit = sum(player_skills(league.players[s["gets"][0]["id"]]).get(k, 0) for k in r["needs"]["skills"]) / len(r["needs"]["skills"])
-        assert fit >= 55
+        if s["match"] == "fits the need":
+            assert buckets(s["gets"][0]["position"]) & wanted and fit >= 55
+        elif s["match"] == "partial fit":
+            assert fit >= 40
+
+
+def test_center_need_gets_center_skills(league):
+    """A team short at center is asked for center skills (vs other teams' centers), not its
+    weakest skills overall."""
+    facts = {"needs": ["Centers"], "projection": {"playoff_pct": 0.6},
+             "team_skills": {s: 50.0 for s in SKILLS} | {"shooting": 10.0},
+             "position_skills": {g: {s: 50.0 for s in SKILLS} for g in "GFC"},
+             "league_position_skills": {g: {s: 50.0 for s in SKILLS} for g in "GFC"}}
+    facts["position_skills"]["C"].update({"rim protection": 30.0, "rebounding": 35.0})
+    needs = ai.data_needs(facts)
+    assert needs["positions"] == ["C"] and set(needs["skills"]) == {"rim protection", "rebounding"}
+
+
+def test_short_roster_team_can_still_get_ideas(result, league):
+    """Teams below 14 contracts must take back more players than they send; a filler player
+    from the partner makes that possible (Sacramento has 13)."""
+    from tradesim.suggest import _packages, find_candidates
+    _, engine = result
+    cba = load_cba()
+    needs = {"positions": ["G", "F", "C"], "skills": ["scoring"]}
+    cands = find_candidates("SAC", needs, engine, league, cba, DATE, min_fit=0)
+    pkgs = [p for c in cands[:15] for p in _packages("SAC", c, engine, league, cba, DATE, None)]
+    assert pkgs and all(len(extra) == 1 for _, _, _, extra in pkgs)
 
 
 def test_suggestions_endpoint_and_cache(tmp_path, monkeypatch):

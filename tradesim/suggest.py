@@ -5,11 +5,17 @@
      percentile in the needed skills (tradesim.skills), and are an upgrade of 0.75+ impact on
      the team's weakest regular at that position. Skipped: no-trade clause or veto rights,
      signed this summer and not yet tradeable, long-term injured, under 18 minutes a game.
-  3. Packages: 1-3 outgoing players from the team (never its top 3 by contribution), keeping
-     both rosters at 14-15 and passing a quick salary-matching test for both teams; the
-     package giving up the least talent wins. Bigger upgrades add a sweetener pick (a value
-     heuristic, not a fairness check): +1.0 impact -> the team's latest own 2nd, +2.0 -> its
-     latest own 1st. Every package then goes through the full cap checker.
+  3. Packages: every 1-3 player package from the team (never its top 3 by contribution) that
+     keeps both rosters at 14-15 and passes a quick salary-matching test for both teams gets a
+     quick strength check for BOTH teams; the package that helps the team most while costing
+     the partner at most the realism limit wins. (Picking the package that gives up the least
+     talent instead hurt the partner most, so nothing passed the realism rule.) Bigger
+     upgrades add a sweetener pick (a value heuristic, not a fairness check): +1.0 impact ->
+     the team's latest own 2nd, +2.0 -> its latest own 1st. Every package then goes through
+     the full cap checker.
+     If fewer than 4 trades come out, the search widens step by step: a lower skill bar, then
+     the next-weakest position too, then the best available upgrade at any position. Each
+     suggestion says how closely it matches the need.
   4. Ranking: a quick strength screen (expected strength change) keeps the best legal trades
      (one per incoming player, at most 2 per partner); each is simulated with the season engine
      and the top 4 by win gain are returned. Realism rule (config "suggestions", not a cap rule):
@@ -21,6 +27,7 @@
 Every player named comes from the database: candidates are database players, and LLM text is
 checked against the names in that trade.
 """
+import copy
 import hashlib
 import json
 import os
@@ -31,17 +38,47 @@ from tradesim.analysis import expected_minutes, team_analysis
 from tradesim.checker import _matching, check_trade
 from tradesim.picks import label as pick_label
 from tradesim.rotation import apply_moves, buckets
-from tradesim.skills import player_skills, team_skills
+from tradesim.skills import SKILLS, player_skills, team_skills
+
+SKILL_NAMES = list(SKILLS)
 from tradesim.trade_api import _tradeable_from
 
-SUGGEST_VERSION = "stage5-2"
+SUGGEST_VERSION = "stage5-4"
 BUCKET_OF = {"G": 0, "F": 1, "C": 2}
 MIN_SKILL_FIT = 55
 MIN_UPGRADE = 0.75
 MIN_MPG = 18
 N_CANDIDATES = 60
-N_SIMULATE = 8
+N_SIMULATE = 6
+MAX_PACKAGES_SCREENED = 120  # per candidate, smallest packages first
 WINS_PER_POINT = 2.6  # quick screen only; the final numbers come from the simulation
+
+
+def position_skills(rotation, league, em=None):
+    """{"G"/"F"/"C": {skill: percentile}} for a rotation, weighted by expected minutes (a "G-F"
+    splits his minutes)."""
+    em = em or expected_minutes(rotation)
+    totals = {g: {sk: [0.0, 0.0] for sk in SKILL_NAMES} for g in BUCKET_OF}
+    for pid, minutes in em.items():
+        if minutes <= 0:
+            continue
+        bs = buckets(rotation.players[pid]["position"])
+        prof = player_skills(league.players[pid])
+        for g, b in BUCKET_OF.items():
+            if b in bs:
+                for sk, v in prof.items():
+                    totals[g][sk][0] += v * minutes / len(bs)
+                    totals[g][sk][1] += minutes / len(bs)
+    return {g: {sk: round(v / w, 1) if w else 50.0 for sk, (v, w) in d.items()} for g, d in totals.items()}
+
+
+def league_position_skills(engine, league):
+    """League average of position_skills over the 30 teams (cached on the engine)."""
+    if not hasattr(engine, "_league_position_skills"):
+        per_team = [position_skills(r, league) for r in engine.baseline_rotations.values()]
+        engine._league_position_skills = {g: {sk: round(sum(t[g][sk] for t in per_team) / len(per_team), 1)
+                                              for sk in SKILL_NAMES} for g in BUCKET_OF}
+    return engine._league_position_skills
 
 
 def team_facts(code, engine, league, cba):
@@ -49,6 +86,8 @@ def team_facts(code, engine, league, cba):
     a = team_analysis(code, engine, league, cba)
     rotation = engine.baseline_rotations[code]
     return {
+        "position_skills": position_skills(rotation, league),
+        "league_position_skills": league_position_skills(engine, league),
         "team": code, "team_name": a["name"],
         "projection": {k: a["projection"][k] for k in ("mean_wins", "playoff_pct", "conference_rank")},
         "positions": [{k: p[k] for k in ("group", "rank", "impact", "league_average")} for p in a["positions"]],
@@ -71,11 +110,11 @@ def _contribution(rotation, pid, em):
     return rotation.players[pid]["impact"] * em.get(pid, 0) / 48
 
 
-def find_candidates(code, needs, engine, league, cba, on_date):
+def find_candidates(code, needs, engine, league, cba, on_date, min_fit=MIN_SKILL_FIT, positions=None):
     rotation = engine.baseline_rotations[code]
     em = expected_minutes(rotation)
     rated = engine.ratings["players"]
-    wanted = {BUCKET_OF[p] for p in needs["positions"]}
+    wanted = {BUCKET_OF[p] for p in (positions or needs["positions"])}
     weakest = {}
     for pid, minutes in em.items():
         if minutes >= 12:
@@ -94,7 +133,7 @@ def find_candidates(code, needs, engine, league, cba, on_date):
         skills = player_skills(p)
         fit = sum(skills.get(s, 0) for s in needs["skills"]) / len(needs["skills"])
         upgrade = r["impact"] - min(weakest.get(b, 0) for b in overlap)
-        if fit < MIN_SKILL_FIT or upgrade < MIN_UPGRADE:
+        if fit < min_fit or upgrade < MIN_UPGRADE:
             continue
         out.append({"id": pid, "team": p["team"], "salary": p["salary"], "impact": r["impact"], "upgrade": upgrade,
                     "fit": fit, "score": upgrade * min(r["mpg_when_playing"], 34) / 48 + 0.02 * fit})
@@ -102,8 +141,28 @@ def find_candidates(code, needs, engine, league, cba, on_date):
     return out[:N_CANDIDATES]
 
 
-def _packages(code, cand, engine, league, cba, on_date):
-    """Outgoing player combinations for one candidate, best (least talent given up) first."""
+def _screen(code, partner, outgoing, incoming_id, engine, league, extra=()):
+    """Quick expected-strength change (points) for the team and the partner."""
+    ratings = engine.ratings
+    base = engine.baseline_rotations
+    a, b = copy.deepcopy(base[code]), copy.deepcopy(base[partner])
+    incoming = [league.players[incoming_id]] + list(extra)
+    a.change([p["id"] for p in outgoing], incoming, ratings)
+    b.change([p["id"] for p in incoming], list(outgoing), ratings)
+    return a.expected_strength() - _base_strength(engine, code), b.expected_strength() - _base_strength(engine, partner)
+
+
+def _base_strength(engine, code):
+    cache = engine.__dict__.setdefault("_expected_strength", {})
+    if code not in cache:
+        cache[code] = engine.baseline_rotations[code].expected_strength()
+    return cache[code]
+
+
+def _packages(code, cand, engine, league, cba, on_date, max_partner_loss):
+    """Outgoing packages for one candidate: salary- and roster-feasible for both teams, then
+    ranked by the team's quick gain among those costing the partner at most max_partner_loss
+    wins (None = no limit). Returns [(team_gain, partner_gain, combo)], best first."""
     rotation = engine.baseline_rotations[code]
     em = expected_minutes(rotation)
     core = set(sorted(rotation.players, key=lambda pid: -_contribution(rotation, pid, em))[:3])
@@ -111,22 +170,36 @@ def _packages(code, cand, engine, league, cba, on_date):
     team, partner = league.teams[code], league.teams[cand["team"]]
     n, m = team["standard_contracts"], partner["standard_contracts"]
     lo, hi = cba["roster"]["min_standard"], cba["roster"]["max_standard"]
-    found = []
+    # A team short of players (e.g. 13 contracts) must take back more than it sends: add the
+    # partner's cheapest tradeable player as a filler.
+    fillers = sorted((p for p in league.roster(cand["team"]) if p["id"] != cand["id"] and not _restricted(p, cba, on_date)),
+                     key=lambda p: p["salary"])[:1]
+    found, screened = [], 0
     for k in (1, 2, 3):
-        if not (lo <= n - k + 1 <= hi and lo <= m - 1 + k <= hi):
-            continue
-        for combo in combinations(pool, k):
-            out_sal = sum(p["salary"] for p in combo)
-            t_after = team["team_salary"] - out_sal + cand["salary"]
-            p_after = partner["team_salary"] - cand["salary"] + out_sal
-            if not _matching(team["team_salary"], t_after, out_sal, cand["salary"], cba)[0]:
+        for extra in ([], fillers):
+            n_in = 1 + len(extra)
+            if not (lo <= n - k + n_in <= hi and lo <= m - n_in + k <= hi):
                 continue
-            if not _matching(partner["team_salary"], p_after, cand["salary"], out_sal, cba)[0]:
-                continue
-            given = sum(max(_contribution(rotation, p["id"], em), 0) for p in combo)
-            found.append((given, k, combo))
-    found.sort(key=lambda x: (x[0], x[1]))
-    return [combo for _, _, combo in found[:3]]
+            in_sal = cand["salary"] + sum(p["salary"] for p in extra)
+            for combo in combinations(pool, k):
+                if screened >= MAX_PACKAGES_SCREENED:
+                    break
+                out_sal = sum(p["salary"] for p in combo)
+                t_after = team["team_salary"] - out_sal + in_sal
+                p_after = partner["team_salary"] - in_sal + out_sal
+                if not _matching(team["team_salary"], t_after, out_sal, in_sal, cba)[0]:
+                    continue
+                if not _matching(partner["team_salary"], p_after, in_sal, out_sal, cba)[0]:
+                    continue
+                screened += 1
+                gain, partner_gain = _screen(code, cand["team"], combo, cand["id"], engine, league, extra)
+                if max_partner_loss is not None and partner_gain * WINS_PER_POINT < -max_partner_loss:
+                    continue
+                if gain <= 0:
+                    continue
+                found.append((gain, partner_gain, combo, tuple(extra)))
+    found.sort(key=lambda x: -x[0])
+    return found[:3]
 
 
 def _sweetener(code, upgrade, league):
@@ -138,33 +211,25 @@ def _sweetener(code, upgrade, league):
     return max(own, key=lambda p: p["year"]) if own else None
 
 
-def legal_trades(code, candidates, engine, league, cba, on_date):
+def legal_trades(code, candidates, engine, league, cba, on_date, max_partner_loss):
     trades = []
     for cand in candidates:
-        for combo in _packages(code, cand, engine, league, cba, on_date):
+        for gain, partner_gain, combo, extra in _packages(code, cand, engine, league, cba, on_date, max_partner_loss):
             moves = [{"type": "player", "id": cand["id"], "from": cand["team"], "to": code}]
+            moves += [{"type": "player", "id": p["id"], "from": cand["team"], "to": code} for p in extra]
             moves += [{"type": "player", "id": p["id"], "from": code, "to": cand["team"]} for p in combo]
             sweet = _sweetener(code, cand["upgrade"], league)
             options = ([moves + [{"type": "pick", "id": sweet["id"], "from": code, "to": cand["team"]}]] if sweet else []) + [moves]
             for option in options:
                 result = check_trade(league, cba, {"moves": option}, on_date)
                 if result["works"]:
-                    trades.append({"candidate": cand, "moves": option, "check": result})
+                    trades.append({"candidate": cand, "moves": option, "check": result,
+                                   "quick": gain, "partner_quick": partner_gain})
                     break
             else:
                 continue
-            break  # first legal package for this candidate
+            break  # best legal package for this candidate
     return trades
-
-
-def _quick_gain(code, trade, engine, league, cfg):
-    """Expected-strength change (points) for the team and for the partner."""
-    moves = [{"player": m["id"], "from": m["from"], "to": m["to"]} for m in trade["moves"] if m["type"] == "player"]
-    after = apply_moves(league, moves, cfg, engine.ratings)
-    partner = trade["candidate"]["team"]
-    base = engine.baseline_rotations
-    return (after[code].expected_strength() - base[code].expected_strength(),
-            after[partner].expected_strength() - base[partner].expected_strength())
 
 
 def _player_card(pid, league, engine):
@@ -185,12 +250,24 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
     index = index or ai.NameIndex(league.players)
     facts = team_facts(code, engine, league, cba)
     needs = ai.team_needs(facts, index, llm)
-    candidates = find_candidates(code, needs, engine, league, cba, on_date)
-    trades = legal_trades(code, candidates, engine, league, cba, on_date)
-    for t in trades:
-        t["quick"], t["partner_quick"] = _quick_gain(code, t, engine, league, engine.cfg)
-    if max_partner_loss is not None:
-        trades = [t for t in trades if t["partner_quick"] * WINS_PER_POINT >= -max_partner_loss * 1.5]
+    ranked_groups = [p["group"] for p in sorted(facts["positions"], key=lambda p: -p["rank"])]
+    next_weakest = [g for g, name in ai.POSITIONS.items() if name in ranked_groups[:2]]
+    ladder = [("fits the need", MIN_SKILL_FIT, needs["positions"]),
+              ("partial fit", 40, needs["positions"]),
+              ("partial fit", 40, sorted(set(needs["positions"]) | set(next_weakest))),
+              ("best available upgrade", 0, list(BUCKET_OF))]
+    trades, seen, n_candidates = [], set(), 0
+    for match, min_fit, positions in ladder:
+        candidates = [c for c in find_candidates(code, needs, engine, league, cba, on_date, min_fit, positions)
+                      if c["id"] not in seen]
+        n_candidates += len(candidates)
+        for t in legal_trades(code, candidates, engine, league, cba, on_date, max_partner_loss):
+            t["match"] = match
+            trades.append(t)
+            seen.add(t["candidate"]["id"])
+        seen.update(c["id"] for c in candidates)
+        if len(trades) >= N_SIMULATE:
+            break
     trades.sort(key=lambda t: -t["quick"])
     shortlist, per_partner = [], {}
     for t in trades:
@@ -221,7 +298,7 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
         cand_skills = player_skills(league.players[t["candidate"]["id"]])
         chk = t["check"]["teams"]
         card = {
-            "rank": rank, "partner": partner, "moves": t["moves"], "gets": gets, "sends": sends,
+            "rank": rank, "partner": partner, "match": t["match"], "moves": t["moves"], "gets": gets, "sends": sends,
             "picks_out": [{"id": pk["id"], "label": pick_label(pk), "year": pk["year"]} for pk in picks],
             "cap": {"works": True,
                     "team": {k: chk[code][k] for k in ("salary_before", "salary_after", "status_before", "status_after")},
@@ -252,7 +329,7 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
         card["explanation"] = text
     return {"team": code, "needs": needs, "suggestions": cards, "n_sims": engine.n_sims,
             "rules": {"max_partner_loss_wins": max_partner_loss, "min_win_gain": min_gain},
-            "searched": {"candidates": len(candidates), "legal_trades": len(trades), "simulated": len(shortlist)}}
+            "searched": {"candidates": n_candidates, "legal_balanced": len(trades), "simulated": len(shortlist)}}
 
 
 # --- caching ---------------------------------------------------------------------------------------
