@@ -93,6 +93,41 @@ Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI
 - `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
   Bird veto rights count as a fail.
 
+### Season simulator (Stage 2)
+
+`python fetch_games.py` gets 2025-26 results and the 2026-27 schedule;
+`python -m tradesim.fit` fits the win model; `python -m tradesim.backtest` runs the backtest.
+Settings are in `config/sim.json`; fitted constants are saved to `data/model/fit.json`.
+
+1. **Player value** (`tradesim/model.py`): Basketball-Reference BPM, blended with
+   replacement level (-2.0) as if the player had also played 250 replacement minutes:
+   `value = (BPM x MP + (-2.0) x 250) / (MP + 250)`.
+   **Team strength** = sum of `(value - (-2.0)) x minutes / 48` over the roster. That is
+   the team's expected net rating per 100 possessions plus a constant, which cancels out.
+2. **Minutes:** expected minutes per game = 2025-26 minutes / max(games, 20). Players are
+   sorted by that and each gets his minutes until the team's 240 are used. After a trade,
+   the same rule runs on the new roster, so a departing player's minutes go to the next
+   players in line. 2026 draft picks get default minutes by pick number.
+3. **Win probability** (`tradesim/fit.py`): `P(home wins) = 1 / (1 + e^-(home + slope x
+   (S_home - S_away)))`, fitted on all 1,230 games of 2025-26 (no home edge on neutral
+   courts). Fit: home = 0.278 (even teams win 56.9% at home), slope = 0.130 per point.
+4. **Season** (`tradesim/simulate.py`): each of the 1,230 games is a biased coin flip;
+   5,000 seasons are drawn at once with numpy (about 0.1 s). Output: average wins, a
+   10th-90th percentile range, the win distribution, and conference seed frequencies.
+   Before/after comparisons reuse the same random numbers. Only teams in working trades
+   change; draft picks don't affect the simulation.
+
+**Backtest on 2025-26** (`data/model/backtest_2025_26.json`):
+
+| Version | Average error | RMSE | Within 5 wins |
+|---|---|---|---|
+| Guess 41 wins for everyone | 11.6 wins | — | — |
+| Actual minutes | 2.6 wins | 3.2 | 26/30 |
+| Projected minutes (the rule used for trades) | 2.9 wins | 3.6 | 26/30 |
+
+This is in-sample: 2025-26 stats predicting 2025-26 wins. It shows the pipeline turns
+player stats into wins correctly, not how well it forecasts a new season.
+
 ### Limitations
 
 - **Cap legality only.** The checker says whether a trade is allowed under the cap
@@ -112,5 +147,16 @@ Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI
   - The Hornets' exception amount ($40,770,520) and date may be a copy error in the source file.
   - The one-year Bird veto list may be from last season.
   - Re-acquire checks only know each player's most recent move.
+- **Simulator:**
+  - No injuries or fatigue: every player is available for every game.
+  - Simplified minutes: a fixed "next man up" rule, not real rotations or positions.
+  - Players with no 2025-26 stats count as replacement level. That includes rookies and
+    veterans who missed all of last season (e.g. Haliburton, Lillard, Irving, VanVleet),
+    so their teams are likely underrated.
+  - The win range reflects game-to-game luck only, not uncertainty about how good a
+    team really is, so real outcomes vary more.
+  - The 2026-27 schedule's last 2 games per team (in-season tournament) aren't set yet;
+    they're filled with random same-conference matchups.
+  - Playoff seeding breaks ties at random, not with the NBA's tiebreakers.
 - **Roster rule:** each team must end a trade with 14-15 standard contracts (per the
   project spec). The Kings currently have 13, so any trade that doesn't add a player fails.
