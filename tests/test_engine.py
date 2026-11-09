@@ -195,5 +195,20 @@ def test_scenario_report_files(engine, tmp_path):
     text = open(md_path).read()
     assert text.isascii() and "| ** | CLE |" in text and "| ** | TOR |" in text
     rows = [line for line in text.splitlines() if line.startswith("| ") and "Team" not in line]
-    assert len(rows) == 30 and all(line.count("|") == 12 for line in rows)
+    assert len(rows) == 30 and all(line.count("|") == 13 for line in rows)
+    assert "Win range (10-90%)" in text and "80% range" in text
     assert open(csv_path).read().count("\n") == 31
+
+
+def test_trade_delta_has_80_percent_interval(engine):
+    d = engine.scenario([move("kawhi-leonard", "TOR", "CLE")])["teams"]["CLE"]["delta"]["mean_wins"]
+    assert d["p10"] <= d["change"] <= d["p90"]
+    assert d["p90"] - d["p10"] > 10 * d["mcse"]  # spread of outcomes is much wider than the MC SE
+
+
+def test_league_wins_total_1230_in_scenarios_too(engine):
+    rotations = __import__("tradesim.rotation", fromlist=["apply_moves"]).apply_moves(
+        engine.league, [move("kawhi-leonard", "TOR", "CLE"), move("nikola-jokic", "DEN", "BKN")], engine.cfg,
+        engine.ratings)
+    sim = engine.simulate(rotations, ["TOR", "CLE", "DEN", "BKN"])
+    assert (sim["wins"].sum(axis=1) == 1230).all()

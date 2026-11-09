@@ -328,4 +328,9 @@ def paired_changes(base, scen, i):
     for key, (before, after) in pairs.items():
         diff = after - before
         out[key] = {"change": round(float(diff.mean()), 4), "mcse": round(float(diff.std() / np.sqrt(n)), 4)}
+    # 80% interval of the per-season change in wins: how much the move shifts this team's
+    # record across simulated seasons (player draws, injuries, game luck), not the precision
+    # of the average (that's the MC SE).
+    wins_diff = pairs["mean_wins"][1] - pairs["mean_wins"][0]
+    out["mean_wins"]["p10"], out["mean_wins"]["p90"] = (float(v) for v in np.percentile(wins_diff, [10, 90]))
     return out

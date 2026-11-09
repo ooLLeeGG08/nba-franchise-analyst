@@ -69,3 +69,36 @@ def test_build_season_smoke():
     assert all(len(league.roster(c)) >= 8 for c in league.teams)
     assert len(asof["playoff_teams"]) == 16
     assert all(abs(r["residual"]) < 3 for r in rated["team_residuals"].values())
+
+
+def test_vegas_file_is_complete_and_sourced():
+    import csv
+    with open(bt.VEGAS_PATH) as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 150
+    by_season = {}
+    for r in rows:
+        assert r["source_url"].startswith("https://www.basketball-reference.com/leagues/NBA_")
+        by_season.setdefault(r["season"], []).append(float(r["total"]))
+    assert sorted(by_season) == bt.SEASONS
+    for season, totals in by_season.items():
+        assert len(totals) == 30
+        assert 1215 <= sum(totals) <= 1260, season  # sportsbook totals sum a little above 1,230
+
+
+def test_vegas_comparison_reported_side_by_side(report):
+    v = report["vegas"]
+    assert v["status"] == "ok" and v["teams"] == 150
+    for side in ("model", "vegas"):
+        assert {"win_mae", "playoff_brier", "slope", "slope_90ci"} <= set(v[side])
+        lo, hi = v[side]["slope_90ci"]
+        assert lo <= v[side]["slope"] <= hi
+
+
+def test_slope_tracking():
+    """Track the held-out slope: if it drops below about 0.95, consider shrinking toward 41."""
+    with open(bt.OUT_PATH) as f:
+        r = json.load(f)
+    assert r["loso"]["slope"] >= 0.9
+    lo, hi = r["vegas"]["model"]["slope_90ci"]
+    assert lo < 1.0 < hi or r["loso"]["slope"] >= 0.95

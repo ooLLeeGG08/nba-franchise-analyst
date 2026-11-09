@@ -186,7 +186,7 @@ if __name__ == "__main__":
     paths = write_reports(table, "season_2026_27", "2026-27 season projection (current rosters)", notes=[
         f"{cfg['simulation']['n_seasons']:,} simulated seasons, seed {cfg['simulation']['seed']}, every team starts 0-0.",
         "Strength = expected net rating per 100 possessions vs an average team.",
-        "Range = 10th to 90th percentile of simulated wins.",
+        "Range (10-90%) = 10th to 90th percentile of simulated wins: 80% of simulated seasons land inside it.",
         "Playoff = made the playoffs (seeds 1-6, or won through the play-in). Play-in = finished 7-10.",
         "Seeds use the NBA's tiebreakers; #1 seed = regular-season first place.",
         "Long-term injury adjusted (column, or + in the terminal): teams with a player in config/long_injuries.json "

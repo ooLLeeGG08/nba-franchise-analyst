@@ -227,20 +227,131 @@ def _rows(results, sigma, seasons=None):
             for code, t in r["by_sigma"][str(sigma)].items()]
 
 
-def vegas_comparison(results, sigma):
-    """Optional: compare with preseason Vegas win totals if data/vegas_win_totals.csv exists
-    (columns team, season, total, source_url)."""
-    if not os.path.exists(VEGAS_PATH):
-        return {"status": "skipped: data/vegas_win_totals.csv not found"}
+def _load_vegas():
     import csv
     with open(VEGAS_PATH) as f:
-        vegas = {(r["season"], r["team"]): float(r["total"]) for r in csv.DictReader(f)}
+        return {(r["season"], r["team"]): float(r["total"]) for r in csv.DictReader(f)}
+
+
+def vegas_playoff_odds(season, totals, game_fit, latent_sd, n_sims=N_SIMS, seed=2027):
+    """Playoff and top-6 odds implied by Vegas win totals, through the same season machinery:
+    find team strengths whose expected wins match the totals (scaled to sum to 1,230), then
+    simulate the real schedule with the game model, the same latent spread, tiebreakers and
+    the play-in."""
+    from tradesim.game_model import back_to_backs, norm_cdf
+    from tradesim.standings import INDEX as S_INDEX, SeasonTable, divisions, play_in
+    codes = list(TEAM_INFO)
+    games = gm.load_games(season)
+    home = np.array([S_INDEX[g["home"]] for g in games])
+    away = np.array([S_INDEX[g["away"]] for g in games])
+    court = np.array([0.0 if g["neutral"] else 1.0 for g in games])
+    b2b_h, b2b_a = back_to_backs(games)
+    edge = game_fit["home_edge"] * court - game_fit["b2b_penalty"] * (b2b_h - b2b_a)
+    target = np.array([totals[c] for c in codes])
+    target = target - (target.sum() - 41 * 30) / 30  # sportsbook totals sum a bit above 1,230
+    rng = np.random.default_rng(seed)
+    latent = latent_sd * rng.standard_normal((n_sims, 30))
+    s = (target - 41) / 2.7
+    for _ in range(40):  # match expected wins to the totals (smooth: averaged over latent draws)
+        st = s[None, :] + latent
+        p = norm_cdf((st[:, home] - st[:, away] + edge) / game_fit["sigma"]).mean(axis=0)
+        expected = np.bincount(home, p, 30) + np.bincount(away, 1 - p, 30)
+        s += (target - expected) / 2.5
+        if np.abs(target - expected).max() < 0.05:
+            break
+    st = s[None, :] + latent
+    margin = st[:, home] - st[:, away] + edge + game_fit["sigma"] * rng.standard_normal((n_sims, len(games)))
+    won = margin > 0
+    division = divisions(season)
+    playoff = np.zeros((n_sims, 30), dtype=bool)
+    top6 = np.zeros((n_sims, 30), dtype=bool)
+    G = np.zeros((30, 30))
+    for h, a in zip(home, away):
+        G[h, a] += 1
+        G[a, h] += 1
+    for k in range(n_sims):
+        W = np.zeros((30, 30))
+        np.add.at(W, (home[won[k]], away[won[k]]), 1)
+        np.add.at(W, (away[~won[k]], home[~won[k]]), 1)
+        pdiff = np.bincount(home, margin[k], 30) - np.bincount(away, margin[k], 30)
+        table = SeasonTable(W, G, pdiff, division, np.random.default_rng([seed, k]))
+        for conf in ("East", "West"):
+            order = table.seeds(conf)
+            for t in order[:6]:
+                playoff[k, S_INDEX[t]] = top6[k, S_INDEX[t]] = True
+            strength = {t: float(st[k, S_INDEX[t]]) for t in order[6:10]}
+            for t in play_in(order, strength, game_fit, rng.standard_normal(3)):
+                playoff[k, S_INDEX[t]] = True
+    return {c: {"playoff_pct": float(playoff[:, S_INDEX[c]].mean()), "top6_pct": float(top6[:, S_INDEX[c]].mean())}
+            for c in codes}
+
+
+def _slope_ci(rows, pred_key, n_boot=2000, seed=0):
+    """Slope of actual on predicted wins, with a 90% interval from resampling whole seasons
+    (teams in the same season aren't independent)."""
+    def slope(rs):
+        pred = np.array([r[pred_key] for r in rs])
+        act = np.array([r["actual_wins"] for r in rs])
+        c = pred - pred.mean()
+        return float(np.sum(c * (act - act.mean())) / np.sum(c ** 2))
+    seasons = sorted({r["season"] for r in rows})
+    rng = np.random.default_rng(seed)
+    boots = [slope([r for s in rng.choice(seasons, len(seasons)) for r in rows if r["season"] == s])
+             for _ in range(n_boot)]
+    return round(slope(rows), 2), [round(float(x), 2) for x in np.percentile(boots, [5, 95])]
+
+
+def vegas_comparison(results, sigma, latent_sd):
+    """Side by side with preseason Vegas win totals (data/vegas_win_totals.csv: team, season,
+    total, source_url), if the file exists."""
+    if not os.path.exists(VEGAS_PATH):
+        return {"status": "skipped: data/vegas_win_totals.csv not found"}
+    vegas = _load_vegas()
     rows = [r for r in _rows(results, sigma) if (r["season"], r["team"]) in vegas]
-    if not rows:
-        return {"status": "no overlapping team-seasons"}
-    ours = np.mean([abs(r["predicted_wins"] - r["actual_wins"]) for r in rows])
-    theirs = np.mean([abs(vegas[(r["season"], r["team"])] - r["actual_wins"]) for r in rows])
-    return {"status": "ok", "teams": len(rows), "our_mae": round(float(ours), 2), "vegas_mae": round(float(theirs), 2)}
+    if len(rows) != len(_rows(results, sigma)):
+        return {"status": "incomplete: not every team-season has a Vegas total"}
+    by_season = {r["season"]: r for r in results}
+    for season in sorted({r["season"] for r in rows}):
+        totals = {c: vegas[(season, c)] for c in TEAM_INFO}
+        odds = vegas_playoff_odds(season, totals, by_season[season]["game_model"], latent_sd)
+        for r in rows:
+            if r["season"] == season:
+                r["vegas_wins"] = vegas[(season, r["team"])]
+                r["vegas_playoff_pct"] = odds[r["team"]]["playoff_pct"]
+                r["vegas_top6_pct"] = odds[r["team"]]["top6_pct"]
+
+    def metrics(pred_key, p_key, p6_key):
+        pred = np.array([r[pred_key] for r in rows])
+        act = np.array([r["actual_wins"] for r in rows])
+        p = np.clip(np.array([r[p_key] for r in rows]), 0.001, 0.999)
+        y = np.array([r["made_playoffs"] for r in rows])
+        p6 = np.array([r[p6_key] for r in rows])
+        y6 = np.array([r["made_top6"] for r in rows])
+        slope, ci = _slope_ci(rows, pred_key)
+        return {"win_mae": round(float(np.mean(np.abs(pred - act))), 2),
+                "win_rmse": round(float(np.sqrt(np.mean((pred - act) ** 2))), 2),
+                "slope": slope, "slope_90ci": ci, "corr": round(float(np.corrcoef(pred, act)[0, 1]), 2),
+                "playoff_brier": round(float(np.mean((p - y) ** 2)), 4),
+                "playoff_log_loss": round(float(-np.mean(y * np.log(p) + (1 - y) * np.log(1 - p))), 4),
+                "top6_brier": round(float(np.mean((p6 - y6) ** 2)), 4)}
+
+    by = {}
+    for season in sorted({r["season"] for r in rows}):
+        sel = [r for r in rows if r["season"] == season]
+        by[season] = {"model_mae": round(float(np.mean([abs(r["predicted_wins"] - r["actual_wins"]) for r in sel])), 2),
+                      "vegas_mae": round(float(np.mean([abs(r["vegas_wins"] - r["actual_wins"]) for r in sel])), 2)}
+    return {"status": "ok", "teams": len(rows), "latent_sd": round(latent_sd, 2),
+            "model": metrics("predicted_wins", "playoff_pct", "top6_pct"),
+            "vegas": metrics("vegas_wins", "vegas_playoff_pct", "vegas_top6_pct"),
+            "by_season": by,
+            "note": ("Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines "
+                     "(Basketball-Reference preseason odds pages, which credit sportsoddshistory.com). Vegas playoff "
+                     "odds are derived by running the totals through the same season simulator.")}
+
+
+def _sd_without_team_term():
+    with open(os.path.join(ROOT, "data", "model", "uncertainty.json")) as f:
+        return json.load(f)["sim_sd_without_team_term"]
 
 
 def run(cfg=None, write=True):
@@ -264,7 +375,7 @@ def run(cfg=None, write=True):
         "top6_calibration": calibration_table(_rows(results, best), "top6_pct", "made_top6"),
         "players_check": {r["season"]: r["players_check"] for r in results},
         "left_out_fits": {r["season"]: {"rating_fit": r["rating_fit"], "game_model": r["game_model"]} for r in results},
-        "vegas": vegas_comparison(results, best),
+        "vegas": vegas_comparison(results, best, math.sqrt(_sd_without_team_term() ** 2 + best ** 2)),
         "note_effective_n": ("Teams in the same season share a schedule and a league, so the 150 team-seasons aren't "
                              "independent; treat coverage differences of about +/-3 points as noise, and calibration "
                              "buckets of 20-40 teams as about +/-8-10 points."),
@@ -310,9 +421,24 @@ def write_report(r, path=os.path.join(ROOT, "reports", "backtest_nov9.md")):
               "interval; below about 45% / 75% would mean player SEs are too small:", ""]
     lines += [f"- {s}: {pct(v['inside_50'])} / {pct(v['inside_80'])} ({v['n']} players)"
               for s, v in r["players_check"].items()]
-    lines += ["", f"## Vegas comparison", "", f"- {r['vegas']['status']}"]
-    if r["vegas"].get("status") == "ok":
-        lines.append(f"- Our MAE {r['vegas']['our_mae']} vs Vegas {r['vegas']['vegas_mae']} over {r['vegas']['teams']} teams.")
+    v = r["vegas"]
+    lines += ["", "## Model vs Vegas preseason win totals", ""]
+    if v.get("status") != "ok":
+        lines.append(f"- {v['status']}")
+    else:
+        lines += [f"- {v['note']}", "",
+                  "| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason) |", "|---|---|---|"]
+        rows = [("Win-total average error", "win_mae", "{:.2f}"), ("Win-total RMSE", "win_rmse", "{:.2f}"),
+                ("Slope of actual on predicted", "slope", "{:.2f}"), ("Correlation", "corr", "{:.2f}"),
+                ("Playoff Brier", "playoff_brier", "{:.4f}"), ("Playoff log loss", "playoff_log_loss", "{:.4f}"),
+                ("Top-6 Brier", "top6_brier", "{:.4f}")]
+        for label, key, fmt in rows:
+            lines.append(f"| {label} | {fmt.format(v['model'][key])} | {fmt.format(v['vegas'][key])} |")
+        lines.append(f"| Slope, 90% interval (resampling seasons) | {v['model']['slope_90ci'][0]:.2f} to "
+                     f"{v['model']['slope_90ci'][1]:.2f} | {v['vegas']['slope_90ci'][0]:.2f} to "
+                     f"{v['vegas']['slope_90ci'][1]:.2f} |")
+        lines += ["", "| Season | Model MAE | Vegas MAE |", "|---|---|---|"]
+        lines += [f"| {s} | {x['model_mae']:.2f} | {x['vegas_mae']:.2f} |" for s, x in v["by_season"].items()]
     with open(path, "w") as f:
         f.write("\n".join(lines) + "\n")
     return path
@@ -329,5 +455,10 @@ if __name__ == "__main__":
               f"  {m['mean_rps']:.4f}  {m['playoff_brier']:.4f}{'  <- best' if float(s) == r['sigma_t'] else ''}")
     print("Leave-one-season-out sigma_t:", r["loso_sigma_t"], "->", r["loso"])
     print("Players inside 50%/80%:", {s: (round(v['inside_50'], 2), round(v['inside_80'], 2)) for s, v in r["players_check"].items()})
-    print("Vegas:", r["vegas"]["status"])
+    v = r["vegas"]
+    print("Vegas:", v["status"])
+    if v["status"] == "ok":
+        for k in ("win_mae", "win_rmse", "slope", "slope_90ci", "playoff_brier", "playoff_log_loss", "top6_brier"):
+            print(f"  {k:18s} model {v['model'][k]}   vegas {v['vegas'][k]}")
+        print("  by season:", v["by_season"])
     print("Wrote", OUT_PATH, "and", write_report(r))

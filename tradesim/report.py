@@ -13,7 +13,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORTS_DIR = os.path.join(ROOT, "reports")
 
-COLUMNS = ["conference", "rank", "team", "strength", "mean_wins", "range_low", "range_high",
+COLUMNS = ["conference", "rank", "team", "strength", "mean_wins", "range_p10", "range_p90",
            "playoff_pct", "play_in_pct", "top_seed_pct",
            "mean_wins_mcse", "playoff_pct_mcse", "play_in_pct_mcse", "top_seed_pct_mcse", "injury_adjusted"]
 
@@ -28,7 +28,7 @@ def ranked_rows(rows):
         for rank, r in enumerate(conf_rows, 1):
             out.append({"conference": conference, "rank": rank, "team": r["team"],
                         "strength": float(r["strength"]), "mean_wins": float(r["mean_wins"]),
-                        "range_low": int(r["range"][0]), "range_high": int(r["range"][1]),
+                        "range_p10": int(r["range"][0]), "range_p90": int(r["range"][1]),
                         "playoff_pct": float(r["playoff_pct"]), "play_in_pct": float(r["play_in_pct"]),
                         "top_seed_pct": float(r["top_seed_pct"]),
                         **{f"{k}_mcse": float(r.get("mcse", {}).get(k, 0.0))
@@ -50,7 +50,7 @@ def markdown(rows, title, notes=()):
                   "|---|---|---|---|---|---|---|---|---|"]
         for r in (r for r in rows if r["conference"] == conference):
             lines.append(f"| {r['rank']} | {r['team']} | {r['strength']:+.1f} | {r['mean_wins']:.1f} | "
-                         f"{r['range_low']}-{r['range_high']} | {_pct(r['playoff_pct'])} | "
+                         f"{r['range_p10']}-{r['range_p90']} | {_pct(r['playoff_pct'])} | "
                          f"{_pct(r['play_in_pct'])} | {_pct(r['top_seed_pct'])} | "
                          f"{'adjusted' if r['injury_adjusted'] else ''} |")
     return "\n".join(lines) + "\n"
@@ -75,11 +75,11 @@ def terminal_summary(rows):
     """Compact plain-text table: about 50 characters wide, so it doesn't wrap."""
     lines = []
     for conference in ("East", "West"):
-        lines.append(f"{conference:<5} Team   Str  Wins  Range  PO%  PI%  #1%")
+        lines.append(f"{conference:<5} Team   Str  Wins 10-90%  PO%  PI%  #1%")
         for r in (r for r in ranked_rows(rows) if r["conference"] == conference):
             lines.append(f"{r['rank']:>4}  {r['team'] + ('+' if r['injury_adjusted'] else ''):<4} "
                          f"{r['strength']:+5.1f} {r['mean_wins']:5.1f} "
-                         f"{r['range_low']:>2}-{r['range_high']:<2} {r['playoff_pct'] * 100:4.0f} "
+                         f"{r['range_p10']:>2}-{r['range_p90']:<2}  {r['playoff_pct'] * 100:4.0f} "
                          f"{r['play_in_pct'] * 100:4.0f} {r['top_seed_pct'] * 100:4.0f}")
         lines.append("")
     return "\n".join(lines)
@@ -89,10 +89,11 @@ def terminal_summary(rows):
 
 SCENARIO_COLUMNS = ["conference", "team", "changed_roster", "moved",
                     "wins_before", "wins_after", "wins_change", "wins_change_mcse",
+                    "wins_change_p10", "wins_change_p90",
                     "playoff_before", "playoff_after", "playoff_change", "playoff_change_mcse",
                     "play_in_before", "play_in_after", "play_in_change", "play_in_change_mcse",
                     "top_seed_before", "top_seed_after", "top_seed_change", "top_seed_change_mcse",
-                    "range_before", "range_after"]
+                    "range_10_90_before", "range_10_90_after"]
 
 
 def scenario_rows(result):
@@ -104,13 +105,15 @@ def scenario_rows(result):
                      "changed_roster": t["changed_roster"], "moved": t["moved"],
                      "wins_before": b["mean_wins"], "wins_after": a["mean_wins"],
                      "wins_change": d["mean_wins"]["change"], "wins_change_mcse": d["mean_wins"]["mcse"],
+                     "wins_change_p10": d["mean_wins"]["p10"], "wins_change_p90": d["mean_wins"]["p90"],
                      "playoff_before": b["playoff_pct"], "playoff_after": a["playoff_pct"],
                      "playoff_change": d["playoff_pct"]["change"], "playoff_change_mcse": d["playoff_pct"]["mcse"],
                      "play_in_before": b["play_in_pct"], "play_in_after": a["play_in_pct"],
                      "play_in_change": d["play_in_pct"]["change"], "play_in_change_mcse": d["play_in_pct"]["mcse"],
                      "top_seed_before": b["top_seed_pct"], "top_seed_after": a["top_seed_pct"],
                      "top_seed_change": d["top_seed_pct"]["change"], "top_seed_change_mcse": d["top_seed_pct"]["mcse"],
-                     "range_before": f"{b['range'][0]}-{b['range'][1]}", "range_after": f"{a['range'][0]}-{a['range'][1]}"})
+                     "range_10_90_before": f"{b['range'][0]}-{b['range'][1]}",
+                     "range_10_90_after": f"{a['range'][0]}-{a['range'][1]}"})
     return sorted(rows, key=lambda r: (not r["changed_roster"], not r["moved"], r["conference"], -r["wins_after"]))
 
 
@@ -127,17 +130,21 @@ def scenario_markdown(result, title):
     lines = [f"# {title}", "", "Moves:"]
     lines += [f"- {m['player']}: {m['from']} -> {m['to']}" for m in result["moves"]]
     lines += ["", f"{result['n_sims']:,} simulated seasons each, sharing every random draw, so the changes are "
-              "paired. Change = scenario - baseline, +/- its Monte Carlo SE. Percent changes are in points.",
+              "paired. Change = scenario - baseline, +/- its Monte Carlo SE (precision of the average). "
+              "80% range = 10th-90th percentile of the change in wins across simulated seasons (how much the "
+              "move's effect varies with player form, injuries and luck). Percent changes are in points.",
               "Flag: ** = roster changed; * = other team with a change beyond 2 SE and at least 0.5 wins or "
               "2 points of playoff / play-in / #1-seed odds (config: simulation.highlight).", "",
-              "| Flag | Team | Avg wins | Change | Range | Playoff % | Change (pts) | Play-in % | Change (pts) "
-              "| #1 seed % | Change (pts) |",
-              "|---|---|---|---|---|---|---|---|---|---|---|"]
+              "| Flag | Team | Avg wins | Change +/- MC SE | Change, 80% range | Win range (10-90%) | Playoff % "
+              "| Change (pts) | Play-in % | Change (pts) | #1 seed % | Change (pts) |",
+              "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         flag = "**" if r["changed_roster"] else ("*" if r["moved"] else "")
         lines.append(
             f"| {flag} | {r['team']} | {r['wins_before']:.1f} -> {r['wins_after']:.1f} | "
-            f"{_signed(r['wins_change'], 2)} +/- {r['wins_change_mcse']:.2f} | {r['range_before']} -> {r['range_after']} | "
+            f"{_signed(r['wins_change'], 2)} +/- {r['wins_change_mcse']:.2f} | "
+            f"{_signed(r['wins_change_p10'], 0)} to {_signed(r['wins_change_p90'], 0)} | "
+            f"{r['range_10_90_before']} -> {r['range_10_90_after']} | "
             f"{r['playoff_before'] * 100:.0f} -> {r['playoff_after'] * 100:.0f} | "
             f"{_pts(r['playoff_change'])} +/- {r['playoff_change_mcse'] * 100:.1f} | "
             f"{r['play_in_before'] * 100:.0f} -> {r['play_in_after'] * 100:.0f} | "
@@ -162,11 +169,12 @@ def write_scenario_reports(result, name, title, directory=REPORTS_DIR):
 
 def scenario_terminal(result):
     """Compact summary: flagged teams only."""
-    lines = ["Team  Wins (chg +/- SE)    Playoff% (chg pts)"]
+    lines = ["Team  Wins (chg +/- SE, 80% range)       Playoff% (chg pts)"]
     for r in scenario_rows(result):
         if not r["moved"]:
             continue
         flag = "**" if r["changed_roster"] else "* "
         lines.append(f"{flag}{r['team']:<4} {r['wins_after']:5.1f} ({_signed(r['wins_change'], 2)} +/- "
-                     f"{r['wins_change_mcse']:.2f})  {r['playoff_after'] * 100:3.0f} ({_pts(r['playoff_change'])})")
+                     f"{r['wins_change_mcse']:.2f}, {_signed(r['wins_change_p10'], 0)} to "
+                     f"{_signed(r['wins_change_p90'], 0)})  {r['playoff_after'] * 100:3.0f} ({_pts(r['playoff_change'])})")
     return "\n".join(lines)

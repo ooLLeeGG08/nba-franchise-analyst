@@ -463,7 +463,58 @@
   }
  },
  "vegas": {
-  "status": "skipped: data/vegas_win_totals.csv not found"
+  "status": "ok",
+  "teams": 150,
+  "latent_sd": 3.7,
+  "model": {
+   "win_mae": 7.26,
+   "win_rmse": 9.03,
+   "slope": 0.95,
+   "slope_90ci": [
+    0.85,
+    1.07
+   ],
+   "corr": 0.68,
+   "playoff_brier": 0.1741,
+   "playoff_log_loss": 0.5123,
+   "top6_brier": 0.1795
+  },
+  "vegas": {
+   "win_mae": 7.12,
+   "win_rmse": 9.02,
+   "slope": 0.84,
+   "slope_90ci": [
+    0.73,
+    1.01
+   ],
+   "corr": 0.69,
+   "playoff_brier": 0.1518,
+   "playoff_log_loss": 0.4585,
+   "top6_brier": 0.1666
+  },
+  "by_season": {
+   "2021-22": {
+    "model_mae": 7.25,
+    "vegas_mae": 6.93
+   },
+   "2022-23": {
+    "model_mae": 5.04,
+    "vegas_mae": 6.27
+   },
+   "2023-24": {
+    "model_mae": 7.65,
+    "vegas_mae": 6.57
+   },
+   "2024-25": {
+    "model_mae": 7.19,
+    "vegas_mae": 8.37
+   },
+   "2025-26": {
+    "model_mae": 9.19,
+    "vegas_mae": 7.47
+   }
+  },
+  "note": "Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines (Basketball-Reference preseason odds pages, which credit sportsoddshistory.com). Vegas playoff odds are derived by running the totals through the same season simulator."
  },
  "note_effective_n": "Teams in the same season share a schedule and a league, so the 150 team-seasons aren't independent; treat coverage differences of about +/-3 points as noise, and calibration buckets of 20-40 teams as about +/-8-10 points."
 }

@@ -151,14 +151,16 @@ this season only inform player and team strength; they're never locked in as res
 8. **Runs and output:** 10,000 seeded seasons in chunks of 2,000 (about 220 MB). Baseline
    and scenario share every random draw, so changes are paired; the baseline is cached in
    `data/cache/` per input fingerprint, so a scenario takes about 2.4 s. Reports give avg
-   wins, 10-90% range, playoff %, play-in %, #1 seed % and changes with Monte Carlo SEs;
+   wins, 10-90% range, playoff %, play-in %, #1 seed % and changes with Monte Carlo SEs plus
+   an 80% range for the change in wins (how much the move's effect varies across seasons);
    teams in the move are flagged, plus any team whose change is beyond 2 SE and at least
    0.5 wins or 2 points of odds.
 
 #### Data sources
 
 Every raw file is listed with its source URL and as-of date in `data/raw/SOURCES.json`:
-Basketball-Reference advanced stats 2018-19 to 2026-27 (user exports), nba_api (game logs,
+Basketball-Reference advanced stats 2018-19 to 2026-27 (user exports), preseason Vegas win
+totals 2021-22 to 2025-26 (`data/vegas_win_totals.csv`, source URL per row), nba_api (game logs,
 schedules, standings and divisions, draft history, team ratings, rosters and acquisition
 dates, as-of-Nov-9 game logs for the backtest), the user's contracts and cap sheet, and
 ESPN's injury page for `config/long_injuries.json`. A few user-supplied files have no
@@ -178,7 +180,23 @@ sigma_t fitted on the other seasons; full season simulated from 0-0 on the real 
 | Actual wins inside the 50% / 80% interval | 51% / 78% |
 | Playoff-odds Brier score | 0.175 (base rate: 0.249) |
 | Players inside their 50% / 80% rating interval | 47-55% / 76-86% by season (no SE scaling needed) |
-| Vegas comparison | skipped (add `data/vegas_win_totals.csv`: team, season, total, source_url) |
+
+**Model vs Vegas** (`data/vegas_win_totals.csv`: preseason totals 2021-22 to 2025-26 from
+Basketball-Reference's preseason odds pages, which credit sportsoddshistory.com; Vegas playoff
+odds come from running the totals through the same season simulator):
+
+| 150 team-seasons | Model (as of Nov 9) | Vegas (preseason) |
+|---|---|---|
+| Win-total average error | 7.26 | 7.12 |
+| Win-total RMSE | 9.03 | 9.02 |
+| Slope of actual on predicted (90% interval, resampling seasons) | 0.95 (0.85-1.07) | 0.84 (0.73-1.01) |
+| Playoff Brier | 0.174 | 0.152 |
+| Top-6 Brier | 0.180 | 0.167 |
+
+Vegas is about level on win totals (the model wins 2022-23 and 2024-25) and clearly better on
+playoff odds, even though the model's forecasts already know about 10 games of results. The
+slope stays at 0.95, with an interval that includes 1.0, so predictions are not shrunk toward
+41; this is tracked by a test and reconsidered if it drops below about 0.95.
 
 Playoff-odds calibration (sigma_t chosen leave-one-season-out):
 

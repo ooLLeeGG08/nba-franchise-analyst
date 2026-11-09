@@ -68,6 +68,7 @@ def test_terminal_summary_is_narrow_and_ascii(table):
     text = terminal_summary(table)
     assert text.isascii()
     assert max(len(line) for line in text.splitlines()) <= 50
+    assert "10-90%" in text.splitlines()[0]
 
 
 def test_markdown_does_not_change_numbers(table):

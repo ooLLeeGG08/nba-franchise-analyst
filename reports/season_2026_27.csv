@@ -1,4 +1,4 @@
-conference,rank,team,strength,mean_wins,range_low,range_high,playoff_pct,play_in_pct,top_seed_pct,mean_wins_mcse,playoff_pct_mcse,play_in_pct_mcse,top_seed_pct_mcse,injury_adjusted
+conference,rank,team,strength,mean_wins,range_p10,range_p90,playoff_pct,play_in_pct,top_seed_pct,mean_wins_mcse,playoff_pct_mcse,play_in_pct_mcse,top_seed_pct_mcse,injury_adjusted
 East,1,BOS,5.7,54.4,43,65,0.9608,0.0896,0.3156,0.0833,0.0019,0.0029,0.0046,False
 East,2,DET,4.6,52.3,41,63,0.9275,0.1357,0.228,0.0884,0.0026,0.0034,0.0042,False
 East,3,PHI,3.2,48.7,37,60,0.8739,0.2148,0.1289,0.0906,0.0033,0.0041,0.0034,True

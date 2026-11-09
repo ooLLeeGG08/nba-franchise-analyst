@@ -73,6 +73,25 @@ Share of players (500+ minutes) whose full-season BPM landed inside their 50% / 
 - 2024-25: 54% / 82% (345 players)
 - 2025-26: 47% / 76% (355 players)
 
-## Vegas comparison
+## Model vs Vegas preseason win totals
 
-- skipped: data/vegas_win_totals.csv not found
+- Model = as of Nov 9 (knows about 10 games of results); Vegas = preseason lines (Basketball-Reference preseason odds pages, which credit sportsoddshistory.com). Vegas playoff odds are derived by running the totals through the same season simulator.
+
+| Measure (150 team-seasons) | Model (Nov 9) | Vegas (preseason) |
+|---|---|---|
+| Win-total average error | 7.26 | 7.12 |
+| Win-total RMSE | 9.03 | 9.02 |
+| Slope of actual on predicted | 0.95 | 0.84 |
+| Correlation | 0.68 | 0.69 |
+| Playoff Brier | 0.1741 | 0.1518 |
+| Playoff log loss | 0.5123 | 0.4585 |
+| Top-6 Brier | 0.1795 | 0.1666 |
+| Slope, 90% interval (resampling seasons) | 0.85 to 1.07 | 0.73 to 1.01 |
+
+| Season | Model MAE | Vegas MAE |
+|---|---|---|
+| 2021-22 | 7.25 | 6.93 |
+| 2022-23 | 5.04 | 6.27 |
+| 2023-24 | 7.65 | 6.57 |
+| 2024-25 | 7.19 | 8.37 |
+| 2025-26 | 9.19 | 7.47 |
