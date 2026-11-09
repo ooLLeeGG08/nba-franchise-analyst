@@ -1,32 +1,12 @@
-"""Step 1 of the simulator: player value, minutes, and team strength.
+"""Team strength and minutes.
 
-Player value (per 100 possessions, vs. an average player)
-    BPM (Box Plus/Minus, from Basketball-Reference) estimates how many points per
-    100 possessions a player adds compared with a league-average player. It's noisy
-    for players with few minutes, so it's blended with replacement level:
+Current model (sim-accuracy Stage 2): team_strength() = sum(player impact x
+projected minutes / 48) + team residual, using the fitted ratings from
+tradesim.ratings. Projected minutes are scaled so each roster totals 240.
 
-        value = (BPM x MP + replacement x K) / (MP + K)
-
-    MP = minutes played in 2025-26, K = shrink_minutes (250), replacement = -2.0.
-    Players who didn't play in 2025-26 (e.g. injured all season) use their 2024-25
-    stats instead; players with neither (2026 rookies) get the replacement value.
-
-Team strength (net rating per 100 possessions, before centring)
-    Five players are on the court, so each minute is 1/48 of a player-game:
-
-        strength = sum over players of (value - replacement) x minutes / 48
-
-    Minutes add up to 240 per team, so this equals the team's expected net rating
-    plus a constant (5 x 2.0 = 10). Only DIFFERENCES between teams matter for win
-    probability, so the constant cancels out. For display, strengths are centred so
-    the league average is 0.
-
-Minutes (the "simple documented way" to redistribute after a trade)
-    Each player's expected minutes per game = last season's minutes / max(games, 20).
-    Players are sorted by that number and each gets their expected minutes until the
-    team's 240 are used up; the rest of the bench gets 0. When a trade removes a
-    player, his minutes flow to the next players in line ("next man up"); an
-    incoming player slots in by his own minutes per game.
+Older helpers (player_value, expected_mpg, allocate_minutes, strength_from_stints)
+are the first version of the model; the 2025-26 win-model fit and backtest
+(tradesim.fit, tradesim.backtest) still use them until Stages 4 and 7 replace those.
 """
 import json
 import os
@@ -92,18 +72,26 @@ def allocate_minutes(mpgs, cfg):
     return out
 
 
-def team_strength(players, cfg):
-    """players: list of player dicts on one roster. Returns (strength, breakdown)."""
-    repl = cfg["player_value"]["replacement_bpm"]
-    mpgs = {p["id"]: expected_mpg(p, cfg) for p in players}
-    minutes = allocate_minutes(mpgs, cfg)
-    breakdown, strength = [], 0.0
+def team_strength(code, players, cfg, ratings=None):
+    """Team strength (net rating per 100 possessions vs an average team):
+
+        sum(player impact x minutes / 48) + team residual
+
+    Impacts, projected minutes and the residual come from tradesim.ratings
+    (data/model/player_ratings_2026_27.json). Projected minutes become a 240-minute
+    rotation (tradesim.ratings.rotation_minutes: highest first, deep bench trimmed). Returns (strength, breakdown)."""
+    from tradesim.ratings import load_ratings, rotation_minutes
+    ratings = ratings or load_ratings()
+    rated = ratings["players"]
+    mpgs = {p["id"]: rated[p["id"]]["mpg_projected"] for p in players}
+    minutes = rotation_minutes(mpgs, cfg["minutes"]["team_minutes"], cfg["ratings"]["max_mpg"])
+    residual = ratings["team_residuals"][code]["residual"]
+    breakdown, strength = [], residual
     for p in players:
-        st = latest_stats(p) or {}
-        value = player_value(st.get("bpm"), st.get("mp"), cfg)
-        contribution = (value - repl) * minutes[p["id"]] / 48
+        r = rated[p["id"]]
+        contribution = r["impact"] * minutes[p["id"]] / 48
         strength += contribution
-        breakdown.append({"id": p["id"], "name": p["name"], "value": round(value, 2),
+        breakdown.append({"id": p["id"], "name": p["name"], "impact": r["impact"], "se": r["se"],
                           "minutes": round(minutes[p["id"]], 1), "contribution": round(contribution, 2)})
     breakdown.sort(key=lambda b: -b["minutes"])
     return strength, breakdown
@@ -112,7 +100,7 @@ def team_strength(players, cfg):
 def league_strengths(league, cfg, teams=None):
     """Strength for every team (or just `teams`) from the league's current rosters."""
     codes = teams or list(league.teams)
-    return {code: team_strength(league.roster(code), cfg)[0] for code in codes}
+    return {code: team_strength(code, league.roster(code), cfg)[0] for code in codes}
 
 
 def strength_from_stints(stints, games_per_team, cfg):

@@ -60,9 +60,9 @@ def test_rookie_minutes_by_draft_pick(cfg):
 
 def test_better_player_raises_team_strength(league, cfg):
     roster = league.roster("ATL")
-    base, _ = team_strength(roster, cfg)
+    base, _ = team_strength("ATL", roster, cfg)
     star = league.players["nikola-jokic"]
-    stronger, _ = team_strength(roster + [star], cfg)
+    stronger, _ = team_strength("ATL", roster + [star], cfg)
     assert stronger > base
 
 
@@ -187,12 +187,13 @@ def test_backtest_beats_naive_guess(cfg):
     assert r["strength_uncertainty"]["strength_sd_points"] > 0
 
 
-def test_injured_players_fall_back_to_2024_25(league, cfg):
-    """Haliburton missed 2025-26; his 2024-25 season (BPM +5.8, 2,451 minutes) is used."""
-    _, breakdown = team_strength(league.roster("IND"), cfg)
+def test_injured_players_keep_their_rating_from_earlier_seasons(league, cfg):
+    """Haliburton missed 2025-26; his rating comes from 2024-25 and earlier (BPM +5.8 in 2024-25),
+    while the missed season lowers his expected share of games played."""
+    _, breakdown = team_strength("IND", league.roster("IND"), cfg)
     hali = next(b for b in breakdown if b["id"] == "tyrese-haliburton")
-    assert hali["value"] == pytest.approx(player_value(5.8, 2451, cfg), abs=0.01)
-    assert hali["minutes"] > 30
+    assert hali["impact"] > 3
+    assert hali["minutes"] > 10
 
 
 def test_strength_uncertainty_widens_ranges_but_keeps_totals(league, cfg, schedule):

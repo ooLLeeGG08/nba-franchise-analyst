@@ -140,6 +140,46 @@ vs forecast), Grizzlies (-20) and Hornets (+17.5, rookie Kon Knueppel counted as
 replacement level). Forecasts with projected minutes are somewhat too extreme
 (actual wins move about 0.73 wins per predicted win).
 
+### Simulator accuracy rework (`sim-accuracy` branch)
+
+**Method: team strength from players (Stage 2).**
+`strength = sum(player impact x projected minutes / 48) + team residual`, in points per
+100 possessions vs an average team. Run `python -m tradesim.ratings` after a data refresh.
+
+- **Player impact** = Basketball-Reference BPM, modelled (`tradesim/ratings.py`), with every
+  setting fitted on 2019-20 to 2025-26 (3,583 player-seasons):
+  - *Prior:* minutes-weighted BPM over the last 3 seasons (each older season counts half),
+    pulled toward -2.5 as if he'd also played 300 replacement-ish minutes, plus an age
+    adjustment (+1.2 for 23 and under ... -0.4 for 34+).
+  - *Rookies:* BPM by draft slot, `-0.88 - 0.58 x ln(pick)` (#1 pick -0.9, #30 -2.8),
+    from 2018-2025 rookies; undrafted players -3.0.
+  - *2026-27 games so far:* `impact = (K x prior + m x BPM_now) / (K + m)`, m = minutes,
+    K = 898 minutes (about 1,900 possessions). K comes from how far players move from
+    their prior (tau = 1.3) versus BPM noise over m minutes (c / m).
+  - Each player also has an uncertainty (SE) that shrinks as his minutes grow.
+- **Projected minutes** = minutes per game played (this season, with last season counted
+  as 5 games) x expected share of games played (last two seasons plus this one, shrunk
+  toward the 68% league average). Players keep their minutes highest first; the deepest
+  bench absorbs the rest so each team totals 240.
+- **Team residual** = observed net rating - player sum. Only 16% of it carries over to the
+  next season, so it's small (under 1 point for every team).
+
+**Validation (Stage 2):** each team's net rating is predicted before each season,
+2019-20 to 2025-26 (210 team-seasons, `python -m tradesim.strength_check`):
+
+| Method | Slope (1.0 = right spread) | Average error |
+|---|---|---|
+| Old method (last season's BPM only), real minutes | 0.88 | 2.63 pts |
+| New ratings, real minutes | 0.97 | 2.47 pts |
+| New ratings, projected minutes | 0.88 | 3.06 pts |
+
+The settings are fitted on these same seasons, so this is mildly in-sample. The leftover
+forecast error (3.5 points after removing 82-game luck) sets the simulator's team-strength
+uncertainty for now; Stage 4 moves uncertainty to individual players.
+
+**Data sources:** every raw file is listed with its source URL and as-of date in
+`data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.
+
 ### Limitations
 
 - **Cap legality only.** The checker says whether a trade is allowed under the cap

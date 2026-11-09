@@ -1,0 +1,175 @@
+{
+ "seasons": [
+  "2019-20",
+  "2020-21",
+  "2021-22",
+  "2022-23",
+  "2023-24",
+  "2024-25",
+  "2025-26"
+ ],
+ "pooled": {
+  "new_projected_min": {
+   "slope": 0.88,
+   "mae": 3.06,
+   "rmse": 3.86,
+   "corr": 0.66
+  },
+  "new_actual_min": {
+   "slope": 0.97,
+   "mae": 2.47,
+   "rmse": 3.08,
+   "corr": 0.8
+  },
+  "old_actual_min": {
+   "slope": 0.88,
+   "mae": 2.63,
+   "rmse": 3.26,
+   "corr": 0.78
+  }
+ },
+ "by_season": {
+  "2019-20": {
+   "new_projected_min": {
+    "slope": 0.84,
+    "mae": 2.77,
+    "rmse": 3.58,
+    "corr": 0.66
+   },
+   "new_actual_min": {
+    "slope": 0.93,
+    "mae": 2.21,
+    "rmse": 2.87,
+    "corr": 0.8
+   },
+   "old_actual_min": {
+    "slope": 0.86,
+    "mae": 2.61,
+    "rmse": 3.57,
+    "corr": 0.79
+   }
+  },
+  "2020-21": {
+   "new_projected_min": {
+    "slope": 0.89,
+    "mae": 3.08,
+    "rmse": 3.81,
+    "corr": 0.61
+   },
+   "new_actual_min": {
+    "slope": 1.02,
+    "mae": 2.21,
+    "rmse": 2.66,
+    "corr": 0.83
+   },
+   "old_actual_min": {
+    "slope": 0.9,
+    "mae": 2.43,
+    "rmse": 3.38,
+    "corr": 0.8
+   }
+  },
+  "2021-22": {
+   "new_projected_min": {
+    "slope": 0.73,
+    "mae": 3.28,
+    "rmse": 4.06,
+    "corr": 0.57
+   },
+   "new_actual_min": {
+    "slope": 0.91,
+    "mae": 2.6,
+    "rmse": 3.19,
+    "corr": 0.75
+   },
+   "old_actual_min": {
+    "slope": 0.74,
+    "mae": 3.17,
+    "rmse": 4.07,
+    "corr": 0.68
+   }
+  },
+  "2022-23": {
+   "new_projected_min": {
+    "slope": 0.79,
+    "mae": 2.07,
+    "rmse": 2.63,
+    "corr": 0.78
+   },
+   "new_actual_min": {
+    "slope": 0.76,
+    "mae": 2.26,
+    "rmse": 2.77,
+    "corr": 0.79
+   },
+   "old_actual_min": {
+    "slope": 0.7,
+    "mae": 2.48,
+    "rmse": 3.07,
+    "corr": 0.77
+   }
+  },
+  "2023-24": {
+   "new_projected_min": {
+    "slope": 1.09,
+    "mae": 3.34,
+    "rmse": 4.08,
+    "corr": 0.67
+   },
+   "new_actual_min": {
+    "slope": 1.06,
+    "mae": 2.57,
+    "rmse": 3.14,
+    "corr": 0.83
+   },
+   "old_actual_min": {
+    "slope": 0.93,
+    "mae": 2.68,
+    "rmse": 3.46,
+    "corr": 0.82
+   }
+  },
+  "2024-25": {
+   "new_projected_min": {
+    "slope": 0.98,
+    "mae": 3.19,
+    "rmse": 4.18,
+    "corr": 0.7
+   },
+   "new_actual_min": {
+    "slope": 1.06,
+    "mae": 2.51,
+    "rmse": 3.21,
+    "corr": 0.84
+   },
+   "old_actual_min": {
+    "slope": 0.94,
+    "mae": 3.01,
+    "rmse": 3.91,
+    "corr": 0.8
+   }
+  },
+  "2025-26": {
+   "new_projected_min": {
+    "slope": 0.89,
+    "mae": 3.54,
+    "rmse": 4.51,
+    "corr": 0.68
+   },
+   "new_actual_min": {
+    "slope": 1.02,
+    "mae": 3.0,
+    "rmse": 3.87,
+    "corr": 0.78
+   },
+   "old_actual_min": {
+    "slope": 1.01,
+    "mae": 3.16,
+    "rmse": 4.39,
+    "corr": 0.79
+   }
+  }
+ },
+ "strength_sd": 3.46,
+ "net_rating_luck_82_games": 1.7
+}

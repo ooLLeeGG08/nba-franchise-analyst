@@ -68,10 +68,11 @@ def draw_offsets(strength_sd, cfg):
 
 
 def load_strength_sd():
-    """Spread of team-strength uncertainty from the forecast backtest."""
-    from tradesim.backtest import BACKTEST_PATH
-    with open(BACKTEST_PATH) as f:
-        return json.load(f)["strength_uncertainty"]["strength_sd_points"]
+    """Spread of team-strength uncertainty, measured by tradesim.strength_check (forecast
+    error of team net ratings over 2019-20 to 2025-26, minus 82-game luck)."""
+    from tradesim.strength_check import CHECK_PATH
+    with open(CHECK_PATH) as f:
+        return json.load(f)["strength_sd"]
 
 
 def simulate_season(schedule, strengths, fit, cfg, uniforms=None, strength_sd=0.0, offsets=None):

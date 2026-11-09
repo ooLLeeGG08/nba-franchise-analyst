@@ -16,6 +16,8 @@ Sources (all in data/raw/2026_27/):
 The build prints a report of everything it couldn't match, so data problems
 show up here instead of as silent wrong answers later.
 """
+import csv
+import io
 import json
 import os
 import re
@@ -116,9 +118,23 @@ def _fixed_width_rows(text):
         yield row
 
 
+def _csv_rows(text):
+    """Basketball-Reference "Get table as CSV" export (first line "Rk,Player,...")."""
+    for row in csv.DictReader(io.StringIO(text)):
+        if (row.get("Rk") or "").isdigit():
+            yield row
+
+
 def _bbref_rows(text):
-    """Yield every player row (season totals and per-team rows) from either format."""
-    raw_rows = _tab_rows(text) if "\t" in text.splitlines()[0] else _fixed_width_rows(text)
+    """Yield every player row (season totals and per-team rows) from any of the three formats
+    the exports have come in: CSV, tab-separated, or fixed-width columns."""
+    first = text.lstrip("\ufeff").splitlines()[0]
+    if first.startswith("Rk,Player"):
+        raw_rows = _csv_rows(text)
+    elif "\t" in first:
+        raw_rows = _tab_rows(text)
+    else:
+        raw_rows = _fixed_width_rows(text)
     for row in raw_rows:
         if row.get("Player") in (None, "", "Player"):
             continue
