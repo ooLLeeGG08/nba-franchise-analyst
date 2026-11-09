@@ -755,6 +755,15 @@ button {
     gap: 16px;
 }
 
+/* Without this, toggling the `hidden` attribute in JS does nothing visually:
+   a class selector's `display: flex` above has the same specificity as the
+   browser's built-in `[hidden] { display: none; }` rule, and author CSS
+   always wins that tie -- so the section's chevron flips and aria-expanded
+   updates correctly, but the content itself never actually hides. */
+.dash-section-body[hidden] {
+    display: none;
+}
+
 .snapshot-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
