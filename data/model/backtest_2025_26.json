@@ -1,0 +1,514 @@
+{
+ "season": "2025-26",
+ "in_sample": true,
+ "fit": {
+  "home": 0.2782111946128939,
+  "slope": 0.1299923892569558
+ },
+ "naive_41_wins": {
+  "mae": 11.6,
+  "rmse": 13.61,
+  "max_error": 24.0,
+  "within_5_wins": 10
+ },
+ "versions": {
+  "A_actual_minutes": {
+   "mae": 2.56,
+   "rmse": 3.18,
+   "max_error": 7.9,
+   "within_5_wins": 26,
+   "actual_inside_10_90_range": 27,
+   "teams": {
+    "OKC": {
+     "actual": 64,
+     "predicted": 63.1,
+     "range": [
+      58,
+      68
+     ]
+    },
+    "SAS": {
+     "actual": 62,
+     "predicted": 58.6,
+     "range": [
+      54,
+      63
+     ]
+    },
+    "DET": {
+     "actual": 60,
+     "predicted": 58.5,
+     "range": [
+      53,
+      63
+     ]
+    },
+    "BOS": {
+     "actual": 56,
+     "predicted": 57.7,
+     "range": [
+      53,
+      63
+     ]
+    },
+    "DEN": {
+     "actual": 54,
+     "predicted": 53.3,
+     "range": [
+      48,
+      58
+     ]
+    },
+    "LAL": {
+     "actual": 53,
+     "predicted": 46.2,
+     "range": [
+      41,
+      52
+     ]
+    },
+    "NYK": {
+     "actual": 53,
+     "predicted": 56.2,
+     "range": [
+      51,
+      61
+     ]
+    },
+    "CLE": {
+     "actual": 52,
+     "predicted": 48.7,
+     "range": [
+      43,
+      54
+     ]
+    },
+    "HOU": {
+     "actual": 52,
+     "predicted": 54.3,
+     "range": [
+      49,
+      59
+     ]
+    },
+    "MIN": {
+     "actual": 49,
+     "predicted": 48.6,
+     "range": [
+      43,
+      54
+     ]
+    },
+    "ATL": {
+     "actual": 46,
+     "predicted": 45.2,
+     "range": [
+      40,
+      51
+     ]
+    },
+    "TOR": {
+     "actual": 46,
+     "predicted": 47.3,
+     "range": [
+      42,
+      53
+     ]
+    },
+    "ORL": {
+     "actual": 45,
+     "predicted": 42.3,
+     "range": [
+      37,
+      48
+     ]
+    },
+    "PHI": {
+     "actual": 45,
+     "predicted": 41.0,
+     "range": [
+      36,
+      46
+     ]
+    },
+    "PHX": {
+     "actual": 45,
+     "predicted": 43.5,
+     "range": [
+      38,
+      49
+     ]
+    },
+    "CHA": {
+     "actual": 44,
+     "predicted": 51.9,
+     "range": [
+      47,
+      57
+     ]
+    },
+    "MIA": {
+     "actual": 43,
+     "predicted": 45.8,
+     "range": [
+      41,
+      51
+     ]
+    },
+    "LAC": {
+     "actual": 42,
+     "predicted": 43.7,
+     "range": [
+      38,
+      49
+     ]
+    },
+    "POR": {
+     "actual": 42,
+     "predicted": 40.5,
+     "range": [
+      35,
+      46
+     ]
+    },
+    "GSW": {
+     "actual": 37,
+     "predicted": 38.5,
+     "range": [
+      33,
+      44
+     ]
+    },
+    "MIL": {
+     "actual": 32,
+     "predicted": 26.2,
+     "range": [
+      21,
+      31
+     ]
+    },
+    "CHI": {
+     "actual": 31,
+     "predicted": 29.2,
+     "range": [
+      24,
+      34
+     ]
+    },
+    "DAL": {
+     "actual": 26,
+     "predicted": 29.4,
+     "range": [
+      24,
+      35
+     ]
+    },
+    "NOP": {
+     "actual": 26,
+     "predicted": 30.5,
+     "range": [
+      25,
+      36
+     ]
+    },
+    "MEM": {
+     "actual": 25,
+     "predicted": 27.8,
+     "range": [
+      23,
+      33
+     ]
+    },
+    "SAC": {
+     "actual": 22,
+     "predicted": 20.4,
+     "range": [
+      16,
+      25
+     ]
+    },
+    "UTA": {
+     "actual": 22,
+     "predicted": 22.0,
+     "range": [
+      17,
+      27
+     ]
+    },
+    "BKN": {
+     "actual": 20,
+     "predicted": 19.0,
+     "range": [
+      14,
+      24
+     ]
+    },
+    "IND": {
+     "actual": 19,
+     "predicted": 24.2,
+     "range": [
+      19,
+      29
+     ]
+    },
+    "WAS": {
+     "actual": 17,
+     "predicted": 16.2,
+     "range": [
+      12,
+      21
+     ]
+    }
+   }
+  },
+  "B_projected_minutes": {
+   "mae": 2.92,
+   "rmse": 3.64,
+   "max_error": 8.6,
+   "within_5_wins": 26,
+   "actual_inside_10_90_range": 25,
+   "teams": {
+    "OKC": {
+     "actual": 64,
+     "predicted": 63.5,
+     "range": [
+      59,
+      68
+     ]
+    },
+    "SAS": {
+     "actual": 62,
+     "predicted": 59.5,
+     "range": [
+      55,
+      64
+     ]
+    },
+    "DET": {
+     "actual": 60,
+     "predicted": 54.2,
+     "range": [
+      49,
+      59
+     ]
+    },
+    "BOS": {
+     "actual": 56,
+     "predicted": 56.4,
+     "range": [
+      51,
+      61
+     ]
+    },
+    "DEN": {
+     "actual": 54,
+     "predicted": 57.1,
+     "range": [
+      52,
+      62
+     ]
+    },
+    "LAL": {
+     "actual": 53,
+     "predicted": 49.5,
+     "range": [
+      44,
+      55
+     ]
+    },
+    "NYK": {
+     "actual": 53,
+     "predicted": 57.1,
+     "range": [
+      52,
+      62
+     ]
+    },
+    "CLE": {
+     "actual": 52,
+     "predicted": 49.2,
+     "range": [
+      44,
+      54
+     ]
+    },
+    "HOU": {
+     "actual": 52,
+     "predicted": 51.2,
+     "range": [
+      46,
+      56
+     ]
+    },
+    "MIN": {
+     "actual": 49,
+     "predicted": 47.9,
+     "range": [
+      43,
+      53
+     ]
+    },
+    "ATL": {
+     "actual": 46,
+     "predicted": 45.7,
+     "range": [
+      40,
+      51
+     ]
+    },
+    "TOR": {
+     "actual": 46,
+     "predicted": 48.1,
+     "range": [
+      43,
+      53
+     ]
+    },
+    "ORL": {
+     "actual": 45,
+     "predicted": 40.7,
+     "range": [
+      35,
+      46
+     ]
+    },
+    "PHI": {
+     "actual": 45,
+     "predicted": 46.3,
+     "range": [
+      41,
+      52
+     ]
+    },
+    "PHX": {
+     "actual": 45,
+     "predicted": 42.9,
+     "range": [
+      37,
+      48
+     ]
+    },
+    "CHA": {
+     "actual": 44,
+     "predicted": 52.6,
+     "range": [
+      47,
+      58
+     ]
+    },
+    "MIA": {
+     "actual": 43,
+     "predicted": 42.9,
+     "range": [
+      37,
+      48
+     ]
+    },
+    "LAC": {
+     "actual": 42,
+     "predicted": 48.3,
+     "range": [
+      43,
+      54
+     ]
+    },
+    "POR": {
+     "actual": 42,
+     "predicted": 38.9,
+     "range": [
+      34,
+      44
+     ]
+    },
+    "GSW": {
+     "actual": 37,
+     "predicted": 40.4,
+     "range": [
+      35,
+      46
+     ]
+    },
+    "MIL": {
+     "actual": 32,
+     "predicted": 34.7,
+     "range": [
+      30,
+      40
+     ]
+    },
+    "CHI": {
+     "actual": 31,
+     "predicted": 32.7,
+     "range": [
+      28,
+      38
+     ]
+    },
+    "DAL": {
+     "actual": 26,
+     "predicted": 34.2,
+     "range": [
+      29,
+      39
+     ]
+    },
+    "NOP": {
+     "actual": 26,
+     "predicted": 27.9,
+     "range": [
+      23,
+      33
+     ]
+    },
+    "MEM": {
+     "actual": 25,
+     "predicted": 21.6,
+     "range": [
+      17,
+      26
+     ]
+    },
+    "SAC": {
+     "actual": 22,
+     "predicted": 19.0,
+     "range": [
+      15,
+      24
+     ]
+    },
+    "UTA": {
+     "actual": 22,
+     "predicted": 21.6,
+     "range": [
+      17,
+      26
+     ]
+    },
+    "BKN": {
+     "actual": 20,
+     "predicted": 15.8,
+     "range": [
+      11,
+      20
+     ]
+    },
+    "IND": {
+     "actual": 19,
+     "predicted": 17.8,
+     "range": [
+      13,
+      22
+     ]
+    },
+    "WAS": {
+     "actual": 17,
+     "predicted": 12.2,
+     "range": [
+      8,
+      16
+     ]
+    }
+   }
+  }
+ }
+}
