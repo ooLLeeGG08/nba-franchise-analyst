@@ -90,7 +90,8 @@ Stage 1 adds the data layer and a cap-legality checker (`tradesim/`), with no UI
 - `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
   into `data/2026_27/league.json` and prints a report of anything it couldn't match.
 - `config/cba_2026_27.json` holds every cap threshold and percentage, with sources.
-- `tradesim/checker.py` returns pass / fail / not checked / warning for each rule and team.
+- `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
+  Bird veto rights count as a fail.
 
 ### Limitations
 

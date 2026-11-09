@@ -6,7 +6,6 @@ with status one of:
     pass         the rule was checked and is met
     fail         the rule was checked and is broken (the trade doesn't work)
     not_checked  the data needed to check it is missing; never treated as a pass
-    warning      legal for the cap, but needs someone's consent (no-trade clause)
 
 All thresholds come from config/cba_2026_27.json via the `cba` dict.
 
@@ -20,7 +19,7 @@ from datetime import date, timedelta
 
 from tradesim.picks import label as pick_label, stepien_check
 
-PASS, FAIL, NOT_CHECKED, WARNING = "pass", "fail", "not_checked", "warning"
+PASS, FAIL, NOT_CHECKED = "pass", "fail", "not_checked"
 APRON_NAMES = {"first_apron": "first apron", "second_apron": "second apron"}
 
 
@@ -100,8 +99,6 @@ def _summarize(rows, ok_detail):
         return FAIL, " ".join(d for s, d in rows if s == FAIL)
     if NOT_CHECKED in statuses:
         return NOT_CHECKED, " ".join(d for s, d in rows if s == NOT_CHECKED)
-    if WARNING in statuses:
-        return WARNING, " ".join(d for s, d in rows if s == WARNING)
     return PASS, ok_detail
 
 
@@ -353,9 +350,9 @@ def _player_rows(league, cba, code, out_players, in_players, on_date):
     consent = []
     for p in out_players:
         if p.get("no_trade_clause"):
-            consent.append((WARNING, f"{p['name']} has a no-trade clause and must agree to the trade."))
+            consent.append((FAIL, f"{p['name']} has a no-trade clause."))
         if p.get("bird_veto"):
-            consent.append((WARNING, f"{p['name']} re-signed for one year with Bird rights and can veto the trade."))
+            consent.append((FAIL, f"{p['name']} re-signed for one year with Bird rights and can veto trades."))
     status, detail = _summarize(consent, "No outgoing player has a no-trade clause or veto right (per the data file).")
     rows.append(_row("players", "no_trade", "No-trade clauses", status, detail))
 

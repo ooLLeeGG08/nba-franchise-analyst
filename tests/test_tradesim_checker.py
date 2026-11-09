@@ -5,7 +5,7 @@ The first two are the user's own examples (Fanspo trade machine, Nov 9, 2026).
 """
 import pytest
 
-from tradesim.checker import (FAIL, NOT_CHECKED, PASS, WARNING, check_trade, check_trades_in_sequence,
+from tradesim.checker import (FAIL, NOT_CHECKED, PASS, check_trade, check_trades_in_sequence,
                               max_incoming)
 from tradesim.league import League, load_cba
 
@@ -162,17 +162,18 @@ def test_recently_signed_player_dates(league, cba):
     assert rule(check_trade(league, cba, moves, "2027-01-20"), "PHI", "recently_signed")["status"] == PASS
 
 
-def test_no_trade_clause_is_a_warning_not_a_failure(league, cba):
+def test_no_trade_clause_fails_the_trade(league, cba):
     r = check_trade(league, cba, {"moves": [player("damian-lillard", "POR", "BOS"),
                                             player("derrick-white", "BOS", "POR")]}, DATE)
-    assert rule(r, "POR", "no_trade")["status"] == WARNING
+    assert rule(r, "POR", "no_trade")["status"] == FAIL
+    assert not r["teams"]["POR"]["works"]
     assert "no-trade clause" in rule(r, "POR", "no_trade")["detail"]
 
 
 def test_bird_veto_is_flagged(league, cba):
     r = check_trade(league, cba, {"moves": [player("al-horford", "GSW", "NYK"),
                                             player("landry-shamet", "NYK", "GSW")]}, DATE)
-    assert rule(r, "GSW", "no_trade")["status"] == WARNING
+    assert rule(r, "GSW", "no_trade")["status"] == FAIL
 
 
 def test_cannot_reacquire_player_traded_away_this_season(league, cba):
