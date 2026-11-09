@@ -257,6 +257,26 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   interval), so player SEs are left unscaled. Stage 7 refits sigma_t on win totals and
   playoff odds with the full engine.
 
+**Method: season rules (Stage 5).** `tradesim/standings.py`.
+
+- Real 2026-27 schedule (1,200 games; the 30 in-season-tournament games not yet set are
+  filled with same-conference matchups). Each simulated game produces a margin
+  (expected margin + sigma x noise), so point differential is available for tiebreakers.
+- **Seeding:** win %, then the NBA's tiebreakers. Two teams: head-to-head, division winner,
+  division record (same division), conference record, record vs playoff-eligible teams in
+  own conference, then other conference, point differential. Three or more: division
+  winner, record among the tied teams, division record (all same division), conference
+  record, record vs own-conference playoff-eligible teams, point differential. A group
+  that splits restarts the procedure; final fallback is a random draw. "Playoff-eligible"
+  = win % at least the conference's 10th-best (our reading of the rule).
+- **Play-in:** 7 hosts 8 (winner = 7 seed), 9 hosts 10 (loser out), loser of 7-8 hosts
+  winner of 9-10 (winner = 8 seed), using each team's strength in its last game.
+- **Output:** playoff % = top 6 or won through the play-in; play-in % = finished 7-10.
+- **Check against the NBA:** computing seeds from real results reproduces the official seeds
+  for every team in 2018-19 and 2021-22 to 2025-26 (25 two-team and 5 three-team ties).
+  The two differences are official-data quirks, not tiebreakers: 2019-20 froze non-bubble
+  teams' standings in March; 2020-21's official ranks include the play-in result.
+
 **Data sources:** every raw file is listed with its source URL and as-of date in
 `data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.
 
@@ -295,6 +315,7 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
     it, 21 of 30 forecasts landed inside their 10-90% range (about 24 expected).
   - The 2026-27 schedule's last 2 games per team (in-season tournament) aren't set yet;
     they're filled with random same-conference matchups.
-  - Playoff seeding breaks ties at random, not with the NBA's tiebreakers.
+  - Tiebreakers follow the NBA procedure; "playoff-eligible" is read as the top 10 by win %.
+    Play-in games use each team's end-of-season strength.
 - **Roster rule:** each team must end a trade with 14-15 standard contracts (per the
   project spec). The Kings currently have 13, so any trade that doesn't add a player fails.

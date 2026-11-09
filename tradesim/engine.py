@@ -12,8 +12,11 @@ Per simulated season:
      availability) and misses that many games as one injury spell at a random point.
   4. Strength per game = full-strength rotation at the drawn impacts - the cost of everyone
      out that game (their minutes go to their backups, tradesim.rotation).
-  5. Games. P(home win) = Phi((S_home - S_away + home edge - b2b penalty) / sigma)
-     (tradesim.game_model), one biased coin flip per game.
+  5. Games. margin = S_home - S_away + home edge - b2b penalty + sigma x noise
+     (tradesim.game_model); the home team wins if the margin is positive, i.e.
+     P(home win) = Phi(expected margin / sigma). Margins give point differential.
+  6. Standings. Seeds with the NBA's tiebreakers, then the play-in for seeds 7-10
+     (tradesim.standings).
 
 Every random draw is tied to the PLAYER (impacts, absences) or the TEAM (residual, by team
 code) or the game (coin flips), never to a team's roster. Baseline and scenario therefore
@@ -28,7 +31,8 @@ import numpy as np
 from tradesim.game_model import back_to_backs, load_model, norm_cdf
 from tradesim.ratings import load_fit as load_ratings_fit, load_ratings
 from tradesim.rotation import apply_moves
-from tradesim.simulate import CODES, INDEX, _seeds, _summaries, draw_uniforms, load_strength_sd
+from tradesim.simulate import CODES, INDEX, load_strength_sd
+from tradesim.standings import SeasonTable, divisions, play_in, summaries
 
 GAMES = 82
 UNCERTAINTY_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "model",
@@ -110,7 +114,14 @@ class Engine:
         self.residual_draws = {c: (self.residual_sd * _stream(seed, f"team:{c}").standard_normal(self.n_sims)
                                    + team_season[:, INDEX[c]]).astype(np.float32) for c in CODES}
         self.sim_cfg = {**cfg, "simulation": {**cfg["simulation"], "n_seasons": self.n_sims}}
-        self.uniforms = draw_uniforms(len(schedule), self.sim_cfg)
+        # Game noise (standard normal per game): margin = expected margin + sigma x noise.
+        self.noise = np.random.default_rng(seed).standard_normal((self.n_sims, len(schedule)), dtype=np.float32)
+        self.play_in_noise = np.random.default_rng(seed + 3).standard_normal((self.n_sims, 2, 3))
+        self.divisions = divisions()
+        self.G = np.zeros((len(CODES), len(CODES)))
+        for g in schedule:
+            self.G[INDEX[g["home"]], INDEX[g["away"]]] += 1
+            self.G[INDEX[g["away"]], INDEX[g["home"]]] += 1
         self.home = np.array([INDEX[g["home"]] for g in schedule])
         self.away = np.array([INDEX[g["away"]] for g in schedule])
         self.home_court = np.array([0.0 if g["neutral"] else 1.0 for g in schedule], dtype=np.float32)
@@ -161,13 +172,39 @@ class Engine:
         stacked = np.stack([strengths[c] for c in CODES])  # 30 x sims x 82
         diff = stacked[self.home, :, self.home_i].T - stacked[self.away, :, self.away_i].T  # sims x games
         m = self.model
-        p = norm_cdf((diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest) / m["sigma"])
-        home_won = (self.uniforms < p).astype(np.float32)
+        margin = diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest + m["sigma"] * self.noise
+        home_won = (margin > 0).astype(np.float32)
         wins = np.rint(home_won @ self.home_onehot + (1 - home_won) @ self.away_onehot).astype(np.int16)
-        seeds = _seeds(wins, self.sim_cfg)
+        pdiff = margin @ self.home_onehot - margin @ self.away_onehot
+        last_game = {c: strengths[c][:, -1] for c in CODES}
+        seeds, playoff = self._standings(home_won, pdiff, last_game)
         mean_strength = {c: float(strengths[c].mean()) for c in CODES}
-        return {"teams": _summaries(wins, seeds, self.sim_cfg), "wins": wins, "seeds": seeds,
-                "mean_strength": mean_strength}
+        return {"teams": summaries(wins, seeds, playoff, self.sim_cfg), "wins": wins, "seeds": seeds,
+                "playoff": playoff, "mean_strength": mean_strength}
+
+    def _standings(self, home_won, pdiff, last_game):
+        """Seeds (NBA tiebreakers) and playoff spots (play-in) for every simulated season."""
+        n = self.n_sims
+        W = np.zeros((n, len(CODES), len(CODES)), dtype=np.int16)
+        won = home_won.astype(np.int16)
+        for i in range(len(self.schedule)):
+            W[:, self.home[i], self.away[i]] += won[:, i]
+            W[:, self.away[i], self.home[i]] += 1 - won[:, i]
+        seeds = np.zeros((n, len(CODES)), dtype=np.int8)
+        playoff = np.zeros((n, len(CODES)), dtype=bool)
+        seed = self.cfg["simulation"]["seed"]
+        for s in range(n):
+            table = SeasonTable(W[s], self.G, pdiff[s], self.divisions, np.random.default_rng([seed, 5, s]))
+            for k, conf in enumerate(("East", "West")):
+                order = table.seeds(conf)
+                for rank, team in enumerate(order, 1):
+                    seeds[s, INDEX[team]] = rank
+                for team in order[:6]:
+                    playoff[s, INDEX[team]] = True
+                strength = {t: float(last_game[t][s]) for t in order[6:10]}
+                for team in play_in(order, strength, self.model, self.play_in_noise[s, k]):
+                    playoff[s, INDEX[team]] = True
+        return seeds, playoff
 
     def baseline(self):
         if not hasattr(self, "_baseline"):

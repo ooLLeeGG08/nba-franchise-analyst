@@ -140,6 +140,51 @@
    "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
    "as_of": "2026-11-09",
    "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+  },
+  "standings/standings_2018-19.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2019-20.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2020-21.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2021-22.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2022-23.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2023-24.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2024-25.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2025-26.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
+  },
+  "standings/standings_2026-27.json": {
+   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_standings.py"
   }
  }
 }
