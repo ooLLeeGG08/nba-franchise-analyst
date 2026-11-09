@@ -143,33 +143,34 @@ def compare(schedule, before, after, fit, cfg, teams=None, strength_sd=0.0):
     return out
 
 
-def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, fit=None, strength_sd=None):
+def simulate_trades(league, cba, trades, schedule, on_date=None, cfg=None, engine=None):
     """Check `trades` in order, apply the ones that work, and simulate 2026-27 before and
-    after. Only teams in working trades change; every other roster stays as it is.
-    Draft picks don't change team strength."""
+    after with the player-availability engine (tradesim.engine). Only teams in working
+    trades change; draft picks and cash don't affect the simulation."""
     from tradesim.checker import check_trades_in_sequence
+    from tradesim.engine import Engine
     cfg = cfg or load_sim_config()
-    fit = fit or load_fit()
-    strength_sd = load_strength_sd() if strength_sd is None else strength_sd
-    results, final = check_trades_in_sequence(league, cba, trades, on_date)
-    changed = sorted({code for r in results if r["works"] for code in r["teams"]})
-    before = league_strengths(league, cfg)
-    after = dict(before)
-    after.update(league_strengths(final, cfg, changed))
-    return {"checks": results, "changed_teams": changed,
-            "teams": compare(schedule, before, after, fit, cfg, strength_sd=strength_sd)}
+    results, _ = check_trades_in_sequence(league, cba, trades, on_date)
+    moves = [{"player": m["id"], "from": m["from"], "to": m["to"]}
+             for trade, r in zip(trades, results) if r["works"]
+             for m in trade["moves"] if m["type"] == "player"]
+    engine = engine or Engine(league, schedule, cfg)
+    out = engine.scenario(moves)
+    out["checks"] = results
+    return out
 
 
-def season_table(league=None, cfg=None):
-    """2026-27 projection for every team from current rosters, with uncertainty."""
+def season_table(league=None, cfg=None, engine=None):
+    """2026-27 projection for every team from current rosters (player-availability engine)."""
+    from tradesim.engine import Engine
     from tradesim.games import load_schedule_2026_27
     from tradesim.league import League
     league = league or League.load()
     cfg = cfg or load_sim_config()
-    strengths = league_strengths(league, cfg)
-    mean = sum(strengths.values()) / len(strengths)
-    sim = simulate_season(load_schedule_2026_27(), strengths, load_fit(), cfg, strength_sd=load_strength_sd())
-    rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(strengths[c] - mean, 1),
+    engine = engine or Engine(league, load_schedule_2026_27(), cfg)
+    sim = engine.baseline()
+    mean = sum(sim["mean_strength"].values()) / len(CODES)
+    rows = [{"team": c, "conference": TEAM_INFO[c]["conference"], "strength": round(sim["mean_strength"][c] - mean, 1),
              **{k: sim["teams"][c][k] for k in ("mean_wins", "range", "playoff_pct", "play_in_pct")},
              "top_seed_pct": sim["teams"][c]["seed_frequency"][0]}
             for c in CODES]

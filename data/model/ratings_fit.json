@@ -306,6 +306,7 @@
  },
  "availability": {
   "mean": 0.685,
+  "kappa": 2.09,
   "prior_games": 82,
   "n": 2285
  }

@@ -177,6 +177,23 @@ The settings are fitted on these same seasons, so this is mildly in-sample. The 
 forecast error (3.5 points after removing 82-game luck) sets the simulator's team-strength
 uncertainty for now; Stage 4 moves uncertainty to individual players.
 
+**Method: scenario engine (Stage 3).** `tradesim/rotation.py`, `tradesim/engine.py`.
+
+- *Positions:* G/F/C buckets ("F-C" counts as both). Same position first, then adjacent.
+- *Full-strength rotation:* each player's minutes per game played; the deepest bench is
+  trimmed to 240.
+- *Moves* (`Engine.scenario([{"player", "from", "to"}])`): departing players' minutes form
+  a pool that incoming players fill first; if more is needed it comes from the
+  lowest-impact players at the same/adjacent position; leftovers go to the next players up.
+- *Absences:* each simulated season, every player gets a games-played rate drawn around his
+  expected availability (Beta, spread fitted on 2019-20 to 2025-26), played out as one injury
+  spell at a random point. While he's out, his minutes go to his backups (same position
+  first, closest on the depth chart, at most +10 minutes each). Draws follow the player, so a
+  traded player misses the same games in both worlds.
+- *Diminishing returns (simplification, default mild):* if a team's top 3 add more than 10
+  points, 15% of the excess is removed. Not fitted; it only affects stacked teams.
+- Speed: about 0.2 s for 5,000 seasons per scenario after a 0.6 s setup.
+
 **Data sources:** every raw file is listed with its source URL and as-of date in
 `data/raw/SOURCES.json`. Files the user supplied without a recorded URL are marked so.
 
@@ -200,8 +217,11 @@ uncertainty for now; Stage 4 moves uncertainty to individual players.
   - The one-year Bird veto list may be from last season.
   - Re-acquire checks only know each player's most recent move.
 - **Simulator:**
-  - No injuries or fatigue: every player is available for every game.
-  - Simplified minutes: a fixed "next man up" rule, not real rotations or positions.
+  - Injury model is simple: one spell per season per player, no fatigue or back-to-backs yet
+    (Stage 4), and when several players are out their absence costs are simply added.
+  - Simplified minutes: a "next man up" rule with G/F/C positions, not real rotations.
+  - BPM undervalues some defensive specialists, so a few teams look slightly better when
+    one of them sits.
   - Rookies and players with no stats in either of the last two seasons count as
     replacement level, so teams with good rookies are likely underrated.
   - Forecasts from last season's stats miss by about 8 wins per team on average

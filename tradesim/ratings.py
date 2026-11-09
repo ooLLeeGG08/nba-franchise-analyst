@@ -340,8 +340,18 @@ def _fit_availability(cfg):
             g = (now.get(key) or {}).get("g", 0)
             if g == 0 and key not in after:
                 continue
-            shares.append(min(g / season_games(season), 1.0))
-    return {"mean": round(float(np.mean(shares)), 3), "prior_games": cfg["ratings"]["availability_prior_games"],
+            shares.append((min(g / season_games(season), 1.0), (key, season)))
+    mean = float(np.mean([sh for sh, _ in shares]))
+    # Spread of one player's season around his own expected share (not across players):
+    # E[(share - p)^2] = p(1-p)/(kappa+1) for a Beta(kappa p, kappa (1-p)) season rate.
+    provisional = {"availability": {"mean": mean, "prior_games": cfg["ratings"]["availability_prior_games"]}}
+    sq, pq = [], []
+    for share, (key, season) in shares:
+        p_hat = availability(key, season, provisional, cfg)
+        sq.append((share - p_hat) ** 2)
+        pq.append(p_hat * (1 - p_hat))
+    kappa = float(np.mean(pq) / np.mean(sq) - 1)
+    return {"mean": round(mean, 3), "kappa": round(kappa, 2), "prior_games": cfg["ratings"]["availability_prior_games"],
             "n": len(shares)}
 
 

@@ -149,7 +149,10 @@ def test_only_traded_teams_change_strength(league, cfg, schedule):
     for code, t in out["teams"].items():
         if code not in ("ATL", "PHI"):
             assert t["strength_before"] == t["strength_after"]
-    assert out["teams"]["ATL"]["win_change"] > 0 > out["teams"]["PHI"]["win_change"]
+    assert out["teams"]["ATL"]["win_change"] > 0
+    # Philadelphia is weaker at full health; over a season the 2-for-1 depth (players miss about
+    # 30% of games) can make up for it, so its win change isn't asserted.
+    assert out["teams"]["PHI"]["full_strength_after"] < out["teams"]["PHI"]["full_strength_before"]
 
 
 def test_failed_trade_changes_nothing(league, cfg, schedule):

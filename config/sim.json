@@ -92,5 +92,15 @@
     "_minutes_prior_games": "Minutes per game PLAYED = this season's blended with last season's, as if last season counted for 5 games. Projected minutes per team game = that x expected share of games played.",
     "availability_prior_games": 82,
     "_availability_prior_games": "Games-played share is shrunk toward the league average as if the player had also played this many games at the average rate."
+  },
+  "rotation": {
+    "max_mpg": 42,
+    "max_extra_minutes": 10,
+    "diminishing_returns": {
+      "threshold": 10.0,
+      "haircut": 0.15
+    },
+    "_max_extra_minutes": "When teammates are out, a player can take at most this many minutes on top of his usual role.",
+    "_diminishing_returns": "Simplification, default mild: if the top-3 players add more than `threshold` points (impact x minutes / 48), 15% of the excess is removed."
   }
 }
