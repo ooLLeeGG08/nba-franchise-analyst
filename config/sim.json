@@ -1,0 +1,31 @@
+{
+  "_note": "Simulator settings. Fitted constants (home court, slope) are NOT here: they're fitted on 2025-26 games by `python -m tradesim.fit` and saved to data/model/fit.json.",
+
+  "player_value": {
+    "replacement_bpm": -2.0,
+    "shrink_minutes": 250,
+    "_replacement_bpm": "Basketball-Reference's replacement level (the BPM used for VORP).",
+    "_shrink_minutes": "BPM is noisy in small samples, so each player's BPM is blended with replacement level as if he'd also played this many replacement-level minutes."
+  },
+
+  "minutes": {
+    "team_minutes": 240,
+    "games_floor": 20,
+    "no_stats_mpg": {"pick_1_5": 26, "pick_6_14": 18, "pick_15_30": 10, "other": 10},
+    "_games_floor": "Minutes per game = minutes / max(games, 20), so a player with a few garbage-time games doesn't look like a starter.",
+    "_no_stats_mpg": "Expected minutes for players with no 2025-26 stats (2026 draft picks by pick number; injured veterans use 'other')."
+  },
+
+  "simulation": {
+    "n_seasons": 5000,
+    "seed": 2027,
+    "range_percentiles": [10, 90],
+    "playoff_seeds": 6,
+    "play_in_seeds": 10
+  },
+
+  "fit": {
+    "season": "2025-26",
+    "newton_iterations": 25
+  }
+}

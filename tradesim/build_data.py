@@ -62,12 +62,11 @@ _STAT_FIELDS = {"G": int, "GS": int, "MP": int, "PER": float, "TS%": float, "USG
                 "OBPM": float, "DBPM": float, "BPM": float, "VORP": float, "WS/48": float}
 
 
-def parse_bbref(text):
-    """Rows may be "1. Name" or "2<TAB>Name"; header rows repeat every 20 lines.
-    Players who changed teams have a combined "2TM"/"3TM" row first; keep that one."""
+def _bbref_rows(text):
+    """Yield every data row as a dict. Rows may be "1. Name" or "2<TAB>Name"; header
+    rows repeat every 20 lines."""
     lines = text.splitlines()
     header = [h.strip() for h in lines[0].split("\t") if h.strip()]
-    stats = {}
     for line in lines[1:]:
         cells = [c.strip() for c in line.split("\t")]
         if not any(cells) or cells[0].startswith("League") or cells[0] == "Rk":
@@ -79,16 +78,27 @@ def parse_bbref(text):
         row = dict(zip(header, cells))
         if row.get("Player") in (None, "", "Player"):
             continue
-        key = name_key(row["Player"])
-        if key in stats:  # first row is the combined multi-team row
-            continue
         rec = {"name": row["Player"], "team_2025_26": row["Team"], "pos": row["Pos"],
                "age_2025_26": int(row["Age"]) if row["Age"].isdigit() else None}
         for field, cast in _STAT_FIELDS.items():
             value = row.get(field, "")
-            rec[field.lower().replace("%", "_pct").replace("/", "_per_")] = cast(value) if value not in ("",) else None
-        stats[key] = rec
+            rec[field.lower().replace("%", "_pct").replace("/", "_per_")] = cast(value) if value != "" else None
+        yield rec
+
+
+def parse_bbref(text):
+    """One record per player. Players who changed teams have a combined "2TM"/"3TM"
+    row first; keep that one (whole-season numbers)."""
+    stats = {}
+    for rec in _bbref_rows(text):
+        stats.setdefault(name_key(rec["name"]), rec)
     return stats
+
+
+def parse_bbref_stints(text):
+    """One record per player per team (the per-team rows; combined 2TM/3TM rows skipped)."""
+    return [{**rec, "team": CODE_BY_BBREF[rec["team_2025_26"]]}
+            for rec in _bbref_rows(text) if not re.fullmatch(r"\dTM", rec["team_2025_26"])]
 
 
 # --- roster status (how acquired) ----------------------------------------------
