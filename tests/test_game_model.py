@@ -99,7 +99,11 @@ def test_sigma_t_closes_the_gap_to_the_measured_spread():
     assert u["sigma_t"] == pytest.approx(math.sqrt(u["target_latent_sd"] ** 2 - u["sim_sd_without_team_term"] ** 2),
                                          abs=0.01)
     engine = Engine(League.load(), load_schedule_2026_27(), load_sim_config(), n_sims=4000)
-    assert engine.uncertainty()["season_strength_sd"] == pytest.approx(u["target_latent_sd"], abs=0.15)
+    # The engine now uses the backtest's sigma_t (2.5, next to this 2.33 starting value), so its
+    # spread is sqrt(spread without the team term^2 + sigma_t^2).
+    expected = math.sqrt(u["sim_sd_without_team_term"] ** 2 + engine.team_season_sd ** 2)
+    assert engine.uncertainty()["season_strength_sd"] == pytest.approx(expected, abs=0.15)
+    assert abs(engine.team_season_sd - u["sigma_t"]) < 0.5
 
 
 def test_interval_coverage_after_adding_sigma_t():

@@ -7,7 +7,8 @@ Per simulated season:
      carry over from year to year: residual spread x sqrt(1 - rho^2)), plus a shared
      team-season error eps_team ~ N(0, sigma_t): one draw per team per season, for what
      moves a whole team together (players' rating errors are otherwise independent).
-     sigma_t is set by tradesim.calibrate (data/model/uncertainty.json).
+     sigma_t is fitted on the Nov 9 backtest (tradesim.backtest_nov9); the starting value
+     came from tradesim.calibrate.
   3. Absences. Each player gets a games-played rate for the season (Beta around his expected
      availability) and misses that many games as one injury spell at a random point.
   4. Strength per game = full-strength rotation at the drawn impacts - the cost of everyone
@@ -41,6 +42,7 @@ CACHE_DIR = os.path.join(_ROOT, "data", "cache")
 # Everything the baseline depends on. Changing any of these files invalidates the cache.
 INPUT_FILES = ["data/2026_27/league.json", "data/model/player_ratings_2026_27.json", "data/model/ratings_fit.json",
                "data/model/game_model.json", "data/model/uncertainty.json", "data/model/strength_check.json",
+               "data/model/backtest_nov9.json",
                "data/raw/2026_27/schedule.json", "data/raw/standings/standings_2026-27.json", "config/sim.json",
                "config/long_injuries.json"]
 
@@ -56,8 +58,16 @@ UNCERTAINTY_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
                                 "uncertainty.json")
 
 
-def load_team_season_sd(path=UNCERTAINTY_PATH):
-    """sigma_t for the shared team-season error (0 until tradesim.calibrate has run)."""
+BACKTEST_PATH = os.path.join(_ROOT, "data", "model", "backtest_nov9.json")
+
+
+def load_team_season_sd(path=UNCERTAINTY_PATH, backtest_path=BACKTEST_PATH):
+    """sigma_t for the shared team-season error: fitted on the Nov 9 backtest
+    (tradesim.backtest_nov9) if it has run, else the starting value from tradesim.calibrate,
+    else 0."""
+    if backtest_path and os.path.exists(backtest_path):
+        with open(backtest_path) as f:
+            return json.load(f)["sigma_t"]
     if not os.path.exists(path):
         return 0.0
     with open(path) as f:
@@ -116,25 +126,24 @@ class Engine:
     flat however many seasons are run. Player and team draws are whole arrays; game noise is
     drawn per chunk from its own fixed seed. Baseline and scenario share all of them."""
 
-    def __init__(self, league, schedule, cfg, n_sims=None, team_season_sd=None):
+    def __init__(self, league, schedule, cfg, n_sims=None, team_season_sd=None, ratings=None, ratings_fit=None,
+                 game_model=None, division_season="2026-27"):
+        """Defaults are the 2026-27 inputs; the backtest passes a past season's instead."""
         self.league, self.schedule, self.cfg = league, schedule, cfg
         self.n_sims = n_sims or cfg["simulation"]["n_seasons"]
         self.chunk = cfg["simulation"].get("chunk_size", 2000)
         self.seed = seed = cfg["simulation"]["seed"]
-        self.ratings = load_ratings()
-        self.model = load_model()
-        ratings_fit = load_ratings_fit()
+        self.ratings = ratings or load_ratings()
+        self.model = game_model or load_model()
+        ratings_fit = ratings_fit or load_ratings_fit()
         players = sorted(self.ratings["players"])
         self.absences = draw_absences(players, self.ratings, ratings_fit["availability"]["kappa"], self.n_sims, seed)
         self.impacts = draw_impacts(players, self.ratings, self.n_sims, seed)
         tr = ratings_fit["team_residual"]
         self.residual_sd = float(tr["residual_sd"] * np.sqrt(1 - tr["rho"] ** 2))
-        self.team_season_sd = load_team_season_sd() if team_season_sd is None else team_season_sd
-        team_season = team_season_errors(self.team_season_sd, self.n_sims, seed)
-        self.residual_draws = {c: (self.residual_sd * _stream(seed, f"team:{c}").standard_normal(self.n_sims)
-                                   + team_season[:, INDEX[c]]).astype(np.float32) for c in CODES}
+        self.set_team_season_sd(load_team_season_sd() if team_season_sd is None else team_season_sd)
         self.sim_cfg = {**cfg, "simulation": {**cfg["simulation"], "n_seasons": self.n_sims}}
-        self.divisions = divisions()
+        self.divisions = divisions(division_season)
         self.G = np.zeros((len(CODES), len(CODES)))
         for g in schedule:
             self.G[INDEX[g["home"]], INDEX[g["away"]]] += 1
@@ -150,6 +159,14 @@ class Engine:
         self.home_onehot[np.arange(len(schedule)), self.home] = 1
         self.away_onehot[np.arange(len(schedule)), self.away] = 1
         self.baseline_rotations = apply_moves(league, [], cfg, self.ratings)
+
+    def set_team_season_sd(self, sigma_t):
+        """(Re)set sigma_t. The underlying normal draws are fixed, so different sigma_t values
+        can be compared with everything else identical (used by the backtest)."""
+        self.team_season_sd = sigma_t
+        team_season = team_season_errors(sigma_t, self.n_sims, self.seed)
+        self.residual_draws = {c: (self.residual_sd * _stream(self.seed, f"team:{c}").standard_normal(self.n_sims)
+                                   + team_season[:, INDEX[c]]).astype(np.float32) for c in CODES}
 
     def chunks(self):
         for start in range(0, self.n_sims, self.chunk):

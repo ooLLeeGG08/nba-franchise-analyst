@@ -110,8 +110,9 @@ def _scores(p, y):
             "accuracy": round(float(np.mean((p > 0.5) == (y == 1))), 4)}
 
 
-def fit(write=True):
-    x, y, margins = design(FIT_SEASONS)
+def fit(write=True, seasons=None):
+    seasons = seasons or FIT_SEASONS
+    x, y, margins = design(seasons)
     (a, c, e), info = fit_probit(x, y)
     se = np.sqrt(np.diag(np.linalg.inv(info)))
     sigma, home_edge, b2b = 1 / a, c / a, e / a
@@ -121,12 +122,12 @@ def fit(write=True):
     # Out-of-sample check on 2025-26.
     xc, yc, _ = design([CHECK_SEASON])
     per_season = {}
-    for season in FIT_SEASONS:
+    for season in seasons:
         xs, ys, _ = design([season])
         (_, cs, _), _ = fit_probit(xs, ys)
         per_season[season] = round(float(cs / a), 2)
     result = {
-        "fit_seasons": FIT_SEASONS, "games": int(len(y)),
+        "fit_seasons": list(seasons), "games": int(len(y)),
         "home_edge": round(float(home_edge), 3), "b2b_penalty": round(float(b2b), 3), "sigma": round(float(sigma), 3),
         "standard_errors": {"home_edge": round(float(se[1] / a), 3), "b2b_penalty": round(float(se[2] / a), 3),
                             "sigma": round(float(se[0] / a ** 2), 3)},

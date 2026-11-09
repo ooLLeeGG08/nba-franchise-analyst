@@ -220,6 +220,8 @@ def _fit_residual_persistence(fit, cfg):
     resid = {s: team_residuals(s, fit, cfg) for s in seasons}
     x, y = [], []
     for a, b in zip(seasons[:-1], seasons[1:]):
+        if previous(b) != a:  # only consecutive seasons (a held-out season leaves a gap)
+            continue
         for code in TEAM_INFO:
             x.append(resid[a][code])
             y.append(resid[b][code])
@@ -305,7 +307,7 @@ def season_games(season):
     return sum(games) / len(games)
 
 
-def availability(key, season, fit, cfg, games_now=None):
+def availability(key, season, fit, cfg, games_now=None, games_possible_now=None):
     """Expected share of team games a player plays: his games over the last two seasons (plus
     this season so far), shrunk toward the league average as if he'd also played
     `prior_games` games at the average rate. A season he missed entirely counts as 0 games
@@ -321,7 +323,7 @@ def availability(key, season, fit, cfg, games_now=None):
             possible += season_games(previous(season, k))
     if games_now is not None:
         played += games_now
-        possible += season_games(season)
+        possible += season_games(season) if games_possible_now is None else games_possible_now
     return min(played / possible, 1.0)
 
 

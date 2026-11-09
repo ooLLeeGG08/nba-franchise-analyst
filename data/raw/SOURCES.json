@@ -185,6 +185,31 @@
    "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
    "as_of": "2026-11-09",
    "notes": "fetch_standings.py"
+  },
+  "backtest/asof_nov9_2021-22.json": {
+   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2021, playoff teams."
+  },
+  "backtest/asof_nov9_2022-23.json": {
+   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2022, playoff teams."
+  },
+  "backtest/asof_nov9_2023-24.json": {
+   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2023, playoff teams."
+  },
+  "backtest/asof_nov9_2024-25.json": {
+   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2024, playoff teams."
+  },
+  "backtest/asof_nov9_2025-26.json": {
+   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+   "as_of": "2026-11-09",
+   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2025, playoff teams."
   }
  }
 }
