@@ -29,6 +29,28 @@ def test_parse_contracts_handles_uneven_blank_lines():
                     {"rank": 2, "name": "Josh Giddey", "team": "CHI", "salary": 25_000_000}]
 
 
+def test_parse_fixed_width_stats_with_stints_and_blanks():
+    def line(rk, name, age, team, pos, g, gs, mp, ts, bpm, vorp):
+        return f"{rk:>3}  {name:<26}{age:>3}  {team:<4}  {pos:<3} {g:>3} {gs:>3} {mp:>5} {ts:>5} {bpm:>6} {vorp:>5}"
+    text = "\n".join([
+        line("Rk", "Player", "Age", "Team", "Pos", "G", "GS", "MP", "TS%", "BPM", "VORP"),
+        "-" * 80,
+        line("17", "Zach LaVine", "29", "2TM", "SG", "74", "74", "2602", ".639", "0.7", "1.8"),
+        line("", "      CHI stint", "29", "CHI", "SF", "42", "42", "1432", ".637", "1.6", "1.3"),
+        line("569", "Jahlil Okafor", "29", "IND", "C", "1", "0", "3", "", "7.5", "0.0"),
+    ])
+    rows = list(build_data._fixed_width_rows(text))
+    assert [(r["Player"], r["Team"], r["MP"]) for r in rows] == [
+        ("Zach LaVine", "2TM", "2602"), ("Zach LaVine", "CHI", "1432"), ("Jahlil Okafor", "IND", "3")]
+    assert rows[2]["TS%"] == "" and rows[2]["BPM"] == "7.5"
+
+
+def test_2024_25_stats_cover_injured_stars(league):
+    for pid in ("tyrese-haliburton", "damian-lillard", "kyrie-irving", "fred-vanvleet"):
+        assert league.players[pid]["stats_2025_26"] is None
+        assert league.players[pid]["stats_2024_25"]["mp"] > 1500
+
+
 def test_parse_how_acquired():
     assert build_data.parse_how_acquired("Signed on 07/06/26") == {"type": "signed", "date": "2026-07-06"}
     assert build_data.parse_how_acquired("Traded from CHA on 07/10/26") == {
@@ -97,5 +119,5 @@ def test_built_file_is_up_to_date():
     """league.json must be rebuilt after editing a raw file: python -m tradesim.build_data"""
     fresh = json.loads(json.dumps(build_data.build(write=False), ensure_ascii=False))
     stored = json.load(open(build_data.OUT))
-    for key in ("teams", "players", "picks", "trade_exceptions", "calendar"):
+    for key in ("teams", "players", "picks", "trade_exceptions", "calendar", "build_report"):
         assert fresh[key] == stored[key], f"{key} is stale; run python -m tradesim.build_data"

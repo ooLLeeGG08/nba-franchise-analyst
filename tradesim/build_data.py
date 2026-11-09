@@ -32,7 +32,11 @@ CBA_PATH = os.path.join(ROOT, "config", "cba_2026_27.json")
 
 
 def _read(name):
-    with open(os.path.join(RAW, name), encoding="utf-8-sig") as f:
+    return _read_raw("2026_27", name)
+
+
+def _read_raw(season_dir, name):
+    with open(os.path.join(ROOT, "data", "raw", season_dir, name), encoding="utf-8-sig") as f:
         return f.read()
 
 
@@ -62,9 +66,9 @@ _STAT_FIELDS = {"G": int, "GS": int, "MP": int, "PER": float, "TS%": float, "USG
                 "OBPM": float, "DBPM": float, "BPM": float, "VORP": float, "WS/48": float}
 
 
-def _bbref_rows(text):
-    """Yield every data row as a dict. Rows may be "1. Name" or "2<TAB>Name"; header
-    rows repeat every 20 lines."""
+def _tab_rows(text):
+    """Tab-separated copy of the table. Rows may be "1. Name" or "2<TAB>Name";
+    header rows repeat every 20 lines."""
     lines = text.splitlines()
     header = [h.strip() for h in lines[0].split("\t") if h.strip()]
     for line in lines[1:]:
@@ -75,11 +79,51 @@ def _bbref_rows(text):
             cells = cells[1:]
         else:
             cells[0] = re.sub(r"^\d+\.\s*", "", cells[0])
-        row = dict(zip(header, cells))
+        yield dict(zip(header, cells))
+
+
+_FIXED_LEAD = re.compile(r"^\s*(\d+)?\s+(.+?)\s+(\d+)\s+(\S+)\s+(\S+)\s")
+
+
+def _fixed_width_rows(text):
+    """Fixed-width copy of the table (columns aligned under a header line). Numbers are
+    right-aligned under their column label, and empty cells are blank, so numeric
+    columns are cut by the header's label positions. Traded players' per-team rows
+    ("CHI stint") sit under their season-total row and take the player's name."""
+    lines = text.splitlines()
+    hi = next(i for i, line in enumerate(lines) if line.lstrip().startswith("Rk") and "BPM" in line)
+    labels = [(m.group(), m.start(), m.end()) for m in re.finditer(r"\S+", lines[hi])]
+    numeric = labels[[lab for lab, _, _ in labels].index("Pos") + 1:]
+    parent = None
+    for line in lines[hi + 1:]:
+        if not line.strip() or line.strip().startswith(("Rk", "-")):
+            continue
+        m = _FIXED_LEAD.match(line)
+        if not m:
+            raise ValueError(f"Unexpected line in fixed-width stats: {line[:60]!r}")
+        rank, name, age, team, pos = m.groups()
+        if rank:
+            parent = name
+        elif name.endswith(" stint"):
+            name = parent
+        row = {"Player": name, "Age": age, "Team": team, "Pos": pos}
+        prev_end = labels[[lab for lab, _, _ in labels].index("Pos")][2]
+        for label, _, end in numeric:
+            if label == "Awards":
+                break
+            row[label] = line[prev_end:end].strip()
+            prev_end = end
+        yield row
+
+
+def _bbref_rows(text):
+    """Yield every player row (season totals and per-team rows) from either format."""
+    raw_rows = _tab_rows(text) if "\t" in text.splitlines()[0] else _fixed_width_rows(text)
+    for row in raw_rows:
         if row.get("Player") in (None, "", "Player"):
             continue
-        rec = {"name": row["Player"], "team_2025_26": row["Team"], "pos": row["Pos"],
-               "age_2025_26": int(row["Age"]) if row["Age"].isdigit() else None}
+        rec = {"name": row["Player"], "bbref_team": row["Team"], "pos": row["Pos"],
+               "age": int(row["Age"]) if row["Age"].isdigit() else None}
         for field, cast in _STAT_FIELDS.items():
             value = row.get(field, "")
             rec[field.lower().replace("%", "_pct").replace("/", "_per_")] = cast(value) if value != "" else None
@@ -97,8 +141,8 @@ def parse_bbref(text):
 
 def parse_bbref_stints(text):
     """One record per player per team (the per-team rows; combined 2TM/3TM rows skipped)."""
-    return [{**rec, "team": CODE_BY_BBREF[rec["team_2025_26"]]}
-            for rec in _bbref_rows(text) if not re.fullmatch(r"\dTM", rec["team_2025_26"])]
+    return [{**rec, "team": CODE_BY_BBREF[rec["bbref_team"]]}
+            for rec in _bbref_rows(text) if not re.fullmatch(r"\dTM", rec["bbref_team"])]
 
 
 # --- roster status (how acquired) ----------------------------------------------
@@ -174,6 +218,7 @@ def build(write=True):
     contracts = parse_contracts(_read("contracts.txt"))
     roster_status = json.loads(_read("roster_status.json"))
     stats = parse_bbref(_read("bbref_advanced_2025_26.tsv"))
+    stats_prev = parse_bbref(_read_raw("2024_25", "bbref_advanced_2024_25.txt"))
     cap_sheet = json.loads(_read("cap_sheet.json"))["teams"]
     hard_caps = json.loads(_read("hard_caps.json"))["teams"]
 
@@ -195,6 +240,7 @@ def build(write=True):
         if not rs:
             report.append(f"not on any 2026-27 roster (treated as waived/dead money): {c['name']} ({c['team']})")
         st = stats.get(key)
+        st_prev = stats_prev.get(key)
         players[slug(c["name"])] = {
             "id": slug(c["name"]),
             "name": rs["PLAYER"] if rs else c["name"],
@@ -207,6 +253,7 @@ def build(write=True):
             "nba_id": rs["PLAYER_ID"] if rs else None,
             "acquired": parse_how_acquired(rs["HOW_ACQUIRED"]) if rs else {"type": "unknown"},
             "stats_2025_26": st,
+            "stats_2024_25": st_prev,
             "no_trade_clause": False,
             "bird_veto": False,
         }
@@ -214,6 +261,8 @@ def build(write=True):
     no_stats = [p["name"] for p in players.values() if p["on_roster"] and not p["stats_2025_26"]]
     report.append(f"{len(no_stats)} rostered contract players have no 2025-26 stats (rookies, injured all season): "
                   + ", ".join(no_stats))
+    fallback = [p["name"] for p in players.values() if p["on_roster"] and not p["stats_2025_26"] and p["stats_2024_25"]]
+    report.append(f"{len(fallback)} of them have 2024-25 stats to fall back on: " + ", ".join(fallback))
 
     ntc, veto = parse_no_trade(_read("no_trade_clauses.txt"))
     for entry, flag in [(e, "no_trade_clause") for e in ntc] + [(e, "bird_veto") for e in veto]:
