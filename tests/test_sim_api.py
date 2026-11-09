@@ -58,3 +58,75 @@ def test_every_team_has_a_need_and_ranks_are_a_permutation(client):
 
 def test_unknown_team_is_404(client):
     assert client.get("/api/sim/team/XYZ").status_code == 404
+
+
+# --- Stage 4: trade machine ------------------------------------------------------------------------
+
+def mv(pid, frm, to, kind="player"):
+    return {"type": kind, "id": pid, "from": frm, "to": to}
+
+
+def test_trade_assets(client):
+    a = client.get("/api/sim/trade/assets/bos").get_json()
+    assert a["code"] == "BOS" and a["roster"] and a["picks"]
+    assert a["roster"] == sorted(a["roster"], key=lambda p: -p["salary"])
+    frozen = [p for p in a["picks"] if p["kind"] == "frozen"]
+    assert frozen and not any(p["tradeable"] for p in frozen)  # Boston's 2032 first is frozen
+    assert set(a["thresholds"]) == {"salary_cap", "tax_line", "first_apron", "second_apron"}
+    assert client.get("/api/sim/trade/assets/XYZ").status_code == 404
+
+
+def test_signed_this_summer_shows_tradeable_date(client):
+    a = client.get("/api/sim/trade/assets/PHI").get_json()
+    simons = next(p for p in a["roster"] if p["id"] == "anfernee-simons")
+    assert simons["tradeable_from"] == "2026-12-15"
+
+
+def test_check_trade_that_works(client):
+    r = client.post("/api/sim/trade/check", json={"moves": [
+        mv("tyrese-maxey", "PHI", "ATL"), mv("jalen-johnson", "ATL", "PHI"), mv("aaron-wiggins", "ATL", "PHI")]})
+    data = r.get_json()
+    assert r.status_code == 200 and data["works"]
+    atl = data["teams"]["ATL"]
+    assert atl["salary_after"] - atl["salary_before"] == 40_770_520 - 38_831_776
+    assert atl["counts"]["fail"] == 0 and sum(atl["counts"].values()) == len(atl["rules"])
+    assert atl["name"] == "Atlanta Hawks" and atl["colors"]["primary"].startswith("#")
+
+
+def test_check_trade_that_fails_explains_why(client):
+    data = client.post("/api/sim/trade/check", json={"moves": [
+        mv("joel-embiid", "PHI", "ATL"), mv("jalen-johnson", "ATL", "PHI")]}).get_json()
+    assert not data["works"]
+    assert "$28.0M more" in data["teams"]["ATL"]["failures"][0]
+    assert data["teams"]["ATL"]["status_after"] == "Over the second apron"
+
+
+def test_exception_use_is_labelled(client):
+    data = client.post("/api/sim/trade/check", json={"moves": [
+        mv("moussa-diabate", "CHA", "DEN"), mv("christian-braun", "DEN", "CHA")]}).get_json()
+    assert data["works"]
+    assert "LaMelo Ball trade exception" in data["teams"]["CHA"]["exception_used"]["label"]
+
+
+def test_cash_and_three_team_trades(client):
+    data = client.post("/api/sim/trade/check", json={"moves": [
+        mv("brandon-miller", "CHA", "HOU"), mv("jabari-smith", "HOU", "CHA"),
+        {"type": "cash", "amount": 2000000, "from": "HOU", "to": "CHA"}]}).get_json()
+    assert any(r["id"] == "cash" and r["status"] == "not_checked" for r in data["teams"]["HOU"]["rules"])
+    three = client.post("/api/sim/trade/check", json={"moves": [
+        mv("brandon-miller", "CHA", "HOU"), mv("jabari-smith", "HOU", "BKN"), mv("danny-wolf", "BKN", "CHA")]}).get_json()
+    assert set(three["teams"]) == {"CHA", "HOU", "BKN"}
+
+
+def test_check_input_validation(client):
+    assert client.post("/api/sim/trade/check", json={"nope": 1}).status_code == 400
+    assert client.post("/api/sim/trade/check", json={"moves": [{"type": "player", "from": "ATL", "to": "XXX", "id": "a"}]}).status_code == 400
+    five = [mv(f"p{i}", t, "ATL") for i, t in enumerate(["BOS", "BKN", "CHA", "CHI"])]
+    assert client.post("/api/sim/trade/check", json={"moves": five}).status_code == 400
+    empty = client.post("/api/sim/trade/check", json={"moves": []}).get_json()
+    assert empty["empty"] and not empty["works"]
+
+
+def test_unknown_player_is_a_clear_error(client):
+    data = client.post("/api/sim/trade/check", json={"moves": [mv("not-a-player", "ATL", "BOS")]}).get_json()
+    assert not data["works"] and any("Unknown player" in e for e in data["errors"])

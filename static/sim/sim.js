@@ -237,25 +237,381 @@
             <div class="action-bar"><div class="inner"><a class="button wide" href="#/trade/${t.code}">Propose a trade</a></div></div>`);
     }
 
-    // --- trade machine placeholder (Stage 4) ------------------------------------------------------
+    // --- screen 4: trade machine ----------------------------------------------------------------
+    // State lives in the URL (#/trade/ATL/PHI?m=player:id:FROM:TO,...) so a trade can be shared
+    // or reopened. All cap rules run on the server (/api/sim/trade/check).
 
-    function trade(code) {
-        render(`
-            <div class="topbar"><a class="back" href="#/team/${esc(code)}">‹ Back</a></div>
-            <section class="placeholder">
-                <h1>Trade machine</h1>
-                <p>Build a trade, check it against the cap rules and save it. Arrives in the next stage.</p>
-                <a class="button secondary" href="#/team/${esc(code)}">Back to team</a>
-            </section>`);
+    const MAX_TEAMS = 4;
+    const SAVED_KEY = "tradesim.saved";
+    let tm = null;
+
+    function encodeMoves(moves) {
+        return moves.map((m) => [m.type, m.type === "cash" ? m.amount : m.id, m.from, m.to].map(encodeURIComponent).join(":")).join(",");
+    }
+
+    function decodeMoves(text) {
+        if (!text) return [];
+        return text.split(",").map((part) => {
+            const [type, value, from, to] = part.split(":").map(decodeURIComponent);
+            return type === "cash" ? { type, amount: Number(value), from, to } : { type, id: value, from, to };
+        }).filter((m) => m.from && m.to);
+    }
+
+    function tradeHash() {
+        const q = tm.moves.length ? `?m=${encodeMoves(tm.moves)}` : "";
+        return `#/trade/${tm.teams.join("/")}${q}`;
+    }
+
+    function syncUrl() {
+        history.replaceState(null, "", tradeHash());
+    }
+
+    function loadSaved() {
+        try { return JSON.parse(localStorage.getItem(SAVED_KEY) || "[]"); } catch (e) { return []; }
+    }
+
+    function storeSaved(list) {
+        try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); return true; } catch (e) { return false; }
+    }
+
+    function teamOf(code) {
+        return tm.assets[code];
+    }
+
+    function inTrade(type, id) {
+        return tm.moves.some((m) => m.type === type && m.id === id);
+    }
+
+    async function trade(codes, moves) {
+        render(`<div class="loading">Loading trade machine…</div>`);
+        try {
+            const assets = await Promise.all(codes.map((c) => getJSON(`/api/sim/trade/assets/${c}`)));
+            tm = { teams: codes, active: codes[0], moves, assets: {}, result: null, panel: "roster",
+                   showRules: false, picker: false, chooseFor: null, message: "" };
+            assets.forEach((a) => { tm.assets[a.code] = a; });
+            if (codes.length === 1) tm.picker = true;  // pick a partner first
+        } catch (err) {
+            return showError(err);
+        }
+        drawTrade();
+        runCheck();
+    }
+
+    let checkTimer = null, checkSeq = 0;
+
+    function runCheck() {
+        clearTimeout(checkTimer);
+        checkTimer = setTimeout(async () => {
+            const seq = ++checkSeq;
+            try {
+                const res = await fetch("/api/sim/trade/check", {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ moves: tm.moves }),
+                });
+                const data = await res.json();
+                if (seq !== checkSeq) return;  // a newer check is on its way
+                tm.result = res.ok ? data : { works: false, errors: [data.error || "Check failed."], teams: {} };
+            } catch (err) {
+                tm.result = { works: false, errors: ["Couldn't reach the checker."], teams: {} };
+            }
+            drawTrade();
+        }, 120);
+    }
+
+    function changed() {
+        syncUrl();
+        tm.message = "";
+        drawTrade();
+        runCheck();
+    }
+
+    function addAsset(type, id, from, to) {
+        if (type !== "cash" && inTrade(type, id)) return;
+        tm.moves.push(type === "cash" ? { type, amount: id, from, to } : { type, id, from, to });
+        tm.chooseFor = null;
+        changed();
+    }
+
+    function removeMove(index) {
+        tm.moves.splice(index, 1);
+        changed();
+    }
+
+    async function addTeam(code) {
+        if (tm.teams.includes(code) || tm.teams.length >= MAX_TEAMS) return;
+        try {
+            tm.assets[code] = await getJSON(`/api/sim/trade/assets/${code}`);
+        } catch (err) {
+            return showError(err);
+        }
+        tm.teams.push(code);
+        tm.active = code;
+        tm.picker = false;
+        changed();
+    }
+
+    function removeTeam(code) {
+        if (tm.teams.length <= 1) return;
+        tm.teams = tm.teams.filter((c) => c !== code);
+        tm.moves = tm.moves.filter((m) => m.from !== code && m.to !== code);
+        if (tm.active === code) tm.active = tm.teams[0];
+        changed();
+    }
+
+    // --- pieces ---
+
+    function statusBanner() {
+        const r = tm.result;
+        if (!r) return `<div class="verdict pending">Checking…</div>`;
+        if (r.empty || !tm.moves.length) {
+            return `<div class="verdict pending">${tm.teams.length < 2 ? "Add a partner team to start." : "Add players, picks or cash to build a trade."}</div>`;
+        }
+        if (r.errors && r.errors.length) {
+            return `<div class="verdict bad"><strong>Doesn't work</strong><ul>${r.errors.map((e) => `<li>${esc(e)}</li>`).join("")}</ul></div>`;
+        }
+        const failing = Object.entries(r.teams).filter(([, t]) => !t.works);
+        const notChecked = Object.values(r.teams).reduce((n, t) => n + t.counts.not_checked, 0);
+        const reasons = failing.map(([code, t]) => `<li><strong>${esc(code)}:</strong> ${esc(t.failures[0])}${t.failures.length > 1 ? ` <span class="more">+${t.failures.length - 1} more</span>` : ""}</li>`).join("");
+        const rulesCount = Object.values(r.teams).reduce((n, t) => n + t.rules.length, 0);
+        return `
+            <div class="verdict ${r.works ? "good" : "bad"}">
+                <strong>${r.works ? "✓ Works" : "✗ Doesn't work"}</strong>
+                ${r.works ? `<p>Every team passes the cap rules${notChecked ? ` (${notChecked} rule${notChecked > 1 ? "s" : ""} couldn't be checked with the data we have)` : ""}.</p>` : `<ul>${reasons}</ul>`}
+                <button type="button" class="link" data-action="rules">${tm.showRules ? "Hide" : "Show"} every rule checked (${rulesCount})</button>
+            </div>`;
+    }
+
+    const RULE_ICON = { pass: "✓", fail: "✗", not_checked: "?" };
+
+    function rulesPanel() {
+        if (!tm.showRules || !tm.result || !tm.result.teams) return "";
+        return `<section class="card rules">${Object.entries(tm.result.teams).map(([code, t]) => `
+            <h3>${esc(t.name)} <span class="note">${t.counts.pass} pass · ${t.counts.fail} fail · ${t.counts.not_checked} not checked</span></h3>
+            <ul>${t.rules.map((rule) => `
+                <li class="rule ${rule.status}"><span class="icon" aria-label="${rule.status}">${RULE_ICON[rule.status] || "?"}</span>
+                    <span><strong>${esc(rule.label)}</strong> ${esc(rule.detail)}</span></li>`).join("")}</ul>`).join("")}
+        </section>`;
+    }
+
+    function payrollBar(before, after, th) {
+        const lo = 140e6, hi = Math.max(th.second_apron * 1.06, before * 1.03, after * 1.03);
+        const pos = (x) => Math.max(0, Math.min(100, ((x - lo) / (hi - lo)) * 100));
+        const markers = [["Cap", th.salary_cap], ["Tax", th.tax_line], ["1st", th.first_apron], ["2nd", th.second_apron]]
+            .map(([label, x]) => `<div class="marker" style="left:${pos(x)}%"><span>${label}</span></div>`).join("");
+        return `<div class="payroll-bar" role="img" aria-label="Payroll ${money(before)} before, ${money(after)} after">
+                    <div class="fill" style="width:${pos(after)}%"></div>
+                    <div class="before-mark" style="left:${pos(before)}%"></div>${markers}</div>`;
+    }
+
+    function moveLabel(m) {
+        if (m.type === "cash") return { name: `Cash`, amount: money(m.amount) };
+        if (m.type === "player") {
+            const p = teamOf(m.from).roster.find((x) => x.id === m.id);
+            return { name: p ? p.name : m.id, amount: p ? money(p.salary) : "" };
+        }
+        const pk = teamOf(m.from).picks.find((x) => x.id === m.id);
+        return { name: pk ? pk.label : m.id, amount: "pick" };
+    }
+
+    function moveList(code, side) {
+        const items = tm.moves.map((m, i) => ({ m, i })).filter(({ m }) => (side === "send" ? m.from : m.to) === code);
+        if (!items.length) return `<p class="empty">Nothing yet.</p>`;
+        return `<ul class="moves">${items.map(({ m, i }) => {
+            const l = moveLabel(m);
+            const other = side === "send" ? `to ${m.to}` : `from ${m.from}`;
+            return `<li><span>${esc(l.name)} <small>${esc(other)}</small></span><span class="amt">${esc(l.amount)}</span>
+                    <button type="button" class="x" data-remove="${i}" aria-label="Remove ${esc(l.name)}">×</button></li>`;
+        }).join("")}</ul>`;
+    }
+
+    function teamPanel() {
+        const code = tm.active, a = teamOf(code);
+        const t = tm.result && tm.result.teams ? tm.result.teams[code] : null;
+        const before = a.team_salary, after = t ? t.salary_after : before;
+        const delta = after - before;
+        const statusAfter = t ? t.status_after : a.status;
+        return `
+            <section class="card">
+                <div class="team-line">${badge(a)}<div><h2>${esc(a.name)}</h2>
+                    <div class="note">${esc(a.status)}${statusAfter !== a.status ? ` → <strong>${esc(statusAfter)}</strong>` : ""}</div></div>
+                    ${t ? `<span class="pill ${t.works ? "ok" : "no"}">${t.works ? "Passes" : "Fails"}</span>` : ""}
+                </div>
+                <div class="payroll-figures"><span class="amount">${money(before)}${delta ? ` → ${money(after)}` : ""}</span>
+                    <span class="note">${delta ? `${delta > 0 ? "+" : ""}${money(delta)}` : "payroll"}</span></div>
+                ${payrollBar(before, after, a.thresholds)}
+                ${t && t.exception_used ? `<p class="note">Uses the ${esc(t.exception_used.label)}.</p>` : ""}
+                <div class="sides">
+                    <div><h3>${esc(code)} sends</h3>${moveList(code, "send")}</div>
+                    <div><h3>${esc(code)} gets</h3>${moveList(code, "get")}</div>
+                </div>
+            </section>`;
+    }
+
+    function destinations(code) {
+        return tm.teams.filter((c) => c !== code);
+    }
+
+    function addButton(type, id, disabled, label = "Add") {
+        if (disabled) return `<span class="note">${esc(disabled)}</span>`;
+        const dests = destinations(tm.active);
+        if (!dests.length) return `<span class="note">Add a team first</span>`;
+        if (dests.length === 1) {
+            return `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-to="${dests[0]}">${label} → ${dests[0]}</button>`;
+        }
+        if (tm.chooseFor === `${type}:${id}`) {
+            return `<span class="dest">${dests.map((d) => `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-to="${d}">${d}</button>`).join("")}</span>`;
+        }
+        return `<button type="button" class="add" data-choose="${type}:${esc(id)}">${label} →</button>`;
+    }
+
+    function assetsPanel() {
+        const a = teamOf(tm.active);
+        const tabs = [["roster", "Roster"], ["picks", "Picks"], ["extras", "Exceptions & cash"]]
+            .map(([k, l]) => `<button type="button" data-panel="${k}" aria-pressed="${tm.panel === k}">${l}</button>`).join("");
+        let body = "";
+        if (tm.panel === "roster") {
+            body = a.roster.filter((p) => !inTrade("player", p.id)).map((p) => {
+                const flags = [p.no_trade_clause ? "no-trade clause" : "", p.bird_veto ? "can veto" : "",
+                               p.tradeable_from ? `signed this summer · from ${formatDate(p.tradeable_from)}` : ""].filter(Boolean);
+                return `<li><span class="who">${esc(p.name)} <small>${esc(p.position || "")} · ${money(p.salary)}${flags.length ? ` · <em>${esc(flags.join(" · "))}</em>` : ""}</small></span>
+                        ${addButton("player", p.id)}</li>`;
+            }).join("");
+        } else if (tm.panel === "picks") {
+            body = a.picks.filter((pk) => !inTrade("pick", pk.id)).map((pk) => `
+                <li><span class="who">${esc(pk.label)}${pk.kind === "conditional" ? `<small>${esc(pk.text)}</small>` : ""}</span>
+                    ${addButton("pick", pk.id, pk.tradeable ? "" : "frozen")}</li>`).join("");
+        } else {
+            const ex = a.exceptions.length
+                ? a.exceptions.map((e) => `<li><span class="who">${money(e.amount)} exception <small>from the ${esc(e.source)} trade · expires ${esc(formatDate(e.expires))}</small></span></li>`).join("")
+                : `<li><span class="who"><small>No trade exceptions on file for ${esc(a.code)}.</small></span></li>`;
+            body = `${ex}
+                <li class="explain"><small>Exceptions can't be traded; the checker uses one automatically when salaries don't match.</small></li>
+                <li><span class="who">Send cash <small>up to ${money(a.cash_limit)} a season</small></span>
+                    <span class="cash"><input type="number" inputmode="decimal" min="0.1" step="0.1" max="${a.cash_limit / 1e6}" placeholder="$M" id="cashInput" aria-label="Cash in millions">
+                    ${addButton("cash", "cash", "", "Add")}</span></li>`;
+        }
+        return `
+            <section class="card">
+                <div class="segmented three" role="group" aria-label="Assets">${tabs}</div>
+                <ul class="assets">${body || `<li><span class="who"><small>Nothing left to add.</small></span></li>`}</ul>
+            </section>`;
+    }
+
+    function teamPicker() {
+        if (!tm.picker) return "";
+        const all = Object.values(cache["/api/sim/teams"] ? cache["/api/sim/teams"].conferences : {}).flat();
+        const options = all.filter((t) => !tm.teams.includes(t.code));
+        return `
+            <section class="card picker">
+                <div class="card-head"><h2>Add a team</h2>${tm.teams.length > 1 ? `<button type="button" class="link" data-action="close-picker">Cancel</button>` : ""}</div>
+                <div class="picker-grid">${options.map((t) => `<button type="button" class="pick-team" data-team="${t.code}">${badge(t)}<span>${esc(t.name)}</span></button>`).join("")}</div>
+            </section>`;
+    }
+
+    function savedList() {
+        const saved = loadSaved();
+        if (!saved.length) return "";
+        return `
+            <section class="card">
+                <div class="card-head"><h2>Saved trades (${saved.length})</h2><span class="note">on this device</span></div>
+                <ul class="saved">${saved.map((s, i) => `
+                    <li><a href="#/trade/${s.teams.join("/")}?m=${encodeMoves(s.moves)}">${esc(s.summary)}</a>
+                        <button type="button" class="x" data-delete-saved="${i}" aria-label="Delete saved trade">×</button></li>`).join("")}</ul>
+            </section>`;
+    }
+
+    function summarize() {
+        return tm.teams.map((code) => {
+            const names = tm.moves.filter((m) => m.to === code).map((m) => moveLabel(m).name);
+            return `${code} gets ${names.length ? names.join(", ") : "nothing"}`;
+        }).join(" · ");
+    }
+
+    function saveTrade() {
+        if (!tm.result || !tm.result.works) return;
+        const saved = loadSaved();
+        const key = encodeMoves(tm.moves);
+        if (saved.some((s) => encodeMoves(s.moves) === key)) {
+            tm.message = "Already saved.";
+        } else {
+            saved.push({ teams: [...tm.teams], moves: tm.moves.map((m) => ({ ...m })), summary: summarize(), savedAt: new Date().toISOString() });
+            tm.message = storeSaved(saved) ? `Saved. ${saved.length} trade${saved.length > 1 ? "s" : ""} in your list.` : "Couldn't save on this device.";
+        }
+        drawTrade();
+    }
+
+    function drawTrade() {
+        const back = tm.teams[0];
+        const tabs = tm.teams.map((c) => {
+            const a = teamOf(c);
+            return `<span class="tab ${c === tm.active ? "active" : ""}" style="--team:${a.colors.primary === "#000000" ? "#5a606a" : a.colors.primary}">
+                        <button type="button" data-tab="${c}">${esc(c)}</button>
+                        ${tm.teams.length > 1 ? `<button type="button" class="x" data-remove-team="${c}" aria-label="Remove ${esc(c)}">×</button>` : ""}</span>`;
+        }).join("");
+        const canAdd = tm.teams.length < MAX_TEAMS;
+        const works = tm.result && tm.result.works && tm.moves.length;
+        const scrollY = window.scrollY;
+        app.innerHTML = `
+            <div class="topbar"><a class="back" href="#/team/${back}">‹ ${esc(back)}</a><h2 class="title">Trade machine</h2></div>
+            <div class="team-tabs">${tabs}${canAdd ? `<button type="button" class="tab add-team" data-action="picker" aria-label="Add a team">+</button>` : ""}</div>
+            ${teamPicker()}
+            ${tm.teams.length > 1 ? statusBanner() + rulesPanel() + teamPanel() + assetsPanel() : ""}
+            ${savedList()}
+            <div class="action-bar"><div class="inner">
+                ${tm.message ? `<p class="toast">${esc(tm.message)}</p>` : ""}
+                <button type="button" class="button wide" data-action="save" ${works ? "" : "disabled"}>${works ? "Save trade" : "Save (needs a trade that works)"}</button>
+            </div></div>`;
+        window.scrollTo(0, scrollY);
+    }
+
+    // One click handler for the whole trade screen.
+    app.addEventListener("click", (ev) => {
+        if (!tm || !location.hash.startsWith("#/trade/")) return;
+        const el = ev.target.closest("button");
+        if (!el) return;
+        const d = el.dataset;
+        if (d.tab) { tm.active = d.tab; tm.chooseFor = null; drawTrade(); }
+        else if (d.removeTeam) removeTeam(d.removeTeam);
+        else if (d.team) addTeam(d.team);
+        else if (d.panel) { tm.panel = d.panel; tm.chooseFor = null; drawTrade(); }
+        else if (d.choose) { tm.chooseFor = d.choose; drawTrade(); }
+        else if (d.add) {
+            if (d.add === "cash") {
+                const input = document.getElementById("cashInput");
+                const amount = Math.round(parseFloat(input && input.value) * 1e6);
+                if (!(amount > 0)) { tm.message = "Enter a cash amount in millions."; return drawTrade(); }
+                addAsset("cash", amount, tm.active, d.to);
+            } else {
+                addAsset(d.add, d.id, tm.active, d.to);
+            }
+        }
+        else if (d.remove !== undefined) removeMove(Number(d.remove));
+        else if (d.deleteSaved !== undefined) {
+            const saved = loadSaved(); saved.splice(Number(d.deleteSaved), 1); storeSaved(saved); drawTrade();
+        }
+        else if (d.action === "rules") { tm.showRules = !tm.showRules; drawTrade(); }
+        else if (d.action === "picker") { tm.picker = true; drawTrade(); }
+        else if (d.action === "close-picker") { tm.picker = false; drawTrade(); }
+        else if (d.action === "save") saveTrade();
+    });
+
+    async function openTrade(path, query) {
+        const codes = path.split("/").map((c) => c.toUpperCase()).filter(Boolean).slice(0, MAX_TEAMS);
+        const moves = decodeMoves(new URLSearchParams(query).get("m"));
+        try { await getJSON("/api/sim/teams"); } catch (err) { return showError(err); }
+        return trade(codes, moves);
     }
 
     // --- router -----------------------------------------------------------------------------------
 
     function route() {
-        const parts = (location.hash.replace(/^#\/?/, "") || "").split("/");
+        const raw = location.hash.replace(/^#\/?/, "") || "";
+        const [path, query = ""] = raw.split("?");
+        const parts = path.split("/");
+        tm = null;
         if (parts[0] === "teams") return teams();
         if (parts[0] === "team" && parts[1]) return team(parts[1].toUpperCase());
-        if (parts[0] === "trade" && parts[1]) return trade(parts[1].toUpperCase());
+        if (parts[0] === "trade" && parts[1]) return openTrade(parts.slice(1).join("/"), query);
         return landing();
     }
 

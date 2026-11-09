@@ -105,6 +105,27 @@ def sim_teams():
     return jsonify({"conferences": teams_overview(_sim()["engine"])})
 
 
+@app.route('/api/sim/trade/assets/<code>')
+def sim_trade_assets(code):
+    from tradesim.teams import TEAM_INFO
+    from tradesim.trade_api import team_assets
+    code = code.upper()
+    if code not in TEAM_INFO:
+        return jsonify({"error": f"Unknown team {code}"}), 404
+    s = _sim()
+    return jsonify(team_assets(code, s["league"], s["cba"]))
+
+
+@app.route('/api/sim/trade/check', methods=['POST'])
+def sim_trade_check():
+    from tradesim.trade_api import BadTrade, check
+    s = _sim()
+    try:
+        return jsonify(check(request.get_json(silent=True), s["league"], s["cba"]))
+    except BadTrade as err:
+        return jsonify({"error": str(err)}), 400
+
+
 @app.route('/api/sim/team/<code>')
 def sim_team(code):
     from tradesim.analysis import team_analysis

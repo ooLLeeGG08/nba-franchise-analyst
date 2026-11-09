@@ -94,8 +94,16 @@ than deleted; safe to remove.
    10-90% range, playoff / play-in / #1-seed odds), where the team needs help (guards, forwards,
    centers ranked 1-30 by player impact weighted by expected minutes, so injuries count; bottom
    third = a need), weakest regulars, long-term injuries, payroll against the cap, tax line and
-   aprons, roster, and four placeholder trade-idea cards (Stage 5). "Propose a trade" opens a
-   placeholder for the trade machine (Stage 4).
+   aprons, roster, and four placeholder trade-idea cards (Stage 5).
+4. Trade machine (`#/trade/ATL/PHI`, Stage 4): a tab per team and "+" to add a partner (up to
+   4 teams); per team, payroll before -> after on a bar with cap / tax / apron markers and the
+   over/under status, "sends" and "gets" lists with salaries, and asset tabs (roster, picks,
+   exceptions & cash). Every change runs the cap checker on the server
+   (`POST /api/sim/trade/check`): a Works / Doesn't work banner with each failing team's reason
+   and a "Show every rule checked" panel (pass / fail / not checked for all 14 rules per team).
+   Exceptions can't be traded; the checker applies one automatically and says which. The trade
+   lives in the URL (shareable); Save (only for trades that work) keeps it in a list on this
+   device for the trade-selection screen (Stage 6).
 
 Stage 1 adds the data layer and a cap-legality checker (`tradesim/`).
 
