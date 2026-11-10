@@ -7,7 +7,7 @@ import pytest
 
 from tradesim.checker import (FAIL, NOT_CHECKED, PASS, check_trade, check_trades_in_sequence,
                               max_incoming)
-from tradesim.league import League, load_cba
+from tradesim.league import player_id, League, load_cba
 
 DATE = "2026-11-09"
 
@@ -42,9 +42,9 @@ def rule(result, team, rule_id):
 
 def test_maxey_for_johnson_and_wiggins_works(league, cba):
     """Fanspo: SUCCESS, both teams pass."""
-    r = check_trade(league, cba, {"moves": [player("tyrese-maxey", "PHI", "ATL"),
-                                            player("jalen-johnson", "ATL", "PHI"),
-                                            player("aaron-wiggins", "ATL", "PHI")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("tyrese-maxey"), "PHI", "ATL"),
+                                            player(player_id("jalen-johnson"), "ATL", "PHI"),
+                                            player(player_id("aaron-wiggins"), "ATL", "PHI")]}, DATE)
     assert r["works"], r["teams"]["ATL"]["failures"] + r["teams"]["PHI"]["failures"]
     assert rule(r, "ATL", "salary_matching")["status"] == PASS
     assert rule(r, "ATL", "aggregation")["status"] == PASS  # Wiggins acquired Jul 6, > 60 days ago
@@ -53,8 +53,8 @@ def test_maxey_for_johnson_and_wiggins_works(league, cba):
 
 def test_embiid_for_johnson_fails_for_hawks(league, cba):
     """Fanspo: FAILED, 'Takes in $28.0M more than the 2nd apron allows.' 76ers pass."""
-    r = check_trade(league, cba, {"moves": [player("joel-embiid", "PHI", "ATL"),
-                                            player("jalen-johnson", "ATL", "PHI")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("joel-embiid"), "PHI", "ATL"),
+                                            player(player_id("jalen-johnson"), "ATL", "PHI")]}, DATE)
     assert not r["works"]
     assert r["teams"]["PHI"]["works"]
     matching = rule(r, "ATL", "salary_matching")
@@ -75,16 +75,16 @@ def test_max_incoming_tiers_come_from_config(cba):
 
 def test_middle_tier_trade_works(league, cba):
     # Hornets send Brandon Miller ($15.1M): can take back up to $24.2M. Jabari Smith is $23.6M.
-    r = check_trade(league, cba, {"moves": [player("brandon-miller", "CHA", "HOU"),
-                                            player("jabari-smith", "HOU", "CHA")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("brandon-miller"), "CHA", "HOU"),
+                                            player(player_id("jabari-smith"), "HOU", "CHA")]}, DATE)
     assert r["works"]
     assert rule(r, "CHA", "trade_exception")["detail"] == "No exception needed."
 
 
 def test_taking_back_too_much_salary_fails(league, cba):
     # Blazers send Shaedon Sharpe ($20.1M): max back $29.2M. Derrick White is $30.3M.
-    r = check_trade(league, cba, {"moves": [player("shaedon-sharpe", "POR", "BOS"),
-                                            player("derrick-white", "BOS", "POR")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("shaedon-sharpe"), "POR", "BOS"),
+                                            player(player_id("derrick-white"), "BOS", "POR")]}, DATE)
     assert not r["works"]
     assert rule(r, "POR", "salary_matching")["status"] == FAIL
     assert "$1.2M more than salary matching allows" in rule(r, "POR", "salary_matching")["detail"]
@@ -95,8 +95,8 @@ def test_taking_back_too_much_salary_fails(league, cba):
 
 def test_team_under_cap_absorbs_into_room(league, cba):
     # Nets are $4.9M under the cap; taking on $1.5M net fits.
-    r = check_trade(league, cba, {"moves": [player("danny-wolf", "BKN", "MIN"),
-                                            player("joan-beringer", "MIN", "BKN")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("danny-wolf"), "BKN", "MIN"),
+                                            player(player_id("joan-beringer"), "MIN", "BKN")]}, DATE)
     assert r["works"]
     assert "under the cap" in rule(r, "BKN", "salary_matching")["detail"]
 
@@ -105,15 +105,15 @@ def test_team_under_cap_absorbs_into_room(league, cba):
 
 def test_second_apron_team_cannot_combine_salaries(league, cba):
     # Nuggets ($224.3M) send two players for one, still ending above the second apron.
-    r = check_trade(league, cba, {"moves": [player("zeke-nnaji", "DEN", "GSW"),
-                                            player("spencer-jones", "DEN", "GSW"),
-                                            player("moses-moody", "GSW", "DEN")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("zeke-nnaji"), "DEN", "GSW"),
+                                            player(player_id("spencer-jones"), "DEN", "GSW"),
+                                            player(player_id("moses-moody"), "GSW", "DEN")]}, DATE)
     assert rule(r, "DEN", "second_apron")["status"] == FAIL
     assert "combine salaries" in rule(r, "DEN", "second_apron")["detail"]
 
 
 def test_cash_limits(league, cba):
-    base = [player("brandon-miller", "CHA", "HOU"), player("jabari-smith", "HOU", "CHA")]
+    base = [player(player_id("brandon-miller"), "CHA", "HOU"), player(player_id("jabari-smith"), "HOU", "CHA")]
     over = check_trade(league, cba, {"moves": base + [cash(9_000_000, "HOU", "CHA")]}, DATE)
     assert rule(over, "HOU", "cash")["status"] == FAIL
     ok = check_trade(league, cba, {"moves": base + [cash(2_000_000, "HOU", "CHA")]}, DATE)
@@ -122,8 +122,8 @@ def test_cash_limits(league, cba):
 
 
 def test_cash_from_second_apron_team_fails(league, cba):
-    r = check_trade(league, cba, {"moves": [player("tyus-jones", "DEN", "NYK"),
-                                            player("jordan-clarkson", "NYK", "DEN"),
+    r = check_trade(league, cba, {"moves": [player(player_id("tyus-jones"), "DEN", "NYK"),
+                                            player(player_id("jordan-clarkson"), "NYK", "DEN"),
                                             cash(1_000_000, "DEN", "NYK")]}, DATE)
     assert rule(r, "DEN", "second_apron")["status"] == FAIL
     assert "send cash" in rule(r, "DEN", "second_apron")["detail"]
@@ -134,16 +134,16 @@ def test_cash_from_second_apron_team_fails(league, cba):
 def test_trade_exception_absorbs_player(league, cba):
     # Hornets send a $2.5M player for Christian Braun ($21.6M): plain matching fails,
     # but the $40.8M LaMelo Ball exception absorbs Braun.
-    r = check_trade(league, cba, {"moves": [player("moussa-diabate", "CHA", "DEN"),
-                                            player("christian-braun", "DEN", "CHA")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("moussa-diabate"), "CHA", "DEN"),
+                                            player(player_id("christian-braun"), "DEN", "CHA")]}, DATE)
     assert r["works"], r["teams"]["CHA"]["failures"]
-    assert r["teams"]["CHA"]["exception_used"] == {"id": "TPE-CHA-lamelo-ball", "player": "christian-braun"}
+    assert r["teams"]["CHA"]["exception_used"] == {"id": "TPE-CHA-lamelo-ball", "player": player_id("christian-braun")}
     assert "LaMelo Ball exception" in rule(r, "CHA", "trade_exception")["detail"]
 
 
 def test_expired_trade_exception_cannot_be_used(league, cba):
     # Memphis's Jaren Jackson Jr. exception expires Feb 3, 2027.
-    moves = {"moves": [player("olivier-maxence-prosper", "MEM", "DEN"), player("christian-braun", "DEN", "MEM")]}
+    moves = {"moves": [player(player_id("olivier-maxence-prosper"), "MEM", "DEN"), player(player_id("christian-braun"), "DEN", "MEM")]}
     before = check_trade(league, cba, moves, "2027-01-20")
     assert before["teams"]["MEM"]["exception_used"]["id"] == "TPE-MEM-jaren-jackson"
     after = check_trade(league, cba, moves, "2027-02-04")
@@ -155,7 +155,7 @@ def test_expired_trade_exception_cannot_be_used(league, cba):
 
 def test_recently_signed_player_dates(league, cba):
     # Anfernee Simons signed Jul 6, 2026: not tradeable before Dec 15.
-    moves = {"moves": [player("anfernee-simons", "PHI", "NYK"), player("jordan-clarkson", "NYK", "PHI")]}
+    moves = {"moves": [player(player_id("anfernee-simons"), "PHI", "NYK"), player(player_id("jordan-clarkson"), "NYK", "PHI")]}
     assert rule(check_trade(league, cba, moves, DATE), "PHI", "recently_signed")["status"] == FAIL
     # Dec 15 - Jan 14: allowed unless he re-signed with a 20%+ raise, which the data can't tell.
     assert rule(check_trade(league, cba, moves, "2026-12-20"), "PHI", "recently_signed")["status"] == NOT_CHECKED
@@ -163,31 +163,31 @@ def test_recently_signed_player_dates(league, cba):
 
 
 def test_no_trade_clause_fails_the_trade(league, cba):
-    r = check_trade(league, cba, {"moves": [player("damian-lillard", "POR", "BOS"),
-                                            player("derrick-white", "BOS", "POR")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("damian-lillard"), "POR", "BOS"),
+                                            player(player_id("derrick-white"), "BOS", "POR")]}, DATE)
     assert rule(r, "POR", "no_trade")["status"] == FAIL
     assert not r["teams"]["POR"]["works"]
     assert "no-trade clause" in rule(r, "POR", "no_trade")["detail"]
 
 
 def test_bird_veto_is_flagged(league, cba):
-    r = check_trade(league, cba, {"moves": [player("al-horford", "GSW", "NYK"),
-                                            player("landry-shamet", "NYK", "GSW")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("al-horford"), "GSW", "NYK"),
+                                            player(player_id("landry-shamet"), "NYK", "GSW")]}, DATE)
     assert rule(r, "GSW", "no_trade")["status"] == FAIL
 
 
 def test_cannot_reacquire_player_traded_away_this_season(league, cba):
     # Charlotte traded LaMelo Ball to Minnesota on Jul 10, 2026.
-    r = check_trade(league, cba, {"moves": [player("lamelo-ball", "MIN", "CHA"),
-                                            player("brandon-miller", "CHA", "MIN"),
-                                            player("kon-knueppel", "CHA", "MIN"),
-                                            player("tidjane-salaun", "CHA", "MIN")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("lamelo-ball"), "MIN", "CHA"),
+                                            player(player_id("brandon-miller"), "CHA", "MIN"),
+                                            player(player_id("kon-knueppel"), "CHA", "MIN"),
+                                            player(player_id("tidjane-salaun"), "CHA", "MIN")]}, DATE)
     assert rule(r, "CHA", "reacquire")["status"] == FAIL
 
 
 def test_extensions_are_never_silently_passed(league, cba):
-    r = check_trade(league, cba, {"moves": [player("brandon-miller", "CHA", "HOU"),
-                                            player("jabari-smith", "HOU", "CHA")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("brandon-miller"), "CHA", "HOU"),
+                                            player(player_id("jabari-smith"), "HOU", "CHA")]}, DATE)
     assert rule(r, "CHA", "extensions")["status"] == NOT_CHECKED
 
 
@@ -195,9 +195,9 @@ def test_extensions_are_never_silently_passed(league, cba):
 
 def test_roster_must_end_between_14_and_15(league, cba):
     # Two-for-one leaves the Nuggets (14) at 13.
-    r = check_trade(league, cba, {"moves": [player("zeke-nnaji", "DEN", "GSW"),
-                                            player("spencer-jones", "DEN", "GSW"),
-                                            player("moses-moody", "GSW", "DEN")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("zeke-nnaji"), "DEN", "GSW"),
+                                            player(player_id("spencer-jones"), "DEN", "GSW"),
+                                            player(player_id("moses-moody"), "GSW", "DEN")]}, DATE)
     assert rule(r, "DEN", "roster_size")["status"] == FAIL
     assert rule(r, "GSW", "roster_size")["status"] == FAIL  # 15 -> 16
 
@@ -206,7 +206,7 @@ def test_roster_must_end_between_14_and_15(league, cba):
 
 def test_frozen_pick_cannot_be_traded(league, cba):
     r = check_trade(league, cba, {"moves": [pick("BOS-2032-R1-0", "BOS", "BKN"),
-                                            player("danny-wolf", "BKN", "BOS")]}, DATE)
+                                            player(player_id("danny-wolf"), "BKN", "BOS")]}, DATE)
     assert rule(r, "BOS", "pick_ownership")["status"] == FAIL
 
 
@@ -214,15 +214,15 @@ def test_stepien_rule(league, cba):
     # The Knicks' 2029 first already belongs to Brooklyn; sending their 2030 first too would
     # leave no first in back-to-back drafts.
     r = check_trade(league, cba, {"moves": [pick("NYK-2030-R1-0", "NYK", "BKN"),
-                                            player("danny-wolf", "BKN", "NYK"),
-                                            player("jordan-clarkson", "NYK", "BKN")]}, DATE)
+                                            player(player_id("danny-wolf"), "BKN", "NYK"),
+                                            player(player_id("jordan-clarkson"), "NYK", "BKN")]}, DATE)
     assert rule(r, "NYK", "stepien")["status"] == FAIL
     assert "2029 and 2030" in rule(r, "NYK", "stepien")["detail"]
 
 
 def test_sending_a_pick_you_dont_hold_is_rejected(league, cba):
     r = check_trade(league, cba, {"moves": [pick("NYK-2030-R1-0", "ATL", "BKN"),
-                                            player("danny-wolf", "BKN", "ATL")]}, DATE)
+                                            player(player_id("danny-wolf"), "BKN", "ATL")]}, DATE)
     assert not r["works"]
     assert any("doesn't hold" in e for e in r["errors"])
 
@@ -230,37 +230,37 @@ def test_sending_a_pick_you_dont_hold_is_rejected(league, cba):
 def test_conditional_picks_are_marked_not_checked(league, cba):
     conditional = next(p for p in league.picks.values() if p["holder"] == "BKN" and p["kind"] == "conditional")
     r = check_trade(league, cba, {"moves": [pick(conditional["id"], "BKN", "MIN"),
-                                            player("danny-wolf", "BKN", "MIN"),
-                                            player("joan-beringer", "MIN", "BKN")]}, DATE)
+                                            player(player_id("danny-wolf"), "BKN", "MIN"),
+                                            player(player_id("joan-beringer"), "MIN", "BKN")]}, DATE)
     assert rule(r, "BKN", "pick_protections")["status"] == NOT_CHECKED
 
 
 # --- structure and multi-trade sequences -------------------------------------------------------------
 
 def test_same_player_twice_in_one_trade_is_rejected(league, cba):
-    r = check_trade(league, cba, {"moves": [player("danny-wolf", "BKN", "MIN"),
-                                            player("danny-wolf", "BKN", "MIN")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("danny-wolf"), "BKN", "MIN"),
+                                            player(player_id("danny-wolf"), "BKN", "MIN")]}, DATE)
     assert any("appears twice" in e for e in r["errors"])
 
 
 def test_waived_player_cannot_be_traded(league, cba):
-    r = check_trade(league, cba, {"moves": [player("blake-wesley", "LAC", "BKN"),
-                                            player("danny-wolf", "BKN", "LAC")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("blake-wesley"), "LAC", "BKN"),
+                                            player(player_id("danny-wolf"), "BKN", "LAC")]}, DATE)
     assert any("waived" in e for e in r["errors"])
 
 
 def test_three_team_trade_checks_every_team(league, cba):
-    r = check_trade(league, cba, {"moves": [player("brandon-miller", "CHA", "HOU"),
-                                            player("jabari-smith", "HOU", "BKN"),
-                                            player("danny-wolf", "BKN", "CHA")]}, DATE)
+    r = check_trade(league, cba, {"moves": [player(player_id("brandon-miller"), "CHA", "HOU"),
+                                            player(player_id("jabari-smith"), "HOU", "BKN"),
+                                            player(player_id("danny-wolf"), "BKN", "CHA")]}, DATE)
     assert set(r["teams"]) == {"CHA", "HOU", "BKN"}
     assert all(len(t["rules"]) == 14 for t in r["teams"].values())
 
 
 def test_sequence_blocks_using_the_same_player_twice(league, cba):
-    maxey = {"moves": [player("tyrese-maxey", "PHI", "ATL"), player("jalen-johnson", "ATL", "PHI"),
-                       player("aaron-wiggins", "ATL", "PHI")]}
-    again = {"moves": [player("jalen-johnson", "ATL", "BOS"), player("derrick-white", "BOS", "ATL")]}
+    maxey = {"moves": [player(player_id("tyrese-maxey"), "PHI", "ATL"), player(player_id("jalen-johnson"), "ATL", "PHI"),
+                       player(player_id("aaron-wiggins"), "ATL", "PHI")]}
+    again = {"moves": [player(player_id("jalen-johnson"), "ATL", "BOS"), player(player_id("derrick-white"), "BOS", "ATL")]}
     results, _ = check_trades_in_sequence(league, cba, [maxey, again], DATE)
     assert results[0]["works"]
     assert not results[1]["works"]
@@ -268,24 +268,24 @@ def test_sequence_blocks_using_the_same_player_twice(league, cba):
 
 
 def test_sequence_uses_payroll_left_by_previous_trade(league, cba):
-    maxey = {"moves": [player("tyrese-maxey", "PHI", "ATL"), player("jalen-johnson", "ATL", "PHI"),
-                       player("aaron-wiggins", "ATL", "PHI")]}
+    maxey = {"moves": [player(player_id("tyrese-maxey"), "PHI", "ATL"), player(player_id("jalen-johnson"), "ATL", "PHI"),
+                       player(player_id("aaron-wiggins"), "ATL", "PHI")]}
     # Philadelphia then combines the two players it just received: they arrived today, so
     # their salaries can't be combined for 60 days.
-    flip = {"moves": [player("jalen-johnson", "PHI", "BOS"), player("aaron-wiggins", "PHI", "BOS"),
-                      player("derrick-white", "BOS", "PHI")]}
+    flip = {"moves": [player(player_id("jalen-johnson"), "PHI", "BOS"), player(player_id("aaron-wiggins"), "PHI", "BOS"),
+                      player(player_id("derrick-white"), "BOS", "PHI")]}
     results, final = check_trades_in_sequence(league, cba, [maxey, flip], DATE)
     assert results[1]["teams"]["PHI"]["salary_before"] == results[0]["teams"]["PHI"]["salary_after"]
     assert rule(results[1], "PHI", "aggregation")["status"] == FAIL
     # The original league is untouched.
-    assert league.players["tyrese-maxey"]["team"] == "PHI"
-    assert final.players["tyrese-maxey"]["team"] == "ATL"
+    assert league.players[player_id("tyrese-maxey")]["team"] == "PHI"
+    assert final.players[player_id("tyrese-maxey")]["team"] == "ATL"
 
 
 def test_failed_trade_in_sequence_is_not_applied(league, cba):
-    embiid = {"moves": [player("joel-embiid", "PHI", "ATL"), player("jalen-johnson", "ATL", "PHI")]}
-    maxey = {"moves": [player("tyrese-maxey", "PHI", "ATL"), player("jalen-johnson", "ATL", "PHI"),
-                       player("aaron-wiggins", "ATL", "PHI")]}
+    embiid = {"moves": [player(player_id("joel-embiid"), "PHI", "ATL"), player(player_id("jalen-johnson"), "ATL", "PHI")]}
+    maxey = {"moves": [player(player_id("tyrese-maxey"), "PHI", "ATL"), player(player_id("jalen-johnson"), "ATL", "PHI"),
+                       player(player_id("aaron-wiggins"), "ATL", "PHI")]}
     results, _ = check_trades_in_sequence(league, cba, [embiid, maxey], DATE)
     assert not results[0]["works"]
     assert results[1]["works"]
@@ -296,6 +296,6 @@ def test_apron_percentage_is_read_from_config(league, cba):
     import copy
     loose = copy.deepcopy(cba)
     loose["salary_matching"]["max_percent_above_first_apron"] = 2.0
-    r = check_trade(league, loose, {"moves": [player("joel-embiid", "PHI", "ATL"),
-                                              player("jalen-johnson", "ATL", "PHI")]}, DATE)
+    r = check_trade(league, loose, {"moves": [player(player_id("joel-embiid"), "PHI", "ATL"),
+                                              player(player_id("jalen-johnson"), "ATL", "PHI")]}, DATE)
     assert rule(r, "ATL", "salary_matching")["status"] == PASS

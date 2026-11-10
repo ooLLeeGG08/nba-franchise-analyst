@@ -7,7 +7,7 @@ import pytest
 from tradesim import backtest
 from tradesim.fit import fit, fit_logistic, load_fit
 from tradesim.games import load_results_2025_26, load_schedule_2026_27, schedule_from_results
-from tradesim.league import League, load_cba
+from tradesim.league import player_id, League, load_cba
 from tradesim.model import (allocate_minutes, expected_mpg, league_strengths, load_sim_config, player_value,
                             team_strength)
 from tradesim.simulate import CODES, compare, simulate_season, simulate_trades
@@ -61,7 +61,7 @@ def test_rookie_minutes_by_draft_pick(cfg):
 def test_better_player_raises_team_strength(league, cfg):
     roster = league.roster("ATL")
     base, _ = team_strength("ATL", roster, cfg)
-    star = league.players["nikola-jokic"]
+    star = league.players[player_id("nikola-jokic")]
     stronger, _ = team_strength("ATL", roster + [star], cfg)
     assert stronger > base
 
@@ -141,9 +141,9 @@ def test_no_change_means_no_difference(league, cfg, schedule):
 
 def test_only_traded_teams_change_strength(league, cfg, schedule):
     mv = lambda pid, f, t: {"type": "player", "id": pid, "from": f, "to": t}
-    out = simulate_trades(league, load_cba(), [{"moves": [mv("tyrese-maxey", "PHI", "ATL"),
-                                                          mv("jalen-johnson", "ATL", "PHI"),
-                                                          mv("aaron-wiggins", "ATL", "PHI")]}],
+    out = simulate_trades(league, load_cba(), [{"moves": [mv(player_id("tyrese-maxey"), "PHI", "ATL"),
+                                                          mv(player_id("jalen-johnson"), "ATL", "PHI"),
+                                                          mv(player_id("aaron-wiggins"), "ATL", "PHI")]}],
                           schedule, "2026-11-09", cfg)
     assert out["changed_teams"] == ["ATL", "PHI"]
     for code, t in out["teams"].items():
@@ -157,8 +157,8 @@ def test_only_traded_teams_change_strength(league, cfg, schedule):
 
 def test_failed_trade_changes_nothing(league, cfg, schedule):
     mv = lambda pid, f, t: {"type": "player", "id": pid, "from": f, "to": t}
-    out = simulate_trades(league, load_cba(), [{"moves": [mv("joel-embiid", "PHI", "ATL"),
-                                                          mv("jalen-johnson", "ATL", "PHI")]}],
+    out = simulate_trades(league, load_cba(), [{"moves": [mv(player_id("joel-embiid"), "PHI", "ATL"),
+                                                          mv(player_id("jalen-johnson"), "ATL", "PHI")]}],
                           schedule, "2026-11-09", cfg)
     assert out["changed_teams"] == []
     assert all(t["win_change"] == 0 for t in out["teams"].values())
@@ -167,10 +167,10 @@ def test_failed_trade_changes_nothing(league, cfg, schedule):
 def test_picks_do_not_change_strength(league, cfg, schedule):
     pick = next(p for p in league.picks.values() if p["holder"] == "BKN" and p["kind"] == "own" and p["round"] == 2)
     mv = lambda pid, f, t: {"type": "player", "id": pid, "from": f, "to": t}
-    out = simulate_trades(league, load_cba(), [{"moves": [mv("danny-wolf", "BKN", "MIN"),
-                                                          mv("joan-beringer", "MIN", "BKN")]}], schedule, "2026-11-09", cfg)
-    with_pick = simulate_trades(league, load_cba(), [{"moves": [mv("danny-wolf", "BKN", "MIN"),
-                                                                mv("joan-beringer", "MIN", "BKN"),
+    out = simulate_trades(league, load_cba(), [{"moves": [mv(player_id("danny-wolf"), "BKN", "MIN"),
+                                                          mv(player_id("joan-beringer"), "MIN", "BKN")]}], schedule, "2026-11-09", cfg)
+    with_pick = simulate_trades(league, load_cba(), [{"moves": [mv(player_id("danny-wolf"), "BKN", "MIN"),
+                                                                mv(player_id("joan-beringer"), "MIN", "BKN"),
                                                                 {"type": "pick", "id": pick["id"], "from": "BKN",
                                                                  "to": "MIN"}]}], schedule, "2026-11-09", cfg)
     assert out["teams"]["BKN"]["strength_after"] == with_pick["teams"]["BKN"]["strength_after"]
@@ -194,7 +194,7 @@ def test_injured_players_keep_their_rating_from_earlier_seasons(league, cfg):
     """Haliburton missed 2025-26; his rating comes from 2024-25 and earlier (BPM +5.8 in 2024-25),
     while the missed season lowers his expected share of games played."""
     _, breakdown = team_strength("IND", league.roster("IND"), cfg)
-    hali = next(b for b in breakdown if b["id"] == "tyrese-haliburton")
+    hali = next(b for b in breakdown if b["id"] == player_id("tyrese-haliburton"))
     assert hali["impact"] > 3
     assert hali["minutes"] > 10
 

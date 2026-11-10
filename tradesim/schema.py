@@ -1,7 +1,8 @@
 """Schema check for data/2026_27/league.json (run by tradesim.build_data before writing).
 
 Every field the app relies on is checked for type and range, plus a few cross-checks
-(ids match their keys, teams are real codes, standard contracts match the roster). Returns a
+(players keyed by NBA ID, BBRef IDs unique, teams are real codes, standard contracts match the
+roster). Returns a
 list of problems; an empty list means the file is usable.
 """
 import re
@@ -13,6 +14,8 @@ CODES = set(TEAM_INFO)
 POSITION = re.compile(r"^(?:[GFC](?:-[GFC])?|PG|SG|SF|PF)$")
 PICK_KINDS = {"own", "acquired", "frozen", "conditional", "conveyed"}
 ACQUIRED = {"draft", "draft_rights_traded", "signed", "traded", "waivers", "unknown"}
+BBREF_ID = re.compile(r"^[a-z][a-z'.-]*\d{2}$")  # e.g. "whitede01"
+BBREF_MATCH = {"override", "name+team+season", "name only", "ambiguous", "unmatched"}
 
 
 def _is_date(value):
@@ -53,17 +56,20 @@ def validate_league(league):
         need(_num(t.get("standard_contracts"), 0, 20, kinds=int), f"team {code}: standard_contracts out of range")
         need(t.get("hard_cap") in (None, "first_apron", "second_apron"), f"team {code}: unknown hard_cap value")
 
-    nba_ids = {}
+    bbref_ids = {}
     for pid, p in players.items():
         where = f"player {pid}"
         need(p.get("id") == pid, f"{where}: 'id' doesn't match its key")
+        need(pid == str(p.get("nba_id")), f"{where}: key must be the NBA ID")
+        need(p.get("bbref_id") is None or bool(BBREF_ID.match(p["bbref_id"])), f"{where}: bad bbref_id {p.get('bbref_id')!r}")
+        need(p.get("bbref_match") in BBREF_MATCH, f"{where}: bbref_match missing or unknown")
         need(isinstance(p.get("name"), str) and p["name"].strip(), f"{where}: name missing")
         need(p.get("team") in CODES, f"{where}: team {p.get('team')!r} isn't a team code")
         need(_num(p.get("salary"), 0, kinds=int), f"{where}: salary must be a non-negative integer")
         need(isinstance(p.get("on_roster"), bool), f"{where}: on_roster must be true/false")
         need(p.get("position") is None or bool(POSITION.match(p["position"])), f"{where}: bad position {p.get('position')!r}")
         need(p.get("age") is None or _num(p["age"], 17, 45), f"{where}: age out of range")
-        need(p.get("nba_id") is None or _num(p["nba_id"], 1, kinds=int), f"{where}: nba_id must be a positive integer")
+        need(_num(p.get("nba_id"), 1, kinds=int), f"{where}: nba_id must be a positive integer")
         need(isinstance(p.get("acquired"), dict) and p["acquired"].get("type") in ACQUIRED,
              f"{where}: acquired.type missing or unknown")
         need(isinstance(p.get("no_trade_clause"), bool) and isinstance(p.get("bird_veto"), bool),
@@ -71,11 +77,9 @@ def validate_league(league):
         for key in ("stats_2025_26", "stats_2024_25"):
             st = p.get(key)
             need(st is None or (isinstance(st, dict) and _num(st.get("mp"), 0)), f"{where}: {key} has no minutes")
-        if p.get("on_roster"):
-            need(p.get("nba_id") is not None, f"{where}: rostered but no nba_id")
-            if p.get("nba_id") is not None:
-                need(p["nba_id"] not in nba_ids, f"{where}: nba_id {p['nba_id']} also used by {nba_ids.get(p['nba_id'])}")
-                nba_ids[p["nba_id"]] = pid
+        if p.get("bbref_id"):
+            need(p["bbref_id"] not in bbref_ids, f"{where}: bbref_id {p['bbref_id']} also used by {bbref_ids.get(p['bbref_id'])}")
+            bbref_ids[p["bbref_id"]] = pid
 
     for code, t in teams.items():
         n = sum(1 for p in players.values() if p.get("team") == code and p.get("on_roster"))

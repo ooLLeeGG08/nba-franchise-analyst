@@ -6,7 +6,8 @@ Sources (all in data/raw/2026_27/):
   contracts.txt              every player's 2026-27 salary (434 standard contracts)
   cap_sheet.json             team totals typed from the user's cap screenshot
   roster_status.json         nba_api: position, age, how/when each player was acquired
-  bbref_advanced_2025_26.tsv Basketball-Reference 2025-26 advanced stats (BPM etc.)
+  ../bbref/advanced_*.txt    Basketball-Reference advanced stats with BBRef player IDs
+                             (joined on bbref_id; see tradesim/ids.py)
   draft_picks.txt            future pick ownership 2027-2033
   trade_exceptions.txt       active traded player exceptions
   no_trade_clauses.txt       no-trade clauses and one-year Bird veto rights
@@ -33,8 +34,9 @@ RAW = os.path.join(ROOT, "data", "raw", "2026_27")
 SOURCES_PATH = os.path.join(ROOT, "data", "raw", "SOURCES.json")
 # Files whose as-of date sets league.json's: the ones that go stale in season. (hard_caps.json,
 # set in the offseason, and the calendar don't.)
-AS_OF_FILES = ["contracts.txt", "cap_sheet.json", "roster_status.json", "bbref_advanced_2025_26.tsv",
-               "no_trade_clauses.txt", "trade_exceptions.txt", "draft_picks.txt"]
+AS_OF_FILES = ["2026_27/contracts.txt", "2026_27/cap_sheet.json", "2026_27/roster_status.json",
+               "bbref/advanced_2025-26.txt", "2026_27/no_trade_clauses.txt", "2026_27/trade_exceptions.txt",
+               "2026_27/draft_picks.txt"]
 OUT = os.path.join(ROOT, "data", "2026_27", "league.json")
 CBA_PATH = os.path.join(ROOT, "config", "cba_2026_27.json")
 
@@ -147,7 +149,8 @@ def _bbref_rows(text):
     for row in raw_rows:
         if row.get("Player") in (None, "", "Player"):
             continue
-        rec = {"name": row["Player"], "bbref_team": row["Team"], "pos": row["Pos"],
+        rec = {"name": row["Player"], "bbref_id": (row.get("Player-additional") or "").strip() or None,
+               "bbref_team": row["Team"], "pos": row["Pos"],
                "age": int(row["Age"]) if row["Age"].isdigit() else None}
         for field, cast in _STAT_FIELDS.items():
             value = row.get(field, "")
@@ -156,11 +159,14 @@ def _bbref_rows(text):
 
 
 def parse_bbref(text):
-    """One record per player. Players who changed teams have a combined "2TM"/"3TM"
-    row first; keep that one (whole-season numbers)."""
+    """One record per player, keyed by BBRef ID ("Player-additional"). Players who changed
+    teams have a combined "2TM"/"3TM" row first; keep that one (whole-season numbers)."""
     stats = {}
     for rec in _bbref_rows(text):
-        stats.setdefault(name_key(rec["name"]), rec)
+        if not rec["bbref_id"]:
+            raise ValueError(f"Basketball-Reference row without a player ID: {rec['name']} "
+                             "(export with the Player-additional column)")
+        stats.setdefault(rec["bbref_id"], rec)
     return stats
 
 
@@ -235,6 +241,15 @@ def parse_calendar(text):
 
 # --- build -------------------------------------------------------------------------
 
+def _static_nba_id(name):
+    """NBA ID from nba_api's bundled player list (offline), for contract players missing from
+    the rosters (e.g. waived). Only an exact, unique name match counts."""
+    from nba_api.stats.static import players as static_players
+    key = name_key(name)
+    ids = {p["id"] for p in static_players.get_players() if name_key(p["full_name"]) == key}
+    return ids.pop() if len(ids) == 1 else None
+
+
 class BuildError(ValueError):
     """league.json wasn't written: schema problems or too many unmatched rows."""
 
@@ -255,8 +270,10 @@ def build(write=True, max_unmatched=None):
 
     contracts = parse_contracts(_read("contracts.txt"))
     roster_status = json.loads(_read("roster_status.json"))
-    stats = parse_bbref(_read("bbref_advanced_2025_26.tsv"))
-    stats_prev = parse_bbref(_read_raw("2024_25", "bbref_advanced_2024_25.txt"))
+    from tradesim.history import load_season
+    from tradesim.ids import match_bbref
+    stats = load_season("2025-26")[0]       # {bbref_id: record}
+    stats_prev = load_season("2024-25")[0]
     cap_sheet = json.loads(_read("cap_sheet.json"))["teams"]
     hard_caps = json.loads(_read("hard_caps.json"))["teams"]
 
@@ -266,7 +283,8 @@ def build(write=True, max_unmatched=None):
             rostered[name_key(r["PLAYER"])] = {**r, "team": CODE_BY_SHORT[short]}
 
     unmatched = []  # input rows that should join but don't
-    players, seen = {}, set()
+    players, seen, by_name = {}, set(), {}
+    how_counts = {}
     for c in contracts:
         key = name_key(c["name"])
         if key in seen:
@@ -280,10 +298,25 @@ def build(write=True, max_unmatched=None):
         if not rs:
             report.append(f"not on any 2026-27 roster (treated as waived/dead money): {c['name']} ({c['team']})")
             unmatched.append(f"contracts.txt: {c['name']} (no roster match)")
-        st = stats.get(key)
-        st_prev = stats_prev.get(key)
-        players[slug(c["name"])] = {
-            "id": slug(c["name"]),
+        # NBA ID: the roster's PLAYER_ID, else nba_api's bundled player list (unique name only)
+        nba_id = rs["PLAYER_ID"] if rs else _static_nba_id(c["name"])
+        if nba_id is None:
+            unmatched.append(f"contracts.txt: {c['name']} (no NBA ID)")
+            continue
+        bbref_id, how, candidates = match_bbref(c["name"], c["team"], "2026-27", nba_id)
+        how_counts[how] = how_counts.get(how, 0) + 1
+        if how in ("ambiguous", "unmatched"):
+            unmatched.append(f"Basketball-Reference: {c['name']} ({c['team']}, NBA ID {nba_id}) {how}"
+                             + (f": {', '.join(candidates)}" if candidates else "")
+                             + " - add him to data/raw/id_overrides.json")
+        pid = str(nba_id)
+        if pid in players:
+            raise ValueError(f"NBA ID {nba_id} used by {players[pid]['name']} and {c['name']}")
+        st = stats.get(bbref_id) if bbref_id else None
+        st_prev = stats_prev.get(bbref_id) if bbref_id else None
+        by_name.setdefault(key, []).append(pid)
+        players[pid] = {
+            "id": pid,
             "name": rs["PLAYER"] if rs else c["name"],
             "team": c["team"],
             "salary": c["salary"],
@@ -291,13 +324,30 @@ def build(write=True, max_unmatched=None):
             "position": rs["POSITION"] if rs else (st["pos"] if st else None),
             "age": rs["AGE"] if rs else None,
             "experience": rs["EXP"] if rs else None,
-            "nba_id": rs["PLAYER_ID"] if rs else None,
+            "nba_id": int(nba_id),
+            "bbref_id": bbref_id,
+            "bbref_match": how,
             "acquired": parse_how_acquired(rs["HOW_ACQUIRED"]) if rs else {"type": "unknown"},
             "stats_2025_26": st,
             "stats_2024_25": st_prev,
             "no_trade_clause": False,
             "bird_veto": False,
         }
+    report.append("BBRef IDs: " + ", ".join(f"{n} {how}" for how, n in sorted(how_counts.items())))
+    bbref_owner = {}
+    for pid, p in players.items():
+        if p["bbref_id"] in bbref_owner:
+            unmatched.append(f"BBRef ID {p['bbref_id']} matched to two players: {bbref_owner[p['bbref_id']]} and {p['name']}")
+        elif p["bbref_id"]:
+            bbref_owner[p["bbref_id"]] = p["name"]
+
+    def find(name, team=None):
+        """Player id for a name from a names-only file (no-trade list, trade exceptions); the
+        team breaks ties between players with the same name."""
+        ids = by_name.get(name_key(name), [])
+        if team and len(ids) > 1:
+            ids = [pid for pid in ids if players[pid]["team"] == team] or ids
+        return ids[0] if len(ids) == 1 else None
 
     no_stats = [p["name"] for p in players.values() if p["on_roster"] and not p["stats_2025_26"]]
     report.append(f"{len(no_stats)} rostered contract players have no 2025-26 stats (rookies, injured all season): "
@@ -307,8 +357,8 @@ def build(write=True, max_unmatched=None):
 
     ntc, veto = parse_no_trade(_read("no_trade_clauses.txt"))
     for entry, flag in [(e, "no_trade_clause") for e in ntc] + [(e, "bird_veto") for e in veto]:
-        pid = slug(entry["name"])
-        if pid not in players:
+        pid = find(entry["name"], CODE_BY_NAME.get(entry.get("team_in_file")))
+        if pid is None:
             report.append(f"{flag}: {entry['name']} not found in contracts")
             unmatched.append(f"no_trade_clauses.txt: {entry['name']} ({flag}, not in contracts)")
             continue
@@ -344,7 +394,7 @@ def build(write=True, max_unmatched=None):
 
     exceptions = parse_trade_exceptions(_read("trade_exceptions.txt"), cba["league_year_start"])
     for e in exceptions:
-        src = players.get(slug(e["source_player"]))
+        src = players.get(find(e["source_player"], e["team"]))
         if src and src["acquired"].get("type") == "traded":
             trade_date = date.fromisoformat(src["acquired"]["date"])
             if abs((date.fromisoformat(e["created"]) - trade_date).days) > 1:
@@ -364,7 +414,7 @@ def build(write=True, max_unmatched=None):
     report.append(f"unmatched rows: {len(unmatched)} (limit {max_unmatched})" + (": " + "; ".join(unmatched) if unmatched else ""))
 
     sources = json.load(open(SOURCES_PATH))["files"]
-    sources_as_of = {f: sources[f"2026_27/{f}"]["as_of"] for f in AS_OF_FILES}
+    sources_as_of = {f: sources[f]["as_of"] for f in AS_OF_FILES}
     league = {
         "season": cba["season"],
         "built": date.today().isoformat(),

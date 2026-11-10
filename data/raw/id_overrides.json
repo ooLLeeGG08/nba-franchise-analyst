@@ -1,0 +1,40 @@
+{
+  "_note": "Manual NBA ID -> Basketball-Reference ID entries, used before any automatic match (tradesim/ids.py). bbref_id null = checked: the player has no Basketball-Reference row in any season we have (2018-19 to 2026-27 through Nov 9), e.g. a rookie who hasn't played. Replace null with his BBRef ID (the Player-additional value) once he appears in an export. Every entry needs a reason.",
+  "overrides": [
+    {
+      "nba_id": 1642850,
+      "name": "Thomas Sorber",
+      "team": "OKC",
+      "bbref_id": null,
+      "reason": "No Basketball-Reference row in any export through 2026-11-09 (hasn't played an NBA game yet)."
+    },
+    {
+      "nba_id": 1643519,
+      "name": "Jayden Quaintance",
+      "team": "SAS",
+      "bbref_id": null,
+      "reason": "No Basketball-Reference row in any export through 2026-11-09 (hasn't played an NBA game yet)."
+    },
+    {
+      "nba_id": 1641844,
+      "name": "Tarik Biberović",
+      "team": "DAL",
+      "bbref_id": null,
+      "reason": "No Basketball-Reference row in any export through 2026-11-09 (hasn't played an NBA game yet)."
+    },
+    {
+      "nba_id": 1643539,
+      "name": "Henri Veesaar",
+      "team": "ATL",
+      "bbref_id": null,
+      "reason": "No Basketball-Reference row in any export through 2026-11-09 (hasn't played an NBA game yet)."
+    },
+    {
+      "nba_id": 1631215,
+      "name": "Khalifa Diop",
+      "team": "CLE",
+      "bbref_id": null,
+      "reason": "No Basketball-Reference row in any export through 2026-11-09 (hasn't played an NBA game yet)."
+    }
+  ]
+}

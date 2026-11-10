@@ -1,215 +1,220 @@
 {
- "_note": "Every raw data file: where it came from and when. Files marked 'user-supplied' need their source URL filled in.",
- "files": {
-  "bbref/advanced_2018-19.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2019_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV) of Basketball-Reference 2018-19 advanced stats."
-  },
-  "bbref/advanced_2019-20.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2020_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV)."
-  },
-  "bbref/advanced_2020-21.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2021_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV)."
-  },
-  "bbref/advanced_2021-22.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2022_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV)."
-  },
-  "bbref/advanced_2022-23.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV)."
-  },
-  "bbref/advanced_2023-24.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2024_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV)."
-  },
-  "2024_25/bbref_advanced_2024_25.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2025_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export, reformatted to fixed-width columns. Checked against nba_api games/minutes."
-  },
-  "2026_27/bbref_advanced_2025_26.tsv": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2026_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User copy (tab-separated)."
-  },
-  "bbref/advanced_2026-27_asof_2026-11-09.txt": {
-   "source_url": "https://www.basketball-reference.com/leagues/NBA_2027_advanced.html",
-   "as_of": "2026-11-09",
-   "notes": "User export (CSV), season to date (up to 11 games)."
-  },
-  "2026_27/contracts.txt": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "2026-27 salaries, 434 players. Totals match the cap sheet."
-  },
-  "2026_27/cap_sheet.json": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "Typed from the user's team cap screenshot."
-  },
-  "2026_27/draft_picks.txt": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "Future pick ownership 2027-2033."
-  },
-  "2026_27/trade_exceptions.txt": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "5 large traded player exceptions."
-  },
-  "2026_27/no_trade_clauses.txt": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "No-trade clauses and one-year Bird veto rights."
-  },
-  "2026_27/calendar.txt": {
-   "source_url": "user-supplied; source URL not recorded",
-   "as_of": "2026-11-09",
-   "notes": "2026-27 transaction dates."
-  },
-  "2026_27/hard_caps.json": {
-   "source_url": "https://www.yardbarker.com/nba/articles/nba_teams_with_hard_caps_for_202627/s1_14822_44048142",
-   "as_of": "2026-07-10",
-   "notes": "Hoops Rumors list of hard-capped teams."
-  },
-  "2026_27/roster_status.json": {
-   "source_url": "https://stats.nba.com/stats/commonteamroster (nba_api CommonTeamRoster)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_roster_status.py"
-  },
-  "2026_27/schedule.json": {
-   "source_url": "https://stats.nba.com/stats/scheduleleaguev2 (nba_api ScheduleLeagueV2)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py"
-  },
-  "2025_26/games.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py"
-  },
-  "draft_history.json": {
-   "source_url": "https://stats.nba.com/stats/drafthistory (nba_api DraftHistory)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_ratings_inputs.py"
-  },
-  "team_ratings.json": {
-   "source_url": "https://stats.nba.com/stats/leaguedashteamstats (nba_api, Advanced)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_ratings_inputs.py"
-  },
-  "games/games_2018-19.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2019-20.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2020-21.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2021-22.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2022-23.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2023-24.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "games/games_2024-25.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
-  },
-  "standings/standings_2018-19.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2019-20.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2020-21.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2021-22.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2022-23.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2023-24.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2024-25.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2025-26.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "standings/standings_2026-27.json": {
-   "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_standings.py"
-  },
-  "backtest/asof_nov9_2021-22.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2021, playoff teams."
-  },
-  "backtest/asof_nov9_2022-23.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2022, playoff teams."
-  },
-  "backtest/asof_nov9_2023-24.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2023, playoff teams."
-  },
-  "backtest/asof_nov9_2024-25.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2024, playoff teams."
-  },
-  "backtest/asof_nov9_2025-26.json": {
-   "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
-   "as_of": "2026-11-09",
-   "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2025, playoff teams."
+  "_note": "Every raw data file: where it came from and when. Files marked 'user-supplied' need their source URL filled in.",
+  "files": {
+    "2025_26/games.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py"
+    },
+    "2026_27/calendar.txt": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "2026-27 transaction dates."
+    },
+    "2026_27/cap_sheet.json": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "Typed from the user's team cap screenshot."
+    },
+    "2026_27/contracts.txt": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "2026-27 salaries, 434 players. Totals match the cap sheet."
+    },
+    "2026_27/draft_picks.txt": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "Future pick ownership 2027-2033."
+    },
+    "2026_27/hard_caps.json": {
+      "source_url": "https://www.yardbarker.com/nba/articles/nba_teams_with_hard_caps_for_202627/s1_14822_44048142",
+      "as_of": "2026-07-10",
+      "notes": "Hoops Rumors list of hard-capped teams."
+    },
+    "2026_27/no_trade_clauses.txt": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "No-trade clauses and one-year Bird veto rights."
+    },
+    "2026_27/roster_status.json": {
+      "source_url": "https://stats.nba.com/stats/commonteamroster (nba_api CommonTeamRoster)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_roster_status.py"
+    },
+    "2026_27/schedule.json": {
+      "source_url": "https://stats.nba.com/stats/scheduleleaguev2 (nba_api ScheduleLeagueV2)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py"
+    },
+    "2026_27/trade_exceptions.txt": {
+      "source_url": "user-supplied; source URL not recorded",
+      "as_of": "2026-11-09",
+      "notes": "5 large traded player exceptions."
+    },
+    "backtest/asof_nov9_2021-22.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2021, playoff teams."
+    },
+    "backtest/asof_nov9_2022-23.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2022, playoff teams."
+    },
+    "backtest/asof_nov9_2023-24.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2023, playoff teams."
+    },
+    "backtest/asof_nov9_2024-25.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2024, playoff teams."
+    },
+    "backtest/asof_nov9_2025-26.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_backtest_inputs.py: players/teams through 11/09/2025, playoff teams."
+    },
+    "bbref/advanced_2018-19.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2019_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2019-20.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2020_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2020-21.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2021_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2021-22.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2022_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2022-23.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2023_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2023-24.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2024_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2024-25.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2025_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2025-26.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2026_advanced.html",
+      "as_of": "2026-11-10",
+      "notes": "User export (CSV) with the Player-additional column (BBRef player ID). Same stats as the earlier export; re-exported for the IDs."
+    },
+    "bbref/advanced_2026-27_asof_2026-11-09.txt": {
+      "source_url": "https://www.basketball-reference.com/leagues/NBA_2027_advanced.html",
+      "as_of": "2026-11-09",
+      "notes": "User export (CSV) of 2026-27 advanced stats through Nov 9, with the Player-additional column (BBRef player ID). Re-exported 2026-11-10 for the IDs; same stats."
+    },
+    "draft_history.json": {
+      "source_url": "https://stats.nba.com/stats/drafthistory (nba_api DraftHistory)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_ratings_inputs.py"
+    },
+    "games/games_2018-19.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2019-20.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2020-21.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2021-22.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2022-23.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2023-24.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "games/games_2024-25.json": {
+      "source_url": "https://stats.nba.com/stats/leaguegamefinder (nba_api LeagueGameFinder)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_games.py --history. 2019-20 games from 2020-07-30 (Orlando bubble) are marked neutral."
+    },
+    "id_overrides.json": {
+      "source_url": "hand-maintained; checked against every Basketball-Reference export in data/raw/bbref/",
+      "as_of": "2026-11-10",
+      "notes": "Hand-maintained (not downloaded): players with no Basketball-Reference row, confirmed by searching every BBRef export."
+    },
+    "standings/standings_2018-19.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2019-20.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2020-21.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2021-22.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2022-23.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2023-24.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2024-25.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2025-26.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "standings/standings_2026-27.json": {
+      "source_url": "https://stats.nba.com/stats/leaguestandingsv3 (nba_api LeagueStandingsV3)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_standings.py"
+    },
+    "team_ratings.json": {
+      "source_url": "https://stats.nba.com/stats/leaguedashteamstats (nba_api, Advanced)",
+      "as_of": "2026-11-09",
+      "notes": "fetch_ratings_inputs.py"
+    }
   }
- }
 }

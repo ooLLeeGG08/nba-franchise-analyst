@@ -1,10 +1,10 @@
 {
-  "_note": "Long-term injuries only (15+ games out from as_of, counted on the team's schedule). For each listed player the simulator replaces his sampled availability with expected games played / 82 (games already played + games after his return x his normal availability), still drawing a spread around it. It is a reduced-availability season, not specific dates, so every simulation still starts at 0-0. Give either return_date (estimated return) or games_out (from as_of). Re-check and update by hand.",
+  "_note": "Long-term injuries only (15+ games out from as_of, counted on the team's schedule). For each listed player the simulator replaces his sampled availability with expected games played / 82 (games already played + games after his return x his normal availability), still drawing a spread around it. It is a reduced-availability season, not specific dates, so every simulation still starts at 0-0. Give either return_date (estimated return) or games_out (from as_of). Re-check and update by hand. Players are keyed by NBA ID (\"player\"); \"name\" is for reading.",
   "as_of": "2026-11-09",
   "min_games_out": 15,
   "injuries": [
     {
-      "player": "kristaps-porzingis",
+      "player": "204001",
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "return_date": "2027-01-02",
@@ -13,7 +13,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "jimmy-butler",
+      "player": "202710",
       "name": "Jimmy Butler III",
       "team": "GSW",
       "return_date": "2027-01-02",
@@ -22,7 +22,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "johnny-furphy",
+      "player": "1642277",
       "name": "Johnny Furphy",
       "team": "IND",
       "return_date": "2027-01-02",
@@ -31,7 +31,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "ben-sheppard",
+      "player": "1641767",
       "name": "Ben Sheppard",
       "team": "IND",
       "return_date": "2027-01-02",
@@ -40,7 +40,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "jordan-miller",
+      "player": "1641757",
       "name": "Jordan Miller",
       "team": "LAC",
       "return_date": "2027-03-02",
@@ -49,7 +49,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "anthony-edwards",
+      "player": "1630162",
       "name": "Anthony Edwards",
       "team": "MIN",
       "return_date": "2026-12-21",
@@ -58,7 +58,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "donte-divincenzo",
+      "player": "1628978",
       "name": "Donte DiVincenzo",
       "team": "MIN",
       "return_date": "2027-04-02",
@@ -67,7 +67,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "cason-wallace",
+      "player": "1641717",
       "name": "Cason Wallace",
       "team": "OKC",
       "return_date": "2027-03-02",
@@ -76,7 +76,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "chet-holmgren",
+      "player": "1631096",
       "name": "Chet Holmgren",
       "team": "OKC",
       "return_date": "2027-01-02",
@@ -85,7 +85,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "jalen-williams",
+      "player": "1631114",
       "name": "Jalen Williams",
       "team": "OKC",
       "return_date": "2027-03-02",
@@ -94,7 +94,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "ariel-hukporti",
+      "player": "1630574",
       "name": "Ariel Hukporti",
       "team": "PHI",
       "return_date": "2027-10-01",
@@ -103,7 +103,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "mark-williams",
+      "player": "1631109",
       "name": "Mark Williams",
       "team": "PHX",
       "return_date": "2027-02-03",
@@ -112,7 +112,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "vit-krejci",
+      "player": "1630249",
       "name": "Vit Krejci",
       "team": "POR",
       "return_date": "2027-01-02",
@@ -121,7 +121,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "shaedon-sharpe",
+      "player": "1631101",
       "name": "Shaedon Sharpe",
       "team": "POR",
       "return_date": "2027-03-02",
@@ -130,7 +130,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "ben-simmons",
+      "player": "1627732",
       "name": "Ben Simmons",
       "team": "SAC",
       "return_date": "2027-10-01",
@@ -139,7 +139,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "justin-champagnie",
+      "player": "1630551",
       "name": "Justin Champagnie",
       "team": "WAS",
       "return_date": "2027-02-25",
@@ -148,7 +148,7 @@
       "date_added": "2026-11-09"
     },
     {
-      "player": "henri-veesaar",
+      "player": "1643539",
       "name": "Henri Veesaar",
       "team": "ATL",
       "return_date": "2027-07-01",

@@ -8,7 +8,7 @@ from tradesim import game_model
 from tradesim.engine import Engine, draw_impacts
 from tradesim.game_model import back_to_backs, fit_probit, load_model, norm_cdf, win_probability
 from tradesim.games import load_schedule_2026_27
-from tradesim.league import League
+from tradesim.league import player_id, League
 from tradesim.model import load_sim_config
 from tradesim.ratings import load_ratings
 
@@ -73,12 +73,12 @@ def test_back_to_back_detection():
 
 def test_player_impacts_are_drawn_per_player_not_fixed():
     ratings = load_ratings()
-    draws = draw_impacts(["nikola-jokic", "tyrese-haliburton"], ratings, 20000, seed=7)
+    draws = draw_impacts([player_id("nikola-jokic"), player_id("tyrese-haliburton")], ratings, 20000, seed=7)
     for pid, d in draws.items():
         assert d.mean() == pytest.approx(ratings["players"][pid]["impact"], abs=0.05)
         assert d.std() == pytest.approx(ratings["players"][pid]["se"], rel=0.05)
-    again = draw_impacts(["tyrese-haliburton"], ratings, 20000, seed=7)
-    assert np.array_equal(again["tyrese-haliburton"], draws["tyrese-haliburton"])
+    again = draw_impacts([player_id("tyrese-haliburton")], ratings, 20000, seed=7)
+    assert np.array_equal(again[player_id("tyrese-haliburton")], draws[player_id("tyrese-haliburton")])
 
 
 def test_team_strength_varies_between_simulated_seasons():

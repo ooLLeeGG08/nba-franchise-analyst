@@ -4,7 +4,7 @@ import json
 import pytest
 
 from tradesim import ratings
-from tradesim.league import League
+from tradesim.league import player_id, League
 from tradesim.model import load_sim_config
 from tradesim.names import name_key
 from tradesim.ratings import games_after, injury_availability, load_long_injuries, load_ratings
@@ -36,7 +36,7 @@ def test_finished_overtime_games_count_as_played(schedule):
 
 
 def test_override_replaces_availability_without_double_counting():
-    r = load_ratings()["players"]["chet-holmgren"]
+    r = load_ratings()["players"][player_id("chet-holmgren")]
     li = r["long_injury"]
     # Games he already played + games after his return x his normal availability, over 82.
     assert r["availability"] == pytest.approx(li["expected_games_played"] / 82, abs=0.002)
@@ -58,9 +58,9 @@ def test_unlisted_players_keep_their_sampled_availability():
     rated = load_ratings()["players"]
     listed = {e["player"] for e in load_long_injuries()["injuries"]}
     league = League.load()
-    for pid in ("nikola-jokic", "tyrese-haliburton", "jaren-jackson"):
+    for pid in (player_id("nikola-jokic"), player_id("tyrese-haliburton"), player_id("jaren-jackson")):
         assert pid not in listed
-        expected = ratings.availability(name_key(league.players[pid]["name"]), ratings.CURRENT_SEASON, fit, cfg,
+        expected = ratings.availability(league.players[pid]["bbref_id"], ratings.CURRENT_SEASON, fit, cfg,
                                         games_now=rated[pid]["games_2026_27"])
         assert rated[pid]["availability"] == pytest.approx(expected, abs=0.001)
         assert rated[pid]["long_injury"] is None

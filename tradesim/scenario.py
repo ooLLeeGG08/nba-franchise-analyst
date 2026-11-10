@@ -13,7 +13,6 @@ from tradesim.engine import Engine
 from tradesim.games import load_schedule_2026_27
 from tradesim.league import League
 from tradesim.model import load_sim_config
-from tradesim.names import slug
 from tradesim.report import scenario_terminal, write_scenario_reports
 
 
@@ -24,8 +23,8 @@ def parse_moves(league, specs):
             player, frm, to = spec.split(":")
         except ValueError:
             raise SystemExit(f"Bad move {spec!r}: use player:FROM:TO")
-        pid = player if player in league.players else slug(player.replace("-", " "))
-        if pid not in league.players:
+        pid = league.player_id(player)  # NBA ID, name, or "first-last"
+        if pid is None:
             raise SystemExit(f"Unknown player {player!r}")
         if frm not in league.teams or to not in league.teams:
             raise SystemExit(f"Unknown team in {spec!r}")

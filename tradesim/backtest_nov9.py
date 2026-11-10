@@ -37,6 +37,7 @@ from tradesim.engine import Engine
 from tradesim.games import actual_wins, schedule_from_results
 from tradesim.history import load_season, previous
 from tradesim.model import load_sim_config
+from tradesim.ids import match_bbref
 from tradesim.names import name_key, slug
 from tradesim.standings import official_standings
 from tradesim.teams import TEAM_INFO
@@ -75,23 +76,26 @@ def build_season(season, fit, cfg):
         asof = json.load(f)
     rc = cfg["ratings"]
     c = fit["uncertainty"]["c"]
-    players, rated = {}, {}
+    players, rated, unmatched = {}, {}, 0
     for p in asof["players"]:
         if p["games"] == 0 or p["team"] not in TEAM_INFO:
             continue
-        key = name_key(p["name"])
-        pid = slug(p["name"])
-        hist = rt.history(key, season, rc["history_seasons"])
-        draft = rt.draft_picks().get(key)
+        # The Nov 9 rosters (nba_api game logs) have names and teams only: find each player's
+        # BBRef ID by name + team + season (tradesim.ids) and key him by it.
+        key, how, _ = match_bbref(p["name"], p["team"], season)
+        unmatched += how in ("ambiguous", "unmatched")
+        pid = key or f"unmatched:{slug(p['name'])}"
+        hist = rt.history(key, season, rc["history_seasons"]) if key else []
+        draft = rt.draft_picks().get(name_key(p["name"]))
         pick = draft[1] if draft and draft[0] <= int(season[:4]) else None
-        totals = load_season(season)[0].get(key) or {}
+        totals = (load_season(season)[0].get(key) if key else None) or {}
         age = totals.get("age") or rt._target_age(hist)
         prior, tau = rt.prior_for(hist, age, pick, fit, cfg)
         mpg_before = rt.prior_mpg(key, pick, fit, cfg, season=season)
         team_games = asof["teams"][p["team"]]["games"]
         mpg_playing = (p["minutes"] + rc["minutes_prior_games"] * mpg_before) / (p["games"] + rc["minutes_prior_games"])
         avail = rt.availability(key, season, fit, cfg, games_now=p["games"], games_possible_now=team_games)
-        players[pid] = {"id": pid, "name": p["name"], "team": p["team"], "position": _position(key, season),
+        players[pid] = {"id": pid, "name": p["name"], "bbref_id": key, "team": p["team"], "position": _position(key, season),
                         "on_roster": True}
         rated[pid] = {"impact": prior, "se": tau, "mpg_when_playing": mpg_playing, "availability": avail,
                       "minutes_so_far": p["minutes"]}
@@ -108,7 +112,7 @@ def build_season(season, fit, cfg):
         g_prev = rt.season_games(previous(season))
         combined = (g_prev * prev_resid.get(code, 0.0) + t["games"] * now) / (g_prev + t["games"])
         residuals[code] = {"residual": rho * combined}
-    return PastLeague(players), {"players": rated, "team_residuals": residuals}, asof
+    return PastLeague(players), {"players": rated, "team_residuals": residuals}, {**asof, "unmatched_players": unmatched}
 
 
 def _mid_pit(dist, actual):
@@ -172,7 +176,7 @@ def _player_check(season, league, rated, fit):
     c = fit["uncertainty"]["c"]
     z = []
     for pid, p in league.players.items():
-        rec = totals.get(name_key(p["name"]))
+        rec = totals.get(p.get("bbref_id"))
         if rec and rec.get("mp", 0) >= 500 and rec.get("bpm") is not None:
             sd = math.sqrt(rated["players"][pid]["se"] ** 2 + c / rec["mp"])
             z.append(abs(rec["bpm"] - rated["players"][pid]["impact"]) / sd)

@@ -51,7 +51,8 @@ RATINGS_PATH = os.path.join(ROOT, "data", "model", "player_ratings_2026_27.json"
 
 @lru_cache(maxsize=None)
 def draft_picks():
-    """{name_key: (draft_year, pick)} (first time drafted)."""
+    """{name_key: (draft_year, pick)} (first time drafted). nba_api's draft history has names
+    but no player IDs, so this is the one join still made on (normalized) names."""
     out = {}
     for p in sorted(draft_history(), key=lambda p: p["draft_year"]):
         out.setdefault(name_key(p["player"]), (p["draft_year"], p["pick"]))
@@ -93,7 +94,7 @@ def samples(cfg):
             if not rec.get("mp") or rec["mp"] < rc["min_target_minutes"] or rec.get("bpm") is None:
                 continue
             hist = history(key, season, rc["history_seasons"])
-            draft = draft_picks().get(key)
+            draft = draft_picks().get(name_key(rec["name"]))  # nba_api draft history: names only
             out.append({"key": key, "season": season, "bpm": rec["bpm"], "mp": rec["mp"], "g": rec["g"],
                         "age": rec.get("age") or _target_age(hist), "hist": hist,
                         "pick": draft[1] if draft and draft[0] <= int(season[:4]) else None})
@@ -193,9 +194,10 @@ def posterior(prior, tau, bpm_now, minutes_now, c):
 
 # --- 3. team residual -----------------------------------------------------------------------
 
-def _impact_in_season(key, season, fit, cfg, totals_rec, age_fallback=None):
+def _impact_in_season(key, name, season, fit, cfg, totals_rec, age_fallback=None):
+    """key = BBRef ID (stats history); name = for the draft history, which has names only."""
     hist = history(key, season, cfg["ratings"]["history_seasons"])
-    draft = draft_picks().get(key)
+    draft = draft_picks().get(name_key(name))
     pick = draft[1] if draft and draft[0] <= int(season[:4]) else None
     prior, tau = prior_for(hist, (totals_rec or {}).get("age") or _target_age(hist, age_fallback), pick, fit, cfg)
     if not totals_rec:
@@ -209,8 +211,8 @@ def team_residuals(season, fit, cfg):
     games = team_ratings()[season]
     sums = {code: 0.0 for code in TEAM_INFO}
     for s in stints:
-        key = name_key(s["name"])
-        impact, _ = _impact_in_season(key, season, fit, cfg, totals.get(key))
+        key = s["bbref_id"]
+        impact, _ = _impact_in_season(key, s["name"], season, fit, cfg, totals.get(key))
         sums[s["team"]] += impact * (s["mp"] or 0) / (games[s["team"]]["games"] * 48)
     return {code: games[code]["net_rating"] - sums[code] for code in TEAM_INFO}
 
@@ -430,12 +432,12 @@ def build_ratings(league=None, fit_result=None, cfg=None, write=True):
         schedule_games = json.load(f)["games"]
     players = {}
     for pid, p in league.players.items():
-        key = name_key(p["name"])
-        hist = history(key, CURRENT_SEASON, rc["history_seasons"])
+        key = p.get("bbref_id")  # None: no Basketball-Reference row yet (rookie who hasn't played)
+        hist = history(key, CURRENT_SEASON, rc["history_seasons"]) if key else []
         acq = p.get("acquired", {})
         pick = acq.get("pick") if acq.get("type") == "draft" else None
         if pick is None:
-            draft = draft_picks().get(key)
+            draft = draft_picks().get(name_key(p["name"]))
             pick = draft[1] if draft else None
         age = _target_age(hist, p.get("age"))
         prior, tau = prior_for(hist, age, pick, fit_result, cfg)
@@ -452,7 +454,7 @@ def build_ratings(league=None, fit_result=None, cfg=None, write=True):
             normal = availability(key, CURRENT_SEASON, fit_result, cfg)
             avail, long_injury = injury_availability(injured[pid], p, g_now, normal, injuries, schedule_games)
             long_injury.update({"return_date": injured[pid].get("return_date"), "source_url": injured[pid]["source_url"]})
-        players[pid] = {"name": p["name"], "team": p["team"], "age": age, "pick": pick,
+        players[pid] = {"name": p["name"], "team": p["team"], "bbref_id": key, "age": age, "pick": pick,
                         "history_seasons": len(hist), "prior": round(prior, 3), "prior_se": round(tau, 3),
                         "bpm_2026_27": cur.get("bpm"), "minutes_2026_27": cur.get("mp"), "games_2026_27": g_now,
                         "impact": round(impact, 3), "se": round(se, 3),

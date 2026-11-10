@@ -6,7 +6,7 @@ import os
 import pytest
 
 from tradesim import ratings
-from tradesim.league import League
+from tradesim.league import player_id, League
 from tradesim.model import league_strengths, load_sim_config, team_strength
 from tradesim.ratings import (load_fit, load_ratings, normalize_minutes, posterior, raw_prior, rotation_minutes)
 
@@ -104,7 +104,7 @@ def test_team_strength_is_player_sum_plus_residual(league, cfg):
 
 
 def test_moving_a_player_changes_both_teams(league, cfg):
-    jokic = league.players["nikola-jokic"]
+    jokic = league.players[player_id("nikola-jokic")]
     den_without = team_strength("DEN", [p for p in league.roster("DEN") if p["id"] != jokic["id"]], cfg)[0]
     atl_with = team_strength("ATL", league.roster("ATL") + [jokic], cfg)[0]
     base = league_strengths(league, cfg, ["DEN", "ATL"])

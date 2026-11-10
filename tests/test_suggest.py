@@ -8,7 +8,7 @@ from tradesim import ai
 from tradesim.checker import check_trade
 from tradesim.engine import Engine
 from tradesim.games import load_schedule_2026_27
-from tradesim.league import League, load_cba
+from tradesim.league import player_id, League, load_cba
 from tradesim.model import load_sim_config
 from tradesim.skills import SKILLS, player_skills
 from tradesim.suggest import suggest
@@ -48,7 +48,7 @@ FACTS = {"team": "LAL", "projection": {"mean_wins": 51.7, "playoff_pct": 0.87, "
 # --- names and numbers --------------------------------------------------------------------------
 
 def test_names_ok_only_allows_players_in_the_trade(index):
-    allowed = ["derrick-white", "walker-kessler"]
+    allowed = [player_id("derrick-white"), player_id("walker-kessler")]
     assert ai.names_ok("The Lakers add Derrick White for Walker Kessler.", allowed, index)
     assert not ai.names_ok("Derrick White pairs well with LeBron James.", allowed, index)
     assert not ai.names_ok("A guard like Jokic would help.", [], index)  # last name alone still counts
@@ -97,9 +97,9 @@ def test_needs_llm_failure_falls_back(index):
 
 # --- explanations ---------------------------------------------------------------------------------------
 
-SHEET = {"team": "LAL", "gets": [{"id": "derrick-white", "name": "Derrick White", "position": "G", "impact": 2.3, "salary_m": 30.3,
+SHEET = {"team": "LAL", "gets": [{"id": player_id("derrick-white"), "name": "Derrick White", "position": "G", "impact": 2.3, "salary_m": 30.3,
                                   "from": "BOS", "to": "LAL"}],
-         "sends": [{"id": "walker-kessler", "name": "Walker Kessler", "position": "C", "impact": 2.1, "salary_m": 30.1,
+         "sends": [{"id": player_id("walker-kessler"), "name": "Walker Kessler", "position": "C", "impact": 2.1, "salary_m": 30.1,
                     "from": "LAL", "to": "BOS"}],
          "picks": [], "wins_before": 51.7, "wins_after": 53.7, "win_change": 2.0, "playoff_before": 87,
          "playoff_after": 91, "playoff_change": 4, "skills_needed": ["playmaking"]}
@@ -151,7 +151,7 @@ def test_accents_and_suffixes_match(index, league):
     """Names match without accents or suffixes, both ways."""
     sheet = {"team": "BKN", "gets": [], "picks": [], "wins_before": 30.0, "wins_after": 31.0, "win_change": 1.0,
              "playoff_before": 5, "playoff_after": 6, "playoff_change": 1,
-             "sends": [{"id": "egor-demin", "name": "Egor Dëmin", "position": "G", "impact": 0.0, "salary_m": 5.0,
+             "sends": [{"id": player_id("egor-demin"), "name": "Egor Dëmin", "position": "G", "impact": 0.0, "salary_m": 5.0,
                         "from": "BKN", "to": "BOS"}]}
     for spelling in ("Egor Dëmin", "Egor Demin", "EGOR DEMIN", "Demin's"):
         assert ai.facts_ok(f"{spelling} heads to Boston.", sheet, index)[0], spelling
@@ -252,7 +252,7 @@ def test_short_roster_team_can_still_get_ideas(result, league):
     state = SearchState(engine, league)
     needs = {"positions": ["G", "F", "C"], "skills": ["scoring"]}
     cands = find_candidates("SAC", needs, state, cba, DATE, min_fit=0)
-    pkgs = [p for c in cands[:15] for p in _packages("SAC", c, state, cba, DATE, None)]
+    pkgs = [p for c in cands for p in _packages("SAC", c, state, cba, DATE, None)]
     assert pkgs and all(len(extra) == 1 for _, _, _, extra in pkgs)
 
 
@@ -328,5 +328,5 @@ def test_suggestions_endpoint_and_cache(tmp_path, monkeypatch):
 
 
 def test_lone_last_names(index):
-    assert ai.names_ok("White's playmaking is the fit here.", ["derrick-white", "walker-kessler"], index)
-    assert not ai.names_ok("Williams would also help.", ["derrick-white"], index)  # which Williams?
+    assert ai.names_ok("White's playmaking is the fit here.", [player_id("derrick-white"), player_id("walker-kessler")], index)
+    assert not ai.names_ok("Williams would also help.", [player_id("derrick-white")], index)  # which Williams?

@@ -4,7 +4,7 @@ import json
 import pytest
 
 from tradesim import build_data
-from tradesim.league import League, load_cba
+from tradesim.league import player_id, League, load_cba
 from tradesim.names import name_key
 from tradesim.picks import _split_top_level, classify, parse_picks_text
 
@@ -46,7 +46,7 @@ def test_parse_fixed_width_stats_with_stints_and_blanks():
 
 
 def test_2024_25_stats_cover_injured_stars(league):
-    for pid in ("tyrese-haliburton", "damian-lillard", "kyrie-irving", "fred-vanvleet"):
+    for pid in (player_id("tyrese-haliburton"), player_id("damian-lillard"), player_id("kyrie-irving"), player_id("fred-vanvleet")):
         assert league.players[pid]["stats_2025_26"] is None
         assert league.players[pid]["stats_2024_25"]["mp"] > 1500
 
@@ -104,9 +104,9 @@ def test_first_round_rookies_have_salaries(league):
 
 
 def test_no_trade_data_applied_to_current_team(league):
-    assert league.players["damian-lillard"]["team"] == "POR"
-    assert league.players["damian-lillard"]["no_trade_clause"]
-    assert league.players["al-horford"]["bird_veto"]
+    assert league.players[player_id("damian-lillard")]["team"] == "POR"
+    assert league.players[player_id("damian-lillard")]["no_trade_clause"]
+    assert league.players[player_id("al-horford")]["bird_veto"]
 
 
 def test_trade_exceptions_parsed(league):
@@ -130,7 +130,8 @@ def test_league_records_its_as_of_date():
     from tradesim.league import LEAGUE_PATH
     data = json.load(open(LEAGUE_PATH))
     assert data["as_of"] == min(data["sources_as_of"].values())
-    assert "roster_status.json" in data["sources_as_of"] and "hard_caps.json" not in data["sources_as_of"]
+    assert "2026_27/roster_status.json" in data["sources_as_of"]
+    assert not any("hard_caps" in k for k in data["sources_as_of"])
 
 
 def test_data_goes_stale_after_the_configured_days():
@@ -163,10 +164,13 @@ def test_current_league_passes_the_schema():
 
 
 @pytest.mark.parametrize("break_it, expected", [
-    (lambda d: d["players"]["derrick-white"].update(team="XXX"), "isn't a team code"),
-    (lambda d: d["players"]["derrick-white"].update(salary="30M"), "salary"),
-    (lambda d: d["players"]["derrick-white"].update(id="someone-else"), "doesn't match its key"),
-    (lambda d: d["players"]["derrick-white"].update(nba_id=d["players"]["jayson-tatum"]["nba_id"]), "also used by"),
+    (lambda d: d["players"][player_id("derrick-white")].update(team="XXX"), "isn't a team code"),
+    (lambda d: d["players"][player_id("derrick-white")].update(salary="30M"), "salary"),
+    (lambda d: d["players"][player_id("derrick-white")].update(id="someone-else"), "doesn't match its key"),
+    (lambda d: d["players"][player_id("derrick-white")].update(nba_id=1), "key must be the NBA ID"),
+    (lambda d: d["players"][player_id("derrick-white")].update(bbref_id=d["players"][player_id("jayson-tatum")]["bbref_id"]),
+     "also used by"),
+    (lambda d: d["players"][player_id("derrick-white")].update(bbref_id="Derrick White"), "bad bbref_id"),
     (lambda d: d["teams"]["BOS"].update(standard_contracts=12), "rostered players"),
     (lambda d: d["teams"].pop("BOS"), "30 team codes"),
     (lambda d: next(iter(d["picks"].values())).update(round=3), "round"),
@@ -188,3 +192,89 @@ def test_build_refuses_too_many_unmatched_rows():
     with pytest.raises(BuildError) as err:
         build(write=False, max_unmatched=0)
     assert "unmatched rows" in str(err.value) and "Blake Wesley" in str(err.value)
+
+
+
+# --- player IDs ---------------------------------------------------------------------------------
+
+def test_players_are_keyed_by_nba_id():
+    from tradesim.league import League
+    league = League.load()
+    for pid, p in league.players.items():
+        assert pid == str(p["nba_id"]) == p["id"]
+
+
+def test_every_rostered_player_has_both_ids():
+    """NBA ID always; BBRef ID unless data/raw/id_overrides.json says (with a reason) that he
+    has no Basketball-Reference row yet."""
+    from tradesim.ids import overrides
+    from tradesim.league import League
+    league = League.load()
+    missing = []
+    for p in league.players.values():
+        if not p["on_roster"]:
+            continue
+        assert isinstance(p["nba_id"], int) and p["nba_id"] > 0, p["name"]
+        if not p["bbref_id"]:
+            entry = overrides().get(p["nba_id"])
+            assert entry and entry["bbref_id"] is None and entry["reason"], f"{p['name']}: no bbref_id and no override"
+            missing.append(p["name"])
+    assert len(missing) <= 5, missing  # the unplayed rookies; grows only with a written reason
+
+
+def test_no_bbref_id_maps_to_two_nba_ids():
+    from collections import defaultdict
+    from tradesim.league import League
+    from tradesim.ids import overrides
+    owners = defaultdict(set)
+    for p in League.load().players.values():
+        if p["bbref_id"]:
+            owners[p["bbref_id"]].add(p["nba_id"])
+    for nba_id, entry in overrides().items():
+        if entry["bbref_id"]:
+            owners[entry["bbref_id"]].add(nba_id)
+    assert all(len(ids) == 1 for ids in owners.values()), {b: ids for b, ids in owners.items() if len(ids) > 1}
+
+
+def test_stats_are_joined_on_bbref_id():
+    from tradesim.history import load_season
+    from tradesim.league import League
+    totals = load_season("2025-26")[0]
+    for p in League.load().players.values():
+        if p["stats_2025_26"]:
+            assert p["stats_2025_26"] == totals[p["bbref_id"]]
+
+
+def test_id_matching_rules(monkeypatch):
+    from tradesim import ids
+    from tradesim.ids import match_bbref
+    # name + team + season
+    assert match_bbref("Derrick White", "BOS", "2025-26")[:2] == ("whitede01", "name+team+season")
+    # accents and suffixes don't matter
+    assert match_bbref("Nikola Jokic", "DEN", "2025-26")[0] == match_bbref("Nikola Jokić", "DEN", "2025-26")[0]
+    # an override wins
+    assert match_bbref("Thomas Sorber", "OKC", "2026-27", nba_id=1642850)[1] == "override"
+    # a name two different players have had is never guessed (no such name in today's data,
+    # so a made-up season: two "Chris Johnson"s, one on each team)
+    fake = ({("chris johnson", "HOU"): {"johnsch04"}, ("chris johnson", "MIN"): {"johnsch05"}},
+            {"chris johnson": {"johnsch04", "johnsch05"}})
+    monkeypatch.setattr(ids, "season_index", lambda season: fake)
+    monkeypatch.setattr(ids, "all_seasons", lambda: ["fake"])
+    assert match_bbref("Chris Johnson", "HOU", "fake")[0] == "johnsch04"  # team decides
+    bid, how, candidates = match_bbref("Chris Johnson", "LAL", "fake")  # team doesn't help
+    assert bid is None and how == "ambiguous" and candidates == ["johnsch04", "johnsch05"]
+    assert match_bbref("Nobody Here", "LAL", "fake")[:2] == (None, "unmatched")
+    # an override wins
+    assert match_bbref("Thomas Sorber", "OKC", "2026-27", nba_id=1642850)[1] == "override"
+
+
+def test_old_name_based_ids_still_resolve():
+    """Trades saved on a phone before the switch used ids like "derrick-white"."""
+    import server
+    from tradesim.league import League
+    league = League.load()
+    assert league.player_id("derrick-white") == league.player_id("Derrick White") == "1628401"
+    r = server.app.test_client().post("/api/sim/trade/check", json={"moves": [
+        {"type": "player", "id": "derrick-white", "from": "BOS", "to": "LAL"},
+        {"type": "player", "id": "walker-kessler", "from": "LAL", "to": "BOS"}]}).get_json()
+    assert "error" not in r and r["teams"]["BOS"]

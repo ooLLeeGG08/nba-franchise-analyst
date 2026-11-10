@@ -19,7 +19,6 @@ from tradesim import backtest_nov9 as bt
 from tradesim import ratings as rt
 from tradesim.history import load_season, team_ratings
 from tradesim.model import load_sim_config
-from tradesim.names import name_key
 
 
 def breakdown(season, top=5):
@@ -37,13 +36,13 @@ def breakdown(season, top=5):
     out = []
     for code, r in rows.items():
         roster = {pid: p for pid, p in league.players.items() if p["team"] == code}
-        roster_keys = {name_key(p["name"]): pid for pid, p in roster.items()}
+        roster_keys = {p["bbref_id"]: pid for pid, p in roster.items() if p.get("bbref_id")}
         team_stints = [s for s in stints if s["team"] == code and s.get("mp")]
         g, total_mp = games[code]["games"], sum(s["mp"] for s in team_stints)
         rating = rookie = 0.0
         newcomers = []
         for s in team_stints:
-            key = name_key(s["name"])
+            key = s["bbref_id"]
             share = s["mp"] / (g * 48)
             if key in roster_keys:
                 pid = roster_keys[key]
@@ -58,7 +57,7 @@ def breakdown(season, top=5):
         injuries, injured = 0.0, []
         for pid, p in roster.items():
             info = rated["players"][pid]
-            played = sum(s["g"] for s in team_stints if name_key(s["name"]) == name_key(p["name"]))
+            played = sum(s["g"] for s in team_stints if s["bbref_id"] == p.get("bbref_id"))
             expected = info["availability"] * 82
             short = expected - played
             if short > 8 and info["mpg_when_playing"] >= 20:
@@ -88,7 +87,7 @@ def breakdown(season, top=5):
 def _top_rating_misses(code, team_stints, roster_keys, rated, g):
     misses = []
     for s in team_stints:
-        pid = roster_keys.get(name_key(s["name"]))
+        pid = roster_keys.get(s["bbref_id"])
         if pid and s["bpm"] is not None:
             prior = rated["players"][pid]["impact"]
             misses.append((s["name"], round(prior, 1), s["bpm"], (s["bpm"] - prior) * s["mp"] / (g * 48)))

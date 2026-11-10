@@ -8,6 +8,9 @@ checked one after another without changing the original.
 import copy
 import json
 import os
+from functools import lru_cache
+
+from tradesim.names import slug
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEAGUE_PATH = os.path.join(ROOT, "data", "2026_27", "league.json")
@@ -37,6 +40,21 @@ class League:
         with open(path) as f:
             return cls(json.load(f))
 
+    def player_id(self, ref):
+        """Player key (NBA ID as a string) for an NBA ID, an old name-based id
+        ("derrick-white", used before players were keyed by NBA ID, e.g. in trades saved on a
+        phone) or an exact name. None if unknown or two players share the name."""
+        ref = str(ref)
+        if ref in self.players:
+            return ref
+        if "_by_slug" not in self.__dict__:
+            by_slug = {}
+            for pid, p in self.players.items():
+                by_slug.setdefault(slug(p["name"]), []).append(pid)
+            self._by_slug = {k: v[0] for k, v in by_slug.items() if len(v) == 1}
+        return self._by_slug.get(slug(ref.replace("-", " ")))
+
+
     def copy(self):
         return copy.deepcopy(self)
 
@@ -57,3 +75,13 @@ class League:
 
     def exceptions_of(self, team):
         return [e for e in self.trade_exceptions.values() if e["team"] == team and e["amount"] > 0]
+
+
+@lru_cache(maxsize=1)
+def _default_league():
+    return League.load()
+
+
+def player_id(ref):
+    """League.player_id on the built league (for scripts and tests)."""
+    return _default_league().player_id(ref)

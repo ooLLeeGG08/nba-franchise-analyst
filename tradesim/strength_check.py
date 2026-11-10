@@ -32,9 +32,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHECK_PATH = os.path.join(ROOT, "data", "model", "strength_check.json")
 
 
-def _prior_impact(key, season, fit, cfg):
+def _prior_impact(key, name, season, fit, cfg):
     hist = history(key, season, cfg["ratings"]["history_seasons"])
-    draft = draft_picks().get(key)
+    draft = draft_picks().get(name_key(name))  # draft history: names only
     pick = draft[1] if draft and draft[0] <= int(season[:4]) else None
     totals = load_season(season)[0].get(key) or {}
     return prior_for(hist, totals.get("age") or _target_age(hist), pick, fit, cfg)[0], pick
@@ -63,8 +63,8 @@ def forecasts(season, fit, cfg):
            for code in TEAM_INFO}
     first_team, info = {}, {}
     for s in stints:
-        key = name_key(s["name"])
-        impact, pick = _prior_impact(key, season, fit, cfg)
+        key = s["bbref_id"]
+        impact, pick = _prior_impact(key, s["name"], season, fit, cfg)
         info[key] = (impact, pick)
         share = (s["mp"] or 0) / (games[s["team"]]["games"] * 48)
         out[s["team"]]["new_actual_min"] += impact * share

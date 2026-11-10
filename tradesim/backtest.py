@@ -25,7 +25,7 @@ from tradesim import build_data
 from tradesim.fit import FIT_PATH, fit as run_fit, load_fit, strengths_2025_26
 from tradesim.games import GAMES_PER_TEAM, actual_wins, load_results_2025_26, schedule_from_results
 from tradesim.model import allocate_minutes, load_sim_config, player_value
-from tradesim.names import name_key
+from tradesim.history import load_season
 from tradesim.simulate import simulate_season
 from tradesim.teams import TEAM_INFO
 
@@ -37,18 +37,18 @@ def strengths_projected_minutes(cfg):
     """Each team's 2025-26 players, with minutes from the allocation rule instead of real minutes."""
     repl = cfg["player_value"]["replacement_bpm"]
     floor = cfg["minutes"]["games_floor"]
-    stints = build_data.parse_bbref_stints(build_data._read("bbref_advanced_2025_26.tsv"))
+    stints = load_season("2025-26")[1]
     out = {}
     for code in TEAM_INFO:
         team = [s for s in stints if s["team"] == code and s["mp"]]
-        mpgs = {s["name"]: s["mp"] / max(s["g"], floor) for s in team}
+        mpgs = {s["bbref_id"]: s["mp"] / max(s["g"], floor) for s in team}
         minutes = allocate_minutes(mpgs, cfg)
-        out[code] = sum((player_value(s["bpm"], s["mp"], cfg) - repl) * minutes[s["name"]] / 48 for s in team)
+        out[code] = sum((player_value(s["bpm"], s["mp"], cfg) - repl) * minutes[s["bbref_id"]] / 48 for s in team)
     return out
 
 
 def _values_2024_25(cfg):
-    prev = build_data.parse_bbref(build_data._read_raw("2024_25", "bbref_advanced_2024_25.txt"))
+    prev = load_season("2024-25")[0]  # {bbref_id: record}
     return {key: (player_value(st["bpm"], st["mp"], cfg), st["mp"] / max(st["g"], cfg["minutes"]["games_floor"]))
             for key, st in prev.items() if st.get("mp") and st.get("g")}
 
@@ -57,10 +57,10 @@ def strengths_forecast_actual_minutes(cfg):
     """C: 2024-25 player values, weighted by actual 2025-26 minutes with each team."""
     repl = cfg["player_value"]["replacement_bpm"]
     prev = _values_2024_25(cfg)
-    stints = build_data.parse_bbref_stints(build_data._read("bbref_advanced_2025_26.tsv"))
+    stints = load_season("2025-26")[1]
     out = {code: 0.0 for code in TEAM_INFO}
     for s in stints:
-        value = prev.get(name_key(s["name"]), (repl, None))[0]
+        value = prev.get(s["bbref_id"], (repl, None))[0]
         out[s["team"]] += (value - repl) * (s["mp"] or 0) / (GAMES_PER_TEAM * 48)
     return out
 
@@ -72,10 +72,10 @@ def strengths_forecast(cfg):
     default minutes."""
     repl = cfg["player_value"]["replacement_bpm"]
     prev = _values_2024_25(cfg)
-    stints = build_data.parse_bbref_stints(build_data._read("bbref_advanced_2025_26.tsv"))
+    stints = load_season("2025-26")[1]
     first_team = {}
     for s in stints:
-        first_team.setdefault(name_key(s["name"]), s["team"])
+        first_team.setdefault(s["bbref_id"], s["team"])
     out = {}
     for code in TEAM_INFO:
         keys = [k for k, team in first_team.items() if team == code]

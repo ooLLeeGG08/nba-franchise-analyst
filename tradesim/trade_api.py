@@ -75,7 +75,11 @@ def parse_moves(payload, league):
         else:
             if not isinstance(m.get("id"), str):
                 raise BadTrade("Player and pick moves need an id.")
-            moves.append({"type": m["type"], "id": m["id"], "from": m["from"], "to": m["to"]})
+            pid = m["id"]
+            if m["type"] == "player":
+                # trades saved before players were keyed by NBA ID use name-based ids
+                pid = league.player_id(pid) or pid
+            moves.append({"type": m["type"], "id": pid, "from": m["from"], "to": m["to"]})
     teams = {m["from"] for m in moves} | {m["to"] for m in moves}
     if len(teams) > MAX_TEAMS:
         raise BadTrade(f"At most {MAX_TEAMS} teams in one trade.")

@@ -3,6 +3,7 @@ import pytest
 
 import server
 from tradesim.teams import TEAM_INFO
+from tradesim.league import player_id
 
 
 @pytest.fixture(scope="module")
@@ -78,13 +79,13 @@ def test_trade_assets(client):
 
 def test_signed_this_summer_shows_tradeable_date(client):
     a = client.get("/api/sim/trade/assets/PHI").get_json()
-    simons = next(p for p in a["roster"] if p["id"] == "anfernee-simons")
+    simons = next(p for p in a["roster"] if p["id"] == player_id("anfernee-simons"))
     assert simons["tradeable_from"] == "2026-12-15"
 
 
 def test_check_trade_that_works(client):
     r = client.post("/api/sim/trade/check", json={"moves": [
-        mv("tyrese-maxey", "PHI", "ATL"), mv("jalen-johnson", "ATL", "PHI"), mv("aaron-wiggins", "ATL", "PHI")]})
+        mv(player_id("tyrese-maxey"), "PHI", "ATL"), mv(player_id("jalen-johnson"), "ATL", "PHI"), mv(player_id("aaron-wiggins"), "ATL", "PHI")]})
     data = r.get_json()
     assert r.status_code == 200 and data["works"]
     atl = data["teams"]["ATL"]
@@ -95,7 +96,7 @@ def test_check_trade_that_works(client):
 
 def test_check_trade_that_fails_explains_why(client):
     data = client.post("/api/sim/trade/check", json={"moves": [
-        mv("joel-embiid", "PHI", "ATL"), mv("jalen-johnson", "ATL", "PHI")]}).get_json()
+        mv(player_id("joel-embiid"), "PHI", "ATL"), mv(player_id("jalen-johnson"), "ATL", "PHI")]}).get_json()
     assert not data["works"]
     assert "$28.0M more" in data["teams"]["ATL"]["failures"][0]
     assert data["teams"]["ATL"]["status_after"] == "Over the second apron"
@@ -103,18 +104,18 @@ def test_check_trade_that_fails_explains_why(client):
 
 def test_exception_use_is_labelled(client):
     data = client.post("/api/sim/trade/check", json={"moves": [
-        mv("moussa-diabate", "CHA", "DEN"), mv("christian-braun", "DEN", "CHA")]}).get_json()
+        mv(player_id("moussa-diabate"), "CHA", "DEN"), mv(player_id("christian-braun"), "DEN", "CHA")]}).get_json()
     assert data["works"]
     assert "LaMelo Ball trade exception" in data["teams"]["CHA"]["exception_used"]["label"]
 
 
 def test_cash_and_three_team_trades(client):
     data = client.post("/api/sim/trade/check", json={"moves": [
-        mv("brandon-miller", "CHA", "HOU"), mv("jabari-smith", "HOU", "CHA"),
+        mv(player_id("brandon-miller"), "CHA", "HOU"), mv(player_id("jabari-smith"), "HOU", "CHA"),
         {"type": "cash", "amount": 2000000, "from": "HOU", "to": "CHA"}]}).get_json()
     assert any(r["id"] == "cash" and r["status"] == "not_checked" for r in data["teams"]["HOU"]["rules"])
     three = client.post("/api/sim/trade/check", json={"moves": [
-        mv("brandon-miller", "CHA", "HOU"), mv("jabari-smith", "HOU", "BKN"), mv("danny-wolf", "BKN", "CHA")]}).get_json()
+        mv(player_id("brandon-miller"), "CHA", "HOU"), mv(player_id("jabari-smith"), "HOU", "BKN"), mv(player_id("danny-wolf"), "BKN", "CHA")]}).get_json()
     assert set(three["teams"]) == {"CHA", "HOU", "BKN"}
 
 

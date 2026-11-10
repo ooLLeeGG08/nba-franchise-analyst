@@ -1,9 +1,10 @@
 {
  "as_of": "2026-11-09",
  "players": {
-  "stephen-curry": {
+  "201939": {
    "name": "Stephen Curry",
    "team": "GSW",
+   "bbref_id": "curryst01",
    "age": 38,
    "pick": 7,
    "history_seasons": 3,
@@ -20,9 +21,10 @@
    "mpg_projected": 20.87,
    "long_injury": null
   },
-  "nikola-jokic": {
+  "203999": {
    "name": "Nikola Jokić",
    "team": "DEN",
+   "bbref_id": "jokicni01",
    "age": 31,
    "pick": 41,
    "history_seasons": 3,
@@ -39,9 +41,10 @@
    "mpg_projected": 27.69,
    "long_injury": null
   },
-  "anthony-davis": {
+  "203076": {
    "name": "Anthony Davis",
    "team": "WAS",
+   "bbref_id": "davisan02",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -58,9 +61,10 @@
    "mpg_projected": 17.1,
    "long_injury": null
   },
-  "giannis-antetokounmpo": {
+  "203507": {
    "name": "Giannis Antetokounmpo",
    "team": "MIA",
+   "bbref_id": "antetgi01",
    "age": 32,
    "pick": null,
    "history_seasons": 3,
@@ -77,9 +81,10 @@
    "mpg_projected": 20.83,
    "long_injury": null
   },
-  "jayson-tatum": {
+  "1628369": {
    "name": "Jayson Tatum",
    "team": "BOS",
+   "bbref_id": "tatumja01",
    "age": 28,
    "pick": 3,
    "history_seasons": 3,
@@ -96,9 +101,10 @@
    "mpg_projected": 18.59,
    "long_injury": null
   },
-  "joel-embiid": {
+  "203954": {
    "name": "Joel Embiid",
    "team": "PHI",
+   "bbref_id": "embiijo01",
    "age": 32,
    "pick": 3,
    "history_seasons": 3,
@@ -115,9 +121,10 @@
    "mpg_projected": 15.19,
    "long_injury": null
   },
-  "jaylen-brown": {
+  "1627759": {
    "name": "Jaylen Brown",
    "team": "PHI",
+   "bbref_id": "brownja02",
    "age": 30,
    "pick": 3,
    "history_seasons": 3,
@@ -134,9 +141,10 @@
    "mpg_projected": 27.66,
    "long_injury": null
   },
-  "devin-booker": {
+  "1626164": {
    "name": "Devin Booker",
    "team": "PHX",
+   "bbref_id": "bookede01",
    "age": 30,
    "pick": 13,
    "history_seasons": 3,
@@ -153,9 +161,10 @@
    "mpg_projected": 27.36,
    "long_injury": null
   },
-  "karl-anthony-towns": {
+  "1626157": {
    "name": "Karl-Anthony Towns",
    "team": "NYK",
+   "bbref_id": "townska01",
    "age": 31,
    "pick": 1,
    "history_seasons": 3,
@@ -172,9 +181,10 @@
    "mpg_projected": 26.0,
    "long_injury": null
   },
-  "jimmy-butler": {
+  "202710": {
    "name": "Jimmy Butler III",
    "team": "GSW",
+   "bbref_id": "butleji01",
    "age": 37,
    "pick": null,
    "history_seasons": 3,
@@ -197,9 +207,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "paul-george": {
+  "202331": {
    "name": "Paul George",
    "team": "BOS",
+   "bbref_id": "georgpa01",
    "age": 36,
    "pick": null,
    "history_seasons": 3,
@@ -216,9 +227,10 @@
    "mpg_projected": 16.97,
    "long_injury": null
   },
-  "kawhi-leonard": {
+  "202695": {
    "name": "Kawhi Leonard",
    "team": "TOR",
+   "bbref_id": "leonaka01",
    "age": 35,
    "pick": null,
    "history_seasons": 3,
@@ -235,9 +247,10 @@
    "mpg_projected": 19.0,
    "long_injury": null
   },
-  "cade-cunningham": {
+  "1630595": {
    "name": "Cade Cunningham",
    "team": "DET",
+   "bbref_id": "cunnica01",
    "age": 25,
    "pick": 1,
    "history_seasons": 3,
@@ -254,9 +267,10 @@
    "mpg_projected": 26.41,
    "long_injury": null
   },
-  "donovan-mitchell": {
+  "1628378": {
    "name": "Donovan Mitchell",
    "team": "CLE",
+   "bbref_id": "mitchdo01",
    "age": 30,
    "pick": 13,
    "history_seasons": 3,
@@ -273,9 +287,10 @@
    "mpg_projected": 27.29,
    "long_injury": null
   },
-  "evan-mobley": {
+  "1630596": {
    "name": "Evan Mobley",
    "team": "CLE",
+   "bbref_id": "mobleev01",
    "age": 25,
    "pick": 3,
    "history_seasons": 3,
@@ -292,9 +307,10 @@
    "mpg_projected": 25.64,
    "long_injury": null
   },
-  "jamal-murray": {
+  "1627750": {
    "name": "Jamal Murray",
    "team": "DEN",
+   "bbref_id": "murraja01",
    "age": 29,
    "pick": 7,
    "history_seasons": 3,
@@ -311,9 +327,10 @@
    "mpg_projected": 29.13,
    "long_injury": null
   },
-  "bam-adebayo": {
+  "1628389": {
    "name": "Bam Adebayo",
    "team": "MIA",
+   "bbref_id": "adebaba01",
    "age": 29,
    "pick": 14,
    "history_seasons": 3,
@@ -330,9 +347,10 @@
    "mpg_projected": 27.74,
    "long_injury": null
   },
-  "deaaron-fox": {
+  "1628368": {
    "name": "De'Aaron Fox",
    "team": "SAS",
+   "bbref_id": "foxde01",
    "age": 29,
    "pick": 5,
    "history_seasons": 3,
@@ -349,9 +367,10 @@
    "mpg_projected": 23.43,
    "long_injury": null
   },
-  "luka-doncic": {
+  "1629029": {
    "name": "Luka Dončić",
    "team": "LAL",
+   "bbref_id": "doncilu01",
    "age": 27,
    "pick": 3,
    "history_seasons": 3,
@@ -368,9 +387,10 @@
    "mpg_projected": 25.16,
    "long_injury": null
   },
-  "trae-young": {
+  "1629027": {
    "name": "Trae Young",
    "team": "WAS",
+   "bbref_id": "youngtr01",
    "age": 28,
    "pick": 5,
    "history_seasons": 3,
@@ -387,9 +407,10 @@
    "mpg_projected": 18.36,
    "long_injury": null
   },
-  "jaren-jackson": {
+  "1628991": {
    "name": "Jaren Jackson Jr.",
    "team": "UTA",
+   "bbref_id": "jacksja02",
    "age": 27,
    "pick": 4,
    "history_seasons": 3,
@@ -406,9 +427,10 @@
    "mpg_projected": 20.22,
    "long_injury": null
   },
-  "zach-lavine": {
+  "203897": {
    "name": "Zach LaVine",
    "team": "SAC",
+   "bbref_id": "lavinza01",
    "age": 31,
    "pick": 13,
    "history_seasons": 3,
@@ -425,9 +447,10 @@
    "mpg_projected": 22.6,
    "long_injury": null
   },
-  "anthony-edwards": {
+  "1630162": {
    "name": "Anthony Edwards",
    "team": "MIN",
+   "bbref_id": "edwaran01",
    "age": 25,
    "pick": 1,
    "history_seasons": 3,
@@ -450,9 +473,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "pascal-siakam": {
+  "1627783": {
    "name": "Pascal Siakam",
    "team": "IND",
+   "bbref_id": "siakapa01",
    "age": 32,
    "pick": 27,
    "history_seasons": 3,
@@ -469,9 +493,10 @@
    "mpg_projected": 25.95,
    "long_injury": null
   },
-  "tyrese-haliburton": {
+  "1630169": {
    "name": "Tyrese Haliburton",
    "team": "IND",
+   "bbref_id": "halibty01",
    "age": 26,
    "pick": 12,
    "history_seasons": 2,
@@ -488,9 +513,10 @@
    "mpg_projected": 17.35,
    "long_injury": null
   },
-  "lauri-markkanen": {
+  "1628374": {
    "name": "Lauri Markkanen",
    "team": "UTA",
+   "bbref_id": "markkla01",
    "age": 29,
    "pick": 7,
    "history_seasons": 3,
@@ -507,9 +533,10 @@
    "mpg_projected": 19.29,
    "long_injury": null
   },
-  "domantas-sabonis": {
+  "1627734": {
    "name": "Domantas Sabonis",
    "team": "SAC",
+   "bbref_id": "sabondo01",
    "age": 30,
    "pick": 11,
    "history_seasons": 3,
@@ -526,9 +553,10 @@
    "mpg_projected": 19.85,
    "long_injury": null
   },
-  "kevin-durant": {
+  "201142": {
    "name": "Kevin Durant",
    "team": "HOU",
+   "bbref_id": "duranke01",
    "age": 38,
    "pick": null,
    "history_seasons": 3,
@@ -545,9 +573,10 @@
    "mpg_projected": 28.11,
    "long_injury": null
   },
-  "og-anunoby": {
+  "1628384": {
    "name": "OG Anunoby",
    "team": "NYK",
+   "bbref_id": "anunoog01",
    "age": 29,
    "pick": 23,
    "history_seasons": 3,
@@ -564,9 +593,10 @@
    "mpg_projected": 26.66,
    "long_injury": null
   },
-  "darius-garland": {
+  "1629636": {
    "name": "Darius Garland",
    "team": "LAC",
+   "bbref_id": "garlada01",
    "age": 27,
    "pick": 5,
    "history_seasons": 3,
@@ -583,9 +613,10 @@
    "mpg_projected": 23.29,
    "long_injury": null
   },
-  "ja-morant": {
+  "1629630": {
    "name": "Ja Morant",
    "team": "POR",
+   "bbref_id": "moranja01",
    "age": 27,
    "pick": 2,
    "history_seasons": 3,
@@ -602,9 +633,10 @@
    "mpg_projected": 13.87,
    "long_injury": null
   },
-  "zion-williamson": {
+  "1629627": {
    "name": "Zion Williamson",
    "team": "NOP",
+   "bbref_id": "willizi01",
    "age": 26,
    "pick": 1,
    "history_seasons": 3,
@@ -621,9 +653,10 @@
    "mpg_projected": 19.73,
    "long_injury": null
   },
-  "franz-wagner": {
+  "1630532": {
    "name": "Franz Wagner",
    "team": "ORL",
+   "bbref_id": "wagnefr01",
    "age": 25,
    "pick": 8,
    "history_seasons": 3,
@@ -640,9 +673,10 @@
    "mpg_projected": 21.24,
    "long_injury": null
   },
-  "scottie-barnes": {
+  "1630567": {
    "name": "Scottie Barnes",
    "team": "TOR",
+   "bbref_id": "barnesc01",
    "age": 25,
    "pick": 4,
    "history_seasons": 3,
@@ -659,9 +693,10 @@
    "mpg_projected": 27.28,
    "long_injury": null
   },
-  "austin-reaves": {
+  "1630559": {
    "name": "Austin Reaves",
    "team": "LAL",
+   "bbref_id": "reaveau01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -678,9 +713,10 @@
    "mpg_projected": 26.67,
    "long_injury": null
   },
-  "chet-holmgren": {
+  "1631096": {
    "name": "Chet Holmgren",
    "team": "OKC",
+   "bbref_id": "holmgch01",
    "age": 24,
    "pick": 2,
    "history_seasons": 3,
@@ -703,9 +739,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "jalen-williams": {
+  "1631114": {
    "name": "Jalen Williams",
    "team": "OKC",
+   "bbref_id": "willija06",
    "age": 25,
    "pick": 12,
    "history_seasons": 3,
@@ -728,9 +765,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "lamelo-ball": {
+  "1630163": {
    "name": "LaMelo Ball",
    "team": "MIN",
+   "bbref_id": "ballla01",
    "age": 25,
    "pick": 3,
    "history_seasons": 3,
@@ -747,9 +785,10 @@
    "mpg_projected": 20.25,
    "long_injury": null
   },
-  "paolo-banchero": {
+  "1631094": {
    "name": "Paolo Banchero",
    "team": "ORL",
+   "bbref_id": "banchpa01",
    "age": 24,
    "pick": 1,
    "history_seasons": 3,
@@ -766,9 +805,10 @@
    "mpg_projected": 23.79,
    "long_injury": null
   },
-  "michael-porter": {
+  "1629008": {
    "name": "Michael Porter Jr.",
    "team": "BKN",
+   "bbref_id": "portemi01",
    "age": 28,
    "pick": 14,
    "history_seasons": 3,
@@ -785,9 +825,10 @@
    "mpg_projected": 25.1,
    "long_injury": null
   },
-  "shai-gilgeous-alexander": {
+  "1628983": {
    "name": "Shai Gilgeous-Alexander",
    "team": "OKC",
+   "bbref_id": "gilgesh01",
    "age": 28,
    "pick": 11,
    "history_seasons": 3,
@@ -804,9 +845,10 @@
    "mpg_projected": 27.07,
    "long_injury": null
   },
-  "tyrese-maxey": {
+  "1630178": {
    "name": "Tyrese Maxey",
    "team": "PHI",
+   "bbref_id": "maxeyty01",
    "age": 26,
    "pick": 21,
    "history_seasons": 3,
@@ -823,9 +865,10 @@
    "mpg_projected": 27.33,
    "long_injury": null
   },
-  "jalen-duren": {
+  "1631105": {
    "name": "Jalen Duren",
    "team": "DET",
+   "bbref_id": "durenja01",
    "age": 23,
    "pick": 13,
    "history_seasons": 3,
@@ -842,9 +885,10 @@
    "mpg_projected": 20.63,
    "long_injury": null
   },
-  "brandon-ingram": {
+  "1627742": {
    "name": "Brandon Ingram",
    "team": "LAC",
+   "bbref_id": "ingrabr01",
    "age": 29,
    "pick": 2,
    "history_seasons": 3,
@@ -861,9 +905,10 @@
    "mpg_projected": 19.99,
    "long_injury": null
   },
-  "kyrie-irving": {
+  "202681": {
    "name": "Kyrie Irving",
    "team": "DAL",
+   "bbref_id": "irvinky01",
    "age": 34,
    "pick": null,
    "history_seasons": 2,
@@ -880,9 +925,10 @@
    "mpg_projected": 14.3,
    "long_injury": null
   },
-  "desmond-bane": {
+  "1630217": {
    "name": "Desmond Bane",
    "team": "ORL",
+   "bbref_id": "banede01",
    "age": 28,
    "pick": 30,
    "history_seasons": 3,
@@ -899,9 +945,10 @@
    "mpg_projected": 28.74,
    "long_injury": null
   },
-  "jalen-brunson": {
+  "1628973": {
    "name": "Jalen Brunson",
    "team": "NYK",
+   "bbref_id": "brunsja01",
    "age": 30,
    "pick": 33,
    "history_seasons": 3,
@@ -918,9 +965,10 @@
    "mpg_projected": 27.49,
    "long_injury": null
   },
-  "rudy-gobert": {
+  "203497": {
    "name": "Rudy Gobert",
    "team": "MIN",
+   "bbref_id": "goberru01",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -937,9 +985,10 @@
    "mpg_projected": 25.44,
    "long_injury": null
   },
-  "jalen-green": {
+  "1630224": {
    "name": "Jalen Green",
    "team": "PHX",
+   "bbref_id": "greenja05",
    "age": 24,
    "pick": 2,
    "history_seasons": 3,
@@ -956,9 +1005,10 @@
    "mpg_projected": 19.37,
    "long_injury": null
   },
-  "alperen-sengun": {
+  "1630578": {
    "name": "Alperen Sengun",
    "team": "HOU",
+   "bbref_id": "sengual01",
    "age": 24,
    "pick": 16,
    "history_seasons": 3,
@@ -975,9 +1025,10 @@
    "mpg_projected": 28.31,
    "long_injury": null
   },
-  "jrue-holiday": {
+  "201950": {
    "name": "Jrue Holiday",
    "team": "POR",
+   "bbref_id": "holidjr01",
    "age": 36,
    "pick": null,
    "history_seasons": 3,
@@ -994,9 +1045,10 @@
    "mpg_projected": 19.13,
    "long_injury": null
   },
-  "jerami-grant": {
+  "203924": {
    "name": "Jerami Grant",
    "team": "MEM",
+   "bbref_id": "grantje01",
    "age": 32,
    "pick": 39,
    "history_seasons": 3,
@@ -1013,9 +1065,10 @@
    "mpg_projected": 17.28,
    "long_injury": null
   },
-  "jordan-poole": {
+  "1629673": {
    "name": "Jordan Poole",
    "team": "NOP",
+   "bbref_id": "poolejo01",
    "age": 27,
    "pick": 28,
    "history_seasons": 3,
@@ -1032,9 +1085,10 @@
    "mpg_projected": 13.34,
    "long_injury": null
   },
-  "mikal-bridges": {
+  "1628969": {
    "name": "Mikal Bridges",
    "team": "NYK",
+   "bbref_id": "bridgmi01",
    "age": 30,
    "pick": 10,
    "history_seasons": 3,
@@ -1051,9 +1105,10 @@
    "mpg_projected": 25.49,
    "long_injury": null
   },
-  "julius-randle": {
+  "203944": {
    "name": "Julius Randle",
    "team": "BKN",
+   "bbref_id": "randlju01",
    "age": 32,
    "pick": 7,
    "history_seasons": 3,
@@ -1070,9 +1125,10 @@
    "mpg_projected": 27.93,
    "long_injury": null
   },
-  "tyler-herro": {
+  "1629639": {
    "name": "Tyler Herro",
    "team": "MIL",
+   "bbref_id": "herroty01",
    "age": 27,
    "pick": 13,
    "history_seasons": 3,
@@ -1089,9 +1145,10 @@
    "mpg_projected": 21.29,
    "long_injury": null
   },
-  "dejounte-murray": {
+  "1627749": {
    "name": "Dejounte Murray",
    "team": "NOP",
+   "bbref_id": "murrade01",
    "age": 30,
    "pick": 29,
    "history_seasons": 3,
@@ -1108,9 +1165,10 @@
    "mpg_projected": 11.78,
    "long_injury": null
   },
-  "immanuel-quickley": {
+  "1630193": {
    "name": "Immanuel Quickley",
    "team": "TOR",
+   "bbref_id": "quickim01",
    "age": 27,
    "pick": 25,
    "history_seasons": 3,
@@ -1127,9 +1185,10 @@
    "mpg_projected": 20.79,
    "long_injury": null
   },
-  "jalen-suggs": {
+  "1630591": {
    "name": "Jalen Suggs",
    "team": "ORL",
+   "bbref_id": "suggsja01",
    "age": 25,
    "pick": 5,
    "history_seasons": 3,
@@ -1146,9 +1205,10 @@
    "mpg_projected": 17.59,
    "long_injury": null
   },
-  "aaron-gordon": {
+  "203932": {
    "name": "Aaron Gordon",
    "team": "DEN",
+   "bbref_id": "gordoaa01",
    "age": 31,
    "pick": 4,
    "history_seasons": 3,
@@ -1165,9 +1225,10 @@
    "mpg_projected": 16.99,
    "long_injury": null
   },
-  "james-harden": {
+  "201935": {
    "name": "James Harden",
    "team": "CLE",
+   "bbref_id": "hardeja01",
    "age": 37,
    "pick": null,
    "history_seasons": 3,
@@ -1184,9 +1245,10 @@
    "mpg_projected": 28.5,
    "long_injury": null
   },
-  "derrick-white": {
+  "1628401": {
    "name": "Derrick White",
    "team": "BOS",
+   "bbref_id": "whitede01",
    "age": 32,
    "pick": 29,
    "history_seasons": 3,
@@ -1203,9 +1265,10 @@
    "mpg_projected": 26.77,
    "long_injury": null
   },
-  "andrew-wiggins": {
+  "203952": {
    "name": "Andrew Wiggins",
    "team": "MIA",
+   "bbref_id": "wiggian01",
    "age": 31,
    "pick": 1,
    "history_seasons": 3,
@@ -1222,9 +1285,10 @@
    "mpg_projected": 21.04,
    "long_injury": null
   },
-  "walker-kessler": {
+  "1631117": {
    "name": "Walker Kessler",
    "team": "LAL",
+   "bbref_id": "kesslwa01",
    "age": 25,
    "pick": 22,
    "history_seasons": 3,
@@ -1241,9 +1305,10 @@
    "mpg_projected": 12.07,
    "long_injury": null
   },
-  "jalen-johnson": {
+  "1630552": {
    "name": "Jalen Johnson",
    "team": "ATL",
+   "bbref_id": "johnsja05",
    "age": 25,
    "pick": 20,
    "history_seasons": 3,
@@ -1260,9 +1325,10 @@
    "mpg_projected": 22.78,
    "long_injury": null
   },
-  "rj-barrett": {
+  "1629628": {
    "name": "RJ Barrett",
    "team": "TOR",
+   "bbref_id": "barrerj01",
    "age": 26,
    "pick": 3,
    "history_seasons": 3,
@@ -1279,9 +1345,10 @@
    "mpg_projected": 22.62,
    "long_injury": null
   },
-  "jarrett-allen": {
+  "1628386": {
    "name": "Jarrett Allen",
    "team": "CLE",
+   "bbref_id": "allenja01",
    "age": 28,
    "pick": 22,
    "history_seasons": 3,
@@ -1298,9 +1365,10 @@
    "mpg_projected": 20.53,
    "long_injury": null
   },
-  "draymond-green": {
+  "203110": {
    "name": "Draymond Green",
    "team": "GSW",
+   "bbref_id": "greendr01",
    "age": 36,
    "pick": 35,
    "history_seasons": 3,
@@ -1317,9 +1385,10 @@
    "mpg_projected": 21.52,
    "long_injury": null
   },
-  "devin-vassell": {
+  "1630170": {
    "name": "Devin Vassell",
    "team": "SAS",
+   "bbref_id": "vassede01",
    "age": 26,
    "pick": 11,
    "history_seasons": 3,
@@ -1336,9 +1405,10 @@
    "mpg_projected": 23.26,
    "long_injury": null
   },
-  "trey-murphy": {
+  "1630530": {
    "name": "Trey Murphy III",
    "team": "NOP",
+   "bbref_id": "murphtr02",
    "age": 26,
    "pick": 17,
    "history_seasons": 3,
@@ -1355,9 +1425,10 @@
    "mpg_projected": 24.3,
    "long_injury": null
   },
-  "coby-white": {
+  "1629632": {
    "name": "Coby White",
    "team": "CHA",
+   "bbref_id": "whiteco01",
    "age": 26,
    "pick": 7,
    "history_seasons": 3,
@@ -1374,9 +1445,10 @@
    "mpg_projected": 15.66,
    "long_injury": null
   },
-  "myles-turner": {
+  "1626167": {
    "name": "Myles Turner",
    "team": "MIL",
+   "bbref_id": "turnemy01",
    "age": 30,
    "pick": 11,
    "history_seasons": 3,
@@ -1393,9 +1465,10 @@
    "mpg_projected": 22.12,
    "long_injury": null
   },
-  "jaden-mcdaniels": {
+  "1630183": {
    "name": "Jaden McDaniels",
    "team": "MIN",
+   "bbref_id": "mcdanja02",
    "age": 26,
    "pick": 28,
    "history_seasons": 3,
@@ -1412,9 +1485,10 @@
    "mpg_projected": 28.81,
    "long_injury": null
   },
-  "dyson-daniels": {
+  "1630700": {
    "name": "Dyson Daniels",
    "team": "ATL",
+   "bbref_id": "daniedy01",
    "age": 23,
    "pick": 8,
    "history_seasons": 3,
@@ -1431,9 +1505,10 @@
    "mpg_projected": 26.72,
    "long_injury": null
   },
-  "fred-vanvleet": {
+  "1627832": {
    "name": "Fred VanVleet",
    "team": "HOU",
+   "bbref_id": "vanvlfr01",
    "age": 32,
    "pick": null,
    "history_seasons": 2,
@@ -1450,9 +1525,10 @@
    "mpg_projected": 15.53,
    "long_injury": null
   },
-  "josh-giddey": {
+  "1630581": {
    "name": "Josh Giddey",
    "team": "CHI",
+   "bbref_id": "giddejo01",
    "age": 24,
    "pick": 6,
    "history_seasons": 3,
@@ -1469,9 +1545,10 @@
    "mpg_projected": 21.68,
    "long_injury": null
   },
-  "deandre-hunter": {
+  "1629631": {
    "name": "De'Andre Hunter",
    "team": "SAC",
+   "bbref_id": "huntede01",
    "age": 29,
    "pick": 4,
    "history_seasons": 3,
@@ -1488,9 +1565,10 @@
    "mpg_projected": 20.03,
    "long_injury": null
   },
-  "keegan-murray": {
+  "1631099": {
    "name": "Keegan Murray",
    "team": "SAC",
+   "bbref_id": "murrake02",
    "age": 26,
    "pick": 4,
    "history_seasons": 3,
@@ -1507,9 +1585,10 @@
    "mpg_projected": 19.28,
    "long_injury": null
   },
-  "jabari-smith": {
+  "1631095": {
    "name": "Jabari Smith Jr.",
    "team": "HOU",
+   "bbref_id": "smithja05",
    "age": 23,
    "pick": 3,
    "history_seasons": 3,
@@ -1526,9 +1605,10 @@
    "mpg_projected": 27.48,
    "long_injury": null
   },
-  "nicolas-claxton": {
+  "1629651": {
    "name": "Nic Claxton",
    "team": "CHI",
+   "bbref_id": "claxtni01",
    "age": 27,
    "pick": 31,
    "history_seasons": 3,
@@ -1545,9 +1625,10 @@
    "mpg_projected": 20.09,
    "long_injury": null
   },
-  "naz-reid": {
+  "1629675": {
    "name": "Naz Reid",
    "team": "CHA",
+   "bbref_id": "reidna01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -1564,9 +1645,10 @@
    "mpg_projected": 24.57,
    "long_injury": null
   },
-  "isaiah-hartenstein": {
+  "1628392": {
    "name": "Isaiah Hartenstein",
    "team": "OKC",
+   "bbref_id": "harteis01",
    "age": 28,
    "pick": 43,
    "history_seasons": 3,
@@ -1583,9 +1665,10 @@
    "mpg_projected": 16.06,
    "long_injury": null
   },
-  "cameron-johnson": {
+  "1629661": {
    "name": "Cameron Johnson",
    "team": "DEN",
+   "bbref_id": "johnsca02",
    "age": 30,
    "pick": 11,
    "history_seasons": 3,
@@ -1602,9 +1685,10 @@
    "mpg_projected": 19.49,
    "long_injury": null
   },
-  "miles-bridges": {
+  "1628970": {
    "name": "Miles Bridges",
    "team": "PHX",
+   "bbref_id": "bridgmi02",
    "age": 28,
    "pick": 12,
    "history_seasons": 3,
@@ -1621,9 +1705,10 @@
    "mpg_projected": 25.49,
    "long_injury": null
   },
-  "christian-braun": {
+  "1631128": {
    "name": "Christian Braun",
    "team": "DEN",
+   "bbref_id": "braunch01",
    "age": 25,
    "pick": 21,
    "history_seasons": 3,
@@ -1640,9 +1725,10 @@
    "mpg_projected": 24.38,
    "long_injury": null
   },
-  "norman-powell": {
+  "1626181": {
    "name": "Norman Powell",
    "team": "CHI",
+   "bbref_id": "powelno01",
    "age": 33,
    "pick": 46,
    "history_seasons": 3,
@@ -1659,9 +1745,10 @@
    "mpg_projected": 20.71,
    "long_injury": null
   },
-  "cj-mccollum": {
+  "203468": {
    "name": "CJ McCollum",
    "team": "ATL",
+   "bbref_id": "mccolcj01",
    "age": 35,
    "pick": null,
    "history_seasons": 3,
@@ -1678,9 +1765,10 @@
    "mpg_projected": 21.03,
    "long_injury": null
   },
-  "dillon-brooks": {
+  "1628415": {
    "name": "Dillon Brooks",
    "team": "PHX",
+   "bbref_id": "brookdi01",
    "age": 31,
    "pick": 45,
    "history_seasons": 3,
@@ -1697,9 +1785,10 @@
    "mpg_projected": 23.54,
    "long_injury": null
   },
-  "josh-hart": {
+  "1628404": {
    "name": "Josh Hart",
    "team": "NYK",
+   "bbref_id": "hartjo01",
    "age": 31,
    "pick": 30,
    "history_seasons": 3,
@@ -1716,9 +1805,10 @@
    "mpg_projected": 25.06,
    "long_injury": null
   },
-  "kyle-kuzma": {
+  "1628398": {
    "name": "Kyle Kuzma",
    "team": "MIL",
+   "bbref_id": "kuzmaky01",
    "age": 31,
    "pick": 27,
    "history_seasons": 3,
@@ -1735,9 +1825,10 @@
    "mpg_projected": 21.13,
    "long_injury": null
   },
-  "peyton-watson": {
+  "1631212": {
    "name": "Peyton Watson",
    "team": "CLE",
+   "bbref_id": "watsope01",
    "age": 24,
    "pick": 30,
    "history_seasons": 3,
@@ -1754,9 +1845,10 @@
    "mpg_projected": 21.11,
    "long_injury": null
   },
-  "ivica-zubac": {
+  "1627826": {
    "name": "Ivica Zubac",
    "team": "IND",
+   "bbref_id": "zubaciv01",
    "age": 29,
    "pick": 32,
    "history_seasons": 3,
@@ -1773,9 +1865,10 @@
    "mpg_projected": 18.69,
    "long_injury": null
   },
-  "malik-monk": {
+  "1628370": {
    "name": "Malik Monk",
    "team": "SAC",
+   "bbref_id": "monkma01",
    "age": 28,
    "pick": 11,
    "history_seasons": 3,
@@ -1792,9 +1885,10 @@
    "mpg_projected": 14.06,
    "long_injury": null
   },
-  "shaedon-sharpe": {
+  "1631101": {
    "name": "Shaedon Sharpe",
    "team": "POR",
+   "bbref_id": "sharpsh01",
    "age": 23,
    "pick": 7,
    "history_seasons": 3,
@@ -1817,9 +1911,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "kristaps-porzingis": {
+  "204001": {
    "name": "Kristaps Porziņģis",
    "team": "GSW",
+   "bbref_id": "porzikr01",
    "age": 31,
    "pick": 4,
    "history_seasons": 3,
@@ -1842,9 +1937,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "pj-washington": {
+  "1629023": {
    "name": "P.J. Washington",
    "team": "DAL",
+   "bbref_id": "washipj01",
    "age": 28,
    "pick": 12,
    "history_seasons": 3,
@@ -1861,9 +1957,10 @@
    "mpg_projected": 22.89,
    "long_injury": null
   },
-  "alex-caruso": {
+  "1627936": {
    "name": "Alex Caruso",
    "team": "OKC",
+   "bbref_id": "carusal01",
    "age": 32,
    "pick": null,
    "history_seasons": 3,
@@ -1880,9 +1977,10 @@
    "mpg_projected": 12.42,
    "long_injury": null
   },
-  "andrew-nembhard": {
+  "1629614": {
    "name": "Andrew Nembhard",
    "team": "IND",
+   "bbref_id": "nembhan01",
    "age": 27,
    "pick": 31,
    "history_seasons": 3,
@@ -1899,9 +1997,10 @@
    "mpg_projected": 23.61,
    "long_injury": null
   },
-  "jakob-poeltl": {
+  "1627751": {
    "name": "Jakob Poeltl",
    "team": "TOR",
+   "bbref_id": "poeltja01",
    "age": 31,
    "pick": 9,
    "history_seasons": 3,
@@ -1918,9 +2017,10 @@
    "mpg_projected": 14.94,
    "long_injury": null
   },
-  "ayo-dosunmu": {
+  "1630245": {
    "name": "Ayo Dosunmu",
    "team": "MIN",
+   "bbref_id": "dosunay01",
    "age": 27,
    "pick": 38,
    "history_seasons": 3,
@@ -1937,9 +2037,10 @@
    "mpg_projected": 21.43,
    "long_injury": null
   },
-  "grayson-allen": {
+  "1628960": {
    "name": "Grayson Allen",
    "team": "CHA",
+   "bbref_id": "allengr01",
    "age": 31,
    "pick": 21,
    "history_seasons": 3,
@@ -1956,9 +2057,10 @@
    "mpg_projected": 19.02,
    "long_injury": null
   },
-  "wendell-carter": {
+  "1628976": {
    "name": "Wendell Carter Jr.",
    "team": "ORL",
+   "bbref_id": "cartewe01",
    "age": 27,
    "pick": 7,
    "history_seasons": 3,
@@ -1975,9 +2077,10 @@
    "mpg_projected": 26.46,
    "long_injury": null
   },
-  "toumani-camara": {
+  "1641739": {
    "name": "Toumani Camara",
    "team": "POR",
+   "bbref_id": "camarto01",
    "age": 26,
    "pick": 52,
    "history_seasons": 3,
@@ -1994,9 +2097,10 @@
    "mpg_projected": 25.88,
    "long_injury": null
   },
-  "keldon-johnson": {
+  "1629640": {
    "name": "Keldon Johnson",
    "team": "SAS",
+   "bbref_id": "johnske04",
    "age": 27,
    "pick": 29,
    "history_seasons": 3,
@@ -2013,9 +2117,10 @@
    "mpg_projected": 20.63,
    "long_injury": null
   },
-  "patrick-williams": {
+  "1630172": {
    "name": "Patrick Williams",
    "team": "CHI",
+   "bbref_id": "willipa01",
    "age": 25,
    "pick": 4,
    "history_seasons": 3,
@@ -2032,9 +2137,10 @@
    "mpg_projected": 15.79,
    "long_injury": null
   },
-  "luguentz-dort": {
+  "1629652": {
    "name": "Luguentz Dort",
    "team": "ATL",
+   "bbref_id": "dortlu01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -2051,9 +2157,10 @@
    "mpg_projected": 20.96,
    "long_injury": null
   },
-  "daniel-gafford": {
+  "1629655": {
    "name": "Daniel Gafford",
    "team": "DAL",
+   "bbref_id": "gaffoda01",
    "age": 28,
    "pick": 38,
    "history_seasons": 3,
@@ -2070,9 +2177,10 @@
    "mpg_projected": 15.36,
    "long_injury": null
   },
-  "santi-aldama": {
+  "1630583": {
    "name": "Santi Aldama",
    "team": "DAL",
+   "bbref_id": "aldamsa01",
    "age": 26,
    "pick": 30,
    "history_seasons": 3,
@@ -2089,9 +2197,10 @@
    "mpg_projected": 15.53,
    "long_injury": null
   },
-  "john-collins": {
+  "1628381": {
    "name": "John Collins",
    "team": "DET",
+   "bbref_id": "collijo01",
    "age": 29,
    "pick": 19,
    "history_seasons": 3,
@@ -2108,9 +2217,10 @@
    "mpg_projected": 18.13,
    "long_injury": null
   },
-  "victor-wembanyama": {
+  "1641705": {
    "name": "Victor Wembanyama",
    "team": "SAS",
+   "bbref_id": "wembavi01",
    "age": 23,
    "pick": 1,
    "history_seasons": 3,
@@ -2127,9 +2237,10 @@
    "mpg_projected": 20.61,
    "long_injury": null
   },
-  "max-strus": {
+  "1629622": {
    "name": "Max Strus",
    "team": "LAC",
+   "bbref_id": "strusma01",
    "age": 30,
    "pick": null,
    "history_seasons": 3,
@@ -2146,9 +2257,10 @@
    "mpg_projected": 8.17,
    "long_injury": null
   },
-  "nikola-jovic": {
+  "1631107": {
    "name": "Nikola Jović",
    "team": "MIA",
+   "bbref_id": "jovicni01",
    "age": 23,
    "pick": 27,
    "history_seasons": 3,
@@ -2165,9 +2277,10 @@
    "mpg_projected": 8.7,
    "long_injury": null
   },
-  "onyeka-okongwu": {
+  "1630168": {
    "name": "Onyeka Okongwu",
    "team": "ATL",
+   "bbref_id": "okongon01",
    "age": 26,
    "pick": 6,
    "history_seasons": 3,
@@ -2184,9 +2297,10 @@
    "mpg_projected": 25.25,
    "long_injury": null
   },
-  "duncan-robinson": {
+  "1629130": {
    "name": "Duncan Robinson",
    "team": "DET",
+   "bbref_id": "robindu01",
    "age": 32,
    "pick": null,
    "history_seasons": 3,
@@ -2203,9 +2317,10 @@
    "mpg_projected": 24.89,
    "long_injury": null
   },
-  "terance-mann": {
+  "1629611": {
    "name": "Terance Mann",
    "team": "BKN",
+   "bbref_id": "mannte01",
    "age": 30,
    "pick": 48,
    "history_seasons": 3,
@@ -2222,9 +2337,10 @@
    "mpg_projected": 14.9,
    "long_injury": null
   },
-  "julian-champagnie": {
+  "1630577": {
    "name": "Julian Champagnie",
    "team": "SAS",
+   "bbref_id": "champju02",
    "age": 25,
    "pick": null,
    "history_seasons": 3,
@@ -2241,9 +2357,10 @@
    "mpg_projected": 23.71,
    "long_injury": null
   },
-  "gary-trent": {
+  "1629018": {
    "name": "Gary Trent Jr.",
    "team": "MIL",
+   "bbref_id": "trentga02",
    "age": 28,
    "pick": 37,
    "history_seasons": 3,
@@ -2260,9 +2377,10 @@
    "mpg_projected": 13.1,
    "long_injury": null
   },
-  "brandon-miller": {
+  "1641706": {
    "name": "Brandon Miller",
    "team": "CHA",
+   "bbref_id": "millebr02",
    "age": 24,
    "pick": 2,
    "history_seasons": 3,
@@ -2279,9 +2397,10 @@
    "mpg_projected": 19.02,
    "long_injury": null
   },
-  "mitchell-robinson": {
+  "1629011": {
    "name": "Mitchell Robinson",
    "team": "BOS",
+   "bbref_id": "robinmi01",
    "age": 28,
    "pick": 36,
    "history_seasons": 3,
@@ -2298,9 +2417,10 @@
    "mpg_projected": 10.6,
    "long_injury": null
   },
-  "tobias-harris": {
+  "202699": {
    "name": "Tobias Harris",
    "team": "SAS",
+   "bbref_id": "harrito02",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -2317,9 +2437,10 @@
    "mpg_projected": 20.83,
    "long_injury": null
   },
-  "isaiah-stewart": {
+  "1630191": {
    "name": "Isaiah Stewart",
    "team": "MEM",
+   "bbref_id": "stewais01",
    "age": 25,
    "pick": 16,
    "history_seasons": 3,
@@ -2336,9 +2457,10 @@
    "mpg_projected": 15.2,
    "long_injury": null
   },
-  "obi-toppin": {
+  "1630167": {
    "name": "Obi Toppin",
    "team": "IND",
+   "bbref_id": "toppiob01",
    "age": 28,
    "pick": 8,
    "history_seasons": 3,
@@ -2355,9 +2477,10 @@
    "mpg_projected": 13.23,
    "long_injury": null
   },
-  "herbert-jones": {
+  "1630529": {
    "name": "Herbert Jones",
    "team": "NOP",
+   "bbref_id": "joneshe01",
    "age": 28,
    "pick": 35,
    "history_seasons": 3,
@@ -2374,9 +2497,10 @@
    "mpg_projected": 13.59,
    "long_injury": null
   },
-  "caris-levert": {
+  "1627747": {
    "name": "Caris LeVert",
    "team": "MIL",
+   "bbref_id": "leverca01",
    "age": 32,
    "pick": 20,
    "history_seasons": 3,
@@ -2393,9 +2517,10 @@
    "mpg_projected": 13.55,
    "long_injury": null
   },
-  "dennis-schroder": {
+  "203471": {
    "name": "Dennis Schröder",
    "team": "CHA",
+   "bbref_id": "schrode01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -2412,9 +2537,10 @@
    "mpg_projected": 22.91,
    "long_injury": null
   },
-  "aj-dybantsa": {
+  "1643407": {
    "name": "AJ Dybantsa",
    "team": "WAS",
+   "bbref_id": "dybanaj01",
    "age": 19.0,
    "pick": 1,
    "history_seasons": 0,
@@ -2431,9 +2557,10 @@
    "mpg_projected": 21.92,
    "long_injury": null
   },
-  "josh-green": {
+  "1630182": {
    "name": "Josh Green",
    "team": "UTA",
+   "bbref_id": "greenjo02",
    "age": 26,
    "pick": 18,
    "history_seasons": 3,
@@ -2450,9 +2577,10 @@
    "mpg_projected": 12.71,
    "long_injury": null
   },
-  "bobby-portis": {
+  "1626171": {
    "name": "Bobby Portis Jr.",
    "team": "MIA",
+   "bbref_id": "portibo01",
    "age": 31,
    "pick": 22,
    "history_seasons": 3,
@@ -2469,9 +2597,10 @@
    "mpg_projected": 15.57,
    "long_injury": null
   },
-  "cooper-flagg": {
+  "1642843": {
    "name": "Cooper Flagg",
    "team": "DAL",
+   "bbref_id": "flaggco01",
    "age": 20,
    "pick": 1,
    "history_seasons": 1,
@@ -2488,9 +2617,10 @@
    "mpg_projected": 26.09,
    "long_injury": null
   },
-  "nickeil-alexander-walker": {
+  "1629638": {
    "name": "Nickeil Alexander-Walker",
    "team": "ATL",
+   "bbref_id": "alexani01",
    "age": 28,
    "pick": 17,
    "history_seasons": 3,
@@ -2507,9 +2637,10 @@
    "mpg_projected": 28.08,
    "long_injury": null
   },
-  "grant-williams": {
+  "1629684": {
    "name": "Grant Williams",
    "team": "CHA",
+   "bbref_id": "willigr01",
    "age": 28,
    "pick": 22,
    "history_seasons": 3,
@@ -2526,9 +2657,10 @@
    "mpg_projected": 8.35,
    "long_injury": null
   },
-  "dorian-finney-smith": {
+  "1627827": {
    "name": "Dorian Finney-Smith",
    "team": "ATL",
+   "bbref_id": "finnedo01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -2545,9 +2677,10 @@
    "mpg_projected": 7.53,
    "long_injury": null
   },
-  "jock-landale": {
+  "1629111": {
    "name": "Jock Landale",
    "team": "ATL",
+   "bbref_id": "landajo01",
    "age": 31,
    "pick": null,
    "history_seasons": 3,
@@ -2564,9 +2697,10 @@
    "mpg_projected": 12.29,
    "long_injury": null
   },
-  "tari-eason": {
+  "1631106": {
    "name": "Tari Eason",
    "team": "HOU",
+   "bbref_id": "easonta01",
    "age": 25,
    "pick": 17,
    "history_seasons": 3,
@@ -2583,9 +2717,10 @@
    "mpg_projected": 17.72,
    "long_injury": null
   },
-  "robert-williams": {
+  "1629057": {
    "name": "Robert Williams III",
    "team": "POR",
+   "bbref_id": "williro04",
    "age": 29,
    "pick": 27,
    "history_seasons": 3,
@@ -2602,9 +2737,10 @@
    "mpg_projected": 9.33,
    "long_injury": null
   },
-  "rui-hachimura": {
+  "1629060": {
    "name": "Rui Hachimura",
    "team": "LAC",
+   "bbref_id": "hachiru01",
    "age": 28,
    "pick": 9,
    "history_seasons": 3,
@@ -2621,9 +2757,10 @@
    "mpg_projected": 22.04,
    "long_injury": null
   },
-  "corey-kispert": {
+  "1630557": {
    "name": "Corey Kispert",
    "team": "ATL",
+   "bbref_id": "kispeco01",
    "age": 27,
    "pick": 15,
    "history_seasons": 3,
@@ -2640,9 +2777,10 @@
    "mpg_projected": 9.67,
    "long_injury": null
   },
-  "quentin-grimes": {
+  "1629656": {
    "name": "Quentin Grimes",
    "team": "LAL",
+   "bbref_id": "grimequ01",
    "age": 26,
    "pick": 25,
    "history_seasons": 3,
@@ -2659,9 +2797,10 @@
    "mpg_projected": 23.04,
    "long_injury": null
   },
-  "zaccharie-risacher": {
+  "1642258": {
    "name": "Zaccharie Risacher",
    "team": "DAL",
+   "bbref_id": "risacza01",
    "age": 21,
    "pick": 1,
    "history_seasons": 2,
@@ -2678,9 +2817,10 @@
    "mpg_projected": 19.71,
    "long_injury": null
   },
-  "scoot-henderson": {
+  "1630703": {
    "name": "Scoot Henderson",
    "team": "POR",
+   "bbref_id": "hendesc01",
    "age": 22,
    "pick": 3,
    "history_seasons": 3,
@@ -2697,9 +2837,10 @@
    "mpg_projected": 14.66,
    "long_injury": null
   },
-  "damian-lillard": {
+  "203081": {
    "name": "Damian Lillard",
    "team": "POR",
+   "bbref_id": "lillada01",
    "age": 36,
    "pick": null,
    "history_seasons": 2,
@@ -2716,9 +2857,10 @@
    "mpg_projected": 15.32,
    "long_injury": null
   },
-  "darryn-peterson": {
+  "1643408": {
    "name": "Darryn Peterson",
    "team": "UTA",
+   "bbref_id": "peterda02",
    "age": 19.0,
    "pick": 2,
    "history_seasons": 0,
@@ -2735,9 +2877,10 @@
    "mpg_projected": 21.87,
    "long_injury": null
   },
-  "deni-avdija": {
+  "1630166": {
    "name": "Deni Avdija",
    "team": "POR",
+   "bbref_id": "avdijde01",
    "age": 26,
    "pick": 9,
    "history_seasons": 3,
@@ -2754,9 +2897,10 @@
    "mpg_projected": 25.85,
    "long_injury": null
   },
-  "sandro-mamukelashvili": {
+  "1630572": {
    "name": "Sandro Mamukelashvili",
    "team": "LAL",
+   "bbref_id": "mamuksa01",
    "age": 27,
    "pick": 54,
    "history_seasons": 3,
@@ -2773,9 +2917,10 @@
    "mpg_projected": 18.18,
    "long_injury": null
   },
-  "steven-adams": {
+  "203500": {
    "name": "Steven Adams",
    "team": "HOU",
+   "bbref_id": "adamsst01",
    "age": 33,
    "pick": null,
    "history_seasons": 2,
@@ -2792,9 +2937,10 @@
    "mpg_projected": 11.71,
    "long_injury": null
   },
-  "dylan-harper": {
+  "1642844": {
    "name": "Dylan Harper",
    "team": "SAS",
+   "bbref_id": "harpedy01",
    "age": 20,
    "pick": 2,
    "history_seasons": 1,
@@ -2811,9 +2957,10 @@
    "mpg_projected": 22.45,
    "long_injury": null
   },
-  "donte-divincenzo": {
+  "1628978": {
    "name": "Donte DiVincenzo",
    "team": "MIN",
+   "bbref_id": "divindo01",
    "age": 30,
    "pick": 17,
    "history_seasons": 3,
@@ -2836,9 +2983,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "moses-moody": {
+  "1630541": {
    "name": "Moses Moody",
    "team": "GSW",
+   "bbref_id": "moodymo01",
    "age": 24,
    "pick": 14,
    "history_seasons": 3,
@@ -2855,9 +3003,10 @@
    "mpg_projected": 19.09,
    "long_injury": null
   },
-  "jarred-vanderbilt": {
+  "1629020": {
    "name": "Jarred Vanderbilt",
    "team": "LAL",
+   "bbref_id": "vandeja01",
    "age": 27,
    "pick": 41,
    "history_seasons": 3,
@@ -2874,9 +3023,10 @@
    "mpg_projected": 9.27,
    "long_injury": null
   },
-  "davion-mitchell": {
+  "1630558": {
    "name": "Davion Mitchell",
    "team": "MIA",
+   "bbref_id": "mitchda01",
    "age": 28,
    "pick": 9,
    "history_seasons": 3,
@@ -2893,9 +3043,10 @@
    "mpg_projected": 27.33,
    "long_injury": null
   },
-  "alex-sarr": {
+  "1642259": {
    "name": "Alex Sarr",
    "team": "WAS",
+   "bbref_id": "sarral01",
    "age": 21,
    "pick": 2,
    "history_seasons": 2,
@@ -2912,9 +3063,10 @@
    "mpg_projected": 18.52,
    "long_injury": null
   },
-  "amen-thompson": {
+  "1641708": {
    "name": "Amen Thompson",
    "team": "HOU",
+   "bbref_id": "thompam01",
    "age": 24,
    "pick": 4,
    "history_seasons": 3,
@@ -2931,9 +3083,10 @@
    "mpg_projected": 29.03,
    "long_injury": null
   },
-  "cameron-boozer": {
+  "1643409": {
    "name": "Cameron Boozer",
    "team": "MEM",
+   "bbref_id": "boozeca02",
    "age": 19.0,
    "pick": 3,
    "history_seasons": 0,
@@ -2950,9 +3103,10 @@
    "mpg_projected": 21.59,
    "long_injury": null
   },
-  "isaac-okoro": {
+  "1630171": {
    "name": "Isaac Okoro",
    "team": "CHI",
+   "bbref_id": "okorois01",
    "age": 26,
    "pick": 5,
    "history_seasons": 3,
@@ -2969,9 +3123,10 @@
    "mpg_projected": 15.48,
    "long_injury": null
   },
-  "mark-williams": {
+  "1631109": {
    "name": "Mark Williams",
    "team": "PHX",
+   "bbref_id": "willima07",
    "age": 25,
    "pick": 15,
    "history_seasons": 3,
@@ -2994,9 +3149,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "vj-edgecombe": {
+  "1642845": {
    "name": "VJ Edgecombe",
    "team": "PHI",
+   "bbref_id": "edgecvj01",
    "age": 21,
    "pick": 3,
    "history_seasons": 1,
@@ -3013,9 +3169,10 @@
    "mpg_projected": 27.67,
    "long_injury": null
   },
-  "jusuf-nurkic": {
+  "203994": {
    "name": "Jusuf Nurkić",
    "team": "UTA",
+   "bbref_id": "nurkiju01",
    "age": 32,
    "pick": 16,
    "history_seasons": 3,
@@ -3032,9 +3189,10 @@
    "mpg_projected": 15.3,
    "long_injury": null
   },
-  "isaiah-joe": {
+  "1630198": {
    "name": "Isaiah Joe",
    "team": "DET",
+   "bbref_id": "joeis01",
    "age": 27,
    "pick": 49,
    "history_seasons": 3,
@@ -3051,9 +3209,10 @@
    "mpg_projected": 14.78,
    "long_injury": null
   },
-  "ausar-thompson": {
+  "1641709": {
    "name": "Ausar Thompson",
    "team": "DET",
+   "bbref_id": "thompau01",
    "age": 24,
    "pick": 5,
    "history_seasons": 3,
@@ -3070,9 +3229,10 @@
    "mpg_projected": 20.47,
    "long_injury": null
   },
-  "reed-sheppard": {
+  "1642263": {
    "name": "Reed Sheppard",
    "team": "HOU",
+   "bbref_id": "sheppre01",
    "age": 22,
    "pick": 3,
    "history_seasons": 2,
@@ -3089,9 +3249,10 @@
    "mpg_projected": 17.66,
    "long_injury": null
   },
-  "aaron-nesmith": {
+  "1630174": {
    "name": "Aaron Nesmith",
    "team": "IND",
+   "bbref_id": "nesmiaa01",
    "age": 27,
    "pick": 14,
    "history_seasons": 3,
@@ -3108,9 +3269,10 @@
    "mpg_projected": 15.97,
    "long_injury": null
   },
-  "tj-mcconnell": {
+  "204456": {
    "name": "T.J. McConnell",
    "team": "IND",
+   "bbref_id": "mccontj01",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -3127,9 +3289,10 @@
    "mpg_projected": 11.9,
    "long_injury": null
   },
-  "royce-oneale": {
+  "1626220": {
    "name": "Royce O'Neale",
    "team": "CHA",
+   "bbref_id": "onealro01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -3146,9 +3309,10 @@
    "mpg_projected": 18.85,
    "long_injury": null
   },
-  "sam-hauser": {
+  "1630573": {
    "name": "Sam Hauser",
    "team": "BOS",
+   "bbref_id": "hausesa01",
    "age": 29,
    "pick": null,
    "history_seasons": 3,
@@ -3165,9 +3329,10 @@
    "mpg_projected": 18.73,
    "long_injury": null
   },
-  "collin-gillespie": {
+  "1631221": {
    "name": "Collin Gillespie",
    "team": "PHX",
+   "bbref_id": "gilleco01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -3184,9 +3349,10 @@
    "mpg_projected": 18.1,
    "long_injury": null
   },
-  "caleb-wilson": {
+  "1643410": {
    "name": "Caleb Wilson",
    "team": "CHI",
+   "bbref_id": "wilsoca01",
    "age": 20.0,
    "pick": 4,
    "history_seasons": 0,
@@ -3203,9 +3369,10 @@
    "mpg_projected": 21.34,
    "long_injury": null
   },
-  "kon-knueppel": {
+  "1642851": {
    "name": "Kon Knueppel",
    "team": "CHA",
+   "bbref_id": "knuepko01",
    "age": 21,
    "pick": 4,
    "history_seasons": 1,
@@ -3222,9 +3389,10 @@
    "mpg_projected": 21.67,
    "long_injury": null
   },
-  "derrick-jones": {
+  "1627884": {
    "name": "Derrick Jones Jr.",
    "team": "LAC",
+   "bbref_id": "jonesde02",
    "age": 29,
    "pick": null,
    "history_seasons": 3,
@@ -3241,9 +3409,10 @@
    "mpg_projected": 21.45,
    "long_injury": null
   },
-  "luke-kornet": {
+  "1628436": {
    "name": "Luke Kornet",
    "team": "SAS",
+   "bbref_id": "kornelu01",
    "age": 31,
    "pick": null,
    "history_seasons": 3,
@@ -3260,9 +3429,10 @@
    "mpg_projected": 13.89,
    "long_injury": null
   },
-  "anthony-black": {
+  "1641710": {
    "name": "Anthony Black",
    "team": "ORL",
+   "bbref_id": "blackan01",
    "age": 23,
    "pick": 6,
    "history_seasons": 3,
@@ -3279,9 +3449,10 @@
    "mpg_projected": 23.89,
    "long_injury": null
   },
-  "aj-green": {
+  "1631260": {
    "name": "AJ Green",
    "team": "MIL",
+   "bbref_id": "greenaj01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -3298,9 +3469,10 @@
    "mpg_projected": 19.67,
    "long_injury": null
   },
-  "stephon-castle": {
+  "1642264": {
    "name": "Stephon Castle",
    "team": "SAS",
+   "bbref_id": "castlst01",
    "age": 22,
    "pick": 4,
    "history_seasons": 2,
@@ -3317,9 +3489,10 @@
    "mpg_projected": 24.73,
    "long_injury": null
   },
-  "caleb-martin": {
+  "1628997": {
    "name": "Caleb Martin",
    "team": "DAL",
+   "bbref_id": "martica02",
    "age": 31,
    "pick": null,
    "history_seasons": 3,
@@ -3336,9 +3509,10 @@
    "mpg_projected": 10.79,
    "long_injury": null
   },
-  "dayron-sharpe": {
+  "1630549": {
    "name": "Day'Ron Sharpe",
    "team": "BKN",
+   "bbref_id": "sharpda01",
    "age": 25,
    "pick": 29,
    "history_seasons": 3,
@@ -3355,9 +3529,10 @@
    "mpg_projected": 15.35,
    "long_injury": null
   },
-  "keaton-wagler": {
+  "1643413": {
    "name": "Keaton Wagler",
    "team": "LAC",
+   "bbref_id": "wagleke01",
    "age": 19.0,
    "pick": 5,
    "history_seasons": 0,
@@ -3374,9 +3549,10 @@
    "mpg_projected": 16.81,
    "long_injury": null
   },
-  "buddy-hield": {
+  "1627741": {
    "name": "Buddy Hield",
    "team": "CHI",
+   "bbref_id": "hieldbu01",
    "age": 34,
    "pick": 6,
    "history_seasons": 3,
@@ -3393,9 +3569,10 @@
    "mpg_projected": 10.93,
    "long_injury": null
   },
-  "ace-bailey": {
+  "1642846": {
    "name": "Ace Bailey",
    "team": "UTA",
+   "bbref_id": "baileac01",
    "age": 20,
    "pick": 5,
    "history_seasons": 1,
@@ -3412,9 +3589,10 @@
    "mpg_projected": 23.54,
    "long_injury": null
   },
-  "kevin-huerter": {
+  "1628989": {
    "name": "Kevin Huerter",
    "team": "DET",
+   "bbref_id": "huertke01",
    "age": 28,
    "pick": 19,
    "history_seasons": 3,
@@ -3431,9 +3609,10 @@
    "mpg_projected": 17.61,
    "long_injury": null
   },
-  "jalen-smith": {
+  "1630188": {
    "name": "Jalen Smith",
    "team": "CHI",
+   "bbref_id": "smithja04",
    "age": 26,
    "pick": 10,
    "history_seasons": 3,
@@ -3450,9 +3629,10 @@
    "mpg_projected": 15.94,
    "long_injury": null
   },
-  "naji-marshall": {
+  "1630230": {
    "name": "Naji Marshall",
    "team": "DAL",
+   "bbref_id": "marshna01",
    "age": 29,
    "pick": null,
    "history_seasons": 3,
@@ -3469,9 +3649,10 @@
    "mpg_projected": 21.54,
    "long_injury": null
   },
-  "collin-sexton": {
+  "1629012": {
    "name": "Collin Sexton",
    "team": "LAL",
+   "bbref_id": "sextoco01",
    "age": 28,
    "pick": 8,
    "history_seasons": 3,
@@ -3488,9 +3669,10 @@
    "mpg_projected": 14.99,
    "long_injury": null
   },
-  "bilal-coulibaly": {
+  "1641731": {
    "name": "Bilal Coulibaly",
    "team": "WAS",
+   "bbref_id": "coulibi01",
    "age": 22,
    "pick": 7,
    "history_seasons": 3,
@@ -3507,9 +3689,10 @@
    "mpg_projected": 18.38,
    "long_injury": null
   },
-  "ty-jerome": {
+  "1629660": {
    "name": "Ty Jerome",
    "team": "MEM",
+   "bbref_id": "jeromty01",
    "age": 29,
    "pick": 24,
    "history_seasons": 3,
@@ -3526,9 +3709,10 @@
    "mpg_projected": 14.71,
    "long_injury": null
   },
-  "brook-lopez": {
+  "201572": {
    "name": "Brook Lopez",
    "team": "LAC",
+   "bbref_id": "lopezbr01",
    "age": 38,
    "pick": null,
    "history_seasons": 3,
@@ -3545,9 +3729,10 @@
    "mpg_projected": 19.92,
    "long_injury": null
   },
-  "sam-merrill": {
+  "1630241": {
    "name": "Sam Merrill",
    "team": "CLE",
+   "bbref_id": "merrisa01",
    "age": 30,
    "pick": 60,
    "history_seasons": 3,
@@ -3564,9 +3749,10 @@
    "mpg_projected": 17.89,
    "long_injury": null
   },
-  "ronald-holland": {
+  "1641842": {
    "name": "Ronald Holland II",
    "team": "DET",
+   "bbref_id": "hollaro01",
    "age": 21,
    "pick": 5,
    "history_seasons": 2,
@@ -3583,9 +3769,10 @@
    "mpg_projected": 14.99,
    "long_injury": null
   },
-  "dean-wade": {
+  "1629731": {
    "name": "Dean Wade",
    "team": "PHI",
+   "bbref_id": "wadede01",
    "age": 30,
    "pick": null,
    "history_seasons": 3,
@@ -3602,9 +3789,10 @@
    "mpg_projected": 17.07,
    "long_injury": null
   },
-  "keon-ellis": {
+  "1631165": {
    "name": "Keon Ellis",
    "team": "BKN",
+   "bbref_id": "elliske01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -3621,9 +3809,10 @@
    "mpg_projected": 18.54,
    "long_injury": null
   },
-  "moritz-wagner": {
+  "1629021": {
    "name": "Moritz Wagner",
    "team": "BKN",
+   "bbref_id": "wagnemo01",
    "age": 29,
    "pick": 25,
    "history_seasons": 3,
@@ -3640,9 +3829,10 @@
    "mpg_projected": 8.31,
    "long_injury": null
   },
-  "quinten-post": {
+  "1642366": {
    "name": "Quinten Post",
    "team": "MEM",
+   "bbref_id": "postqu01",
    "age": 26,
    "pick": 52,
    "history_seasons": 2,
@@ -3659,9 +3849,10 @@
    "mpg_projected": 10.58,
    "long_injury": null
   },
-  "aaron-wiggins": {
+  "1630598": {
    "name": "Aaron Wiggins",
    "team": "ATL",
+   "bbref_id": "wiggiaa01",
    "age": 28,
    "pick": 55,
    "history_seasons": 3,
@@ -3678,9 +3869,10 @@
    "mpg_projected": 20.14,
    "long_injury": null
   },
-  "mikel-brown": {
+  "1643414": {
    "name": "Mikel Brown Jr.",
    "team": "BKN",
+   "bbref_id": "brownmi02",
    "age": 20.0,
    "pick": 6,
    "history_seasons": 0,
@@ -3697,9 +3889,10 @@
    "mpg_projected": 16.03,
    "long_injury": null
   },
-  "tre-johnson": {
+  "1642848": {
    "name": "Tre Johnson",
    "team": "WAS",
+   "bbref_id": "johnstr03",
    "age": 20,
    "pick": 6,
    "history_seasons": 1,
@@ -3716,9 +3909,10 @@
    "mpg_projected": 16.22,
    "long_injury": null
   },
-  "zach-collins": {
+  "1628380": {
    "name": "Zach Collins",
    "team": "CHI",
+   "bbref_id": "colliza01",
    "age": 29,
    "pick": 10,
    "history_seasons": 3,
@@ -3735,9 +3929,10 @@
    "mpg_projected": 4.74,
    "long_injury": null
   },
-  "jarace-walker": {
+  "1641716": {
    "name": "Jarace Walker",
    "team": "IND",
+   "bbref_id": "walkeja02",
    "age": 23,
    "pick": 8,
    "history_seasons": 3,
@@ -3754,9 +3949,10 @@
    "mpg_projected": 20.52,
    "long_injury": null
   },
-  "max-christie": {
+  "1631108": {
    "name": "Max Christie",
    "team": "DAL",
+   "bbref_id": "chrisma02",
    "age": 23,
    "pick": 35,
    "history_seasons": 3,
@@ -3773,9 +3969,10 @@
    "mpg_projected": 20.71,
    "long_injury": null
   },
-  "tidjane-salaun": {
+  "1642275": {
    "name": "Tidjane Salaün",
    "team": "CHA",
+   "bbref_id": "salauti01",
    "age": 21,
    "pick": 6,
    "history_seasons": 2,
@@ -3792,9 +3989,10 @@
    "mpg_projected": 9.54,
    "long_injury": null
   },
-  "deandre-ayton": {
+  "1629028": {
    "name": "Deandre Ayton",
    "team": "WAS",
+   "bbref_id": "aytonde01",
    "age": 28,
    "pick": 1,
    "history_seasons": 3,
@@ -3811,9 +4009,10 @@
    "mpg_projected": 13.38,
    "long_injury": null
   },
-  "kelly-oubre": {
+  "1626162": {
    "name": "Kelly Oubre Jr.",
    "team": "IND",
+   "bbref_id": "oubreke01",
    "age": 31,
    "pick": 15,
    "history_seasons": 3,
@@ -3830,9 +4029,10 @@
    "mpg_projected": 17.57,
    "long_injury": null
   },
-  "darius-acuff": {
+  "1643411": {
    "name": "Darius Acuff Jr.",
    "team": "SAC",
+   "bbref_id": "acuffda01",
    "age": 19.0,
    "pick": 7,
    "history_seasons": 0,
@@ -3849,9 +4049,10 @@
    "mpg_projected": 23.28,
    "long_injury": null
   },
-  "harrison-barnes": {
+  "203084": {
    "name": "Harrison Barnes",
    "team": "SAS",
+   "bbref_id": "barneha02",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -3868,9 +4069,10 @@
    "mpg_projected": 15.57,
    "long_injury": null
   },
-  "tre-jones": {
+  "1630200": {
    "name": "Tre Jones",
    "team": "CHI",
+   "bbref_id": "jonestr01",
    "age": 27,
    "pick": 41,
    "history_seasons": 3,
@@ -3887,9 +4089,10 @@
    "mpg_projected": 14.5,
    "long_injury": null
   },
-  "tre-mann": {
+  "1630544": {
    "name": "Tre Mann",
    "team": "WAS",
+   "bbref_id": "manntr01",
    "age": 25,
    "pick": 18,
    "history_seasons": 3,
@@ -3906,9 +4109,10 @@
    "mpg_projected": 4.67,
    "long_injury": null
   },
-  "jeremiah-fears": {
+  "1642847": {
    "name": "Jeremiah Fears",
    "team": "NOP",
+   "bbref_id": "fearsje01",
    "age": 20,
    "pick": 7,
    "history_seasons": 1,
@@ -3925,9 +4129,10 @@
    "mpg_projected": 23.81,
    "long_injury": null
   },
-  "taylor-hendricks": {
+  "1641707": {
    "name": "Taylor Hendricks",
    "team": "MEM",
+   "bbref_id": "hendrta01",
    "age": 23,
    "pick": 9,
    "history_seasons": 3,
@@ -3944,9 +4149,10 @@
    "mpg_projected": 5.93,
    "long_injury": null
   },
-  "jaylin-williams": {
+  "1631119": {
    "name": "Jaylin Williams",
    "team": "OKC",
+   "bbref_id": "willija07",
    "age": 24,
    "pick": 34,
    "history_seasons": 3,
@@ -3963,9 +4169,10 @@
    "mpg_projected": 12.97,
    "long_injury": null
   },
-  "payton-pritchard": {
+  "1630202": {
    "name": "Payton Pritchard",
    "team": "BOS",
+   "bbref_id": "pritcpa01",
    "age": 29,
    "pick": 26,
    "history_seasons": 3,
@@ -3982,9 +4189,10 @@
    "mpg_projected": 25.17,
    "long_injury": null
   },
-  "goga-bitadze": {
+  "1629048": {
    "name": "Goga Bitadze",
    "team": "ORL",
+   "bbref_id": "bitadgo01",
    "age": 27,
    "pick": 18,
    "history_seasons": 3,
@@ -4001,9 +4209,10 @@
    "mpg_projected": 8.86,
    "long_injury": null
   },
-  "donovan-clingan": {
+  "1642270": {
    "name": "Donovan Clingan",
    "team": "POR",
+   "bbref_id": "clingdo01",
    "age": 22,
    "pick": 7,
    "history_seasons": 2,
@@ -4020,9 +4229,10 @@
    "mpg_projected": 20.91,
    "long_injury": null
   },
-  "bennedict-mathurin": {
+  "1631097": {
    "name": "Bennedict Mathurin",
    "team": "NOP",
+   "bbref_id": "mathube01",
    "age": 24,
    "pick": 6,
    "history_seasons": 3,
@@ -4039,9 +4249,10 @@
    "mpg_projected": 15.03,
    "long_injury": null
   },
-  "zeke-nnaji": {
+  "1630192": {
    "name": "Zeke Nnaji",
    "team": "DEN",
+   "bbref_id": "nnajize01",
    "age": 26,
    "pick": 22,
    "history_seasons": 3,
@@ -4058,9 +4269,10 @@
    "mpg_projected": 6.27,
    "long_injury": null
   },
-  "cason-wallace": {
+  "1641717": {
    "name": "Cason Wallace",
    "team": "OKC",
+   "bbref_id": "wallaca01",
    "age": 23,
    "pick": 10,
    "history_seasons": 3,
@@ -4083,9 +4295,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "kingston-flemings": {
+  "1643412": {
    "name": "Kingston Flemings",
    "team": "ATL",
+   "bbref_id": "flemiki01",
    "age": 19.0,
    "pick": 8,
    "history_seasons": 0,
@@ -4102,9 +4315,10 @@
    "mpg_projected": 15.69,
    "long_injury": null
   },
-  "dereck-lively": {
+  "1641726": {
    "name": "Dereck Lively II",
    "team": "DAL",
+   "bbref_id": "livelde01",
    "age": 22,
    "pick": 12,
    "history_seasons": 3,
@@ -4121,9 +4335,10 @@
    "mpg_projected": 2.23,
    "long_injury": null
   },
-  "egor-demin": {
+  "1642856": {
    "name": "Egor Dëmin",
    "team": "BKN",
+   "bbref_id": "demineg01",
    "age": 20,
    "pick": 8,
    "history_seasons": 1,
@@ -4140,9 +4355,10 @@
    "mpg_projected": 15.26,
    "long_injury": null
   },
-  "gradey-dick": {
+  "1641711": {
    "name": "Gradey Dick",
    "team": "LAC",
+   "bbref_id": "dickgr01",
    "age": 23,
    "pick": 13,
    "history_seasons": 3,
@@ -4159,9 +4375,10 @@
    "mpg_projected": 11.19,
    "long_injury": null
   },
-  "clint-capela": {
+  "203991": {
    "name": "Clint Capela",
    "team": "HOU",
+   "bbref_id": "capelca01",
    "age": 32,
    "pick": 25,
    "history_seasons": 3,
@@ -4178,9 +4395,10 @@
    "mpg_projected": 10.02,
    "long_injury": null
   },
-  "isaiah-jackson": {
+  "1630543": {
    "name": "Isaiah Jackson",
    "team": "LAC",
+   "bbref_id": "jacksis01",
    "age": 25,
    "pick": 22,
    "history_seasons": 3,
@@ -4197,9 +4415,10 @@
    "mpg_projected": 9.36,
    "long_injury": null
   },
-  "al-horford": {
+  "201143": {
    "name": "Al Horford",
    "team": "GSW",
+   "bbref_id": "horfoal01",
    "age": 40,
    "pick": null,
    "history_seasons": 3,
@@ -4216,9 +4435,10 @@
    "mpg_projected": 12.76,
    "long_injury": null
   },
-  "morez-johnson": {
+  "1643516": {
    "name": "Morez Johnson Jr.",
    "team": "DAL",
+   "bbref_id": "johnsmo01",
    "age": 20.0,
    "pick": 9,
    "history_seasons": 0,
@@ -4235,9 +4455,10 @@
    "mpg_projected": 13.28,
    "long_injury": null
   },
-  "collin-murray-boyles": {
+  "1642867": {
    "name": "Collin Murray-Boyles",
    "team": "TOR",
+   "bbref_id": "murraco01",
    "age": 21,
    "pick": 9,
    "history_seasons": 1,
@@ -4254,9 +4475,10 @@
    "mpg_projected": 15.49,
    "long_injury": null
   },
-  "keyonte-george": {
+  "1641718": {
    "name": "Keyonte George",
    "team": "UTA",
+   "bbref_id": "georgke01",
    "age": 23,
    "pick": 16,
    "history_seasons": 3,
@@ -4273,9 +4495,10 @@
    "mpg_projected": 23.73,
    "long_injury": null
   },
-  "saddiq-bey": {
+  "1630180": {
    "name": "Saddiq Bey",
    "team": "NOP",
+   "bbref_id": "beysa01",
    "age": 27,
    "pick": 19,
    "history_seasons": 2,
@@ -4292,9 +4515,10 @@
    "mpg_projected": 15.34,
    "long_injury": null
   },
-  "bradley-beal": {
+  "203078": {
    "name": "Bradley Beal",
    "team": "LAC",
+   "bbref_id": "bealbr01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -4311,9 +4535,10 @@
    "mpg_projected": 2.72,
    "long_injury": null
   },
-  "brayden-burries": {
+  "1643415": {
    "name": "Brayden Burries",
    "team": "MIL",
+   "bbref_id": "burribr01",
    "age": 21.0,
    "pick": 10,
    "history_seasons": 0,
@@ -4330,9 +4555,10 @@
    "mpg_projected": 15.06,
    "long_injury": null
   },
-  "zach-edey": {
+  "1641744": {
    "name": "Zach Edey",
    "team": "MEM",
+   "bbref_id": "edeyza01",
    "age": 24,
    "pick": 9,
    "history_seasons": 2,
@@ -4349,9 +4575,10 @@
    "mpg_projected": 9.98,
    "long_injury": null
   },
-  "khaman-maluach": {
+  "1642863": {
    "name": "Khaman Maluach",
    "team": "PHX",
+   "bbref_id": "maluakh01",
    "age": 20,
    "pick": 10,
    "history_seasons": 1,
@@ -4368,9 +4595,10 @@
    "mpg_projected": 9.84,
    "long_injury": null
   },
-  "yaxel-lendeborg": {
+  "1642865": {
    "name": "Yaxel Lendeborg",
    "team": "GSW",
+   "bbref_id": "lendeya01",
    "age": 24.0,
    "pick": 11,
    "history_seasons": 0,
@@ -4387,9 +4615,10 @@
    "mpg_projected": 20.37,
    "long_injury": null
   },
-  "tim-hardaway": {
+  "203501": {
    "name": "Tim Hardaway Jr.",
    "team": "MIA",
+   "bbref_id": "hardati02",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -4406,9 +4635,10 @@
    "mpg_projected": 16.29,
    "long_injury": null
   },
-  "deanthony-melton": {
+  "1629001": {
    "name": "De'Anthony Melton",
    "team": "GSW",
+   "bbref_id": "meltode01",
    "age": 28,
    "pick": 46,
    "history_seasons": 3,
@@ -4425,9 +4655,10 @@
    "mpg_projected": 10.51,
    "long_injury": null
   },
-  "jonathan-kuminga": {
+  "1630228": {
    "name": "Jonathan Kuminga",
    "team": "MIN",
+   "bbref_id": "kuminjo01",
    "age": 24,
    "pick": 7,
    "history_seasons": 3,
@@ -4444,9 +4675,10 @@
    "mpg_projected": 16.64,
    "long_injury": null
   },
-  "luke-kennard": {
+  "1628379": {
    "name": "Luke Kennard",
    "team": "PHX",
+   "bbref_id": "kennalu01",
    "age": 30,
    "pick": 12,
    "history_seasons": 3,
@@ -4463,9 +4695,10 @@
    "mpg_projected": 14.83,
    "long_injury": null
   },
-  "marcus-smart": {
+  "203935": {
    "name": "Marcus Smart",
    "team": "HOU",
+   "bbref_id": "smartma01",
    "age": 32,
    "pick": 6,
    "history_seasons": 3,
@@ -4482,9 +4715,10 @@
    "mpg_projected": 15.65,
    "long_injury": null
   },
-  "cody-williams": {
+  "1642262": {
    "name": "Cody Williams",
    "team": "MIN",
+   "bbref_id": "willico04",
    "age": 22,
    "pick": 10,
    "history_seasons": 2,
@@ -4501,9 +4735,10 @@
    "mpg_projected": 9.09,
    "long_injury": null
   },
-  "cedric-coward": {
+  "1642907": {
    "name": "Cedric Coward",
    "team": "MEM",
+   "bbref_id": "cowarce01",
    "age": 23,
    "pick": 11,
    "history_seasons": 1,
@@ -4520,9 +4755,10 @@
    "mpg_projected": 19.94,
    "long_injury": null
   },
-  "anfernee-simons": {
+  "1629014": {
    "name": "Anfernee Simons",
    "team": "PHI",
+   "bbref_id": "simonan01",
    "age": 27,
    "pick": 24,
    "history_seasons": 3,
@@ -4539,9 +4775,10 @@
    "mpg_projected": 17.18,
    "long_injury": null
   },
-  "jaden-hardy": {
+  "1630702": {
    "name": "Jaden Hardy",
    "team": "LAL",
+   "bbref_id": "hardyja02",
    "age": 24,
    "pick": 37,
    "history_seasons": 3,
@@ -4558,9 +4795,10 @@
    "mpg_projected": 6.25,
    "long_injury": null
   },
-  "jake-laravia": {
+  "1631222": {
    "name": "Jake LaRavia",
    "team": "LAL",
+   "bbref_id": "laravja01",
    "age": 25,
    "pick": 19,
    "history_seasons": 3,
@@ -4577,9 +4815,10 @@
    "mpg_projected": 20.47,
    "long_injury": null
   },
-  "jaxson-hayes": {
+  "1629637": {
    "name": "Jaxson Hayes",
    "team": "UTA",
+   "bbref_id": "hayesja02",
    "age": 26,
    "pick": 8,
    "history_seasons": 3,
@@ -4596,9 +4835,10 @@
    "mpg_projected": 16.75,
    "long_injury": null
   },
-  "josh-okogie": {
+  "1629006": {
    "name": "Josh Okogie",
    "team": "UTA",
+   "bbref_id": "okogijo01",
    "age": 28,
    "pick": 20,
    "history_seasons": 3,
@@ -4615,9 +4855,10 @@
    "mpg_projected": 12.93,
    "long_injury": null
   },
-  "spencer-jones": {
+  "1642461": {
    "name": "Spencer Jones",
    "team": "DEN",
+   "bbref_id": "jonessp01",
    "age": 25,
    "pick": null,
    "history_seasons": 2,
@@ -4634,9 +4875,10 @@
    "mpg_projected": 12.12,
    "long_injury": null
   },
-  "jaime-jaquez": {
+  "1631170": {
    "name": "Jaime Jaquez Jr.",
    "team": "MIL",
+   "bbref_id": "jaqueja01",
    "age": 25,
    "pick": 18,
    "history_seasons": 3,
@@ -4653,9 +4895,10 @@
    "mpg_projected": 22.65,
    "long_injury": null
   },
-  "jordan-goodwin": {
+  "1630692": {
    "name": "Jordan Goodwin",
    "team": "PHX",
+   "bbref_id": "goodwjo01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -4672,9 +4915,10 @@
    "mpg_projected": 12.86,
    "long_injury": null
   },
-  "aday-mara": {
+  "1643530": {
    "name": "Aday Mara",
    "team": "OKC",
+   "bbref_id": "maraad01",
    "age": 21.0,
    "pick": 12,
    "history_seasons": 0,
@@ -4691,9 +4935,10 @@
    "mpg_projected": 14.19,
    "long_injury": null
   },
-  "ousmane-dieng": {
+  "1631172": {
    "name": "Ousmane Dieng",
    "team": "MIL",
+   "bbref_id": "diengou01",
    "age": 23,
    "pick": 11,
    "history_seasons": 3,
@@ -4710,9 +4955,10 @@
    "mpg_projected": 8.78,
    "long_injury": null
   },
-  "matas-buzelis": {
+  "1641824": {
    "name": "Matas Buzelis",
    "team": "CHI",
+   "bbref_id": "buzelma01",
    "age": 22,
    "pick": 11,
    "history_seasons": 2,
@@ -4729,9 +4975,10 @@
    "mpg_projected": 23.45,
    "long_injury": null
   },
-  "noa-essengue": {
+  "1642855": {
    "name": "Noa Essengue",
    "team": "CHI",
+   "bbref_id": "essenno01",
    "age": 20,
    "pick": 12,
    "history_seasons": 1,
@@ -4748,9 +4995,10 @@
    "mpg_projected": 3.35,
    "long_injury": null
   },
-  "kris-dunn": {
+  "1627739": {
    "name": "Kris Dunn",
    "team": "LAC",
+   "bbref_id": "dunnkr01",
    "age": 32,
    "pick": 5,
    "history_seasons": 3,
@@ -4767,9 +5015,10 @@
    "mpg_projected": 24.89,
    "long_injury": null
   },
-  "brandin-podziemski": {
+  "1641764": {
    "name": "Brandin Podziemski",
    "team": "GSW",
+   "bbref_id": "podzibr01",
    "age": 23,
    "pick": 19,
    "history_seasons": 3,
@@ -4786,9 +5035,10 @@
    "mpg_projected": 26.13,
    "long_injury": null
   },
-  "paul-reed": {
+  "1630194": {
    "name": "Paul Reed",
    "team": "DET",
+   "bbref_id": "reedpa01",
    "age": 27,
    "pick": 58,
    "history_seasons": 3,
@@ -4805,9 +5055,10 @@
    "mpg_projected": 15.04,
    "long_injury": null
   },
-  "klay-thompson": {
+  "202691": {
    "name": "Klay Thompson",
    "team": "MIA",
+   "bbref_id": "thompkl01",
    "age": 36,
    "pick": null,
    "history_seasons": 3,
@@ -4824,9 +5075,10 @@
    "mpg_projected": 18.98,
    "long_injury": null
   },
-  "khris-middleton": {
+  "203114": {
    "name": "Khris Middleton",
    "team": "WAS",
+   "bbref_id": "middlkh01",
    "age": 35,
    "pick": null,
    "history_seasons": 3,
@@ -4843,9 +5095,10 @@
    "mpg_projected": 11.55,
    "long_injury": null
   },
-  "nate-ament": {
+  "1643417": {
    "name": "Nate Ament",
    "team": "MIL",
+   "bbref_id": "amentna01",
    "age": 19.0,
    "pick": 13,
    "history_seasons": 0,
@@ -4862,9 +5115,10 @@
    "mpg_projected": 12.05,
    "long_injury": null
   },
-  "landry-shamet": {
+  "1629013": {
    "name": "Landry Shamet",
    "team": "NYK",
+   "bbref_id": "shamela01",
    "age": 29,
    "pick": 26,
    "history_seasons": 3,
@@ -4881,9 +5135,10 @@
    "mpg_projected": 15.91,
    "long_injury": null
   },
-  "precious-achiuwa": {
+  "1630173": {
    "name": "Precious Achiuwa",
    "team": "SAC",
+   "bbref_id": "achiupr01",
    "age": 27,
    "pick": 20,
    "history_seasons": 3,
@@ -4900,9 +5155,10 @@
    "mpg_projected": 20.18,
    "long_injury": null
   },
-  "nikola-topic": {
+  "1642260": {
    "name": "Nikola Topić",
    "team": "OKC",
+   "bbref_id": "topicni01",
    "age": 21,
    "pick": 12,
    "history_seasons": 1,
@@ -4919,9 +5175,10 @@
    "mpg_projected": 3.05,
    "long_injury": null
   },
-  "derik-queen": {
+  "1642852": {
    "name": "Derik Queen",
    "team": "NOP",
+   "bbref_id": "queende01",
    "age": 22,
    "pick": 13,
    "history_seasons": 1,
@@ -4938,9 +5195,10 @@
    "mpg_projected": 19.7,
    "long_injury": null
   },
-  "noah-clowney": {
+  "1641730": {
    "name": "Noah Clowney",
    "team": "BKN",
+   "bbref_id": "clownno01",
    "age": 22,
    "pick": 21,
    "history_seasons": 3,
@@ -4957,9 +5215,10 @@
    "mpg_projected": 15.41,
    "long_injury": null
   },
-  "kris-murray": {
+  "1631200": {
    "name": "Kris Murray",
    "team": "MEM",
+   "bbref_id": "murrakr01",
    "age": 26,
    "pick": 23,
    "history_seasons": 3,
@@ -4976,9 +5235,10 @@
    "mpg_projected": 13.44,
    "long_injury": null
   },
-  "jordan-miller": {
+  "1641757": {
    "name": "Jordan Miller",
    "team": "LAC",
+   "bbref_id": "millejo02",
    "age": 27,
    "pick": 48,
    "history_seasons": 3,
@@ -5001,9 +5261,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "hannes-steinbach": {
+  "1643419": {
    "name": "Hannes Steinbach",
    "team": "CHA",
+   "bbref_id": "steinha02",
    "age": 20.0,
    "pick": 14,
    "history_seasons": 0,
@@ -5020,9 +5281,10 @@
    "mpg_projected": 10.49,
    "long_injury": null
   },
-  "marcus-sasser": {
+  "1631204": {
    "name": "Marcus Sasser",
    "team": "DAL",
+   "bbref_id": "sassema01",
    "age": 26,
    "pick": 25,
    "history_seasons": 3,
@@ -5039,9 +5301,10 @@
    "mpg_projected": 9.31,
    "long_injury": null
   },
-  "carter-bryant": {
+  "1642868": {
    "name": "Carter Bryant",
    "team": "SAS",
+   "bbref_id": "bryanca01",
    "age": 21,
    "pick": 14,
    "history_seasons": 1,
@@ -5058,9 +5321,10 @@
    "mpg_projected": 8.32,
    "long_injury": null
   },
-  "ben-sheppard": {
+  "1641767": {
    "name": "Ben Sheppard",
    "team": "IND",
+   "bbref_id": "sheppbe01",
    "age": 25,
    "pick": 26,
    "history_seasons": 3,
@@ -5083,9 +5347,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "kenrich-williams": {
+  "1629026": {
    "name": "Kenrich Williams",
    "team": "OKC",
+   "bbref_id": "willike04",
    "age": 32,
    "pick": null,
    "history_seasons": 3,
@@ -5102,9 +5367,10 @@
    "mpg_projected": 12.97,
    "long_injury": null
   },
-  "dailyn-swain": {
+  "1643517": {
    "name": "Dailyn Swain",
    "team": "CHI",
+   "bbref_id": "swainda01",
    "age": 21.0,
    "pick": 15,
    "history_seasons": 0,
@@ -5121,9 +5387,10 @@
    "mpg_projected": 10.05,
    "long_injury": null
   },
-  "bub-carrington": {
+  "1642267": {
    "name": "Bub Carrington",
    "team": "WAS",
+   "bbref_id": "carrica01",
    "age": 21,
    "pick": 14,
    "history_seasons": 2,
@@ -5140,9 +5407,10 @@
    "mpg_projected": 19.89,
    "long_injury": null
   },
-  "thomas-sorber": {
+  "1642850": {
    "name": "Thomas Sorber",
    "team": "OKC",
+   "bbref_id": null,
    "age": 20.0,
    "pick": 15,
    "history_seasons": 0,
@@ -5159,9 +5427,10 @@
    "mpg_projected": 11.26,
    "long_injury": null
   },
-  "brice-sensabaugh": {
+  "1641729": {
    "name": "Brice Sensabaugh",
    "team": "UTA",
+   "bbref_id": "sensabr01",
    "age": 23,
    "pick": 28,
    "history_seasons": 3,
@@ -5178,9 +5447,10 @@
    "mpg_projected": 14.35,
    "long_injury": null
   },
-  "julian-strawther": {
+  "1631124": {
    "name": "Julian Strawther",
    "team": "DEN",
+   "bbref_id": "strawju01",
    "age": 24,
    "pick": 29,
    "history_seasons": 3,
@@ -5197,9 +5467,10 @@
    "mpg_projected": 10.52,
    "long_injury": null
   },
-  "bennett-stirtz": {
+  "1642892": {
    "name": "Bennett Stirtz",
    "team": "OKC",
+   "bbref_id": "stirtbe01",
    "age": 23.0,
    "pick": 16,
    "history_seasons": 0,
@@ -5216,9 +5487,10 @@
    "mpg_projected": 12.99,
    "long_injury": null
   },
-  "kelel-ware": {
+  "1642276": {
    "name": "Kel'el Ware",
    "team": "MIL",
+   "bbref_id": "wareke01",
    "age": 22,
    "pick": 15,
    "history_seasons": 2,
@@ -5235,9 +5507,10 @@
    "mpg_projected": 15.32,
    "long_injury": null
   },
-  "yang-hansen": {
+  "1642905": {
    "name": "Yang Hansen",
    "team": "POR",
+   "bbref_id": "yangha01",
    "age": 21,
    "pick": 16,
    "history_seasons": 1,
@@ -5254,9 +5527,10 @@
    "mpg_projected": 5.28,
    "long_injury": null
   },
-  "gui-santos": {
+  "1630611": {
    "name": "Gui Santos",
    "team": "GSW",
+   "bbref_id": "santogu01",
    "age": 24,
    "pick": 55,
    "history_seasons": 3,
@@ -5273,9 +5547,10 @@
    "mpg_projected": 14.31,
    "long_injury": null
   },
-  "josh-minott": {
+  "1631169": {
    "name": "Josh Minott",
    "team": "BKN",
+   "bbref_id": "minotjo01",
    "age": 24,
    "pick": 45,
    "history_seasons": 3,
@@ -5292,9 +5567,10 @@
    "mpg_projected": 7.07,
    "long_injury": null
   },
-  "ebuka-okorie": {
+  "1643536": {
    "name": "Ebuka Okorie",
    "team": "DET",
+   "bbref_id": "okorieb01",
    "age": 19.0,
    "pick": 17,
    "history_seasons": 0,
@@ -5311,9 +5587,10 @@
    "mpg_projected": 7.47,
    "long_injury": null
   },
-  "jose-alvarado": {
+  "1630631": {
    "name": "Jose Alvarado",
    "team": "NYK",
+   "bbref_id": "alvarjo01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -5330,9 +5607,10 @@
    "mpg_projected": 11.61,
    "long_injury": null
   },
-  "jared-mccain": {
+  "1642272": {
    "name": "Jared McCain",
    "team": "OKC",
+   "bbref_id": "mccaija01",
    "age": 22,
    "pick": 16,
    "history_seasons": 2,
@@ -5349,9 +5627,10 @@
    "mpg_projected": 13.78,
    "long_injury": null
   },
-  "joan-beringer": {
+  "1642866": {
    "name": "Joan Beringer",
    "team": "MIN",
+   "bbref_id": "berinjo01",
    "age": 20,
    "pick": 17,
    "history_seasons": 1,
@@ -5368,9 +5647,10 @@
    "mpg_projected": 8.45,
    "long_injury": null
   },
-  "christian-anderson": {
+  "1643515": {
    "name": "Christian Anderson",
    "team": "CHA",
+   "bbref_id": "anderch02",
    "age": 20.0,
    "pick": 18,
    "history_seasons": 0,
@@ -5387,9 +5667,10 @@
    "mpg_projected": 9.84,
    "long_injury": null
   },
-  "allen-graves": {
+  "1643512": {
    "name": "Allen Graves",
    "team": "TOR",
+   "bbref_id": "graveal01",
    "age": 20.0,
    "pick": 19,
    "history_seasons": 0,
@@ -5406,9 +5687,10 @@
    "mpg_projected": 10.37,
    "long_injury": null
   },
-  "nolan-traore": {
+  "1642849": {
    "name": "Nolan Traore",
    "team": "BKN",
+   "bbref_id": "traorno01",
    "age": 20,
    "pick": 19,
    "history_seasons": 1,
@@ -5425,9 +5707,10 @@
    "mpg_projected": 15.56,
    "long_injury": null
   },
-  "daniss-jenkins": {
+  "1642450": {
    "name": "Daniss Jenkins",
    "team": "DET",
+   "bbref_id": "jenkida01",
    "age": 25,
    "pick": null,
    "history_seasons": 2,
@@ -5444,9 +5727,10 @@
    "mpg_projected": 13.09,
    "long_injury": null
   },
-  "ryan-rollins": {
+  "1631157": {
    "name": "Ryan Rollins",
    "team": "MIL",
+   "bbref_id": "rolliry01",
    "age": 24,
    "pick": 44,
    "history_seasons": 3,
@@ -5463,9 +5747,10 @@
    "mpg_projected": 20.13,
    "long_injury": null
   },
-  "tristan-da-silva": {
+  "1641783": {
    "name": "Tristan da Silva",
    "team": "ORL",
+   "bbref_id": "dasiltr01",
    "age": 25,
    "pick": 18,
    "history_seasons": 2,
@@ -5482,9 +5767,10 @@
    "mpg_projected": 24.05,
    "long_injury": null
   },
-  "miles-mcbride": {
+  "1630540": {
    "name": "Miles McBride",
    "team": "NYK",
+   "bbref_id": "mcbrimi01",
    "age": 26,
    "pick": 36,
    "history_seasons": 3,
@@ -5501,9 +5787,10 @@
    "mpg_projected": 13.63,
    "long_injury": null
   },
-  "javonte-green": {
+  "1629750": {
    "name": "Javonte Green",
    "team": "DET",
+   "bbref_id": "greenja02",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -5520,9 +5807,10 @@
    "mpg_projected": 15.22,
    "long_injury": null
   },
-  "jayden-quaintance": {
+  "1643519": {
    "name": "Jayden Quaintance",
    "team": "SAS",
+   "bbref_id": null,
    "age": 19.0,
    "pick": 20,
    "history_seasons": 0,
@@ -5539,9 +5827,10 @@
    "mpg_projected": 10.29,
    "long_injury": null
   },
-  "deandre-jordan": {
+  "201599": {
    "name": "DeAndre Jordan",
    "team": "NOP",
+   "bbref_id": "jordade01",
    "age": 38,
    "pick": null,
    "history_seasons": 3,
@@ -5558,9 +5847,10 @@
    "mpg_projected": 5.83,
    "long_injury": null
   },
-  "lebron-james": {
+  "2544": {
    "name": "LeBron James",
    "team": "PHI",
+   "bbref_id": "jamesle01",
    "age": 42,
    "pick": null,
    "history_seasons": 3,
@@ -5577,9 +5867,10 @@
    "mpg_projected": 25.17,
    "long_injury": null
   },
-  "svi-mykhailiuk": {
+  "1629004": {
    "name": "Svi Mykhailiuk",
    "team": "UTA",
+   "bbref_id": "mykhasv01",
    "age": 29,
    "pick": 47,
    "history_seasons": 3,
@@ -5596,9 +5887,10 @@
    "mpg_projected": 10.75,
    "long_injury": null
   },
-  "kasparas-jakucionis": {
+  "1642857": {
    "name": "Kasparas Jakučionis",
    "team": "MIL",
+   "bbref_id": "jakucka01",
    "age": 20,
    "pick": 20,
    "history_seasons": 1,
@@ -5615,9 +5907,10 @@
    "mpg_projected": 12.58,
    "long_injury": null
   },
-  "taurean-prince": {
+  "1627752": {
    "name": "Taurean Prince",
    "team": "DET",
+   "bbref_id": "princta02",
    "age": 32,
    "pick": 12,
    "history_seasons": 3,
@@ -5634,9 +5927,10 @@
    "mpg_projected": 12.06,
    "long_injury": null
   },
-  "jakobe-walter": {
+  "1642266": {
    "name": "Ja'Kobe Walter",
    "team": "TOR",
+   "bbref_id": "walteja01",
    "age": 22,
    "pick": 19,
    "history_seasons": 2,
@@ -5653,9 +5947,10 @@
    "mpg_projected": 19.25,
    "long_injury": null
   },
-  "karim-lopez": {
+  "1643510": {
    "name": "Karim López",
    "team": "MEM",
+   "bbref_id": "lopezka01",
    "age": 19.0,
    "pick": 21,
    "history_seasons": 0,
@@ -5672,9 +5967,10 @@
    "mpg_projected": 7.55,
    "long_injury": null
   },
-  "will-riley": {
+  "1642860": {
    "name": "Will Riley",
    "team": "WAS",
+   "bbref_id": "rileywi01",
    "age": 20,
    "pick": 21,
    "history_seasons": 1,
@@ -5691,9 +5987,10 @@
    "mpg_projected": 10.24,
    "long_injury": null
   },
-  "jaylon-tyson": {
+  "1642281": {
    "name": "Jaylon Tyson",
    "team": "CLE",
+   "bbref_id": "tysonja01",
    "age": 24,
    "pick": 20,
    "history_seasons": 2,
@@ -5710,9 +6007,10 @@
    "mpg_projected": 16.25,
    "long_injury": null
   },
-  "labaron-philon": {
+  "1642889": {
    "name": "Labaron Philon Jr.",
    "team": "PHI",
+   "bbref_id": "philola01",
    "age": 20.0,
    "pick": 22,
    "history_seasons": 0,
@@ -5729,9 +6027,10 @@
    "mpg_projected": 7.36,
    "long_injury": null
   },
-  "drake-powell": {
+  "1642962": {
    "name": "Drake Powell",
    "team": "BKN",
+   "bbref_id": "poweldr01",
    "age": 21,
    "pick": 22,
    "history_seasons": 1,
@@ -5748,9 +6047,10 @@
    "mpg_projected": 11.67,
    "long_injury": null
   },
-  "yves-missi": {
+  "1642274": {
    "name": "Yves Missi",
    "team": "NOP",
+   "bbref_id": "missiyv01",
    "age": 22,
    "pick": 21,
    "history_seasons": 2,
@@ -5767,9 +6067,10 @@
    "mpg_projected": 15.12,
    "long_injury": null
   },
-  "mo-bamba": {
+  "1628964": {
    "name": "Mo Bamba",
    "team": "UTA",
+   "bbref_id": "bambamo01",
    "age": 28,
    "pick": 6,
    "history_seasons": 3,
@@ -5786,9 +6087,10 @@
    "mpg_projected": 4.05,
    "long_injury": null
   },
-  "zuby-ejiofor": {
+  "1643544": {
    "name": "Zuby Ejiofor",
    "team": "ATL",
+   "bbref_id": "ejiofzu01",
    "age": 22.0,
    "pick": 23,
    "history_seasons": 0,
@@ -5805,9 +6107,10 @@
    "mpg_projected": 9.5,
    "long_injury": null
   },
-  "dominick-barlow": {
+  "1631230": {
    "name": "Dominick Barlow",
    "team": "PHI",
+   "bbref_id": "barlodo01",
    "age": 23,
    "pick": null,
    "history_seasons": 3,
@@ -5824,9 +6127,10 @@
    "mpg_projected": 15.09,
    "long_injury": null
   },
-  "ariel-hukporti": {
+  "1630574": {
    "name": "Ariel Hukporti",
    "team": "PHI",
+   "bbref_id": "hukpoar01",
    "age": 24,
    "pick": 58,
    "history_seasons": 2,
@@ -5849,9 +6153,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "asa-newell": {
+  "1642854": {
    "name": "Asa Newell",
    "team": "ATL",
+   "bbref_id": "newelas01",
    "age": 21,
    "pick": 23,
    "history_seasons": 1,
@@ -5868,9 +6173,10 @@
    "mpg_projected": 6.77,
    "long_injury": null
   },
-  "daron-holmes": {
+  "1641747": {
    "name": "DaRon Holmes II",
    "team": "DEN",
+   "bbref_id": "holmeda01",
    "age": 24,
    "pick": 22,
    "history_seasons": 1,
@@ -5887,9 +6193,10 @@
    "mpg_projected": 3.09,
    "long_injury": null
   },
-  "cameron-carr": {
+  "1643418": {
    "name": "Cameron Carr",
    "team": "LAL",
+   "bbref_id": "carrca01",
    "age": 21.0,
    "pick": 24,
    "history_seasons": 0,
@@ -5906,9 +6213,10 @@
    "mpg_projected": 6.69,
    "long_injury": null
   },
-  "nique-clifford": {
+  "1642363": {
    "name": "Nique Clifford",
    "team": "OKC",
+   "bbref_id": "cliffni01",
    "age": 24,
    "pick": 24,
    "history_seasons": 1,
@@ -5925,9 +6233,10 @@
    "mpg_projected": 10.81,
    "long_injury": null
   },
-  "aj-johnson": {
+  "1642358": {
    "name": "AJ Johnson",
    "team": "NOP",
+   "bbref_id": "johnsaj01",
    "age": 22,
    "pick": 23,
    "history_seasons": 2,
@@ -5944,9 +6253,10 @@
    "mpg_projected": 4.02,
    "long_injury": null
   },
-  "sergio-de-larrea": {
+  "1643547": {
    "name": "Sergio de Larrea",
    "team": "DAL",
+   "bbref_id": "delarse01",
    "age": 20.0,
    "pick": 25,
    "history_seasons": 0,
@@ -5963,9 +6273,10 @@
    "mpg_projected": 9.03,
    "long_injury": null
   },
-  "ron-harper": {
+  "1631199": {
    "name": "Ron Harper Jr.",
    "team": "BOS",
+   "bbref_id": "harpero02",
    "age": 26,
    "pick": null,
    "history_seasons": 3,
@@ -5982,9 +6293,10 @@
    "mpg_projected": 3.06,
    "long_injury": null
   },
-  "jase-richardson": {
+  "1642859": {
    "name": "Jase Richardson",
    "team": "ORL",
+   "bbref_id": "richaja02",
    "age": 21,
    "pick": 25,
    "history_seasons": 1,
@@ -6001,9 +6313,10 @@
    "mpg_projected": 12.66,
    "long_injury": null
   },
-  "kyshawn-george": {
+  "1642273": {
    "name": "Kyshawn George",
    "team": "WAS",
+   "bbref_id": "georgky01",
    "age": 23,
    "pick": 24,
    "history_seasons": 2,
@@ -6020,9 +6333,10 @@
    "mpg_projected": 22.55,
    "long_injury": null
   },
-  "jaylen-clark": {
+  "1641740": {
    "name": "Jaylen Clark",
    "team": "MIN",
+   "bbref_id": "clarkja02",
    "age": 25,
    "pick": 53,
    "history_seasons": 2,
@@ -6039,9 +6353,10 @@
    "mpg_projected": 9.37,
    "long_injury": null
   },
-  "tarris-reed": {
+  "1643542": {
    "name": "Tarris Reed Jr.",
    "team": "SAS",
+   "bbref_id": "reedjta01",
    "age": 23.0,
    "pick": 26,
    "history_seasons": 0,
@@ -6058,9 +6373,10 @@
    "mpg_projected": 6.7,
    "long_injury": null
   },
-  "ben-saraf": {
+  "1642879": {
    "name": "Ben Saraf",
    "team": "BKN",
+   "bbref_id": "sarafbe01",
    "age": 20,
    "pick": 26,
    "history_seasons": 1,
@@ -6077,9 +6393,10 @@
    "mpg_projected": 10.49,
    "long_injury": null
   },
-  "kyle-filipowski": {
+  "1642271": {
    "name": "Kyle Filipowski",
    "team": "UTA",
+   "bbref_id": "filipky01",
    "age": 23,
    "pick": 32,
    "history_seasons": 2,
@@ -6096,9 +6413,10 @@
    "mpg_projected": 11.89,
    "long_injury": null
   },
-  "tarik-biberovic": {
+  "1641844": {
    "name": "Tarik Biberović",
    "team": "DAL",
+   "bbref_id": null,
    "age": 25.0,
    "pick": 56,
    "history_seasons": 0,
@@ -6115,9 +6433,10 @@
    "mpg_projected": 6.8,
    "long_injury": null
   },
-  "tristan-vukcevic": {
+  "1641774": {
    "name": "Tristan Vukčević",
    "team": "WAS",
+   "bbref_id": "vukcetr01",
    "age": 23,
    "pick": 42,
    "history_seasons": 3,
@@ -6134,9 +6453,10 @@
    "mpg_projected": 7.51,
    "long_injury": null
   },
-  "chris-cenac": {
+  "1643416": {
    "name": "Chris Cenac Jr.",
    "team": "BOS",
+   "bbref_id": "cenacch01",
    "age": 19.0,
    "pick": 27,
    "history_seasons": 0,
@@ -6153,9 +6473,10 @@
    "mpg_projected": 6.91,
    "long_injury": null
   },
-  "pacome-dadiet": {
+  "1642359": {
    "name": "Pacôme Dadiet",
    "team": "NYK",
+   "bbref_id": "dadiepa01",
    "age": 21,
    "pick": 25,
    "history_seasons": 2,
@@ -6172,9 +6493,10 @@
    "mpg_projected": 1.97,
    "long_injury": null
   },
-  "joshua-jefferson": {
+  "1643538": {
    "name": "Joshua Jefferson",
    "team": "BKN",
+   "bbref_id": "jeffejo01",
    "age": 22.0,
    "pick": 28,
    "history_seasons": 0,
@@ -6191,9 +6513,10 @@
    "mpg_projected": 8.18,
    "long_injury": null
   },
-  "alex-karaban": {
+  "1642284": {
    "name": "Alex Karaban",
    "team": "SAC",
+   "bbref_id": "karabal01",
    "age": 23.0,
    "pick": 29,
    "history_seasons": 0,
@@ -6210,9 +6533,10 @@
    "mpg_projected": 8.18,
    "long_injury": null
   },
-  "danny-wolf": {
+  "1642874": {
    "name": "Danny Wolf",
    "team": "BKN",
+   "bbref_id": "wolfda01",
    "age": 22,
    "pick": 27,
    "history_seasons": 1,
@@ -6229,9 +6553,10 @@
    "mpg_projected": 14.77,
    "long_injury": null
   },
-  "koa-peat": {
+  "1643520": {
    "name": "Koa Peat",
    "team": "PHX",
+   "bbref_id": "peatko01",
    "age": 19.0,
    "pick": 30,
    "history_seasons": 0,
@@ -6248,9 +6573,10 @@
    "mpg_projected": 6.33,
    "long_injury": null
   },
-  "hugo-gonzalez": {
+  "1642864": {
    "name": "Hugo González",
    "team": "BOS",
+   "bbref_id": "gonzahu01",
    "age": 20,
    "pick": 28,
    "history_seasons": 1,
@@ -6267,9 +6593,10 @@
    "mpg_projected": 10.82,
    "long_injury": null
   },
-  "liam-mcneeley": {
+  "1642862": {
    "name": "Liam McNeeley",
    "team": "CHA",
+   "bbref_id": "mcneeli01",
    "age": 21,
    "pick": 29,
    "history_seasons": 1,
@@ -6286,9 +6613,10 @@
    "mpg_projected": 5.64,
    "long_injury": null
   },
-  "yanic-konan-niederhauser": {
+  "1642949": {
    "name": "Yanic Konan Niederhäuser",
    "team": "LAC",
+   "bbref_id": "konanya01",
    "age": 23,
    "pick": 30,
    "history_seasons": 1,
@@ -6305,9 +6633,10 @@
    "mpg_projected": 5.78,
    "long_injury": null
   },
-  "ajay-mitchell": {
+  "1642349": {
    "name": "Ajay Mitchell",
    "team": "OKC",
+   "bbref_id": "mitchaj01",
    "age": 24,
    "pick": 38,
    "history_seasons": 2,
@@ -6324,9 +6653,10 @@
    "mpg_projected": 16.69,
    "long_injury": null
   },
-  "terrence-shannon": {
+  "1630545": {
    "name": "Terrence Shannon Jr",
    "team": "MIN",
+   "bbref_id": "shannte01",
    "age": 26,
    "pick": 27,
    "history_seasons": 2,
@@ -6343,9 +6673,10 @@
    "mpg_projected": 9.82,
    "long_injury": null
   },
-  "jericho-sims": {
+  "1630579": {
    "name": "Jericho Sims",
    "team": "MIL",
+   "bbref_id": "simsje01",
    "age": 28,
    "pick": 58,
    "history_seasons": 3,
@@ -6362,9 +6693,10 @@
    "mpg_projected": 9.35,
    "long_injury": null
   },
-  "luka-garza": {
+  "1630568": {
    "name": "Luka Garza",
    "team": "BOS",
+   "bbref_id": "garzalu01",
    "age": 28,
    "pick": 52,
    "history_seasons": 3,
@@ -6381,9 +6713,10 @@
    "mpg_projected": 9.49,
    "long_injury": null
   },
-  "micah-potter": {
+  "1630695": {
    "name": "Micah Potter",
    "team": "POR",
+   "bbref_id": "pottemi01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -6400,9 +6733,10 @@
    "mpg_projected": 7.81,
    "long_injury": null
   },
-  "ryan-dunn": {
+  "1642346": {
    "name": "Ryan Dunn",
    "team": "PHX",
+   "bbref_id": "dunnry01",
    "age": 24,
    "pick": 28,
    "history_seasons": 2,
@@ -6419,9 +6753,10 @@
    "mpg_projected": 14.08,
    "long_injury": null
   },
-  "isaiah-collier": {
+  "1642268": {
    "name": "Isaiah Collier",
    "team": "UTA",
+   "bbref_id": "colliis01",
    "age": 22,
    "pick": 29,
    "history_seasons": 2,
@@ -6438,9 +6773,10 @@
    "mpg_projected": 14.55,
    "long_injury": null
   },
-  "baylor-scheierman": {
+  "1631248": {
    "name": "Baylor Scheierman",
    "team": "BOS",
+   "bbref_id": "scheiba01",
    "age": 26,
    "pick": 30,
    "history_seasons": 2,
@@ -6457,9 +6793,10 @@
    "mpg_projected": 13.38,
    "long_injury": null
   },
-  "jay-huff": {
+  "1630643": {
    "name": "Jay Huff",
    "team": "IND",
+   "bbref_id": "huffja01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -6476,9 +6813,10 @@
    "mpg_projected": 15.86,
    "long_injury": null
   },
-  "justin-champagnie": {
+  "1630551": {
    "name": "Justin Champagnie",
    "team": "WAS",
+   "bbref_id": "champju01",
    "age": 25,
    "pick": null,
    "history_seasons": 3,
@@ -6501,9 +6839,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "neemias-queta": {
+  "1629674": {
    "name": "Neemias Queta",
    "team": "BOS",
+   "bbref_id": "quetane01",
    "age": 27,
    "pick": 39,
    "history_seasons": 3,
@@ -6520,9 +6859,10 @@
    "mpg_projected": 18.35,
    "long_injury": null
   },
-  "vit-krejci": {
+  "1630249": {
    "name": "Vít Krejčí",
    "team": "POR",
+   "bbref_id": "krejcvi01",
    "age": 26,
    "pick": 37,
    "history_seasons": 3,
@@ -6545,9 +6885,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "kobe-sanders": {
+  "1642920": {
    "name": "Kobe Sanders",
    "team": "LAC",
+   "bbref_id": "sandeko01",
    "age": 24,
    "pick": 50,
    "history_seasons": 1,
@@ -6564,9 +6905,10 @@
    "mpg_projected": 17.27,
    "long_injury": null
   },
-  "mohamed-diawara": {
+  "1642885": {
    "name": "Mohamed Diawara",
    "team": "NYK",
+   "bbref_id": "diawamo01",
    "age": 21,
    "pick": 51,
    "history_seasons": 1,
@@ -6583,9 +6925,10 @@
    "mpg_projected": 7.35,
    "long_injury": null
   },
-  "bryce-mcgowens": {
+  "1631121": {
    "name": "Bryce McGowens",
    "team": "NOP",
+   "bbref_id": "mcgowbr01",
    "age": 24,
    "pick": 40,
    "history_seasons": 3,
@@ -6602,9 +6945,10 @@
    "mpg_projected": 6.3,
    "long_injury": null
   },
-  "dru-smith": {
+  "1630696": {
    "name": "Dru Smith",
    "team": "MIA",
+   "bbref_id": "smithdr01",
    "age": 29,
    "pick": null,
    "history_seasons": 3,
@@ -6621,9 +6965,10 @@
    "mpg_projected": 6.83,
    "long_injury": null
   },
-  "jabari-walker": {
+  "1631133": {
    "name": "Jabari Walker",
    "team": "PHI",
+   "bbref_id": "walkeja01",
    "age": 24,
    "pick": 57,
    "history_seasons": 3,
@@ -6640,9 +6985,10 @@
    "mpg_projected": 8.27,
    "long_injury": null
   },
-  "jamal-cain": {
+  "1631288": {
    "name": "Jamal Cain",
    "team": "ORL",
+   "bbref_id": "cainja01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -6659,9 +7005,10 @@
    "mpg_projected": 9.4,
    "long_injury": null
   },
-  "jamaree-bouyea": {
+  "1631123": {
    "name": "Jamaree Bouyea",
    "team": "PHX",
+   "bbref_id": "bouyeja01",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -6678,9 +7025,10 @@
    "mpg_projected": 4.06,
    "long_injury": null
   },
-  "quenton-jackson": {
+  "1631245": {
    "name": "Quenton Jackson",
    "team": "IND",
+   "bbref_id": "jacksqu01",
    "age": 28,
    "pick": null,
    "history_seasons": 3,
@@ -6697,9 +7045,10 @@
    "mpg_projected": 11.37,
    "long_injury": null
   },
-  "olivier-maxence-prosper": {
+  "1641765": {
    "name": "Olivier-Maxence Prosper",
    "team": "MEM",
+   "bbref_id": "prospol01",
    "age": 24,
    "pick": 24,
    "history_seasons": 3,
@@ -6716,9 +7065,10 @@
    "mpg_projected": 8.46,
    "long_injury": null
   },
-  "sidy-cissoko": {
+  "1631321": {
    "name": "Sidy Cissoko",
    "team": "POR",
+   "bbref_id": "cissosi01",
    "age": 22,
    "pick": 44,
    "history_seasons": 3,
@@ -6735,9 +7085,10 @@
    "mpg_projected": 13.03,
    "long_injury": null
   },
-  "moussa-diabate": {
+  "1631217": {
    "name": "Moussa Diabaté",
    "team": "CHA",
+   "bbref_id": "diabamo01",
    "age": 25,
    "pick": 43,
    "history_seasons": 3,
@@ -6754,9 +7105,10 @@
    "mpg_projected": 22.73,
    "long_injury": null
   },
-  "scotty-pippen": {
+  "1630590": {
    "name": "Scotty Pippen Jr.",
    "team": "MEM",
+   "bbref_id": "pippesc02",
    "age": 26,
    "pick": null,
    "history_seasons": 3,
@@ -6773,9 +7125,10 @@
    "mpg_projected": 7.81,
    "long_injury": null
   },
-  "andre-drummond": {
+  "203083": {
    "name": "Andre Drummond",
    "team": "NYK",
+   "bbref_id": "drumman01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -6792,9 +7145,10 @@
    "mpg_projected": 10.23,
    "long_injury": null
   },
-  "anthony-gill": {
+  "1630264": {
    "name": "Anthony Gill",
    "team": "WAS",
+   "bbref_id": "gillan01",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -6811,9 +7165,10 @@
    "mpg_projected": 8.85,
    "long_injury": null
   },
-  "ben-simmons": {
+  "1627732": {
    "name": "Ben Simmons",
    "team": "SAC",
+   "bbref_id": "simmobe01",
    "age": 30,
    "pick": 1,
    "history_seasons": 2,
@@ -6836,9 +7191,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "bogdan-bogdanovic": {
+  "203992": {
    "name": "Bogdan Bogdanović",
    "team": "HOU",
+   "bbref_id": "bogdabo01",
    "age": 34,
    "pick": 27,
    "history_seasons": 3,
@@ -6855,9 +7211,10 @@
    "mpg_projected": 7.88,
    "long_injury": null
   },
-  "branden-carlson": {
+  "1642382": {
    "name": "Branden Carlson",
    "team": "POR",
+   "bbref_id": "carlsbr01",
    "age": 27,
    "pick": null,
    "history_seasons": 2,
@@ -6874,9 +7231,10 @@
    "mpg_projected": 5.19,
    "long_injury": null
   },
-  "brandon-williams": {
+  "1630314": {
    "name": "Brandon Williams",
    "team": "GSW",
+   "bbref_id": "willibr03",
    "age": 27,
    "pick": null,
    "history_seasons": 3,
@@ -6893,9 +7251,10 @@
    "mpg_projected": 12.37,
    "long_injury": null
   },
-  "charles-bassey": {
+  "1629646": {
    "name": "Charles Bassey",
    "team": "GSW",
+   "bbref_id": "bassech01",
    "age": 26,
    "pick": 53,
    "history_seasons": 3,
@@ -6912,9 +7271,10 @@
    "mpg_projected": 4.5,
    "long_injury": null
   },
-  "daeqwon-plowden": {
+  "1631342": {
    "name": "Daeqwon Plowden",
    "team": "SAC",
+   "bbref_id": "plowdda01",
    "age": 28,
    "pick": null,
    "history_seasons": 2,
@@ -6931,9 +7291,10 @@
    "mpg_projected": 7.18,
    "long_injury": null
   },
-  "demar-derozan": {
+  "201942": {
    "name": "DeMar DeRozan",
    "team": "DEN",
+   "bbref_id": "derozde01",
    "age": 37,
    "pick": null,
    "history_seasons": 3,
@@ -6950,9 +7311,10 @@
    "mpg_projected": 23.23,
    "long_injury": null
   },
-  "gary-payton": {
+  "1627780": {
    "name": "Gary Payton II",
    "team": "GSW",
+   "bbref_id": "paytoga02",
    "age": 34,
    "pick": null,
    "history_seasons": 3,
@@ -6969,9 +7331,10 @@
    "mpg_projected": 11.08,
    "long_injury": null
   },
-  "georges-niang": {
+  "1627777": {
    "name": "Georges Niang",
    "team": "GSW",
+   "bbref_id": "niangge01",
    "age": 33,
    "pick": 50,
    "history_seasons": 2,
@@ -6988,9 +7351,10 @@
    "mpg_projected": 11.9,
    "long_injury": null
   },
-  "isaiah-crawford": {
+  "1642384": {
    "name": "Isaiah Crawford",
    "team": "HOU",
+   "bbref_id": "crawfis01",
    "age": 25,
    "pick": null,
    "history_seasons": 2,
@@ -7007,9 +7371,10 @@
    "mpg_projected": 1.72,
    "long_injury": null
   },
-  "jaesean-tate": {
+  "1630256": {
    "name": "Jae'Sean Tate",
    "team": "HOU",
+   "bbref_id": "tateja01",
    "age": 31,
    "pick": null,
    "history_seasons": 3,
@@ -7026,9 +7391,10 @@
    "mpg_projected": 3.42,
    "long_injury": null
   },
-  "james-wiseman": {
+  "1630164": {
    "name": "James Wiseman",
    "team": "NYK",
+   "bbref_id": "wisemja01",
    "age": 25,
    "pick": 2,
    "history_seasons": 3,
@@ -7045,9 +7411,10 @@
    "mpg_projected": 1.01,
    "long_injury": null
   },
-  "jevon-carter": {
+  "1628975": {
    "name": "Jevon Carter",
    "team": "ORL",
+   "bbref_id": "carteje01",
    "age": 31,
    "pick": 32,
    "history_seasons": 3,
@@ -7064,9 +7431,10 @@
    "mpg_projected": 8.97,
    "long_injury": null
   },
-  "jonathan-isaac": {
+  "1628371": {
    "name": "Jonathan Isaac",
    "team": "ORL",
+   "bbref_id": "isaacjo01",
    "age": 29,
    "pick": 6,
    "history_seasons": 3,
@@ -7083,9 +7451,10 @@
    "mpg_projected": 7.02,
    "long_injury": null
   },
-  "jordan-clarkson": {
+  "203903": {
    "name": "Jordan Clarkson",
    "team": "NYK",
+   "bbref_id": "clarkjo01",
    "age": 34,
    "pick": 46,
    "history_seasons": 3,
@@ -7102,9 +7471,10 @@
    "mpg_projected": 8.95,
    "long_injury": null
   },
-  "jordan-mclaughlin": {
+  "1629162": {
    "name": "Jordan McLaughlin",
    "team": "SAS",
+   "bbref_id": "mclaujo01",
    "age": 30,
    "pick": null,
    "history_seasons": 3,
@@ -7121,9 +7491,10 @@
    "mpg_projected": 4.14,
    "long_injury": null
   },
-  "kentavious-caldwell-pope": {
+  "203484": {
    "name": "Kentavious Caldwell-Pope",
    "team": "PHI",
+   "bbref_id": "caldwke01",
    "age": 33,
    "pick": null,
    "history_seasons": 3,
@@ -7140,9 +7511,10 @@
    "mpg_projected": 16.58,
    "long_injury": null
   },
-  "kevon-looney": {
+  "1626172": {
    "name": "Kevon Looney",
    "team": "LAL",
+   "bbref_id": "looneke01",
    "age": 30,
    "pick": 30,
    "history_seasons": 3,
@@ -7159,9 +7531,10 @@
    "mpg_projected": 6.33,
    "long_injury": null
   },
-  "kyle-anderson": {
+  "203937": {
    "name": "Kyle Anderson",
    "team": "TOR",
+   "bbref_id": "anderky01",
    "age": 33,
    "pick": 30,
    "history_seasons": 3,
@@ -7178,9 +7551,10 @@
    "mpg_projected": 7.99,
    "long_injury": null
   },
-  "larry-nance": {
+  "1626204": {
    "name": "Larry Nance Jr.",
    "team": "IND",
+   "bbref_id": "nancela02",
    "age": 34,
    "pick": 27,
    "history_seasons": 3,
@@ -7197,9 +7571,10 @@
    "mpg_projected": 7.15,
    "long_injury": null
   },
-  "mario-hezonja": {
+  "1626209": {
    "name": "Mario Hezonja",
    "team": "CLE",
+   "bbref_id": "hezonma01",
    "age": 31.0,
    "pick": 5,
    "history_seasons": 0,
@@ -7216,9 +7591,10 @@
    "mpg_projected": 15.6,
    "long_injury": null
   },
-  "marvin-bagley": {
+  "1628963": {
    "name": "Marvin Bagley III",
    "team": "DEN",
+   "bbref_id": "baglema01",
    "age": 27,
    "pick": 2,
    "history_seasons": 3,
@@ -7235,9 +7611,10 @@
    "mpg_projected": 9.25,
    "long_injury": null
   },
-  "matisse-thybulle": {
+  "1629680": {
    "name": "Matisse Thybulle",
    "team": "LAL",
+   "bbref_id": "thybuma01",
    "age": 29,
    "pick": 20,
    "history_seasons": 3,
@@ -7254,9 +7631,10 @@
    "mpg_projected": 9.62,
    "long_injury": null
   },
-  "mike-conley": {
+  "201144": {
    "name": "Mike Conley",
    "team": "BOS",
+   "bbref_id": "conlemi01",
    "age": 39,
    "pick": null,
    "history_seasons": 3,
@@ -7273,9 +7651,10 @@
    "mpg_projected": 9.96,
    "long_injury": null
   },
-  "bones-hyland": {
+  "1630538": {
    "name": "Bones Hyland",
    "team": "MIN",
+   "bbref_id": "hylanbo01",
    "age": 26,
    "pick": 26,
    "history_seasons": 3,
@@ -7292,9 +7671,10 @@
    "mpg_projected": 8.64,
    "long_injury": null
   },
-  "nick-richards": {
+  "1630208": {
    "name": "Nick Richards",
    "team": "MIA",
+   "bbref_id": "richani01",
    "age": 29,
    "pick": 42,
    "history_seasons": 3,
@@ -7311,9 +7691,10 @@
    "mpg_projected": 5.39,
    "long_injury": null
   },
-  "nikola-vucevic": {
+  "202696": {
    "name": "Nikola Vučević",
    "team": "ORL",
+   "bbref_id": "vucevni01",
    "age": 36,
    "pick": null,
    "history_seasons": 3,
@@ -7330,9 +7711,10 @@
    "mpg_projected": 12.37,
    "long_injury": null
   },
-  "simone-fontecchio": {
+  "1631323": {
    "name": "Simone Fontecchio",
    "team": "MIA",
+   "bbref_id": "fontesi01",
    "age": 31,
    "pick": null,
    "history_seasons": 3,
@@ -7349,9 +7731,10 @@
    "mpg_projected": 8.54,
    "long_injury": null
   },
-  "thomas-bryant": {
+  "1628418": {
    "name": "Thomas Bryant",
    "team": "CLE",
+   "bbref_id": "bryanth01",
    "age": 29,
    "pick": 42,
    "history_seasons": 3,
@@ -7368,9 +7751,10 @@
    "mpg_projected": 8.86,
    "long_injury": null
   },
-  "tony-bradley": {
+  "1628396": {
    "name": "Tony Bradley",
    "team": "UTA",
+   "bbref_id": "bradlto01",
    "age": 29,
    "pick": 28,
    "history_seasons": 2,
@@ -7387,9 +7771,10 @@
    "mpg_projected": 3.5,
    "long_injury": null
   },
-  "trendon-watford": {
+  "1630570": {
    "name": "Trendon Watford",
    "team": "NOP",
+   "bbref_id": "watfotr01",
    "age": 26,
    "pick": null,
    "history_seasons": 3,
@@ -7406,9 +7791,10 @@
    "mpg_projected": 10.61,
    "long_injury": null
   },
-  "trey-lyles": {
+  "1626168": {
    "name": "Trey Lyles",
    "team": "MIN",
+   "bbref_id": "lylestr01",
    "age": 31,
    "pick": 12,
    "history_seasons": 2,
@@ -7425,9 +7811,10 @@
    "mpg_projected": 10.01,
    "long_injury": null
   },
-  "tyus-jones": {
+  "1626145": {
    "name": "Tyus Jones",
    "team": "DEN",
+   "bbref_id": "jonesty01",
    "age": 30,
    "pick": 24,
    "history_seasons": 3,
@@ -7444,9 +7831,10 @@
    "mpg_projected": 10.34,
    "long_injury": null
   },
-  "ziaire-williams": {
+  "1630533": {
    "name": "Ziaire Williams",
    "team": "LAL",
+   "bbref_id": "willizi02",
    "age": 25,
    "pick": 10,
    "history_seasons": 3,
@@ -7463,9 +7851,10 @@
    "mpg_projected": 16.94,
    "long_injury": null
   },
-  "cam-spencer": {
+  "1642285": {
    "name": "Cam Spencer",
    "team": "MEM",
+   "bbref_id": "spencca01",
    "age": 26,
    "pick": 53,
    "history_seasons": 2,
@@ -7482,9 +7871,10 @@
    "mpg_projected": 13.41,
    "long_injury": null
   },
-  "justin-edwards": {
+  "1642348": {
    "name": "Justin Edwards",
    "team": "PHI",
+   "bbref_id": "edwarju01",
    "age": 23,
    "pick": null,
    "history_seasons": 2,
@@ -7501,9 +7891,10 @@
    "mpg_projected": 6.23,
    "long_injury": null
   },
-  "naeqwan-tomlin": {
+  "1641772": {
    "name": "Nae'Qwan Tomlin",
    "team": "CLE",
+   "bbref_id": "tomlina01",
    "age": 26,
    "pick": null,
    "history_seasons": 2,
@@ -7520,9 +7911,10 @@
    "mpg_projected": 7.68,
    "long_injury": null
   },
-  "ryan-kalkbrenner": {
+  "1641750": {
    "name": "Ryan Kalkbrenner",
    "team": "CHA",
+   "bbref_id": "kalkbry01",
    "age": 25,
    "pick": 34,
    "history_seasons": 1,
@@ -7539,9 +7931,10 @@
    "mpg_projected": 14.48,
    "long_injury": null
   },
-  "sion-james": {
+  "1642883": {
    "name": "Sion James",
    "team": "CHA",
+   "bbref_id": "jamessi01",
    "age": 24,
    "pick": 33,
    "history_seasons": 1,
@@ -7558,9 +7951,10 @@
    "mpg_projected": 20.49,
    "long_injury": null
   },
-  "tolu-smith": {
+  "1642449": {
    "name": "Tolu Smith",
    "team": "DET",
+   "bbref_id": "smithto05",
    "age": 26,
    "pick": null,
    "history_seasons": 2,
@@ -7577,9 +7971,10 @@
    "mpg_projected": 1.58,
    "long_injury": null
   },
-  "craig-porter": {
+  "1641854": {
    "name": "Craig Porter Jr.",
    "team": "CLE",
+   "bbref_id": "portecr01",
    "age": 26,
    "pick": null,
    "history_seasons": 3,
@@ -7596,9 +7991,10 @@
    "mpg_projected": 8.77,
    "long_injury": null
   },
-  "gg-jackson": {
+  "1641713": {
    "name": "GG Jackson",
    "team": "MEM",
+   "bbref_id": "jacksgg01",
    "age": 22,
    "pick": 45,
    "history_seasons": 3,
@@ -7615,9 +8011,10 @@
    "mpg_projected": 10.34,
    "long_injury": null
   },
-  "jordan-walsh": {
+  "1641775": {
    "name": "Jordan Walsh",
    "team": "BOS",
+   "bbref_id": "walshjo01",
    "age": 22,
    "pick": 38,
    "history_seasons": 3,
@@ -7634,9 +8031,10 @@
    "mpg_projected": 11.9,
    "long_injury": null
   },
-  "leonard-miller": {
+  "1631159": {
    "name": "Leonard Miller",
    "team": "CHI",
+   "bbref_id": "millele01",
    "age": 23,
    "pick": 33,
    "history_seasons": 3,
@@ -7653,9 +8051,10 @@
    "mpg_projected": 8.12,
    "long_injury": null
   },
-  "mouhamed-gueye": {
+  "1631243": {
    "name": "Mouhamed Gueye",
    "team": "ATL",
+   "bbref_id": "gueyemo02",
    "age": 24,
    "pick": 39,
    "history_seasons": 3,
@@ -7672,9 +8071,10 @@
    "mpg_projected": 9.95,
    "long_injury": null
   },
-  "trayce-jackson-davis": {
+  "1631218": {
    "name": "Trayce Jackson-Davis",
    "team": "TOR",
+   "bbref_id": "jackstr02",
    "age": 26,
    "pick": 57,
    "history_seasons": 3,
@@ -7691,9 +8091,10 @@
    "mpg_projected": 5.38,
    "long_injury": null
   },
-  "adem-bona": {
+  "1641737": {
    "name": "Adem Bona",
    "team": "PHI",
+   "bbref_id": "bonaad01",
    "age": 23,
    "pick": 41,
    "history_seasons": 2,
@@ -7710,9 +8111,10 @@
    "mpg_projected": 11.65,
    "long_injury": null
   },
-  "bronny-james": {
+  "1642355": {
    "name": "Bronny James",
    "team": "LAL",
+   "bbref_id": "jamesbr02",
    "age": 22,
    "pick": 55,
    "history_seasons": 2,
@@ -7729,9 +8131,10 @@
    "mpg_projected": 2.88,
    "long_injury": null
   },
-  "jamal-shead": {
+  "1642347": {
    "name": "Jamal Shead",
    "team": "TOR",
+   "bbref_id": "sheadja01",
    "age": 24,
    "pick": 45,
    "history_seasons": 2,
@@ -7748,9 +8151,10 @@
    "mpg_projected": 19.85,
    "long_injury": null
   },
-  "jamison-battle": {
+  "1642419": {
    "name": "Jamison Battle",
    "team": "TOR",
+   "bbref_id": "battlja01",
    "age": 25,
    "pick": null,
    "history_seasons": 2,
@@ -7767,9 +8171,10 @@
    "mpg_projected": 10.1,
    "long_injury": null
   },
-  "jaylen-wells": {
+  "1642377": {
    "name": "Jaylen Wells",
    "team": "MEM",
+   "bbref_id": "wellsja01",
    "age": 23,
    "pick": 39,
    "history_seasons": 2,
@@ -7786,9 +8191,10 @@
    "mpg_projected": 22.38,
    "long_injury": null
   },
-  "johnny-furphy": {
+  "1642277": {
    "name": "Johnny Furphy",
    "team": "IND",
+   "bbref_id": "furphjo01",
    "age": 22,
    "pick": 35,
    "history_seasons": 2,
@@ -7811,9 +8217,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "karlo-matkovic": {
+  "1631255": {
    "name": "Karlo Matković",
    "team": "NOP",
+   "bbref_id": "matkoka01",
    "age": 25,
    "pick": 52,
    "history_seasons": 2,
@@ -7830,9 +8237,10 @@
    "mpg_projected": 11.32,
    "long_injury": null
   },
-  "oso-ighodaro": {
+  "1642345": {
    "name": "Oso Ighodaro",
    "team": "PHX",
+   "bbref_id": "ighodos01",
    "age": 24,
    "pick": 40,
    "history_seasons": 2,
@@ -7849,9 +8257,10 @@
    "mpg_projected": 17.52,
    "long_injury": null
   },
-  "pelle-larsson": {
+  "1641796": {
    "name": "Pelle Larsson",
    "team": "MIA",
+   "bbref_id": "larsspe01",
    "age": 25,
    "pick": 44,
    "history_seasons": 2,
@@ -7868,9 +8277,10 @@
    "mpg_projected": 21.23,
    "long_injury": null
   },
-  "tyler-kolek": {
+  "1642278": {
    "name": "Tyler Kolek",
    "team": "NYK",
+   "bbref_id": "kolekty01",
    "age": 25,
    "pick": 34,
    "history_seasons": 2,
@@ -7887,9 +8297,10 @@
    "mpg_projected": 7.89,
    "long_injury": null
   },
-  "alijah-martin": {
+  "1642918": {
    "name": "Alijah Martin",
    "team": "TOR",
+   "bbref_id": "martial01",
    "age": 25,
    "pick": 39,
    "history_seasons": 1,
@@ -7906,9 +8317,10 @@
    "mpg_projected": 4.27,
    "long_injury": null
   },
-  "moussa-cisse": {
+  "1630619": {
    "name": "Moussa Cissé",
    "team": "DAL",
+   "bbref_id": "cissemo01",
    "age": 24,
    "pick": null,
    "history_seasons": 1,
@@ -7925,9 +8337,10 @@
    "mpg_projected": 4.4,
    "long_injury": null
   },
-  "adou-thiero": {
+  "1642876": {
    "name": "Adou Thiero",
    "team": "LAL",
+   "bbref_id": "thierad01",
    "age": 22,
    "pick": 36,
    "history_seasons": 1,
@@ -7944,9 +8357,10 @@
    "mpg_projected": 3.06,
    "long_injury": null
   },
-  "chaz-lanier": {
+  "1642404": {
    "name": "Chaz Lanier",
    "team": "DET",
+   "bbref_id": "laniech01",
    "age": 25,
    "pick": 37,
    "history_seasons": 1,
@@ -7963,9 +8377,10 @@
    "mpg_projected": 3.32,
    "long_injury": null
   },
-  "dylan-cardwell": {
+  "1642928": {
    "name": "Dylan Cardwell",
    "team": "SAC",
+   "bbref_id": "cardwdy01",
    "age": 25,
    "pick": null,
    "history_seasons": 1,
@@ -7982,9 +8397,10 @@
    "mpg_projected": 11.14,
    "long_injury": null
   },
-  "maxime-raynaud": {
+  "1642875": {
    "name": "Maxime Raynaud",
    "team": "SAC",
+   "bbref_id": "raynama01",
    "age": 23,
    "pick": 42,
    "history_seasons": 1,
@@ -8001,9 +8417,10 @@
    "mpg_projected": 19.89,
    "long_injury": null
   },
-  "myron-gardner": {
+  "1642066": {
    "name": "Myron Gardner",
    "team": "MIA",
+   "bbref_id": "gardnmy01",
    "age": 25,
    "pick": null,
    "history_seasons": 1,
@@ -8020,9 +8437,10 @@
    "mpg_projected": 3.4,
    "long_injury": null
   },
-  "noah-penda": {
+  "1642869": {
    "name": "Noah Penda",
    "team": "ORL",
+   "bbref_id": "pendano01",
    "age": 22,
    "pick": 32,
    "history_seasons": 1,
@@ -8039,9 +8457,10 @@
    "mpg_projected": 8.51,
    "long_injury": null
   },
-  "rasheer-fleming": {
+  "1642853": {
    "name": "Rasheer Fleming",
    "team": "PHX",
+   "bbref_id": "flemira01",
    "age": 22,
    "pick": 31,
    "history_seasons": 1,
@@ -8058,9 +8477,10 @@
    "mpg_projected": 7.09,
    "long_injury": null
   },
-  "tyrese-proctor": {
+  "1642878": {
    "name": "Tyrese Proctor",
    "team": "CLE",
+   "bbref_id": "proctty01",
    "age": 22,
    "pick": 49,
    "history_seasons": 1,
@@ -8077,9 +8497,10 @@
    "mpg_projected": 9.3,
    "long_injury": null
   },
-  "will-richard": {
+  "1642954": {
    "name": "Will Richard",
    "team": "GSW",
+   "bbref_id": "richawi02",
    "age": 24,
    "pick": 56,
    "history_seasons": 1,
@@ -8096,9 +8517,10 @@
    "mpg_projected": 14.1,
    "long_injury": null
   },
-  "baba-miller": {
+  "1642394": {
    "name": "Baba Miller",
    "team": "LAC",
+   "bbref_id": "milleba01",
    "age": 22.0,
    "pick": 36,
    "history_seasons": 0,
@@ -8115,9 +8537,10 @@
    "mpg_projected": 7.9,
    "long_injury": null
   },
-  "alpha-diallo": {
+  "1643813": {
    "name": "Alpha Diallo",
    "team": "DEN",
+   "bbref_id": "diallal01",
    "age": 29.0,
    "pick": null,
    "history_seasons": 0,
@@ -8134,9 +8557,10 @@
    "mpg_projected": 7.81,
    "long_injury": null
   },
-  "bogoljub-markovic": {
+  "1642881": {
    "name": "Bogoljub Marković",
    "team": "MIL",
+   "bbref_id": "markobo01",
    "age": 21.0,
    "pick": 47,
    "history_seasons": 0,
@@ -8153,9 +8577,10 @@
    "mpg_projected": 6.79,
    "long_injury": null
   },
-  "bruce-thornton": {
+  "1643570": {
    "name": "Bruce Thornton",
    "team": "HOU",
+   "bbref_id": "thornbr01",
    "age": 23.0,
    "pick": 31,
    "history_seasons": 0,
@@ -8172,9 +8597,10 @@
    "mpg_projected": 5.6,
    "long_injury": null
   },
-  "emanuel-sharp": {
+  "1643567": {
    "name": "Emanuel Sharp",
    "team": "SAC",
+   "bbref_id": "sharpem01",
    "age": 22.0,
    "pick": 45,
    "history_seasons": 0,
@@ -8191,9 +8617,10 @@
    "mpg_projected": 11.67,
    "long_injury": null
   },
-  "henri-veesaar": {
+  "1643539": {
    "name": "Henri Veesaar",
    "team": "ATL",
+   "bbref_id": null,
    "age": 22.0,
    "pick": 52,
    "history_seasons": 0,
@@ -8216,9 +8643,10 @@
     "source_url": "https://www.espn.com/nba/injuries"
    }
   },
-  "isaiah-evans": {
+  "1642912": {
    "name": "Isaiah Evans",
    "team": "MIN",
+   "bbref_id": "evansis01",
    "age": 20.0,
    "pick": 33,
    "history_seasons": 0,
@@ -8235,9 +8663,10 @@
    "mpg_projected": 5.48,
    "long_injury": null
   },
-  "jaden-bradley": {
+  "1643558": {
    "name": "Jaden Bradley",
    "team": "TOR",
+   "bbref_id": "bradlja02",
    "age": 23.0,
    "pick": 50,
    "history_seasons": 0,
@@ -8254,9 +8683,10 @@
    "mpg_projected": 5.2,
    "long_injury": null
   },
-  "khalifa-diop": {
+  "1631215": {
    "name": "Khalifa Diop",
    "team": "CLE",
+   "bbref_id": null,
    "age": 24.0,
    "pick": 39,
    "history_seasons": 0,
@@ -8273,9 +8703,10 @@
    "mpg_projected": 8.03,
    "long_injury": null
   },
-  "meleek-thomas": {
+  "1643509": {
    "name": "Meleek Thomas",
    "team": "CLE",
+   "bbref_id": "thomame01",
    "age": 20.0,
    "pick": 34,
    "history_seasons": 0,
@@ -8292,9 +8723,10 @@
    "mpg_projected": 13.05,
    "long_injury": null
   },
-  "ryan-conwell": {
+  "1643553": {
    "name": "Ryan Conwell",
    "team": "MIA",
+   "bbref_id": "conwery01",
    "age": 22.0,
    "pick": 37,
    "history_seasons": 0,
@@ -8311,9 +8743,10 @@
    "mpg_projected": 8.5,
    "long_injury": null
   },
-  "trevon-brazile": {
+  "1642350": {
    "name": "Trevon Brazile",
    "team": "DEN",
+   "bbref_id": "brazitr01",
    "age": 23.0,
    "pick": 35,
    "history_seasons": 0,
@@ -8330,9 +8763,10 @@
    "mpg_projected": 12.78,
    "long_injury": null
   },
-  "blake-wesley": {
+  "1631104": {
    "name": "Blake Wesley",
    "team": "LAC",
+   "bbref_id": "weslebl01",
    "age": 23,
    "pick": 25,
    "history_seasons": 3,

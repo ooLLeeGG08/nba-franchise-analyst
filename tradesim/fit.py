@@ -27,7 +27,8 @@ FIT_PATH = os.path.join(ROOT, "data", "model", "fit.json")
 
 def strengths_2025_26(cfg):
     """2025-26 team strengths from each player's actual minutes with each team."""
-    stints = build_data.parse_bbref_stints(build_data._read("bbref_advanced_2025_26.tsv"))
+    from tradesim.history import load_season
+    stints = load_season("2025-26")[1]
     return strength_from_stints(stints, GAMES_PER_TEAM, cfg)
 
 

@@ -1,8 +1,11 @@
 """Basketball-Reference advanced stats for every season, in one shape.
 
 load_season("2021-22") -> (totals, stints)
-  totals: {name_key: record}  one per player (season totals; traded players' combined row)
-  stints: [record with "team"] one per player per team
+  totals: {bbref_id: record}  one per player (season totals; traded players' combined row)
+  stints: [record with "team" and "bbref_id"] one per player per team
+
+Every file is a Basketball-Reference CSV export with the "Player-additional" column (the
+player's BBRef ID), so seasons are joined on that ID, never on names.
 
 Sources and as-of dates for every file are listed in data/raw/SOURCES.json.
 """
@@ -22,8 +25,8 @@ BBREF_FILES = {
     "2021-22": "bbref/advanced_2021-22.txt",
     "2022-23": "bbref/advanced_2022-23.txt",
     "2023-24": "bbref/advanced_2023-24.txt",
-    "2024-25": "2024_25/bbref_advanced_2024_25.txt",
-    "2025-26": "2026_27/bbref_advanced_2025_26.tsv",
+    "2024-25": "bbref/advanced_2024-25.txt",
+    "2025-26": "bbref/advanced_2025-26.txt",
     "2026-27": "bbref/advanced_2026-27_asof_2026-11-09.txt",
 }
 SEASONS = list(BBREF_FILES)
