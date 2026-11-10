@@ -131,7 +131,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 }
 
 /* mono labels: small uppercase metadata (PICK 01, CHI SENDS, table headers) */
-.list-head, .pick-kind, .sides h3, .chip-label, .pill, .status, .match, .was,
+.list-head, .pick-kind, .sides h3, .chip-label, .pill, .status, .was,
 .stat .label, .marker span, .standings th, .data-table th {
     font-family: var(--font-mono);
     font-size: var(--fs-2xs);
@@ -247,7 +247,9 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .card-head .note { font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--faint); }
 
 /* --- team page --- */
-.team-head { display: flex; align-items: center; gap: var(--s-4); margin: var(--s-1) 0 var(--s-5); }
+.team-head { display: flex; align-items: center; gap: var(--s-4); margin: var(--s-1) 0 var(--s-8); }
+.team-layout { display: grid; gap: var(--section-gap); }
+.team-layout > .card { margin-bottom: 0; }
 .team-head h1 { font-size: var(--fs-2xl); }
 .team-head .sub { font-size: var(--fs-sm); color: var(--muted); margin-top: 2px; }
 
@@ -264,6 +266,25 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .stat + .stat { border-left: var(--rule); padding-left: var(--s-3); }
 .stat .value { font: 600 30px/1 var(--font-num); letter-spacing: var(--tracking-tight); }
 .stat .label { color: var(--muted); }
+
+/* playoff odds: gauge for Make playoffs, play-in and #1 seed stacked beside it */
+.odds {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; gap: var(--s-4);
+    margin-top: var(--s-5); padding-top: var(--s-5); border-top: var(--rule);
+}
+.odds .stats { grid-template-columns: 1fr; margin: 0; border: 0; }
+.odds .stat { padding: var(--s-3) 0; }
+.odds .stat + .stat { border-left: 0; border-top: var(--rule); padding-left: 0; }
+.gauge { position: relative; }
+.gauge svg { display: block; width: 100%; height: auto; overflow: visible; }
+.gauge-track, .gauge-fill { fill: none; stroke-width: 14; stroke-linecap: round; }
+.gauge-track { stroke: var(--border-strong); opacity: 0.6; }
+.gauge-fill { stroke: var(--accent); }
+.gauge-knob { fill: var(--accent); stroke: var(--bg); stroke-width: 3; }
+.gauge-text { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.gauge-value { font-size: 34px; font-weight: 600; line-height: 1; letter-spacing: var(--tracking-tight); }
+.gauge-label { font: 500 var(--fs-2xs)/1.3 var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); }
+.gauge .was { margin-top: 0; }
 
 .positions { display: grid; gap: var(--s-3); }
 .position-row { display: grid; grid-template-columns: 78px 1fr 64px; align-items: center; gap: var(--s-3); font-size: var(--fs-sm); }
@@ -291,6 +312,10 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 0h9v9H7.5V4.3L1.8 10 0 8.2 5.7 2.5H1z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .chip.bad { color: var(--bad); border-color: rgba(255, 93, 93, 0.35); }
+button.chip { cursor: pointer; font-weight: 600; transition: border-color var(--ease), background-color var(--ease); }
+button.chip:hover { border-color: var(--border-strong); }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-tint); }
+.chip-row { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-5) 0 var(--s-6); }
 .chip.bad::before { background: var(--bad); }
 
 /* payroll bar */
@@ -346,6 +371,9 @@ details.roster[open] summary::after { content: "Hide"; }
 .tab .x { min-width: 36px; padding-right: var(--s-2); color: var(--muted); }
 .tab.add-team { padding: 0 var(--s-4); min-height: var(--tap); font-size: 20px; color: var(--accent); background: transparent; cursor: pointer; }
 
+.app > .eyebrow { margin-top: var(--s-6); }
+.app > .topbar + .eyebrow, .app > .team-tabs + .eyebrow { margin-top: var(--s-4); }
+.saved-card { margin-top: var(--s-8); }
 .verdict { border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); border: var(--card-rule); background: var(--surface); }
 .verdict strong { font: 700 20px var(--font-display); letter-spacing: var(--tracking-tight); }
 .verdict.good { border-color: rgba(60, 207, 142, 0.5); }
@@ -410,7 +438,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .searching { font-size: var(--fs-sm); color: var(--muted); font-family: var(--font-mono); }
 .idea.skeleton { height: 88px; border: var(--card-rule); background: var(--surface); animation: pulse 1.4s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: 0.5; } }
-.needs-line { font-size: var(--fs-sm); color: var(--text); margin-bottom: var(--s-3); line-height: 1.5; }
+.needs-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); font-size: var(--fs-sm); color: var(--text); margin-bottom: var(--s-3); line-height: 1.5; }
 .source { display: inline-block; font-size: var(--fs-2xs); color: var(--faint); margin-left: var(--s-1); }
 .suggestion { border: var(--card-rule); border-radius: var(--radius); padding: var(--s-4); background: var(--surface); display: grid; gap: var(--s-3); align-content: start; }
 .suggestion-head { display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap; }
@@ -421,8 +449,8 @@ details.roster[open] summary::after { content: "Hide"; }
 .facts { font-size: var(--fs-sm); color: var(--muted); }
 .explain { font-size: var(--fs-sm); color: var(--text); line-height: 1.5; }
 .note { font-size: var(--fs-xs); color: var(--faint); }
-.match { justify-self: start; padding: var(--s-1) var(--s-2); border-radius: var(--r-sm); border: var(--rule); color: var(--warn); }
-.match.fit { color: var(--good); }
+.chip.match { justify-self: start; color: var(--warn); font: 500 var(--fs-2xs)/1.3 var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+.chip.match.fit { color: var(--good); }
 
 /* --- trade selection and results --- */
 .action-bar .inner.two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
@@ -564,8 +592,7 @@ details.roster[open] summary::after { content: "Hide"; }
 
     /* team analysis: two columns, ideas full width in a 2x2 grid */
     .team-head h1 { font-size: var(--fs-3xl); }
-    .team-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); align-items: start; }
-    .team-layout > .card { margin-bottom: 0; }
+    .team-layout { grid-template-columns: 1fr 1fr; gap: var(--section-gap) var(--s-6); align-items: start; }
     .team-layout > #ideas { grid-column: 1 / -1; }
     .team-layout #ideas .ideas { grid-template-columns: 1fr 1fr; }
     .big-number { font-size: 80px; }

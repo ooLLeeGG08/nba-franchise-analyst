@@ -101,9 +101,10 @@
             const list = data.conferences[conference];
             render(`
                 <div class="topbar"><a class="back" href="#/">‹ Home</a></div>
+                <span class="eyebrow">01 · Teams</span>
                 <h1>Choose a team</h1>
-                <div class="segmented" role="group" aria-label="Conference">
-                    ${["East", "West"].map((c) => `<button type="button" data-conf="${c}" aria-pressed="${c === conference}">${c}ern</button>`).join("")}
+                <div class="chip-row" role="group" aria-label="Conference">
+                    ${["East", "West"].map((c) => `<button type="button" class="chip" data-conf="${c}" aria-pressed="${c === conference}">${c}ern</button>`).join("")}
                 </div>
                 <div class="team-grid">
                     ${list.map((t) => `
@@ -124,19 +125,40 @@
 
     // --- screen 3: team analysis ----------------------------------------------------------------
 
+    // Semicircle gauge for a probability (Make playoffs). The number sits in HTML so it uses the
+    // same Inter tabular figures as every other stat.
+    function gauge(value, label, was) {
+        const v = Math.max(0, Math.min(1, value));
+        const a = Math.PI * (1 - v);
+        const kx = 100 + 80 * Math.cos(a), ky = 100 - 80 * Math.sin(a);
+        const arc = "M20 100 A80 80 0 0 1 180 100";
+        return `
+            <div class="gauge" role="img" aria-label="${esc(label)} ${pct(value)}${was != null ? `, was ${pct(was)}` : ""}">
+                <svg viewBox="0 0 200 112" aria-hidden="true">
+                    <path class="gauge-track" d="${arc}" pathLength="100"/>
+                    <path class="gauge-fill" d="${arc}" pathLength="100" stroke-dasharray="${(v * 100).toFixed(1)} 100"/>
+                    <circle class="gauge-knob" cx="${kx.toFixed(1)}" cy="${ky.toFixed(1)}" r="8"/>
+                </svg>
+                <div class="gauge-text"><span class="gauge-value">${pct(value)}</span><span class="gauge-label">${esc(label)}</span>${was != null ? `<span class="was">was ${pct(was)}</span>` : ""}</div>
+            </div>`;
+    }
+
     function projectionCard(t) {
         const p = t.projection;
         return `
             <section class="card">
+                <span class="eyebrow">01 · Projection</span>
                 <div class="card-head"><h2>2026-27 projection</h2><span class="note">±${p.mcse_wins.toFixed(2)} wins (simulation error)</span></div>
                 <div class="projection-row">
                     <div class="big-number">${p.mean_wins.toFixed(1)}<small>avg wins</small></div>
                     <div class="range-pill"><strong>${p.range_10_90[0]}–${p.range_10_90[1]}</strong>wins in 80% of seasons</div>
                 </div>
-                <div class="stats">
-                    <div class="stat"><div class="value">${pct(p.playoff_pct)}</div><div class="label">Make playoffs</div></div>
-                    <div class="stat"><div class="value">${pct(p.play_in_pct)}</div><div class="label">Play-in</div></div>
-                    <div class="stat"><div class="value">${pct(p.top_seed_pct)}</div><div class="label">#1 seed</div></div>
+                <div class="odds">
+                    ${gauge(p.playoff_pct, "Make playoffs")}
+                    <div class="stats">
+                        <div class="stat"><div class="value">${pct(p.play_in_pct)}</div><div class="label">Play-in</div></div>
+                        <div class="stat"><div class="value">${pct(p.top_seed_pct)}</div><div class="label">#1 seed</div></div>
+                    </div>
                 </div>
             </section>`;
     }
@@ -156,6 +178,7 @@
         const injured = t.long_injuries.map((i) => `<span class="chip bad">${esc(i.name)} ${i.out_for_season ? "out for the season" : `out${i.return_date ? ` to ~${esc(formatDate(i.return_date))}` : ""}`}</span>`).join("");
         return `
             <section class="card">
+                <span class="eyebrow">02 · Needs</span>
                 <div class="card-head"><h2>Where they need help</h2><span class="note">rank of 30</span></div>
                 <div class="positions">${rows}</div>
                 <p class="callout">${headline}</p>
@@ -200,6 +223,7 @@
         const hardCap = c.hard_cap ? `Hard-capped at the ${c.hard_cap === "first_apron" ? "first" : "second"} apron.` : "Not hard-capped.";
         return `
             <section class="card">
+                <span class="eyebrow">04 · Payroll</span>
                 <div class="card-head"><h2>Payroll</h2><span class="status">${esc(c.status)}</span></div>
                 <div class="payroll-figures"><span class="amount">${money(c.team_salary)}</span><span class="note">${c.standard_contracts} standard contracts</span></div>
                 <div class="payroll-bar" role="img" aria-label="Team salary ${money(c.team_salary)} against the cap, tax line and aprons">
@@ -214,6 +238,7 @@
     function ideasCard(t) {
         return `
             <section class="card" id="ideas">
+                <span class="eyebrow">03 · Ideas</span>
                 <div class="card-head"><h2>Trade ideas</h2><span class="note">legal under the cap rules</span></div>
                 <div class="ideas"><p class="searching">Searching the league for players who fit… about 10 seconds the first time.</p>
                 ${[1, 2, 3, 4].map(() => `<div class="idea skeleton"></div>`).join("")}</div>
@@ -235,7 +260,7 @@
                     <span class="note">80% of seasons: ${signed(s.win_change_80[0], 0)} to ${signed(s.win_change_80[1], 0)}</span>
                     <span class="pill ok">✓ Works</span>
                 </div>
-                <span class="match ${s.match === "fits the need" ? "fit" : ""}">${esc(s.match[0].toUpperCase() + s.match.slice(1))}</span>
+                <span class="chip match ${s.match === "fits the need" ? "fit" : ""}">${esc(s.match[0].toUpperCase() + s.match.slice(1))}</span>
                 <div class="sides compact">
                     <div><h3>${esc(code)} gets</h3><ul class="moves">${s.gets.map((g) => playerLine(g, s.partner)).join("")}</ul></div>
                     <div><h3>${esc(code)} sends</h3><ul class="moves">${s.sends.map((x) => playerLine(x)).join("")}${picks}</ul></div>
@@ -257,14 +282,16 @@
         }
         if (!document.getElementById("ideas") || !location.hash.startsWith(`#/team/${t.code}`)) return;
         const n = data.needs;
-        const needLine = `<p class="needs-line">Looking for <strong>${n.positions.map((p) => ({ G: "guards", F: "forwards", C: "centers" })[p]).join(" and ")}</strong>
-            with <strong>${esc(n.skills.join(", "))}</strong> <span class="source">${n.source === "ai" ? "AI read of the numbers" : "from the numbers"}</span></p>`;
+        const chip = (text) => `<span class="chip">${esc(text)}</span>`;
+        const needLine = `<p class="needs-line">Looking for ${n.positions.map((p) => chip(({ G: "guards", F: "forwards", C: "centers" })[p])).join(" and ")}
+            with ${n.skills.map(chip).join(" ")} <span class="source">${n.source === "ai" ? "AI read of the numbers" : "from the numbers"}</span></p>`;
         const rules = data.rules.max_partner_loss_wins != null
             ? `Only trades that add ${data.rules.min_win_gain}+ wins without costing the partner more than ${data.rules.max_partner_loss_wins} wins.` : "";
         const body = data.suggestions.length
             ? data.suggestions.map((s) => suggestionCard(s, t.code)).join("")
             : `<p class="empty">No trade found that fits. ${esc(rules)}</p>`;
         box.innerHTML = `
+            <span class="eyebrow">03 · Ideas</span>
             <div class="card-head"><h2>Trade ideas</h2><span class="note">${data.searched.candidates} players searched · ${data.searched.legal_balanced} legal and balanced</span></div>
             ${needLine}${n.note ? `<p class="note">${esc(n.note)}</p>` : ""}
             <div class="ideas">${body}</div>
@@ -280,6 +307,7 @@
             </div>`).join("");
         return `
             <section class="card">
+                <span class="eyebrow">05 · Roster</span>
                 <details class="roster">
                     <summary>Roster</summary>
                     <p style="font-size:13px;margin-top:8px">Impact = points per 100 possessions vs an average player. Minutes when everyone is healthy.</p>
@@ -595,7 +623,8 @@
         const saved = loadSaved();
         if (!saved.length) return "";
         return `
-            <section class="card">
+            <section class="card saved-card">
+                <span class="eyebrow">Saved</span>
                 <div class="card-head"><h2>Saved trades (${saved.length})</h2><span class="note">on this device</span></div>
                 <ul class="saved">${saved.map((s, i) => `
                     <li><a href="#/trade/${s.teams.join("/")}?m=${encodeMoves(s.moves)}">${esc(s.summary)}</a>
@@ -638,7 +667,8 @@
             <div class="topbar"><a class="back" href="#/team/${back}">‹ ${esc(back)}</a><h2 class="title">Trade machine</h2></div>
             <div class="team-tabs n${tm.teams.length}">${tabs}${canAdd ? `<button type="button" class="tab add-team" data-action="picker" aria-label="Add a team">+</button>` : ""}</div>
             ${teamPicker()}
-            ${tm.teams.length > 1 ? statusBanner() + rulesPanel() + `
+            ${tm.teams.length > 1 ? `<span class="eyebrow">Cap rules</span>` + statusBanner() + rulesPanel() + `
+            <span class="eyebrow">Teams</span>
             <div class="trade-cols n${tm.teams.length}">${tm.teams.map((c) => `
                 <div class="team-col ${c === tm.active ? "active" : ""}">${teamPanel(c)}${assetsPanel(c)}</div>`).join("")}
             </div>` : ""}
