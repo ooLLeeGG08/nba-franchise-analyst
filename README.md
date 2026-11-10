@@ -82,7 +82,8 @@ codes (no logos or player photos).
      the 4 ideas (picked greedily, best first; a candidate whose best package uses up a player
      falls back to its next package, and the sweetener moves to the next free pick). With 1,
      every idea can be combined with every other, but fewer teams get 4 ideas.
-     28 of 30 teams get 4 ideas (Brooklyn 2, Sacramento 1; with a limit of 1, only 19 do).
+     28 of 30 teams get 4 ideas (Brooklyn 2; Sacramento, at 13 contracts, none: its one
+     balanced package costs Charlotte just over the 1.5-win limit). With a limit of 1, 19 do.
      Picking a trade starts a new search on top of it, which can add more.
    - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
      than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
