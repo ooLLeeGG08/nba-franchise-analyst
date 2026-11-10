@@ -1,6 +1,7 @@
 flask
 flask-cors
 pandas
+numpy
 nba_api
 langchain-groq
 python-dotenv

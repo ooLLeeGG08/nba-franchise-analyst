@@ -85,6 +85,7 @@ def team_analysis(code, engine, league, cba):
     rotation = rotations[code]
     info = TEAM_INFO[code]
     t = base[code]
+    season_end = max(g["date"] for g in engine.schedule if g["date"])
     conf_order = sorted((c for c in TEAM_INFO if TEAM_INFO[c]["conference"] == info["conference"]),
                         key=lambda c: -base[c]["mean_wins"])
 
@@ -136,7 +137,9 @@ def team_analysis(code, engine, league, cba):
         "needs_type": needs_type,
         "weak_links": [{"name": w["name"], "position": w["position"], "impact": w["impact"], "minutes": w["minutes"]}
                        for w in weak_links],
-        "long_injuries": [{"name": x["name"], "return_date": x["return_date"]} for x in roster if x["long_injury"]],
+        # out_for_season: expected back after the last regular-season game
+        "long_injuries": [{"name": x["name"], "return_date": x["return_date"],
+                           "out_for_season": bool(x["return_date"]) and x["return_date"] > season_end}
+                          for x in roster if x["long_injury"]],
         "roster": roster,
-        "suggestions": {"status": "pending", "message": "Trade ideas arrive in Stage 5.", "items": []},
     }

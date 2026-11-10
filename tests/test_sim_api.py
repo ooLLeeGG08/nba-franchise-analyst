@@ -38,7 +38,7 @@ def test_team_analysis_shape(client):
     assert all(1 <= x["rank"] <= 30 for x in t["positions"])
     assert t["needs"] and t["needs_type"] in ("need", "relative")
     assert t["cap"]["status"] and set(t["cap"]["thresholds"]) == {"salary_cap", "tax_line", "first_apron", "second_apron"}
-    assert t["suggestions"]["items"] == []
+    assert "suggestions" not in t  # trade ideas load separately (/suggestions)
     names = {r["name"] for r in t["roster"]}
     assert {i["name"] for i in t["long_injuries"]} <= names
 
@@ -182,3 +182,11 @@ def test_results_for_a_suggestion_match_its_card(client):
     assert abs(r["delta"]["mean_wins"]["change"] - sug["win_change"]) < 0.06
     assert any(o["code"] == sug["partner"] and o["in_trade"] for o in r["others"])
     assert r["explanation"]["text"]
+
+
+def test_injury_past_the_season_reads_out_for_season(client):
+    t = client.get("/api/sim/team/SAC").get_json()
+    simmons = next(i for i in t["long_injuries"] if i["name"] == "Ben Simmons")
+    assert simmons["out_for_season"]
+    others = [i for c in ("POR",) for i in client.get(f"/api/sim/team/{c}").get_json()["long_injuries"]]
+    assert any(not i["out_for_season"] for i in others)  # Sharpe, back in March

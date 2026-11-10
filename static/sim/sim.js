@@ -150,7 +150,7 @@
             ? `Biggest need: <strong>${esc(t.needs.join(", ").toLowerCase())}</strong>. ${esc(worst.group)} rank ${ordinal(worst.rank)} of 30 once injuries are counted.`
             : `No glaring hole. Weakest spot: <strong>${esc(worst.group.toLowerCase())}</strong> (${ordinal(worst.rank)} of 30).`;
         const weak = t.weak_links.map((w) => `<span class="chip">${esc(w.name)} · ${esc(w.position)} · ${signed(w.impact)}</span>`).join("");
-        const injured = t.long_injuries.map((i) => `<span class="chip bad">${esc(i.name)} out${i.return_date ? ` to ~${esc(formatDate(i.return_date))}` : ""}</span>`).join("");
+        const injured = t.long_injuries.map((i) => `<span class="chip bad">${esc(i.name)} ${i.out_for_season ? "out for the season" : `out${i.return_date ? ` to ~${esc(formatDate(i.return_date))}` : ""}`}</span>`).join("");
         return `
             <section class="card">
                 <div class="card-head"><h2>Where they need help</h2><span class="note">rank of 30</span></div>
@@ -193,7 +193,7 @@
         return `
             <section class="card" id="ideas">
                 <div class="card-head"><h2>Trade ideas</h2><span class="note">legal under the cap rules</span></div>
-                <div class="ideas"><p class="searching">Searching the league for players who fit… about 15 seconds the first time.</p>
+                <div class="ideas"><p class="searching">Searching the league for players who fit… about 10 seconds the first time.</p>
                 ${[1, 2, 3, 4].map(() => `<div class="idea skeleton"></div>`).join("")}</div>
             </section>`;
     }
