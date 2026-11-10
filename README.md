@@ -18,7 +18,7 @@ The original chat analyst is still served at `/analyst` (see the last section).
 3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
    On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-`pytest` runs the tests (347: cap rules with real legal and illegal trades, simulator,
+`pytest` runs the tests (349: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
@@ -109,8 +109,11 @@ codes (no logos or player photos).
    - `#/results/<code>?t=...`: `POST /api/sim/sequence/simulate` plays 10,000 seasons with all
      working trades at once (same random draws as the baseline, so the change is the trades'
      effect, not noise). Shows average wins before -> after with 10-90% ranges, the win
-     distribution chart (with a table view), playoff / play-in / #1 seed odds, every team
-     whose projection moved (trade partners first), and a short explanation with the same
+     distribution chart (with a table view), playoff / play-in / #1 seed odds, both
+     conferences' tables (all 15 teams by average wins with the 10-90% range, playoff /
+     play-in / #1-seed odds and the change in wins vs no trades; the team highlighted, trade
+     partners tagged; the other conference collapsed unless a partner is in it), and a short
+     explanation with the same
      name and number checks as the trade ideas, plus the combined vs sum-alone line. About 2 s.
 
 ## Project layout

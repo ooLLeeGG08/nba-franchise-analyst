@@ -97,6 +97,26 @@ def plan(payload, league, cba, engine, on_date, llm=None, index=None):
             "combined": combined_gain(team, working, engine), "ideas": ideas}
 
 
+def standings(team, working, sim):
+    """Both conferences' projected tables after the trades: every team's average wins, 10-90%
+    range and playoff / play-in / #1-seed odds, plus the change in average wins vs the no-trade
+    baseline (paired: same random draws). Sorted by average wins."""
+    partners = {m[k] for t in working for m in t["moves"] for k in ("from", "to")} - {team}
+    out = {"East": [], "West": []}
+    for code, t in sim["teams"].items():
+        a = t["after"]
+        out[TEAM_INFO[code]["conference"]].append({
+            "code": code, "name": TEAM_INFO[code]["name"], "colors": team_colors(code),
+            "you": code == team, "partner": code in partners,
+            "mean_wins": a["mean_wins"], "range": a["range"], "playoff_pct": a["playoff_pct"],
+            "play_in_pct": a["play_in_pct"], "top_seed_pct": a["top_seed_pct"],
+            "win_change": t["delta"]["mean_wins"]["change"], "win_change_mcse": t["delta"]["mean_wins"]["mcse"],
+            "playoff_change": t["delta"]["playoff_pct"]["change"]})
+    for rows in out.values():
+        rows.sort(key=lambda r: -r["mean_wins"])
+    return {"own": TEAM_INFO[team]["conference"], "partners": sorted(partners), "tables": out}
+
+
 def _results_facts(team, trades, sim, league, ratings):
     t = sim["teams"][team]
     gets, sends = [], []
@@ -149,4 +169,5 @@ def simulate_sequence(payload, league, cba, engine, on_date, llm=None, index=Non
                                               "top_seed_pct", "mcse")},
         "delta": me["delta"], "others": others, "explanation": explanation,
         "combined": combined_gain(team, working, engine) if len(working) > 1 else None,
+        "standings": standings(team, working, sim),
     }

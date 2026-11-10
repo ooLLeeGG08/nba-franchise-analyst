@@ -218,3 +218,32 @@ def test_plan_removes_a_blocked_pick(client):
     r = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": [
         {"id": "a", "moves": first}, {"id": "dup", "moves": first}]}).get_json()
     assert [v["id"] for v in r["removed"]] == ["dup"] and r["removed"][0]["reason"]
+
+
+def test_results_show_both_conference_tables(client):
+    """All 15 teams per conference, sorted by average wins, with the change vs no trades; our
+    team and trade partners are flagged."""
+    sug = client.get("/api/sim/team/ATL/suggestions").get_json()["suggestions"][0]
+    r = client.post("/api/sim/sequence/simulate",
+                    json={"team": "ATL", "trades": [{"id": "s1", "moves": sug["moves"]}]}).get_json()
+    st = r["standings"]
+    assert st["own"] == "East" and st["partners"] == [sug["partner"]]
+    for conf, rows in st["tables"].items():
+        assert len(rows) == 15
+        wins = [t["mean_wins"] for t in rows]
+        assert wins == sorted(wins, reverse=True)
+        for t in rows:
+            assert {"range", "playoff_pct", "play_in_pct", "top_seed_pct", "win_change"} <= set(t)
+    me = [t for t in st["tables"]["East"] if t["you"]]
+    assert len(me) == 1 and abs(me[0]["win_change"] - r["delta"]["mean_wins"]["change"]) < 1e-9
+    partner = next(t for rows in st["tables"].values() for t in rows if t["code"] == sug["partner"])
+    assert partner["partner"] and abs(partner["win_change"] - sug["partner_win_change"]) < 0.06
+    # the whole league's wins add up the same: what one team gains, others lose
+    total = sum(t["win_change"] for rows in st["tables"].values() for t in rows)
+    assert abs(total) < 1e-6
+
+
+def test_no_trades_means_no_change_in_the_tables(client):
+    r = client.post("/api/sim/sequence/simulate", json={"team": "BOS", "trades": []}).get_json()
+    rows = [t for rows in r["standings"]["tables"].values() for t in rows]
+    assert len(rows) == 30 and all(t["win_change"] == 0 for t in rows) and r["standings"]["partners"] == []

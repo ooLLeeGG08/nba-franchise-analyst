@@ -883,9 +883,36 @@
         const pcts = [0.1, 0.25, 0.5, 0.75, 0.9];
         const table = `<table class="data-table"><thead><tr><th>Percentile</th><th>Before</th><th>After</th></tr></thead><tbody>
             ${pcts.map((q) => `<tr><td>${q * 100}th</td><td>${percentile(b.distribution, q)}</td><td>${percentile(a.distribution, q)}</td></tr>`).join("")}</tbody></table>`;
-        const others = r.others.map((o) => `
-            <li><span>${badge(o)}<span class="who">${esc(o.name)}${o.in_trade ? "" : ` <small>not in the trade</small>`}</span></span>
-                <span class="amt">${o.wins_before.toFixed(1)} → ${o.wins_after.toFixed(1)} <strong class="${o.win_change < 0 ? "neg" : "pos"}">${signed(o.win_change)}</strong></span></li>`).join("");
+        // Conference tables: every team after the trades, change vs the no-trade season.
+        const confTable = (conf) => {
+            const rows = r.standings.tables[conf].map((t, i) => {
+                const flat = Math.abs(t.win_change) < 0.1;
+                return `
+                <tr class="${t.you ? "you" : ""} ${i === 5 || i === 9 ? "cut" : ""}">
+                    <td class="rank">${i + 1}</td>
+                    <td class="team"><span class="team-cell">${badge(t)}<span>${esc(t.code)}${t.you ? `<small>You</small>` : t.partner ? `<small>Trade</small>` : ""}</span></span></td>
+                    <td><strong>${t.mean_wins.toFixed(1)}</strong><small>${t.range[0]}–${t.range[1]}</small></td>
+                    <td>${pct(t.playoff_pct)}</td><td>${pct(t.play_in_pct)}</td><td>${pct(t.top_seed_pct)}</td>
+                    <td class="chg ${flat ? "flat" : t.win_change < 0 ? "neg" : "pos"}">${flat ? "0.0" : signed(t.win_change)}</td>
+                </tr>`;
+            }).join("");
+            return `<div class="table-scroll"><table class="standings">
+                <thead><tr><th class="rank">#</th><th class="team">Team</th><th>Wins<small>10–90%</small></th><th>Playoffs</th><th>Play-in</th><th>#1 seed</th><th>Change</th></tr></thead>
+                <tbody>${rows}</tbody></table></div>`;
+        };
+        const own = r.standings.own, other = own === "East" ? "West" : "East";
+        const otherHasPartner = r.standings.tables[other].some((t) => t.partner);
+        const confName = (c) => `${c}ern Conference`;
+        const standingsHtml = `
+            <section class="card">
+                <div class="card-head"><h2>${confName(own)}</h2><span class="note">after the trades</span></div>
+                ${confTable(own)}
+                <p class="hint">Sorted by average wins. Lines mark 6th (playoffs) and 10th (play-in). Change = average wins vs the season with no trades (same simulated seasons).</p>
+            </section>
+            <details class="card conf-other" ${otherHasPartner ? "open" : ""}>
+                <summary><h2>${confName(other)}</h2><span class="note">${otherHasPartner ? "has a trade partner" : "tap to show"}</span></summary>
+                ${confTable(other)}
+            </details>`;
         const applied = r.trades.map((t, i) => `<li>${t.works ? "✓" : "✗"} Trade ${i + 1}${t.works ? "" : ` blocked: ${esc(t.reason)}`}</li>`).join("");
         const ex = r.explanation;
         render(`
@@ -908,7 +935,7 @@
                 <div class="card-head"><h2>What changed</h2><span class="note">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></div>
                 <p class="explain">${esc(ex.text)}</p>
             </section>
-            ${others ? `<section class="card"><div class="card-head"><h2>Other teams</h2><span class="note">avg wins</span></div><ul class="moves others">${others}</ul></section>` : ""}
+            ${standingsHtml}
             ${applied ? `<section class="card"><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
             <div class="action-bar"><div class="inner two">
                 <a class="button secondary" href="#/select/${code}">Change trades</a>
