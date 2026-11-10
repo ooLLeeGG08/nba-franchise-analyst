@@ -18,7 +18,7 @@ The original chat analyst is still served at `/analyst` (see the last section).
 3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
    On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-`pytest` runs the tests (346: cap rules with real legal and illegal trades, simulator,
+`pytest` runs the tests (347: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
@@ -78,13 +78,12 @@ codes (no logos or player photos).
      upgrades). If fewer than 4 come out, the search widens: lower skill bar, the next-weakest
      position, then the best available upgrade; each card says "fits the need", "partial fit"
      or "best available upgrade". The best go to a 10,000-season simulation; top 4 by win gain.
-   - Diversity (config `max_asset_reuse: 1`): a player or pick appears in at most one of the 4
-     ideas (picked greedily, best first; a candidate whose best package reuses a player falls
-     back to its next package, and the sweetener moves to the next free pick), so the ideas
-     can be combined.
-     With no player or pick repeated, 19 of 30 teams get 4 ideas; the rest get 1-3 because
-     they only have that many separate packages that are legal and within the realism rule
-     (Brooklyn and Sacramento get 1). Picking a trade starts a new search, which can add more.
+   - Diversity (config `max_asset_reuse`, set to 2): a player or pick appears in at most two of
+     the 4 ideas (picked greedily, best first; a candidate whose best package uses up a player
+     falls back to its next package, and the sweetener moves to the next free pick). With 1,
+     every idea can be combined with every other, but fewer teams get 4 ideas.
+     28 of 30 teams get 4 ideas (Brooklyn 2, Sacramento 1; with a limit of 1, only 19 do).
+     Picking a trade starts a new search on top of it, which can add more.
    - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
      than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
      is a heist (e.g. Wembanyama for a role player).

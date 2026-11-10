@@ -191,10 +191,24 @@ def test_short_roster_team_can_still_get_ideas(result, league):
     assert pkgs and all(len(extra) == 1 for _, _, _, extra in pkgs)
 
 
-def test_no_asset_appears_in_two_suggestions(result):
+def _engine_with_reuse(engine, reuse):
+    import copy
+    e = copy.copy(engine)
+    e.cfg = copy.deepcopy(engine.cfg)
+    e.cfg["suggestions"]["max_asset_reuse"] = reuse
+    return e
+
+
+@pytest.fixture(scope="module")
+def diverse(result, league):
+    """LAL with diversity on (max_asset_reuse = 1), whatever the config says."""
+    return suggest("LAL", _engine_with_reuse(result[1], 1), league, load_cba(), DATE)
+
+
+def test_no_asset_appears_in_two_suggestions(diverse):
     """Diversity (max_asset_reuse = 1): no outgoing player or pick appears in more than one of
     the 4 suggestions, so any of them can be combined."""
-    r, _ = result
+    r = diverse
     assert r["rules"]["max_asset_reuse"] == 1
     outgoing = [m["id"] for s in r["suggestions"] for m in s["moves"] if m["from"] == "LAL"]
     assert len(outgoing) == len(set(outgoing))
@@ -205,10 +219,17 @@ def test_no_asset_appears_in_two_suggestions(result):
 @pytest.mark.parametrize("code", ["BOS", "ATL"])
 def test_diversity_holds_for_teams_that_used_to_repeat(code, result, league):
     """Boston's list used to put Ron Harper Jr. in 3 of 4 ideas and the same 2nd in 3 of 4."""
-    _, engine = result
-    r = suggest(code, engine, league, load_cba(), DATE)
+    r = suggest(code, _engine_with_reuse(result[1], 1), league, load_cba(), DATE)
     outgoing = [m["id"] for s in r["suggestions"] for m in s["moves"] if m["from"] == code]
     assert len(r["suggestions"]) == 4 and len(outgoing) == len(set(outgoing))
+
+
+def test_reuse_limit_two(result, league):
+    """max_asset_reuse = 2: no player or pick in more than two ideas."""
+    from collections import Counter
+    r = suggest("BKN", _engine_with_reuse(result[1], 2), league, load_cba(), DATE)
+    use = Counter(m["id"] for s in r["suggestions"] for m in s["moves"] if m["type"] != "cash")
+    assert r["rules"]["max_asset_reuse"] == 2 and max(use.values()) <= 2
 
 
 def test_ideas_on_top_of_a_chosen_trade(result, league):

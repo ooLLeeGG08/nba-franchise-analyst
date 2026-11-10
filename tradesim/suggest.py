@@ -380,7 +380,8 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
 def cache_path(code, engine, model_name, chosen=None):
     from tradesim.engine import CACHE_DIR, fingerprint
     chosen_key = json.dumps(chosen["moves"], sort_keys=True) if chosen else ""
-    key = hashlib.sha256(f"{SUGGEST_VERSION}:{model_name}:{fingerprint(engine.n_sims, engine.seed, engine.schedule)}:{chosen_key}"
+    rules = json.dumps(engine.cfg.get("suggestions", {}), sort_keys=True)  # settings change -> new search
+    key = hashlib.sha256(f"{SUGGEST_VERSION}:{model_name}:{fingerprint(engine.n_sims, engine.seed, engine.schedule)}:{chosen_key}:{rules}"
                          .encode()).hexdigest()[:16]
     return os.path.join(CACHE_DIR, f"suggestions_{code}_{key}.json")
 

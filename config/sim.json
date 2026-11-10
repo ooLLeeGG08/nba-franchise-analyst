@@ -114,7 +114,7 @@
     "count": 4,
     "max_partner_loss_wins": 1.5,
     "min_win_gain": 0.5,
-    "max_asset_reuse": 1,
+    "max_asset_reuse": 2,
     "_max_asset_reuse": "Diversity: an outgoing player or pick may appear in at most this many of a team's suggestions, so the ideas can be combined. null = no limit.",
     "_max_partner_loss_wins": "Realism rule for suggestions only (not the cap checker): skip trades that cost the partner more than this many projected wins. null = pure 'best legal trade by win gain', which produces heists (e.g. a superstar for a role player).",
     "_min_win_gain": "Only suggest trades that add at least this many projected wins."
