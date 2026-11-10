@@ -54,7 +54,47 @@ def check_sequence(payload, league, cba, on_date):
                          "contracts_after": final.teams[code]["standard_contracts"]}
     return {"team": team, "trades": verdicts, "payroll": payroll,
             "thresholds": {k: cba[k] for k in ("salary_cap", "tax_line", "first_apron", "second_apron")},
-            "working": [t for t, v in zip(trades, verdicts) if v["works"]]}
+            "working": [t for t, v in zip(trades, verdicts) if v["works"]], "final_league": final}
+
+
+def _player_moves(trades):
+    return [{"player": m["id"], "from": m["from"], "to": m["to"]}
+            for t in trades for m in t["moves"] if m["type"] == "player"]
+
+
+def combined_gain(team, working, engine):
+    """One paired run with every working trade together vs each trade alone (separate paired
+    runs). The two differ when trades overlap: e.g. two centers share one set of minutes."""
+    if not working:
+        return None
+    together = engine.scenario(_player_moves(working))["teams"][team]["delta"]["mean_wins"]
+    alone = {}
+    for t in working:
+        try:
+            alone[t["id"]] = round(engine.scenario(_player_moves([t]))["teams"][team]["delta"]["mean_wins"]["change"], 2)
+        except ValueError:  # depends on an earlier trade (sends a player it brings in)
+            alone[t["id"]] = None
+    known = [v for v in alone.values() if v is not None]
+    return {"change": round(together["change"], 2), "mcse": together["mcse"],
+            "sum_alone": round(sum(known), 2) if len(known) == len(alone) else None, "alone": alone}
+
+
+def plan(payload, league, cba, engine, on_date, llm=None, index=None):
+    """The selection screen's state after every click: the picked trades (in the order picked)
+    checked in sequence, blocked ones listed as removed, the combined gain, and fresh trade
+    ideas searched on top of the working trades (rosters, payroll and picks they leave)."""
+    from tradesim.suggest import cached_suggest
+    checked = check_sequence(payload, league, cba, on_date)
+    team, working = checked["team"], checked["working"]
+    base = cached_suggest(team, engine, league, cba, on_date, llm, index)
+    if working:
+        chosen = {"moves": [m for t in working for m in t["moves"]], "league": checked["final_league"]}
+        ideas = cached_suggest(team, engine, league, cba, on_date, llm, index, chosen=chosen, needs=base["needs"])
+    else:
+        ideas = base
+    return {"team": team, "trades": checked["trades"], "payroll": checked["payroll"],
+            "removed": [v for v in checked["trades"] if not v["works"]],
+            "combined": combined_gain(team, working, engine), "ideas": ideas}
 
 
 def _results_facts(team, trades, sim, league, ratings):
@@ -83,9 +123,7 @@ def _results_facts(team, trades, sim, league, ratings):
 def simulate_sequence(payload, league, cba, engine, on_date, llm=None, index=None):
     checked = check_sequence(payload, league, cba, on_date)
     team, working = checked["team"], checked["working"]
-    moves = [{"player": m["id"], "from": m["from"], "to": m["to"]}
-             for t in working for m in t["moves"] if m["type"] == "player"]
-    sim = engine.scenario(moves)
+    sim = engine.scenario(_player_moves(working))
     teams = sim["teams"]
     others = []
     for code, t in teams.items():
@@ -110,4 +148,5 @@ def simulate_sequence(payload, league, cba, engine, on_date, llm=None, index=Non
         "after": {k: me["after"][k] for k in ("mean_wins", "range", "distribution", "playoff_pct", "play_in_pct",
                                               "top_seed_pct", "mcse")},
         "delta": me["delta"], "others": others, "explanation": explanation,
+        "combined": combined_gain(team, working, engine) if len(working) > 1 else None,
     }

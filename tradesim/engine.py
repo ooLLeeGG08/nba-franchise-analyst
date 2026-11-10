@@ -26,6 +26,7 @@ share all of them, and differences come from the moves, not from luck.
 import hashlib
 import json
 import os
+from collections import OrderedDict
 
 import numpy as np
 
@@ -39,6 +40,7 @@ GAMES = 82
 ENGINE_VERSION = "stage6-2"  # bump when simulation logic changes, so old baseline caches are ignored
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE_DIR = os.path.join(_ROOT, "data", "cache")
+RUN_CACHE_SIZE = 16  # simulated move sets kept in memory (about 1.5 MB each)
 # Everything the baseline depends on. Changing any of these files invalidates the cache.
 INPUT_FILES = ["data/2026_27/league.json", "data/model/player_ratings_2026_27.json", "data/model/ratings_fit.json",
                "data/model/game_model.json", "data/model/uncertainty.json", "data/model/strength_check.json",
@@ -286,12 +288,36 @@ class Engine:
         self._baseline["from_cache"] = False
         return self._baseline
 
-    def scenario(self, moves):
-        """Simulate `moves` ([{"player", "from", "to"}]) against the baseline. Changes are
-        paired season by season (same random numbers), with Monte Carlo standard errors."""
+    def run(self, moves=()):
+        """Simulated seasons and rotations after `moves` ([{"player", "from", "to"}]; none = the
+        baseline). Recent runs are kept in memory (a few MB each), so going back to an earlier
+        set of trades is instant. Returns (sim, rotations)."""
+        moves = list(moves or ())
+        if not moves:
+            self.baseline()
+            return self._baseline, self.baseline_rotations
+        key = json.dumps(moves, sort_keys=True)
+        runs = self.__dict__.setdefault("_runs", OrderedDict())
+        if key in runs:
+            runs.move_to_end(key)
+            return runs[key]
+        self.baseline()
         rotations = apply_moves(self.league, moves, self.cfg, self.ratings)
-        changed = sorted(c for c in CODES if set(rotations[c].players) != set(self.baseline_rotations[c].players))
-        base, scen = self.baseline(), self.simulate(rotations, changed)
+        changed = [c for c in CODES if set(rotations[c].players) != set(self.baseline_rotations[c].players)]
+        rotations = {**self.baseline_rotations, **{c: rotations[c] for c in changed}}
+        runs[key] = (self.simulate(rotations, changed), rotations)
+        while len(runs) > RUN_CACHE_SIZE:
+            runs.popitem(last=False)
+        return runs[key]
+
+    def scenario(self, moves, base_moves=()):
+        """Simulate `moves` ([{"player", "from", "to"}]) against a starting point: the baseline,
+        or the season after `base_moves` (e.g. trades already chosen). Changes are paired season
+        by season (same random numbers), with Monte Carlo standard errors."""
+        base_moves = list(base_moves or ())
+        base, base_rot = self.run(base_moves)
+        scen, rotations = self.run(base_moves + list(moves))
+        changed = sorted(c for c in CODES if set(rotations[c].players) != set(base_rot[c].players))
         hl = self.cfg["simulation"]["highlight"]
         floor = {"mean_wins": hl["wins"], "playoff_pct": hl["pct_points"] / 100,
                  "play_in_pct": hl["pct_points"] / 100, "top_seed_pct": hl["pct_points"] / 100}
@@ -307,10 +333,10 @@ class Engine:
                         "playoff_change": delta["playoff_pct"]["change"],
                         "strength_before": round(base["mean_strength"][c], 2),
                         "strength_after": round(scen["mean_strength"][c], 2),
-                        "full_strength_before": round(self.baseline_rotations[c].full_strength(), 2),
+                        "full_strength_before": round(base_rot[c].full_strength(), 2),
                         "full_strength_after": round(rotations[c].full_strength(), 2)}
-        return {"moves": moves, "changed_teams": changed, "teams": teams, "n_sims": self.n_sims,
-                "rotations": {c: rotations[c].breakdown() for c in changed}}
+        return {"moves": list(moves), "base_moves": base_moves, "changed_teams": changed, "teams": teams,
+                "n_sims": self.n_sims, "rotations": {c: rotations[c].breakdown() for c in changed}}
 
 
 def paired_changes(base, scen, i):

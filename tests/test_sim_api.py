@@ -190,3 +190,31 @@ def test_injury_past_the_season_reads_out_for_season(client):
     assert simmons["out_for_season"]
     others = [i for c in ("POR",) for i in client.get(f"/api/sim/team/{c}").get_json()["long_injuries"]]
     assert any(not i["out_for_season"] for i in others)  # Sharpe, back in March
+
+
+def test_plan_resuggests_and_combines(client):
+    """Picking a trade: ideas are rebuilt on top of it, and two picks report the combined gain
+    from one paired run next to the sum of each alone."""
+    none = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": []}).get_json()
+    assert none["combined"] is None and len(none["ideas"]["suggestions"]) == 4
+    first = none["ideas"]["suggestions"][0]
+    one = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": [{"id": "a", "moves": first["moves"]}]}).get_json()
+    assert one["ideas"]["on_top_of_chosen"]
+    assert abs(one["combined"]["change"] - first["win_change"]) < 0.06
+    second = one["ideas"]["suggestions"][0]
+    two = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": [
+        {"id": "a", "moves": first["moves"]}, {"id": "b", "moves": second["moves"]}]}).get_json()
+    assert all(v["works"] for v in two["trades"]) and not two["removed"]
+    c = two["combined"]
+    assert set(c["alone"]) == {"a", "b"} and abs(c["sum_alone"] - sum(c["alone"].values())) < 0.02
+    # combined = first alone + second on top of the first (same paired runs)
+    assert abs(c["change"] - (first["win_change"] + second["win_change"])) < 0.15
+
+
+def test_plan_removes_a_blocked_pick(client):
+    """A picked trade that reuses a player already traded is removed, with the reason."""
+    ideas = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": []}).get_json()["ideas"]["suggestions"]
+    first = ideas[0]["moves"]
+    r = client.post("/api/sim/sequence/plan", json={"team": "ATL", "trades": [
+        {"id": "a", "moves": first}, {"id": "dup", "moves": first}]}).get_json()
+    assert [v["id"] for v in r["removed"]] == ["dup"] and r["removed"][0]["reason"]

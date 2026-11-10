@@ -181,13 +181,50 @@ def test_center_need_gets_center_skills(league):
 def test_short_roster_team_can_still_get_ideas(result, league):
     """Teams below 14 contracts must take back more players than they send; a filler player
     from the partner makes that possible (Sacramento has 13)."""
-    from tradesim.suggest import _packages, find_candidates
+    from tradesim.suggest import SearchState, _packages, find_candidates
     _, engine = result
     cba = load_cba()
+    state = SearchState(engine, league)
     needs = {"positions": ["G", "F", "C"], "skills": ["scoring"]}
-    cands = find_candidates("SAC", needs, engine, league, cba, DATE, min_fit=0)
-    pkgs = [p for c in cands[:15] for p in _packages("SAC", c, engine, league, cba, DATE, None)]
+    cands = find_candidates("SAC", needs, state, cba, DATE, min_fit=0)
+    pkgs = [p for c in cands[:15] for p in _packages("SAC", c, state, cba, DATE, None)]
     assert pkgs and all(len(extra) == 1 for _, _, _, extra in pkgs)
+
+
+def test_no_asset_appears_in_two_suggestions(result):
+    """Diversity (max_asset_reuse = 1): no outgoing player or pick appears in more than one of
+    the 4 suggestions, so any of them can be combined."""
+    r, _ = result
+    assert r["rules"]["max_asset_reuse"] == 1
+    outgoing = [m["id"] for s in r["suggestions"] for m in s["moves"] if m["from"] == "LAL"]
+    assert len(outgoing) == len(set(outgoing))
+    every = [m["id"] for s in r["suggestions"] for m in s["moves"] if m["type"] != "cash"]
+    assert len(every) == len(set(every))  # incoming fillers aren't shared either
+
+
+@pytest.mark.parametrize("code", ["BOS", "ATL"])
+def test_diversity_holds_for_teams_that_used_to_repeat(code, result, league):
+    """Boston's list used to put Ron Harper Jr. in 3 of 4 ideas and the same 2nd in 3 of 4."""
+    _, engine = result
+    r = suggest(code, engine, league, load_cba(), DATE)
+    outgoing = [m["id"] for s in r["suggestions"] for m in s["moves"] if m["from"] == code]
+    assert len(r["suggestions"]) == 4 and len(outgoing) == len(set(outgoing))
+
+
+def test_ideas_on_top_of_a_chosen_trade(result, league):
+    """After a trade is picked, the new ideas are legal in the state it leaves and their win
+    change is measured from there."""
+    from tradesim.checker import check_trades_in_sequence
+    _, engine = result
+    cba = load_cba()
+    first = suggest("BOS", engine, league, cba, DATE)["suggestions"][0]
+    _, after = check_trades_in_sequence(league, cba, [{"moves": first["moves"]}], DATE)
+    r = suggest("BOS", engine, league, cba, DATE, chosen={"moves": first["moves"], "league": after})
+    assert r["on_top_of_chosen"] and r["suggestions"]
+    for s in r["suggestions"]:
+        both, _ = check_trades_in_sequence(league, cba, [{"moves": first["moves"]}, {"moves": s["moves"]}], DATE)
+        assert all(x["works"] for x in both)
+        assert abs(s["wins_before"] - (first["wins_after"])) < 0.05
 
 
 def test_suggestions_endpoint_and_cache(tmp_path, monkeypatch):

@@ -152,7 +152,24 @@ def sim_sequence_check():
     except BadTrade as err:
         return jsonify({"error": str(err)}), 400
     out.pop("working")
+    out.pop("final_league")
     return jsonify(out)
+
+
+@app.route('/api/sim/sequence/plan', methods=['POST'])
+def sim_sequence_plan():
+    from datetime import date
+    from tradesim.ai import NameIndex, get_llm
+    from tradesim.sequence_api import plan
+    from tradesim.trade_api import BadTrade
+    s = _sim()
+    if "names" not in s:
+        s["names"] = NameIndex(s["league"].players)
+    try:
+        return jsonify(plan(request.get_json(silent=True), s["league"], s["cba"], s["engine"], date.today(),
+                            get_llm(), s["names"]))
+    except BadTrade as err:
+        return jsonify({"error": str(err)}), 400
 
 
 @app.route('/api/sim/sequence/simulate', methods=['POST'])

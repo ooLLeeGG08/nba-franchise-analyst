@@ -31,19 +31,20 @@ import copy
 import hashlib
 import json
 import os
+from collections import Counter
 from itertools import combinations
 
 from tradesim import ai
 from tradesim.analysis import expected_minutes, team_analysis
 from tradesim.checker import _matching, check_trade
 from tradesim.picks import label as pick_label
-from tradesim.rotation import apply_moves, buckets
+from tradesim.rotation import buckets
 from tradesim.skills import SKILLS, player_skills, team_skills
 
 SKILL_NAMES = list(SKILLS)
 from tradesim.trade_api import _tradeable_from
 
-SUGGEST_VERSION = "stage5-4"
+SUGGEST_VERSION = "stage6-diverse-2"
 BUCKET_OF = {"G": 0, "F": 1, "C": 2}
 MIN_SKILL_FIT = 55
 MIN_UPGRADE = 0.75
@@ -51,6 +52,7 @@ MIN_MPG = 18
 N_CANDIDATES = 60
 N_SIMULATE = 6
 MAX_PACKAGES_SCREENED = 120  # per candidate, smallest packages first
+PACKAGES_KEPT = 6  # best packages kept per candidate (fallbacks for the diversity rule)
 WINS_PER_POINT = 2.6  # quick screen only; the final numbers come from the simulation
 
 
@@ -110,10 +112,31 @@ def _contribution(rotation, pid, em):
     return rotation.players[pid]["impact"] * em.get(pid, 0) / 48
 
 
-def find_candidates(code, needs, engine, league, cba, on_date, min_fit=MIN_SKILL_FIT, positions=None):
-    rotation = engine.baseline_rotations[code]
+class SearchState:
+    """Where a search starts: the real league, or the league after trades already chosen
+    (rosters, payrolls and picks from tradesim.checker.check_trades_in_sequence, rotations from
+    the same player moves). Ideas are found, checked and simulated on top of it."""
+
+    def __init__(self, engine, league, chosen_moves=(), chosen_league=None):
+        self.engine, self.league = engine, chosen_league or league
+        self.chosen_moves = [{"player": m["id"], "from": m["from"], "to": m["to"]}
+                             for m in chosen_moves if m["type"] == "player"]
+        self.rotations = engine.run(self.chosen_moves)[1]
+        # Players in a chosen trade stay put: no flipping a player just acquired, no getting
+        # back one just sent away.
+        self.locked = {m["player"] for m in self.chosen_moves}
+        self._strength = {}
+
+    def strength(self, code):
+        if code not in self._strength:
+            self._strength[code] = self.rotations[code].expected_strength()
+        return self._strength[code]
+
+
+def find_candidates(code, needs, state, cba, on_date, min_fit=MIN_SKILL_FIT, positions=None):
+    rotation = state.rotations[code]
     em = expected_minutes(rotation)
-    rated = engine.ratings["players"]
+    rated = state.engine.ratings["players"]
     wanted = {BUCKET_OF[p] for p in (positions or needs["positions"])}
     weakest = {}
     for pid, minutes in em.items():
@@ -121,8 +144,8 @@ def find_candidates(code, needs, engine, league, cba, on_date, min_fit=MIN_SKILL
             for b in buckets(rotation.players[pid]["position"]):
                 weakest[b] = min(weakest.get(b, 99), rotation.players[pid]["impact"])
     out = []
-    for pid, p in league.players.items():
-        if p["team"] == code or not p["on_roster"] or _restricted(p, cba, on_date):
+    for pid, p in state.league.players.items():
+        if p["team"] == code or not p["on_roster"] or _restricted(p, cba, on_date) or pid in state.locked:
             continue
         r = rated[pid]
         if r.get("long_injury") or r["availability"] < 0.5 or r["mpg_when_playing"] < MIN_MPG:
@@ -141,38 +164,34 @@ def find_candidates(code, needs, engine, league, cba, on_date, min_fit=MIN_SKILL
     return out[:N_CANDIDATES]
 
 
-def _screen(code, partner, outgoing, incoming_id, engine, league, extra=()):
+def _screen(code, partner, outgoing, incoming_id, state, extra=()):
     """Quick expected-strength change (points) for the team and the partner."""
-    ratings = engine.ratings
-    base = engine.baseline_rotations
-    a, b = copy.deepcopy(base[code]), copy.deepcopy(base[partner])
-    incoming = [league.players[incoming_id]] + list(extra)
+    ratings = state.engine.ratings
+    a, b = copy.deepcopy(state.rotations[code]), copy.deepcopy(state.rotations[partner])
+    incoming = [state.league.players[incoming_id]] + list(extra)
     a.change([p["id"] for p in outgoing], incoming, ratings)
     b.change([p["id"] for p in incoming], list(outgoing), ratings)
-    return a.expected_strength() - _base_strength(engine, code), b.expected_strength() - _base_strength(engine, partner)
+    return a.expected_strength() - state.strength(code), b.expected_strength() - state.strength(partner)
 
 
-def _base_strength(engine, code):
-    cache = engine.__dict__.setdefault("_expected_strength", {})
-    if code not in cache:
-        cache[code] = engine.baseline_rotations[code].expected_strength()
-    return cache[code]
-
-
-def _packages(code, cand, engine, league, cba, on_date, max_partner_loss):
+def _packages(code, cand, state, cba, on_date, max_partner_loss, keep=PACKAGES_KEPT):
     """Outgoing packages for one candidate: salary- and roster-feasible for both teams, then
     ranked by the team's quick gain among those costing the partner at most max_partner_loss
-    wins (None = no limit). Returns [(team_gain, partner_gain, combo)], best first."""
-    rotation = engine.baseline_rotations[code]
+    wins (None = no limit). Returns [(team_gain, partner_gain, combo, extra)], best first; the
+    runners-up let the diversity rule swap in a package that doesn't reuse a player."""
+    league = state.league
+    rotation = state.rotations[code]
     em = expected_minutes(rotation)
     core = set(sorted(rotation.players, key=lambda pid: -_contribution(rotation, pid, em))[:3])
-    pool = [p for p in league.roster(code) if p["id"] not in core and not _restricted(p, cba, on_date)]
+    pool = [p for p in league.roster(code)
+            if p["id"] not in core and p["id"] not in state.locked and not _restricted(p, cba, on_date)]
     team, partner = league.teams[code], league.teams[cand["team"]]
     n, m = team["standard_contracts"], partner["standard_contracts"]
     lo, hi = cba["roster"]["min_standard"], cba["roster"]["max_standard"]
     # A team short of players (e.g. 13 contracts) must take back more than it sends: add the
     # partner's cheapest tradeable player as a filler.
-    fillers = sorted((p for p in league.roster(cand["team"]) if p["id"] != cand["id"] and not _restricted(p, cba, on_date)),
+    fillers = sorted((p for p in league.roster(cand["team"])
+                      if p["id"] != cand["id"] and p["id"] not in state.locked and not _restricted(p, cba, on_date)),
                      key=lambda p: p["salary"])[:1]
     found, screened = [], 0
     for k in (1, 2, 3):
@@ -192,44 +211,30 @@ def _packages(code, cand, engine, league, cba, on_date, max_partner_loss):
                 if not _matching(partner["team_salary"], p_after, in_sal, out_sal, cba)[0]:
                     continue
                 screened += 1
-                gain, partner_gain = _screen(code, cand["team"], combo, cand["id"], engine, league, extra)
+                gain, partner_gain = _screen(code, cand["team"], combo, cand["id"], state, extra)
                 if max_partner_loss is not None and partner_gain * WINS_PER_POINT < -max_partner_loss:
                     continue
                 if gain <= 0:
                     continue
                 found.append((gain, partner_gain, combo, tuple(extra)))
     found.sort(key=lambda x: -x[0])
-    return found[:3]
+    return found[:keep]
 
 
-def _sweetener(code, upgrade, league):
-    """Latest own pick as a value sweetener: a 1st for +2.0 impact, a 2nd for +1.0."""
+def _sweetener(code, upgrade, league, free=lambda asset_id: True):
+    """Latest own pick still free (not used by another idea) as a value sweetener: a 1st for
+    +2.0 impact, a 2nd for +1.0."""
     rnd = 1 if upgrade >= 2.0 else (2 if upgrade >= 1.0 else None)
     if rnd is None:
         return None
-    own = [p for p in league.picks_held(code) if p["kind"] == "own" and p["round"] == rnd]
+    own = [p for p in league.picks_held(code) if p["kind"] == "own" and p["round"] == rnd and free(p["id"])]
     return max(own, key=lambda p: p["year"]) if own else None
 
 
-def legal_trades(code, candidates, engine, league, cba, on_date, max_partner_loss):
-    trades = []
-    for cand in candidates:
-        for gain, partner_gain, combo, extra in _packages(code, cand, engine, league, cba, on_date, max_partner_loss):
-            moves = [{"type": "player", "id": cand["id"], "from": cand["team"], "to": code}]
-            moves += [{"type": "player", "id": p["id"], "from": cand["team"], "to": code} for p in extra]
-            moves += [{"type": "player", "id": p["id"], "from": code, "to": cand["team"]} for p in combo]
-            sweet = _sweetener(code, cand["upgrade"], league)
-            options = ([moves + [{"type": "pick", "id": sweet["id"], "from": code, "to": cand["team"]}]] if sweet else []) + [moves]
-            for option in options:
-                result = check_trade(league, cba, {"moves": option}, on_date)
-                if result["works"]:
-                    trades.append({"candidate": cand, "moves": option, "check": result,
-                                   "quick": gain, "partner_quick": partner_gain})
-                    break
-            else:
-                continue
-            break  # best legal package for this candidate
-    return trades
+def _assets(moves):
+    """Every player and pick in a trade. Outgoing ones are what the diversity rule is about;
+    incoming ones (e.g. the same filler player) would also stop two ideas from combining."""
+    return [m["id"] for m in moves if m["type"] in ("player", "pick")]
 
 
 def _player_card(pid, league, engine):
@@ -239,56 +244,93 @@ def _player_card(pid, league, engine):
             "team": p["team"]}
 
 
-def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, max_partner_loss="config"):
+def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, max_partner_loss="config",
+            chosen=None, needs=None):
     """max_partner_loss: drop trades that cost the partner more than this many wins (quick screen
-    first, then the simulated number); None = no limit. Defaults come from config/sim.json."""
+    first, then the simulated number); None = no limit. Defaults come from config/sim.json.
+
+    chosen: trades already picked ({"moves", "league"}: their moves and the league they leave);
+    ideas are then searched, checked and simulated on top of them, and win changes are vs that
+    starting point. needs: reuse needs found earlier (skips the LLM call)."""
     sc = engine.cfg.get("suggestions", {})
     n = n or sc.get("count", 4)
     if max_partner_loss == "config":
         max_partner_loss = sc.get("max_partner_loss_wins")
     min_gain = sc.get("min_win_gain", 0.0)
+    reuse = sc.get("max_asset_reuse", 1)
+    state = SearchState(engine, league, (chosen or {}).get("moves", ()), (chosen or {}).get("league"))
+    league = state.league
     index = index or ai.NameIndex(league.players)
-    facts = team_facts(code, engine, league, cba)
-    needs = ai.team_needs(facts, index, llm)
+    facts = team_facts(code, engine, engine.league, cba)
+    needs = needs or ai.team_needs(facts, index, llm)
     ranked_groups = [p["group"] for p in sorted(facts["positions"], key=lambda p: -p["rank"])]
     next_weakest = [g for g, name in ai.POSITIONS.items() if name in ranked_groups[:2]]
     ladder = [("fits the need", MIN_SKILL_FIT, needs["positions"]),
               ("partial fit", 40, needs["positions"]),
               ("partial fit", 40, sorted(set(needs["positions"]) | set(next_weakest))),
               ("best available upgrade", 0, list(BUCKET_OF))]
-    trades, seen, n_candidates = [], set(), 0
+
+    # Shortlist, best quick gain first. Diversity: a player or pick (outgoing, or a partner's
+    # filler coming back) may appear in at most `reuse` ideas, so ideas can be combined; a candidate whose best package reuses an
+    # asset falls back to its next package, and the sweetener moves to the next free pick.
+    used = Counter()
+    free = lambda asset_id: reuse is None or used[asset_id] < reuse
+    shortlist, per_partner, seen, n_candidates, n_legal = [], Counter(), set(), 0, 0
     for match, min_fit, positions in ladder:
-        candidates = [c for c in find_candidates(code, needs, engine, league, cba, on_date, min_fit, positions)
+        candidates = [c for c in find_candidates(code, needs, state, cba, on_date, min_fit, positions)
                       if c["id"] not in seen]
-        n_candidates += len(candidates)
-        for t in legal_trades(code, candidates, engine, league, cba, on_date, max_partner_loss):
-            t["match"] = match
-            trades.append(t)
-            seen.add(t["candidate"]["id"])
         seen.update(c["id"] for c in candidates)
-        if len(trades) >= N_SIMULATE:
-            break
-    trades.sort(key=lambda t: -t["quick"])
-    shortlist, per_partner = [], {}
-    for t in trades:
-        partner = t["candidate"]["team"]
-        if per_partner.get(partner, 0) >= 2:
-            continue
-        shortlist.append(t)
-        per_partner[partner] = per_partner.get(partner, 0) + 1
+        n_candidates += len(candidates)
+        options = sorted(((pkg, cand) for cand in candidates
+                          for pkg in _packages(code, cand, state, cba, on_date, max_partner_loss)),
+                         key=lambda o: -o[0][0])
+        taken = set()
+        for (gain, partner_gain, combo, extra), cand in options:
+            if len(shortlist) >= N_SIMULATE:
+                break
+            if cand["id"] in taken or per_partner[cand["team"]] >= 2:
+                continue
+            if not all(free(p["id"]) for p in (*combo, *extra)) or not free(cand["id"]):
+                continue
+            moves = [{"type": "player", "id": cand["id"], "from": cand["team"], "to": code}]
+            moves += [{"type": "player", "id": p["id"], "from": cand["team"], "to": code} for p in extra]
+            moves += [{"type": "player", "id": p["id"], "from": code, "to": cand["team"]} for p in combo]
+            sweet = _sweetener(code, cand["upgrade"], league, free)
+            for option in ([moves + [{"type": "pick", "id": sweet["id"], "from": code, "to": cand["team"]}]]
+                           if sweet else []) + [moves]:
+                result = check_trade(league, cba, {"moves": option}, on_date)
+                if result["works"]:
+                    n_legal += 1
+                    shortlist.append({"candidate": cand, "moves": option, "check": result, "match": match,
+                                      "quick": gain, "partner_quick": partner_gain})
+                    used.update(_assets(option))
+                    taken.add(cand["id"])
+                    per_partner[cand["team"]] += 1
+                    break
         if len(shortlist) >= N_SIMULATE:
             break
+
     for t in shortlist:
         moves = [{"player": m["id"], "from": m["from"], "to": m["to"]} for m in t["moves"] if m["type"] == "player"]
-        t["sim"] = engine.scenario(moves)
+        t["sim"] = engine.scenario(moves, state.chosen_moves)
     if max_partner_loss is not None:
         shortlist = [t for t in shortlist
                      if t["sim"]["teams"][t["candidate"]["team"]]["delta"]["mean_wins"]["change"] >= -max_partner_loss]
     shortlist = [t for t in shortlist if t["sim"]["teams"][code]["delta"]["mean_wins"]["change"] >= min_gain]
     shortlist.sort(key=lambda t: -t["sim"]["teams"][code]["delta"]["mean_wins"]["change"])
-    chosen = shortlist[:n]
+    # Greedy by simulated win gain, skipping any idea that would push an asset past the limit
+    # (a no-op when the shortlist is already disjoint, i.e. reuse = 1).
+    chosen_ideas, final_use = [], Counter()
+    for t in shortlist:
+        assets = _assets(t["moves"])
+        if reuse is not None and any(final_use[a] >= reuse for a in assets):
+            continue
+        chosen_ideas.append(t)
+        final_use.update(assets)
+        if len(chosen_ideas) >= n:
+            break
     facts_sheets, cards = [], []
-    for rank, t in enumerate(chosen, 1):
+    for rank, t in enumerate(chosen_ideas, 1):
         partner = t["candidate"]["team"]
         sim_team, sim_partner = t["sim"]["teams"][code], t["sim"]["teams"][partner]
         d = sim_team["delta"]
@@ -328,27 +370,30 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
     for card, text in zip(cards, ai.explain(facts_sheets, index, llm)):
         card["explanation"] = text
     return {"team": code, "needs": needs, "suggestions": cards, "n_sims": engine.n_sims,
-            "rules": {"max_partner_loss_wins": max_partner_loss, "min_win_gain": min_gain},
-            "searched": {"candidates": n_candidates, "legal_balanced": len(trades), "simulated": len(shortlist)}}
+            "on_top_of_chosen": bool(state.chosen_moves),
+            "rules": {"max_partner_loss_wins": max_partner_loss, "min_win_gain": min_gain, "max_asset_reuse": reuse},
+            "searched": {"candidates": n_candidates, "legal_balanced": n_legal, "simulated": len(shortlist)}}
 
 
 # --- caching ---------------------------------------------------------------------------------------
 
-def cache_path(code, engine, model_name):
+def cache_path(code, engine, model_name, chosen=None):
     from tradesim.engine import CACHE_DIR, fingerprint
-    key = hashlib.sha256(f"{SUGGEST_VERSION}:{model_name}:{fingerprint(engine.n_sims, engine.seed, engine.schedule)}"
+    chosen_key = json.dumps(chosen["moves"], sort_keys=True) if chosen else ""
+    key = hashlib.sha256(f"{SUGGEST_VERSION}:{model_name}:{fingerprint(engine.n_sims, engine.seed, engine.schedule)}:{chosen_key}"
                          .encode()).hexdigest()[:16]
     return os.path.join(CACHE_DIR, f"suggestions_{code}_{key}.json")
 
 
-def cached_suggest(code, engine, league, cba, on_date, llm=None, index=None):
-    """Suggestions are slow (several simulations), so they're cached per team and inputs."""
+def cached_suggest(code, engine, league, cba, on_date, llm=None, index=None, chosen=None, needs=None):
+    """Suggestions are slow (several simulations), so they're cached per team, inputs and
+    trades already chosen."""
     model_name = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b") if llm else "no-llm"
-    path = cache_path(code, engine, model_name) + f".{on_date.isoformat()}"
+    path = cache_path(code, engine, model_name, chosen) + f".{on_date.isoformat()}"
     if os.path.exists(path):
         with open(path) as f:
             return {**json.load(f), "from_cache": True}
-    result = suggest(code, engine, league, cba, on_date, llm, index)
+    result = suggest(code, engine, league, cba, on_date, llm, index, chosen=chosen, needs=needs)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump(result, f)

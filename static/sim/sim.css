@@ -312,3 +312,10 @@ details.roster[open] summary::after { content: "Hide"; }
 .data-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-variant-numeric: tabular-nums; }
 .data-table th, .data-table td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--border); }
 .data-table th:first-child, .data-table td:first-child { text-align: left; color: var(--muted); }
+.list-head { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 18px 0 8px; }
+.list-head span { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--faint); margin-left: 6px; }
+.removed { color: var(--bad); font-size: 13.5px; margin: 0 0 8px; }
+.combined { font-size: 15px; margin: 4px 0; }
+.combined span { color: var(--muted); }
+.hint { font-size: 12.5px; color: var(--faint); margin: 0 0 8px; }
+.button.disabled { opacity: 0.5; pointer-events: none; }

@@ -660,20 +660,24 @@
     // The 4 suggestions plus saved trades involving this team, as checkable cards. Every change
     // re-checks the chosen trades in order on the server (/api/sim/sequence/check).
 
-    const selection = {};  // team -> Set of chosen trade ids
+    // Picked trades per team, in the order picked (later picks are checked against what earlier
+    // ones leave). Each: {id, kind, moves, title, detail}.
+    const selection = {};
 
-    function tradeOptions(code, ideas) {
-        const opts = (ideas.suggestions || []).map((sg) => ({
-            id: `s${sg.rank}`, kind: "Suggestion", moves: sg.moves, partner: sg.partner,
+    function ideaOption(sg, onTop) {
+        return {
+            id: `m:${encodeMoves(sg.moves)}`, kind: "Suggestion", moves: sg.moves,
             title: `Gets ${sg.gets.map((g) => g.name).join(" + ")} from ${sg.partner}`,
             detail: `Sends ${sg.sends.map((x) => x.name).concat(sg.picks_out.map((p) => p.label + " pick")).join(", ")}`,
-            badge: `${signed(sg.win_change)} wins alone`,
+            badge: `${signed(sg.win_change)} wins${onTop ? " on top of your picks" : " alone"}`,
+            match: sg.match,
+        };
+    }
+
+    function savedOptions(code) {
+        return loadSaved().filter((sv) => sv.teams.includes(code)).map((sv) => ({
+            id: `m:${encodeMoves(sv.moves)}`, kind: "Your trade", moves: sv.moves, title: sv.summary, detail: "", badge: "",
         }));
-        loadSaved().forEach((sv, i) => {
-            if (!sv.teams.includes(code)) return;
-            opts.push({ id: `saved${i}`, kind: "Your trade", moves: sv.moves, title: sv.summary, detail: "", badge: "" });
-        });
-        return opts;
     }
 
     function encodeTrades(trades) {
@@ -692,71 +696,97 @@
     }
 
     async function select(code) {
-        render(`<div class="loading">Loading trades…</div>`);
-        let t, ideas;
-        try {
-            [t, ideas] = await Promise.all([getJSON(`/api/sim/team/${code}`), getJSON(`/api/sim/team/${code}/suggestions`)]);
-        } catch (err) {
-            return showError(err);
-        }
-        const options = tradeOptions(code, ideas);
-        const chosen = selection[code] || (selection[code] = new Set());
-        let check = null;
+        const picked = selection[code] || (selection[code] = []);
+        let plan = null, busy = true, removed = [], failed = false, request = 0;
+
+        const optionCard = (o, on, extra = "") => `
+            <label class="pick-card ${on ? "on" : ""}">
+                <input type="checkbox" data-pick="${esc(o.id)}" ${on ? "checked" : ""}>
+                <span class="pick-body">
+                    <span class="pick-kind">${esc(o.kind)}${o.badge ? ` · ${esc(o.badge)}` : ""}</span>
+                    <strong>${esc(o.title)}</strong>
+                    ${o.detail ? `<small>${esc(o.detail)}</small>` : ""}
+                    ${extra}
+                </span>
+            </label>`;
 
         const draw = () => {
-            const picked = options.filter((o) => chosen.has(o.id));
-            const verdict = (o) => check && check.trades.find((v) => v.id === o.id);
-            const cards = options.map((o) => {
-                const v = chosen.has(o.id) ? verdict(o) : null;
-                const blocked = v && !v.works;
-                return `
-                    <label class="pick-card ${chosen.has(o.id) ? "on" : ""} ${blocked ? "blocked" : ""}">
-                        <input type="checkbox" data-pick="${o.id}" ${chosen.has(o.id) ? "checked" : ""}>
-                        <span class="pick-body">
-                            <span class="pick-kind">${esc(o.kind)}${o.badge ? ` · ${esc(o.badge)}` : ""}</span>
-                            <strong>${esc(o.title)}</strong>
-                            ${o.detail ? `<small>${esc(o.detail)}</small>` : ""}
-                            ${blocked ? `<span class="blocked-reason">Blocked: ${esc(v.reason)}</span>` : ""}
-                        </span>
-                    </label>`;
-            }).join("");
-            const working = check ? check.trades.filter((v) => v.works).length : 0;
-            const payroll = check && picked.length ? Object.entries(check.payroll).map(([c, p]) => `
-                <li><span>${esc(c)} <small>${esc(p.status_before)}${p.status_after !== p.status_before ? ` → ${esc(p.status_after)}` : ""} · ${p.contracts_after} contracts</small></span>
+            const ideas = plan ? plan.ideas.suggestions.map((sg) => ideaOption(sg, picked.length > 0)) : [];
+            const pickedIds = new Set(picked.map((o) => o.id));
+            const saved = savedOptions(code).filter((o) => !pickedIds.has(o.id));
+            const alone = plan && plan.combined ? plan.combined.alone : {};
+            const pickedCards = picked.map((o, i) => optionCard({ ...o, kind: `Pick ${i + 1}`,
+                badge: alone[o.id] != null ? `${signed(alone[o.id])} wins alone` : "" }, true)).join("");
+            const ideaCards = ideas.filter((o) => !pickedIds.has(o.id)).map((o) => optionCard(o, false)).join("");
+            const savedCards = saved.map((o) => optionCard(o, false)).join("");
+            const removedNote = removed.map((r) => `<p class="removed">Removed “${esc(r.title)}”: ${esc(r.reason)}</p>`).join("");
+            const c = plan && plan.combined;
+            const payroll = plan && picked.length ? Object.entries(plan.payroll).map(([cd, p]) => `
+                <li><span>${esc(cd)} <small>${esc(p.status_before)}${p.status_after !== p.status_before ? ` → ${esc(p.status_after)}` : ""} · ${p.contracts_after} contracts</small></span>
                     <span class="amt">${money(p.before)} → ${money(p.after)}</span></li>`).join("") : "";
+            const combinedLine = c ? (picked.length > 1
+                ? `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">Combined ${signed(c.change)} wins</strong> ${c.sum_alone != null ? `<span>(sum alone ${signed(c.sum_alone)})</span>` : ""}</p>
+                   <p class="hint">One simulation with all ${picked.length} trades together. It differs from the sum when the new players share minutes.</p>`
+                : `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">${signed(c.change)} wins</strong></p>`) : "";
             render(`
                 <div class="topbar"><a class="back" href="#/team/${code}">‹ ${esc(code)}</a><h2 class="title">Choose trades</h2></div>
-                <p class="intro">Pick any trades to run together, or none. They're checked in the order shown, each against the rosters and payroll the earlier ones leave.</p>
-                <div class="pick-list">${cards || `<p class="empty">No suggestions or saved trades yet. Build one in the trade machine.</p>`}</div>
-                ${picked.length ? `
+                <p class="intro">Pick trades to run together, or none. After each pick, new ideas are found for the roster, payroll and picks it leaves, so every idea still works with your picks.</p>
+                ${removedNote}
+                ${picked.length ? `<h3 class="list-head">Your picks <span>checked in this order</span></h3><div class="pick-list">${pickedCards}</div>
                 <section class="card">
-                    <div class="card-head"><h2>Combined effect</h2><span class="note">${check ? `${working} of ${picked.length} trades work together` : "Checking…"}</span></div>
+                    <div class="card-head"><h2>Combined effect</h2><span class="note">${busy ? "Updating…" : ""}</span></div>
+                    ${combinedLine}
                     <ul class="moves">${payroll}</ul>
                 </section>` : ""}
+                <h3 class="list-head">${picked.length ? "More ideas, on top of your picks" : "Trade ideas"}</h3>
+                <div class="pick-list">${busy ? `<p class="searching">${picked.length ? "Finding ideas that work with your picks… about 10 seconds." : "Loading ideas…"}</p>`
+                    : failed ? `<p class="empty">Couldn't load ideas. Try again.</p>`
+                    : (ideaCards || `<p class="empty">No more trades that work with your picks and pass the realism rule.</p>`)}</div>
+                ${savedCards ? `<h3 class="list-head">Your saved trades</h3><div class="pick-list">${savedCards}</div>` : ""}
                 <div class="action-bar"><div class="inner">
-                    <a class="button wide" href="#/results/${code}?t=${encodeTrades(picked.filter((o) => !check || (verdict(o) || {}).works))}">
-                        ${picked.length ? `Simulate the season with ${working || picked.length} trade${(working || picked.length) > 1 ? "s" : ""}` : "Simulate the season as is"}</a>
+                    <a class="button wide ${busy ? "disabled" : ""}" href="#/results/${code}?t=${encodeTrades(picked)}">
+                        ${picked.length ? `Simulate the season with ${picked.length} trade${picked.length > 1 ? "s" : ""}` : "Simulate the season as is"}</a>
                 </div></div>`);
-            app.querySelectorAll("[data-pick]").forEach((box) => box.addEventListener("change", async () => {
-                if (box.checked) chosen.add(box.dataset.pick); else chosen.delete(box.dataset.pick);
-                check = null;
-                draw();
-                const now = options.filter((o) => chosen.has(o.id));
-                if (!now.length) return;
-                try {
-                    check = await postJSON("/api/sim/sequence/check", { team: code, trades: now.map((o) => ({ id: o.id, moves: o.moves })) });
-                } catch (err) {
-                    check = { trades: [], payroll: {} };
+            app.querySelectorAll("[data-pick]").forEach((box) => box.addEventListener("change", () => {
+                const id = box.dataset.pick;
+                if (box.checked) {
+                    const o = [...ideas, ...saved].find((x) => x.id === id);
+                    if (o && !picked.some((x) => x.id === id)) picked.push({ id: o.id, kind: o.kind, moves: o.moves, title: o.title, detail: o.detail });
+                } else {
+                    const i = picked.findIndex((x) => x.id === id);
+                    if (i >= 0) picked.splice(i, 1);
                 }
-                draw();
+                refresh();
             }));
         };
-        draw();
-        if (chosen.size) {
-            const now = options.filter((o) => chosen.has(o.id));
-            try { check = await postJSON("/api/sim/sequence/check", { team: code, trades: now.map((o) => ({ id: o.id, moves: o.moves })) }); } catch (e) { /* shown as checking */ }
+
+        const refresh = async () => {
+            const mine = ++request;
+            busy = true; removed = []; failed = false;
             draw();
-        }
+            try {
+                const r = await postJSON("/api/sim/sequence/plan", { team: code, trades: picked.map((o) => ({ id: o.id, moves: o.moves })) });
+                if (mine !== request) return;  // a newer click is on its way
+                // Picks the new state blocks are removed (with the reason).
+                for (const v of r.removed) {
+                    const i = picked.findIndex((o) => o.id === v.id);
+                    if (i >= 0) removed.push({ title: picked.splice(i, 1)[0].title, reason: v.reason });
+                }
+                if (r.removed.length) {
+                    const note = removed;
+                    await refresh();
+                    removed = note;
+                    return draw();
+                }
+                plan = r;
+            } catch (err) {
+                if (mine !== request) return;
+                failed = true;
+            }
+            busy = false;
+            draw();
+        };
+        refresh();
     }
 
     // --- screen 6: results ------------------------------------------------------------------------
@@ -868,6 +898,7 @@
                     <div class="big-number">${b.mean_wins.toFixed(1)}<span class="arrow">→</span>${a.mean_wins.toFixed(1)}</div>
                     <div class="range-pill"><strong class="${d.mean_wins.change < 0 ? "neg" : "pos"}">${signed(d.mean_wins.change)} wins</strong>80% of seasons: ${signed(d.mean_wins.p10, 0)} to ${signed(d.mean_wins.p90, 0)}</div>
                 </div>
+                ${r.combined ? `<p class="combined">Combined ${signed(r.combined.change)} wins${r.combined.sum_alone != null ? ` <span>(sum alone ${signed(r.combined.sum_alone)})</span>` : ""}</p>` : ""}
                 <p class="ranges">Range (10–90%): <strong>${b.range[0]}–${b.range[1]}</strong> before → <strong>${a.range[0]}–${a.range[1]}</strong> after</p>
                 ${distributionChart(b.distribution, a.distribution)}
                 <details class="table-view"><summary>Show as table</summary>${table}</details>

@@ -18,7 +18,7 @@ The original chat analyst is still served at `/analyst` (see the last section).
 3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
    On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-`pytest` runs the tests (340: cap rules with real legal and illegal trades, simulator,
+`pytest` runs the tests (346: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
@@ -78,7 +78,13 @@ codes (no logos or player photos).
      upgrades). If fewer than 4 come out, the search widens: lower skill bar, the next-weakest
      position, then the best available upgrade; each card says "fits the need", "partial fit"
      or "best available upgrade". The best go to a 10,000-season simulation; top 4 by win gain.
-     29 of 30 teams get 4 ideas (Sacramento, at 13 contracts, gets 1).
+   - Diversity (config `max_asset_reuse: 1`): a player or pick appears in at most one of the 4
+     ideas (picked greedily, best first; a candidate whose best package reuses a player falls
+     back to its next package, and the sweetener moves to the next free pick), so the ideas
+     can be combined.
+     With no player or pick repeated, 19 of 30 teams get 4 ideas; the rest get 1-3 because
+     they only have that many separate packages that are legal and within the realism rule
+     (Brooklyn and Sacramento get 1). Picking a trade starts a new search, which can add more.
    - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
      than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
      is a heist (e.g. Wembanyama for a role player).
@@ -91,16 +97,22 @@ codes (no logos or player photos).
    - Results are cached per team and inputs (first load about 10 s).
 6. Trade selection and results (`tradesim/sequence_api.py`):
    - `#/select/<code>`: the 4 trade ideas plus the user's saved trades involving the team, as
-     checkable cards (0 or more). `POST /api/sim/sequence/check` checks them in order, each
-     against the rosters and payrolls the earlier working trades leave. A trade reusing a
-     player already moved, or failing the cap rules after an earlier trade, is blocked with the
-     reason and skipped. The card shows the combined payroll effect on every team involved.
+     checkable cards (0 or more). Every click calls `POST /api/sim/sequence/plan`:
+     - the picks are checked in the order picked, each against the rosters, payrolls and picks
+       the earlier ones leave; a pick the new state blocks (a player already moved, the cap
+       rules after an earlier trade) is removed with the reason;
+     - the ideas are searched again on top of the picks (same rules; players in a picked trade
+       are left alone), so every idea shown still works with them, and its win change is
+       measured from the season after the picks (about 10 s per new set of picks, cached);
+     - with 2+ picks: "combined +X wins (sum alone +Y)", from one paired run with all picks vs
+       each pick's own run; they differ when new players share minutes;
+     - the combined payroll effect on every team involved.
    - `#/results/<code>?t=...`: `POST /api/sim/sequence/simulate` plays 10,000 seasons with all
      working trades at once (same random draws as the baseline, so the change is the trades'
      effect, not noise). Shows average wins before -> after with 10-90% ranges, the win
      distribution chart (with a table view), playoff / play-in / #1 seed odds, every team
      whose projection moved (trade partners first), and a short explanation with the same
-     name and number checks as the trade ideas. About 2 s.
+     name and number checks as the trade ideas, plus the combined vs sum-alone line. About 2 s.
 
 ## Project layout
 
