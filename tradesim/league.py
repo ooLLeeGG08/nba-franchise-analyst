@@ -26,6 +26,8 @@ class League:
         self.picks = data["picks"]
         self.trade_exceptions = data["trade_exceptions"]
         self.calendar = data.get("calendar", [])
+        self.as_of = data.get("as_of")            # oldest roster / contract / cap / stats source
+        self.sources_as_of = data.get("sources_as_of", {})
         # Players this team has traded away during this run of trades
         # (team -> set of player ids), for the re-acquire rule.
         self.traded_away = {code: set() for code in self.teams}

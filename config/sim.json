@@ -118,5 +118,11 @@
     "_max_asset_reuse": "Diversity: an outgoing player or pick may appear in at most this many of a team's suggestions, so the ideas can be combined. null = no limit.",
     "_max_partner_loss_wins": "Realism rule for suggestions only (not the cap checker): skip trades that cost the partner more than this many projected wins. null = pure 'best legal trade by win gain', which produces heists (e.g. a superstar for a role player).",
     "_min_win_gain": "Only suggest trades that add at least this many projected wins."
+  },
+  "data": {
+    "max_unmatched_rows": 5,
+    "_max_unmatched_rows": "python -m tradesim.build_data refuses to write league.json if more input rows than this (contracts with no roster match or a different team, no-trade / veto entries naming nobody) fail to join. Two-way players without a standard contract don't count.",
+    "max_age_days": 7,
+    "_max_age_days": "The app warns when league.json's data (its oldest roster / contract / cap / stats source) is older than this many days."
   }
 }

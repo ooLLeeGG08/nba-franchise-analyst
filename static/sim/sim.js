@@ -70,7 +70,7 @@
                 <h1>NBA Trade Simulator</h1>
                 <p class="lead">Pick a team, find its weak spots, test trades against the 2026-27 cap rules, and see how the season plays out.</p>
                 <div><a class="button" href="#/teams">Begin</a></div>
-                <p class="fineprint">Rosters and stats as of Nov 9, 2026 · 10,000 simulated seasons</p>
+                <p class="fineprint">${dataStatus && dataStatus.as_of ? `Rosters, contracts and stats as of ${esc(formatDate(dataStatus.as_of, true))}` : "Rosters, contracts and stats"} · 10,000 simulated seasons</p>
             </section>`);
     }
 
@@ -161,9 +161,28 @@
             </section>`;
     }
 
-    function formatDate(iso) {
+    function formatDate(iso, withYear = false) {
         const d = new Date(`${iso}T12:00:00`);
-        return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: d.getFullYear() > 2027 ? "numeric" : undefined });
+        return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: withYear || d.getFullYear() > 2027 ? "numeric" : undefined });
+    }
+
+    // How old league.json's data is (/api/sim/status); a bar on every screen when it's stale.
+    let dataStatus = null;
+
+    async function loadDataStatus() {
+        try {
+            dataStatus = await getJSON("/api/sim/status");
+        } catch (err) {
+            return;
+        }
+        const bar = document.getElementById("data-warning");
+        if (dataStatus.stale) {
+            bar.textContent = dataStatus.as_of
+                ? `Data is ${dataStatus.age_days} day${dataStatus.age_days === 1 ? "" : "s"} old (as of ${formatDate(dataStatus.as_of, true)}). Trades, signings and injuries since then aren't included.`
+                : "The data's date is unknown, so it may be out of date.";
+            bar.hidden = false;
+        }
+        if (!location.hash || location.hash === "#/") landing();
     }
 
     function capCard(t) {
@@ -960,4 +979,5 @@
 
     window.addEventListener("hashchange", route);
     route();
+    loadDataStatus();
 })();

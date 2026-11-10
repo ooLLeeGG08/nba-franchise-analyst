@@ -99,6 +99,14 @@ def _sim():
     return _SIM
 
 
+@app.route('/api/sim/status')
+def sim_status():
+    from datetime import date
+    from tradesim.analysis import data_status
+    s = _sim()
+    return jsonify(data_status(s["league"], s["cfg"], date.today()))
+
+
 @app.route('/api/sim/teams')
 def sim_teams():
     from tradesim.analysis import teams_overview
@@ -137,7 +145,7 @@ def sim_suggestions(code):
         return jsonify({"error": f"Unknown team {code}"}), 404
     s = _sim()
     if "names" not in s:
-        s["names"] = NameIndex(s["league"].players)
+        s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     return jsonify(cached_suggest(code, s["engine"], s["league"], s["cba"], date.today(), get_llm(), s["names"]))
 
 
@@ -164,7 +172,7 @@ def sim_sequence_plan():
     from tradesim.trade_api import BadTrade
     s = _sim()
     if "names" not in s:
-        s["names"] = NameIndex(s["league"].players)
+        s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     try:
         return jsonify(plan(request.get_json(silent=True), s["league"], s["cba"], s["engine"], date.today(),
                             get_llm(), s["names"]))
@@ -180,7 +188,7 @@ def sim_sequence_simulate():
     from tradesim.trade_api import BadTrade
     s = _sim()
     if "names" not in s:
-        s["names"] = NameIndex(s["league"].players)
+        s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     try:
         return jsonify(simulate_sequence(request.get_json(silent=True), s["league"], s["cba"], s["engine"],
                                          date.today(), get_llm(), s["names"]))
@@ -194,7 +202,7 @@ def sim_resolve_player():
     from tradesim.ai import NameIndex
     s = _sim()
     if "names" not in s:
-        s["names"] = NameIndex(s["league"].players)
+        s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     q = request.args.get("q", "")
     r = s["names"].resolve(q)
     r["players"] = [{"id": pid, "name": s["league"].players[pid]["name"], "team": s["league"].players[pid]["team"]}

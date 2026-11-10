@@ -18,7 +18,7 @@ The original chat analyst is still served at `/analyst` (see the last section).
 3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
    On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-`pytest` runs the tests (349: cap rules with real legal and illegal trades, simulator,
+`pytest` runs the tests (383: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
@@ -87,9 +87,12 @@ codes (no logos or player photos).
    - Realism rule (config `suggestions`, not a cap rule): skip trades costing the partner more
      than 1.5 projected wins or adding under 0.5 for the team. Without it the best legal trade
      is a heist (e.g. Wembanyama for a role player).
-   - Explanations: 1-2 sentences per trade from a facts sheet; rejected if they name anyone not
-     in the trade (a lone last name must match exactly one player in it) or use a number not
-     in the facts, and replaced by a template sentence. The LLM never names players from
+   - Explanations: 1-2 sentences per trade from a facts sheet, checked sentence by sentence
+     (`ai.facts_ok`): only players in the trade may be named (a lone last name must match
+     exactly one of them; names match without accents, suffixes or possessives); a number or
+     team tied to a player (the one named just before it) must be one of his values in
+     `league.json` or the ratings file, or his team / destination; other numbers must be facts
+     of the trade. Anything else is replaced by a template sentence. The LLM never names players from
      memory, decides legality or picks trades.
    - `GET /api/sim/players/resolve?q=` turns a typed name into database players (exact,
      ambiguous with candidates for the user to pick, or none).
@@ -141,6 +144,14 @@ results, (7) polish and this README.
 
 - `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
   into `data/2026_27/league.json` and prints a report of anything it couldn't match.
+  Before writing, it checks the result against a schema (`tradesim/schema.py`: types,
+  ranges, team codes, unique NBA ids, contract counts) and counts unmatched rows (contracts
+  with no roster match or a different team, no-trade / veto entries naming nobody; two-way
+  players don't count). It refuses to write the file if the schema fails or unmatched rows
+  exceed `data.max_unmatched_rows` in `config/sim.json` (5; currently 1).
+- `league.json` records `as_of`, the date of its oldest roster / contract / cap / stats source
+  (from `data/raw/SOURCES.json`). The app shows it on the landing page and puts a warning bar
+  on every screen when it's more than `data.max_age_days` (7) days old.
 - `config/cba_2026_27.json` holds every cap threshold and percentage, with sources.
 - `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
   Bird veto rights count as a fail.

@@ -25,10 +25,16 @@ from datetime import date, datetime, timedelta
 
 from tradesim.names import name_key, slug
 from tradesim.picks import parse_picks_text
+from tradesim.schema import validate_league
 from tradesim.teams import CODE_BY_BBREF, CODE_BY_NAME, CODE_BY_SHORT, TEAM_INFO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "data", "raw", "2026_27")
+SOURCES_PATH = os.path.join(ROOT, "data", "raw", "SOURCES.json")
+# Files whose as-of date sets league.json's: the ones that go stale in season. (hard_caps.json,
+# set in the offseason, and the calendar don't.)
+AS_OF_FILES = ["contracts.txt", "cap_sheet.json", "roster_status.json", "bbref_advanced_2025_26.tsv",
+               "no_trade_clauses.txt", "trade_exceptions.txt", "draft_picks.txt"]
 OUT = os.path.join(ROOT, "data", "2026_27", "league.json")
 CBA_PATH = os.path.join(ROOT, "config", "cba_2026_27.json")
 
@@ -229,9 +235,22 @@ def parse_calendar(text):
 
 # --- build -------------------------------------------------------------------------
 
-def build(write=True):
+class BuildError(ValueError):
+    """league.json wasn't written: schema problems or too many unmatched rows."""
+
+    def __init__(self, problems, report):
+        super().__init__(f"{len(problems)} problem(s):\n  " + "\n  ".join(problems))
+        self.problems, self.report = problems, report
+
+
+def build(write=True, max_unmatched=None):
+    """Join the raw files into league.json. Validates the result (tradesim.schema) and refuses
+    to write it if there are schema problems or more unmatched rows than the limit."""
     with open(CBA_PATH) as f:
         cba = json.load(f)
+    if max_unmatched is None:
+        from tradesim.model import load_sim_config
+        max_unmatched = load_sim_config()["data"]["max_unmatched_rows"]
     report = []
 
     contracts = parse_contracts(_read("contracts.txt"))
@@ -246,6 +265,7 @@ def build(write=True):
         for r in rows:
             rostered[name_key(r["PLAYER"])] = {**r, "team": CODE_BY_SHORT[short]}
 
+    unmatched = []  # input rows that should join but don't
     players, seen = {}, set()
     for c in contracts:
         key = name_key(c["name"])
@@ -256,8 +276,10 @@ def build(write=True):
         on_roster = bool(rs) and rs["team"] == c["team"]
         if rs and rs["team"] != c["team"]:
             report.append(f"team mismatch: {c['name']} contract={c['team']} roster={rs['team']}")
+            unmatched.append(f"contracts.txt: {c['name']} (team differs from the roster)")
         if not rs:
             report.append(f"not on any 2026-27 roster (treated as waived/dead money): {c['name']} ({c['team']})")
+            unmatched.append(f"contracts.txt: {c['name']} (no roster match)")
         st = stats.get(key)
         st_prev = stats_prev.get(key)
         players[slug(c["name"])] = {
@@ -288,6 +310,7 @@ def build(write=True):
         pid = slug(entry["name"])
         if pid not in players:
             report.append(f"{flag}: {entry['name']} not found in contracts")
+            unmatched.append(f"no_trade_clauses.txt: {entry['name']} ({flag}, not in contracts)")
             continue
         players[pid][flag] = True
         file_team = entry.get("team_in_file")
@@ -334,9 +357,20 @@ def build(write=True):
         kinds[p["kind"]] = kinds.get(p["kind"], 0) + 1
     report.append(f"picks parsed: {len(picks)} entries {kinds}")
 
+    contract_keys = {name_key(c["name"]) for c in contracts}
+    roster_only = [r["PLAYER"] for r in rostered.values() if name_key(r["PLAYER"]) not in contract_keys]
+    report.append(f"{len(roster_only)} roster players have no standard contract (two-way / exhibit deals; "
+                  f"not counted as unmatched)")
+    report.append(f"unmatched rows: {len(unmatched)} (limit {max_unmatched})" + (": " + "; ".join(unmatched) if unmatched else ""))
+
+    sources = json.load(open(SOURCES_PATH))["files"]
+    sources_as_of = {f: sources[f"2026_27/{f}"]["as_of"] for f in AS_OF_FILES}
     league = {
         "season": cba["season"],
         "built": date.today().isoformat(),
+        # the data is as old as its oldest roster / contract / cap / stats file
+        "as_of": min(sources_as_of.values()),
+        "sources_as_of": sources_as_of,
         "teams": teams,
         "players": players,
         "picks": {p["id"]: p for p in picks},
@@ -344,6 +378,12 @@ def build(write=True):
         "calendar": parse_calendar(_read("calendar.txt")),
         "build_report": report,
     }
+    problems = validate_league(league)
+    if len(unmatched) > max_unmatched:
+        problems.append(f"{len(unmatched)} unmatched rows, more than the limit of {max_unmatched} "
+                        f"(config/sim.json data.max_unmatched_rows): " + "; ".join(unmatched))
+    if problems:
+        raise BuildError(problems, report)
     if write:
         os.makedirs(os.path.dirname(OUT), exist_ok=True)
         with open(OUT, "w") as f:
@@ -352,7 +392,13 @@ def build(write=True):
 
 
 if __name__ == "__main__":
-    result = build()
+    import sys
+    try:
+        result = build()
+    except BuildError as err:
+        print("\n".join(err.report))
+        print(f"\nNOT written, {err}", file=sys.stderr)
+        sys.exit(1)
     print("\n".join(result["build_report"]))
     print(f"\nWrote {OUT}: {len(result['players'])} players, {len(result['picks'])} pick entries, "
           f"{len(result['trade_exceptions'])} trade exceptions")

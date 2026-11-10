@@ -97,8 +97,10 @@ def test_needs_llm_failure_falls_back(index):
 
 # --- explanations ---------------------------------------------------------------------------------------
 
-SHEET = {"team": "LAL", "gets": [{"id": "derrick-white", "name": "Derrick White", "position": "G", "impact": 2.3, "salary_m": 30.3}],
-         "sends": [{"id": "walker-kessler", "name": "Walker Kessler", "position": "C", "impact": 2.1, "salary_m": 30.1}],
+SHEET = {"team": "LAL", "gets": [{"id": "derrick-white", "name": "Derrick White", "position": "G", "impact": 2.3, "salary_m": 30.3,
+                                  "from": "BOS", "to": "LAL"}],
+         "sends": [{"id": "walker-kessler", "name": "Walker Kessler", "position": "C", "impact": 2.1, "salary_m": 30.1,
+                    "from": "LAL", "to": "BOS"}],
          "picks": [], "wins_before": 51.7, "wins_after": 53.7, "win_change": 2.0, "playoff_before": 87,
          "playoff_after": 91, "playoff_change": 4, "skills_needed": ["playmaking"]}
 
@@ -111,6 +113,69 @@ def test_explanations_are_checked(index):
     out = ai.explain([SHEET, SHEET, SHEET], index, llm)
     assert [o["source"] for o in out] == ["ai", "template", "template"]
     assert all("Davis" not in o["text"] and "15.2" not in o["text"] for o in out)
+
+
+@pytest.mark.parametrize("text, ok", [
+    ("Derrick White adds playmaking; wins rise from 51.7 to 53.7.", True),
+    # a number tied to a player must be his (2.1 is Kessler's impact, not White's)
+    ("Derrick White, rated +2.1, lifts wins to 53.7.", False),
+    ("Derrick White, rated +2.3, lifts wins to 53.7.", True),
+    ("Walker Kessler (+2.1) heads out.", True),
+    # numbers from league.json / the ratings file for that player are fine
+    ("Derrick White, 32, comes from Boston.", True),
+    ("Derrick White earns 30.3M.", True),
+    ("Derrick White earns 41.0M.", False),
+    # a team tied to a player must be his team or where the trade sends him
+    ("Derrick White leaves Boston for the Lakers.", True),
+    ("Derrick White joins from the Heat.", False),
+    ("BOS sends White to LAL.", True),
+    ("Kessler goes to the Celtics.", True),
+    ("Kessler goes to the Knicks.", False),
+    # no player named: teams must be in the trade
+    ("The Lakers gain 2.0 wins.", True),
+    ("The Lakers pass the Nuggets with 53.7 wins.", False),
+    # lowercase words that are also team names aren't teams
+    ("White brings heat and a little magic; 53.7 wins.", True),
+    # possessives and accents: "Jokić's" is Nikola Jokic, who isn't in this trade
+    ("With Jokić's spacing gone, wins reach 53.7.", False),
+    ("Derrick White's playmaking lifts wins to 53.7.", True),
+    # two sentences: the second sentence's number is checked on its own
+    ("Derrick White joins. Wins rise to 53.7.", True),
+    ("Derrick White joins. Wins rise to 58.0.", False),
+])
+def test_facts_check(text, ok, index):
+    assert ai.facts_ok(text, SHEET, index)[0] is ok, ai.facts_ok(text, SHEET, index)
+
+
+def test_accents_and_suffixes_match(index, league):
+    """Names match without accents or suffixes, both ways."""
+    sheet = {"team": "BKN", "gets": [], "picks": [], "wins_before": 30.0, "wins_after": 31.0, "win_change": 1.0,
+             "playoff_before": 5, "playoff_after": 6, "playoff_change": 1,
+             "sends": [{"id": "egor-demin", "name": "Egor Dëmin", "position": "G", "impact": 0.0, "salary_m": 5.0,
+                        "from": "BKN", "to": "BOS"}]}
+    for spelling in ("Egor Dëmin", "Egor Demin", "EGOR DEMIN", "Demin's"):
+        assert ai.facts_ok(f"{spelling} heads to Boston.", sheet, index)[0], spelling
+    pj = next(pid for pid, p in league.players.items() if p["name"] == "P.J. Washington")
+    sheet["sends"][0].update(id=pj, name="P.J. Washington", **{"from": league.players[pj]["team"]})
+    sheet["team"] = league.players[pj]["team"]
+    assert ai.facts_ok("P.J. Washington heads to Boston.", sheet, index)[0]  # not "Washington" the team
+    jjj = next(pid for pid, p in league.players.items() if p["name"].startswith("Jaren Jackson"))
+    assert index.mentioned("Jaren Jackson Jr. and Jaren Jackson")[0] == {jjj}
+
+
+def test_templates_pass_their_own_check(result, index):
+    """Every template sentence for real suggestions passes the same check the LLM faces."""
+    r, _ = result
+    for sg in r["suggestions"]:
+        assert sg["explanation"]["source"] == "template"
+        sheet = {"team": "LAL", "partner": sg["partner"], "picks": [{"label": p["label"], "year": p["year"]} for p in sg["picks_out"]],
+                 "gets": [{**g, "from": sg["partner"], "to": "LAL"} for g in sg["gets"]],
+                 "sends": [{**x, "from": "LAL", "to": sg["partner"]} for x in sg["sends"]],
+                 "wins_before": round(sg["wins_before"], 1), "wins_after": round(sg["wins_after"], 1),
+                 "win_change": sg["win_change"], "playoff_before": round(sg["playoff_before"] * 100),
+                 "playoff_after": round(sg["playoff_after"] * 100),
+                 "playoff_change": round((sg["playoff_after"] - sg["playoff_before"]) * 100)}
+        assert ai.facts_ok(sg["explanation"]["text"], sheet, index) == (True, None), sg["explanation"]["text"]
 
 
 def test_explanations_without_llm_use_template(index):

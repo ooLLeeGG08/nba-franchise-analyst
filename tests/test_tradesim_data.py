@@ -121,3 +121,70 @@ def test_built_file_is_up_to_date():
     stored = json.load(open(build_data.OUT))
     for key in ("teams", "players", "picks", "trade_exceptions", "calendar", "build_report"):
         assert fresh[key] == stored[key], f"{key} is stale; run python -m tradesim.build_data"
+
+
+# --- data freshness, schema and the unmatched-row limit --------------------------------------
+
+def test_league_records_its_as_of_date():
+    import json
+    from tradesim.league import LEAGUE_PATH
+    data = json.load(open(LEAGUE_PATH))
+    assert data["as_of"] == min(data["sources_as_of"].values())
+    assert "roster_status.json" in data["sources_as_of"] and "hard_caps.json" not in data["sources_as_of"]
+
+
+def test_data_goes_stale_after_the_configured_days():
+    from datetime import date, timedelta
+    from tradesim.analysis import data_status
+    from tradesim.league import League
+    from tradesim.model import load_sim_config
+    league, cfg = League.load(), load_sim_config()
+    as_of = date.fromisoformat(league.as_of)
+    limit = cfg["data"]["max_age_days"]
+    assert limit == 7
+    assert not data_status(league, cfg, as_of + timedelta(days=limit))["stale"]
+    old = data_status(league, cfg, as_of + timedelta(days=limit + 1))
+    assert old["stale"] and old["age_days"] == limit + 1
+    league.as_of = None
+    assert data_status(league, cfg, as_of)["stale"]  # unknown date counts as stale
+
+
+def test_status_endpoint():
+    import server
+    r = server.app.test_client().get("/api/sim/status").get_json()
+    assert {"as_of", "age_days", "max_age_days", "stale"} <= set(r)
+
+
+def test_current_league_passes_the_schema():
+    import json
+    from tradesim.league import LEAGUE_PATH
+    from tradesim.schema import validate_league
+    assert validate_league(json.load(open(LEAGUE_PATH))) == []
+
+
+@pytest.mark.parametrize("break_it, expected", [
+    (lambda d: d["players"]["derrick-white"].update(team="XXX"), "isn't a team code"),
+    (lambda d: d["players"]["derrick-white"].update(salary="30M"), "salary"),
+    (lambda d: d["players"]["derrick-white"].update(id="someone-else"), "doesn't match its key"),
+    (lambda d: d["players"]["derrick-white"].update(nba_id=d["players"]["jayson-tatum"]["nba_id"]), "also used by"),
+    (lambda d: d["teams"]["BOS"].update(standard_contracts=12), "rostered players"),
+    (lambda d: d["teams"].pop("BOS"), "30 team codes"),
+    (lambda d: next(iter(d["picks"].values())).update(round=3), "round"),
+    (lambda d: d.pop("as_of"), "as_of"),
+])
+def test_schema_catches_broken_data(break_it, expected):
+    import copy, json
+    from tradesim.league import LEAGUE_PATH
+    from tradesim.schema import validate_league
+    data = copy.deepcopy(json.load(open(LEAGUE_PATH)))
+    break_it(data)
+    problems = validate_league(data)
+    assert problems and any(expected in p for p in problems), problems
+
+
+def test_build_refuses_too_many_unmatched_rows():
+    from tradesim.build_data import BuildError, build
+    assert build(write=False, max_unmatched=5)["players"]  # 1 unmatched row today: fine
+    with pytest.raises(BuildError) as err:
+        build(write=False, max_unmatched=0)
+    assert "unmatched rows" in str(err.value) and "Blake Wesley" in str(err.value)

@@ -143,3 +143,12 @@ def team_analysis(code, engine, league, cba):
                           for x in roster if x["long_injury"]],
         "roster": roster,
     }
+
+
+def data_status(league, cfg, today):
+    """How old league.json's data is; stale = older than config data.max_age_days."""
+    from datetime import date
+    limit = cfg["data"]["max_age_days"]
+    age = (today - date.fromisoformat(league.as_of)).days if league.as_of else None
+    return {"as_of": league.as_of, "age_days": age, "max_age_days": limit,
+            "stale": age is None or age > limit, "sources_as_of": league.sources_as_of}

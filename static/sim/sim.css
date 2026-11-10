@@ -342,3 +342,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .conf-other summary h2::before { content: "▸ "; color: var(--muted); }
 .conf-other[open] summary h2::before { content: "▾ "; }
 .conf-other[open] summary { margin-bottom: 8px; }
+
+.data-warning { position: sticky; top: 0; z-index: 20; padding: 10px 16px; font-size: 13px; line-height: 1.4;
+    background: #3a2a10; color: #ffd28a; border-bottom: 1px solid #6b4b16; text-align: center; }
+.data-warning[hidden] { display: none; }

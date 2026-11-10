@@ -1,6 +1,16 @@
 {
  "season": "2026-27",
- "built": "2026-11-09",
+ "built": "2026-11-10",
+ "as_of": "2026-11-09",
+ "sources_as_of": {
+  "contracts.txt": "2026-11-09",
+  "cap_sheet.json": "2026-11-09",
+  "roster_status.json": "2026-11-09",
+  "bbref_advanced_2025_26.tsv": "2026-11-09",
+  "no_trade_clauses.txt": "2026-11-09",
+  "trade_exceptions.txt": "2026-11-09",
+  "draft_picks.txt": "2026-11-09"
+ },
  "teams": {
   "ATL": {
    "code": "ATL",
@@ -33318,6 +33328,8 @@
   "7 of them have 2024-25 stats to fall back on: Tyrese Haliburton, Kyrie Irving, Fred VanVleet, Damian Lillard, Ben Simmons, Georges Niang, Trey Lyles",
   "no_trade_clause: file lists Damian Lillard with Milwaukee Bucks, but he is on POR; applied to his current team",
   "TPE-CHA-lamelo-ball: expiry implies created 2026-07-06, but nba_api shows LaMelo Ball traded on 2026-07-10",
-  "picks parsed: 682 entries {'conveyed': 103, 'conditional': 312, 'own': 173, 'acquired': 90, 'frozen': 4}"
+  "picks parsed: 682 entries {'conveyed': 103, 'conditional': 312, 'own': 173, 'acquired': 90, 'frozen': 4}",
+  "89 roster players have no standard contract (two-way / exhibit deals; not counted as unmatched)",
+  "unmatched rows: 1 (limit 5): contracts.txt: Blake Wesley (no roster match)"
  ]
 }

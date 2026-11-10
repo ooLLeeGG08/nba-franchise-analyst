@@ -127,7 +127,7 @@ def _results_facts(team, trades, sim, league, ratings):
             p = league.players[m["id"]]
             card = {"id": m["id"], "name": p["name"], "position": p.get("position"),
                     "impact": round(ratings["players"][m["id"]]["impact"], 1),
-                    "salary_m": round(p["salary"] / 1e6, 1)}
+                    "salary_m": round(p["salary"] / 1e6, 1), "from": m["from"], "to": m["to"]}
             if m["to"] == team:
                 gets.append(card)
             elif m["from"] == team:
@@ -157,7 +157,7 @@ def simulate_sequence(payload, league, cba, engine, on_date, llm=None, index=Non
     others.sort(key=lambda o: (not o["in_trade"], -abs(o["win_change"])))
     me = teams[team]
     facts = _results_facts(team, working, sim, league, engine.ratings)
-    index = index or ai.NameIndex(league.players)
+    index = index or ai.NameIndex(league.players, engine.ratings["players"])
     explanation = ai.explain([facts], index, llm)[0] if working else {
         "text": "No trades chosen: this is the season as the rosters stand.", "source": "template"}
     return {

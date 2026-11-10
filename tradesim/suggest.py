@@ -260,7 +260,7 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
     reuse = sc.get("max_asset_reuse", 1)
     state = SearchState(engine, league, (chosen or {}).get("moves", ()), (chosen or {}).get("league"))
     league = state.league
-    index = index or ai.NameIndex(league.players)
+    index = index or ai.NameIndex(engine.league.players, engine.ratings["players"])
     facts = team_facts(code, engine, engine.league, cba)
     needs = needs or ai.team_needs(facts, index, llm)
     ranked_groups = [p["group"] for p in sorted(facts["positions"], key=lambda p: -p["rank"])]
@@ -358,8 +358,11 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
         }
         cards.append(card)
         facts_sheets.append({
-            "team": code, "gets": [{k: g[k] for k in ("id", "name", "position", "impact", "salary_m")} for g in gets],
-            "sends": [{k: s[k] for k in ("id", "name", "position", "impact", "salary_m")} for s in sends],
+            "team": code, "partner": partner,
+            "gets": [{**{k: g[k] for k in ("id", "name", "position", "impact", "salary_m")}, "from": partner, "to": code}
+                     for g in gets],
+            "sends": [{**{k: s[k] for k in ("id", "name", "position", "impact", "salary_m")}, "from": code, "to": partner}
+                      for s in sends],
             "picks": [{"label": p["label"], "year": p["year"]} for p in card["picks_out"]],
             "wins_before": round(card["wins_before"], 1), "wins_after": round(card["wins_after"], 1),
             "win_change": card["win_change"], "playoff_before": round(card["playoff_before"] * 100),
