@@ -227,7 +227,8 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 
 /* stat strip: cells split by thin rules, mono label above a big number */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--s-5); border-top: var(--rule); border-bottom: var(--rule); }
-.stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--s-2); padding: var(--s-3) var(--s-3) var(--s-4) 0; min-width: 0; }
+.stat { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-3) var(--s-4) 0; min-width: 0; }
+.stat .label { order: -1; }
 .stat + .stat { border-left: var(--rule); padding-left: var(--s-3); }
 .stat .value { font: 600 30px/1 var(--font-display); letter-spacing: var(--tracking-tight); }
 .stat .label { color: var(--muted); }
@@ -412,13 +413,13 @@ details.roster[open] summary::after { content: "Hide"; }
 .pick-kind { color: var(--faint); letter-spacing: 0.04em; }
 .pick-card.on .pick-kind { color: var(--accent); }
 .blocked-reason { color: var(--bad); font-size: var(--fs-xs); }
-.big-number .arrow { font-size: 26px; color: var(--muted); margin: 0 var(--s-2); vertical-align: 8px; }
-.pos { color: var(--good); }
-.neg { color: var(--bad); }
-.range-pill strong { font-size: 18px; }
+.big-number .arrow { font-size: 0.5em; color: var(--muted); margin: 0 var(--s-2); vertical-align: 0.3em; }
+.pos, .range-pill strong.pos { color: var(--good); }
+.neg, .range-pill strong.neg { color: var(--bad); }
+.range-pill strong { font: 600 var(--fs-xl)/1.1 var(--font-display); letter-spacing: var(--tracking-tight); }
 .ranges { font-size: var(--fs-sm); margin-top: var(--s-3); }
 .ranges strong { color: var(--text); }
-.was { display: block; color: var(--faint); font-size: 10px; margin-top: 2px; }
+.was { display: block; color: var(--faint); font-size: 10px; margin-top: calc(-1 * var(--s-1)); }
 .others li > span:first-child { display: flex; align-items: center; gap: var(--s-3); }
 .others .badge { width: 30px; height: 30px; font-size: 10px; }
 .applied { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); font-size: var(--fs-sm); color: var(--muted); }
@@ -493,6 +494,22 @@ details.roster[open] summary::after { content: "Hide"; }
     background: #2a1f0c; color: #ffd28a; border-bottom: 1px solid #6b4b16; text-align: center; }
 .data-warning[hidden] { display: none; }
 
+/* --- results --- */
+.proj-card .projection-row { flex-direction: column; align-items: flex-start; gap: var(--s-3); }
+.proj-card .big-number { font-size: clamp(48px, 15vw, 64px); white-space: nowrap; }
+.proj-card .range-pill { text-align: left; }
+.proj-card .range-pill strong { margin-bottom: 2px; }
+.odds-card .stats { margin-top: 0; }
+.odds-card { padding-top: var(--s-2); padding-bottom: var(--s-2); }
+.odds-card .stats { border: 0; }
+
+/* standings on phones: Play-in and #1 seed move under the team name */
+.standings .opt { display: none; }
+.standings .team-cell .extra { display: block; font: 400 10px/1.4 var(--font-mono); color: var(--muted); letter-spacing: 0; text-transform: none; }
+.standings .team-cell .extra > span { display: block; white-space: nowrap; }
+.standings td.team { white-space: normal; }
+.standings .team-cell .badge { display: none; }
+
 /* --- laptop (768px+) --- */
 @media (min-width: 768px) {
     :root { --gutter: var(--s-10); }
@@ -526,16 +543,42 @@ details.roster[open] summary::after { content: "Hide"; }
     .landing-cta .button { width: auto; }
     .landing .fineprint { grid-template-columns: auto 1fr; }
     .landing .fineprint span + span { border-top: 0; border-left: var(--rule); padding-left: var(--s-6); margin-left: var(--s-6); }
-}
 
-/* choose trades on laptops: trade cards two across (the 4 ideas make a 2x2), payroll rows in columns */
-@media (min-width: 768px) {
+    /* choose trades on laptops: trade cards two across (the 4 ideas make a 2x2), payroll rows in columns */
     .pick-list { grid-template-columns: 1fr 1fr; }
     .pick-list > p { grid-column: 1 / -1; }
     .combined-card .combined strong { font-size: var(--fs-3xl); }
     .payroll-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); column-gap: var(--s-6); }
     .payroll-list li, .payroll-list li:last-child { border-bottom: 0; flex-direction: column; align-items: flex-start; padding: var(--s-3) 0 0; }
     .payroll-list .amt { font-size: var(--fs-md); color: var(--text); }
+
+    /* results on laptops */
+    .standings .opt { display: table-cell; }
+    .standings .team-cell .extra { display: none; }
+    .standings .team-cell .badge { display: grid; }
+    .standings { font-size: var(--fs-md); }
+    .standings td, .standings th { padding: var(--s-3) var(--s-2); }
+    .proj-card .big-number { font-size: 96px; }
+    .proj-card .projection-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    .proj-card .range-pill { text-align: right; }
+
+    .results-top { display: grid; gap: var(--s-3); margin-bottom: var(--s-3); }
+    .results-top > .card { margin-bottom: 0; }
+
+    /* variant A (not used now; switch the class in results() to try it): strip beside the chart */
+    .results-top.strip-beside { grid-template-columns: 2fr 1fr; align-items: stretch; }
+    .strip-beside .odds-card { padding: 0 var(--s-4); display: flex; }
+    .strip-beside .odds-card .stats { grid-template-columns: 1fr; flex: 1; align-content: stretch; }
+    .strip-beside .stat { padding: var(--s-5) 0; justify-content: center; }
+    .strip-beside .stat + .stat { border-left: 0; border-top: var(--rule); padding-left: 0; }
+    .strip-beside .stat .value { font-size: var(--fs-3xl); }
+
+    /* variant B (default): chart beside the hero number, stat strip under the card */
+    .strip-under .proj-card { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s-8); align-items: start; }
+    .strip-under .proj-card .projection-row { flex-direction: column; align-items: flex-start; }
+    .strip-under .proj-card .range-pill { text-align: left; }
+    .strip-under .proj-chart .chart { margin-top: 0; }
+    .strip-under .stat .value { font-size: var(--fs-3xl); }
 }
 
 /* the one extra breakpoint: 3 teams need ~1024px to sit side by side */

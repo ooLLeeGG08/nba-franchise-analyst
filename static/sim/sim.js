@@ -909,7 +909,7 @@
         }
         const b = r.before, a = r.after, d = r.delta;
         const odds = [["Make playoffs", "playoff_pct"], ["Play-in", "play_in_pct"], ["#1 seed", "top_seed_pct"]].map(([label, k]) =>
-            `<div class="stat"><div class="value">${pct(a[k])}</div><div class="label">${label} <span class="was">was ${pct(b[k])}</span></div></div>`).join("");
+            `<div class="stat"><div class="value">${pct(a[k])}</div><div class="label">${label}</div><span class="was">was ${pct(b[k])}</span></div>`).join("");
         const pcts = [0.1, 0.25, 0.5, 0.75, 0.9];
         const table = `<table class="data-table"><thead><tr><th>Percentile</th><th>Before</th><th>After</th></tr></thead><tbody>
             ${pcts.map((q) => `<tr><td>${q * 100}th</td><td>${percentile(b.distribution, q)}</td><td>${percentile(a.distribution, q)}</td></tr>`).join("")}</tbody></table>`;
@@ -920,14 +920,15 @@
                 return `
                 <tr class="${t.you ? "you" : ""} ${i === 5 || i === 9 ? "cut" : ""}">
                     <td class="rank">${i + 1}</td>
-                    <td class="team"><span class="team-cell">${badge(t)}<span>${esc(t.code)}${t.you ? `<small>You</small>` : t.partner ? `<small>Trade</small>` : ""}</span></span></td>
+                    <td class="team"><span class="team-cell">${badge(t)}<span>${esc(t.code)}${t.you ? `<small>You</small>` : t.partner ? `<small>Trade</small>` : ""}
+                        <span class="extra"><span>Play-in ${pct(t.play_in_pct)}</span> <span>#1 seed ${pct(t.top_seed_pct)}</span></span></span></span></td>
                     <td><strong>${t.mean_wins.toFixed(1)}</strong><small>${t.range[0]}–${t.range[1]}</small></td>
-                    <td>${pct(t.playoff_pct)}</td><td>${pct(t.play_in_pct)}</td><td>${pct(t.top_seed_pct)}</td>
+                    <td>${pct(t.playoff_pct)}</td><td class="opt">${pct(t.play_in_pct)}</td><td class="opt">${pct(t.top_seed_pct)}</td>
                     <td class="chg ${flat ? "flat" : t.win_change < 0 ? "neg" : "pos"}">${flat ? "0.0" : signed(t.win_change)}</td>
                 </tr>`;
             }).join("");
             return `<div class="table-scroll"><table class="standings">
-                <thead><tr><th class="rank">#</th><th class="team">Team</th><th>Wins<small>10–90%</small></th><th>Playoffs</th><th>Play-in</th><th>#1 seed</th><th>Change</th></tr></thead>
+                <thead><tr><th class="rank">#</th><th class="team">Team</th><th>Wins<small>10–90%</small></th><th>Playoffs</th><th class="opt">Play-in</th><th class="opt">#1 seed</th><th>Change</th></tr></thead>
                 <tbody>${rows}</tbody></table></div>`;
         };
         const own = r.standings.own, other = own === "East" ? "West" : "East";
@@ -949,7 +950,8 @@
             <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><h2 class="title">Results</h2></div>
             <header class="team-head">${badge(r, "large")}<div><h1>${esc(r.name)}</h1>
                 <div class="sub">${r.applied ? `With ${r.applied} trade${r.applied > 1 ? "s" : ""}` : "No trades: the season as it stands"} · ${r.n_sims.toLocaleString()} simulated seasons</div></div></header>
-            <section class="card">
+            <div class="results-top strip-under">
+            <section class="card proj-card"><div class="proj-main">
                 <div class="card-head"><h2>Projected wins</h2><span class="note">±${d.mean_wins.mcse.toFixed(2)} wins (simulation error)</span></div>
                 <div class="projection-row">
                     <div class="big-number">${b.mean_wins.toFixed(1)}<span class="arrow">→</span>${a.mean_wins.toFixed(1)}</div>
@@ -957,10 +959,12 @@
                 </div>
                 ${r.combined ? `<p class="combined">Combined ${signed(r.combined.change)} wins${r.combined.sum_alone != null ? ` <span>(sum alone ${signed(r.combined.sum_alone)})</span>` : ""}</p>` : ""}
                 <p class="ranges">Range (10–90%): <strong>${b.range[0]}–${b.range[1]}</strong> before → <strong>${a.range[0]}–${a.range[1]}</strong> after</p>
+                </div><div class="proj-chart">
                 ${distributionChart(b.distribution, a.distribution)}
                 <details class="table-view"><summary>Show as table</summary>${table}</details>
-            </section>
-            <section class="card"><div class="stats">${odds}</div></section>
+            </div></section>
+            <section class="card odds-card"><div class="stats">${odds}</div></section>
+            </div>
             <section class="card">
                 <div class="card-head"><h2>What changed</h2><span class="note">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></div>
                 <p class="explain">${esc(ex.text)}</p>
