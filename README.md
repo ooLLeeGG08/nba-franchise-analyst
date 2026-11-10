@@ -1,101 +1,60 @@
-# NBA Franchise Analyst
+# NBA Trade Simulator
 
-An AI-powered NBA front-office analyst: a chat interface backed by team/player
-stats, franchise history, and a basketball-fit trade evaluator, with
-dashboards and comparison views alongside every answer.
+A mobile-first web app for the 2026-27 NBA season: pick a team, see where it needs help,
+build trades that are checked against the salary-cap rules, and simulate the whole season
+10,000 times to see what the trades change. Cap legality and the season simulation are
+pure code; an LLM only reads numbers to name a team's needs and writes short explanations,
+and both are checked before they're shown.
+
+The original chat analyst is still served at `/analyst` (see the last section).
 
 ## Setup
 
 1. `pip install -r requirements.txt` (and `requirements-dev.txt` for tests).
-2. Copy `.env.example` to `.env` and set `GROQ_API_KEY` (required). Optionally
-   set `GROQ_MODEL` to override the default (`openai/gpt-oss-120b`).
-3. `python server.py` (reads `PORT`, default `8080`).
+2. Optional: copy `.env.example` to `.env` and set `GROQ_API_KEY` (and `GROQ_MODEL` to
+   change the default `openai/gpt-oss-120b`). Keys only come from environment variables.
+   Without a key the simulator still works fully: needs come from the data and
+   explanations from a template (the page says so). The `/analyst` chat needs the key.
+3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
+   On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-Run the test suite with `pytest`.
+`pytest` runs the tests (340: cap rules with real legal and illegal trades, simulator,
+standings, backtest checks, API and screens' data). The first start builds the baseline
+season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
+about 10 s and is cached.
 
-## How it works
+## Limitations (read these first)
 
-A question flows: `static/app.js` (composer) -> `POST /api/chat` ->
-`rag.py`'s `build_context()` assembles a plain-text context string from the
-data files below -> `llm.py`'s `answer_question()` sends that context plus
-the system prompt to Groq -> the prose reply and resolved
-team/player/season/comparison/trade flags come back together ->
-`static/render/chatThread.js` renders the prose and, based on those flags
-(not the LLM's own text), mounts an independently-fetched dashboard,
-comparison, or leaders view (`/api/team/...`, `/api/player/...`,
-`/api/leaders`).
+- **Cap legality only, not acceptance.** "Works" means the trade is allowed under the
+  2026-27 cap rules, not that the other team would agree. There is no trade-value or
+  fairness check; for trade ideas, a simple realism rule (the partner loses at most 1.5
+  projected wins) stands in for it.
+- **Some rules are "not checked"** when the data doesn't exist (extension dates, raise sizes,
+  rookie signing dates, smaller trade exceptions, earlier cash, conditional pick outcomes).
+  The rule panel marks them; see "Trade checker limitations".
+- **Injuries are simplified:** one random absence per player per season from his history,
+  plus a hand-kept list of known 15+ game injuries (`config/long_injuries.json`); short known
+  injuries are ignored.
+- **Minutes are simplified:** a rotation from this season's and last season's minutes, a
+  fixed rule for who absorbs a traded or injured player's minutes, G/F/C position buckets,
+  and no fit or chemistry beyond a mild diminishing-returns haircut.
+- **Accuracy:** in a held-out backtest the projection misses a team's final wins by 7.3 on
+  average, about the same as preseason Vegas totals (7.1); see "Validation results".
+- More in "Season simulator > Known limitations" and "Trade checker limitations".
 
-## Data sources
+## Screens
 
-| Data | Source | Freshness | Refresh |
-|---|---|---|---|
-| Team/player per-game & advanced stats, rosters, game logs, win totals | `nba_api` (stats.nba.com) | Live when fetched | `python fetch_*.py` (one script per dataset) |
-| Championships, current head coach | `nba_api` (`TeamYearByYearStats.NBA_FINALS_APPEARANCE`, `CommonTeamRoster`'s coaches table), cross-checked against `FranchiseHistory.LEAGUE_TITLES` | Live when fetched | `python fetch_team_facts.py` |
-| Franchise narrative (summary, continuity pattern, front-office continuity prose, historical coaching list, draft/trade history write-ups) | Hand-curated (`data/franchise_knowledge.json`) | Written once, not live | Manual edit |
-| Player salaries (94 players, 28 of 30 teams) and league cap/tax/apron thresholds | A **partial, unverified** extract from HoopsHype's public pages, produced by ChatGPT on 2026-10-20 (`data/contracts.json`, `data/league_caps.json`) | One-time snapshot | Not automated — see Known limitations |
-| LLM | Groq (`GROQ_MODEL`, default `openai/gpt-oss-120b`) via `langchain-groq` | N/A | N/A |
+Plain JavaScript in `static/sim/` (no build step), styled with team colors and three-letter
+codes (no logos or player photos).
 
-All `nba_api`-backed data covers the **2015-16 through 2025-26 seasons**
-(2025-26 is "latest"). `data/player_leaders.json`, an older all-time
-top-5-per-franchise seed file, is loaded at startup but no longer used by any
-active code path — `rag.get_team_season_leaders()` computes real,
-season-correct leaders from the live stats instead. It's kept around rather
-than deleted; safe to remove.
-
-## Known limitations
-
-- **2026-27 is rosters only.** `data/team_rosters.json` includes 2026-27
-  rosters (fetched 2026-11-09), but stats, leaders and dashboards stay on
-  2025-26 as the latest season — the new season had too few games for
-  meaningful stats. The season list comes from the stats files, so a roster
-  season ahead of the stats doesn't become "latest". Every team's chat
-  context includes its current (2026-27) roster; for 2026-27 stats the model
-  says its stats end at 2025-26.
-- **No front-office head (GM / president of basketball ops) data anywhere.**
-  No live source exists for this, and nothing was hand-curated to avoid
-  reintroducing the stale-data problem this app was built to fix. The model
-  says plainly that it doesn't have this when asked.
-- **Contracts/salary data is partial and unverified**, not a certified or
-  complete source:
-  - Only 94 of the league's ~450 players are covered, mostly each team's top
-    earners — bench and minimum-salary players are almost never included.
-  - Portland has no real salary data at all.
-  - No years-remaining, option type (beyond what little HoopsHype exposes),
-    guarantee status, no-trade clauses, or trade kickers.
-  - No draft-pick or draft-pick-protection data exists anywhere in the app.
-  - There is no live, legal, free API for any of this; rebuilding it would
-    mean either a paid data vendor or further manual curation.
-- **No real CBA/salary-cap-legality validation.** The trade evaluator is a
-  basketball-fit assessment only. It can cite a known salary figure but is
-  explicitly instructed never to declare a trade cap-feasible or
-  salary-matching legal.
-- **No injury data.**
-- **LLM output isn't deterministic.** Prompt-level mitigations exist for
-  known failure modes (labeled "Fact:"/"Judgment:" meta-commentary, flipped
-  Yes/No polarity on negated hypothetical questions), including a
-  post-processing regex backstop for leaked labels — but a language model can
-  still occasionally get these wrong despite the mitigations.
-- **No automated frontend tests.** All UI/CSS fixes (mobile layout, chart
-  scaling, scroll behavior) were verified by reasoning about the code plus
-  manual phone testing, not an automated test suite — there's no JS test
-  runner in this project.
-- **Minor, not-yet-addressed engineering items:** `requirements.txt` has no
-  version pins (a fresh install could pull a breaking dependency update);
-  CORS is wide open (`CORS(app)`, every origin allowed); there's no CI.
-
-## Trade Simulator (in progress, `trade-simulator` branch)
-
-`python server.py`, then open http://localhost:8080. The original chat analyst moved to `/analyst`.
-
-**Screens so far (Stage 3)**, mobile-first, plain JavaScript in `static/sim/`:
 1. Landing: title, one line, Begin.
 2. Team selection: Eastern / Western, then the team (team colors and three-letter codes, no logos).
 3. Team analysis (`/api/sim/team/<code>`, `tradesim/analysis.py`): 2026-27 projection (avg wins,
    10-90% range, playoff / play-in / #1-seed odds), where the team needs help (guards, forwards,
    centers ranked 1-30 by player impact weighted by expected minutes, so injuries count; bottom
-   third = a need), weakest regulars, long-term injuries, payroll against the cap, tax line and
-   aprons, roster, and four placeholder trade-idea cards (Stage 5).
-4. Trade machine (`#/trade/ATL/PHI`, Stage 4): a tab per team and "+" to add a partner (up to
+   third = a need), weakest regulars, long-term injuries, 4 trade ideas (item 5), payroll
+   against the cap, tax line and aprons, and the roster.
+4. Trade machine (`#/trade/ATL/PHI`): a tab per team and "+" to add a partner (up to
    4 teams); per team, payroll before -> after on a bar with cap / tax / apron markers and the
    over/under status, "sends" and "gets" lists with salaries, and asset tabs (roster, picks,
    exceptions & cash). Every change runs the cap checker on the server
@@ -103,8 +62,8 @@ than deleted; safe to remove.
    and a "Show every rule checked" panel (pass / fail / not checked for all 14 rules per team).
    Exceptions can't be traded; the checker applies one automatically and says which. The trade
    lives in the URL (shareable); Save (only for trades that work) keeps it in a list on this
-   device for the trade-selection screen (Stage 6).
-5. Trade ideas (Stage 5, `GET /api/sim/team/<code>/suggestions`, `tradesim/suggest.py`):
+   device for the trade-selection screen (item 6).
+5. Trade ideas (`GET /api/sim/team/<code>/suggestions`, `tradesim/suggest.py`):
    - Needs: the LLM (`tradesim/ai.py`, Groq via `GROQ_API_KEY`) reads the team's numbers (no
      player names) and returns JSON: positions (G/F/C) and skills from a fixed list that maps
      to stats (`tradesim/skills.py`: shooting, rim protection, rebounding, playmaking,
@@ -129,8 +88,8 @@ than deleted; safe to remove.
      memory, decides legality or picks trades.
    - `GET /api/sim/players/resolve?q=` turns a typed name into database players (exact,
      ambiguous with candidates for the user to pick, or none).
-   - Results are cached per team and inputs (first load about 15 s).
-6. Trade selection and results (Stage 6, `tradesim/sequence_api.py`):
+   - Results are cached per team and inputs (first load about 10 s).
+6. Trade selection and results (`tradesim/sequence_api.py`):
    - `#/select/<code>`: the 4 trade ideas plus the user's saved trades involving the team, as
      checkable cards (0 or more). `POST /api/sim/sequence/check` checks them in order, each
      against the rosters and payrolls the earlier working trades leave. A trade reusing a
@@ -141,9 +100,30 @@ than deleted; safe to remove.
      effect, not noise). Shows average wins before -> after with 10-90% ranges, the win
      distribution chart (with a table view), playoff / play-in / #1 seed odds, every team
      whose projection moved (trade partners first), and a short explanation with the same
-     name and number checks as Stage 5. About 2 s.
+     name and number checks as the trade ideas. About 2 s.
 
-Stage 1 adds the data layer and a cap-legality checker (`tradesim/`).
+## Project layout
+
+| Path | What's there |
+|---|---|
+| `server.py` | Flask routes: the simulator (`/`, `/api/sim/...`) and the old analyst (`/analyst`, `/api/...`) |
+| `static/sim/` | The simulator's screens (`index.html`, `sim.js`, `sim.css`) |
+| `tradesim/checker.py` | Cap-rule checker (pass / fail / not checked per rule and team), single trades and trades in sequence |
+| `tradesim/engine.py`, `rotation.py`, `ratings.py`, `game_model.py`, `standings.py` | Season simulator |
+| `tradesim/analysis.py`, `trade_api.py`, `suggest.py`, `sequence_api.py` | Data behind each screen |
+| `tradesim/ai.py`, `skills.py` | LLM needs and explanations with name/number checks; skill percentiles |
+| `config/` | Cap thresholds (`cba_2026_27.json`), simulator settings (`sim.json`), long injuries |
+| `data/raw/` | Source files, each listed in `data/raw/SOURCES.json` with source URL and as-of date |
+| `reports/` | Generated projections, backtest and validation reports |
+
+## How it was built
+
+Seven stages, each reviewed before the next: (1) data and cap checker, (2) season simulator
+(then a separate accuracy pass: ratings, injuries, uncertainty, backtest), (3) landing, team
+selection and team analysis, (4) trade machine, (5) trade ideas, (6) trade selection and
+results, (7) polish and this README.
+
+## Data layer and cap checker
 
 - `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
   into `data/2026_27/league.json` and prints a report of anything it couldn't match.
@@ -151,7 +131,7 @@ Stage 1 adds the data layer and a cap-legality checker (`tradesim/`).
 - `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
   Bird veto rights count as a fail.
 
-### Season simulator
+## Season simulator
 
 Simulates the full 82-game 2026-27 regular season, every team from 0-0, for the real
 rosters (baseline) and for any set of player moves (scenario). Games already played
@@ -167,7 +147,7 @@ this season only inform player and team strength; they're never locked in as res
 | `python -m tradesim.game_model` | Refit the game model |
 | `python -m tradesim.backtest_nov9` | Backtest 2021-22 to 2025-26 and fit sigma_t -> `reports/backtest_nov9.md` |
 
-#### Method
+### Method
 
 1. **Player impact** (points per 100 possessions vs an average player; `tradesim/ratings.py`),
    Basketball-Reference BPM with every setting fitted on 2019-20 to 2025-26:
@@ -214,7 +194,7 @@ this season only inform player and team strength; they're never locked in as res
    teams in the move are flagged, plus any team whose change is beyond 2 SE and at least
    0.5 wins or 2 points of odds.
 
-#### Data sources
+### Data sources
 
 Every raw file is listed with its source URL and as-of date in `data/raw/SOURCES.json`:
 Basketball-Reference advanced stats 2018-19 to 2026-27 (user exports), preseason Vegas win
@@ -224,7 +204,7 @@ dates, as-of-Nov-9 game logs for the backtest), the user's contracts and cap she
 ESPN's injury page for `config/long_injuries.json`. A few user-supplied files have no
 recorded URL and are marked so.
 
-#### Validation results
+### Validation results
 
 **Backtest as of November 9, 2021-22 to 2025-26** (`reports/backtest_nov9.md`): for each
 season, only what was known on Nov 9 (rosters and minutes from game logs to that date,
@@ -285,7 +265,7 @@ winners (not used to fit); same seed gives identical output; minutes always tota
 moving a player to his own team changes nothing; swapping near-equal players moves wins
 by < 0.5.
 
-#### Known limitations
+### Known limitations
 
 - **Fit and chemistry:** players are added up; how they fit together (spacing, two
   ball-dominant guards, defensive schemes) isn't modelled beyond the mild diminishing-returns
@@ -309,7 +289,7 @@ by < 0.5.
 - The game spread (sigma) was fitted on season-average strengths, so it also contains a
   little night-to-night lineup variation the simulator adds separately (about 1%).
 
-### Trade checker limitations
+## Trade checker limitations
 
 - **Cap legality only.** The checker says whether a trade is allowed under the cap
   rules, not whether the other team would accept it.
@@ -330,3 +310,91 @@ by < 0.5.
   - Re-acquire checks only know each player's most recent move.
 - **Roster rule:** each team must end a trade with 14-15 standard contracts (per the
   project spec). The Kings currently have 13, so any trade that doesn't add a player fails.
+
+## Original chat analyst (`/analyst`)
+
+The app this project started as, still served at `/analyst`: an AI-powered NBA front-office analyst, a chat interface backed by team/player
+stats, franchise history, and a basketball-fit trade evaluator, with
+dashboards and comparison views alongside every answer.
+
+### Setup
+
+1. `pip install -r requirements.txt` (and `requirements-dev.txt` for tests).
+2. Copy `.env.example` to `.env` and set `GROQ_API_KEY` (required for the chat). Optionally
+   set `GROQ_MODEL` to override the default (`openai/gpt-oss-120b`).
+3. `python server.py` (reads `PORT`, default `8080`).
+
+Run the test suite with `pytest`.
+
+### How it works
+
+A question flows: `static/app.js` (composer) -> `POST /api/chat` ->
+`rag.py`'s `build_context()` assembles a plain-text context string from the
+data files below -> `llm.py`'s `answer_question()` sends that context plus
+the system prompt to Groq -> the prose reply and resolved
+team/player/season/comparison/trade flags come back together ->
+`static/render/chatThread.js` renders the prose and, based on those flags
+(not the LLM's own text), mounts an independently-fetched dashboard,
+comparison, or leaders view (`/api/team/...`, `/api/player/...`,
+`/api/leaders`).
+
+### Data sources
+
+| Data | Source | Freshness | Refresh |
+|---|---|---|---|
+| Team/player per-game & advanced stats, rosters, game logs, win totals | `nba_api` (stats.nba.com) | Live when fetched | `python fetch_*.py` (one script per dataset) |
+| Championships, current head coach | `nba_api` (`TeamYearByYearStats.NBA_FINALS_APPEARANCE`, `CommonTeamRoster`'s coaches table), cross-checked against `FranchiseHistory.LEAGUE_TITLES` | Live when fetched | `python fetch_team_facts.py` |
+| Franchise narrative (summary, continuity pattern, front-office continuity prose, historical coaching list, draft/trade history write-ups) | Hand-curated (`data/franchise_knowledge.json`) | Written once, not live | Manual edit |
+| Player salaries (94 players, 28 of 30 teams) and league cap/tax/apron thresholds | A **partial, unverified** extract from HoopsHype's public pages, produced by ChatGPT on 2026-10-20 (`data/contracts.json`, `data/league_caps.json`) | One-time snapshot | Not automated — see Known limitations |
+| LLM | Groq (`GROQ_MODEL`, default `openai/gpt-oss-120b`) via `langchain-groq` | N/A | N/A |
+
+All `nba_api`-backed data covers the **2015-16 through 2025-26 seasons**
+(2025-26 is "latest"). `data/player_leaders.json`, an older all-time
+top-5-per-franchise seed file, is loaded at startup but no longer used by any
+active code path — `rag.get_team_season_leaders()` computes real,
+season-correct leaders from the live stats instead. It's kept around rather
+than deleted; safe to remove.
+
+### Known limitations
+
+These apply to the chat analyst only (the simulator above has its own data and cap checker).
+
+- **2026-27 is rosters only.** `data/team_rosters.json` includes 2026-27
+  rosters (fetched 2026-11-09), but stats, leaders and dashboards stay on
+  2025-26 as the latest season — the new season had too few games for
+  meaningful stats. The season list comes from the stats files, so a roster
+  season ahead of the stats doesn't become "latest". Every team's chat
+  context includes its current (2026-27) roster; for 2026-27 stats the model
+  says its stats end at 2025-26.
+- **No front-office head (GM / president of basketball ops) data anywhere.**
+  No live source exists for this, and nothing was hand-curated to avoid
+  reintroducing the stale-data problem this app was built to fix. The model
+  says plainly that it doesn't have this when asked.
+- **Contracts/salary data is partial and unverified**, not a certified or
+  complete source:
+  - Only 94 of the league's ~450 players are covered, mostly each team's top
+    earners — bench and minimum-salary players are almost never included.
+  - Portland has no real salary data at all.
+  - No years-remaining, option type (beyond what little HoopsHype exposes),
+    guarantee status, no-trade clauses, or trade kickers.
+  - No draft-pick or draft-pick-protection data exists anywhere in the app.
+  - There is no live, legal, free API for any of this; rebuilding it would
+    mean either a paid data vendor or further manual curation.
+- **No real CBA/salary-cap-legality validation.** The trade evaluator is a
+  basketball-fit assessment only. It can cite a known salary figure but is
+  explicitly instructed never to declare a trade cap-feasible or
+  salary-matching legal.
+- **No injury data.**
+- **LLM output isn't deterministic.** Prompt-level mitigations exist for
+  known failure modes (labeled "Fact:"/"Judgment:" meta-commentary, flipped
+  Yes/No polarity on negated hypothetical questions), including a
+  post-processing regex backstop for leaked labels — but a language model can
+  still occasionally get these wrong despite the mitigations.
+- **No automated frontend tests.** All UI/CSS fixes (mobile layout, chart
+  scaling, scroll behavior) were verified by reasoning about the code plus
+  manual phone testing, not an automated test suite — there's no JS test
+  runner in this project.
+- **Minor, not-yet-addressed engineering items:** `requirements.txt` has no
+  version pins (a fresh install could pull a breaking dependency update);
+  CORS is wide open (`CORS(app)`, every origin allowed); there's no CI.
+
