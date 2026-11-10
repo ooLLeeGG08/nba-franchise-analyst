@@ -66,9 +66,12 @@
     function landing() {
         render(`
             <section class="landing">
-                <div class="landing-mark" aria-hidden="true">TS</div>
-                <h1>NBA Trade Simulator</h1>
-                <p class="lead">Pick a team, find its weak spots, test trades against the 2026-27 cap rules, and see how the season plays out.</p>
+                <div class="landing-hero glow">
+                    <div class="landing-mark" aria-hidden="true">TS</div>
+                    <span class="eyebrow">2026-27 season</span>
+                    <h1>NBA <span class="hl">Trade</span> Simulator</h1>
+                    <p class="lead">Pick a team, find its weak spots, test trades against the 2026-27 cap rules, and see how the season plays out.</p>
+                </div>
                 <div class="action-bar landing-cta"><div class="inner"><a class="button" href="#/teams">Begin</a></div></div>
                 <p class="fineprint"><span>${dataStatus && dataStatus.as_of ? `Rosters, contracts and stats as of ${esc(formatDate(dataStatus.as_of, true))}` : "Rosters, contracts and stats"}</span><span aria-hidden="true" class="sep"> · </span><span>10,000 simulated seasons</span></p>
             </section>`);
