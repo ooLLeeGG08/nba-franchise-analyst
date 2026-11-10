@@ -299,11 +299,13 @@
                 ${badge(t, "large")}
                 <div><h1>${esc(t.name)}</h1><div class="sub">${esc(t.conference)}ern Conference · projected ${ordinal(t.projection.conference_rank)}</div></div>
             </header>
+            <div class="team-layout">
             ${projectionCard(t)}
             ${needsCard(t)}
             ${ideasCard(t)}
             ${capCard(t)}
             ${rosterCard(t)}
+            </div>
             <div class="action-bar"><div class="inner two">
                 <a class="button secondary" href="#/trade/${t.code}">Propose a trade</a>
                 <a class="button" href="#/select/${t.code}">Choose trades</a></div></div>`);
@@ -359,7 +361,7 @@
         render(`<div class="loading">Loading trade machine…</div>`);
         try {
             const assets = await Promise.all(codes.map((c) => getJSON(`/api/sim/trade/assets/${c}`)));
-            tm = { teams: codes, active: codes[0], moves, assets: {}, result: null, panel: "roster",
+            tm = { teams: codes, active: codes[0], moves, assets: {}, result: null, panels: {},
                    showRules: false, picker: false, chooseFor: null, message: "" };
             assets.forEach((a) => { tm.assets[a.code] = a; });
             if (codes.length === 1) tm.picker = true;  // pick a partner first
@@ -497,8 +499,10 @@
         }).join("")}</ul>`;
     }
 
-    function teamPanel() {
-        const code = tm.active, a = teamOf(code);
+    // Every team's panel is drawn; CSS shows one at a time (tabs) on phones and all of them
+    // side by side on wider screens. tm.active is the team the phone tabs show.
+    function teamPanel(code) {
+        const a = teamOf(code);
         const t = tm.result && tm.result.teams ? tm.result.teams[code] : null;
         const before = a.team_salary, after = t ? t.salary_after : before;
         const delta = after - before;
@@ -508,6 +512,7 @@
                 <div class="team-line">${badge(a)}<div><h2>${esc(a.name)}</h2>
                     <div class="note">${esc(a.status)}${statusAfter !== a.status ? ` → <strong>${esc(statusAfter)}</strong>` : ""}</div></div>
                     ${t ? `<span class="pill ${t.works ? "ok" : "no"}">${t.works ? "Passes" : "Fails"}</span>` : ""}
+                    ${tm.teams.length > 1 ? `<button type="button" class="x col-remove" data-remove-team="${code}" aria-label="Remove ${esc(code)}">×</button>` : ""}
                 </div>
                 <div class="payroll-figures"><span class="amount">${money(before)}${delta ? ` → ${money(after)}` : ""}</span>
                     <span class="note">${delta ? `${delta > 0 ? "+" : ""}${money(delta)}` : "payroll"}</span></div>
@@ -524,35 +529,37 @@
         return tm.teams.filter((c) => c !== code);
     }
 
-    function addButton(type, id, disabled, label = "Add") {
+    // `from` is the team whose panel the button sits in.
+    function addButton(from, type, id, disabled, label = "Add") {
         if (disabled) return `<span class="note">${esc(disabled)}</span>`;
-        const dests = destinations(tm.active);
+        const dests = destinations(from);
         if (!dests.length) return `<span class="note">Add a team first</span>`;
         if (dests.length === 1) {
-            return `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-to="${dests[0]}">${label} → ${dests[0]}</button>`;
+            return `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${dests[0]}">${label} → ${dests[0]}</button>`;
         }
-        if (tm.chooseFor === `${type}:${id}`) {
-            return `<span class="dest">${dests.map((d) => `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-to="${d}">${d}</button>`).join("")}</span>`;
+        if (tm.chooseFor === `${from}:${type}:${id}`) {
+            return `<span class="dest">${dests.map((d) => `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${d}">${d}</button>`).join("")}</span>`;
         }
-        return `<button type="button" class="add" data-choose="${type}:${esc(id)}">${label} →</button>`;
+        return `<button type="button" class="add" data-choose="${from}:${type}:${esc(id)}">${label} →</button>`;
     }
 
-    function assetsPanel() {
-        const a = teamOf(tm.active);
+    function assetsPanel(code) {
+        const a = teamOf(code);
+        const panel = tm.panels[code] || "roster";
         const tabs = [["roster", "Roster"], ["picks", "Picks"], ["extras", "Exceptions & cash"]]
-            .map(([k, l]) => `<button type="button" data-panel="${k}" aria-pressed="${tm.panel === k}">${l}</button>`).join("");
+            .map(([k, l]) => `<button type="button" data-panel="${k}" data-for="${code}" aria-pressed="${panel === k}">${l}</button>`).join("");
         let body = "";
-        if (tm.panel === "roster") {
+        if (panel === "roster") {
             body = a.roster.filter((p) => !inTrade("player", p.id)).map((p) => {
                 const flags = [p.no_trade_clause ? "no-trade clause" : "", p.bird_veto ? "can veto" : "",
                                p.tradeable_from ? `signed this summer · from ${formatDate(p.tradeable_from)}` : ""].filter(Boolean);
                 return `<li><span class="who">${esc(p.name)} <small>${esc(p.position || "")} · ${money(p.salary)}${flags.length ? ` · <em>${esc(flags.join(" · "))}</em>` : ""}</small></span>
-                        ${addButton("player", p.id)}</li>`;
+                        ${addButton(code, "player", p.id)}</li>`;
             }).join("");
-        } else if (tm.panel === "picks") {
+        } else if (panel === "picks") {
             body = a.picks.filter((pk) => !inTrade("pick", pk.id)).map((pk) => `
                 <li><span class="who">${esc(pk.label)}${pk.kind === "conditional" ? `<small>${esc(pk.text)}</small>` : ""}</span>
-                    ${addButton("pick", pk.id, pk.tradeable ? "" : "frozen")}</li>`).join("");
+                    ${addButton(code, "pick", pk.id, pk.tradeable ? "" : "frozen")}</li>`).join("");
         } else {
             const ex = a.exceptions.length
                 ? a.exceptions.map((e) => `<li><span class="who">${money(e.amount)} exception <small>from the ${esc(e.source)} trade · expires ${esc(formatDate(e.expires))}</small></span></li>`).join("")
@@ -560,8 +567,8 @@
             body = `${ex}
                 <li class="explain"><small>Exceptions can't be traded; the checker uses one automatically when salaries don't match.</small></li>
                 <li><span class="who">Send cash <small>up to ${money(a.cash_limit)} a season</small></span>
-                    <span class="cash"><input type="number" inputmode="decimal" min="0.1" step="0.1" max="${a.cash_limit / 1e6}" placeholder="$M" id="cashInput" aria-label="Cash in millions">
-                    ${addButton("cash", "cash", "", "Add")}</span></li>`;
+                    <span class="cash"><input type="number" inputmode="decimal" min="0.1" step="0.1" max="${a.cash_limit / 1e6}" placeholder="$M" id="cashInput-${code}" aria-label="Cash in millions">
+                    ${addButton(code, "cash", "cash", "", "Add")}</span></li>`;
         }
         return `
             <section class="card">
@@ -626,9 +633,12 @@
         const scrollY = window.scrollY;
         app.innerHTML = `
             <div class="topbar"><a class="back" href="#/team/${back}">‹ ${esc(back)}</a><h2 class="title">Trade machine</h2></div>
-            <div class="team-tabs">${tabs}${canAdd ? `<button type="button" class="tab add-team" data-action="picker" aria-label="Add a team">+</button>` : ""}</div>
+            <div class="team-tabs n${tm.teams.length}">${tabs}${canAdd ? `<button type="button" class="tab add-team" data-action="picker" aria-label="Add a team">+</button>` : ""}</div>
             ${teamPicker()}
-            ${tm.teams.length > 1 ? statusBanner() + rulesPanel() + teamPanel() + assetsPanel() : ""}
+            ${tm.teams.length > 1 ? statusBanner() + rulesPanel() + `
+            <div class="trade-cols n${tm.teams.length}">${tm.teams.map((c) => `
+                <div class="team-col ${c === tm.active ? "active" : ""}">${teamPanel(c)}${assetsPanel(c)}</div>`).join("")}
+            </div>` : ""}
             ${savedList()}
             <div class="action-bar"><div class="inner">
                 ${tm.message ? `<p class="toast">${esc(tm.message)}</p>` : ""}
@@ -646,16 +656,17 @@
         if (d.tab) { tm.active = d.tab; tm.chooseFor = null; drawTrade(); }
         else if (d.removeTeam) removeTeam(d.removeTeam);
         else if (d.team) addTeam(d.team);
-        else if (d.panel) { tm.panel = d.panel; tm.chooseFor = null; drawTrade(); }
+        else if (d.panel) { tm.panels[d.for] = d.panel; tm.chooseFor = null; drawTrade(); }
         else if (d.choose) { tm.chooseFor = d.choose; drawTrade(); }
         else if (d.add) {
+            tm.active = d.from;
             if (d.add === "cash") {
-                const input = document.getElementById("cashInput");
+                const input = document.getElementById(`cashInput-${d.from}`);
                 const amount = Math.round(parseFloat(input && input.value) * 1e6);
                 if (!(amount > 0)) { tm.message = "Enter a cash amount in millions."; return drawTrade(); }
-                addAsset("cash", amount, tm.active, d.to);
+                addAsset("cash", amount, d.from, d.to);
             } else {
-                addAsset(d.add, d.id, tm.active, d.to);
+                addAsset(d.add, d.id, d.from, d.to);
             }
         }
         else if (d.remove !== undefined) removeMove(Number(d.remove));

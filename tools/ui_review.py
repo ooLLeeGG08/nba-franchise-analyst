@@ -1,7 +1,7 @@
 """Design review: screenshot the simulator screens and check layout rules.
 
 Usage (server running):  python tools/ui_review.py STAGE [screen ...] [--base http://localhost:8080]
-Screens: landing teams team trade select picked results (default: all).
+Screens: landing teams team trade trade3 trade4 select picked results (default: all).
 "picked" is Choose trades after ticking up to two ideas.
 
 For each screen it saves full-page PNGs at 390x844 (2x) and 1280x800 to design-review/stage-N/,
@@ -20,13 +20,20 @@ from playwright.sync_api import sync_playwright
 
 TEAM = "CHI"  # East team with 4 trade ideas (BKN has 2, SAC none)
 SHOT_SIZES = {"phone": (390, 844, 2), "laptop": (1280, 800, 1)}
-CHECK_WIDTHS = [320, 390, 768, 1280]
+CHECK_WIDTHS = [320, 390, 768, 1024, 1280]
 
 CHECKS_JS = r"""
 () => {
   const out = { overflow: null, small: [], contrast: [], dupIds: [] };
   const de = document.documentElement;
   out.overflow = de.scrollWidth > window.innerWidth ? { scrollWidth: de.scrollWidth, innerWidth: window.innerWidth } : null;
+  // Boxes that scroll sideways inside the page (e.g. a wide table) count as overflow too.
+  out.innerScroll = [];
+  document.querySelectorAll("body *").forEach((el) => {
+    const ox = getComputedStyle(el).overflowX;
+    if ((ox === "auto" || ox === "scroll") && el.scrollWidth > el.clientWidth + 1)
+      out.innerScroll.push(`${el.tagName.toLowerCase()}.${el.className} ${el.scrollWidth}>${el.clientWidth}`);
+  });
 
   const visible = (el) => {
     const r = el.getBoundingClientRect();
@@ -133,12 +140,17 @@ def open_screen(page, base, screen, state):
         page.goto(f"{base}/#/teams")
     elif screen == "team":
         page.goto(f"{base}/#/team/{TEAM}")
-    elif screen == "trade":
+    elif screen in ("trade", "trade3", "trade4"):
         if "trade" not in state:
             page.goto(f"{base}/#/team/{TEAM}")
             settle(page)
             state["trade"] = page.eval_on_selector(f'a[href^="#/trade/{TEAM}/"]', "a => a.getAttribute('href')")
-        page.goto(f"{base}/{state['trade']}")
+        href = state["trade"]
+        if screen != "trade":  # same trade with extra (empty) teams: tests the 3- and 4-team layouts
+            path, query = href.split("?", 1)
+            extra = ["LAL", "BOS"][: int(screen[-1]) - 2]
+            href = "/".join([path] + extra) + "?" + query
+        page.goto(f"{base}/{href}")
     elif screen == "select":
         page.goto(f"{base}/#/select/{TEAM}")
     elif screen in ("picked", "results"):
@@ -162,7 +174,7 @@ def open_screen(page, base, screen, state):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("stage")
-    ap.add_argument("screens", nargs="*", default=["landing", "teams", "team", "trade", "select", "picked", "results"])
+    ap.add_argument("screens", nargs="*", default=["landing", "teams", "team", "trade", "trade3", "trade4", "select", "picked", "results"])
     ap.add_argument("--base", default="http://localhost:8080")
     args = ap.parse_args()
     out_dir = Path("design-review") / f"stage-{args.stage}"
@@ -203,6 +215,8 @@ def main():
             lines = []
             if r["overflow"]:
                 lines.append(f"  overflow: {r['overflow']}")
+            for x in r.get("innerScroll", []):
+                lines.append(f"  scrolls sideways: {x}")
             for s in r["small"]:
                 lines.append(f"  <44px: {s['el']} '{s['text']}' {s['height']}px")
             for c in r["contrast"]:
