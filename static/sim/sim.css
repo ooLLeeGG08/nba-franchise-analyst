@@ -68,7 +68,6 @@
     font-family: var(--font-sans);
     color: var(--text);
     background: var(--bg);
-    font-variant-numeric: tabular-nums;
 }
 
 /* --- base ---------------------------------------------------------------------------------- */
@@ -95,6 +94,12 @@ h1 { font-size: var(--fs-2xl); line-height: 1.05; font-weight: 700; }
 h2 { font-size: var(--fs-lg); line-height: 1.2; font-weight: 600; }
 p { margin: 0; line-height: 1.5; color: var(--muted); }
 
+/* tabular figures wherever stats line up */
+.big-number, .stat, .payroll-figures, .amt, .num, .rank, .gain, .meta, .combined, .range-pill, .ranges,
+.facts, .moves, .assets, .standings, .data-table, .chart, .card-head .note, .pick-kind, .was, .cap-lines {
+    font-variant-numeric: tabular-nums;
+}
+
 /* mono labels: small uppercase metadata (PICK 01, CHI SENDS, table headers) */
 .list-head, .pick-kind, .sides h3, .chip-label, .pill, .status, .match, .was,
 .stat .label, .marker span, .standings th, .data-table th {
@@ -106,15 +111,25 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 }
 
 /* --- landing --- */
-.landing { min-height: calc(100dvh - 140px); display: flex; flex-direction: column; justify-content: center; gap: var(--s-5); }
-.landing-mark {
-    width: 64px; height: 64px; border-radius: var(--r-lg); display: grid; place-items: center;
-    background: var(--accent); color: var(--accent-ink);
-    font: 700 22px var(--font-display); letter-spacing: var(--tracking-tight);
+.landing {
+    min-height: calc(100dvh - var(--cta-space) - var(--s-6)); display: flex; flex-direction: column;
+    justify-content: flex-end; gap: var(--s-6); padding-bottom: var(--s-4);
 }
-.landing h1 { font-size: 40px; }
-.landing p.lead { font-size: var(--fs-lg); color: var(--text); max-width: 32ch; }
-.landing .fineprint { font-size: var(--fs-sm); color: var(--faint); }
+.landing-mark {
+    width: 48px; height: 48px; border-radius: var(--r-sm); display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink);
+    font: 700 17px var(--font-display); letter-spacing: var(--tracking-tight);
+}
+.landing h1 { font-size: clamp(48px, 13vw, 120px); line-height: 0.95; font-weight: 600; letter-spacing: -0.04em; max-width: 9ch; }
+.landing p.lead { font-size: var(--fs-lg); color: var(--text); max-width: 34ch; line-height: 1.45; }
+.landing .fineprint {
+    display: grid; border-top: var(--rule); border-bottom: var(--rule);
+    font: var(--fs-2xs)/1.5 var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted);
+}
+.landing .fineprint span { padding: var(--s-3) 0; }
+.landing .fineprint span + span { border-top: var(--rule); }
+.landing .fineprint .sep { display: none; }
+.landing-cta .button { width: 100%; }
 
 /* --- buttons --- */
 .button {
@@ -277,8 +292,21 @@ details.roster[open] summary::after { content: "Hide"; }
 .error { color: var(--bad); }
 
 @media (min-width: 768px) {
+    :root { --gutter: var(--s-10); }
+    .app { max-width: calc(var(--content-max) + 2 * var(--gutter)); padding-top: var(--s-8); }
+    .action-bar .inner { max-width: var(--content-max); display: flex; justify-content: flex-end; gap: var(--s-2); }
+    .action-bar .inner .button { min-width: 280px; }
+    .action-bar .inner.two { display: flex; }
     .team-grid { grid-template-columns: 1fr 1fr 1fr; }
-    .app { padding-top: var(--s-8); }
+
+    .landing { min-height: calc(100dvh - 160px); justify-content: center; gap: var(--s-8); padding-bottom: 0; }
+    .landing h1 { max-width: none; }
+    .landing p.lead { font-size: 20px; }
+    .landing-cta { position: static; padding: 0; border: 0; background: none; }
+    .landing-cta .inner { margin: 0; justify-content: flex-start; }
+    .landing-cta .button { width: auto; }
+    .landing .fineprint { grid-template-columns: auto 1fr; }
+    .landing .fineprint span + span { border-top: 0; border-left: var(--rule); padding-left: var(--s-6); margin-left: var(--s-6); }
 }
 
 /* --- trade machine --- */
