@@ -384,7 +384,7 @@ details.roster[open] summary::after { content: "Hide"; }
 /* --- trade selection and results --- */
 .action-bar .inner.two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
 .action-bar .inner.two .button { padding: 0 var(--s-3); }
-.intro { font-size: var(--fs-md); margin: var(--s-1) 0 var(--s-4); }
+.intro { font-size: var(--fs-md); margin: var(--s-1) 0 var(--s-4); max-width: 62ch; }
 .pick-list { display: grid; gap: var(--s-2); margin-bottom: var(--s-3); }
 .pick-card {
     position: relative; display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4);
@@ -396,12 +396,21 @@ details.roster[open] summary::after { content: "Hide"; }
 .pick-card.on { border-color: var(--accent); }
 .pick-card.on::after { content: ""; position: absolute; top: -1px; right: -1px; width: 8px; height: 8px; background: var(--accent); border-top-right-radius: var(--radius); }
 .pick-card.blocked { border-color: rgba(255, 93, 93, 0.5); }
-.pick-card input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--accent); flex: none; }
+.pick-card input {
+    appearance: none; -webkit-appearance: none; display: grid; place-items: center; flex: none;
+    width: 20px; height: 20px; margin: 1px 0 0; border: 1px solid var(--muted); border-radius: 3px; background: transparent; cursor: pointer;
+}
+.pick-card input:checked { background: var(--accent); border-color: var(--accent); }
+.pick-card input:checked::after {
+    content: ""; width: 10px; height: 5px; margin-top: -2px;
+    border-left: 2px solid var(--accent-ink); border-bottom: 2px solid var(--accent-ink); transform: rotate(-45deg);
+}
 .pick-card input:focus-visible { outline: none; }
 .pick-body { display: grid; gap: var(--s-1); font-size: var(--fs-sm); }
 .pick-body strong { font-weight: 600; font-size: var(--fs-md); line-height: 1.35; }
 .pick-body small { color: var(--muted); font-size: var(--fs-sm); }
-.pick-kind { color: var(--faint); }
+.pick-kind { color: var(--faint); letter-spacing: 0.04em; }
+.pick-card.on .pick-kind { color: var(--accent); }
 .blocked-reason { color: var(--bad); font-size: var(--fs-xs); }
 .big-number .arrow { font-size: 26px; color: var(--muted); margin: 0 var(--s-2); vertical-align: 8px; }
 .pos { color: var(--good); }
@@ -449,6 +458,12 @@ details.roster[open] summary::after { content: "Hide"; }
 .removed { color: var(--bad); font-size: var(--fs-sm); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-md); margin: var(--s-1) 0; }
 .combined span { color: var(--muted); }
+.combined-card .combined strong { display: block; font: 600 var(--fs-2xl)/1.05 var(--font-display); letter-spacing: var(--tracking-tight); margin-bottom: var(--s-1); }
+.combined-card .hint { margin-top: var(--s-2); }
+.payroll-list { margin-top: var(--s-3); border-top: var(--rule); }
+.payroll-list li { flex-wrap: wrap; row-gap: 0; }
+.payroll-list li > span:first-child { font-weight: 600; }
+.payroll-list small { font-weight: 400; }
 .hint { font-size: var(--fs-xs); color: var(--faint); margin: 0 0 var(--s-2); }
 
 /* conference tables on the results screen */
@@ -511,6 +526,16 @@ details.roster[open] summary::after { content: "Hide"; }
     .landing-cta .button { width: auto; }
     .landing .fineprint { grid-template-columns: auto 1fr; }
     .landing .fineprint span + span { border-top: 0; border-left: var(--rule); padding-left: var(--s-6); margin-left: var(--s-6); }
+}
+
+/* choose trades on laptops: trade cards two across (the 4 ideas make a 2x2), payroll rows in columns */
+@media (min-width: 768px) {
+    .pick-list { grid-template-columns: 1fr 1fr; }
+    .pick-list > p { grid-column: 1 / -1; }
+    .combined-card .combined strong { font-size: var(--fs-3xl); }
+    .payroll-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); column-gap: var(--s-6); }
+    .payroll-list li, .payroll-list li:last-child { border-bottom: 0; flex-direction: column; align-items: flex-start; padding: var(--s-3) 0 0; }
+    .payroll-list .amt { font-size: var(--fs-md); color: var(--text); }
 }
 
 /* the one extra breakpoint: 3 teams need ~1024px to sit side by side */

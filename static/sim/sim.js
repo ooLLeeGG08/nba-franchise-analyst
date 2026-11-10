@@ -763,10 +763,10 @@
                 <p class="intro">Pick trades to run together, or none. After each pick, new ideas are found for the roster, payroll and picks it leaves, so every idea still works with your picks.</p>
                 ${removedNote}
                 ${picked.length ? `<h3 class="list-head">Your picks <span>checked in this order</span></h3><div class="pick-list">${pickedCards}</div>
-                <section class="card">
+                <section class="card combined-card">
                     <div class="card-head"><h2>Combined effect</h2><span class="note">${busy ? "Updating…" : ""}</span></div>
                     ${combinedLine}
-                    <ul class="moves">${payroll}</ul>
+                    <ul class="moves payroll-list">${payroll}</ul>
                 </section>` : ""}
                 <h3 class="list-head">${picked.length ? "More ideas, on top of your picks" : "Trade ideas"}</h3>
                 <div class="pick-list">${busy ? `<p class="searching">${picked.length ? "Finding ideas that work with your picks… about 10 seconds." : "Loading ideas…"}</p>`
