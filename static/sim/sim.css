@@ -131,7 +131,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 }
 
 /* mono labels: small uppercase metadata (PICK 01, CHI SENDS, table headers) */
-.list-head, .pick-kind, .sides h3, .chip-label, .pill, .status, .was,
+.pick-kind, .sides h3, .chip-label, .pill, .status, .was,
 .stat .label, .marker span, .standings th, .data-table th {
     font-family: var(--font-mono);
     font-size: var(--fs-2xs);
@@ -355,7 +355,9 @@ details.roster[open] summary::after { content: "Hide"; }
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
     padding: var(--s-3) var(--gutter) calc(var(--s-3) + env(safe-area-inset-bottom));
     background: var(--bg); border-top: var(--rule);
+    transition: transform 200ms ease-out, visibility 200ms;
 }
+.action-bar.is-hidden { transform: translateY(100%); visibility: hidden; }
 .action-bar .inner { max-width: 560px; margin: 0 auto; }
 
 .placeholder { text-align: center; padding: var(--s-12) var(--s-2); display: grid; gap: var(--s-4); justify-items: center; }
@@ -524,8 +526,20 @@ details.roster[open] summary::after { content: "Hide"; }
 .data-table th, .data-table td { text-align: right; padding: var(--s-2) var(--s-1); border-bottom: var(--rule); }
 .data-table th { color: var(--muted); }
 .data-table th:first-child, .data-table td:first-child { text-align: left; color: var(--muted); }
-.list-head { color: var(--muted); margin: var(--s-6) 0 var(--s-2); }
-.list-head span { margin-left: var(--s-2); color: var(--faint); }
+/* page sections: eyebrow, section title, then content; big gaps between sections */
+.page-section { margin-top: var(--section-gap); }
+.intro + .page-section, .removed + .page-section { margin-top: var(--s-8); }
+.section-title { font-size: var(--fs-xl); line-height: 1.15; margin-bottom: var(--s-4); }
+.section-title span { margin-left: var(--s-2); font: 400 var(--fs-sm) var(--font-sans); letter-spacing: 0; color: var(--muted); }
+.page-section .combined-card { margin-top: var(--s-4); }
+
+/* closing call-to-action band */
+.cta-band {
+    display: flex; flex-direction: column; align-items: center; gap: var(--s-6); text-align: center;
+    margin-top: var(--section-gap); padding: var(--s-16) 0;
+}
+.cta-band h2 { font-size: clamp(36px, 10vw, 64px); line-height: 1.02; letter-spacing: -0.035em; max-width: 12ch; }
+.cta-band .button { min-width: min(100%, 280px); }
 .removed { color: var(--bad); font-size: var(--fs-sm); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-md); margin: var(--s-1) 0; }
 .combined span { color: var(--muted); }
@@ -621,6 +635,9 @@ details.roster[open] summary::after { content: "Hide"; }
     .pick-list { grid-template-columns: 1fr 1fr; }
     .pick-list > p { grid-column: 1 / -1; }
     .combined-card .combined strong { font-size: var(--fs-3xl); }
+    .cta-band { padding: var(--s-16) 0 var(--s-12); }
+    .cta-band h2 { max-width: none; }
+    .section-title { font-size: var(--fs-2xl); }
     .payroll-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); column-gap: var(--s-6); }
     .payroll-list li, .payroll-list li:last-child { border-bottom: 0; flex-direction: column; align-items: flex-start; padding: var(--s-3) 0 0; }
     .payroll-list .amt { font-size: var(--fs-md); color: var(--text); }

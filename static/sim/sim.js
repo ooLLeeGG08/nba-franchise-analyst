@@ -56,6 +56,22 @@
         window.scrollTo(0, 0);
     }
 
+    // Closing call-to-action band (headline + one button, glow behind).
+    function ctaBand(headline, button) {
+        return `<section class="cta-band glow"><h2>${headline}</h2>${button}</section>`;
+    }
+
+    // The sticky bottom bar hides while the closing band is on screen, so the same button
+    // never shows twice. Called after every draw that has a band.
+    let bandObserver = null;
+    function watchBand() {
+        if (bandObserver) bandObserver.disconnect();
+        const band = app.querySelector(".cta-band"), bar = app.querySelector(".action-bar");
+        if (!band || !bar || !("IntersectionObserver" in window)) return;
+        bandObserver = new IntersectionObserver(([e]) => bar.classList.toggle("is-hidden", e.isIntersecting), { threshold: 0.3 });
+        bandObserver.observe(band);
+    }
+
     function showError(err) {
         render(`<div class="error">Couldn't load this page. ${esc(err.message)}</div>
                 <p style="text-align:center"><a class="button secondary" href="#/teams">Back to teams</a></p>`);
@@ -791,25 +807,31 @@
                 ? `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">Combined ${signed(c.change)} wins</strong> ${c.sum_alone != null ? `<span>(sum alone ${signed(c.sum_alone)})</span>` : ""}</p>
                    <p class="hint">One simulation with all ${picked.length} trades together. It differs from the sum when the new players share minutes.</p>`
                 : `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">${signed(c.change)} wins</strong></p>`) : "";
+            // Sections appear and disappear with picks, so eyebrows are numbered in display order.
+            let n = 0;
+            const eyebrow = (word) => `<span class="eyebrow">${String(++n).padStart(2, "0")} · ${word}</span>`;
+            const simulate = (cls) => `<a class="button ${cls} ${busy ? "disabled" : ""}" href="#/results/${code}?t=${encodeTrades(picked)}">
+                        ${picked.length ? `Simulate the season with ${picked.length} trade${picked.length > 1 ? "s" : ""}` : "Simulate the season as is"}</a>`;
             render(`
                 <div class="topbar"><a class="back" href="#/team/${code}">‹ ${esc(code)}</a><h2 class="title">Choose trades</h2></div>
                 <p class="intro">Pick trades to run together, or none. After each pick, new ideas are found for the roster, payroll and picks it leaves, so every idea still works with your picks.</p>
                 ${removedNote}
-                ${picked.length ? `<h3 class="list-head">Your picks <span>checked in this order</span></h3><div class="pick-list">${pickedCards}</div>
+                ${picked.length ? `<section class="page-section">${eyebrow("Picks")}
+                <h3 class="section-title">Your picks <span>checked in this order</span></h3><div class="pick-list">${pickedCards}</div>
                 <section class="card combined-card">
                     <div class="card-head"><h2>Combined effect</h2><span class="note">${busy ? "Updating…" : ""}</span></div>
                     ${combinedLine}
                     <ul class="moves payroll-list">${payroll}</ul>
-                </section>` : ""}
-                <h3 class="list-head">${picked.length ? "More ideas, on top of your picks" : "Trade ideas"}</h3>
+                </section></section>` : ""}
+                <section class="page-section">${eyebrow("Ideas")}
+                <h3 class="section-title">${picked.length ? "More ideas, on top of your picks" : "Trade ideas"}</h3>
                 <div class="pick-list">${busy ? `<p class="searching">${picked.length ? "Finding ideas that work with your picks… about 10 seconds." : "Loading ideas…"}</p>`
                     : failed ? `<p class="empty">Couldn't load ideas. Try again.</p>`
-                    : (ideaCards || `<p class="empty">No more trades that work with your picks and pass the realism rule.</p>`)}</div>
-                ${savedCards ? `<h3 class="list-head">Your saved trades</h3><div class="pick-list">${savedCards}</div>` : ""}
-                <div class="action-bar"><div class="inner">
-                    <a class="button wide ${busy ? "disabled" : ""}" href="#/results/${code}?t=${encodeTrades(picked)}">
-                        ${picked.length ? `Simulate the season with ${picked.length} trade${picked.length > 1 ? "s" : ""}` : "Simulate the season as is"}</a>
-                </div></div>`);
+                    : (ideaCards || `<p class="empty">No more trades that work with your picks and pass the realism rule.</p>`)}</div></section>
+                ${savedCards ? `<section class="page-section">${eyebrow("Saved")}<h3 class="section-title">Your saved trades</h3><div class="pick-list">${savedCards}</div></section>` : ""}
+                ${ctaBand(`Simulate the <span class="hl">season</span>`, simulate(""))}
+                <div class="action-bar"><div class="inner">${simulate("wide")}</div></div>`);
+            watchBand();
             app.querySelectorAll("[data-pick]").forEach((box) => box.addEventListener("change", () => {
                 const id = box.dataset.pick;
                 if (box.checked) {
