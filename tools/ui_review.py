@@ -40,7 +40,9 @@ CHECKS_JS = r"""
   const visible = (el) => {
     const r = el.getBoundingClientRect();
     const s = getComputedStyle(el);
-    return r.width > 0 && r.height > 0 && s.visibility !== "hidden" && s.display !== "none";
+    // checkVisibility() also catches content inside a closed <details>, which still reports a box
+    const shown = el.checkVisibility ? el.checkVisibility({ visibilityProperty: true }) : true;
+    return shown && r.width > 0 && r.height > 0 && s.visibility !== "hidden" && s.display !== "none";
   };
   const name = (el) => (el.getAttribute("aria-label") || el.textContent || el.value || el.tagName).trim().replace(/\s+/g, " ").slice(0, 50);
   const sel = (el) => el.tagName.toLowerCase() + (el.className && typeof el.className === "string" ? "." + el.className.trim().split(/\s+/).join(".") : "");

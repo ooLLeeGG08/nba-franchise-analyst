@@ -68,7 +68,12 @@
         if (bandObserver) bandObserver.disconnect();
         const band = app.querySelector(".cta-band"), bar = app.querySelector(".action-bar");
         if (!band || !bar || !("IntersectionObserver" in window)) return;
-        bandObserver = new IntersectionObserver(([e]) => bar.classList.toggle("is-hidden", e.isIntersecting), { threshold: 0.3 });
+        // If every button in the bar repeats the band (data-dup, or a single button), hide the
+        // whole bar; otherwise hide just the repeated ones.
+        const dups = bar.querySelectorAll("[data-dup]");
+        const all = bar.querySelectorAll(".button");
+        const whole = !dups.length || dups.length === all.length;
+        bandObserver = new IntersectionObserver(([e]) => bar.classList.toggle(whole ? "is-hidden" : "band-visible", e.isIntersecting), { threshold: 0.3 });
         bandObserver.observe(band);
     }
 
@@ -150,12 +155,15 @@
         const arc = "M20 100 A80 80 0 0 1 180 100";
         return `
             <div class="gauge" role="img" aria-label="${esc(label)} ${pct(value)}${was != null ? `, was ${pct(was)}` : ""}">
-                <svg viewBox="0 0 200 112" aria-hidden="true">
-                    <path class="gauge-track" d="${arc}" pathLength="100"/>
-                    <path class="gauge-fill" d="${arc}" pathLength="100" stroke-dasharray="${(v * 100).toFixed(1)} 100"/>
-                    <circle class="gauge-knob" cx="${kx.toFixed(1)}" cy="${ky.toFixed(1)}" r="8"/>
-                </svg>
-                <div class="gauge-text"><span class="gauge-value">${pct(value)}</span><span class="gauge-label">${esc(label)}</span>${was != null ? `<span class="was">was ${pct(was)}</span>` : ""}</div>
+                <div class="gauge-dial">
+                    <svg viewBox="0 0 200 112" aria-hidden="true">
+                        <path class="gauge-track" d="${arc}" pathLength="100"/>
+                        <path class="gauge-fill" d="${arc}" pathLength="100" stroke-dasharray="${(v * 100).toFixed(1)} 100"/>
+                        <circle class="gauge-knob" cx="${kx.toFixed(1)}" cy="${ky.toFixed(1)}" r="8"/>
+                    </svg>
+                    <span class="gauge-value">${pct(value)}</span>
+                </div>
+                <span class="gauge-label">${esc(label)}</span>${was != null ? `<span class="was">was ${pct(was)}</span>` : ""}
             </div>`;
     }
 
@@ -886,10 +894,11 @@
         return dist.length - 1;
     }
 
-    // Two win distributions (before / after) as frequency lines with a light fill.
-    // Colors: palette slots 1 and 2 (dark), validated against the card surface.
-    function distributionChart(before, after) {
-        const W = 340, H = 180, pad = { l: 34, r: 10, t: 14, b: 26 };
+    // Two win distributions (before / after) as thin lines with a fade-out fill. A dashed line marks
+    // each curve's mean, tagged "Before 28.9" / "After 36.9". `wide` gives laptops a wider drawing
+    // area so labels stay small instead of scaling up with the SVG.
+    function distributionChart(before, after, meanBefore, meanAfter, wide) {
+        const W = wide ? 600 : 340, H = wide ? 250 : 190, pad = { l: 34, r: 10, t: 34, b: 26 };
         const nb = before.reduce((a, b) => a + b, 0), na = after.reduce((a, b) => a + b, 0);
         const pb = before.map((c) => c / nb), pa = after.map((c) => c / na);
         const nonzero = (p) => p.map((v, i) => (v > 0.0005 ? i : null)).filter((i) => i !== null);
@@ -903,29 +912,41 @@
         const ticks = [];
         for (let w = Math.ceil(lo / 10) * 10; w <= hi; w += 10) ticks.push(w);
         const yticks = [0.02, 0.04, 0.06, 0.08, 0.10].filter((v) => v < ymax);
-        // Direct labels sit beside each curve's peak, on the outer side so they never collide.
-        const peak = (p) => p.indexOf(Math.max(...p.slice(lo, hi + 1)));
-        const afterRight = peak(pa) >= peak(pb);
-        const label = (p, name, cls) => {
-            const w = peak(p);
-            const right = (cls === "after") === afterRight;
-            return `<text class="direct ${cls}" x="${(x(w) + (right ? 6 : -6)).toFixed(1)}" y="${(y(p[w]) - 4).toFixed(1)}" text-anchor="${right ? "start" : "end"}">${name}</text>`;
+        // Height of a curve at a fractional win count (for the mean markers).
+        const at = (p, m) => { const i = Math.floor(m), f = m - i; return (p[i] || 0) * (1 - f) + (p[i + 1] || 0) * f; };
+        const afterRight = meanAfter >= meanBefore;
+        const marker = (p, m, cls, name) => {
+            const mx = x(m), my = y(at(p, m));
+            const right = (cls === "after") === afterRight;   // tags point away from each other
+            return {
+                svg: `<line class="mean-line ${cls}" x1="${mx.toFixed(1)}" x2="${mx.toFixed(1)}" y1="${my.toFixed(1)}" y2="${y(0)}"/>
+                      <circle class="mean-dot ${cls}" cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="3"/>`,
+                tag: `<span class="tag ${cls} ${right ? "right" : "left"}" style="left:${(mx / W * 100).toFixed(2)}%;top:${(my / H * 100).toFixed(2)}%">${name} ${m.toFixed(1)}</span>`,
+            };
         };
+        const mb = marker(pb, meanBefore, "before", "Before"), ma = marker(pa, meanAfter, "after", "After");
         return `
-            <div class="chart" data-lo="${lo}" data-hi="${hi}">
-                <div class="legend"><span><i class="sw before"></i>Before</span><span><i class="sw after"></i>After</span></div>
-                <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of simulated wins before and after the trades">
-                    ${yticks.map((v) => `<line class="grid" x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${pad.l - 6}" y="${y(v) + 3}" text-anchor="end">${Math.round(v * 100)}%</text>`).join("")}
-                    <line class="baseline" x1="${pad.l}" x2="${W - pad.r}" y1="${y(0)}" y2="${y(0)}"/>
-                    ${ticks.map((w) => `<text class="axis" x="${x(w)}" y="${H - 8}" text-anchor="middle">${w}</text>`).join("")}
-                    <path class="area before" d="${area(pb)}"/><path class="area after" d="${area(pa)}"/>
-                    <path class="line before" d="${line(pb)}"/><path class="line after" d="${line(pa)}"/>
-                    ${label(pb, "Before", "before")}${label(pa, "After", "after")}
-                    <line class="crosshair" x1="0" x2="0" y1="${pad.t}" y2="${y(0)}" visibility="hidden"/>
-                    <rect class="hit" x="${pad.l}" y="${pad.t}" width="${W - pad.l - pad.r}" height="${H - pad.t - pad.b}"/>
-                </svg>
-                <div class="tooltip" hidden></div>
+            <div class="chart" data-lo="${lo}" data-hi="${hi}" data-w="${W}" data-pl="${pad.l}" data-pr="${pad.r}">
+                <div class="chart-plot">
+                    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of simulated wins before and after the trades. Average ${meanBefore.toFixed(1)} before, ${meanAfter.toFixed(1)} after.">
+                        <defs>
+                            <linearGradient id="fill-before" x1="0" y1="0" x2="0" y2="1"><stop class="stop-before" offset="0"/><stop class="stop-before end" offset="1"/></linearGradient>
+                            <linearGradient id="fill-after" x1="0" y1="0" x2="0" y2="1"><stop class="stop-after" offset="0"/><stop class="stop-after end" offset="1"/></linearGradient>
+                        </defs>
+                        ${yticks.map((v) => `<line class="grid" x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${pad.l - 6}" y="${y(v) + 3}" text-anchor="end">${Math.round(v * 100)}%</text>`).join("")}
+                        <line class="baseline" x1="${pad.l}" x2="${W - pad.r}" y1="${y(0)}" y2="${y(0)}"/>
+                        ${ticks.map((w) => `<text class="axis" x="${x(w)}" y="${H - 8}" text-anchor="middle">${w}</text>`).join("")}
+                        <path class="area before" d="${area(pb)}"/><path class="area after" d="${area(pa)}"/>
+                        <path class="line before" d="${line(pb)}"/><path class="line after" d="${line(pa)}"/>
+                        ${mb.svg}${ma.svg}
+                        <line class="crosshair" x1="0" x2="0" y1="${pad.t}" y2="${y(0)}" visibility="hidden"/>
+                        <rect class="hit" x="${pad.l}" y="${pad.t}" width="${W - pad.l - pad.r}" height="${H - pad.t - pad.b}"/>
+                    </svg>
+                    <div class="tags" aria-hidden="true">${mb.tag}${ma.tag}</div>
+                    <div class="tooltip" hidden></div>
+                </div>
                 <p class="axis-title">Wins in a simulated season</p>
+                <div class="legend"><span><i class="sw before"></i>Before</span><span><i class="sw after"></i>After</span></div>
             </div>`;
     }
 
@@ -935,16 +956,17 @@
         const svg = chart.querySelector("svg"), hit = chart.querySelector(".hit"), cross = chart.querySelector(".crosshair");
         const tip = chart.querySelector(".tooltip");
         const lo = +chart.dataset.lo, hi = +chart.dataset.hi;
+        const W = +chart.dataset.w, pl = +chart.dataset.pl, pr = +chart.dataset.pr;
         const nb = before.reduce((a, b) => a + b, 0), na = after.reduce((a, b) => a + b, 0);
         const move = (ev) => {
             const r = hit.getBoundingClientRect(), sr = svg.getBoundingClientRect();
             const frac = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
             const w = Math.round(lo + frac * (hi - lo));
-            const vbX = 34 + ((w - lo) / (hi - lo)) * (340 - 44);
+            const vbX = pl + ((w - lo) / (hi - lo)) * (W - pl - pr);
             cross.setAttribute("x1", vbX); cross.setAttribute("x2", vbX); cross.setAttribute("visibility", "visible");
             tip.hidden = false;
             tip.innerHTML = `<strong>${w} wins</strong><span><i class="sw before"></i>Before ${(before[w] / nb * 100).toFixed(1)}%</span><span><i class="sw after"></i>After ${(after[w] / na * 100).toFixed(1)}%</span>`;
-            const left = (vbX / 340) * sr.width;
+            const left = (vbX / W) * sr.width;
             tip.style.left = `${Math.min(Math.max(left - 70, 0), sr.width - 140)}px`;
         };
         const leave = () => { tip.hidden = true; cross.setAttribute("visibility", "hidden"); };
@@ -963,7 +985,7 @@
             return showError(err);
         }
         const b = r.before, a = r.after, d = r.delta;
-        const odds = [["Make playoffs", "playoff_pct"], ["Play-in", "play_in_pct"], ["#1 seed", "top_seed_pct"]].map(([label, k]) =>
+        const odds = [["Play-in", "play_in_pct"], ["#1 seed", "top_seed_pct"]].map(([label, k]) =>
             `<div class="stat"><div class="value">${pct(a[k])}</div><div class="label">${label}</div><span class="was">was ${pct(b[k])}</span></div>`).join("");
         const pcts = [0.1, 0.25, 0.5, 0.75, 0.9];
         const table = `<table class="data-table"><thead><tr><th>Percentile</th><th>Before</th><th>After</th></tr></thead><tbody>
@@ -991,6 +1013,7 @@
         const confName = (c) => `${c}ern Conference`;
         const standingsHtml = `
             <section class="card">
+                <span class="eyebrow">05 · Conference</span>
                 <div class="card-head"><h2>${confName(own)}</h2><span class="note">after the trades</span></div>
                 ${confTable(own)}
                 <p class="hint">Sorted by average wins. Lines mark 6th (playoffs) and 10th (play-in). Change = average wins vs the season with no trades (same simulated seasons).</p>
@@ -1003,33 +1026,43 @@
         const ex = r.explanation;
         render(`
             <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><h2 class="title">Results</h2></div>
-            <header class="team-head">${badge(r, "large")}<div><h1>${esc(r.name)}</h1>
+            <header class="team-head results-head">${badge(r, "large")}<div><h1>${esc(r.name)}</h1>
                 <div class="sub">${r.applied ? `With ${r.applied} trade${r.applied > 1 ? "s" : ""}` : "No trades: the season as it stands"} · ${r.n_sims.toLocaleString()} simulated seasons</div></div></header>
-            <div class="results-top strip-under">
-            <section class="card proj-card"><div class="proj-main">
+            <section class="results-hero glow">
+                <span class="eyebrow">01 · Projection</span>
                 <div class="card-head"><h2>Projected wins</h2><span class="note">±${d.mean_wins.mcse.toFixed(2)} wins (simulation error)</span></div>
                 <div class="projection-row">
-                    <div class="big-number">${b.mean_wins.toFixed(1)}<span class="arrow">→</span>${a.mean_wins.toFixed(1)}</div>
+                    <div class="big-number">${b.mean_wins.toFixed(1)}<span class="arrow">→</span><span class="hl">${a.mean_wins.toFixed(1)}</span></div>
                     <div class="range-pill"><strong class="${d.mean_wins.change < 0 ? "neg" : "pos"}">${signed(d.mean_wins.change)} wins</strong>80% of seasons: ${signed(d.mean_wins.p10, 0)} to ${signed(d.mean_wins.p90, 0)}</div>
                 </div>
                 ${r.combined ? `<p class="combined">Combined ${signed(r.combined.change)} wins${r.combined.sum_alone != null ? ` <span>(sum alone ${signed(r.combined.sum_alone)})</span>` : ""}</p>` : ""}
                 <p class="ranges">Range (10–90%): <strong>${b.range[0]}–${b.range[1]}</strong> before → <strong>${a.range[0]}–${a.range[1]}</strong> after</p>
-                </div><div class="proj-chart">
-                ${distributionChart(b.distribution, a.distribution)}
-                <details class="table-view"><summary>Show as table</summary>${table}</details>
-            </div></section>
-            <section class="card odds-card"><div class="stats">${odds}</div></section>
+            </section>
+            <div class="results-grid">
+                <section class="card chart-card">
+                    <span class="eyebrow">02 · Seasons</span>
+                    ${distributionChart(b.distribution, a.distribution, b.mean_wins, a.mean_wins, app.clientWidth >= 720)}
+                    <details class="table-view"><summary>Show as table</summary>${table}</details>
+                </section>
+                <section class="card odds-card">
+                    <span class="eyebrow">03 · Odds</span>
+                    <div class="odds">${gauge(a.playoff_pct, "Make playoffs", b.playoff_pct)}<div class="stats">${odds}</div></div>
+                </section>
             </div>
             <section class="card">
+                <span class="eyebrow">04 · Summary</span>
                 <div class="card-head"><h2>What changed</h2><span class="note">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></div>
                 <p class="explain">${esc(ex.text)}</p>
             </section>
             ${standingsHtml}
-            ${applied ? `<section class="card"><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
+            ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
+            ${ctaBand(`<span class="${d.mean_wins.change < 0 ? "neg" : "hl"}">${signed(d.mean_wins.change)}</span> wins`,
+                      `<a class="button" href="#/select/${code}">Change trades</a>`)}
             <div class="action-bar"><div class="inner two">
-                <a class="button secondary" href="#/select/${code}">Change trades</a>
+                <a class="button secondary" href="#/select/${code}" data-dup>Change trades</a>
                 <a class="button" href="#/teams">Start over</a></div></div>`);
         wireChart(app, b.distribution, a.distribution);
+        watchBand();
     }
 
     // --- router -----------------------------------------------------------------------------------

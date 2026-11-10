@@ -275,14 +275,15 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .odds .stats { grid-template-columns: 1fr; margin: 0; border: 0; }
 .odds .stat { padding: var(--s-3) 0; }
 .odds .stat + .stat { border-left: 0; border-top: var(--rule); padding-left: 0; }
-.gauge { position: relative; }
+.gauge { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); min-width: 0; }
+.gauge-dial { position: relative; width: 100%; }
 .gauge svg { display: block; width: 100%; height: auto; overflow: visible; }
 .gauge-track, .gauge-fill { fill: none; stroke-width: 14; stroke-linecap: round; }
 .gauge-track { stroke: var(--border-strong); opacity: 0.6; }
 .gauge-fill { stroke: var(--accent); }
 .gauge-knob { fill: var(--accent); stroke: var(--bg); stroke-width: 3; }
-.gauge-text { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.gauge-value { font-size: 34px; font-weight: 600; line-height: 1; letter-spacing: var(--tracking-tight); }
+/* the number sits inside the arc, label and "was" below it */
+.gauge-value { position: absolute; left: 0; right: 0; bottom: 6%; text-align: center; font-size: clamp(24px, 7.5vw, 34px); font-weight: 600; line-height: 1; letter-spacing: var(--tracking-tight); }
 .gauge-label { font: 500 var(--fs-2xs)/1.3 var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); }
 .gauge .was { margin-top: 0; }
 
@@ -358,6 +359,8 @@ details.roster[open] summary::after { content: "Hide"; }
     transition: transform 200ms ease-out, visibility 200ms;
 }
 .action-bar.is-hidden { transform: translateY(100%); visibility: hidden; }
+.action-bar.band-visible [data-dup] { display: none; }
+.action-bar.band-visible .inner.two { grid-template-columns: 1fr; }
 .action-bar .inner { max-width: 560px; margin: 0 auto; }
 
 .placeholder { text-align: center; padding: var(--s-12) var(--s-2); display: grid; gap: var(--s-4); justify-items: center; }
@@ -497,25 +500,48 @@ details.roster[open] summary::after { content: "Hide"; }
 .applied { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); font-size: var(--fs-sm); color: var(--muted); }
 
 /* chart: before = muted gray-blue, after = accent */
-.chart { --series-1: var(--chart-before); --series-2: var(--chart-after); position: relative; margin-top: var(--s-4); }
-.chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
-.chart .grid { stroke: var(--border); stroke-width: 1; }
+.chart { --series-1: var(--chart-before); --series-2: var(--chart-after); position: relative; margin-top: var(--s-2); }
+.chart-plot { position: relative; }
+.chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; overflow: visible; }
+.chart .grid { stroke: var(--border); stroke-width: 1; opacity: 0.6; }
 .chart .baseline { stroke: var(--border-strong); stroke-width: 1; }
 .chart .axis { fill: var(--faint); font-size: 10px; font-family: var(--font-mono); }
+/* thin lines with a soft glow; a fill that fades out downward */
 .chart .line { fill: none; stroke-width: 1.5; stroke-linejoin: round; }
-.chart .line.before { stroke: var(--series-1); }
-.chart .line.after { stroke: var(--series-2); }
+.chart .line.before { stroke: var(--series-1); filter: drop-shadow(0 0 3px rgba(90, 169, 230, 0.55)); }
+.chart .line.after { stroke: var(--series-2); filter: drop-shadow(0 0 4px rgba(255, 90, 31, 0.6)); }
 .chart .area { stroke: none; }
-.chart .area.before { fill: var(--series-1); opacity: 0.10; }
-.chart .area.after { fill: var(--series-2); opacity: 0.12; }
-.chart .direct { fill: var(--text); font-size: 10.5px; font-weight: 600; }
+.chart .area.before { fill: url(#fill-before); }
+.chart .area.after { fill: url(#fill-after); }
+.chart .stop-before { stop-color: var(--chart-before); stop-opacity: 0.22; }
+.chart .stop-after { stop-color: var(--chart-after); stop-opacity: 0.26; }
+.chart .end { stop-opacity: 0; }
+/* mean markers: dashed line from the curve to the axis, dot, and a value tag */
+.chart .mean-line { stroke-width: 1; stroke-dasharray: 3 3; }
+.chart .mean-line.before, .chart .mean-dot.before { stroke: var(--series-1); }
+.chart .mean-line.after, .chart .mean-dot.after { stroke: var(--series-2); }
+.chart .mean-dot { fill: var(--bg); stroke-width: 1.5; }
+.chart .tags { position: absolute; inset: 0; pointer-events: none; }
+.chart .tag {
+    position: absolute; padding: 3px var(--s-2); border-radius: var(--r-pill); white-space: nowrap;
+    background: var(--bg); border: 1px solid; font-size: var(--fs-2xs); font-weight: 600; color: var(--text);
+}
+.chart .tag.before { border-color: var(--series-1); }
+.chart .tag.after { border-color: var(--series-2); }
+.chart .tag.left { transform: translate(calc(-100% - 6px), calc(-100% - 6px)); }
+.chart .tag.right { transform: translate(6px, calc(-100% - 6px)); }
 .chart .crosshair { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
 .chart .hit { fill: transparent; cursor: crosshair; }
-.chart .legend { display: flex; gap: var(--s-4); font: 500 var(--fs-2xs) var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); margin-bottom: var(--s-1); }
-.sw { display: inline-block; width: 10px; height: 2px; margin-right: var(--s-2); vertical-align: 3px; }
+/* legend: small outlined pills under the chart */
+.chart .legend { display: flex; justify-content: center; gap: var(--s-2); margin-top: var(--s-4); }
+.chart .legend span {
+    display: inline-flex; align-items: center; padding: var(--s-1) var(--s-3); border-radius: var(--r-pill); border: var(--card-rule);
+    font: 500 var(--fs-2xs) var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted);
+}
+.sw { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: var(--s-2); }
 .sw.before { background: var(--series-1, var(--chart-before)); }
 .sw.after { background: var(--series-2, var(--chart-after)); }
-.chart .tooltip { position: absolute; top: var(--s-6); width: 140px; padding: var(--s-2) var(--s-3); border-radius: var(--r-sm); background: var(--bg); border: 1px solid var(--border-strong); font-size: var(--fs-xs); color: var(--text); display: grid; gap: 2px; pointer-events: none; }
+.chart .tooltip { position: absolute; top: 0; width: 140px; padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--bg); border: 1px solid var(--border-strong); font-size: var(--fs-xs); color: var(--text); display: grid; gap: 2px; pointer-events: none; z-index: 2; }
 .chart .tooltip[hidden] { display: none; }
 .axis-title { font: var(--fs-2xs) var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--faint); text-align: center; margin-top: 2px; }
 .table-view { margin-top: var(--s-3); font-size: var(--fs-sm); }
@@ -579,13 +605,15 @@ details.roster[open] summary::after { content: "Hide"; }
 .data-warning[hidden] { display: none; }
 
 /* --- results --- */
-.proj-card .projection-row { flex-direction: column; align-items: flex-start; gap: var(--s-3); }
-.proj-card .big-number { font-size: clamp(48px, 15vw, 64px); white-space: nowrap; }
-.proj-card .range-pill { text-align: left; }
-.proj-card .range-pill strong { margin-bottom: 2px; }
-.odds-card .stats { margin-top: 0; }
-.odds-card { padding-top: var(--s-2); padding-bottom: var(--s-2); }
-.odds-card .stats { border: 0; }
+.results-head { margin-bottom: 0; }
+.results-hero { padding: var(--s-10) 0 var(--s-12); }
+.results-hero .projection-row { margin-top: var(--s-2); }
+.results-hero .big-number { font-size: clamp(56px, 17vw, 72px); white-space: nowrap; }
+.results-hero .range-pill strong { margin-bottom: 2px; }
+.results-grid { display: grid; gap: var(--section-gap); margin-bottom: var(--section-gap); }
+.results-grid > .card { margin-bottom: 0; }
+.results-grid ~ .card { margin-bottom: var(--section-gap); }
+.odds-card .odds { margin-top: var(--s-2); padding-top: 0; border-top: 0; }
 
 /* standings on phones: Play-in and #1 seed move under the team name */
 .standings .opt { display: none; }
@@ -648,27 +676,18 @@ details.roster[open] summary::after { content: "Hide"; }
     .standings .team-cell .badge { display: grid; }
     .standings { font-size: var(--fs-md); }
     .standings td, .standings th { padding: var(--s-3) var(--s-2); }
-    .proj-card .big-number { font-size: 96px; }
-    .proj-card .projection-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
-    .proj-card .range-pill { text-align: right; }
-
-    .results-top { display: grid; gap: var(--s-3); margin-bottom: var(--s-3); }
-    .results-top > .card { margin-bottom: 0; }
-
-    /* variant A (not used now; switch the class in results() to try it): strip beside the chart */
-    .results-top.strip-beside { grid-template-columns: 2fr 1fr; align-items: stretch; }
-    .strip-beside .odds-card { padding: 0 var(--s-4); display: flex; }
-    .strip-beside .odds-card .stats { grid-template-columns: 1fr; flex: 1; align-content: stretch; }
-    .strip-beside .stat { padding: var(--s-5) 0; justify-content: center; }
-    .strip-beside .stat + .stat { border-left: 0; border-top: var(--rule); padding-left: 0; }
-    .strip-beside .stat .value { font-size: var(--fs-3xl); }
-
-    /* variant B (default): chart beside the hero number, stat strip under the card */
-    .strip-under .proj-card { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s-8); align-items: start; }
-    .strip-under .proj-card .projection-row { flex-direction: column; align-items: flex-start; }
-    .strip-under .proj-card .range-pill { text-align: left; }
-    .strip-under .proj-chart .chart { margin-top: 0; }
-    .strip-under .stat .value { font-size: var(--fs-3xl); }
+    .results-hero { padding: var(--s-16) 0; }
+    .results-hero .big-number { font-size: 128px; }
+    .results-hero .projection-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    .results-hero .range-pill { text-align: right; }
+    .results-hero .range-pill strong { font-size: var(--fs-2xl); }
+    .results-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--s-6); align-items: stretch; }
+    .odds-card { display: flex; flex-direction: column; }
+    .odds-card .odds { grid-template-columns: 1fr; flex: 1; align-content: center; gap: var(--s-6); }
+    .odds-card .stats { grid-template-columns: 1fr 1fr; border-top: var(--rule); }
+    .odds-card .stat + .stat { border-top: 0; border-left: var(--rule); padding-left: var(--s-3); }
+    .odds-card .gauge { max-width: 260px; justify-self: center; width: 100%; }
+}
 }
 
 /* the one extra breakpoint: 3 teams need ~1024px to sit side by side */
