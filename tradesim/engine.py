@@ -37,7 +37,7 @@ from tradesim.simulate import CODES, INDEX, load_strength_sd
 from tradesim.standings import SeasonTable, divisions, play_in, summaries
 
 GAMES = 82
-ENGINE_VERSION = "stage6-2"  # bump when simulation logic changes, so old baseline caches are ignored
+ENGINE_VERSION = "stage7-ids-1"  # bump when simulation logic changes, so old baseline caches are ignored
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE_DIR = os.path.join(_ROOT, "data", "cache")
 RUN_CACHE_SIZE = 16  # simulated move sets kept in memory (about 1.5 MB each)

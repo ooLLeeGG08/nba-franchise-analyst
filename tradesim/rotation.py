@@ -35,6 +35,7 @@ Diminishing returns (a simplification, default mild)
     If a team's top-3 players add more than `threshold` points (impact x minutes / 48),
     the excess is reduced by `haircut` (e.g. 15%): stars share one ball.
 """
+from tradesim.names import slug
 from tradesim.ratings import load_ratings
 
 BUCKET = {"G": 0, "F": 1, "C": 2}
@@ -76,7 +77,10 @@ class Rotation:
         total = self.cfg["minutes"]["team_minutes"]
         minutes = {pid: min(p["usual"], self.rc["max_mpg"]) for pid, p in self.players.items()}
         excess = sum(minutes.values()) - total
-        for pid in sorted(minutes, key=lambda k: (minutes[k], k)):  # deepest bench first
+        # deepest bench first; ties: the lower-rated player first ("name" rule: alphabetical), never id order
+        name_rule = self.rc.get("tie_break", "share") == "name"
+        for pid in sorted(minutes, key=lambda k: (minutes[k],) + ((slug(self.players[k]["name"]),) if name_rule
+                                                                   else (self.players[k]["impact"], slug(self.players[k]["name"])))):
             if excess <= 1e-9:
                 break
             cut = min(minutes[pid], excess)
@@ -97,16 +101,40 @@ class Rotation:
             m = minutes.get(k, 0.0)
             return (0, -m) if m < below else (1, m)
 
-        order = sorted((pid for pid in self.players if pid not in exclude),
-                       key=lambda k: (distance(self.players[k]["position"], position) if position else 0,
-                                      depth(k), k))
+        # Ties (e.g. several benchwarmers at 0 minutes): config rotation.tie_break
+        #   "share": tied players split the minutes evenly (the model can't tell them apart)
+        #   "depth": the one who usually plays more minutes first, then the higher rated
+        #   "name":  alphabetical (the original rule; for comparison only)
+        # Never the id order, so re-keying players can't change results.
+        rule = self.rc.get("tie_break", "share")
+
+        def rank(k):
+            return (distance(self.players[k]["position"], position) if position else 0, depth(k))
+
+        def within(k):
+            if rule == "depth":
+                return (-self.players[k]["usual"], -self.players[k]["impact"], self.players[k]["name"], k)
+            return (slug(self.players[k]["name"]), k)
+
+        order = sorted((pid for pid in self.players if pid not in exclude), key=lambda k: (rank(k), within(k)))
+        groups = []
         for pid in order:
+            if groups and rank(groups[-1][0]) == rank(pid) and rule == "share":
+                groups[-1].append(pid)
+            else:
+                groups.append([pid])
+        for group in groups:
+            active = [k for k in group if self._ceiling(k) - minutes[k] > 1e-12]
+            while amount > 1e-9 and active:  # fill the group evenly, up to each ceiling
+                share = amount / len(active)
+                for k in list(active):
+                    add = min(self._ceiling(k) - minutes[k], share)
+                    minutes[k] += add
+                    amount -= add
+                    if self._ceiling(k) - minutes[k] <= 1e-12:
+                        active.remove(k)
             if amount <= 1e-9:
                 break
-            room = max(self._ceiling(pid) - minutes[pid], 0)
-            add = min(room, amount)
-            minutes[pid] += add
-            amount -= add
         if amount > 1e-9:  # everyone at his ceiling: spread the rest evenly
             others = [pid for pid in self.players if pid not in exclude]
             for pid in others:

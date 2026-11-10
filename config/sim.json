@@ -101,6 +101,8 @@
     "_availability_prior_games": "Games-played share is shrunk toward the league average as if the player had also played this many games at the average rate."
   },
   "rotation": {
+    "tie_break": "share",
+    "_tie_break": "Who takes a missing player's minutes when several teammates are tied (e.g. benchwarmers at 0 minutes): 'share' = split evenly (the model can't tell them apart). 'name' = alphabetical (the original, accidental rule) and 'depth' = most usual minutes first are kept for comparison. Nov 9 backtest: name 7.27 wins MAE / 0.175 Brier, share 7.32 / 0.176, depth 7.45 / 0.176. Never the id order.",
     "max_mpg": 42,
     "max_extra_minutes": 10,
     "diminishing_returns": {

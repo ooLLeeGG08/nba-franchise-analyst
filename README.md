@@ -18,7 +18,7 @@ The original chat analyst is still served at `/analyst` (see the last section).
 3. `python server.py` (reads `PORT`, default `8080`), then open http://localhost:8080.
    On a phone on the same Wi-Fi, use the computer's local IP, e.g. http://192.168.x.x:8080.
 
-`pytest` runs the tests (383: cap rules with real legal and illegal trades, simulator,
+`pytest` runs the tests (391: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
@@ -142,10 +142,13 @@ results, (7) polish and this README.
 
 ## Data layer and cap checker
 
-- `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/`
-  into `data/2026_27/league.json` and prints a report of anything it couldn't match.
+- `python -m tradesim.build_data` turns the raw files in `data/raw/2026_27/` and
+  `data/raw/bbref/` into `data/2026_27/league.json` (players keyed by NBA ID, each with a
+  `bbref_id`; 401 matched by name + team + season, 28 by a unique name, 5 unplayed rookies
+  listed in `data/raw/id_overrides.json`) and prints a report of anything it couldn't match.
   Before writing, it checks the result against a schema (`tradesim/schema.py`: types,
-  ranges, team codes, unique NBA ids, contract counts) and counts unmatched rows (contracts
+  ranges, team codes, NBA ID keys, unique BBRef ids, contract counts) and counts unmatched
+  rows (ambiguous or missing BBRef matches without an override, contracts
   with no roster match or a different team, no-trade / veto entries naming nobody; two-way
   players don't count). It refuses to write the file if the schema fails or unmatched rows
   exceed `data.max_unmatched_rows` in `config/sim.json` (5; currently 1).
@@ -193,7 +196,9 @@ this season only inform player and team strength; they're never locked in as res
    deepest bench to 240. Each simulated season, every player gets a games-played rate drawn
    around his expected availability (history plus this season, 68% league average for
    rotation players), played out as one injury spell; while he's out his minutes go to his
-   backups (same G/F/C position first, closest on the depth chart, max +10 each).
+   backups (same G/F/C position first, closest on the depth chart, max +10 each; teammates
+   tied for the next spot, e.g. benchwarmers at 0 minutes, split them evenly, config
+   `rotation.tie_break`).
    `config/long_injuries.json` overrides availability for known 15+ game absences.
 4. **Moves:** departing players' minutes form a pool that incoming players fill first; any
    extra comes from the lowest-impact same/adjacent-position players; leftovers go to the
@@ -221,6 +226,13 @@ this season only inform player and team strength; they're never locked in as res
 
 ### Data sources
 
+Players are keyed by NBA ID (nba_api) everywhere; names are display only. Each player also
+carries his Basketball-Reference ID (`bbref_id`, from the exports' `Player-additional` column),
+and Basketball-Reference stats are joined on it (`tradesim/ids.py`: matched by normalized name +
+team + season, a name only one player has had, or `data/raw/id_overrides.json`; anything
+ambiguous is reported, never guessed). The one join still made on names is nba_api's draft
+history, which has no player IDs.
+
 Every raw file is listed with its source URL and as-of date in `data/raw/SOURCES.json`:
 Basketball-Reference advanced stats 2018-19 to 2026-27 (user exports), preseason Vegas win
 totals 2021-22 to 2025-26 (`data/vegas_win_totals.csv`, source URL per row), nba_api (game logs,
@@ -240,8 +252,8 @@ sigma_t fitted on the other seasons; full season simulated from 0-0 on the real 
 |---|---|
 | Win-total average error | 7.3 wins (guessing 41 for everyone: 10.1) |
 | Slope of actual on predicted wins | 0.95 (1.0 = right spread) |
-| Actual wins inside the 50% / 80% interval | 51% / 78% |
-| Playoff-odds Brier score | 0.175 (base rate: 0.249) |
+| Actual wins inside the 50% / 80% interval | 50% / 78% |
+| Playoff-odds Brier score | 0.176 (base rate: 0.249) |
 | Players inside their 50% / 80% rating interval | 47-55% / 76-86% by season (no SE scaling needed) |
 
 **Model vs Vegas** (`data/vegas_win_totals.csv`: preseason totals 2021-22 to 2025-26 from
@@ -251,18 +263,18 @@ season simulator). Blend = w x model + (1 - w) x Vegas, with w fitted leave-one-
 
 | 150 team-seasons | Model (as of Nov 9) | Vegas (preseason) | Blend |
 |---|---|---|---|
-| Win-total average error | 7.26 | 7.10 | 7.12 |
-| Win-total RMSE | 9.03 | 9.00 | 8.89 |
-| Slope of actual on predicted | 0.95 (90%: 0.85-1.07) | 0.85 | 0.93 |
-| Playoff Brier | 0.174 | 0.152 | 0.160 |
+| Win-total average error | 7.32 | 7.10 | 7.13 |
+| Win-total RMSE | 9.06 | 9.00 | 8.89 |
+| Slope of actual on predicted | 0.95 (90%: 0.85-1.06) | 0.85 | 0.93 |
+| Playoff Brier | 0.176 | 0.152 | 0.160 |
 
-- Win totals: no real difference (model - Vegas average error, 90% interval -0.70 to +1.04,
+- Win totals: no real difference (model - Vegas average error, 90% interval -0.65 to +1.09,
   resampling whole seasons).
-- Playoff odds: Vegas is better (model - Vegas Brier +0.008 to +0.034). Running the model's
-  totals through the same converter gives the same Brier (0.175), so Vegas's edge is in its
+- Playoff odds: Vegas is better (model - Vegas Brier +0.014 to +0.033). Running the model's
+  totals through the same converter gives the same Brier (0.176), so Vegas's edge is in its
   totals for teams near the playoff cut, not in the conversion.
-- The blend (w = 0.27-0.63 by fold) ties Vegas on win totals and is worse on playoff odds
-  (blend - Vegas Brier +0.002 to +0.016), so it doesn't beat each alone and Vegas totals are
+- The blend (w = 0.27-0.61 by fold) ties Vegas on win totals and is worse on playoff odds
+  (blend - Vegas Brier +0.002 to +0.015), so it doesn't beat each alone and Vegas totals are
   not used for 2026-27. (It does beat the model alone.)
 - Slope stays at 0.95, interval includes 1.0: no shrink toward 41 (tracked by a test).
 - Biggest 2025-26 misses vs Vegas (`reports/miss_breakdown_2025_26.md`): LAL and PHI (stars
@@ -275,9 +287,9 @@ Playoff-odds calibration (sigma_t chosen leave-one-season-out):
 | Predicted | Teams | Avg predicted | Actual |
 |---|---|---|---|
 | 0-10% | 16 | 6% | 0% |
-| 10-30% | 22 | 19% | 32% |
-| 30-50% | 28 | 41% | 39% |
-| 50-70% | 26 | 62% | 58% |
+| 10-30% | 21 | 19% | 33% |
+| 30-50% | 28 | 40% | 36% |
+| 50-70% | 27 | 61% | 59% |
 | 70-90% | 49 | 79% | 78% |
 | 90-100% | 9 | 95% | 100% |
 
