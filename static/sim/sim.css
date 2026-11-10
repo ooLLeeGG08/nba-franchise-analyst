@@ -3,11 +3,12 @@
 
 /* --- design tokens ------------------------------------------------------------------------- */
 :root {
-    /* color: near-black, flat surfaces, one orange-red accent */
+    /* color: near-black, translucent cards, one orange-red accent */
     --bg: #0a0a0a;
-    --surface: #111111;
-    --surface-2: #161616;
-    --border: #262626;
+    --surface: rgba(255, 255, 255, 0.03);       /* #ffffff08: cards */
+    --surface-2: #161616;                        /* solid fills: hover, tracks */
+    --card-border: rgba(255, 255, 255, 0.08);   /* #ffffff14: card outlines */
+    --border: #262626;                           /* rules in tables and lists */
     --border-strong: #3a3a3a;
     --text: #f2f2f2;
     --muted: #8a8a8a;            /* 5.7:1 on --bg, 5.2:1 on --surface-2 (WCAG AA) */
@@ -18,12 +19,18 @@
     --good: #3ccf8e;             /* + wins only */
     --bad: #ff5d5d;              /* - wins and failures */
     --warn: #f5b041;
-    --chart-before: #7d8ca6;     /* muted gray-blue */
+    --chart-before: #5aa9e6;     /* cool blue */
     --chart-after: var(--accent);
+
+    /* glow: background atmosphere only (hero, results number, CTA bands), never on cards or buttons.
+       Capped at 15% so muted text on top still passes 4.5:1 (about 4.9:1 at the brightest spot). */
+    --glow-core: rgba(255, 90, 31, 0.15);
+    --glow-edge: rgba(214, 48, 20, 0.07);
 
     /* type */
     --font-sans: Inter, system-ui, -apple-system, sans-serif;
-    --font-display: "Inter Tight", Inter, system-ui, sans-serif;
+    --font-display: "Space Grotesk", Inter, system-ui, sans-serif;   /* headline text only */
+    --font-num: Inter, system-ui, -apple-system, sans-serif;         /* every number, tabular */
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     --tracking-tight: -0.03em;
     --tracking-mono: 0.06em;
@@ -35,6 +42,7 @@
     --fs-xl: 24px;
     --fs-2xl: 32px;
     --fs-3xl: 44px;
+    --fs-hero: 64px;
 
     /* spacing: 4px scale */
     --s-1: 4px;
@@ -52,8 +60,11 @@
     --r-sm: 4px;
     --r-md: 6px;
     --r-lg: 8px;
-    --radius: var(--r-lg);
+    --r-card: 12px;
+    --r-pill: 999px;
+    --radius: var(--r-card);
     --rule: 1px solid var(--border);
+    --card-rule: 1px solid var(--card-border);
 
     /* layout */
     --gutter: var(--s-4);
@@ -61,6 +72,7 @@
     --tap: 44px;
     --cta-h: 52px;
     --cta-space: calc(var(--cta-h) + var(--s-6) + var(--s-6) + env(safe-area-inset-bottom));
+    --section-gap: var(--s-12);     /* between page sections; 80px on laptops */
 
     /* motion */
     --ease: 120ms ease-out;
@@ -89,12 +101,30 @@ a { color: inherit; }
     padding: calc(var(--s-3) + env(safe-area-inset-top)) var(--gutter) var(--cta-space);
 }
 
-h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: var(--tracking-tight); }
-h1 { font-size: var(--fs-2xl); line-height: 1.05; font-weight: 700; }
-h2 { font-size: var(--fs-lg); line-height: 1.2; font-weight: 600; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: var(--tracking-tight); font-weight: 500; }
+h1 { font-size: var(--fs-2xl); line-height: 1.05; }
+h2 { font-size: var(--fs-lg); line-height: 1.2; }
+
+/* one key word or number in a headline goes orange */
+.hl { color: var(--accent); }
+
+/* eyebrow: small mono label above a section title */
+.eyebrow {
+    display: block; margin-bottom: var(--s-2);
+    font: 500 var(--fs-2xs)/1.4 var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted);
+}
+
+/* warm glow behind a hero or CTA band. It spans the content width (never wider than the
+   viewport) and fades to nothing at its edges, so it can't cause sideways scrolling. */
+.glow { position: relative; isolation: isolate; }
+.glow::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -30% calc(-1 * var(--gutter));
+    background: radial-gradient(closest-side, var(--glow-core), var(--glow-edge) 55%, transparent);
+}
 p { margin: 0; line-height: 1.5; color: var(--muted); }
 
-/* tabular figures wherever stats line up */
+/* tabular figures wherever stats line up (big numbers also switch to Inter, below) */
 .big-number, .stat, .payroll-figures, .amt, .num, .rank, .gain, .meta, .combined, .range-pill, .ranges,
 .facts, .moves, .assets, .standings, .data-table, .chart, .card-head .note, .pick-kind, .was, .cap-lines {
     font-variant-numeric: tabular-nums;
@@ -134,7 +164,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 /* --- buttons --- */
 .button {
     display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
-    min-height: var(--cta-h); padding: 0 var(--s-6); border-radius: var(--r-sm); border: 1px solid var(--accent);
+    min-height: var(--cta-h); padding: 0 var(--s-6); border-radius: var(--r-md); border: 1px solid var(--accent);
     cursor: pointer; background: var(--accent); color: var(--accent-ink);
     font-weight: 600; font-size: var(--fs-md); text-decoration: none;
     transition: background-color var(--ease), border-color var(--ease), color var(--ease);
@@ -191,7 +221,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
 .team-card {
     display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-4); min-height: 112px;
-    background: var(--surface); border: var(--rule); border-radius: var(--radius);
+    background: var(--surface); border: var(--card-rule); border-radius: var(--radius);
     text-decoration: none; position: relative; overflow: hidden; transition: border-color var(--ease);
 }
 .team-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--team, var(--accent)); }
@@ -210,8 +240,8 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .badge.large { width: 56px; height: 56px; font-size: 15px; border-radius: var(--r-md); }
 
 /* --- cards --- */
-.card { background: var(--surface); border: var(--rule); border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); }
-.card-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); margin-bottom: var(--s-3); }
+.card { background: var(--surface); border: var(--card-rule); border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); }
+.card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-1) var(--s-3); margin-bottom: var(--s-3); }
 .card-head .note { font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--faint); }
 
 /* --- team page --- */
@@ -219,10 +249,10 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .team-head h1 { font-size: var(--fs-2xl); }
 .team-head .sub { font-size: var(--fs-sm); color: var(--muted); margin-top: 2px; }
 
-.big-number { font: 600 64px/0.95 var(--font-display); letter-spacing: -0.04em; }
-.big-number small { font: 500 var(--fs-sm) var(--font-sans); color: var(--muted); margin-left: var(--s-2); letter-spacing: 0; }
-.projection-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-3); }
-.range-pill { font-size: var(--fs-sm); color: var(--muted); text-align: right; }
+.big-number { font: 600 var(--fs-hero)/0.95 var(--font-num); letter-spacing: -0.04em; }
+.big-number small { font: 500 var(--fs-sm) var(--font-sans); color: var(--muted); margin-left: var(--s-2); letter-spacing: 0; white-space: nowrap; }
+.projection-row { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); }
+.range-pill { font-size: var(--fs-sm); color: var(--muted); }
 .range-pill strong { color: var(--text); font-size: var(--fs-md); display: block; }
 
 /* stat strip: cells split by thin rules, mono label above a big number */
@@ -230,7 +260,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .stat { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3) var(--s-3) var(--s-4) 0; min-width: 0; }
 .stat .label { order: -1; }
 .stat + .stat { border-left: var(--rule); padding-left: var(--s-3); }
-.stat .value { font: 600 30px/1 var(--font-display); letter-spacing: var(--tracking-tight); }
+.stat .value { font: 600 30px/1 var(--font-num); letter-spacing: var(--tracking-tight); }
 .stat .label { color: var(--muted); }
 
 .positions { display: grid; gap: var(--s-3); }
@@ -248,12 +278,22 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 .callout { margin-top: var(--s-4); font-size: var(--fs-sm); color: var(--text); line-height: 1.5; }
 .chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-2); }
 .chip-label { color: var(--faint); margin-top: var(--s-4); }
-.chip { font-size: var(--fs-xs); padding: var(--s-1) var(--s-2); border-radius: var(--r-sm); border: var(--rule); color: var(--muted); }
+.chip {
+    display: inline-flex; align-items: center; gap: var(--s-2); min-height: var(--tap); padding: 0 var(--s-4);
+    border-radius: var(--r-pill); background: var(--surface); border: var(--card-rule);
+    font-size: var(--fs-sm); line-height: 1.3; color: var(--text);
+}
+.chip::before {   /* the orange arrow icon */
+    content: ""; flex: none; width: 10px; height: 10px; background: var(--accent);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 0h9v9H7.5V4.3L1.8 10 0 8.2 5.7 2.5H1z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 0h9v9H7.5V4.3L1.8 10 0 8.2 5.7 2.5H1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 .chip.bad { color: var(--bad); border-color: rgba(255, 93, 93, 0.35); }
+.chip.bad::before { background: var(--bad); }
 
 /* payroll bar */
 .payroll-figures { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-4); }
-.payroll-figures .amount { font: 700 26px var(--font-display); letter-spacing: var(--tracking-tight); }
+.payroll-figures .amount { font: 600 26px var(--font-num); letter-spacing: var(--tracking-tight); }
 .status { padding: var(--s-1) var(--s-2); border-radius: var(--r-sm); border: var(--rule); color: var(--text); }
 .payroll-bar { position: relative; height: 8px; background: var(--surface-2); border-radius: 1px; margin: var(--s-2) 0 var(--s-8); }
 .payroll-bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; background: var(--accent); }
@@ -304,7 +344,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .tab .x { min-width: 36px; padding-right: var(--s-2); color: var(--muted); }
 .tab.add-team { padding: 0 var(--s-4); min-height: var(--tap); font-size: 20px; color: var(--accent); background: transparent; cursor: pointer; }
 
-.verdict { border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); border: var(--rule); background: var(--surface); }
+.verdict { border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); border: var(--card-rule); background: var(--surface); }
 .verdict strong { font: 700 20px var(--font-display); letter-spacing: var(--tracking-tight); }
 .verdict.good { border-color: rgba(60, 207, 142, 0.5); }
 .verdict.good strong { color: var(--good); }
@@ -366,13 +406,13 @@ details.roster[open] summary::after { content: "Hide"; }
 
 /* --- trade ideas --- */
 .searching { font-size: var(--fs-sm); color: var(--muted); font-family: var(--font-mono); }
-.idea.skeleton { height: 88px; border: var(--rule); background: var(--surface); animation: pulse 1.4s ease-in-out infinite; }
+.idea.skeleton { height: 88px; border: var(--card-rule); background: var(--surface); animation: pulse 1.4s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: 0.5; } }
 .needs-line { font-size: var(--fs-sm); color: var(--text); margin-bottom: var(--s-3); line-height: 1.5; }
 .source { display: inline-block; font-size: var(--fs-2xs); color: var(--faint); margin-left: var(--s-1); }
-.suggestion { border: var(--rule); border-radius: var(--radius); padding: var(--s-4); background: var(--surface); display: grid; gap: var(--s-3); align-content: start; }
+.suggestion { border: var(--card-rule); border-radius: var(--radius); padding: var(--s-4); background: var(--surface); display: grid; gap: var(--s-3); align-content: start; }
 .suggestion-head { display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap; }
-.suggestion-head .gain { font: 700 var(--fs-xl) var(--font-display); letter-spacing: var(--tracking-tight); color: var(--good); }
+.suggestion-head .gain { font: 600 var(--fs-xl) var(--font-num); letter-spacing: var(--tracking-tight); color: var(--good); }
 .suggestion-head .pill { margin-left: auto; }
 .sides.compact { gap: var(--s-2); }
 .sides.compact .moves li { padding: var(--s-2) 0; }
@@ -389,7 +429,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .pick-list { display: grid; gap: var(--s-2); margin-bottom: var(--s-3); }
 .pick-card {
     position: relative; display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4);
-    border-radius: var(--radius); border: var(--rule); background: var(--surface); cursor: pointer;
+    border-radius: var(--radius); border: var(--card-rule); background: var(--surface); cursor: pointer;
     transition: border-color var(--ease);
 }
 .pick-card:hover { border-color: var(--border-strong); }
@@ -416,7 +456,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .big-number .arrow { font-size: 0.5em; color: var(--muted); margin: 0 var(--s-2); vertical-align: 0.3em; }
 .pos, .range-pill strong.pos { color: var(--good); }
 .neg, .range-pill strong.neg { color: var(--bad); }
-.range-pill strong { font: 600 var(--fs-xl)/1.1 var(--font-display); letter-spacing: var(--tracking-tight); }
+.range-pill strong { font: 600 var(--fs-xl)/1.1 var(--font-num); letter-spacing: var(--tracking-tight); }
 .ranges { font-size: var(--fs-sm); margin-top: var(--s-3); }
 .ranges strong { color: var(--text); }
 .was { display: block; color: var(--faint); font-size: 10px; margin-top: calc(-1 * var(--s-1)); }
@@ -459,7 +499,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .removed { color: var(--bad); font-size: var(--fs-sm); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-md); margin: var(--s-1) 0; }
 .combined span { color: var(--muted); }
-.combined-card .combined strong { display: block; font: 600 var(--fs-2xl)/1.05 var(--font-display); letter-spacing: var(--tracking-tight); margin-bottom: var(--s-1); }
+.combined-card .combined strong { display: block; font: 600 var(--fs-2xl)/1.05 var(--font-num); letter-spacing: var(--tracking-tight); margin-bottom: var(--s-1); }
 .combined-card .hint { margin-top: var(--s-2); }
 .payroll-list { margin-top: var(--s-3); border-top: var(--rule); }
 .payroll-list li { flex-wrap: wrap; row-gap: 0; }
@@ -473,7 +513,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .standings th { color: var(--muted); text-align: right; padding: var(--s-2) var(--s-1); border-bottom: var(--rule); white-space: nowrap; vertical-align: bottom; }
 .standings th small, .standings td small { display: block; font-size: 10px; font-weight: 400; color: var(--faint); }
 .standings td { text-align: right; padding: var(--s-2) var(--s-1); border-bottom: var(--rule); white-space: nowrap; }
-.standings .rank { text-align: left; color: var(--faint); width: 14px; font-family: var(--font-mono); font-size: var(--fs-xs); }
+.standings .rank { text-align: left; color: var(--faint); width: 14px; font-size: var(--fs-xs); }
 .standings .team { text-align: left; }
 .standings .team-cell { display: flex; align-items: center; gap: var(--s-2); font-weight: 600; }
 .standings .team-cell small { color: var(--accent); font: 500 10px var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
@@ -512,7 +552,7 @@ details.roster[open] summary::after { content: "Hide"; }
 
 /* --- laptop (768px+) --- */
 @media (min-width: 768px) {
-    :root { --gutter: var(--s-10); }
+    :root { --gutter: var(--s-10); --section-gap: 80px; }
     .app { max-width: calc(var(--content-max) + 2 * var(--gutter)); padding-top: var(--s-8); }
     .action-bar .inner { max-width: var(--content-max); display: flex; justify-content: flex-end; gap: var(--s-2); }
     .action-bar .inner .button, .action-bar .inner .button.wide { width: auto; min-width: 280px; }
@@ -527,6 +567,8 @@ details.roster[open] summary::after { content: "Hide"; }
     .team-layout > #ideas { grid-column: 1 / -1; }
     .team-layout #ideas .ideas { grid-template-columns: 1fr 1fr; }
     .big-number { font-size: 80px; }
+    .projection-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    .range-pill { text-align: right; }
 
     /* trade machine: 2 teams side by side, 4 teams 2x2 (3 teams wait for 1024px) */
     .trade-cols.n2, .trade-cols.n4 { grid-template-columns: 1fr 1fr; }
@@ -587,4 +629,12 @@ details.roster[open] summary::after { content: "Hide"; }
     .trade-cols.n3 .team-col { display: block; }
     .trade-cols.n3 .col-remove { display: inline-grid; }
     .team-tabs.n3 .tab:not(.add-team) { display: none; }
+}
+
+/* --- numbers: Inter with tabular figures. Kept last because a `font:` shorthand resets
+   font-variant-numeric, so this must come after every rule that uses one. --- */
+.big-number, .stat .value, .payroll-figures .amount, .suggestion-head .gain, .range-pill strong,
+.combined-card .combined strong, .standings td, .data-table td, .amt, .num, .gauge-value, .chart .tag {
+    font-family: var(--font-num);
+    font-variant-numeric: tabular-nums;
 }

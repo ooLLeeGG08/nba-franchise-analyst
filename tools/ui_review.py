@@ -8,7 +8,9 @@ For each screen it saves full-page PNGs at 390x844 (2x) and 1280x800 to design-r
 then checks, at 320 / 390 / 768 / 1280 wide:
   - no horizontal overflow (scrollWidth <= innerWidth)
   - visible buttons, links styled as controls, tabs, checkboxes and tappable rows >= 44px tall
-  - text contrast >= 4.5:1 (3:1 for large text) against the painted background
+  - text contrast >= 4.5:1 (3:1 for large text), twice: against the CSS background colors, and
+    against the real pixels behind the text (text hidden, page screenshotted), which catches glows
+  - numbers use Inter with tabular figures, and digits all have the same width
   - no duplicate element IDs
 """
 import argparse
@@ -24,7 +26,7 @@ CHECK_WIDTHS = [320, 390, 768, 1024, 1280]
 
 CHECKS_JS = r"""
 () => {
-  const out = { overflow: null, small: [], contrast: [], dupIds: [] };
+  const out = { overflow: null, small: [], contrast: [], dupIds: [], numbers: [], texts: [] };
   const de = document.documentElement;
   out.overflow = de.scrollWidth > window.innerWidth ? { scrollWidth: de.scrollWidth, innerWidth: window.innerWidth } : null;
   // Boxes that scroll sideways inside the page (e.g. a wide table) count as overflow too.
@@ -105,6 +107,12 @@ CHECKS_JS = r"""
     const size = parseFloat(s.fontSize), weight = Number(s.fontWeight) || 400;
     const large = size >= 24 || (size >= 18.66 && weight >= 700);
     const need = large ? 3 : 4.5;
+    const rr = el.getBoundingClientRect();
+    // Text in the fixed bottom bar sits on a solid fill; the CSS check above covers it.
+    if (out.texts.length < 800 && !el.closest(".action-bar, .data-warning")) out.texts.push({
+      el: sel(el), text: t.textContent.trim().slice(0, 40), need, fg: { r: fg.r, g: fg.g, b: fg.b, a: fg.a },
+      x: rr.left + scrollX, y: rr.top + scrollY, w: rr.width, h: rr.height,
+    });
     const key = sel(el) + "|" + s.color + "|" + bg.r + bg.g + bg.b;
     if (r < need && !seen.has(key)) {
       seen.add(key);
@@ -112,12 +120,91 @@ CHECKS_JS = r"""
     }
   }
 
+  // Numbers: Inter + tabular figures, and every digit the same width in that font.
+  const NUMBER_SEL = ".big-number, .stat .value, .payroll-figures .amount, .suggestion-head .gain, .range-pill strong, " +
+    ".combined-card .combined strong, .standings td, .data-table td, .amt, .num, .gauge-value, .chart .tag";
+  const probe = document.createElement("span");
+  probe.style.cssText = "position:absolute;visibility:hidden;white-space:nowrap";
+  document.body.appendChild(probe);
+  const seenNum = new Set();
+  document.querySelectorAll(NUMBER_SEL).forEach((el) => {
+    if (!visible(el)) return;
+    const s = getComputedStyle(el);
+    const key = sel(el);
+    if (seenNum.has(key)) return;
+    seenNum.add(key);
+    const family = s.fontFamily.split(",")[0].replace(/["']/g, "").trim();
+    const tab = /tabular-nums/.test(s.fontVariantNumeric);
+    probe.style.font = s.font; probe.style.fontVariantNumeric = s.fontVariantNumeric; probe.style.letterSpacing = s.letterSpacing;
+    const widths = ["26.0 → 33.7", "11.1 → 88.8", "00.0 → 44.4"].map((txt) => { probe.textContent = txt; return probe.getBoundingClientRect().width; });
+    const shift = Math.max(...widths) - Math.min(...widths);
+    if (family !== "Inter" || !tab || shift > 0.5)
+      out.numbers.push(`${key} '${el.textContent.trim().slice(0, 20)}' font=${family} tabular=${tab} width shift=${shift.toFixed(1)}px`);
+  });
+  probe.remove();
+
   const ids = {};
   document.querySelectorAll("[id]").forEach((el) => { ids[el.id] = (ids[el.id] || 0) + 1; });
   out.dupIds = Object.entries(ids).filter(([, n]) => n > 1).map(([id, n]) => `${id} x${n}`);
   return out;
 }
 """
+
+
+HIDE_TEXT = """*, *::before, *::after { color: transparent !important; -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important; caret-color: transparent !important; }
+svg text { fill: transparent !important; }
+.action-bar, .data-warning { visibility: hidden !important; }"""
+
+PIXEL_JS = r"""
+async ({ png, texts }) => {
+  const img = new Image();
+  img.src = "data:image/png;base64," + png;
+  await img.decode();
+  const c = document.createElement("canvas");
+  c.width = img.width; c.height = img.height;
+  const g = c.getContext("2d", { willReadFrequently: true });
+  g.drawImage(img, 0, 0);
+  const k = img.width / document.documentElement.scrollWidth;
+  const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  const lum = (r, gg, b) => 0.2126 * lin(r) + 0.7152 * lin(gg) + 0.0722 * lin(b);
+  const out = [], seen = new Set();
+  for (const t of texts) {
+    // sample slightly inside the box so a cell's or chip's own border isn't read as background
+    const ix = Math.min(4, t.w * 0.2), iy = Math.min(2, t.h * 0.2);
+    const x = Math.max(0, Math.floor((t.x + ix) * k)), y = Math.max(0, Math.floor((t.y + iy) * k));
+    const w = Math.min(c.width - x, Math.ceil((t.w - 2 * ix) * k)), h = Math.min(c.height - y, Math.ceil((t.h - 2 * iy) * k));
+    if (w < 1 || h < 1) continue;
+    const d = g.getImageData(x, y, w, h).data;
+    const step = Math.max(1, Math.floor((w * h) / 4000));
+    const ls = [], px = [];
+    for (let i = 0; i < d.length; i += 4 * step) { ls.push(lum(d[i], d[i + 1], d[i + 2])); px.push([d[i], d[i + 1], d[i + 2]]); }
+    const order = ls.map((v, i) => i).sort((a, b) => ls[a] - ls[b]);
+    const median = ls[order[Math.floor(order.length / 2)]];
+    // the text's painted color over the median background
+    const m = px[order[Math.floor(order.length / 2)]];
+    const fg = [0, 1, 2].map((j) => [t.fg.r, t.fg.g, t.fg.b][j] * t.fg.a + m[j] * (1 - t.fg.a));
+    const lf = lum(...fg);
+    // worst case: light text vs the 90th-percentile brightest background pixel (dark text: 10th)
+    const pick = lf > median ? order[Math.floor(order.length * 0.9)] : order[Math.floor(order.length * 0.1)];
+    const lb = ls[pick];
+    const ratio = (Math.max(lf, lb) + 0.05) / (Math.min(lf, lb) + 0.05);
+    const key = t.el + "|" + Math.round(ratio * 10);
+    if (ratio < t.need && !seen.has(key)) { seen.add(key); out.push({ el: t.el, text: t.text, ratio: Math.round(ratio * 100) / 100, need: t.need }); }
+  }
+  return out;
+}
+"""
+
+
+def pixel_contrast(page, texts):
+    """Contrast against the real pixels behind each text run (counts gradients and glows)."""
+    import base64
+    style = page.add_style_tag(content=HIDE_TEXT)
+    page.wait_for_timeout(50)
+    png = base64.b64encode(page.screenshot(full_page=True)).decode()
+    style.evaluate("el => el.remove()")
+    return page.evaluate(PIXEL_JS, {"png": png, "texts": texts})
 
 
 def settle(page):
@@ -205,7 +292,9 @@ def main():
             for w in CHECK_WIDTHS:
                 page.set_viewport_size({"width": w, "height": 844})
                 page.wait_for_timeout(150)
-                report[screen][w] = page.evaluate(CHECKS_JS)
+                r = page.evaluate(CHECKS_JS)
+                r["pixelContrast"] = pixel_contrast(page, r.pop("texts"))
+                report[screen][w] = r
         browser.close()
 
     (out_dir / "report.json").write_text(json.dumps(report, indent=2))
@@ -221,6 +310,10 @@ def main():
                 lines.append(f"  <44px: {s['el']} '{s['text']}' {s['height']}px")
             for c in r["contrast"]:
                 lines.append(f"  contrast {c['ratio']} < {c['need']}: {c['el']} '{c['text']}'")
+            for c in r.get("pixelContrast", []):
+                lines.append(f"  pixel contrast {c['ratio']} < {c['need']}: {c['el']} '{c['text']}'")
+            for n in r.get("numbers", []):
+                lines.append(f"  number font: {n}")
             for d in r["dupIds"]:
                 lines.append(f"  duplicate id: {d}")
             if lines:
