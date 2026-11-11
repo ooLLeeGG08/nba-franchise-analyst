@@ -101,7 +101,6 @@
             <section class="landing">
                 <div class="landing-hero glow">
                     <div class="landing-mark" aria-hidden="true">TS</div>
-                    <span class="eyebrow">2026-27 season</span>
                     <h1>NBA <span class="hl">Trade</span> Simulator</h1>
                     <p class="lead">Pick a team, find its weak spots, test trades against the 2026-27 cap rules, and see how the season plays out.</p>
                 </div>
