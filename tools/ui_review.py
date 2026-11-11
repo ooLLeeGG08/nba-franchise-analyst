@@ -136,7 +136,7 @@ CHECKS_JS = r"""
 
   // Numbers: Inter + tabular figures, and every digit the same width in that font.
   const NUMBER_SEL = ".big-number, .stat .value, .payroll-figures .amount, .suggestion-head .gain, .range-pill strong, " +
-    ".combined-card .combined strong, .standings td, .data-table td, .amt, .num, .gauge-value, .chart .tag";
+    ".combined-card .combined strong, .standings td:not(.team), .data-table td, .amt, .num, .gauge-value, .chart .tag";
   const probe = document.createElement("span");
   probe.style.cssText = "position:absolute;visibility:hidden;white-space:nowrap";
   document.body.appendChild(probe);

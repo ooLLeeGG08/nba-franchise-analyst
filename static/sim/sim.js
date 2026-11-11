@@ -1083,7 +1083,7 @@
             </section>
             ${standingsHtml}
             ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
-            ${ctaBand(`<span class="${d.mean_wins.change < 0 ? "neg" : "hl"}">${signed(d.mean_wins.change)}</span> wins`,
+            ${ctaBand(`<span class="num ${d.mean_wins.change < 0 ? "neg" : "hl"}">${signed(d.mean_wins.change)}</span> wins`,
                       `<a class="button" href="#/select/${code}">Change trades</a>`)}
             <div class="action-bar"><div class="inner two">
                 <a class="button secondary" href="#/select/${code}" data-dup>Change trades</a>
