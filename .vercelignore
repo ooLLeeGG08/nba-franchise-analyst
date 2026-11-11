@@ -1,0 +1,22 @@
+# Not needed by the running app (keeps the Vercel function small).
+.venv/
+.git/
+.idea/
+.claude/
+.worktrees/
+.superpowers/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+data/cache/
+design-review/
+docs/
+reports/
+tests/
+tools/
+fetch_*.py
+Dockerfile
+docker-compose.yml
+render.yaml
+requirements-dev.txt

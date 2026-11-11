@@ -1,3 +1,6 @@
 -r requirements.txt
+# Data refresh scripts (fetch_*.py, tradesim.build_data) and tests
+pandas
+nba_api
 pytest
 playwright==1.65.0  # UI screenshots for design review

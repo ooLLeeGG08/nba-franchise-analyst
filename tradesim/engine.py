@@ -26,6 +26,7 @@ share all of them, and differences come from the moves, not from luck.
 import hashlib
 import json
 import os
+import tempfile
 from collections import OrderedDict
 
 import numpy as np
@@ -39,7 +40,20 @@ from tradesim.standings import SeasonTable, divisions, play_in, summaries
 GAMES = 82
 ENGINE_VERSION = "stage7-ids-1"  # bump when simulation logic changes, so old baseline caches are ignored
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE_DIR = os.path.join(_ROOT, "data", "cache")
+
+
+def _cache_dir():
+    """Where baselines and trade ideas are cached. TRADESIM_CACHE_DIR wins; on Vercel the code
+    folder is read-only, so the cache goes to the writable temp folder (kept while an instance
+    stays warm, empty after a cold start); everywhere else it's data/cache."""
+    if os.environ.get("TRADESIM_CACHE_DIR"):
+        return os.environ["TRADESIM_CACHE_DIR"]
+    if os.environ.get("VERCEL"):
+        return os.path.join(tempfile.gettempdir(), "tradesim-cache")
+    return os.path.join(_ROOT, "data", "cache")
+
+
+CACHE_DIR = _cache_dir()
 RUN_CACHE_SIZE = 16  # simulated move sets kept in memory (about 1.5 MB each)
 # Everything the baseline depends on. Changing any of these files invalidates the cache.
 INPUT_FILES = ["data/2026_27/league.json", "data/model/player_ratings_2026_27.json", "data/model/ratings_fit.json",

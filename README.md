@@ -10,7 +10,8 @@ The original chat analyst is still served at `/analyst` (see the last section).
 
 ## Setup
 
-1. `pip install -r requirements.txt` (and `requirements-dev.txt` for tests).
+1. `pip install -r requirements.txt` (what the server needs). For tests and the data refresh
+   scripts (`fetch_*.py`, which use pandas and nba_api), use `requirements-dev.txt` instead.
 2. Optional: copy `.env.example` to `.env` and set `GROQ_API_KEY` (and `GROQ_MODEL` to
    change the default `openai/gpt-oss-120b`). Keys only come from environment variables.
    Without a key the simulator still works fully: needs come from the data and
@@ -22,6 +23,26 @@ The original chat analyst is still served at `/analyst` (see the last section).
 standings, backtest checks, API and screens' data). The first start builds the baseline
 season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
 about 10 s and is cached.
+
+## Deploy on Vercel
+
+The repo is set up for Vercel as one Python function: `api/index.py` imports the Flask `app`
+from `server.py`, and `vercel.json` routes every URL to it (60 s time limit, enough for a
+first trade-idea search). `.vercelignore` leaves out tests, reports, the data refresh scripts
+and the local cache, so the upload is about 16 MB of app files plus about 90 MB of packages.
+
+1. In Vercel: **Add New → Project**, import this GitHub repo. Keep **Framework Preset:
+   Other** and the root directory as is; there's no build command.
+2. Pick the branch to deploy (Settings → Git → Production Branch, e.g. `ui-redesign`), or
+   deploy a branch as a preview.
+3. Optional: under Settings → Environment Variables add `GROQ_API_KEY` (and `GROQ_MODEL`).
+   Without it the simulator works fully; only `/analyst` needs it.
+
+How it behaves there: the code folder is read-only, so caches go to the function's temp
+folder (`/tmp/tradesim-cache`, or `TRADESIM_CACHE_DIR` if set). A cold start rebuilds the
+baseline (a few seconds) and each team's first idea search runs again (about 10-25 s);
+both are instant while the instance stays warm. Nothing about trades is stored on the
+server: saved trades live in the browser.
 
 ## Limitations (read these first)
 
@@ -357,7 +378,8 @@ dashboards and comparison views alongside every answer.
 
 ### Setup
 
-1. `pip install -r requirements.txt` (and `requirements-dev.txt` for tests).
+1. `pip install -r requirements.txt` (what the server needs). For tests and the data refresh
+   scripts (`fetch_*.py`, which use pandas and nba_api), use `requirements-dev.txt` instead.
 2. Copy `.env.example` to `.env` and set `GROQ_API_KEY` (required for the chat). Optionally
    set `GROQ_MODEL` to override the default (`openai/gpt-oss-120b`).
 3. `python server.py` (reads `PORT`, default `8080`).

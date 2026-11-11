@@ -1,8 +1,7 @@
+# What the running app needs (the server, on Vercel or anywhere else).
 flask
 flask-cors
-pandas
 numpy
-nba_api
 langchain-groq
 python-dotenv
 gunicorn
