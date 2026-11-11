@@ -28,13 +28,13 @@
     --glow-edge: rgba(214, 48, 20, 0.07);
 
     /* type */
-    --font-display: "Bowlby One", "Arial Black", system-ui, sans-serif;     /* screen titles, section headlines (one weight) */
+    --font-display: Anton, "Arial Narrow", system-ui, sans-serif;            /* screen titles, section headlines (one weight) */
     --font-sub: Anton, "Arial Narrow", system-ui, sans-serif;                 /* subtitles and every team name (one weight) */
     --font-body: "Charis SIL", Charter, Georgia, serif;                       /* everything else */
     --font-num: Inter, system-ui, -apple-system, sans-serif;                  /* every number and stat, tabular */
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;   /* eyebrow labels only */
     --tracking-tight: -0.03em;      /* big Inter numbers */
-    --tracking-display: -0.01em;    /* Bowlby is wide: never tighter than this */
+    --tracking-display: 0.01em;     /* Anton is condensed: a touch open */
     --tracking-sub: 0.01em;         /* Anton is condensed */
     --tracking-label: 0.06em;
     --tracking-mono: 0.06em;
@@ -87,7 +87,7 @@
     font-family: var(--font-body);
     font-size: var(--fs-body);
     line-height: 1.5;
-    font-synthesis: none;           /* no faux bold/italic; Bowlby and Anton have one weight */
+    font-synthesis: none;           /* no faux bold/italic; Anton has one weight */
     color: var(--text);
     background: var(--bg);
 }
@@ -112,8 +112,8 @@ a { color: inherit; }
 }
 
 h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: var(--tracking-display); font-weight: 400; }
-h1 { font-size: var(--fs-2xl); line-height: 1.05; }
-h2 { font-size: var(--fs-lg); line-height: 1.2; }
+h1 { font-size: 36px; line-height: 1.05; }
+h2 { font-size: 22px; line-height: 1.15; }
 
 /* one key word or number in a headline goes orange */
 .hl { color: var(--accent); }
@@ -160,9 +160,9 @@ p { margin: 0; line-height: 1.5; color: var(--muted); font-size: var(--fs-body);
 .landing-mark {
     width: 44px; height: 44px; border-radius: var(--r-md); display: grid; place-items: center;
     background: var(--accent); color: var(--accent-ink);
-    font: 400 16px var(--font-display); letter-spacing: var(--tracking-display);
+    font: 400 20px var(--font-display); letter-spacing: var(--tracking-display);
 }
-.landing h1 { font-size: clamp(48px, 12vw, 104px); line-height: 0.95; letter-spacing: -0.04em; max-width: 9ch; }
+.landing h1 { font-size: clamp(56px, 17vw, 136px); line-height: 0.95; max-width: 9ch; }
 .landing p.lead { font: 400 22px/1.3 var(--font-sub); letter-spacing: var(--tracking-sub); color: var(--text); max-width: 30ch; }
 .landing .fineprint {
     display: grid; width: 100%; border-top: var(--rule); border-bottom: var(--rule);
@@ -261,7 +261,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); font-size: var(--fs-body);
 .team-layout { display: grid; gap: var(--section-gap); }
 .team-layout > .card { margin-bottom: 0; }
 .team-layout > #ideas { background: none; border: 0; border-radius: 0; padding: 0; }
-.team-head h1 { font-size: var(--fs-2xl); }
+.team-head h1 { font-size: 36px; }
 .team-head h1 { font-family: var(--font-sub); letter-spacing: var(--tracking-sub); line-height: 1.05; overflow-wrap: anywhere; }
 .team-head .sub { font: 400 var(--fs-body)/1.35 var(--font-sub); letter-spacing: var(--tracking-sub); color: var(--muted); margin-top: var(--s-1); }
 
@@ -381,7 +381,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .error { color: var(--bad); }
 
 /* --- trade machine --- */
-.topbar .title { font-size: var(--fs-lg); margin-left: auto; margin-right: auto; padding-right: var(--s-12); }
+.topbar .title { font-size: 22px; margin-left: auto; margin-right: auto; padding-right: var(--s-12); }
 .team-tabs { display: flex; flex-wrap: wrap; gap: var(--s-2); padding: var(--s-1) 0 var(--s-3); }
 .tab { display: inline-flex; align-items: center; flex: none; border-radius: var(--r-sm); border: var(--rule); }
 .tab > button { border: 0; background: transparent; padding: 0 var(--s-4); min-height: var(--tap); font: 400 var(--fs-lg) var(--font-sub); letter-spacing: var(--tracking-sub); cursor: pointer; }
@@ -393,7 +393,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .app > .topbar + .eyebrow, .app > .team-tabs + .eyebrow { margin-top: var(--s-4); }
 .saved-card { margin-top: var(--s-8); }
 .verdict { border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); border: var(--card-rule); background: var(--surface); }
-.verdict strong { font: 400 20px var(--font-display); letter-spacing: var(--tracking-display); }
+.verdict strong { font: 400 26px var(--font-display); letter-spacing: var(--tracking-display); }
 .verdict.good { border-color: rgba(60, 207, 142, 0.5); }
 .verdict.good strong { color: var(--good); }
 .verdict.bad { border-color: rgba(255, 93, 93, 0.5); }
@@ -570,7 +570,7 @@ details.roster[open] summary::after { content: "Hide"; }
 /* page sections: eyebrow, section title, then content; big gaps between sections */
 .page-section { margin-top: var(--section-gap); }
 .intro + .page-section, .removed + .page-section { margin-top: var(--s-8); }
-.section-title { font-size: var(--fs-xl); line-height: 1.15; margin-bottom: var(--s-4); }
+.section-title { font-size: 30px; line-height: 1.1; margin-bottom: var(--s-4); }
 .section-title span { margin-left: var(--s-2); font: 400 var(--fs-body) var(--font-sub); letter-spacing: var(--tracking-sub); color: var(--muted); }
 .page-section .combined-card { margin-top: var(--s-4); }
 
@@ -579,7 +579,7 @@ details.roster[open] summary::after { content: "Hide"; }
     display: flex; flex-direction: column; align-items: center; gap: var(--s-6); text-align: center;
     margin-top: var(--section-gap); padding: var(--s-16) 0;
 }
-.cta-band h2 { font-size: clamp(36px, 10vw, 64px); line-height: 1.02; letter-spacing: -0.035em; max-width: 12ch; }
+.cta-band h2 { font-size: clamp(44px, 13vw, 88px); line-height: 1; max-width: 12ch; }
 .cta-band .button { min-width: min(100%, 280px); }
 .removed { color: var(--bad); font-size: var(--fs-body); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-body); margin: var(--s-1) 0; }
@@ -650,10 +650,10 @@ details.roster[open] summary::after { content: "Hide"; }
     .action-bar .inner .button, .action-bar .inner .button.wide { width: auto; min-width: 280px; }
     .action-bar .inner.two { display: flex; }
     .team-grid { grid-template-columns: repeat(5, 1fr); }
-    .app > h1 { font-size: var(--fs-3xl); }
+    .app > h1 { font-size: 56px; }
 
     /* team analysis: two columns, ideas full width in a 2x2 grid */
-    .team-head h1 { font-size: var(--fs-3xl); }
+    .team-head h1 { font-size: 56px; }
     .team-layout { grid-template-columns: 1fr 1fr; gap: var(--section-gap) var(--s-6); align-items: start; }
     .team-layout > #ideas { grid-column: 1 / -1; }
     .team-layout #ideas .ideas { grid-template-columns: 1fr 1fr; }
@@ -685,7 +685,7 @@ details.roster[open] summary::after { content: "Hide"; }
     .combined-card .combined strong { font-size: var(--fs-3xl); }
     .cta-band { padding: var(--s-16) 0 var(--s-12); }
     .cta-band h2 { max-width: none; }
-    .section-title { font-size: var(--fs-2xl); }
+    .section-title { font-size: 44px; }
     .payroll-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); column-gap: var(--s-6); }
     .payroll-list li, .payroll-list li:last-child { border-bottom: 0; flex-direction: column; align-items: flex-start; padding: var(--s-3) 0 0; }
     .payroll-list .amt { font-size: var(--fs-md); color: var(--text); }
