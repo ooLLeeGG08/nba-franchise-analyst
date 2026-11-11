@@ -29,18 +29,30 @@
         return n + (s[(v - 20) % 10] || s[v] || s[0]);
     }
 
-    // Readable text on a team color: dark text on light colors, white on dark ones.
-    function inkFor(hex) {
+    // Badge colors: white text on the team color (near-black on light colors). If that is under
+    // 4.5:1 (WCAG AA), the color is nudged darker (lighter, for dark text) a little at a time.
+    function relLum([r, g, b]) {
+        const f = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+        return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+    }
+
+    function badgeColors(hex) {
         const h = hex.replace("#", "");
-        const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
-        const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-        return lum > 0.55 ? "#111" : "#fff";
+        let rgb = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+        const ratio = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+        const WHITE = 1, DARK = relLum([17, 17, 17]);
+        const dark = relLum(rgb) > 0.3;   // white text on team colors; dark text only on light ones (e.g. silver)
+        for (let i = 0; i < 20 && ratio(relLum(rgb), dark ? DARK : WHITE) < 4.5; i++) {
+            rgb = rgb.map((v) => Math.round(dark ? v + (255 - v) * 0.08 : v * 0.92));
+        }
+        return { bg: `rgb(${rgb.join(",")})`, ink: dark ? "#111" : "#fff" };
     }
 
     function badge(team, size = "") {
-        const bg = team.colors.primary;
-        const ring = bg.toLowerCase() === "#000000" ? "#3a3f47" : "transparent";
-        return `<span class="badge ${size}" style="--team-bg:${bg};--team-ink:${inkFor(bg)};--team-ring:${ring}" aria-hidden="true">${esc(team.code)}</span>`;
+        const raw = team.colors.primary;
+        const { bg, ink } = badgeColors(raw);
+        const ring = raw.toLowerCase() === "#000000" ? "#3a3f47" : "transparent";
+        return `<span class="badge ${size}" style="--team-bg:${bg};--team-ink:${ink};--team-ring:${ring}" aria-hidden="true">${esc(team.code)}</span>`;
     }
 
     async function getJSON(url) {
@@ -895,10 +907,10 @@
     }
 
     // Two win distributions (before / after) as thin lines with a fade-out fill. A dashed line marks
-    // each curve's mean, tagged "Before 28.9" / "After 36.9". `wide` gives laptops a wider drawing
-    // area so labels stay small instead of scaling up with the SVG.
-    function distributionChart(before, after, meanBefore, meanAfter, wide) {
-        const W = wide ? 600 : 340, H = wide ? 250 : 190, pad = { l: 34, r: 10, t: 34, b: 26 };
+    // each curve's mean, tagged "Before 28.9" / "After 36.9". `width` is the chart's real width in
+    // pixels, so one SVG unit is one pixel and the axis text keeps its CSS size at any width.
+    function distributionChart(before, after, meanBefore, meanAfter, width) {
+        const W = Math.max(240, Math.round(width)), H = W < 500 ? 200 : 260, pad = { l: 36, r: 10, t: 34, b: 28 };
         const nb = before.reduce((a, b) => a + b, 0), na = after.reduce((a, b) => a + b, 0);
         const pb = before.map((c) => c / nb), pa = after.map((c) => c / na);
         const nonzero = (p) => p.map((v, i) => (v > 0.0005 ? i : null)).filter((i) => i !== null);
@@ -975,6 +987,21 @@
         hit.addEventListener("pointerleave", leave);
     }
 
+    // Draws the results chart at the width of its slot, and again when that width changes.
+    let chartData = null, chartWidth = 0;
+    function drawChart() {
+        const slot = app.querySelector(".chart-slot");
+        if (!slot || !chartData) return;
+        const width = slot.clientWidth;
+        if (!width || width === chartWidth) return;
+        chartWidth = width;
+        const { b, a } = chartData;
+        slot.innerHTML = distributionChart(b.distribution, a.distribution, b.mean_wins, a.mean_wins, width);
+        wireChart(slot, b.distribution, a.distribution);
+    }
+    let resizeTimer = null;
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawChart, 100); });
+
     async function results(code, query) {
         const trades = decodeTrades(new URLSearchParams(query).get("t"));
         render(`<div class="loading">Simulating 10,000 seasons…</div>`);
@@ -1041,7 +1068,7 @@
             <div class="results-grid">
                 <section class="card chart-card">
                     <span class="eyebrow">02 · Seasons</span>
-                    ${distributionChart(b.distribution, a.distribution, b.mean_wins, a.mean_wins, app.clientWidth >= 720)}
+                    <div class="chart-slot"></div>
                     <details class="table-view"><summary>Show as table</summary>${table}</details>
                 </section>
                 <section class="card odds-card">
@@ -1061,7 +1088,9 @@
             <div class="action-bar"><div class="inner two">
                 <a class="button secondary" href="#/select/${code}" data-dup>Change trades</a>
                 <a class="button" href="#/teams">Start over</a></div></div>`);
-        wireChart(app, b.distribution, a.distribution);
+        chartData = { b, a };
+        chartWidth = 0;
+        drawChart();
         watchBand();
     }
 

@@ -8,6 +8,7 @@ For each screen it saves full-page PNGs at 390x844 (2x) and 1280x800 to design-r
 then checks, at 320 / 390 / 768 / 1280 wide:
   - no horizontal overflow (scrollWidth <= innerWidth)
   - visible buttons, links styled as controls, tabs, checkboxes and tappable rows >= 44px tall
+  - text at least 11px (team badge codes excepted)
   - text contrast >= 4.5:1 (3:1 for large text), twice: against the CSS background colors, and
     against the real pixels behind the text (text hidden, page screenshotted), which catches glows
   - numbers use Inter with tabular figures, and digits all have the same width
@@ -98,7 +99,8 @@ CHECKS_JS = r"""
     const t = walker.currentNode;
     if (!t.textContent.trim()) continue;
     const el = t.parentElement;
-    if (!el || !visible(el) || el.closest("[hidden], [aria-hidden=true]:not(svg)")) continue;
+    // aria-hidden text (team badges, chart tags) is still seen, so it's checked for contrast too
+    if (!el || !visible(el) || el.closest("[hidden]")) continue;
     const s = getComputedStyle(el);
     const isSvg = el instanceof SVGElement;
     const fg = parse(isSvg ? s.fill : s.color);
@@ -106,7 +108,17 @@ CHECKS_JS = r"""
     fg.a *= opacity(el);
     const bg = background(el);
     const r = ratio(blend(fg, bg), bg);
-    const size = parseFloat(s.fontSize), weight = Number(s.fontWeight) || 400;
+    let size = parseFloat(s.fontSize);
+    const weight = Number(s.fontWeight) || 400;
+    if (isSvg && el.ownerSVGElement && el.ownerSVGElement.viewBox.baseVal.width) {   // SVG text scales with the chart
+      const svgEl = el.ownerSVGElement;
+      size *= svgEl.getBoundingClientRect().width / svgEl.viewBox.baseVal.width;
+    }
+    // Text below 11px (the Impeccable floor), except decorative badge codes that repeat a name beside them.
+    if (size < 10.95 && !el.closest(".badge") && !seen.has("size|" + sel(el))) {
+      seen.add("size|" + sel(el));
+      out.small.push({ el: sel(el), text: "text " + t.textContent.trim().slice(0, 30), height: Math.round(size * 10) / 10 });
+    }
     const large = size >= 24 || (size >= 18.66 && weight >= 700);
     const need = large ? 3 : 4.5;
     const rr = el.getBoundingClientRect();

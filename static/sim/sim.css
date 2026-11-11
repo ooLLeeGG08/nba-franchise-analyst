@@ -244,12 +244,13 @@ p { margin: 0; line-height: 1.5; color: var(--muted); }
 /* --- cards --- */
 .card { background: var(--surface); border: var(--card-rule); border-radius: var(--radius); padding: var(--s-4); margin-bottom: var(--s-3); }
 .card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-1) var(--s-3); margin-bottom: var(--s-3); }
-.card-head .note { font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--faint); }
+.card-head .note { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--faint); }
 
 /* --- team page --- */
 .team-head { display: flex; align-items: center; gap: var(--s-4); margin: var(--s-1) 0 var(--s-8); }
 .team-layout { display: grid; gap: var(--section-gap); }
 .team-layout > .card { margin-bottom: 0; }
+.team-layout > #ideas { background: none; border: 0; border-radius: 0; padding: 0; }
 .team-head h1 { font-size: var(--fs-2xl); }
 .team-head .sub { font-size: var(--fs-sm); color: var(--muted); margin-top: 2px; }
 
@@ -325,8 +326,9 @@ button.chip:hover { border-color: var(--border-strong); }
 .status { padding: var(--s-1) var(--s-2); border-radius: var(--r-sm); border: var(--rule); color: var(--text); }
 .payroll-bar { position: relative; height: 8px; background: var(--surface-2); border-radius: 1px; margin: var(--s-2) 0 var(--s-8); }
 .payroll-bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 1px; background: var(--accent); }
-.marker { position: absolute; top: -4px; bottom: -4px; width: 1px; background: rgba(242, 242, 242, 0.7); }
-.marker span { position: absolute; top: 22px; transform: translateX(-50%); font-size: 10px; color: var(--muted); white-space: nowrap; }
+.marker { position: absolute; top: -4px; bottom: -4px; width: 1px; }
+.marker::before { content: ""; position: absolute; inset: 0; background: rgba(242, 242, 242, 0.7); }   /* the tick; the label below sits on the card */
+.marker span { position: absolute; top: 22px; transform: translateX(-50%); font-size: var(--fs-2xs); color: var(--muted); white-space: nowrap; }
 .cap-lines { font-size: var(--fs-sm); color: var(--muted); display: grid; gap: var(--s-1); }
 
 /* trade idea placeholders */
@@ -444,7 +446,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .idea.skeleton { height: 88px; border: var(--card-rule); background: var(--surface); animation: pulse 1.4s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: 0.5; } }
 .needs-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); font-size: var(--fs-sm); color: var(--text); margin-bottom: var(--s-3); line-height: 1.5; }
-.source { display: inline-block; font-size: var(--fs-2xs); color: var(--faint); margin-left: var(--s-1); }
+.source { display: inline-block; font-size: var(--fs-xs); color: var(--faint); margin-left: var(--s-1); }
 .suggestion { border: var(--card-rule); border-radius: var(--radius); padding: var(--s-4); background: var(--surface); display: grid; gap: var(--s-3); align-content: start; }
 .suggestion-head { display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap; }
 .suggestion-head .gain { font: 600 var(--fs-xl) var(--font-num); letter-spacing: var(--tracking-tight); color: var(--good); }
@@ -494,7 +496,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .range-pill strong { font: 600 var(--fs-xl)/1.1 var(--font-num); letter-spacing: var(--tracking-tight); }
 .ranges { font-size: var(--fs-sm); margin-top: var(--s-3); }
 .ranges strong { color: var(--text); }
-.was { display: block; color: var(--faint); font-size: 10px; margin-top: calc(-1 * var(--s-1)); }
+.was { display: block; color: var(--faint); font-size: var(--fs-2xs); margin-top: calc(-1 * var(--s-1)); }
 .others li > span:first-child { display: flex; align-items: center; gap: var(--s-3); }
 .others .badge { width: 30px; height: 30px; font-size: 10px; }
 .applied { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); font-size: var(--fs-sm); color: var(--muted); }
@@ -505,7 +507,7 @@ details.roster[open] summary::after { content: "Hide"; }
 .chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; overflow: visible; }
 .chart .grid { stroke: var(--border); stroke-width: 1; opacity: 0.6; }
 .chart .baseline { stroke: var(--border-strong); stroke-width: 1; }
-.chart .axis { fill: var(--faint); font-size: 10px; font-family: var(--font-mono); }
+.chart .axis { fill: var(--faint); font-size: var(--fs-2xs); font-family: var(--font-mono); }   /* the chart draws 1 unit = 1px */
 /* thin lines with a soft glow; a fill that fades out downward */
 .chart .line { fill: none; stroke-width: 1.5; stroke-linejoin: round; }
 .chart .line.before { stroke: var(--series-1); filter: drop-shadow(0 0 3px rgba(90, 169, 230, 0.55)); }
@@ -581,12 +583,12 @@ details.roster[open] summary::after { content: "Hide"; }
 .table-scroll { overflow-x: auto; margin: var(--s-1) calc(-1 * var(--s-1)) 0; }
 .standings { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
 .standings th { color: var(--muted); text-align: right; padding: var(--s-2) var(--s-1); border-bottom: var(--rule); white-space: nowrap; vertical-align: bottom; }
-.standings th small, .standings td small { display: block; font-size: 10px; font-weight: 400; color: var(--faint); }
+.standings th small, .standings td small { display: block; font-size: var(--fs-2xs); font-weight: 400; color: var(--faint); }
 .standings td { text-align: right; padding: var(--s-2) var(--s-1); border-bottom: var(--rule); white-space: nowrap; }
 .standings .rank { text-align: left; color: var(--faint); width: 14px; font-size: var(--fs-xs); }
 .standings .team { text-align: left; }
 .standings .team-cell { display: flex; align-items: center; gap: var(--s-2); font-weight: 600; }
-.standings .team-cell small { color: var(--accent); font: 500 10px var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+.standings .team-cell small { color: var(--accent); font: 500 var(--fs-2xs) var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
 .standings .badge { width: 24px; height: 24px; font-size: 8px; flex: none; border-radius: 3px; }
 .standings tr.you td { background: var(--accent-tint); }
 .standings tr.you td:first-child { box-shadow: inset 2px 0 0 var(--accent); }
@@ -617,10 +619,11 @@ details.roster[open] summary::after { content: "Hide"; }
 
 /* standings on phones: Play-in and #1 seed move under the team name */
 .standings .opt { display: none; }
-.standings .team-cell .extra { display: block; font: 400 10px/1.4 var(--font-mono); color: var(--muted); letter-spacing: 0; text-transform: none; }
+.standings .team-cell .extra { display: block; font: 400 var(--fs-2xs)/1.4 var(--font-mono); color: var(--muted); letter-spacing: 0; text-transform: none; }
 .standings .team-cell .extra > span { display: block; white-space: nowrap; }
 .standings td.team { white-space: normal; }
 .standings .team-cell .badge { display: none; }
+.standings td, .standings th { padding-left: 2px; padding-right: 2px; }
 
 /* --- laptop (768px+) --- */
 @media (min-width: 768px) {
