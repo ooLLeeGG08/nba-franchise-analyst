@@ -282,7 +282,7 @@ class Engine:
         playoff = np.zeros((k, len(CODES)), dtype=bool)
         for s in range(k):
             table = SeasonTable(W[s], self.G, pdiff[s], self.divisions,
-                                np.random.default_rng([self.seed, 5, offset + s]))
+                                lambda key=(self.seed, 5, offset + s): np.random.default_rng(list(key)))
             for j, conf in enumerate(("East", "West")):
                 order = table.seeds(conf)
                 for rank, team in enumerate(order, 1):

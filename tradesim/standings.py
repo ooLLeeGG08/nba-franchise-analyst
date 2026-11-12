@@ -54,12 +54,35 @@ def divisions(season="2026-27"):
     return {code: t["division"] for code, t in official_standings(season).items()}
 
 
+CONF_TEAMS = {conf: [c for c in CODES if TEAM_INFO[c]["conference"] == conf] for conf in ("East", "West")}
+_DIVISION_CACHE = {}  # id(division dict) -> (dict, {division: [teams in CODES order]})
+
+
+def _division_members(division):
+    """Teams per division, built once per division mapping (the engine reuses one dict)."""
+    hit = _DIVISION_CACHE.get(id(division))
+    if hit is None or hit[0] is not division:
+        members = {}
+        for c in CODES:
+            members.setdefault(division[c], []).append(c)
+        hit = _DIVISION_CACHE[id(division)] = (division, members)
+    return hit[1]
+
+
 class SeasonTable:
     """One season's results: W[i, j] = wins of team i over team j, G[i, j] = games between
-    them, point differential per team. Works for a simulated or a real season."""
+    them, point differential per team. Works for a simulated or a real season.
+
+    Speed: seeding runs for every simulated season (10,000 per simulation), so records against
+    fixed sets of teams (division, conference, playoff-eligible) are worked out once per season
+    for every team, as whole-number sums, and reused by every tie that asks for them. The
+    procedure, its order and its random draws are the same as computing each one on demand."""
 
     def __init__(self, W, G, pdiff, division, rng):
-        self.W, self.G, self.pdiff, self.division, self.rng = W, G, pdiff, division, rng
+        """rng: a numpy Generator, or a function returning one (made only if a coin flip is
+        needed, which is rare; building 10,000 generators per simulation costs time)."""
+        self.W, self.G, self.pdiff, self.division = W, G, pdiff, division
+        self._rng = rng
         self.wins = W.sum(axis=1)
         self.games = G.sum(axis=1)
         self.pct = dict(zip(CODES, (self.wins / self.games).tolist()))
@@ -70,6 +93,14 @@ class SeasonTable:
         else:
             self.rank_key = {c: round(p, 9) for c, p in self.pct.items()}
         self._eligible = {}
+        self._set_pct = {}
+        self._members = _division_members(division)
+
+    @property
+    def rng(self):
+        if callable(self._rng) and not isinstance(self._rng, np.random.Generator):
+            self._rng = self._rng()
+        return self._rng
 
     # --- records ---------------------------------------------------------------------------
 
@@ -79,10 +110,25 @@ class SeasonTable:
         games = float(self.G[i, idx].sum())
         return None if games == 0 else float(self.W[i, idx].sum()) / games
 
+    def _pct_vs_set(self, key, opponents):
+        """pct_vs(team, opponents) for every team at once, for an opponent set used again and
+        again (a division, a conference, the playoff-eligible teams). A team's games against
+        itself are zero, so leaving it in the set changes nothing."""
+        if key not in self._set_pct:
+            idx = [INDEX[o] for o in opponents]
+            wins = self.W[:, idx].sum(axis=1)
+            games = self.G[:, idx].sum(axis=1)
+            own = np.array([INDEX[o] for o in opponents])  # drop each team's games vs itself, as pct_vs does
+            wins[own] -= self.W[own, own]
+            games[own] -= self.G[own, own]
+            self._set_pct[key] = {c: (None if float(g) == 0 else float(w) / float(g))
+                                  for c, w, g in zip(CODES, wins.tolist(), games.tolist())}
+        return self._set_pct[key]
+
     def eligible(self, conference):
         """Playoff-eligible teams: win % at least the 10th-best in the conference (ties included)."""
         if conference not in self._eligible:
-            teams = [c for c in CODES if TEAM_INFO[c]["conference"] == conference]
+            teams = CONF_TEAMS[conference]
             cutoff = sorted((self.rank_key[c] for c in teams), reverse=True)[9]
             self._eligible[conference] = [c for c in teams if self.rank_key[c] >= cutoff]
         return self._eligible[conference]
@@ -91,7 +137,7 @@ class SeasonTable:
         if not hasattr(self, "_div_winners"):
             winners = set()
             for div in set(self.division.values()):
-                teams = [c for c in CODES if self.division[c] == div]
+                teams = self._members[div]
                 best = max(self.rank_key[c] for c in teams)
                 leaders = [c for c in teams if self.rank_key[c] == best]
                 winners.add(self.order(leaders, skip_division_winner=True)[0])
@@ -104,15 +150,14 @@ class SeasonTable:
         same_division = len({self.division[c] for c in group}) == 1
         conf = TEAM_INFO[group[0]]["conference"]
         other = "West" if conf == "East" else "East"
-        conf_teams = [c for c in CODES if TEAM_INFO[c]["conference"] == conf]
         div_winner = (None if skip_division_winner
                       else lambda t: 1.0 if t in self.division_winners() else 0.0)
         h2h = lambda t: self.pct_vs(t, group)
-        div_pct = (lambda t: self.pct_vs(t, [c for c in CODES if self.division[c] == self.division[t]])) \
+        div_pct = (lambda t: self._pct_vs_set(("div", self.division[t]), self._members[self.division[t]])[t]) \
             if same_division else None
-        conf_pct = lambda t: self.pct_vs(t, conf_teams)
-        vs_own = lambda t: self.pct_vs(t, self.eligible(conf))
-        vs_other = lambda t: self.pct_vs(t, self.eligible(other))
+        conf_pct = lambda t: self._pct_vs_set(("conf", conf), CONF_TEAMS[conf])[t]
+        vs_own = lambda t: self._pct_vs_set(("eligible", conf), self.eligible(conf))[t]
+        vs_other = lambda t: self._pct_vs_set(("eligible", other), self.eligible(other))[t]
         pdiff = lambda t: float(self.pdiff[INDEX[t]])
         if len(group) == 2:
             return [h2h, div_winner, div_pct, conf_pct, vs_own, vs_other, pdiff]
@@ -142,13 +187,18 @@ class SeasonTable:
 
     def seeds(self, conference):
         """Teams of `conference` in seed order 1-15."""
-        teams = [c for c in CODES if TEAM_INFO[c]["conference"] == conference]
-        out = []
-        for level in sorted({self.rank_key[c] for c in teams}, reverse=True):
-            group = [c for c in teams if self.rank_key[c] == level]
-            out += group if len(group) == 1 else self.order(group)
+        teams = CONF_TEAMS[conference]
+        key = self.rank_key
+        # Stable sort: tied teams stay in CODES order, as each tie group did before.
+        ranked = sorted(teams, key=lambda c: -key[c])
+        out, i = [], 0
+        while i < len(ranked):
+            j = i + 1
+            while j < len(ranked) and key[ranked[j]] == key[ranked[i]]:
+                j += 1
+            out += ranked[i:j] if j - i == 1 else self.order(ranked[i:j])
+            i = j
         return out
-
 
 def play_in(seeds, strength, model, z):
     """Play-in for one conference. seeds: teams in seed order; strength: {team: strength};
