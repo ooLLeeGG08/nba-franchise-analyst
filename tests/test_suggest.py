@@ -316,7 +316,9 @@ def test_ideas_on_top_of_a_chosen_trade(result, league):
 def test_suggestions_endpoint_and_cache(tmp_path, monkeypatch):
     import server
     import tradesim.engine as eng
+    import tradesim.suggest as sg
     monkeypatch.setattr(eng, "CACHE_DIR", str(tmp_path))
+    monkeypatch.setattr(sg, "BUNDLED_DIR", str(tmp_path / "bundled"))  # no shipped ideas: first call searches
     client = server.app.test_client()
     assert client.get("/api/sim/team/XYZ/suggestions").status_code == 404
     first = client.get("/api/sim/team/BKN/suggestions").get_json()

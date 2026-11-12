@@ -228,6 +228,20 @@ class Engine:
                 out[lo:hi, INDEX[c]] = self.team_game_strengths(rotations[c], lo, hi).mean(axis=1)
         return out
 
+    REUSE_BASELINE_STRENGTHS = True  # switch off only to compare against a full recompute
+
+    def _strengths(self, rotation, chunk_index, lo, hi):
+        """team_game_strengths, kept per (team, chunk) for baseline rotations: a trade changes
+        two or three teams, so the other teams' strengths are the baseline's, computed once
+        (about 100 MB for 10,000 seasons). Same numbers as recomputing them."""
+        if not (self.REUSE_BASELINE_STRENGTHS and rotation is self.baseline_rotations.get(rotation.code)):
+            return self.team_game_strengths(rotation, lo, hi)
+        cache = self.__dict__.setdefault("_baseline_strengths", {})
+        key = (rotation.code, chunk_index)
+        if key not in cache:
+            cache[key] = self.team_game_strengths(rotation, lo, hi)
+        return cache[key]
+
     def simulate(self, rotations=None, changed=()):
         """Simulate the season for a set of rotations (default: baseline rosters)."""
         rotations = {**self.baseline_rotations, **({c: rotations[c] for c in changed} if rotations else {})}
@@ -238,7 +252,7 @@ class Engine:
         strength_sum = np.zeros(len(CODES))
         m = self.model
         for chunk_index, (lo, hi) in enumerate(self.chunks()):
-            strengths = np.stack([self.team_game_strengths(rotations[c], lo, hi) for c in CODES])  # 30 x k x 82
+            strengths = np.stack([self._strengths(rotations[c], chunk_index, lo, hi) for c in CODES])  # 30 x k x 82
             diff = strengths[self.home, :, self.home_i].T - strengths[self.away, :, self.away_i].T  # k x games
             # Game noise (standard normal per game): margin = expected margin + sigma x noise.
             noise = np.random.default_rng([self.seed, 1, chunk_index]).standard_normal(diff.shape, dtype=np.float32)

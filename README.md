@@ -21,8 +21,17 @@ The original chat analyst is still served at `/analyst` (see the last section).
 
 `pytest` runs the tests (391: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
-season (about 2 s, cached in `data/cache/`); each team's first trade-idea search takes
-about 10 s and is cached.
+season (about 2 s, cached in `data/cache/`). Trade ideas ship precomputed in `data/ideas/`
+(every team, plus the ideas after picking any one of its ideas), so they show up at once; any
+other search (e.g. after a second pick) takes about 5-10 s and is cached.
+
+**Precomputed ideas.** `python -m tradesim.precompute_ideas --until 2027-02-04` rebuilds
+`data/ideas/` (about half an hour; rerun it after refreshing the data, since saved ideas are
+ignored once the inputs change). Each saved result records which players were untradeable and
+the outcome of every cap check its search made; on another date it is reused only if all of
+those are identical there, which means the search would return exactly the same ideas. The
+script walks day by day and searches again only on dates where that fails (e.g. Dec 15, when
+summer signings become tradeable).
 
 ## Deploy on Vercel
 
@@ -40,8 +49,10 @@ and the local cache, so the upload is about 16 MB of app files plus about 90 MB 
 
 How it behaves there: the code folder is read-only, so caches go to the function's temp
 folder (`/tmp/tradesim-cache`, or `TRADESIM_CACHE_DIR` if set). A cold start rebuilds the
-baseline (a few seconds) and each team's first idea search runs again (about 10-25 s);
-both are instant while the instance stays warm. Nothing about trades is stored on the
+baseline (a few seconds); trade ideas come from `data/ideas/` (shipped with the deploy), so a
+team's ideas and the ideas after its first pick are instant. Searches beyond that (a second
+pick, or with `GROQ_API_KEY` set, which changes the needs) run live and are kept while the
+instance stays warm. Nothing about trades is stored on the
 server: saved trades live in the browser.
 
 ## Limitations (read these first)

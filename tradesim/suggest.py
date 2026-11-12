@@ -28,6 +28,7 @@ Every player named comes from the database: candidates are database players, and
 checked against the names in that trade.
 """
 import copy
+import glob
 import hashlib
 import json
 import os
@@ -44,7 +45,7 @@ from tradesim.skills import SKILLS, player_skills, team_skills
 SKILL_NAMES = list(SKILLS)
 from tradesim.trade_api import _tradeable_from
 
-SUGGEST_VERSION = "stage6-diverse-2"
+SUGGEST_VERSION = "stage6-diverse-3"  # 3: results carry a date-validity record
 BUCKET_OF = {"G": 0, "F": 1, "C": 2}
 MIN_SKILL_FIT = 55
 MIN_UPGRADE = 0.75
@@ -276,6 +277,7 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
     used = Counter()
     free = lambda asset_id: reuse is None or used[asset_id] < reuse
     shortlist, per_partner, seen, n_candidates, n_legal = [], Counter(), set(), 0, 0
+    checks = []  # every cap check the search makes; the date only matters through these (see cached_suggest)
     for match, min_fit, positions in ladder:
         candidates = [c for c in find_candidates(code, needs, state, cba, on_date, min_fit, positions)
                       if c["id"] not in seen]
@@ -299,6 +301,7 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
             for option in ([moves + [{"type": "pick", "id": sweet["id"], "from": code, "to": cand["team"]}]]
                            if sweet else []) + [moves]:
                 result = check_trade(league, cba, {"moves": option}, on_date)
+                checks.append({"moves": option, "digest": _check_digest(result)})
                 if result["works"]:
                     n_legal += 1
                     shortlist.append({"candidate": cand, "moves": option, "check": result, "match": match,
@@ -375,30 +378,86 @@ def suggest(code, engine, league, cba, on_date, llm=None, index=None, n=None, ma
     return {"team": code, "needs": needs, "suggestions": cards, "n_sims": engine.n_sims,
             "on_top_of_chosen": bool(state.chosen_moves),
             "rules": {"max_partner_loss_wins": max_partner_loss, "min_win_gain": min_gain, "max_asset_reuse": reuse},
-            "searched": {"candidates": n_candidates, "legal_balanced": n_legal, "simulated": len(shortlist)}}
+            "searched": {"candidates": n_candidates, "legal_balanced": n_legal, "simulated": len(shortlist)},
+            "validity": {"date": on_date.isoformat(), "restricted": _restricted_digest(league, cba, on_date),
+                         "checks": checks}}
 
 
 # --- caching ---------------------------------------------------------------------------------------
+# The search depends on the date in only two ways: which players can't be traded yet
+# (_restricted) and the cap checks (signing dates, recent-trade windows, exception expiry).
+# A result saved on one date is reused on another when both give the same answers there: the
+# same untradeable players and the same result for every check the search made. Then every
+# step of the search would repeat exactly, so the ideas are identical. That check takes
+# milliseconds; the search takes seconds.
 
-def cache_path(code, engine, model_name, chosen=None):
+BUNDLED_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "ideas")
+
+
+def _check_digest(result):
+    body = {k: v for k, v in result.items() if k != "date"}
+    return hashlib.sha256(json.dumps(body, sort_keys=True, default=str).encode()).hexdigest()[:16]
+
+
+def _restricted_digest(league, cba, on_date):
+    ids = sorted(pid for pid, p in league.players.items() if _restricted(p, cba, on_date))
+    return hashlib.sha256(json.dumps(ids).encode()).hexdigest()[:16]
+
+
+def still_valid(result, league, cba, on_date):
+    """True when a saved result is exactly what the search would return on `on_date`."""
+    v = result.get("validity")
+    if not v:
+        return False
+    if v["date"] == on_date.isoformat():
+        return True
+    if _restricted_digest(league, cba, on_date) != v["restricted"]:
+        return False
+    return all(_check_digest(check_trade(league, cba, {"moves": c["moves"]}, on_date)) == c["digest"]
+               for c in v["checks"])
+
+
+# --- caching (files) ---------------------------------------------------------------------------------------
+
+def cache_path(code, engine, model_name, chosen=None, folder=None):
+    """File stem for one search (team, inputs, rules, trades already chosen). Saved results are
+    `<stem>.<date>.json`, one per date they were computed on; any of them may still be valid."""
     from tradesim.engine import CACHE_DIR, fingerprint
     chosen_key = json.dumps(chosen["moves"], sort_keys=True) if chosen else ""
     rules = json.dumps(engine.cfg.get("suggestions", {}), sort_keys=True)  # settings change -> new search
     key = hashlib.sha256(f"{SUGGEST_VERSION}:{model_name}:{fingerprint(engine.n_sims, engine.seed, engine.schedule)}:{chosen_key}:{rules}"
                          .encode()).hexdigest()[:16]
-    return os.path.join(CACHE_DIR, f"suggestions_{code}_{key}.json")
+    return os.path.join(folder or CACHE_DIR, f"suggestions_{code}_{key}")
 
 
 def cached_suggest(code, engine, league, cba, on_date, llm=None, index=None, chosen=None, needs=None):
     """Suggestions are slow (several simulations), so they're cached per team, inputs and
-    trades already chosen."""
+    trades already chosen: first the writable cache, then the ideas shipped with the app
+    (data/ideas, written by `python -m tradesim.precompute_ideas`). A saved result from another
+    date is used only when still_valid() says the search would give the same ideas."""
     model_name = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b") if llm else "no-llm"
-    path = cache_path(code, engine, model_name, chosen) + f".{on_date.isoformat()}"
-    if os.path.exists(path):
-        with open(path) as f:
-            return {**json.load(f), "from_cache": True}
+    search_league = (chosen or {}).get("league") or league
+    stem = cache_path(code, engine, model_name, chosen)
+    saved_files = sorted(glob.glob(stem + ".*.json"), reverse=True) + \
+        sorted(glob.glob(cache_path(code, engine, model_name, chosen, BUNDLED_DIR) + ".*.json"), reverse=True)
+    for candidate in saved_files:  # newest first
+        try:
+            with open(candidate) as f:
+                saved = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if still_valid(saved, search_league, cba, on_date):
+            return {**_public(saved), "from_cache": True}
     result = suggest(code, engine, league, cba, on_date, llm, index, chosen=chosen, needs=needs)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(result, f)
-    return {**result, "from_cache": False}
+    path = f"{stem}.{on_date.isoformat()}.json"
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            json.dump(result, f)
+    except OSError:
+        pass  # no writable cache: the result is still returned
+    return {**_public(result), "from_cache": False}
+
+
+def _public(result):
+    return {k: v for k, v in result.items() if k != "validity"}
