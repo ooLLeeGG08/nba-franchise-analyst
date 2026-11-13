@@ -433,13 +433,20 @@ def cache_path(code, engine, model_name, chosen=None, folder=None):
 def cached_suggest(code, engine, league, cba, on_date, llm=None, index=None, chosen=None, needs=None):
     """Suggestions are slow (several simulations), so they're cached per team, inputs and
     trades already chosen: first the writable cache, then the ideas shipped with the app
-    (data/ideas, written by `python -m tradesim.precompute_ideas`). A saved result from another
+    (data/ideas, written by `python -m tradesim.precompute_ideas`, no LLM; used even when an
+    LLM is configured). A saved result from another
     date is used only when still_valid() says the search would give the same ideas."""
     model_name = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b") if llm else "no-llm"
     search_league = (chosen or {}).get("league") or league
     stem = cache_path(code, engine, model_name, chosen)
     saved_files = sorted(glob.glob(stem + ".*.json"), reverse=True) + \
         sorted(glob.glob(cache_path(code, engine, model_name, chosen, BUNDLED_DIR) + ".*.json"), reverse=True)
+    if model_name != "no-llm":
+        # The shipped ideas are computed without the LLM. With a key set, use them anyway rather
+        # than search live (40+ s on Vercel): the starting ideas stay fixed and instant, with
+        # needs and summaries from the numbers instead of the LLM.
+        saved_files += sorted(glob.glob(cache_path(code, engine, "no-llm", chosen, BUNDLED_DIR) + ".*.json"),
+                              reverse=True)
     for candidate in saved_files:  # newest first
         try:
             with open(candidate) as f:

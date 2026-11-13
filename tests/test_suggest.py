@@ -332,3 +332,28 @@ def test_suggestions_endpoint_and_cache(tmp_path, monkeypatch):
 def test_lone_last_names(index):
     assert ai.names_ok("White's playmaking is the fit here.", [player_id("derrick-white"), player_id("walker-kessler")], index)
     assert not ai.names_ok("Williams would also help.", [player_id("derrick-white")], index)  # which Williams?
+
+
+def test_shipped_ideas_are_used_when_an_llm_is_configured(tmp_path, monkeypatch, league):
+    """With GROQ_API_KEY set (Vercel), the shipped no-LLM ideas still serve the starting ideas:
+    no live search and no LLM call."""
+    import json
+    import tradesim.engine as eng
+    import tradesim.suggest as sg
+
+    class Boom:  # any use of the LLM fails the test
+        def __getattr__(self, name):
+            raise AssertionError("LLM was called")
+
+    engine = Engine(league, load_schedule_2026_27(), load_sim_config(), n_sims=1000)
+    cba = load_cba()
+    monkeypatch.setattr(eng, "CACHE_DIR", str(tmp_path / "cache"))
+    monkeypatch.setattr(sg, "BUNDLED_DIR", str(tmp_path / "bundled"))
+    shipped = sg.suggest("BKN", engine, league, cba, DATE)
+    path = sg.cache_path("BKN", engine, "no-llm", None, sg.BUNDLED_DIR) + f".{DATE.isoformat()}.json"
+    (tmp_path / "bundled").mkdir()
+    with open(path, "w") as f:
+        json.dump(shipped, f)
+    got = sg.cached_suggest("BKN", engine, league, cba, DATE, llm=Boom())
+    assert got["from_cache"] is True
+    assert got["suggestions"] == shipped["suggestions"]
