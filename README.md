@@ -21,17 +21,18 @@ The original chat analyst is still served at `/analyst` (see the last section).
 
 `pytest` runs the tests (391: cap rules with real legal and illegal trades, simulator,
 standings, backtest checks, API and screens' data). The first start builds the baseline
-season (about 2 s, cached in `data/cache/`). Trade ideas ship precomputed in `data/ideas/`
-(every team, plus the ideas after picking any one of its ideas), so they show up at once; any
-other search (e.g. after a second pick) takes about 5-10 s and is cached.
+season (about 2 s, cached in `data/cache/`).
 
-**Precomputed ideas.** `python -m tradesim.precompute_ideas --until 2027-02-04` rebuilds
-`data/ideas/` (about half an hour; rerun it after refreshing the data, since saved ideas are
-ignored once the inputs change). Each saved result records which players were untradeable and
-the outcome of every cap check its search made; on another date it is reused only if all of
-those are identical there, which means the search would return exactly the same ideas. The
-script walks day by day and searches again only on dates where that fails (e.g. Dec 15, when
-summer signings become tradeable).
+**As-of date.** Trades are checked and searched as of the data's date (`as_of` in
+`data/2026_27/league.json`, currently 2026-11-09), not the calendar: the app shows the league
+as it was then, so the trade machine and the ideas always agree. The stale-data warning still
+counts days from today. A data refresh moves the date.
+
+**Trade ideas.** Every team's 4 starting ideas, and the ideas after picking any one of them,
+ship precomputed in `data/ideas/`, so they show up at once and are the same for everyone.
+Picking more runs a live search on top of the picks (about 5-10 s), cached while the server
+runs. `python -m tradesim.precompute_ideas` rebuilds `data/ideas/` (about 15-20 min); rerun it
+after a data refresh, since saved ideas stop matching once the inputs change.
 
 ## Deploy on Vercel
 

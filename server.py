@@ -99,6 +99,15 @@ def _sim():
     return _SIM
 
 
+def _as_of(s):
+    """The date trades are checked and searched as of: the data's date (league.json `as_of`,
+    e.g. 2026-11-09), not the calendar. The whole app shows the league as it was then, so a
+    team's starting trade ideas are fixed (shipped in data/ideas) and the trade machine agrees
+    with them. A data refresh moves this date. The stale-data warning still uses today."""
+    from datetime import date
+    return date.fromisoformat(s["league"].as_of) if s["league"].as_of else date.today()
+
+
 @app.route('/api/sim/status')
 def sim_status():
     from datetime import date
@@ -129,14 +138,13 @@ def sim_trade_check():
     from tradesim.trade_api import BadTrade, check
     s = _sim()
     try:
-        return jsonify(check(request.get_json(silent=True), s["league"], s["cba"]))
+        return jsonify(check(request.get_json(silent=True), s["league"], s["cba"], _as_of(s)))
     except BadTrade as err:
         return jsonify({"error": str(err)}), 400
 
 
 @app.route('/api/sim/team/<code>/suggestions')
 def sim_suggestions(code):
-    from datetime import date
     from tradesim.ai import NameIndex, get_llm
     from tradesim.suggest import cached_suggest
     from tradesim.teams import TEAM_INFO
@@ -146,17 +154,16 @@ def sim_suggestions(code):
     s = _sim()
     if "names" not in s:
         s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
-    return jsonify(cached_suggest(code, s["engine"], s["league"], s["cba"], date.today(), get_llm(), s["names"]))
+    return jsonify(cached_suggest(code, s["engine"], s["league"], s["cba"], _as_of(s), get_llm(), s["names"]))
 
 
 @app.route('/api/sim/sequence/check', methods=['POST'])
 def sim_sequence_check():
-    from datetime import date
     from tradesim.sequence_api import check_sequence
     from tradesim.trade_api import BadTrade
     s = _sim()
     try:
-        out = check_sequence(request.get_json(silent=True), s["league"], s["cba"], date.today())
+        out = check_sequence(request.get_json(silent=True), s["league"], s["cba"], _as_of(s))
     except BadTrade as err:
         return jsonify({"error": str(err)}), 400
     out.pop("working")
@@ -166,7 +173,6 @@ def sim_sequence_check():
 
 @app.route('/api/sim/sequence/plan', methods=['POST'])
 def sim_sequence_plan():
-    from datetime import date
     from tradesim.ai import NameIndex, get_llm
     from tradesim.sequence_api import plan
     from tradesim.trade_api import BadTrade
@@ -174,7 +180,7 @@ def sim_sequence_plan():
     if "names" not in s:
         s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     try:
-        return jsonify(plan(request.get_json(silent=True), s["league"], s["cba"], s["engine"], date.today(),
+        return jsonify(plan(request.get_json(silent=True), s["league"], s["cba"], s["engine"], _as_of(s),
                             get_llm(), s["names"]))
     except BadTrade as err:
         return jsonify({"error": str(err)}), 400
@@ -182,7 +188,6 @@ def sim_sequence_plan():
 
 @app.route('/api/sim/sequence/simulate', methods=['POST'])
 def sim_sequence_simulate():
-    from datetime import date
     from tradesim.ai import NameIndex, get_llm
     from tradesim.sequence_api import simulate_sequence
     from tradesim.trade_api import BadTrade
@@ -191,7 +196,7 @@ def sim_sequence_simulate():
         s["names"] = NameIndex(s["league"].players, s["engine"].ratings["players"])
     try:
         return jsonify(simulate_sequence(request.get_json(silent=True), s["league"], s["cba"], s["engine"],
-                                         date.today(), get_llm(), s["names"]))
+                                         _as_of(s), get_llm(), s["names"]))
     except BadTrade as err:
         return jsonify({"error": str(err)}), 400
 
