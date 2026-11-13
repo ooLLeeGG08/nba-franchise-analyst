@@ -13,9 +13,10 @@ Per simulated season:
      availability) and misses that many games as one injury spell at a random point.
   4. Strength per game = full-strength rotation at the drawn impacts - the cost of everyone
      out that game (their minutes go to their backups, tradesim.rotation).
-  5. Games. margin = S_home - S_away + home edge - b2b penalty + sigma x noise
+  5. Games. margin = S_home - S_away + home edge - b2b penalty + scale x logistic noise
      (tradesim.game_model); the home team wins if the margin is positive, i.e.
-     P(home win) = Phi(expected margin / sigma). Margins give point differential.
+     P(home win) = 1 / (1 + exp(-expected margin / scale)), the fitted logistic regression.
+     Margins give point differential.
   6. Standings. Seeds with the NBA's tiebreakers, then the play-in for seeds 7-10
      (tradesim.standings).
 
@@ -31,14 +32,14 @@ from collections import OrderedDict
 
 import numpy as np
 
-from tradesim.game_model import back_to_backs, load_model, norm_cdf
+from tradesim.game_model import back_to_backs, load_model, logistic_from_normal
 from tradesim.ratings import load_fit as load_ratings_fit, load_ratings
 from tradesim.rotation import apply_moves
 from tradesim.simulate import CODES, INDEX, load_strength_sd
 from tradesim.standings import SeasonTable, divisions, play_in, summaries
 
 GAMES = 82
-ENGINE_VERSION = "stage7-ids-1"  # bump when simulation logic changes, so old baseline caches are ignored
+ENGINE_VERSION = "logistic-1"  # bump when simulation logic changes, so old baseline caches are ignored
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -254,9 +255,12 @@ class Engine:
         for chunk_index, (lo, hi) in enumerate(self.chunks()):
             strengths = np.stack([self._strengths(rotations[c], chunk_index, lo, hi) for c in CODES])  # 30 x k x 82
             diff = strengths[self.home, :, self.home_i].T - strengths[self.away, :, self.away_i].T  # k x games
-            # Game noise (standard normal per game): margin = expected margin + sigma x noise.
-            noise = np.random.default_rng([self.seed, 1, chunk_index]).standard_normal(diff.shape, dtype=np.float32)
-            margin = diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest + m["sigma"] * noise
+            # Game noise: a standard logistic draw per game (from the standard normal stream), so
+            # margin = expected margin + scale x noise and P(home win) is the fitted logistic.
+            z = np.random.default_rng([self.seed, 1, chunk_index]).standard_normal(diff.shape, dtype=np.float32)
+            noise = logistic_from_normal(z).astype(np.float32)
+            del z
+            margin = diff + m["home_edge"] * self.home_court - m["b2b_penalty"] * self.rest + m["scale"] * noise
             del diff, noise
             home_won = (margin > 0).astype(np.float32)
             wins[lo:hi] = np.rint(home_won @ self.home_onehot + (1 - home_won) @ self.away_onehot)

@@ -165,7 +165,7 @@ def run_season(season, cfg):
     return {"season": season, "rating_fit": {"recency": fit["veterans"]["recency"],
                                              "shrink": fit["veterans"]["shrink_minutes"],
                                              "rho": fit["team_residual"]["rho"]},
-            "game_model": {k: game_fit[k] for k in ("home_edge", "b2b_penalty", "sigma")},
+            "game_model": {k: game_fit[k] for k in ("home_edge", "b2b_penalty", "scale")},
             "by_sigma": by_sigma, "players_check": _player_check(season, league, rated, fit)}
 
 
@@ -250,7 +250,7 @@ def vegas_playoff_odds(season, totals, game_fit, latent_sd, n_sims=N_SIMS, seed=
     season machinery: find team strengths whose expected wins match the totals, then
     simulate the real schedule with the game model, the same latent spread, tiebreakers and
     the play-in."""
-    from tradesim.game_model import back_to_backs, norm_cdf
+    from tradesim.game_model import back_to_backs, logistic, logistic_from_normal
     from tradesim.standings import INDEX as S_INDEX, SeasonTable, divisions, play_in
     codes = list(TEAM_INFO)
     games = gm.load_games(season)
@@ -266,13 +266,13 @@ def vegas_playoff_odds(season, totals, game_fit, latent_sd, n_sims=N_SIMS, seed=
     s = (target - 41) / 2.7
     for _ in range(40):  # match expected wins to the totals (smooth: averaged over latent draws)
         st = s[None, :] + latent
-        p = norm_cdf((st[:, home] - st[:, away] + edge) / game_fit["sigma"]).mean(axis=0)
+        p = logistic((st[:, home] - st[:, away] + edge) / game_fit["scale"]).mean(axis=0)
         expected = np.bincount(home, p, 30) + np.bincount(away, 1 - p, 30)
         s += (target - expected) / 2.5
         if np.abs(target - expected).max() < 0.05:
             break
     st = s[None, :] + latent
-    margin = st[:, home] - st[:, away] + edge + game_fit["sigma"] * rng.standard_normal((n_sims, len(games)))
+    margin = st[:, home] - st[:, away] + edge + game_fit["scale"] * logistic_from_normal(rng.standard_normal((n_sims, len(games))))
     won = margin > 0
     division = divisions(season)
     playoff = np.zeros((n_sims, 30), dtype=bool)

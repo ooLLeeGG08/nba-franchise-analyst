@@ -202,11 +202,13 @@ class SeasonTable:
 
 def play_in(seeds, strength, model, z):
     """Play-in for one conference. seeds: teams in seed order; strength: {team: strength};
-    z: 3 standard normal draws. Returns (seed 7, seed 8) after the play-in."""
+    z: 3 standard normal draws (turned into logistic noise, as in the regular season).
+    Returns (seed 7, seed 8) after the play-in."""
+    from tradesim.game_model import logistic_from_normal
     s7, s8, s9, s10 = seeds[6:10]
 
     def home_wins(home, away, zi):
-        return strength[home] - strength[away] + model["home_edge"] + model["sigma"] * zi > 0
+        return strength[home] - strength[away] + model["home_edge"] + model["scale"] * float(logistic_from_normal(zi)) > 0
 
     seventh, loser_a = (s7, s8) if home_wins(s7, s8, z[0]) else (s8, s7)
     winner_b = s9 if home_wins(s9, s10, z[1]) else s10

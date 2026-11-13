@@ -96,7 +96,7 @@ def test_known_official_quirks():
 def test_play_in_bracket():
     seeds = [f"T{i}" for i in range(1, 16)]
     even = {t: 0.0 for t in seeds}
-    model = {"home_edge": 2.0, "sigma": 12.0}
+    model = {"home_edge": 2.0, "scale": 7.0}
     assert play_in(seeds, even, model, [5, 5, 5]) == ("T7", "T8")        # home teams win everything
     assert play_in(seeds, even, model, [-5, -5, -5]) == ("T8", "T10")    # road teams win everything
     assert play_in(seeds, even, model, [5, -5, 5]) == ("T7", "T8")       # 7 wins, 10 wins, 8 beats 10

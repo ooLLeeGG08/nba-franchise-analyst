@@ -107,10 +107,11 @@ def run(cfg=None, write=True):
                                   for f in methods}
     # Latent strength uncertainty for the simulator: the forecast error against OBSERVED season
     # net ratings, minus the game-to-game luck in those observed ratings. Luck per team-season =
-    # sigma / sqrt(games), with sigma the fitted single-game spread (tradesim.game_model); short
+    # sigma / sqrt(games), with sigma the SD of one game's margin in the fitted game model
+    # (tradesim.game_model noise_sd); short
     # seasons (2019-20, 2020-21) have more luck.
     from tradesim.game_model import load_model
-    sigma = load_model()["sigma"]
+    sigma = load_model()["noise_sd"]
     games = team_ratings()
     errors = []
     for s in seasons:

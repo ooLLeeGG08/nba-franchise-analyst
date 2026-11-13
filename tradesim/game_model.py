@@ -1,17 +1,23 @@
-"""Game model (sim-accuracy Stage 4): probit on strength difference, home court and rest.
+"""Game model: logistic regression on strength difference, home court and rest.
 
-    P(home win) = Phi( (S_home - S_away + home_edge x home_court
-                        - b2b_penalty x home_on_b2b + b2b_penalty x away_on_b2b) / sigma )
+    log(p / (1 - p)) = b_s x (S_home - S_away) + b_h x home_court + b_r x (away_on_b2b - home_on_b2b)
+    p = P(home win) = 1 / (1 + exp(-log-odds))
 
-S = team strength in points per 100 possessions (about points per game). Phi is the
-standard normal CDF: sigma is the spread of a single game's result around the
-expected margin. home_court = 0 on neutral floors (2019-20 Orlando bubble, Mexico City,
-Las Vegas, abroad). A team is on a back-to-back if it played the day before.
+S = team strength in points per 100 possessions (about points per game). home_court = 0
+on neutral floors (2019-20 Orlando bubble, Mexico City, Las Vegas, abroad). A team is on
+a back-to-back if it played the day before. There is no intercept: two equal, rested
+teams on a neutral floor are a coin flip.
 
-Fitted by maximum likelihood on every regular-season game 2018-19 to 2024-25, using each
-team's actual season net rating as its strength (so the game model doesn't depend on the
-player model). 2025-26 is kept out for checking. A margin regression is reported as a
-cross-check: it should give similar home edge, rest penalty and spread.
+In points: scale = 1 / b_s, home_edge = b_h / b_s, b2b_penalty = b_r / b_s, so
+p = 1 / (1 + exp(-(S_home - S_away + home_edge x home_court - b2b_penalty x rest) / scale)).
+The simulator draws each game's margin as that expected margin plus scale x a standard
+logistic draw, so the home team wins exactly with probability p (noise SD = scale x pi / sqrt 3).
+
+Fitted by maximum likelihood (Newton's method) on every regular-season game 2018-19 to
+2024-25, using each team's actual season net rating as its strength (so the game model
+doesn't depend on the player model). 2025-26 is kept out for checking. Also reported:
+log-likelihood vs the base-rate-only model, McFadden's pseudo-R^2 and the likelihood-ratio
+chi^2, and a margin regression as a cross-check of home edge and rest penalty.
 
 Run:  python -m tradesim.game_model
 """
@@ -86,21 +92,60 @@ def design(seasons):
     return np.array(xs), np.array(ys), np.array(margins, dtype=float)
 
 
-def fit_probit(x, y, iterations=50):
-    """Maximum likelihood probit without intercept (Fisher scoring)."""
+def logistic(x):
+    return 1 / (1 + np.exp(-np.asarray(x, dtype=np.float64)))
+
+
+def logistic_from_normal(z):
+    """Standard logistic draws from standard normal ones (through their shared uniform), so the
+    simulator keeps its normal random streams but games follow the logistic model."""
+    u = np.clip(norm_cdf(z), 1e-12, 1 - 1e-12)
+    return np.log(u) - np.log1p(-u)
+
+
+def fit_logistic(x, y, iterations=50):
+    """Maximum likelihood logistic regression without intercept (Newton's method).
+    Returns (coefficients, covariance matrix)."""
     beta = np.zeros(x.shape[1])
     for _ in range(iterations):
-        eta = x @ beta
-        p = np.clip(norm_cdf(eta), 1e-10, 1 - 1e-10)
-        dens = norm_pdf(eta)
-        w = dens ** 2 / (p * (1 - p))
-        score = x.T @ (dens * (y - p) / (p * (1 - p)))
+        p = logistic(x @ beta)
+        w = p * (1 - p)
         info = x.T @ (x * w[:, None])
-        step = np.linalg.solve(info, score)
+        step = np.linalg.solve(info, x.T @ (y - p))
         beta += step
-        if np.max(np.abs(step)) < 1e-10:
+        if np.max(np.abs(step)) < 1e-12:
             break
-    return beta, info
+    p = logistic(x @ beta)
+    info = x.T @ (x * (p * (1 - p))[:, None])
+    return beta, np.linalg.inv(info)
+
+
+def log_likelihood(p, y):
+    p = np.clip(p, 1e-12, 1 - 1e-12)
+    return float(np.sum(y * np.log(p) + (1 - y) * np.log(1 - p)))
+
+
+def likelihood_ratio(p, y, added_parameters=2):
+    """LL of the model vs the base-rate-only model (every game = the overall home win rate):
+    McFadden's pseudo-R^2 and chi^2 = 2 (LL_fit - LL_overall) with its p-value. The model has
+    3 parameters, the base-rate model 1, so df = 2 (p-value exp(-chi^2 / 2), exact for df = 2)."""
+    ll_fit = log_likelihood(p, y)
+    ll_overall = log_likelihood(np.full_like(y, y.mean()), y)
+    chi2 = 2 * (ll_fit - ll_overall)
+    return {"LL_fit": round(ll_fit, 1), "LL_overall": round(ll_overall, 1), "home_win_rate": round(float(y.mean()), 4),
+            "mcfadden_r2": round(1 - ll_fit / ll_overall, 4), "chi2": round(chi2, 1), "df": added_parameters,
+            "p_value": float(np.exp(-chi2 / 2)) if added_parameters == 2 else None}
+
+
+def _in_points(beta, cov):
+    """(scale, home_edge, b2b_penalty) and their standard errors (delta method)."""
+    a, c, e = beta
+    out, se = {"scale": 1 / a, "home_edge": c / a, "b2b_penalty": e / a}, {}
+    grads = {"scale": np.array([-1 / a ** 2, 0, 0]), "home_edge": np.array([-c / a ** 2, 1 / a, 0]),
+             "b2b_penalty": np.array([-e / a ** 2, 0, 1 / a])}
+    for k, g in grads.items():
+        se[k] = float(np.sqrt(g @ cov @ g))
+    return out, se
 
 
 def _scores(p, y):
@@ -113,9 +158,9 @@ def _scores(p, y):
 def fit(write=True, seasons=None):
     seasons = seasons or FIT_SEASONS
     x, y, margins = design(seasons)
-    (a, c, e), info = fit_probit(x, y)
-    se = np.sqrt(np.diag(np.linalg.inv(info)))
-    sigma, home_edge, b2b = 1 / a, c / a, e / a
+    beta, cov = fit_logistic(x, y)
+    pts, pts_se = _in_points(beta, cov)
+    coef_se = np.sqrt(np.diag(cov))
     # Cross-check: margin = k x diff + home + b2b + noise.
     coef, *_ = np.linalg.lstsq(x, margins, rcond=None)
     noise_sd = float(np.std(margins - x @ coef))
@@ -124,15 +169,23 @@ def fit(write=True, seasons=None):
     per_season = {}
     for season in seasons:
         xs, ys, _ = design([season])
-        (_, cs, _), _ = fit_probit(xs, ys)
-        per_season[season] = round(float(cs / a), 2)
+        b, _ = fit_logistic(xs, ys)
+        per_season[season] = round(float(b[1] / beta[0]), 2)
+    p_fit, p_check = logistic(x @ beta), logistic(xc @ beta)
     result = {
+        "family": "logistic",
         "fit_seasons": list(seasons), "games": int(len(y)),
-        "home_edge": round(float(home_edge), 3), "b2b_penalty": round(float(b2b), 3), "sigma": round(float(sigma), 3),
-        "standard_errors": {"home_edge": round(float(se[1] / a), 3), "b2b_penalty": round(float(se[2] / a), 3),
-                            "sigma": round(float(se[0] / a ** 2), 3)},
-        "fit_scores": _scores(norm_cdf(x @ np.array([a, c, e])), y),
-        "check_2025_26": _scores(norm_cdf(xc @ np.array([a, c, e])), yc),
+        "coefficients": {"strength": round(float(beta[0]), 5), "home_court": round(float(beta[1]), 5),
+                         "rest": round(float(beta[2]), 5)},
+        "coefficient_standard_errors": {"strength": round(float(coef_se[0]), 5),
+                                        "home_court": round(float(coef_se[1]), 5), "rest": round(float(coef_se[2]), 5)},
+        "home_edge": round(pts["home_edge"], 3), "b2b_penalty": round(pts["b2b_penalty"], 3),
+        "scale": round(pts["scale"], 3), "noise_sd": round(pts["scale"] * np.pi / np.sqrt(3), 3),
+        "standard_errors": {k: round(v, 3) for k, v in pts_se.items()},
+        "likelihood": likelihood_ratio(p_fit, y),
+        "likelihood_check_2025_26": likelihood_ratio(p_check, yc),
+        "fit_scores": _scores(p_fit, y),
+        "check_2025_26": _scores(p_check, yc),
         "margin_regression": {"points_per_rating_point": round(float(coef[0]), 3), "home_edge": round(float(coef[1]), 3),
                               "b2b_penalty": round(float(coef[2]), 3), "noise_sd": round(noise_sd, 3)},
         "home_edge_by_season": per_season,
@@ -152,17 +205,22 @@ def load_model(path=MODEL_PATH):
 
 def win_probability(diff, home_court, home_b2b, away_b2b, model):
     """P(home win) for arrays of strength differences and flags."""
-    z = (diff + model["home_edge"] * home_court - model["b2b_penalty"] * (home_b2b - away_b2b)) / model["sigma"]
-    return norm_cdf(z)
+    expected = diff + model["home_edge"] * home_court - model["b2b_penalty"] * (home_b2b - away_b2b)
+    return logistic(expected / model["scale"])
 
 
 if __name__ == "__main__":
     r = fit()
-    print(f"Fitted on {r['games']:,} games ({r['fit_seasons'][0]} to {r['fit_seasons'][-1]}):")
+    print(f"Logistic regression on {r['games']:,} games ({r['fit_seasons'][0]} to {r['fit_seasons'][-1]}):")
+    print(f"  log-odds = {r['coefficients']['strength']} x strength gap + {r['coefficients']['home_court']} x home "
+          f"+ {r['coefficients']['rest']} x rest")
     se = r["standard_errors"]
     print(f"  home edge   {r['home_edge']:.2f} pts (+/- {se['home_edge']:.2f})")
     print(f"  b2b penalty {r['b2b_penalty']:.2f} pts (+/- {se['b2b_penalty']:.2f}); {r['b2b_share']:.0%} of games have one team on a b2b")
-    print(f"  sigma       {r['sigma']:.2f} pts (+/- {se['sigma']:.2f})")
+    print(f"  scale       {r['scale']:.2f} pts (+/- {se['scale']:.2f}); game noise SD {r['noise_sd']:.2f}")
+    lk, lc = r["likelihood"], r["likelihood_check_2025_26"]
+    print(f"  LL {lk['LL_fit']} vs base rate {lk['LL_overall']}: McFadden R^2 {lk['mcfadden_r2']}, chi^2 {lk['chi2']} "
+          f"(df {lk['df']}, p = {lk['p_value']:.1e}); 2025-26 McFadden R^2 {lc['mcfadden_r2']}")
     m = r["margin_regression"]
     print(f"Margin regression check: home {m['home_edge']:.2f}, b2b {m['b2b_penalty']:.2f}, noise {m['noise_sd']:.2f}")
     print("Home edge by season:", r["home_edge_by_season"])

@@ -1,4 +1,5 @@
 {
+ "family": "logistic",
  "fit_seasons": [
   "2018-19",
   "2019-20",
@@ -9,22 +10,51 @@
   "2024-25"
  ],
  "games": 8289,
+ "coefficients": {
+  "strength": 0.13113,
+  "home_court": 0.26235,
+  "rest": 0.31386
+ },
+ "coefficient_standard_errors": {
+  "strength": 0.00397,
+  "home_court": 0.02444,
+  "rest": 0.04836
+ },
  "home_edge": 2.001,
- "b2b_penalty": 2.363,
- "sigma": 12.607,
+ "b2b_penalty": 2.393,
+ "scale": 7.626,
+ "noise_sd": 13.832,
  "standard_errors": {
-  "home_edge": 0.186,
-  "b2b_penalty": 0.368,
-  "sigma": 0.362
+  "scale": 0.231,
+  "home_edge": 0.191,
+  "b2b_penalty": 0.372
+ },
+ "likelihood": {
+  "LL_fit": -4984.5,
+  "LL_overall": -5690.8,
+  "home_win_rate": 0.5574,
+  "mcfadden_r2": 0.1241,
+  "chi2": 1412.6,
+  "df": 2,
+  "p_value": 1.7913731301067156e-307
+ },
+ "likelihood_check_2025_26": {
+  "LL_fit": -708.1,
+  "LL_overall": -845.3,
+  "home_win_rate": 0.5545,
+  "mcfadden_r2": 0.1622,
+  "chi2": 274.2,
+  "df": 2,
+  "p_value": 2.812576566068285e-60
  },
  "fit_scores": {
-  "log_loss": 0.6014,
+  "log_loss": 0.6013,
   "brier": 0.2074,
   "accuracy": 0.6692
  },
  "check_2025_26": {
-  "log_loss": 0.5763,
-  "brier": 0.1957,
+  "log_loss": 0.5757,
+  "brier": 0.1956,
   "accuracy": 0.7008
  },
  "margin_regression": {
@@ -34,13 +64,13 @@
   "noise_sd": 13.18
  },
  "home_edge_by_season": {
-  "2018-19": 3.23,
-  "2019-20": 1.95,
-  "2020-21": 1.54,
-  "2021-22": 1.4,
-  "2022-23": 2.66,
-  "2023-24": 1.61,
-  "2024-25": 1.61
+  "2018-19": 3.26,
+  "2019-20": 1.94,
+  "2020-21": 1.51,
+  "2021-22": 1.39,
+  "2022-23": 2.64,
+  "2023-24": 1.6,
+  "2024-25": 1.66
  },
  "b2b_share": 0.255
 }

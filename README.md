@@ -193,6 +193,196 @@ results, (7) polish and this README.
 - `tradesim/checker.py` returns pass / fail / not checked for each rule and team. No-trade clauses and one-year
   Bird veto rights count as a fail.
 
+## How the simulation works
+
+### Overview
+
+The simulator turns player ratings into a projected season in three steps. Step 1 rates every
+player and adds up each roster into one team strength (points per 100 possessions). Step 2 is a
+logistic regression that turns the strength gap between two teams into the home team's chance
+of winning one game. Step 3 plays the whole 1,230-game schedule with those chances 10,000 times
+and counts what happens. Every number below comes from the fitted files in `data/model/` or from
+`python scripts/model_metrics.py`.
+
+```mermaid
+flowchart LR
+    A["Player stats<br/>(BPM, minutes, age, draft slot)"] --> B["1. Player ratings<br/>→ team strength"]
+    B --> C["Team strength S<br/>(points per 100 poss.)"]
+    C --> D["2. Logistic regression"]
+    D --> E["Per-game win<br/>probability p"]
+    E --> F["3. Monte Carlo"]
+    F --> G["10,000 simulated seasons"]
+    G --> H["Projected wins,<br/>playoff / play-in / #1 seed odds"]
+```
+
+### 1. Player ratings → team strength
+
+Step 1 is not a regression from team stats to wins. It rates each player, then adds the
+ratings up with the minutes he's expected to play (`tradesim/ratings.py`: `fit`, `prior_for`,
+`posterior`; `tradesim/model.py`: `team_strength`).
+
+**Player impact** is points per 100 possessions compared with an average player, built from
+Basketball-Reference's Box Plus/Minus (BPM). BPM itself is Basketball-Reference's published
+box-score regression; it isn't fitted here. What *is* fitted is how much to trust it:
+
+- **Prior** (what we expect before this season), from the last 3 seasons:
+
+  $$\text{raw} = \frac{\sum_k r^{k-1}\,\text{MP}_k\,\text{BPM}_k + S\,\mu}{\sum_k r^{k-1}\,\text{MP}_k + S}, \qquad \text{prior} = \text{raw} + \text{age}[\text{bucket}]$$
+
+  $k$ = seasons back (1 to 3), $\text{MP}_k$ = minutes that season, $r$ = recency weight,
+  $S$ = shrinkage minutes, $\mu$ = what an unknown player is worth. Fitted values:
+  $r = 0.5$, $S = 300$ minutes, $\mu = -2.5$. Age adjustment by bucket (≤21, 22-23, 24-25,
+  26-27, 28-29, 30-31, 32-33, 34+): +1.173, +1.192, +0.636, +0.460, +0.131, −0.212, −0.066,
+  −0.442. These are chosen to best predict the next season's BPM (minutes-weighted squared
+  error 2.879 over 3,583 player-seasons, targets 2019-20 to 2025-26).
+- **Rookies** get the one ordinary linear regression in the model (least squares on 368
+  rookies drafted 2018-2025): $\text{BPM} = -0.877 - 0.576 \ln(\text{pick})$. Undrafted
+  players with no history get −3.042 (the average of 207 such players).
+- **This season** blends in current BPM by minutes played $m$ (empirical Bayes):
+
+  $$\text{impact} = \frac{K\cdot\text{prior} + m\cdot\text{BPM}_{now}}{K + m}, \qquad K = \frac{c}{\tau^2} = 898 \text{ minutes}, \qquad \text{SE} = \frac{1}{\sqrt{1/\tau^2 + m/c}}$$
+
+  $\tau$ = how far true ability moves from the prior (1.299 for veterans, 1.918 for rookies),
+  $c = 1{,}517$ = BPM noise per minute.
+
+**Team strength** is the minutes-weighted sum plus a small team residual:
+
+$$S_{team} = \sum_i \text{impact}_i \cdot \frac{\text{min}_i}{48} + \rho\cdot\text{residual}$$
+
+Projected minutes per team add up to 240 (`tradesim/rotation.py`). The residual is the observed
+net rating minus the player sum (2025-26 plus 2026-27 to date); only $\rho = 0.158$ of it
+carries over.
+
+**How well it predicts.** On 210 team-seasons (2019-20 to 2025-26), pre-season projected
+strength vs the net rating each team actually posted:
+
+$$R^2 = \frac{SS_{mean} - SS_{fit}}{SS_{mean}} = \frac{5527.7 - 3133.2}{5527.7} = 0.433$$
+
+$SS_{mean}$ = squared distances of the actual net ratings from their mean, $SS_{fit}$ = squared
+distances from the projections (RMSE 3.86 points). This is a check of a computed rating, not a
+fitted regression.
+
+**Why it can't be used for wins directly.** Strength is in points and has no bounds (a team
+can be +15 or −12), but a single game's win chance has to stay between 0 and 1. Step 2 makes
+that conversion.
+
+### 2. Logistic regression: strength gap → win probability
+
+`tradesim/game_model.py` (`fit`, `fit_logistic`, `win_probability`), saved to
+`data/model/game_model.json`.
+
+**Inputs** for each game: the strength gap $\Delta S = S_{home} - S_{away}$; $h$ = 1 for a home
+court, 0 on a neutral floor; $b$ = rest, +1 if only the away team played the day before, −1 if
+only the home team did, else 0. **Outcome:** $y = 1$ if the home team won, 0 if it lost.
+**Training data:** all 8,289 regular-season games 2018-19 to 2024-25, using each team's actual
+season net rating as $S$ (so this step doesn't depend on step 1). 2025-26 is held out.
+
+**The model** works in log-odds, which can take any value:
+
+$$\log\left(\frac{p}{1-p}\right) = 0.13113\,\Delta S + 0.26235\,h + 0.31386\,b$$
+
+(standard errors 0.00397, 0.02444, 0.04836). There is no intercept: two equal, rested teams on
+a neutral floor are a coin flip. The inverse, the sigmoid, turns log-odds back into a
+probability:
+
+$$p = \frac{e^{\log(\text{odds})}}{1 + e^{\log(\text{odds})}}$$
+
+In points: home court is worth $0.26235 / 0.13113 = 2.00$ points, a back-to-back costs
+$0.31386 / 0.13113 = 2.39$ points, and a game's result is spread around its expected margin
+with scale $1 / 0.13113 = 7.63$ points.
+
+**Fitting** is by maximum likelihood (Newton's method), not least squares: the outcomes are
+0 or 1, which sit at −∞ and +∞ in log-odds, so residuals there would be infinite. Instead the
+coefficients maximize
+
+$$LL = \sum_{y_i=1} \log p_i + \sum_{y_i=0} \log(1-p_i)$$
+
+**Fit quality.** McFadden's pseudo-R² compares the fit with a model that knows only the base
+rate (the home team wins 55.74% of training games):
+
+$$R^2 = \frac{LL(\text{overall}) - LL(\text{fit})}{LL(\text{overall})} = \frac{-5690.8 - (-4984.5)}{-5690.8} = 0.124$$
+
+$$\chi^2 = 2\,(LL(\text{fit}) - LL(\text{overall})) = 1412.6$$
+
+with df = 2 (3 parameters vs 1 for the base rate), so $p \approx 2 \times 10^{-307}$. On the
+held-out 2025-26 season: $LL(\text{fit}) = -708.1$ vs $-845.3$, $R^2 = 0.162$,
+$\chi^2 = 274.2$, $p \approx 3 \times 10^{-60}$.
+
+**Worked example** (2026-27 projected strengths, both teams rested): Brooklyn ($S = -6.19$)
+hosts Boston ($S = +6.82$), so $\Delta S = -13.01$:
+
+$$\log(\text{odds}) = 0.13113 \times (-13.01) + 0.26235 = -1.444, \qquad p = \frac{e^{-1.444}}{1 + e^{-1.444}} = 0.191$$
+
+With Boston at home instead: log-odds = 1.968, p = 0.877.
+
+### 3. Monte Carlo: one season, 10,000 times
+
+`tradesim/engine.py` (`Engine.simulate`, `_standings`); 10,000 seasons from fixed seeds.
+
+**Each simulated season** first draws what's uncertain about the teams:
+
+- every player's impact from $N(\text{impact}, \text{SE})$ (step 1);
+- each player's share of games played, from a Beta distribution around his expected
+  availability ($\kappa = 2.09$), played out as one injury spell at a random point; his minutes
+  go to his backups while he's out;
+- a team residual draw (SD $1.43\sqrt{1-0.158^2} = 1.41$) and a shared team-season error
+  ($\sigma_t = 2.5$, zero-sum across the league) for what moves a whole team, fitted on the
+  Nov 9 backtest.
+
+**Each game** then gets the two teams' strengths that night and a win probability $p$ from
+step 2. The engine draws the game's margin as the expected margin plus
+$7.63 \times$ a standard logistic random number; the home team wins if the margin is above 0.
+That is the same as drawing a uniform random number $u$ and giving the win to the home team
+when $u < p$, and the margins give point differential for the tiebreakers.
+
+**Games already played** are not locked in. Every season starts at 0-0 and all 82 games are
+simulated. Played games only feed the inputs: this season's BPM and minutes (the blend in
+step 1), the team residual and availability.
+
+**Tie-breakers and seeding** follow the NBA's two-team and multi-team rules (head-to-head,
+division winner, division and conference record, record vs playoff-eligible teams, point
+differential, then a random draw), and seeds 7-10 play the play-in: see
+[`tradesim/standings.py`](tradesim/standings.py).
+
+**Outputs** over the 10,000 seasons, per team:
+
+- projected wins = the mean of its 10,000 win totals;
+- the 10-90% range = the 10th and 90th percentiles of those totals;
+- playoff % = share of seasons it finished top 6 or won through the play-in; play-in % =
+  share seeded 7-10; #1 seed % = share seeded first.
+
+**Simulation error.** A projection from 10,000 seasons is itself an estimate:
+
+$$\text{SE} = \frac{\text{SD of the team's simulated wins}}{\sqrt{10{,}000}}$$
+
+For Brooklyn, $8.19 / 100 = 0.082$ wins; across all 30 teams it's 0.080-0.099 (the "±0.09 wins"
+on the Team page). The change from a trade is more precise (±0.02-0.05 on the Results page,
+e.g. ±0.024 for a one-player swap), because before and after are simulated with the same
+random draws and only the difference varies.
+
+### Trades
+
+A trade changes step 1's inputs: players switch teams, and each team's minutes are
+redistributed (incoming players take the departing players' minutes first). The new team
+strengths flow through step 2's win probabilities into step 3's seasons, run on the same random
+draws as the no-trade season, so the change in wins is measured season by season. Two trades
+together can differ from the sum of each alone: new players share the same 240 minutes, so the
+second acquisition can take minutes from the first instead of from a weaker player.
+
+### Limitations
+
+- **Ratings come from the box score.** BPM sees what's in the box score; defense and spacing
+  that don't show up there are only partly captured.
+- **Minutes are a rule, not a coach.** Rotations and injury replacements follow fixed rules
+  (backups by position and depth), and an injury is one spell per player per season.
+- **Games are independent once strengths are drawn.** Apart from back-to-backs and the
+  per-season draws, there are no streaks, travel or matchup effects.
+- **σ_t was tuned with the earlier probit game model.** The logistic model replaced it on
+  2026-11-13 (win probabilities within 1.2 percentage points; projections moved at most
+  0.1 wins); σ_t = 2.5 has not been refitted since.
+- **The data is as of Nov 9, 2026.** Trades, signings and injuries since then aren't included
+  until the data is refreshed.
+
 ## Season simulator
 
 Simulates the full 82-game 2026-27 regular season, every team from 0-0, for the real
@@ -238,10 +428,12 @@ this season only inform player and team strength; they're never locked in as res
    extra comes from the lowest-impact same/adjacent-position players; leftovers go to the
    next players up. A mild diminishing-returns haircut applies to stacked top-3s (15% of
    their contribution above 10 points; a simplification, not fitted).
-5. **Game model** (`tradesim/game_model.py`): `P(home win) = Phi((S_home - S_away + 2.00 -
-   2.36 x b2b difference) / 12.61)`, fitted on all 8,289 games 2018-19 to 2024-25 with actual
-   season net ratings (home edge 0 on neutral floors). Each game produces a margin, so point
-   differential is available.
+5. **Game model** (`tradesim/game_model.py`): logistic regression,
+   `log-odds(home win) = 0.131 x strength gap + 0.262 x home court + 0.314 x rest`
+   (home edge 2.00 points, back-to-back 2.39, scale 7.63), fitted by maximum likelihood on all
+   8,289 games 2018-19 to 2024-25 with actual season net ratings (home edge 0 on neutral
+   floors). Each game produces a margin, so point differential is available. See
+   "How the simulation works" above.
 6. **Uncertainty per simulated season:** every player's impact drawn once from
    `N(rating, SE)`; a small team residual draw (1.41); and a shared, zero-sum team-season
    error `eps_team ~ N(0, sigma_t)` for what moves a whole team together. sigma_t = 2.5,
@@ -357,8 +549,8 @@ by < 0.5.
   injured at the start are missing; both make it harder than the live 2026-27 setting.
 - The 2026-27 schedule's 30 in-season-tournament games aren't set yet (filled with
   same-conference matchups); "playoff-eligible" in the tiebreakers is read as the top 10.
-- The game spread (sigma) was fitted on season-average strengths, so it also contains a
-  little night-to-night lineup variation the simulator adds separately (about 1%).
+- The game model's spread (scale 7.63) was fitted on season-average strengths, so it also
+  contains a little night-to-night lineup variation the simulator adds separately (about 1%).
 
 ## Trade checker limitations
 

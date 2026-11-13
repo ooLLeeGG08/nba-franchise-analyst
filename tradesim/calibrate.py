@@ -48,7 +48,7 @@ def run(write=True):
     engine = Engine(League.load(), load_schedule_2026_27(), cfg, n_sims=4000, team_season_sd=0.0)
     without = engine.uncertainty()["season_strength_sd"]
     sigma_t = math.sqrt(max(target ** 2 - without ** 2, 0.0))
-    sigma = load_model()["sigma"]
+    sigma = load_model()["noise_sd"]  # SD of one game's margin around its expectation
     errors = check["team_season_errors"]
     result = {
         "target_latent_sd": target,
@@ -137,7 +137,7 @@ def simulate_past_season(games, predicted, latent_sd0, sigma_t, model, n_sims, s
     strength = forecast + independent spread (what the player draws give, latent_sd0) +
     zero-sum team-season error (sigma_t); real schedule, fitted game model, top 6 by wins."""
     from tradesim.engine import team_season_errors
-    from tradesim.game_model import back_to_backs, norm_cdf
+    from tradesim.game_model import back_to_backs, logistic
     from tradesim.simulate import CODES, INDEX, _seeds
     rng = np.random.default_rng(seed)
     base = np.array([predicted[c] for c in CODES])
@@ -147,8 +147,8 @@ def simulate_past_season(games, predicted, latent_sd0, sigma_t, model, n_sims, s
     away = np.array([INDEX[g["away"]] for g in games])
     court = np.array([0.0 if g["neutral"] else 1.0 for g in games])
     b2b_h, b2b_a = back_to_backs(games)
-    p = norm_cdf((strengths[:, home] - strengths[:, away] + model["home_edge"] * court
-                  - model["b2b_penalty"] * (b2b_h - b2b_a)) / model["sigma"])
+    p = logistic((strengths[:, home] - strengths[:, away] + model["home_edge"] * court
+                  - model["b2b_penalty"] * (b2b_h - b2b_a)) / model["scale"])
     home_won = rng.random(p.shape) < p
     wins = np.zeros((n_sims, len(CODES)))
     np.add.at(wins.T, home, home_won.T)
@@ -193,7 +193,7 @@ def run_checks(write=True):
         check = json.load(f)
     with open(UNCERTAINTY_PATH) as f:
         result = json.load(f)
-    sd0, sigma = result["sim_sd_without_team_term"], load_model()["sigma"]
+    sd0, sigma = result["sim_sd_without_team_term"], load_model()["noise_sd"]
     errors = check["team_season_errors"]
     result["loso"] = loso_coverage(errors, sd0, sigma)
     calib = playoff_calibration(errors, sd0, sigma)

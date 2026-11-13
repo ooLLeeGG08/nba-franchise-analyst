@@ -6,7 +6,8 @@ import pytest
 
 from tradesim import game_model
 from tradesim.engine import Engine, draw_impacts
-from tradesim.game_model import back_to_backs, fit_probit, load_model, norm_cdf, win_probability
+from tradesim.game_model import (back_to_backs, fit_logistic, load_model, logistic, logistic_from_normal, norm_cdf,
+                                  win_probability)
 from tradesim.games import load_schedule_2026_27
 from tradesim.league import player_id, League
 from tradesim.model import load_sim_config
@@ -23,23 +24,36 @@ def test_norm_cdf_is_accurate():
         assert norm_cdf(x) == pytest.approx(0.5 * (1 + math.erf(x / math.sqrt(2))), abs=2e-7)
 
 
-def test_probit_recovers_known_constants():
+def test_logistic_regression_recovers_known_constants():
     rng = np.random.default_rng(0)
     n = 40000
     x = np.column_stack([rng.normal(0, 6, n), np.ones(n), rng.integers(-1, 2, n)])
-    true = np.array([1 / 12, 2.5 / 12, 1.5 / 12])
-    y = (rng.random(n) < norm_cdf(x @ true)).astype(float)
-    beta, _ = fit_probit(x, y)
-    assert 1 / beta[0] == pytest.approx(12, rel=0.05)
-    assert beta[1] / beta[0] == pytest.approx(2.5, abs=0.3)
-    assert beta[2] / beta[0] == pytest.approx(1.5, abs=0.4)
+    true = np.array([1 / 7.5, 2.0 / 7.5, 2.5 / 7.5])
+    y = (rng.random(n) < logistic(x @ true)).astype(float)
+    beta, cov = fit_logistic(x, y)
+    assert 1 / beta[0] == pytest.approx(7.5, rel=0.05)
+    assert beta[1] / beta[0] == pytest.approx(2.0, abs=0.3)
+    assert beta[2] / beta[0] == pytest.approx(2.5, abs=0.4)
+    assert np.all(np.diag(cov) > 0)
+
+
+def test_logistic_noise_gives_the_logistic_win_probability():
+    """The simulator turns normal draws into logistic ones: P(scale x noise > -m) = logistic(m / scale)."""
+    z = np.random.default_rng(1).standard_normal(400000)
+    noise = logistic_from_normal(z)
+    for m in (-10.0, -3.0, 0.0, 2.0, 8.0):
+        assert np.mean(m + 7.6 * noise > 0) == pytest.approx(float(logistic(m / 7.6)), abs=0.003)
 
 
 def test_fitted_constants_are_in_expected_ranges(model):
     assert model["fit_seasons"] == game_model.FIT_SEASONS and model["games"] > 8000
     assert 1.0 < model["home_edge"] < 3.5
     assert 0.5 < model["b2b_penalty"] < 3.5
-    assert 10 < model["sigma"] < 15
+    assert model["family"] == "logistic"
+    assert 6 < model["scale"] < 10
+    assert model["noise_sd"] == pytest.approx(model["scale"] * math.pi / math.sqrt(3), abs=0.01)
+    lk = model["likelihood"]
+    assert lk["LL_fit"] > lk["LL_overall"] and 0.05 < lk["mcfadden_r2"] < 0.3 and lk["p_value"] < 1e-10
     m = model["margin_regression"]  # the cross-check agrees
     assert abs(m["home_edge"] - model["home_edge"]) < 0.5 and abs(m["b2b_penalty"] - model["b2b_penalty"]) < 0.5
 
@@ -47,7 +61,8 @@ def test_fitted_constants_are_in_expected_ranges(model):
 def test_saved_model_matches_a_fresh_fit(model):
     """Refit with `python -m tradesim.game_model` after changing game data."""
     fresh = game_model.fit(write=False)
-    assert fresh["home_edge"] == model["home_edge"] and fresh["sigma"] == model["sigma"]
+    assert fresh["home_edge"] == model["home_edge"] and fresh["scale"] == model["scale"]
+    assert fresh["coefficients"] == model["coefficients"]
 
 
 def test_model_works_on_a_season_it_was_not_fitted_on(model):
@@ -58,7 +73,9 @@ def test_model_works_on_a_season_it_was_not_fitted_on(model):
 def test_win_probability_basics(model):
     assert win_probability(0.0, 0.0, 0, 0, model) == pytest.approx(0.5)
     home = win_probability(0.0, 1.0, 0, 0, model)
-    assert home == pytest.approx(norm_cdf(model["home_edge"] / model["sigma"]))
+    assert home == pytest.approx(1 / (1 + math.exp(-model["home_edge"] / model["scale"])))
+    log_odds = model["coefficients"]["home_court"]  # same thing in log-odds form
+    assert home == pytest.approx(1 / (1 + math.exp(-log_odds)), abs=1e-4)
     assert win_probability(0.0, 1.0, 1, 0, model) < home < win_probability(0.0, 1.0, 0, 1, model)
 
 
@@ -157,6 +174,6 @@ def test_playoff_calibration_is_reproducible():
     u = json.load(open(calibrate.UNCERTAINTY_PATH))
     errors = json.load(open(calibrate.CHECK_PATH))["team_season_errors"]
     errors = [e for e in errors if e["season"] in ("2023-24", "2024-25")]
-    a = calibrate.playoff_calibration(errors, u["sim_sd_without_team_term"], load_model()["sigma"], n_sims=500)
-    b = calibrate.playoff_calibration(errors, u["sim_sd_without_team_term"], load_model()["sigma"], n_sims=500)
+    a = calibrate.playoff_calibration(errors, u["sim_sd_without_team_term"], load_model()["noise_sd"], n_sims=500)
+    b = calibrate.playoff_calibration(errors, u["sim_sd_without_team_term"], load_model()["noise_sd"], n_sims=500)
     assert a == b
