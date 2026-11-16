@@ -1,25 +1,30 @@
 :root {
-    --bg: #0a0c0f;
-    --bg-elevated: #101317;
-    --surface: #15181d;
-    --surface-hover: #1b1f25;
-    --border: #23272e;
-    --border-strong: #323841;
-    --text: #e8eaed;
-    --text-muted: #9aa0a8;
-    --text-faint: #656b74;
-    --accent: #5b8cff;
-    --accent-hover: #7ba0ff;
+    /* Near-black ground with an orange-red / blue "aurora" accent pair. */
+    --bg: #08090b;
+    --bg-elevated: #0c0d10;
+    --surface: #ffffff08;
+    --surface-solid: #121418;
+    --surface-hover: #ffffff0f;
+    --border: #ffffff14;
+    --border-strong: #ffffff24;
+    --text: #f2f2f0;
+    --text-muted: #a3a6ab;   /* 8.1:1 on --bg */
+    --text-faint: #80848b;   /* 5.2:1 on --bg: still passes WCAG AA for small text */
+    --accent: #ff5a1f;       /* aurora orange-red */
+    --accent-hover: #ff7a47;
+    --accent-blue: #4a63ff;  /* aurora blue */
+    --accent-ink: #120703;   /* text on an accent fill */
     --danger: #e5484d;
     --danger-bg: rgba(229, 72, 77, 0.12);
     --danger-border: rgba(229, 72, 77, 0.35);
     --radius-sm: 6px;
     --radius-md: 10px;
-    --radius-lg: 16px;
+    --radius-lg: 14px;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
     --sidebar-width: 256px;
     --sidebar-collapsed-width: 64px;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Inter Tight', var(--font-sans);
 }
 
 * { box-sizing: border-box; }
@@ -114,7 +119,7 @@ button {
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.04em;
-    color: var(--bg);
+    color: var(--accent-ink);
     background: var(--accent);
     padding: 3px 6px;
     border-radius: var(--radius-sm);
@@ -326,69 +331,231 @@ button {
     padding: 12px 16px 16px;
 }
 
-/* ---------- Empty state ---------- */
+/* ---------- Shared type ---------- */
+
+/* Tiny uppercase label used for section eyebrows across the app. */
+.eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ---------- Empty state (front page) ---------- */
 
 .empty-state {
-    margin: auto;
-    max-width: 640px;
+    position: relative;
+    flex: 1;
+    display: flex;
+    min-height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.empty-state-inner {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    padding: 32px 24px;
-    text-align: center;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(40px, 9vh, 96px) clamp(20px, 5vw, 64px) 40px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vh, 48px);
+    animation: fadeInUp 0.6s ease both;
 }
 
-.empty-state-mark {
-    display: inline-block;
-    font-family: 'Inter Tight', var(--font-sans);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    border: 1px solid var(--border-strong);
-    padding: 4px 10px;
-    border-radius: 999px;
-    margin-bottom: 18px;
+/* Aurora: three blurred gradient bands drifting slowly behind the headline.
+   Pure CSS; frozen by the global prefers-reduced-motion rule. */
+.aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.empty-state-title {
-    font-family: 'Inter Tight', var(--font-sans);
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0 0 8px;
+.aurora-band {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+/* The main ribbon: blue edge -> hot orange core -> red tail, like a light
+   streak. Kept below full opacity so headline text stays readable on it. */
+.aurora-band.one {
+    width: 105%;
+    height: 42%;
+    top: 2%;
+    right: -38%;
+    background: linear-gradient(100deg, transparent 4%, #3a4dff 26%, #6a5cff 34%, #ff5a1f 50%, #ff3a0e 62%, #b81d05 72%, transparent 90%);
+    filter: blur(46px);
+    opacity: 0.92;
+    transform: rotate(-32deg);
+    animation: auroraDriftA 22s ease-in-out infinite alternate;
+}
+
+/* A softer second streak crossing the first. */
+.aurora-band.two {
+    width: 80%;
+    height: 22%;
+    top: 30%;
+    right: -26%;
+    background: linear-gradient(90deg, transparent 0%, #ff5a1f 35%, #4a63ff 70%, transparent 100%);
+    filter: blur(60px);
+    opacity: 0.55;
+    transform: rotate(-12deg);
+    animation: auroraDriftB 26s ease-in-out infinite alternate;
+}
+
+/* Hot spot where the ribbons meet. */
+.aurora-band.three {
+    width: 26%;
+    height: 24%;
+    top: 12%;
+    right: 6%;
+    background: radial-gradient(closest-side, #ffb08a 0%, #ff5a1f88 45%, transparent 100%);
+    filter: blur(30px);
+    opacity: 0.7;
+    animation: auroraDriftC 18s ease-in-out infinite alternate;
+}
+
+/* Fades the aurora into the page so the lower half stays plain black. */
+.aurora::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 35%, var(--bg) 78%);
+}
+
+@keyframes auroraDriftA {
+    from { transform: translate3d(0, 0, 0) rotate(-32deg) scale(1); }
+    to   { transform: translate3d(-6%, 5%, 0) rotate(-24deg) scale(1.06); }
+}
+
+@keyframes auroraDriftB {
+    from { transform: translate3d(0, 0, 0) rotate(-12deg) scale(1); }
+    to   { transform: translate3d(5%, -4%, 0) rotate(-20deg) scale(1.08); }
+}
+
+@keyframes auroraDriftC {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(-12%, 10%, 0) scale(1.15); }
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 6.4vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 14px 0 0;
     color: var(--text);
+    display: flex;
+    flex-direction: column;
 }
 
-.empty-state-subtitle {
+.hero-line.indent { padding-left: 1.6em; }
+.hero-line.indent-sm { padding-left: 0.6em; }
+
+.hero-meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: end;
+}
+
+.hero-subtitle {
+    margin: 0;
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.55;
     color: var(--text-muted);
-    font-size: 14px;
-    margin: 0 0 28px;
 }
 
-.suggestion-grid {
+.hero-stats {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: clamp(20px, 3vw, 40px);
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 6px;
+}
+
+.hero-stat dd {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -0.02em;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.hero-stat dt {
+    font-size: 12px;
+    color: var(--text-faint);
+}
+
+.suggestion-block .eyebrow {
+    margin-bottom: 10px;
+}
+
+.suggestion-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    column-gap: 32px;
+    border-top: 1px solid var(--border);
 }
 
-.suggestion-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-size: 13px;
-    text-align: left;
-    padding: 12px 14px;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
-    /* Same defensive fix as .leaders-col: a grid item's own automatic
-       minimum size is content-based by default, independent of the track's
-       minmax(0, 1fr) fix -- this prevents the same overflow class here too. */
+.suggestion-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     min-width: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 15px;
+    text-align: left;
+    padding: 16px 2px;
+    cursor: pointer;
+    transition: color 0.15s ease, padding 0.2s ease;
 }
 
-.suggestion-card:hover {
-    background: var(--surface-hover);
-    border-color: var(--accent);
-    transform: translateY(-1px);
+.suggestion-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.suggestion-arrow {
+    flex-shrink: 0;
+    color: var(--text-faint);
+    transition: transform 0.2s ease, color 0.15s ease;
+}
+
+.suggestion-row:hover,
+.suggestion-row:focus-visible {
+    color: #fff;
+    padding-left: 8px;
+}
+
+.suggestion-row:hover .suggestion-arrow,
+.suggestion-row:focus-visible .suggestion-arrow {
+    color: var(--accent);
+    transform: translateX(3px);
+}
+
+.suggestion-row:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
 }
 
 /* ---------- Transcript ---------- */
@@ -626,7 +793,7 @@ button {
 }
 
 .season-switcher-select {
-    background: var(--surface);
+    background: var(--surface-solid);
     border: 1px solid var(--border-strong);
     color: var(--text);
     font-family: inherit;
@@ -1085,7 +1252,7 @@ button {
 .leaders-tab.active {
     background: var(--accent);
     border-color: var(--accent);
-    color: var(--bg);
+    color: var(--accent-ink);
 }
 
 .leaders-table-window {
@@ -1274,7 +1441,7 @@ button {
 .composer-send {
     background: var(--accent);
     border: none;
-    color: var(--bg);
+    color: var(--accent-ink);
     width: 32px;
     height: 32px;
     border-radius: var(--radius-md);
@@ -1303,7 +1470,7 @@ button {
     top: 12px;
     left: 12px;
     z-index: 30;
-    background: var(--surface);
+    background: var(--surface-solid);
     border: 1px solid var(--border-strong);
     color: var(--text);
     width: 36px;
@@ -1362,9 +1529,22 @@ button {
         padding-top: 56px;
     }
 
-    .suggestion-grid {
+    .suggestion-list {
         grid-template-columns: 1fr;
     }
+
+    .hero-meta {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .hero-stats {
+        justify-content: flex-start;
+    }
+
+    .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
+    .aurora-band.two { width: 140%; height: 18%; right: -70%; top: 22%; }
+    .aurora-band.three { width: 50%; height: 18%; right: -6%; top: 10%; }
 
     .user-message {
         max-width: 85%;
