@@ -13,7 +13,62 @@ dashboards and comparison views alongside every answer.
 
 Run the test suite with `pytest`.
 
-## How it works
+## What the chatbot is
+
+The chatbot has two parts:
+
+1. **A fact finder (plain Python, no AI).** `rag.py` reads your question and
+   looks for team names, player names, seasons, and words like "trade" or
+   "compare". It uses simple rules (text matching) to pull the matching facts
+   from this app's data files: records, rosters, stat leaders, coaches,
+   franchise history, and some salaries. No machine learning is used in this
+   step.
+2. **A writer (a neural network).** `llm.py` sends those facts to a large
+   language model, `openai/gpt-oss-120b`, through the Groq API. It's a
+   transformer neural network with about 120 billion parameters. It runs on
+   Groq's servers, not inside this app. The model turns the facts into a
+   readable answer.
+
+This setup is called **RAG (retrieval-augmented generation)**: the app first
+*retrieves* facts, then the model *generates* an answer from them. That way the
+answer is based on this app's data, not on whatever the model happens to
+remember from its training, which can be out of date.
+
+### How a response is generated, step by step
+
+1. **You ask a question**, for example "Why are the Spurs better than the
+   Kings?"
+2. **The app finds the topic.** It spots the teams (Spurs, Kings), any players,
+   and the season. If you ask a follow-up like "what about their coach?", it
+   looks back at your earlier messages to work out which team you mean.
+3. **The app gathers the facts.** For each team or player it builds a short
+   text summary from the data files. Trade questions also get the league's
+   salary-cap rules. Every question gets a league-wide efficiency (PIE)
+   leaderboard.
+4. **The app picks the answer style.**
+   - Normal question: a short plain answer (1-2 sentences for a simple fact).
+   - Comparison or "why" question: one bold verdict and up to 3 bullet points.
+   - Trade question: four parts: Verdict, Team fit, Risks, Bottom line.
+5. **The app sends everything to the model.** That means the instructions
+   (the "system prompt"), your last 10 messages, the facts, and your question.
+   The instructions tell the model to:
+   - use only the facts it was given
+   - say "I don't have that data" instead of guessing
+   - never claim a trade is cap-legal
+   - remember that the data stops at the 2025-26 season
+6. **The model writes the answer.** It predicts the reply one word piece at a
+   time, using the facts and instructions it was given.
+7. **The app cleans up and shows the answer.** It removes labels the model
+   wasn't supposed to write (like "Fact:"). Then it shows the reply next to a
+   team dashboard, player comparison, or leaders chart. Those charts come
+   straight from the data, not from the model, so their numbers are always
+   exact.
+
+**Keep in mind:** the model can still make mistakes. It might misread a fact or
+reason badly about a "what if" question. That's why the charts beside each
+answer show the real numbers.
+
+## How it works (technical)
 
 A question flows: `static/app.js` (composer) -> `POST /api/chat` ->
 `rag.py`'s `build_context()` assembles a plain-text context string from the
