@@ -1764,8 +1764,9 @@ button {
         margin-top: -56px;
     }
 
+    /* Menu button ends at 48px; start the eyebrow just below it. */
     .empty-state-inner {
-        padding-top: calc(56px + clamp(40px, 9vh, 96px));
+        padding-top: 72px;
     }
 
     .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
