@@ -5,8 +5,8 @@
 const Charts = (() => {
     if (window.Chart) {
         Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
-        Chart.defaults.color = '#9aa0a8';
-        Chart.defaults.borderColor = '#262b33';
+        Chart.defaults.color = '#a3a6ab';
+        Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.08)';
     }
 
     function createLineChart(canvas, { labels, values, color = '#5b8cff', yLabel = '', compact = true }) {
@@ -32,10 +32,10 @@ const Charts = (() => {
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: '#1c2027',
+                        backgroundColor: '#121418',
                         titleColor: '#e8eaed',
                         bodyColor: '#e8eaed',
-                        borderColor: '#33393f',
+                        borderColor: 'rgba(255, 255, 255, 0.14)',
                         borderWidth: 1,
                         padding: 8,
                         displayColors: false,
@@ -47,7 +47,7 @@ const Charts = (() => {
                         ticks: { maxRotation: 0, autoSkip: true, font: { size: 10 } },
                     },
                     y: {
-                        grid: { color: '#1c2027' },
+                        grid: { color: 'rgba(255, 255, 255, 0.06)' },
                         title: yLabel ? { display: true, text: yLabel, font: { size: 10 } } : undefined,
                         ticks: { font: { size: 10 } },
                     },
@@ -84,11 +84,11 @@ const Charts = (() => {
                 interaction: { mode: 'index', intersect: false },
                 plugins: {
                     legend: { display: true, position: 'bottom', labels: { boxWidth: 10, font: { size: 11 }, filter: (item) => !item.text.includes('avg') } },
-                    tooltip: { backgroundColor: '#1c2027', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: '#33393f', borderWidth: 1, padding: 8 },
+                    tooltip: { backgroundColor: '#121418', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: 'rgba(255, 255, 255, 0.14)', borderWidth: 1, padding: 8 },
                 },
                 scales: {
                     x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8, font: { size: 10 } } },
-                    y: { grid: { color: '#1c2027' }, ticks: { font: { size: 10 } } },
+                    y: { grid: { color: 'rgba(255, 255, 255, 0.06)' }, ticks: { font: { size: 10 } } },
                 },
             },
         });
@@ -107,11 +107,11 @@ const Charts = (() => {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
-                    tooltip: { backgroundColor: '#1c2027', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: '#33393f', borderWidth: 1, padding: 8 },
+                    tooltip: { backgroundColor: '#121418', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: 'rgba(255, 255, 255, 0.14)', borderWidth: 1, padding: 8 },
                 },
                 scales: {
                     x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 8, font: { size: 10 } } },
-                    y: { grid: { color: '#1c2027' }, ticks: { font: { size: 10 } } },
+                    y: { grid: { color: 'rgba(255, 255, 255, 0.06)' }, ticks: { font: { size: 10 } } },
                 },
             },
         });
@@ -132,11 +132,11 @@ const Charts = (() => {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: true, position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
-                    tooltip: { backgroundColor: '#1c2027', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: '#33393f', borderWidth: 1, padding: 8 },
+                    tooltip: { backgroundColor: '#121418', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: 'rgba(255, 255, 255, 0.14)', borderWidth: 1, padding: 8 },
                 },
                 scales: {
                     x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-                    y: { grid: { color: '#1c2027' }, ticks: { font: { size: 10 } } },
+                    y: { grid: { color: 'rgba(255, 255, 255, 0.06)' }, ticks: { font: { size: 10 } } },
                 },
             },
         });
