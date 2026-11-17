@@ -1769,6 +1769,11 @@ button {
         padding-top: 72px;
     }
 
+    /* Tighter gap between the eyebrow and the headline on phones. */
+    .hero-title {
+        margin-top: -22px;
+    }
+
     .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
     .aurora-band.two { width: 140%; height: 18%; right: -70%; top: 22%; }
     .aurora-band.three { width: 50%; height: 18%; right: -6%; top: 10%; }
