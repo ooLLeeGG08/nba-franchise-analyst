@@ -1764,14 +1764,26 @@ button {
         margin-top: -56px;
     }
 
-    /* Menu button ends at 48px; start the eyebrow just below it. */
+    /* Menu button ends at 48px; start the eyebrow just below it. The
+       suggestions are pushed to the bottom, right above the composer. */
     .empty-state-inner {
         padding-top: 72px;
+        padding-bottom: 8px;
+        gap: 22px;
+        min-height: 100%;
+    }
+
+    .suggestion-block {
+        margin-top: auto;
+    }
+
+    .suggestion-row:last-child {
+        border-bottom: none;
     }
 
     /* Tighter gap between the eyebrow and the headline on phones. */
     .hero-title {
-        margin-top: -22px;
+        margin-top: -6px;
     }
 
     .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
