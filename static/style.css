@@ -1757,6 +1757,17 @@ button {
         grid-template-columns: 1fr;
     }
 
+    /* .main-content reserves 56px at the top for the menu button; pull the
+       front page up into that space so the aurora runs to the top edge
+       instead of starting under a hard line. The content keeps its place. */
+    .empty-state {
+        margin-top: -56px;
+    }
+
+    .empty-state-inner {
+        padding-top: calc(56px + clamp(40px, 9vh, 96px));
+    }
+
     .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
     .aurora-band.two { width: 140%; height: 18%; right: -70%; top: 22%; }
     .aurora-band.three { width: 50%; height: 18%; right: -6%; top: 10%; }
