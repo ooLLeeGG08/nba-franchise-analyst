@@ -3,8 +3,6 @@
 // context (rag.py's build_context), so this dashboard is a visual companion
 // to that answer, not a workaround for a missing half of it.
 const ComparisonView = (() => {
-    let chartCounter = 0;
-
     function render(container, { teamA, teamB }) {
         container.innerHTML = '';
         const root = document.createElement('div');
@@ -14,8 +12,7 @@ const ComparisonView = (() => {
 
         root.appendChild(buildSeasonSwitcher(container, teamA, teamB));
         root.appendChild(buildHeaders(teamA, teamB));
-        root.appendChild(buildKpiTable(teamA, teamB));
-        root.appendChild(buildChart(teamA, teamB));
+        root.appendChild(buildHeadToHead(teamA, teamB));
 
         container.appendChild(root);
     }
@@ -73,71 +70,34 @@ const ComparisonView = (() => {
         return wrap;
     }
 
+    const pct = (v) => `${(v * 100).toFixed(1)}%`;
+    const pctPts = (d) => `${(d * 100).toFixed(1)} pts`;
+    const signed = (v) => `${v > 0 ? '+' : ''}${v.toFixed(1)}`;
+
     const ROWS = [
-        { key: 'ppg', label: 'PPG', higherIsBetter: true },
-        { key: 'opp_ppg', label: 'Opp. PPG', higherIsBetter: false },
-        { key: 'point_diff', label: 'Point Diff', higherIsBetter: true },
-        { key: 'win_pct', label: 'Win %', higherIsBetter: true, format: (v) => `${(v * 100).toFixed(1)}%` },
-        { key: 'fg_pct', label: 'FG%', higherIsBetter: true, format: (v) => (v != null ? `${(v * 100).toFixed(1)}%` : '—') },
-        { key: 'fg3_pct', label: '3P%', higherIsBetter: true, format: (v) => (v != null ? `${(v * 100).toFixed(1)}%` : '—') },
+        { key: 'ppg', label: 'PPG', domain: 'team_ppg', format: (v) => v.toFixed(1) },
+        { key: 'opp_ppg', label: 'Opp. PPG', domain: 'team_opp_ppg', higherIsBetter: false, format: (v) => v.toFixed(1) },
+        { key: 'point_diff', label: 'Point Diff', domain: 'team_point_diff', format: signed },
+        { key: 'win_pct', label: 'Win %', domain: 'team_win_pct', format: pct, formatDelta: pctPts },
+        { key: 'fg_pct', label: 'FG%', domain: 'team_fg_pct', format: pct, formatDelta: pctPts },
+        { key: 'fg3_pct', label: '3P%', domain: 'team_fg3_pct', format: pct, formatDelta: pctPts },
     ];
 
-    function buildKpiTable(teamA, teamB) {
+    // Replaces the old KPI table + grouped Chart.js bars with one animated
+    // head-to-head block (see headToHead.js).
+    function buildHeadToHead(teamA, teamB) {
         const section = document.createElement('div');
-        section.className = 'comparison-table';
+        section.className = 'chart-card h2h-card';
         const sA = teamA.seasonSnapshot, sB = teamB.seasonSnapshot;
-
-        const colHeader = document.createElement('div');
-        colHeader.className = 'comparison-col-header';
-        colHeader.innerHTML = `
-            <div class="comparison-col-header-cell a">${escapeHtml(teamA.branding.abbreviation)}</div>
-            <div></div>
-            <div class="comparison-col-header-cell b">${escapeHtml(teamB.branding.abbreviation)}</div>
-        `;
-        section.appendChild(colHeader);
-
-        ROWS.forEach((row) => {
-            if (!sA || !sB) return;
-            const a = sA[row.key], b = sB[row.key];
-            const aBetter = row.higherIsBetter ? a > b : a < b;
-            const bBetter = row.higherIsBetter ? b > a : b < a;
-            const format = row.format || ((v) => v);
-
-            const rowEl = document.createElement('div');
-            rowEl.className = 'comparison-row';
-            rowEl.innerHTML = `
-                <div class="comparison-cell ${aBetter ? 'better' : ''}">${format(a)}</div>
-                <div class="comparison-cell-label">${row.label}</div>
-                <div class="comparison-cell ${bBetter ? 'better' : ''}">${format(b)}</div>
-            `;
-            section.appendChild(rowEl);
-        });
-        return section;
-    }
-
-    function buildChart(teamA, teamB) {
-        const section = document.createElement('div');
-        section.className = 'chart-card';
-        const chartId = 'comparison-chart-' + (chartCounter++);
-        section.innerHTML = `<div class="chart-card-title">PPG / Opp. PPG / Point Diff</div><div class="chart-canvas-wrap tall"><canvas id="${chartId}"></canvas></div>`;
-
-        requestAnimationFrame(() => {
-            const canvas = document.getElementById(chartId);
-            if (!canvas || !teamA.seasonSnapshot || !teamB.seasonSnapshot) return;
-            Charts.createComparisonBarChart(canvas, {
-                labels: ['PPG', 'Opp. PPG', 'Point Diff'],
-                seriesA: {
-                    label: teamA.branding.abbreviation,
-                    color: TeamColors.readableFillForBranding(teamA.branding),
-                    values: [teamA.seasonSnapshot.ppg, teamA.seasonSnapshot.opp_ppg, teamA.seasonSnapshot.point_diff],
-                },
-                seriesB: {
-                    label: teamB.branding.abbreviation,
-                    color: TeamColors.readableFillForBranding(teamB.branding),
-                    values: [teamB.seasonSnapshot.ppg, teamB.seasonSnapshot.opp_ppg, teamB.seasonSnapshot.point_diff],
-                },
-            });
-        });
+        if (!sA || !sB) {
+            section.innerHTML = '<div class="chart-card-meta">No season stats to compare for this season.</div>';
+            return section;
+        }
+        section.appendChild(HeadToHead.build({
+            a: { label: teamA.branding.abbreviation, color: TeamColors.readableFillForBranding(teamA.branding) },
+            b: { label: teamB.branding.abbreviation, color: TeamColors.readableFillForBranding(teamB.branding) },
+            rows: ROWS.map((row) => ({ ...row, aVal: sA[row.key], bVal: sB[row.key] })),
+        }));
         return section;
     }
 

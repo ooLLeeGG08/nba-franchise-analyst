@@ -117,30 +117,5 @@ const Charts = (() => {
         });
     }
 
-    function createComparisonBarChart(canvas, { labels, seriesA, seriesB }) {
-        return new Chart(canvas, {
-            type: 'bar',
-            data: {
-                labels,
-                datasets: [
-                    { label: seriesA.label, data: seriesA.values, backgroundColor: seriesA.color, borderRadius: 3 },
-                    { label: seriesB.label, data: seriesB.values, backgroundColor: seriesB.color, borderRadius: 3 },
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: true, position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
-                    tooltip: { backgroundColor: '#121418', titleColor: '#e8eaed', bodyColor: '#e8eaed', borderColor: 'rgba(255, 255, 255, 0.14)', borderWidth: 1, padding: 8 },
-                },
-                scales: {
-                    x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-                    y: { grid: { color: 'rgba(255, 255, 255, 0.06)' }, ticks: { font: { size: 10 } } },
-                },
-            },
-        });
-    }
-
-    return { createLineChart, createScoringTrendChart, createDiffBarChart, createComparisonBarChart, rollingAverage };
+    return { createLineChart, createScoringTrendChart, createDiffBarChart, rollingAverage };
 })();
