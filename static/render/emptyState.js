@@ -42,12 +42,11 @@ const EmptyState = (() => {
             <div class="empty-state-inner">
                 <div class="eyebrow">NBA · Franchise Analyst</div>
                 <h1 class="hero-title">
-                    <span class="hero-line">Ask the numbers</span>
-                    <span class="hero-line indent">behind every</span>
-                    <span class="hero-line indent-sm">franchise.</span>
+                    <span class="hero-line">Ask anything</span>
+                    <span class="hero-line indent">about the</span>
+                    <span class="hero-line indent-sm">NBA.</span>
                 </h1>
                 <div class="hero-meta">
-                    <p class="hero-subtitle">Teams, players, trades and the history behind them, answered from real NBA data with a dashboard next to every reply.</p>
                     <dl class="hero-stats">
                         <div class="hero-stat"><dt>Teams</dt><dd data-stat="teams">30</dd></div>
                         <div class="hero-stat"><dt>Latest season</dt><dd data-stat="season">—</dd></div>

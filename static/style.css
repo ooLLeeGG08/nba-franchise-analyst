@@ -95,8 +95,7 @@ button {
 .sidebar.collapsed .brand-name,
 .sidebar.collapsed .new-chat-button span,
 .sidebar.collapsed .sidebar-search,
-.sidebar.collapsed .sidebar-scroll,
-.sidebar.collapsed .sidebar-footer-item {
+.sidebar.collapsed .sidebar-scroll {
     display: none;
 }
 
@@ -294,16 +293,6 @@ button {
     color: var(--text);
 }
 
-.sidebar-footer {
-    padding: 10px 14px;
-    border-top: 1px solid var(--border);
-}
-
-.sidebar-footer-item.muted {
-    font-size: 11px;
-    color: var(--text-faint);
-}
-
 /* ---------- Main area ---------- */
 
 .main {
@@ -462,24 +451,13 @@ button {
 .hero-line.indent-sm { padding-left: 0.6em; }
 
 .hero-meta {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 32px;
-    align-items: end;
-}
-
-.hero-subtitle {
-    margin: 0;
-    max-width: 440px;
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--text-muted);
+    display: flex;
 }
 
 .hero-stats {
     margin: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: clamp(20px, 3vw, 40px);
 }
 
@@ -1775,15 +1753,6 @@ button {
 
     .suggestion-list {
         grid-template-columns: 1fr;
-    }
-
-    .hero-meta {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .hero-stats {
-        justify-content: flex-start;
     }
 
     .aurora-band.one { width: 170%; height: 30%; right: -95%; top: 4%; }
