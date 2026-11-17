@@ -1764,17 +1764,15 @@ button {
         margin-top: -56px;
     }
 
-    /* Menu button ends at 48px; start the eyebrow just below it. The
-       suggestions are pushed to the bottom, right above the composer. */
+    /* Menu button ends at 48px; start the eyebrow just below it. */
     .empty-state-inner {
         padding-top: 72px;
         padding-bottom: 8px;
         gap: 22px;
-        min-height: 100%;
     }
 
     .suggestion-block {
-        margin-top: auto;
+        margin-top: 10px;
     }
 
     .suggestion-row:last-child {
