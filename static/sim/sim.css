@@ -169,7 +169,7 @@ p { margin: 0; line-height: 1.5; color: var(--muted); font-size: var(--fs-body);
 }
 .landing-hero { display: flex; flex-direction: column; align-items: center; gap: var(--s-5); width: 100%; padding: var(--s-8) 0; }
 .landing h1 { font-size: clamp(56px, 17vw, 136px); line-height: 0.95; max-width: 9ch; }
-.landing p.lead { font: 400 19px/1.5 var(--font-body); color: var(--text); max-width: 34ch; text-wrap: balance; }
+.landing p.lead { font: 700 19px/1.5 var(--font-body); color: var(--text); max-width: 34ch; text-wrap: balance; }
 .landing .fineprint {
     display: grid; width: 100%; border-top: var(--rule); border-bottom: var(--rule);
     font: 700 var(--fs-label)/1.5 var(--font-body); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--muted);
@@ -674,7 +674,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 @media (min-width: 768px) {
     :root { --gutter: var(--s-10); --section-gap: 80px; }
     .app { max-width: calc(var(--content-max) + 2 * var(--gutter)); padding-top: var(--s-8); }
-    .action-bar .inner { max-width: var(--content-max); display: flex; justify-content: flex-end; gap: var(--s-2); }
+    .action-bar .inner { max-width: var(--content-max); display: flex; justify-content: flex-end; align-items: center; gap: var(--s-2); }
+    .action-bar .toast { margin: 0 var(--s-2) 0 0; }   /* beside the button, on its middle line */
     .action-bar .inner .button, .action-bar .inner .button.wide { width: auto; min-width: 280px; }
     .action-bar .inner.two { display: flex; }
     .team-grid { grid-template-columns: repeat(5, 1fr); }
