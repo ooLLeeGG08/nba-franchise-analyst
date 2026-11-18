@@ -127,7 +127,6 @@
         render(`
             <section class="landing">
                 <div class="landing-hero glow">
-                    <div class="landing-mark" aria-hidden="true">TS</div>
                     <h1>NBA <span class="hl">Trade</span> Simulator</h1>
                     <p class="lead">Pick a team, find its weak spots, test trades against the 2026-27 cap rules, and see how the season plays out.</p>
                 </div>
@@ -623,17 +622,20 @@
     }
 
     // `from` is the team whose panel the button sits in.
-    function addButton(from, type, id, disabled, label = "Add") {
+    // A quiet "+ NOP" per row (outlined on hover/focus); the accessible name says what goes where.
+    function addButton(from, type, id, disabled, what = "") {
         if (disabled) return `<span class="note">${esc(disabled)}</span>`;
         const dests = destinations(from);
         if (!dests.length) return `<span class="note">Add a team first</span>`;
+        const name = (to) => `Add ${what ? esc(what) : "this"} to ${to}`;
+        const plus = `<span class="plus" aria-hidden="true">+</span>`;
         if (dests.length === 1) {
-            return `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${dests[0]}">${label} → ${dests[0]}</button>`;
+            return `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${dests[0]}" aria-label="${name(dests[0])}">${plus}${dests[0]}</button>`;
         }
         if (tm.chooseFor === `${from}:${type}:${id}`) {
-            return `<span class="dest">${dests.map((d) => `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${d}">${d}</button>`).join("")}</span>`;
+            return `<span class="dest">${dests.map((d) => `<button type="button" class="add" data-add="${type}" data-id="${esc(id)}" data-from="${from}" data-to="${d}" aria-label="${name(d)}">${plus}${d}</button>`).join("")}</span>`;
         }
-        return `<button type="button" class="add" data-choose="${from}:${type}:${esc(id)}">${label} →</button>`;
+        return `<button type="button" class="add" data-choose="${from}:${type}:${esc(id)}" aria-label="Add ${what ? esc(what) : "this"} to a team">${plus}Add</button>`;
     }
 
     function assetsPanel(code) {
@@ -647,12 +649,12 @@
                 const flags = [p.no_trade_clause ? "no-trade clause" : "", p.bird_veto ? "can veto" : "",
                                p.tradeable_from ? `signed this summer · from ${formatDate(p.tradeable_from)}` : ""].filter(Boolean);
                 return `<li><span class="who">${esc(p.name)} <small>${esc(p.position || "")} · ${money(p.salary)}${flags.length ? ` · <em>${esc(flags.join(" · "))}</em>` : ""}</small></span>
-                        ${addButton(code, "player", p.id)}</li>`;
+                        ${addButton(code, "player", p.id, "", p.name)}</li>`;
             }).join("");
         } else if (panel === "picks") {
             body = a.picks.filter((pk) => !inTrade("pick", pk.id)).map((pk) => `
                 <li><span class="who">${esc(pk.label)}${pk.kind === "conditional" ? `<small>${esc(pk.text)}</small>` : ""}</span>
-                    ${addButton(code, "pick", pk.id, pk.tradeable ? "" : "frozen")}</li>`).join("");
+                    ${addButton(code, "pick", pk.id, pk.tradeable ? "" : "frozen", pk.label)}</li>`).join("");
         } else {
             const ex = a.exceptions.length
                 ? a.exceptions.map((e) => `<li><span class="who">${money(e.amount)} exception <small>from the ${esc(e.source)} trade · expires ${esc(formatDate(e.expires))}</small></span></li>`).join("")
@@ -661,7 +663,7 @@
                 <li class="explain"><small>Exceptions can't be traded; the checker uses one automatically when salaries don't match.</small></li>
                 <li><span class="who">Send cash <small>up to ${money(a.cash_limit)} a season</small></span>
                     <span class="cash"><input type="number" inputmode="decimal" min="0.1" step="0.1" max="${a.cash_limit / 1e6}" placeholder="$M" id="cashInput-${code}" aria-label="Cash in millions">
-                    ${addButton(code, "cash", "cash", "", "Add")}</span></li>`;
+                    ${addButton(code, "cash", "cash", "", "cash")}</span></li>`;
         }
         return `
             <section class="card">
@@ -1124,7 +1126,6 @@
     // --- router -----------------------------------------------------------------------------------
 
     function route() {
-        focusPending = true;
         const raw = location.hash.replace(/^#\/?/, "") || "";
         const [path, query = ""] = raw.split("?");
         const parts = path.split("/");
@@ -1137,7 +1138,12 @@
         return landing();
     }
 
-    window.addEventListener("hashchange", route);
+    window.addEventListener("hashchange", () => { focusPending = true; route(); });
+    // The skip link moves focus without changing the URL (the hash is the router's).
+    document.querySelector(".skip-link")?.addEventListener("click", (ev) => {
+        ev.preventDefault();
+        app.focus();
+    });
     route();
     loadDataStatus();
 })();
