@@ -632,6 +632,15 @@ def test_is_analytical_query_matches_comparisons_and_why_questions():
     assert rag.is_analytical_query("Who's a better scorer, Embiid or Jokic?")
 
 
+def test_is_analytical_query_matches_analyze_requests():
+    assert rag.is_analytical_query("Analyse Spurs")
+    assert rag.is_analytical_query("Analyze the Lakers")
+    assert rag.is_analytical_query("Give me an analysis of the Nets")
+    assert rag.is_analytical_query("analysing the Kings' season")
+    # "analyst" is not a request to analyze something
+    assert not rag.is_analytical_query("Who is the Spurs' best analyst hire?")
+
+
 def test_is_analytical_query_false_for_simple_lookups():
     assert not rag.is_analytical_query("What's LeBron's PPG this season?")
     assert not rag.is_analytical_query("Who is the Spurs' head coach?")

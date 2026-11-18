@@ -73,7 +73,7 @@ SYSTEM_PROMPT = (
 # renders the first line bold and the rest as a real bulleted list, so the
 # format below isn't just a style preference, it's a parsed contract.
 ANALYTICAL_PROMPT_ADDENDUM = (
-    "\n\nThis is a comparison or 'why' question. Answer in exactly this shape and nothing else:\n"
+    "\n\nThis is a comparison, 'why' or analyze-this-team question. Answer in exactly this shape and nothing else:\n"
     "A single one-sentence verdict first, alone on its own line, with no prefix or label -- it "
     "will be rendered in bold, so it must stand alone as a complete, direct answer to the "
     "question by itself.\n"
