@@ -602,6 +602,11 @@ h1[tabindex="-1"]:focus { outline: none; }
 /* "+5.6 WINS": Inter digits are about 1.17x shorter than Anton capitals at the same size (measured on screen), so the number
    is scaled up to match; tops and baselines then line up. Measured with canvas measureText. */
 .cta-band h2 .num { font-size: 1.17em; line-height: 0.8; letter-spacing: -0.03em; }
+/* Inter's + and - sit on the math axis, below the middle of the digits: raise them to it
+   (canvas measureText: + center 0.079em low, - 0.053em low). */
+.cta-band h2 .sign { position: relative; }
+.cta-band h2 .sign.plus { top: -0.079em; }
+.cta-band h2 .sign.minus { top: -0.053em; }
 .cta-band .button { min-width: min(100%, 280px); }
 .removed { color: var(--bad); font-size: var(--fs-body); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-body); margin: var(--s-1) 0; }

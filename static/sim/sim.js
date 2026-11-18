@@ -95,6 +95,13 @@
         return html.replace(/ -&gt; /g, " → ");
     }
 
+    // "+5.6" -> "<span class="sign plus">+</span>5.6", so the sign can be raised to the middle of the digits.
+    function signText(text) {
+        const m = /^([+\-−])(.*)$/.exec(text);
+        if (!m) return esc(text);
+        return `<span class="sign ${m[1] === "+" ? "plus" : "minus"}">${m[1]}</span>${esc(m[2])}`;
+    }
+
     // Closing call-to-action band (headline + one button, glow behind).
     function ctaBand(headline, button) {
         return `<section class="cta-band glow"><h2>${headline}</h2>${button}</section>`;
@@ -1138,7 +1145,7 @@
             </section>
             ${standingsHtml}
             ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>The trades you ran</h2></div><ul class="applied">${applied}</ul></section>` : ""}
-            ${ctaBand(`<span class="num ${d.mean_wins.change < 0 ? "neg" : "hl"}">${signed(d.mean_wins.change)}</span> wins`,
+            ${ctaBand(`<span class="num ${d.mean_wins.change < 0 ? "neg" : "hl"}">${signText(signed(d.mean_wins.change))}</span> wins`,
                       `<a class="button" href="#/select/${code}">Change trades</a>`)}
             <div class="action-bar"><div class="inner two">
                 <a class="button secondary" href="#/select/${code}" data-dup>Change trades</a>
