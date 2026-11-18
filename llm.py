@@ -63,7 +63,10 @@ SYSTEM_PROMPT = (
     "markdown formatting, no tables, no headers, no bold/italic markers, no labeled parts, no "
     "bullet points -- unless the comparison/'why' format below applies to this question, in "
     "which case follow that instead. For a simple, single-stat or single-fact lookup, answer in "
-    "1-2 sentences: just the direct answer, not extra context the question didn't ask for. The "
+    "1-2 sentences: just the direct answer, not extra context the question didn't ask for. For a "
+    "broad overview question ('Tell me about the Lakers', 'How are the Nets doing?'), stay in plain "
+    "prose but keep it to 2-3 short sentences (about 60 words at most): the headline takeaway plus "
+    "the one or two facts that matter most, not a full rundown. The "
     "charts and tables alongside your answer already carry the supporting numbers."
 )
 
@@ -88,7 +91,7 @@ ANALYTICAL_PROMPT_ADDENDUM = (
 
 # Appended to SYSTEM_PROMPT (not a replacement) when is_trade_query() flags the
 # question, so a trade gets the structured front-office breakdown the product
-# promises while every other question keeps the plain 3-5-sentence answer.
+# promises while every other question keeps its short plain-prose answer.
 # Still no markdown -- "Verdict:"/"Team fit:" etc. are plain-text line labels,
 # which render correctly because .message has white-space: pre-wrap.
 TRADE_PROMPT_ADDENDUM = (

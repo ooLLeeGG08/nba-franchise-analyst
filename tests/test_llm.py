@@ -196,3 +196,9 @@ def test_answer_question_selects_analytical_mode_for_a_why_question(monkeypatch)
     system_prompt = captured["messages"][0][1]
     assert "exactly this shape" in system_prompt
     assert "Verdict:" not in system_prompt
+
+
+def test_system_prompt_caps_overview_answers_in_plain_prose():
+    lowered = llm.SYSTEM_PROMPT.lower()
+    assert "tell me about the lakers" in lowered
+    assert "2-3 short sentences" in lowered
