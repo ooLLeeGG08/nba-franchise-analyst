@@ -599,6 +599,9 @@ h1[tabindex="-1"]:focus { outline: none; }
     margin-top: var(--section-gap); padding: var(--s-16) 0;
 }
 .cta-band h2 { font-size: clamp(44px, 13vw, 88px); line-height: 1; max-width: 12ch; }
+/* "+5.6 WINS": Inter digits are 1.26x shorter than Anton capitals at the same size, so the number
+   is scaled up to match; tops and baselines then line up. Measured with canvas measureText. */
+.cta-band h2 .num { font-size: 1.26em; line-height: 0.8; letter-spacing: -0.03em; }
 .cta-band .button { min-width: min(100%, 280px); }
 .removed { color: var(--bad); font-size: var(--fs-body); margin: 0 0 var(--s-2); }
 .combined { font-size: var(--fs-body); margin: var(--s-1) 0; }
