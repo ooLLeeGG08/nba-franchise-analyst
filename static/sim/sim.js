@@ -285,7 +285,7 @@
         return `
             <section class="card">
                 <span class="eyebrow">04 · Payroll</span>
-                <div class="card-head"><h2>Payroll</h2><span class="status">${esc(c.status)}</span></div>
+                <div class="card-head"><h2>Salary vs. the cap</h2><span class="status">${esc(c.status)}</span></div>
                 <div class="payroll-figures"><span class="amount">${money(c.team_salary)}</span><span class="note">${c.standard_contracts} standard contracts</span></div>
                 <div class="payroll-bar" role="img" aria-label="Team salary ${money(c.team_salary)} against the cap, tax line and aprons">
                     <div class="fill" style="width:${pos(c.team_salary)}%"></div>${markers}
@@ -319,9 +319,8 @@
                 <div class="suggestion-head">
                     <span class="gain">${signed(s.win_change)} wins</span>
                     <span class="note">80% of seasons: ${signed(s.win_change_80[0], 0)} to ${signed(s.win_change_80[1], 0)}</span>
-                    <span class="pill ok">✓ Works</span>
+                    <span class="chip match ${s.match === "fits the need" ? "fit" : ""}">${esc(s.match[0].toUpperCase() + s.match.slice(1))}</span>
                 </div>
-                <span class="chip match ${s.match === "fits the need" ? "fit" : ""}">${esc(s.match[0].toUpperCase() + s.match.slice(1))}</span>
                 <div class="sides compact">
                     <div><h3>${esc(code)} gets</h3><ul class="moves">${s.gets.map((g) => playerLine(g, s.partner)).join("")}</ul></div>
                     <div><h3>${esc(code)} sends</h3><ul class="moves">${s.sends.map((x) => playerLine(x)).join("")}${picks}</ul></div>
@@ -370,7 +369,7 @@
             <section class="card">
                 <span class="eyebrow">05 · Roster</span>
                 <details class="roster">
-                    <summary>Roster</summary>
+                    <summary>Players, minutes and impact</summary>
                     <p style="font-size:13px;margin-top:8px">Impact = points per 100 possessions vs an average player. Minutes when everyone is healthy.</p>
                     <div class="roster-list">${rows}</div>
                 </details>
@@ -831,7 +830,7 @@
             <label class="pick-card ${on ? "on" : ""}">
                 <input type="checkbox" data-pick="${esc(o.id)}" ${on ? "checked" : ""}>
                 <span class="pick-body">
-                    <span class="pick-kind">${esc(o.kind)}${o.badge ? ` · ${esc(o.badge)}` : ""}</span>
+                    <span class="pick-kind">${o.kind === "Suggestion" ? esc(o.badge) : `${esc(o.kind)}${o.badge ? ` · ${esc(o.badge)}` : ""}`}</span>
                     <strong>${esc(o.title)}</strong>
                     ${o.detail ? `<small>${esc(o.detail)}</small>` : ""}
                     ${extra}
@@ -853,7 +852,7 @@
                 <li><span>${esc(cd)} <small>${esc(p.status_before)}${p.status_after !== p.status_before ? ` → ${esc(p.status_after)}` : ""} · ${p.contracts_after} contracts</small></span>
                     <span class="amt">${money(p.before)} → ${money(p.after)}</span></li>`).join("") : "";
             const combinedLine = c ? (picked.length > 1
-                ? `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">Combined ${signed(c.change)} wins</strong> ${c.sum_alone != null ? `<span>(sum alone ${signed(c.sum_alone)})</span>` : ""}</p>
+                ? `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">${signed(c.change)} wins together</strong> ${c.sum_alone != null ? `<span>(sum alone ${signed(c.sum_alone)})</span>` : ""}</p>
                    <p class="hint">One simulation with all ${picked.length} trades together. It differs from the sum when the new players share minutes.</p>`
                 : `<p class="combined"><strong class="${c.change < 0 ? "neg" : "pos"}">${signed(c.change)} wins</strong></p>`) : "";
             // Sections appear and disappear with picks, so eyebrows are numbered in display order.
@@ -1031,6 +1030,28 @@
     let resizeTimer = null;
     window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawChart, 100); });
 
+    // "Gets Saddiq Bey + Karlo Matković from NOP" / "Sends Matas Buzelis, 2031 1st (own) pick" for each
+    // trade in the URL, from the teams' asset lists (cached; a player picked up in an earlier trade
+    // is still found). null for a trade whose names can't be resolved.
+    async function tradeLabels(code, trades) {
+        const codes = [...new Set(trades.flatMap((t) => t.moves.flatMap((m) => [m.from, m.to])))];
+        const lists = await Promise.all(codes.map((c) => getJSON(`/api/sim/trade/assets/${c}`).catch(() => null)));
+        const names = {};
+        lists.filter(Boolean).forEach((a) => {
+            a.roster.forEach((p) => { names[`player:${p.id}`] = p.name; });
+            a.picks.forEach((pk) => { names[`pick:${pk.id}`] = `${pk.label} pick`; });
+        });
+        const label = (m) => (m.type === "cash" ? "cash" : names[`${m.type}:${m.id}`]);
+        return trades.map((t) => {
+            const gets = t.moves.filter((m) => m.to === code), sends = t.moves.filter((m) => m.from === code);
+            const all = [...gets, ...sends].map(label);
+            if (!all.length || all.some((x) => !x)) return null;
+            const partners = [...new Set(gets.map((m) => m.from).concat(sends.map((m) => m.to)))].filter((c) => c !== code);
+            const title = gets.length ? `Gets ${gets.map(label).join(" + ")} from ${partners.join(", ")}` : `Trade with ${partners.join(", ")}`;
+            return { title, detail: sends.length ? `Sends ${sends.map(label).join(", ")}` : "" };
+        });
+    }
+
     async function results(code, query) {
         const trades = decodeTrades(new URLSearchParams(query).get("t"));
         render(`<div class="loading">Simulating 10,000 seasons…</div>`);
@@ -1053,7 +1074,7 @@
                 return `
                 <tr class="${t.you ? "you" : ""} ${i === 5 || i === 9 ? "cut" : ""}">
                     <td class="rank">${i + 1}</td>
-                    <td class="team"><span class="team-cell">${badge(t)}<span>${esc(t.code)}${t.you ? `<small>You</small>` : t.partner ? `<small>Trade</small>` : ""}
+                    <td class="team"><span class="team-cell">${badge(t)}<span><span class="code">${esc(t.code)}</span><span class="name">${esc(t.name || t.code)}</span>${t.you ? `<small>You</small>` : t.partner ? `<small>Trade</small>` : ""}
                         <span class="extra"><span>Play-in ${pct(t.play_in_pct)}</span> <span>#1 seed ${pct(t.top_seed_pct)}</span></span></span></span></td>
                     <td><strong>${t.mean_wins.toFixed(1)}</strong><small>${t.range[0]}–${t.range[1]}</small></td>
                     <td>${pct(t.playoff_pct)}</td><td class="opt">${pct(t.play_in_pct)}</td><td class="opt">${pct(t.top_seed_pct)}</td>
@@ -1078,7 +1099,12 @@
                 <summary><h2>${confName(other)}</h2><span class="note">${otherHasPartner ? "has a trade partner" : "tap to show"}</span></summary>
                 ${confTable(other)}
             </details>`;
-        const applied = r.trades.map((t, i) => `<li>${t.works ? "✓" : "✗"} Trade ${i + 1}${t.works ? "" : ` blocked: ${esc(t.reason)}`}</li>`).join("");
+        const labels = await tradeLabels(code, trades);
+        const applied = r.trades.map((t, i) => {
+            const l = labels[i];
+            const what = l ? `${esc(l.title)}${l.detail ? `<small>${esc(l.detail)}</small>` : ""}` : `Trade ${i + 1}`;
+            return `<li><span class="mark ${t.works ? "ok" : "bad"}" aria-hidden="true">${t.works ? "✓" : "✗"}</span><span>${what}${t.works ? "" : `<small class="blocked">Blocked: ${esc(t.reason)}</small>`}</span></li>`;
+        }).join("");
         const ex = r.explanation;
         render(`
             <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><p class="title">Results</p></div>
@@ -1111,7 +1137,7 @@
                 <p class="explain">${arrows(esc(ex.text))}</p>
             </section>
             ${standingsHtml}
-            ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
+            ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>The trades you ran</h2></div><ul class="applied">${applied}</ul></section>` : ""}
             ${ctaBand(`<span class="num ${d.mean_wins.change < 0 ? "neg" : "hl"}">${signed(d.mean_wins.change)}</span> wins`,
                       `<a class="button" href="#/select/${code}">Change trades</a>`)}
             <div class="action-bar"><div class="inner two">
