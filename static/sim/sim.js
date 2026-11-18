@@ -63,9 +63,36 @@
         return cache[url];
     }
 
+    // Set by route(): the first draw of a screen that has an <h1> moves keyboard/screen-reader
+    // focus to it (a loading state without one keeps it pending). A later redraw of the same
+    // screen that wipes the focused element puts focus back on the heading instead of <body>.
+    // Every draw also names the browser tab after the screen.
+    let focusPending = false;
+    let focusedFor = null;
+
+    function settleHeading() {
+        const h1 = app.querySelector("h1");
+        if (!h1) return;
+        const name = h1.textContent.trim();
+        document.title = name === "NBA Trade Simulator" ? name : `${name} · NBA Trade Simulator`;
+        const focusLost = !document.activeElement || document.activeElement === document.body;
+        if (focusPending || (focusLost && focusedFor === location.hash)) {
+            focusPending = false;
+            focusedFor = location.hash;
+            h1.setAttribute("tabindex", "-1");
+            h1.focus({ preventScroll: true });
+        }
+    }
+
     function render(html) {
         app.innerHTML = html;
         window.scrollTo(0, 0);
+        settleHeading();
+    }
+
+    // Summaries from the numbers are written with a plain "->"; show a real arrow.
+    function arrows(html) {
+        return html.replace(/ -&gt; /g, " → ");
     }
 
     // Closing call-to-action band (headline + one button, glow behind).
@@ -301,7 +328,7 @@
                     <div><h3>${esc(code)} sends</h3><ul class="moves">${s.sends.map((x) => playerLine(x)).join("")}${picks}</ul></div>
                 </div>
                 <p class="facts">Playoffs ${pct(s.playoff_before)} → ${pct(s.playoff_after)} · ${esc(s.cap.team.status_after)} · ${esc(s.partner)} ${signed(s.partner_win_change)} wins</p>
-                <p class="explain">${esc(ex.text)} <span class="source">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></p>
+                ${ex.source === "ai" ? `<p class="explain">${arrows(esc(ex.text))} <span class="source">AI summary, checked against the numbers</span></p>` : ""}
                 <a class="button secondary wide" href="${link}">Open in trade machine</a>
             </article>`;
     }
@@ -328,7 +355,7 @@
         box.innerHTML = `
             <span class="eyebrow">03 · Ideas</span>
             <div class="card-head"><h2>Trade ideas</h2><span class="note">${data.searched.candidates} players searched · ${data.searched.legal_balanced} legal and balanced</span></div>
-            ${needLine}${n.note ? `<p class="note">${esc(n.note)}</p>` : ""}
+            ${needLine}${n.note && n.source !== "data" ? `<p class="note">${esc(n.note)}</p>` : ""}
             <div class="ideas">${body}</div>
             ${data.suggestions.length && rules ? `<p class="note" style="margin-top:10px">${esc(rules)}</p>` : ""}`;
     }
@@ -699,7 +726,7 @@
         const works = tm.result && tm.result.works && tm.moves.length;
         const scrollY = window.scrollY;
         app.innerHTML = `
-            <div class="topbar"><a class="back" href="#/team/${back}">‹ ${esc(back)}</a><h2 class="title">Trade machine</h2></div>
+            <div class="topbar"><a class="back" href="#/team/${back}">‹ ${esc(back)}</a><h1 class="title">Trade machine</h1></div>
             <div class="team-tabs n${tm.teams.length}">${tabs}${canAdd ? `<button type="button" class="tab add-team" data-action="picker" aria-label="Add a team">+</button>` : ""}</div>
             ${teamPicker()}
             ${tm.teams.length > 1 ? `<span class="eyebrow">Cap rules</span>` + statusBanner() + rulesPanel() + `
@@ -709,10 +736,11 @@
             </div>` : ""}
             ${savedList()}
             <div class="action-bar"><div class="inner">
-                ${tm.message ? `<p class="toast">${esc(tm.message)}</p>` : ""}
+                ${tm.message ? `<p class="toast" role="status">${esc(tm.message)}</p>` : ""}
                 <button type="button" class="button wide" data-action="save" ${works ? "" : "disabled"}>${works ? "Save trade" : "Save (needs a trade that works)"}</button>
             </div></div>`;
         window.scrollTo(0, scrollY);
+        settleHeading();
     }
 
     // One click handler for the whole trade screen.
@@ -832,7 +860,7 @@
             const simulate = (cls) => `<a class="button ${cls} ${busy ? "disabled" : ""}" href="#/results/${code}?t=${encodeTrades(picked)}">
                         ${picked.length ? `Simulate the season with ${picked.length} trade${picked.length > 1 ? "s" : ""}` : "Simulate the season as is"}</a>`;
             render(`
-                <div class="topbar"><a class="back" href="#/team/${code}">‹ ${esc(code)}</a><h2 class="title">Choose trades</h2></div>
+                <div class="topbar"><a class="back" href="#/team/${code}">‹ ${esc(code)}</a><h1 class="title">Choose trades</h1></div>
                 <p class="intro">Pick trades to run together, or none. After each pick, new ideas are found for the roster, payroll and picks it leaves, so every idea still works with your picks.</p>
                 ${removedNote}
                 ${picked.length ? `<section class="page-section">${eyebrow("Picks")}
@@ -1051,7 +1079,7 @@
         const applied = r.trades.map((t, i) => `<li>${t.works ? "✓" : "✗"} Trade ${i + 1}${t.works ? "" : ` blocked: ${esc(t.reason)}`}</li>`).join("");
         const ex = r.explanation;
         render(`
-            <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><h2 class="title">Results</h2></div>
+            <div class="topbar"><a class="back" href="#/select/${code}">‹ Choose trades</a><p class="title">Results</p></div>
             <header class="team-head results-head">${badge(r, "large")}<div><h1>${esc(r.name)}</h1>
                 <div class="sub">${r.applied ? `With ${r.applied} trade${r.applied > 1 ? "s" : ""}` : "No trades: the season as it stands"} · ${r.n_sims.toLocaleString()} simulated seasons</div></div></header>
             <section class="results-hero glow">
@@ -1078,7 +1106,7 @@
             <section class="card">
                 <span class="eyebrow">04 · Summary</span>
                 <div class="card-head"><h2>What changed</h2><span class="note">${ex.source === "ai" ? "AI summary, checked against the numbers" : "Summary from the numbers"}</span></div>
-                <p class="explain">${esc(ex.text)}</p>
+                <p class="explain">${arrows(esc(ex.text))}</p>
             </section>
             ${standingsHtml}
             ${applied ? `<section class="card"><span class="eyebrow">06 · Trades</span><div class="card-head"><h2>Trades</h2></div><ul class="applied">${applied}</ul></section>` : ""}
@@ -1096,6 +1124,7 @@
     // --- router -----------------------------------------------------------------------------------
 
     function route() {
+        focusPending = true;
         const raw = location.hash.replace(/^#\/?/, "") || "";
         const [path, query = ""] = raw.split("?");
         const parts = path.split("/");

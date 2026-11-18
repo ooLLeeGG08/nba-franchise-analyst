@@ -94,6 +94,7 @@
 
 /* --- base ---------------------------------------------------------------------------------- */
 * { box-sizing: border-box; }
+html { color-scheme: dark; }
 html, body { margin: 0; background: var(--bg); }
 body { min-height: 100dvh; -webkit-font-smoothing: antialiased; }
 button, input, select { font: inherit; color: inherit; }
@@ -380,7 +381,12 @@ details.roster[open] summary::after { content: "Hide"; }
 .error { color: var(--bad); }
 
 /* --- trade machine --- */
-.topbar .title { font-size: 22px; margin-left: auto; margin-right: auto; padding-right: var(--s-12); }
+.topbar .title {
+    font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: var(--tracking-display);
+    font-size: 22px; line-height: 1.15; margin: 0 auto; padding-right: var(--s-12);
+}
+/* Screen headings take focus on navigation (for keyboard and screen readers); no ring on a non-control. */
+h1[tabindex="-1"]:focus { outline: none; }
 .team-tabs { display: flex; flex-wrap: wrap; gap: var(--s-2); padding: var(--s-1) 0 var(--s-3); }
 .tab { display: inline-flex; align-items: center; flex: none; border-radius: var(--r-sm); border: var(--rule); }
 .tab > button { border: 0; background: transparent; padding: 0 var(--s-4); min-height: var(--tap); font: 400 var(--fs-lg) var(--font-sub); letter-spacing: var(--tracking-sub); cursor: pointer; }
