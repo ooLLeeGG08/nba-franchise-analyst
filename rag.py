@@ -601,17 +601,33 @@ _WHY_RE = re.compile(r"\bwhy\b")
 # dashboard already carries the numbers, so the prose should be a short
 # verdict + bullets rather than a long paragraph.
 _ANALYZE_RE = re.compile(r"\banaly[sz](?:e[sd]?|ing|is)\b")
+# "How did the Spurs maintain their success?" is a 'why' question in
+# disguise. Only "how did/do/..." followed by a cause-type verb counts, so
+# lookups ("How many points did LeBron score?") and status checks ("How are
+# the Nets doing?") stay plain prose.
+_HOW_WHY_RE = re.compile(
+    r"\bhow (?:did|do|does|have|has|had|can|could|would|will|were|was|is|are)\b"
+    r".*\b(?:maintain|sustain|stay|keep|build|built|become|became|get|got|turn|turned|"
+    r"rebuild|rebuilt|succeed|succeeded|dominate|dominated|win|won|improve|improved|"
+    r"decline|declined|fall|fell|collapse|collapsed|lose|lost)\b"
+)
 
 
 def is_analytical_query(message):
     """True for a comparison ("Compare the Celtics and Thunder", "Who's a
     better scorer, Embiid or Jokic?"), a 'why' question ("Why do the Spurs
-    sustain success?") or an analyze request ("Analyse the Spurs") -- these
+    sustain success?", also "How did the Spurs maintain their success?") or an
+    analyze request ("Analyse the Spurs") -- these
     get the verdict+bullets format instead of plain prose; drives llm.py's
     ANALYTICAL_PROMPT_ADDENDUM. A straightforward lookup ("What's LeBron's
     PPG?") does not match and stays a short plain-prose answer."""
     text = message.lower()
-    return is_comparison_query(message) or bool(_WHY_RE.search(text)) or bool(_ANALYZE_RE.search(text))
+    return (
+        is_comparison_query(message)
+        or bool(_WHY_RE.search(text))
+        or bool(_HOW_WHY_RE.search(text))
+        or bool(_ANALYZE_RE.search(text))
+    )
 
 
 _TRADE_RE = re.compile(r"\btrad(?:e[sd]?|ing)\b|\bswap(?:s|ped|ping)?\b")

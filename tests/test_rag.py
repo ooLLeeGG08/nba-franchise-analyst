@@ -641,6 +641,17 @@ def test_is_analytical_query_matches_analyze_requests():
     assert not rag.is_analytical_query("Who is the Spurs' best analyst hire?")
 
 
+def test_is_analytical_query_matches_how_did_questions():
+    assert rag.is_analytical_query("How did the Spurs maintain their success?")
+    assert rag.is_analytical_query("How do the Celtics keep winning?")
+    assert rag.is_analytical_query("how did the Thunder build a contender")
+    assert rag.is_analytical_query("How did the Nets fall apart?")
+    # lookups and status checks stay plain
+    assert not rag.is_analytical_query("How many points did LeBron score?")
+    assert not rag.is_analytical_query("How are the Nets doing?")
+    assert not rag.is_analytical_query("How tall is Wembanyama?")
+
+
 def test_is_analytical_query_false_for_simple_lookups():
     assert not rag.is_analytical_query("What's LeBron's PPG this season?")
     assert not rag.is_analytical_query("Who is the Spurs' head coach?")
