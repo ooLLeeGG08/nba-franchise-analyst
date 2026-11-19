@@ -161,6 +161,24 @@ def test_baseline_cache_returns_identical_results(league, cfg, tmp_path, monkeyp
     assert not Engine(league, load_schedule_2026_27(), cfg, n_sims=500).baseline()["from_cache"]
 
 
+def test_baseline_cache_survives_a_half_written_file(league, cfg, tmp_path, monkeypatch):
+    """Vercel, 2026-11-19: two first requests arrived together; one read the baseline file while
+    the other was still writing it -> EOFError "No data left in file" -> HTTP 500. An unreadable
+    file must be simulated again (and rewritten whole), never crash."""
+    import glob
+    import tradesim.engine as eng
+    monkeypatch.setattr(eng, "CACHE_DIR", str(tmp_path))
+    good = Engine(league, load_schedule_2026_27(), cfg, n_sims=500).baseline()
+    path = glob.glob(str(tmp_path / "baseline_*.npz"))[0]
+    for broken in (b"", b"PK\x03\x04 cut short"):
+        with open(path, "wb") as f:
+            f.write(broken)
+        again = Engine(league, load_schedule_2026_27(), cfg, n_sims=500).baseline()
+        assert not again["from_cache"] and np.array_equal(again["wins"], good["wins"])
+        assert Engine(league, load_schedule_2026_27(), cfg, n_sims=500).baseline()["from_cache"]  # rewritten whole
+    assert not glob.glob(str(tmp_path / ".baseline-*"))  # no temporary files left behind
+
+
 def test_chunked_runs_are_reproducible_and_chunk_size_only_reshuffles_noise(league, cfg):
     chunked = {**cfg, "simulation": {**cfg["simulation"], "chunk_size": 250}}
     a = Engine(league, load_schedule_2026_27(), chunked, n_sims=500).baseline(use_cache=False)

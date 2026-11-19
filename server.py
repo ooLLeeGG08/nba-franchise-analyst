@@ -1,4 +1,5 @@
 import os
+import threading
 import traceback
 
 from dotenv import load_dotenv
@@ -82,12 +83,19 @@ def analyst_index():
 # --- trade simulator API ----------------------------------------------------------------------
 
 _SIM = {}
+_SIM_LOCK = threading.Lock()
 
 
 def _sim():
     """League, CBA config and simulation engine, loaded once (the baseline comes from the
-    on-disk cache when the data hasn't changed)."""
-    if not _SIM:
+    on-disk cache when the data hasn't changed). The first requests on a fresh server often
+    arrive together (the page asks for status and teams at once): the lock makes one build
+    it while the others wait, instead of each simulating 10,000 seasons."""
+    if _SIM:
+        return _SIM
+    with _SIM_LOCK:
+        if _SIM:
+            return _SIM
         from tradesim.engine import Engine
         from tradesim.games import load_schedule_2026_27
         from tradesim.league import League, load_cba

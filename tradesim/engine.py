@@ -28,6 +28,7 @@ import hashlib
 import json
 import os
 import tempfile
+import zipfile
 from collections import OrderedDict
 
 import numpy as np
@@ -305,18 +306,34 @@ class Engine:
             return self._baseline
         path = os.path.join(CACHE_DIR, f"baseline_{fingerprint(self.n_sims, self.cfg['simulation']['seed'], self.schedule)}.npz")
         if use_cache and os.path.exists(path):
-            data = np.load(path)
-            wins, seeds, playoff = data["wins"], data["seeds"], data["playoff"]
-            self._baseline = {"teams": summaries(wins, seeds, playoff, self.sim_cfg), "wins": wins, "seeds": seeds,
-                              "playoff": playoff, "mean_strength": dict(zip(CODES, data["mean_strength"].tolist())),
-                              "from_cache": True}
-            return self._baseline
+            try:
+                with np.load(path) as data:
+                    wins, seeds, playoff = data["wins"], data["seeds"], data["playoff"]
+                    mean_strength = data["mean_strength"].tolist()
+            except (OSError, ValueError, EOFError, KeyError, zipfile.BadZipFile):
+                pass  # unreadable (e.g. cut short): simulate again and rewrite it below
+            else:
+                self._baseline = {"teams": summaries(wins, seeds, playoff, self.sim_cfg), "wins": wins, "seeds": seeds,
+                                  "playoff": playoff, "mean_strength": dict(zip(CODES, mean_strength)),
+                                  "from_cache": True}
+                return self._baseline
         self._baseline = self.simulate()
         if use_cache:
+            # Written under a temporary name and renamed into place, so another request (or a
+            # second worker on Vercel) never reads a half-written file.
             os.makedirs(CACHE_DIR, exist_ok=True)
-            np.savez_compressed(path, wins=self._baseline["wins"], seeds=self._baseline["seeds"],
-                                playoff=self._baseline["playoff"],
-                                mean_strength=np.array([self._baseline["mean_strength"][c] for c in CODES]))
+            fd, tmp = tempfile.mkstemp(dir=CACHE_DIR, prefix=".baseline-", suffix=".npz")
+            try:
+                with os.fdopen(fd, "wb") as f:
+                    np.savez_compressed(f, wins=self._baseline["wins"], seeds=self._baseline["seeds"],
+                                        playoff=self._baseline["playoff"],
+                                        mean_strength=np.array([self._baseline["mean_strength"][c] for c in CODES]))
+                os.replace(tmp, path)
+            except OSError:
+                try:
+                    os.unlink(tmp)
+                except OSError:
+                    pass
         self._baseline["from_cache"] = False
         return self._baseline
 

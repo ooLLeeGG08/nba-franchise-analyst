@@ -32,6 +32,7 @@ import glob
 import hashlib
 import json
 import os
+import threading
 from collections import Counter
 from itertools import combinations
 
@@ -459,8 +460,10 @@ def cached_suggest(code, engine, league, cba, on_date, llm=None, index=None, cho
     path = f"{stem}.{on_date.isoformat()}.json"
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w") as f:
+        tmp = f"{path}.{os.getpid()}.{threading.get_ident()}.tmp"  # renamed into place: never read half-written
+        with open(tmp, "w") as f:
             json.dump(result, f)
+        os.replace(tmp, path)
     except OSError:
         pass  # no writable cache: the result is still returned
     return {**_public(result), "from_cache": False}
