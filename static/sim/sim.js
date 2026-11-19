@@ -260,7 +260,7 @@
         return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: withYear || d.getFullYear() > 2027 ? "numeric" : undefined });
     }
 
-    // How old league.json's data is (/api/sim/status); a bar on every screen when it's stale.
+    // The data's date (/api/sim/status), shown in the landing page's fine print.
     let dataStatus = null;
 
     async function loadDataStatus() {
@@ -268,13 +268,6 @@
             dataStatus = await getJSON("/api/sim/status");
         } catch (err) {
             return;
-        }
-        const bar = document.getElementById("data-warning");
-        if (dataStatus.stale) {
-            bar.textContent = dataStatus.as_of
-                ? `Data is ${dataStatus.age_days} day${dataStatus.age_days === 1 ? "" : "s"} old (as of ${formatDate(dataStatus.as_of, true)}). Trades, signings and injuries since then aren't included.`
-                : "The data's date is unknown, so it may be out of date.";
-            bar.hidden = false;
         }
         if (!location.hash || location.hash === "#/") landing();
     }

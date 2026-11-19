@@ -644,9 +644,6 @@ h1[tabindex="-1"]:focus { outline: none; }
 .conf-other[open] summary h2::before { content: "▾ "; }
 .conf-other[open] summary { margin-bottom: var(--s-2); }
 
-.data-warning { position: sticky; top: 0; z-index: 20; padding: var(--s-3) var(--s-4); font-size: var(--fs-meta); line-height: 1.4;
-    background: #2a1f0c; color: #ffd28a; border-bottom: 1px solid #6b4b16; text-align: center; }
-.data-warning[hidden] { display: none; }
 
 /* --- results --- */
 .results-head { margin-bottom: 0; }
